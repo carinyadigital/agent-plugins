@@ -1,0 +1,6 @@
+[
+  {
+    "event": "weekly_planning_start",
+    "steering": "Refine website/docs/product/backlog.md for the upcoming sprint. Do not create parallel backlogs. Flag open questions in PR comments."
+  }
+]

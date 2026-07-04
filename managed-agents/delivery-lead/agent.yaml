@@ -1,0 +1,20 @@
+slug: delivery-lead
+platform: either
+read_only: false
+catalogue:
+  plugin: delivery-lead
+  prompt: ../../agents/delivery-lead/agents/delivery-lead.md
+  mcp: ../../agents/delivery-lead/.mcp.json
+skills:
+  - skills-index
+  - backlog
+  - tasks
+  - sprint
+  - validate
+  - stakeholder-update
+  - metrics-review
+connectors:
+  - github
+  - linear
+  - gitlab
+security_tier: standard

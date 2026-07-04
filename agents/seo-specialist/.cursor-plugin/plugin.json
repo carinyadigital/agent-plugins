@@ -1,0 +1,13 @@
+{
+  "name": "seo-specialist",
+  "displayName": "SEO Specialist",
+  "version": "0.1.0",
+  "description": "Agentic SEO specialist — keyword research, technical audits, content SEO review. Recommendations via GitHub issues; no code implementation.",
+  "author": {
+    "name": "Carinya Parc Digital Services"
+  },
+  "license": "MIT",
+  "keywords": ["seo", "keywords", "audit", "technical-seo", "content-seo"],
+  "skills": "./skills/",
+  "agents": "./agents/"
+}

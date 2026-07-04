@@ -57,6 +57,9 @@ Run `python3 scripts/validate.py` before opening a PR — it lints marketplace a
 | `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `design`, `validate` | Shipped; not yet operationally proven |
 | `qa-engineer` | Engineering | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Shipped; not yet operationally proven |
 | `webops-engineer` | Engineering | `deploy-qa`, `debug`, `platform-health` | Shipped; not yet operationally proven |
+| `content-strategist` | Content | `content-calendar`, `curate-content`, `synthesize-research`, `brand-voice`, `backlog` | Shipped; not yet operationally proven |
+| `content-writer` | Content | `draft-post`, `draft-recipe`, `write-captions`, `edit-content`, `brand-voice` | Shipped; not yet operationally proven |
+| `seo-specialist` | SEO | `keyword-research`, `technical-seo-audit`, `content-seo-review`, `competitive-brief` | Shipped; not yet operationally proven |
 | `delivery-lead` | Operations (cross-cutting) | `skills-index`, `backlog`, `tasks`, `sprint`, `validate`, `stakeholder-update`, `metrics-review` | Shipped; not yet operationally proven |
 | `principal-architect` | Engineering (Architecture) | `solution`, `adr`, `design`, `docs` | Shipped; not yet operationally proven |
 

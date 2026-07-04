@@ -129,6 +129,24 @@
       "displayName": "Webops Engineer",
       "source": "./agents/webops-engineer",
       "description": "Agentic webops engineer \u2014 CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary."
+    },
+    {
+      "name": "content-strategist",
+      "displayName": "Content Strategist",
+      "source": "./agents/content-strategist",
+      "description": "Agentic content strategist \u2014 editorial calendar, briefs, and backlog alignment. Reads brand from carinyaparc instance. Never publishes."
+    },
+    {
+      "name": "content-writer",
+      "displayName": "Content Writer",
+      "source": "./agents/content-writer",
+      "description": "Agentic content writer \u2014 drafts Payload post/recipe seed JSON in PRs. Applies brand voice. Never merges or publishes."
+    },
+    {
+      "name": "seo-specialist",
+      "displayName": "SEO Specialist",
+      "source": "./agents/seo-specialist",
+      "description": "Agentic SEO specialist \u2014 keyword research, technical audits, content SEO review. Recommendations via GitHub issues; no code implementation."
     }
   ]
 }

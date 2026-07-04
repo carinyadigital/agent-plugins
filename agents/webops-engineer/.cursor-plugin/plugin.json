@@ -1,0 +1,13 @@
+{
+  "name": "webops-engineer",
+  "displayName": "Webops Engineer",
+  "version": "0.1.0",
+  "description": "Agentic webops engineer — CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary.",
+  "author": {
+    "name": "Carinya Parc Digital Services"
+  },
+  "license": "MIT",
+  "keywords": ["webops", "devops", "ci", "deployment", "vercel", "dependencies", "platform-health"],
+  "skills": "./skills/",
+  "agents": "./agents/"
+}

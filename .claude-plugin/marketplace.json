@@ -71,6 +71,12 @@
       "description": "Brand practice — visual identity guide (brand-guide) and voice lifecycle (brand-voice discover, write, review, refine, enforce). Artefacts live under docs/brand/."
     },
     {
+      "name": "content",
+      "displayName": "Content",
+      "source": "./skills/content",
+      "description": "Content practice — media analysis (analyse-media), captions (write-captions), editorial review (edit-content), and curation (curate-content). Reads brand from carinyaparc instance config."
+    },
+    {
       "name": "frontend-engineer",
       "displayName": "Frontend Engineer",
       "source": "./agents/frontend-engineer",
@@ -111,6 +117,12 @@
       "displayName": "Principal Architect",
       "source": "./agents/principal-architect",
       "description": "Agentic principal architect — system architecture (solution.md), ADRs, epic-level design, and documentation alignment. Owns the Architecture track upstream of implementation."
+    },
+    {
+      "name": "webops-engineer",
+      "displayName": "Webops Engineer",
+      "source": "./agents/webops-engineer",
+      "description": "Agentic webops engineer — CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary."
     }
   ]
 }

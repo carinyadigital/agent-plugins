@@ -1,0 +1,12 @@
+{
+  "name": "content",
+  "displayName": "Content",
+  "version": "0.1.0",
+  "description": "Content practice — media analysis (analyse-media), captions (write-captions), editorial review (edit-content), and curation (curate-content). Reads brand from carinyaparc instance config.",
+  "author": {
+    "name": "Carinya Parc Digital Services"
+  },
+  "license": "MIT",
+  "keywords": ["content", "captions", "curation", "vision", "social", "instagram"],
+  "skills": "./skills/"
+}

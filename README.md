@@ -26,6 +26,7 @@ Each agent plugin is **self-contained** — it bundles the skills it uses, so in
 | **Engineering** | **[Senior Frontend Engineer](./agents/senior-frontend-engineer)** | Peer code reviewer for React/Next.js UI changes. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts. Read-only — does not write code. |
 | **Engineering** | **[Principal Frontend Engineer](./agents/principal-frontend-engineer)** | Final technical gate on open PRs/MRs after peer review — architecture, security, and AC coverage. Tech-lead role; maps to delivery-review crew gate. |
 | **Engineering** | **[QA Engineer](./agents/qa-engineer)** | Validates changes after CI — QA workspace deploy, automated tests, AC-driven exploratory pass, defect documentation. Maps to delivery-qa crew flow. |
+| **Engineering** | **[Webops Engineer](./agents/webops-engineer)** | CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary. |
 | **Product** | **[Product Manager](./agents/product-manager)** | Full product delivery lifecycle — strategy, roadmap, backlog, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and epic validation. |
 | **Operations** | **[Delivery Lead](./agents/delivery-lead)** | Cross-cutting delivery steward — routes work to agents/skills, sprint planning, backlog tracking, stakeholder updates, epic validation. Maps to crew orchestration layer. |
 | **Engineering** | **[Principal Architect](./agents/principal-architect)** | System architecture — solution.md, ADRs, epic-level design, documentation alignment. Owns the Architecture track upstream of implementation. |
@@ -89,6 +90,7 @@ Install skill plugins for the disciplines you need.
 | **[engineering](./skills/engineering)** | Architecture, epic design, implementation, code review, debugging, and technical debt. |
 | **[product-management](./skills/product-management)** | Product strategy, roadmap, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming. |
 | **[brand](./skills/brand)** | Visual brand guide and brand voice lifecycle — discover, write, review, refine, and enforce on-brand copy. |
+| **[content](./skills/content)** | Media analysis, captions, editorial review, and curation — reads brand from carinyaparc instance config. |
 
 ## MCP Integrations
 

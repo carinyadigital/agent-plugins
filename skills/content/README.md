@@ -13,6 +13,9 @@ from target repo `docs/brand/`.
 | **write-captions** | run | Instagram variants + channel copy |
 | **edit-content** | run | Select or refine best caption variant |
 | **curate-content** | run | Rank assets from inventory for posting |
+| **content-calendar** | write/review | Monthly editorial plan on carinyaparc instance |
+| **draft-post** | run | Blog post seed JSON for Payload import |
+| **draft-recipe** | run | Recipe seed JSON for Payload import |
 
 ## Brand resolution
 

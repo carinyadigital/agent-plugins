@@ -1,0 +1,12 @@
+{
+  "name": "seo",
+  "displayName": "SEO",
+  "version": "0.1.0",
+  "description": "SEO practice — keyword research, technical SEO audits, and content SEO review. Recommendations via GitHub issues; implementation handed to engineering squads.",
+  "author": {
+    "name": "Carinya Parc Digital Services"
+  },
+  "license": "MIT",
+  "keywords": ["seo", "keyword-research", "technical-seo", "audit", "content-seo"],
+  "skills": "./skills/"
+}

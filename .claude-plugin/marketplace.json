@@ -8,7 +8,7 @@
       "name": "github",
       "displayName": "GitHub",
       "source": "./connectors/github",
-      "description": "GitHub MCP server for repository management — issues, pull requests, code review, and repository search."
+      "description": "GitHub MCP server for repository management \u2014 issues, pull requests, code review, and repository search."
     },
     {
       "name": "gitlab",
@@ -32,13 +32,13 @@
       "name": "linear",
       "displayName": "Linear",
       "source": "./connectors/linear",
-      "description": "Linear MCP server for issue tracking — create issues, manage projects, and update statuses."
+      "description": "Linear MCP server for issue tracking \u2014 create issues, manage projects, and update statuses."
     },
     {
       "name": "playwright",
       "displayName": "Playwright",
       "source": "./connectors/playwright",
-      "description": "Playwright MCP server for browser automation — screenshots, form fills, and end-to-end testing."
+      "description": "Playwright MCP server for browser automation \u2014 screenshots, form fills, and end-to-end testing."
     },
     {
       "name": "context7",
@@ -56,25 +56,31 @@
       "name": "engineering",
       "displayName": "Engineering",
       "source": "./skills/engineering",
-      "description": "Engineering practice — architecture (solution, adr), epic design, implementation, code review, merge requests, documentation passes, debugging, and technical debt. Delivery skills follow docs/work/{epic}/ conventions; install with Frontend Engineer agent or standalone."
+      "description": "Engineering practice \u2014 architecture (solution, adr), epic design, implementation, code review, merge requests, documentation passes, debugging, and technical debt. Delivery skills follow docs/work/{epic}/ conventions; install with Frontend Engineer agent or standalone."
     },
     {
       "name": "product-management",
       "displayName": "Product Management",
       "source": "./skills/product-management",
-      "description": "Product management practice — strategy (product, roadmap, backlog), epic tasks, sprint planning, validation, plus operational skills for specs, stakeholder updates, research synthesis, competitive analysis, metrics, and brainstorming. Delivery skills follow docs/product/ and docs/work/{epic}/ conventions."
+      "description": "Product management practice \u2014 strategy (product, roadmap, backlog), epic tasks, sprint planning, validation, plus operational skills for specs, stakeholder updates, research synthesis, competitive analysis, metrics, and brainstorming. Delivery skills follow docs/product/ and docs/work/{epic}/ conventions."
     },
     {
       "name": "brand",
       "displayName": "Brand",
       "source": "./skills/brand",
-      "description": "Brand practice — visual identity guide (brand-guide) and voice lifecycle (brand-voice discover, write, review, refine, enforce). Artefacts live under docs/brand/."
+      "description": "Brand practice \u2014 visual identity guide (brand-guide) and voice lifecycle (brand-voice discover, write, review, refine, enforce). Artefacts live under docs/brand/."
     },
     {
       "name": "content",
       "displayName": "Content",
       "source": "./skills/content",
-      "description": "Content practice — media analysis (analyse-media), captions (write-captions), editorial review (edit-content), and curation (curate-content). Reads brand from carinyaparc instance config."
+      "description": "Content practice \u2014 media analysis, captions, editorial review, curation, content calendar, and Payload seed drafting (draft-post, draft-recipe). Reads brand from carinyaparc instance config."
+    },
+    {
+      "name": "seo",
+      "displayName": "SEO",
+      "source": "./skills/seo",
+      "description": "SEO practice \u2014 keyword research, technical SEO audits, and content SEO review. Recommendations via GitHub issues; implementation handed to engineering squads."
     },
     {
       "name": "frontend-engineer",
@@ -98,31 +104,31 @@
       "name": "principal-frontend-engineer",
       "displayName": "Principal Frontend Engineer",
       "source": "./agents/principal-frontend-engineer",
-      "description": "Agentic principal frontend engineer / tech lead — final technical gate on open PRs/MRs after peer review. Validates React/Next.js architecture, security, and acceptance-criteria coverage. Maps to delivery-review tech-lead gate."
+      "description": "Agentic principal frontend engineer / tech lead \u2014 final technical gate on open PRs/MRs after peer review. Validates React/Next.js architecture, security, and acceptance-criteria coverage. Maps to delivery-review tech-lead gate."
     },
     {
       "name": "qa-engineer",
       "displayName": "QA Engineer",
       "source": "./agents/qa-engineer",
-      "description": "Agentic QA engineer — validates changes after CI: deploy QA workspace, run automated tests, AC-driven exploratory pass, document defects. Maps to delivery-qa crew flow."
+      "description": "Agentic QA engineer \u2014 validates changes after CI: deploy QA workspace, run automated tests, AC-driven exploratory pass, document defects. Maps to delivery-qa crew flow."
     },
     {
       "name": "delivery-lead",
       "displayName": "Delivery Lead",
       "source": "./agents/delivery-lead",
-      "description": "Agentic delivery lead — orchestrates the delivery chain: routes to agents/skills, sprint planning, backlog tracking, stakeholder updates, and epic validation. Cross-cutting steward mapping to crew orchestration layer."
+      "description": "Agentic delivery lead \u2014 orchestrates the delivery chain: routes to agents/skills, sprint planning, backlog tracking, stakeholder updates, and epic validation. Cross-cutting steward mapping to crew orchestration layer."
     },
     {
       "name": "principal-architect",
       "displayName": "Principal Architect",
       "source": "./agents/principal-architect",
-      "description": "Agentic principal architect — system architecture (solution.md), ADRs, epic-level design, and documentation alignment. Owns the Architecture track upstream of implementation."
+      "description": "Agentic principal architect \u2014 system architecture (solution.md), ADRs, epic-level design, and documentation alignment. Owns the Architecture track upstream of implementation."
     },
     {
       "name": "webops-engineer",
       "displayName": "Webops Engineer",
       "source": "./agents/webops-engineer",
-      "description": "Agentic webops engineer — CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary."
+      "description": "Agentic webops engineer \u2014 CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary."
     }
   ]
 }

@@ -927,6 +927,161 @@ class Validator:
                     file="hooks/hooks.json",
                 )
 
+    def parse_cookbook_yaml(self, text: str) -> dict[str, Any]:
+        data: dict[str, Any] = {}
+        catalogue: dict[str, str] = {}
+        current_list_key: str | None = None
+        for line in text.splitlines():
+            if not line.strip() or line.strip().startswith("#"):
+                continue
+            list_match = re.match(r"^\s+-\s+(.+)$", line)
+            if list_match and current_list_key:
+                item = self.strip_scalar(list_match.group(1).strip()) or list_match.group(1).strip()
+                data.setdefault(current_list_key, []).append(item)
+                continue
+            key_match = re.match(r"^(\s*)([A-Za-z0-9_-]+):\s*(.*)$", line)
+            if not key_match:
+                continue
+            indent, key, rest = key_match.groups()
+            scalar = self.strip_scalar(rest)
+            if indent:
+                if key in ("plugin", "prompt", "mcp") and scalar:
+                    catalogue[key] = scalar
+                continue
+            current_list_key = None
+            if scalar:
+                data[key] = scalar
+            elif rest.strip() == "":
+                data[key] = []
+                current_list_key = key
+        if catalogue:
+            data["catalogue"] = catalogue
+        return data
+
+    def marketplace_plugin_names(self) -> set[str]:
+        names: set[str] = set()
+        for entry in self.marketplace_entries():
+            name = entry.get("name")
+            if isinstance(name, str):
+                names.add(name)
+        return names
+
+    def check_managed_agent_cookbooks(self) -> None:
+        managed_dir = ROOT / "managed-agents"
+        if not managed_dir.is_dir():
+            self.warn(
+                "COOKBOOKS_MISSING",
+                "managed-agents/ directory not found",
+                file="managed-agents/",
+            )
+            return
+
+        cookbook_dirs = sorted(
+            path for path in managed_dir.iterdir() if path.is_dir() and path.name != ".git"
+        )
+        if not cookbook_dirs:
+            self.fail(
+                "COOKBOOKS_EMPTY",
+                "managed-agents/ has no agent cookbooks",
+                file="managed-agents/",
+            )
+            return
+
+        plugin_names = self.marketplace_plugin_names()
+        valid_platforms = {"cursor", "claude-cma", "either"}
+        checked = 0
+
+        for cookbook_dir in cookbook_dirs:
+            agent_yaml = cookbook_dir / "agent.yaml"
+            rel_dir = self.rel(cookbook_dir)
+            if not agent_yaml.is_file():
+                self.fail(
+                    "COOKBOOK_MISSING_YAML",
+                    f"{rel_dir} missing agent.yaml",
+                    file=rel_dir,
+                )
+                continue
+
+            text = agent_yaml.read_text(encoding="utf-8")
+            data = self.parse_cookbook_yaml(text)
+            slug = data.get("slug")
+            platform = data.get("platform")
+            catalogue = data.get("catalogue", {})
+
+            if not isinstance(slug, str) or slug != cookbook_dir.name:
+                self.fail(
+                    "COOKBOOK_SLUG",
+                    f"{rel_dir}/agent.yaml slug must match directory name",
+                    file=self.rel(agent_yaml),
+                )
+                continue
+
+            if platform not in valid_platforms:
+                self.fail(
+                    "COOKBOOK_PLATFORM",
+                    f"{rel_dir}/agent.yaml has invalid platform '{platform}'",
+                    file=self.rel(agent_yaml),
+                )
+
+            plugin = catalogue.get("plugin") if isinstance(catalogue, dict) else None
+            if plugin not in plugin_names:
+                self.fail(
+                    "COOKBOOK_PLUGIN",
+                    f"{rel_dir}/agent.yaml references unknown plugin '{plugin}'",
+                    file=self.rel(agent_yaml),
+                    hint="Register the agent in marketplace manifests",
+                )
+
+            prompt = catalogue.get("prompt") if isinstance(catalogue, dict) else None
+            if isinstance(prompt, str):
+                prompt_path = (cookbook_dir / prompt).resolve()
+                if not prompt_path.is_file():
+                    self.fail(
+                        "COOKBOOK_PROMPT",
+                        f"{rel_dir}/agent.yaml prompt path does not resolve: {prompt}",
+                        file=self.rel(agent_yaml),
+                    )
+
+            mcp = catalogue.get("mcp") if isinstance(catalogue, dict) else None
+            if isinstance(mcp, str):
+                mcp_path = (cookbook_dir / mcp).resolve()
+                if not mcp_path.is_file():
+                    self.fail(
+                        "COOKBOOK_MCP",
+                        f"{rel_dir}/agent.yaml mcp path does not resolve: {mcp}",
+                        file=self.rel(agent_yaml),
+                    )
+
+            skills = data.get("skills", [])
+            if isinstance(skills, list):
+                agent_skill_dir = ROOT / "agents" / slug / "skills"
+                for skill_slug in skills:
+                    if skill_slug in SKIP_DRIFT_NAMES:
+                        continue
+                    bundled = agent_skill_dir / skill_slug / "SKILL.md"
+                    source = self.skill_sources().get(skill_slug)
+                    if not bundled.is_file() and source is None:
+                        self.fail(
+                            "COOKBOOK_SKILL",
+                            f"{rel_dir}/agent.yaml references unknown skill '{skill_slug}'",
+                            file=self.rel(agent_yaml),
+                        )
+
+            connectors = data.get("connectors", [])
+            if isinstance(connectors, list):
+                for connector in connectors:
+                    if connector not in plugin_names:
+                        self.fail(
+                            "COOKBOOK_CONNECTOR",
+                            f"{rel_dir}/agent.yaml references unknown connector '{connector}'",
+                            file=self.rel(agent_yaml),
+                        )
+
+            checked += 1
+
+        if checked:
+            self.pass_(f"{checked} managed-agent cookbook(s) OK")
+
     # ------------------------------------------------------------------
     # Main
     # ------------------------------------------------------------------
@@ -948,6 +1103,7 @@ class Validator:
             ("evalsSchema", "evals.json and trigger-queries.json schema", self.check_evals_schema),
             ("jsonFiles", "Repository JSON sanity", self.check_json_files),
             ("hooksJson", "hooks/hooks.json validity", self.check_hooks_json),
+            ("managedAgentCookbooks", "Managed-agent cookbook definitions", self.check_managed_agent_cookbooks),
         ]
 
         for name, label, fn in checks:

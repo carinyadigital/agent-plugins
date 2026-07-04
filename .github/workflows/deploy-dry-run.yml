@@ -1,0 +1,29 @@
+name: Deploy dry-run
+
+on:
+  pull_request:
+    paths:
+      - "managed-agents/**"
+      - "scripts/deploy-squad-agents.sh"
+      - "scripts/validate.py"
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: carinyaparc/carinyaparc
+          path: carinyaparc-instance
+        continue-on-error: true
+
+      - name: Structural validation (cookbooks)
+        run: python3 scripts/validate.py --format json
+
+      - name: Deploy dry-run (when instance checkout available)
+        if: hashFiles('carinyaparc-instance/config/deployments/**') != ''
+        run: |
+          chmod +x scripts/deploy-squad-agents.sh
+          ./scripts/deploy-squad-agents.sh --dry-run --instance carinyaparc-instance

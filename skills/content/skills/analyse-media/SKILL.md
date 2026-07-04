@@ -11,26 +11,48 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<image path or media reference>"
+metadata:
+  version: "0.1.0"
+  owner: digital-agency
+  review_cadence: quarterly
+  work_shape: generate-draft
+  output_class: structured-data
 ---
 
 # Analyse media
 
-Structured vision analysis for content pipelines. Generalized from steward vision-agent.
+## When to use
 
-## Brand resolution
+Produce structured vision analysis for a single image or video in content pipelines.
 
-Read [../../references/brand-resolution.md](../../references/brand-resolution.md), then load
-brand files from `carinyaparc/brand/` per `config/instance.json`.
+## What this skill does not do
 
-See [../../references/prompt-refinement.md](../../references/prompt-refinement.md) for quality checks.
+- Does not write captions (`write-captions`)
+- Does not select posts from inventory (`curate-content`)
+- Does not publish to Instagram
 
-## Output
+## Preconditions
 
-JSON with: subjects, season, moods, contentType, altText, description, qualityScore,
-publishable, publishNotes (if not publishable).
+- Read [../../references/brand-resolution.md](../../references/brand-resolution.md)
+- Load brand files from `carinyaparc/brand/` per `config/instance.json`
+- See [../../references/prompt-refinement.md](../../references/prompt-refinement.md) for quality checks
 
-## Router
+## Trust spine
 
-Follow [prompts/run.prompt.md](prompts/run.prompt.md).
+| Failure mode | Mitigation |
+| ------------ | ---------- |
+| Brand safety | NSW seasonal context; honest establishing-phase descriptions |
+| DoD bypass | qualityScore rubric and publishable criteria per prompt-refinement |
+| Blast radius | Read-only — structured JSON output, no repo writes |
 
-Pass image path or media reference after the skill name.
+## Workflow
+
+Follow [prompts/run.prompt.md](prompts/run.prompt.md). Pass image path or media reference after the skill name.
+
+## Outputs
+
+JSON with: `subjects`, `season`, `moods`, `contentType`, `altText`, `description`,
+`qualityScore`, `publishable`, `publishNotes` (if not publishable).
+
+Quality assertions sourced from [../../references/prompt-refinement.md](../../references/prompt-refinement.md):
+specific subjects, NSW season cues, specific alt text, score 0.0–1.0.

@@ -1,0 +1,20 @@
+[
+  {
+    "query": "Curate the best assets to post next from this approved inventory.",
+    "should_trigger": true
+  },
+  {
+    "query": "Rank media for Instagram posts this week.",
+    "should_trigger": true
+  },
+  {
+    "query": "Analyse a single farm photo for tags.",
+    "should_trigger": false,
+    "note": "analyse-media skill"
+  },
+  {
+    "query": "Write the monthly content calendar.",
+    "should_trigger": false,
+    "note": "content-calendar skill"
+  }
+]

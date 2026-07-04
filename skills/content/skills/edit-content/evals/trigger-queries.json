@@ -1,0 +1,20 @@
+[
+  {
+    "query": "Review caption variants and pick the best one for Instagram.",
+    "should_trigger": true
+  },
+  {
+    "query": "Editorial pass on these three caption options — select strongest.",
+    "should_trigger": true
+  },
+  {
+    "query": "Write three new Instagram caption variants.",
+    "should_trigger": false,
+    "note": "write-captions skill"
+  },
+  {
+    "query": "Draft a blog post seed JSON.",
+    "should_trigger": false,
+    "note": "draft-post skill"
+  }
+]

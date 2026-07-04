@@ -13,15 +13,44 @@ allowed-tools:
   - Grep
   - Shell
 argument-hint: "[--url base-url] [--focus metadata|sitemap|structured-data|cwv]"
+metadata:
+  version: "0.1.0"
+  owner: digital-agency
+  review_cadence: quarterly
+  work_shape: monitor-and-report
+  output_class: tracking-update
 ---
 
 # Technical SEO audit
 
+## When to use
+
 Audit the production site and file prioritized recommendations as GitHub issues.
 
-## Scope
+## What this skill does not do
 
-Check via **playwright** connector (live site) and repo files:
+- Does not open PRs or edit code
+- Does not publish content
+- Does not replace keyword research (`keyword-research`)
+
+## Preconditions
+
+- Playwright connector for live site checks
+- Default production URL: `https://carinyaparc.com.au` (override with `--url`)
+
+## Trust spine
+
+| Failure mode | Mitigation |
+| ------------ | ---------- |
+| Blast radius | Issues only — implementation handed to Squads A/B/C |
+| DoD bypass | Each issue includes evidence and recommended fix |
+| Brand safety | N/A — technical findings only |
+
+## Workflow
+
+Follow [prompts/run.prompt.md](prompts/run.prompt.md).
+
+Check via **playwright** connector and repo files:
 
 | Area | Repo / live |
 | ---- | ----------- |
@@ -29,24 +58,12 @@ Check via **playwright** connector (live site) and repo files:
 | Open Graph / Twitter cards | Live pages |
 | `robots.txt`, `sitemap.xml` | `apps/site/public/` + live |
 | JSON-LD structured data | Live recipe/post pages |
-| Core Web Vitals | Live (lab signals via playwright where available) |
+| Core Web Vitals | Live (lab signals via playwright) |
 
-## Issue format
+## Outputs
 
-Each finding becomes a GitHub issue:
+GitHub issues per finding:
 
 - **Title:** `[SEO] {short description}`
-- **Labels:** `type:seo-recommendation`, `squad:{site|blog|recipes}` (owning squad)
+- **Labels:** `type:seo-recommendation`, `squad:{site|blog|recipes}`
 - **Body:** evidence, impact, recommended fix, page URL
-
-## Router
-
-Follow [prompts/run.prompt.md](prompts/run.prompt.md).
-
-Default production URL: `https://carinyaparc.com.au` (override with `--url`).
-
-## Boundaries
-
-- Do not open PRs or edit code
-- Do not publish content
-- Hand implementation to Squads A/B/C via issue labels

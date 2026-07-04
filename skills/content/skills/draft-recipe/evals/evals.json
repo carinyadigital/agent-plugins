@@ -1,0 +1,17 @@
+{
+  "skill_name": "draft-recipe",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Draft recipe seed farm-eggs-benedict — brief: simple brunch using farm eggs, winter morning at The Branch, easy difficulty.",
+      "expected_output": "apps/site/content/seeds/recipes/farm-eggs-benedict.json with ingredients, instructions, and ISO 8601 durations where set.",
+      "assertions": [
+        "Writes apps/site/content/seeds/recipes/farm-eggs-benedict.json",
+        "JSON includes slug, title, date, author, excerpt, ingredients array, instructions array",
+        "prepTime/cookTime/totalTime use valid ISO 8601 duration format when present",
+        "Ingredients use full lines in item field (quantity + ingredient)",
+        "Does not merge or publish — seed PR only"
+      ]
+    }
+  ]
+}

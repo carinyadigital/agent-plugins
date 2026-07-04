@@ -13,34 +13,56 @@ allowed-tools:
   - Grep
   - Shell
 argument-hint: "[fix] [branch-or-pr-or-review-output]"
+metadata:
+  version: "0.1.0"
+  owner: digital-agency
+  review_cadence: quarterly
+  work_shape: review-and-gate
+  output_class: decision-support
 ---
 
 # Code review
 
-Review a branch, PR, or diff; or address findings from a prior review.
+## When to use
 
-## Sub-agents
+Review a branch, PR, or diff against design and tasks AC; or address findings from a
+prior review (`fix` mode).
 
-For large diffs or pre-PR review, spawn in parallel (Claude Code agents or Cursor Task):
+## What this skill does not do
+
+- Does not implement new features (`implement`) except targeted fix mode
+- Does not open PRs (`create-mr`)
+- Does not sign off epic completion (`validate`)
+
+## Preconditions
+
+- `docs/work/{epic}/design.md` and `tasks.md` in workspace
+- Branch, PR, or diff specified (default: `git diff`)
+
+## Trust spine
+
+| Failure mode | Mitigation |
+| ------------ | ---------- |
+| Accountability gap | Blocking vs non-blocking findings in verdict |
+| DoD bypass | Does not mark epic or task complete |
+| Blast radius | Fix mode addresses stated findings only |
+
+## Workflow
+
+1. Mode: default **review**, or `fix`.
+2. **review** — [prompts/run.prompt.md](prompts/run.prompt.md).
+3. **fix** — [prompts/fix.prompt.md](prompts/fix.prompt.md).
+
+For large diffs, spawn sub-agents in parallel:
 
 | Agent | File | Focus |
 | ----- | ---- | ----- |
-| tasks-ac-reviewer | [agents/tasks-ac-reviewer.md](agents/tasks-ac-reviewer.md) | Gherkin in `docs/work/{epic}/tasks.md` vs diff |
-| design-drift-reviewer | [agents/design-drift-reviewer.md](agents/design-drift-reviewer.md) | Scope vs `docs/work/{epic}/design.md` |
+| tasks-ac-reviewer | [agents/tasks-ac-reviewer.md](agents/tasks-ac-reviewer.md) | Gherkin in tasks.md vs diff |
+| design-drift-reviewer | [agents/design-drift-reviewer.md](agents/design-drift-reviewer.md) | Scope vs design.md |
 
-Merge agent outputs into one verdict. Default review scope: `git diff` unless the user specifies files.
+Conventions: [../references/delivery-conventions.md](../references/delivery-conventions.md).
 
-## Conventions
+## Outputs
 
-[../references/delivery-conventions.md](../references/delivery-conventions.md)
-
-## Router
-
-1. Mode: default **review**, or `fix`.
-2. One prompt under [prompts/](prompts/).
-
-**review** (default) — [prompts/run.prompt.md](prompts/run.prompt.md).
-
-**fix** — [prompts/fix.prompt.md](prompts/fix.prompt.md).
-
-Pass branch, PR, diff, or review output after the mode token.
+Structured review verdict with blocking and non-blocking findings mapped to AC.
+Fix mode: targeted code changes addressing prior review output.

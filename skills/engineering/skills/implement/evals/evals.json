@@ -1,0 +1,16 @@
+{
+  "skill_name": "implement",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Implement CP08-01 — add Sentry release tagging to the site build per docs/work/cp08-performance/tasks.md.",
+      "expected_output": "Code changes on branch implementing the task AC; no scope beyond tasks.md row.",
+      "assertions": [
+        "Reads docs/work/{epic}/tasks.md and design.md before editing code",
+        "Changes are limited to files and scope implied by the task AC",
+        "Does not open a PR (create-mr is separate)",
+        "Does not mark epic complete (validate is separate)"
+      ]
+    }
+  ]
+}

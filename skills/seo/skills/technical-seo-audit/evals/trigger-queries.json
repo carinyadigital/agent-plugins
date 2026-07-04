@@ -1,0 +1,20 @@
+[
+  {
+    "query": "Audit production SEO — metadata, sitemap, structured data.",
+    "should_trigger": true
+  },
+  {
+    "query": "Technical SEO audit on carinyaparc.com.au and file issues.",
+    "should_trigger": true
+  },
+  {
+    "query": "Research keywords for recipe content.",
+    "should_trigger": false,
+    "note": "keyword-research skill"
+  },
+  {
+    "query": "Fix the missing canonical tag on blog posts.",
+    "should_trigger": false,
+    "note": "engineering squad — audit recommends only"
+  }
+]

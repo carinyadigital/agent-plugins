@@ -12,31 +12,54 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<mode: write|review> [--month YYYY-MM]"
+metadata:
+  version: "0.1.0"
+  owner: digital-agency
+  review_cadence: quarterly
+  work_shape: orchestrate-delivery
+  output_class: draft-for-review
 ---
 
 # Content calendar
 
-Monthly editorial plan for blog posts and recipes. Output lives on the **carinyaparc**
-instance repo, not the target website repo.
+## When to use
 
-## Brand resolution
+Plan or review the monthly editorial calendar for blog posts and recipes on the
+**carinyaparc** instance repo.
 
-Read [../../references/brand-resolution.md](../../references/brand-resolution.md).
-Load `brand/seasonal-calendar.md` and `brand/taxonomy.md` before planning.
+## What this skill does not do
 
-## Artefacts
+- Does not draft seed JSON (`draft-post`, `draft-recipe`)
+- Does not curate Instagram inventory (`curate-content`)
+- Does not publish content
+
+## Preconditions
+
+- Read [../../references/brand-resolution.md](../../references/brand-resolution.md)
+- Load `brand/seasonal-calendar.md` and `brand/taxonomy.md` before planning
+- Resolve month from `--month YYYY-MM` (default: current month)
+
+## Trust spine
+
+| Failure mode | Mitigation |
+| ------------ | ---------- |
+| Accountability gap | Review mode produces explicit planning-ready verdict |
+| Brand safety | Themes align with seasonal calendar and brand voice |
+| Scope boundaries | Calendar briefs only — execution is draft-post/draft-recipe |
+| Blast radius | Writes `docs/product/content-calendar.md` on carinyaparc instance |
+
+## Workflow
+
+1. Mode: `write` or `review`.
+2. [prompts/write.prompt.md](prompts/write.prompt.md) | [prompts/review.prompt.md](prompts/review.prompt.md).
+
+## Outputs
 
 | Mode | Default path |
 | ---- | ------------ |
 | `write`, `review` | `docs/product/content-calendar.md` (carinyaparc instance) |
 
 Path may be overridden in `config/targets/{target}.json` or Squad D charter.
-
-## Router
-
-1. Mode: `write` or `review`.
-2. Resolve month from `--month YYYY-MM` (default: current month).
-3. [prompts/write.prompt.md](prompts/write.prompt.md) | [prompts/review.prompt.md](prompts/review.prompt.md).
 
 ## Related skills
 

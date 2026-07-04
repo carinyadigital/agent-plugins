@@ -1,0 +1,27 @@
+{
+  "skill_name": "content-calendar",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write the July 2026 content calendar for Carinya Parc — monthly theme from seasonal calendar, 2 blog slots and 1 recipe slot with briefs.",
+      "expected_output": "carinyaparc/docs/product/content-calendar.md with month theme, slot table (date, type, title brief, keywords), aligned to brand/seasonal-calendar.md.",
+      "assertions": [
+        "Writes or updates docs/product/content-calendar.md on the carinyaparc instance",
+        "Includes at least one blog post slot and one recipe slot for the requested month",
+        "Monthly theme references Australian/NSW seasonal context from brand files",
+        "Does not draft seed JSON files (draft-post/draft-recipe are separate)",
+        "Does not publish or merge — calendar is a planning artefact only"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Review content-calendar.md — is July 2026 planning-ready for Squad D seed PRs?",
+      "expected_output": "Structured review verdict with slot completeness, brand alignment, and cadence checks.",
+      "assertions": [
+        "Verdict is planning-ready, acceptable with amendments, or not ready",
+        "Checks briefs are actionable for draft-post and draft-recipe",
+        "Does not write seed JSON or open PRs"
+      ]
+    }
+  ]
+}

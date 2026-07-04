@@ -1,0 +1,20 @@
+[
+  {
+    "query": "Analyse this farm photo for tags, season, and alt text.",
+    "should_trigger": true
+  },
+  {
+    "query": "Run vision analysis on photos/winter-paddock-green.jpg.",
+    "should_trigger": true
+  },
+  {
+    "query": "Write Instagram captions from these media tags.",
+    "should_trigger": false,
+    "note": "write-captions skill"
+  },
+  {
+    "query": "Select the best assets to post next from inventory.",
+    "should_trigger": false,
+    "note": "curate-content skill"
+  }
+]

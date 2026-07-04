@@ -134,6 +134,21 @@ Do not mark PASS without reading the implementing content.
 | tasks | `skills/product-management/skills/tasks` |
 | backlog | `skills/product-management/skills/backlog` |
 | validate | `skills/product-management/skills/validate` |
+| implement | `skills/engineering/skills/implement` |
+| code-review | `skills/engineering/skills/code-review` |
+| create-mr | `skills/engineering/skills/create-mr` |
+| content-calendar | `skills/content/skills/content-calendar` |
+| draft-post | `skills/content/skills/draft-post` |
+| draft-recipe | `skills/content/skills/draft-recipe` |
+| analyse-media | `skills/content/skills/analyse-media` |
+| write-captions | `skills/content/skills/write-captions` |
+| edit-content | `skills/content/skills/edit-content` |
+| curate-content | `skills/content/skills/curate-content` |
+| keyword-research | `skills/seo/skills/keyword-research` |
+| technical-seo-audit | `skills/seo/skills/technical-seo-audit` |
+| content-seo-review | `skills/seo/skills/content-seo-review` |
+
+See `.notes/eval-baselines.md` for Sprint 4 coverage matrix and baseline status.
 
 Run plugin-eval against each path before shipping changes to that skill.
 

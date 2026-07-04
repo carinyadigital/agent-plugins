@@ -1,0 +1,17 @@
+{
+  "skill_name": "write-captions",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write captions from tags: subjects Dexter cattle, season winter, mood peaceful, contentType pasture, description green winter pasture at The Branch.",
+      "expected_output": "JSON with caption_a (storytelling), caption_b (short/visual max 150 chars), caption_c (educational), plus google_post and email_excerpt channel copy.",
+      "assertions": [
+        "Output includes three distinct caption variants with different editorial angles",
+        "caption_b is at most 150 characters before hashtags",
+        "Variants do not share the same opening word or phrase",
+        "First-person plural brand voice; no clichés from brand-voice avoid list (farm fresh, paddock to plate)",
+        "Hashtags are not embedded in caption body text"
+      ]
+    }
+  ]
+}

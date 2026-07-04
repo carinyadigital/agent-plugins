@@ -82,3 +82,9 @@ Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
 | Which skill to use? | **skills-index** |
 | Bug investigation | **debug** |
 | Technical debt audit | **tech-debt** |
+| Feature spec or PRD from an idea | **write-spec** |
+| Stakeholder status update | **stakeholder-update** |
+| User research synthesis | **synthesize-research** |
+| Competitive analysis brief | **competitive-brief** |
+| Product metrics review | **metrics-review** |
+| Brainstorm / spar on an idea | **product-brainstorming** |

@@ -10,18 +10,44 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<inventory json> [--date YYYY-MM-DD]"
+metadata:
+  version: "0.1.0"
+  owner: digital-agency
+  review_cadence: quarterly
+  work_shape: orchestrate-delivery
+  output_class: decision-support
 ---
 
 # Curate content
 
-Rank assets from inventory for upcoming posts. Generalized from steward curator-agent.
+## When to use
 
-## Brand resolution
+Rank assets from an approved inventory for upcoming social posts.
 
-Read [../../references/brand-resolution.md](../../references/brand-resolution.md).
+## What this skill does not do
 
-## Router
+- Does not analyse a single image (`analyse-media`)
+- Does not write captions (`write-captions`)
+- Does not schedule or publish to Instagram
 
-Follow [prompts/run.prompt.md](prompts/run.prompt.md).
+## Preconditions
 
-Pass inventory JSON; optional `--date` for curation date (default today).
+- Inventory JSON with approved assets and tags
+- Read [../../references/brand-resolution.md](../../references/brand-resolution.md)
+- Optional `--date` for curation date (default today)
+
+## Trust spine
+
+| Failure mode | Mitigation |
+| ------------ | ---------- |
+| Accountability gap | Ranked selection with per-asset rationale |
+| Brand safety | Seasonal and voice alignment in rationale |
+| Scope boundaries | Selection only — captioning is downstream |
+
+## Workflow
+
+Follow [prompts/run.prompt.md](prompts/run.prompt.md). Pass inventory JSON; optional `--date`.
+
+## Outputs
+
+Ranked asset selection with rationale per pick, diversity and seasonal alignment noted.

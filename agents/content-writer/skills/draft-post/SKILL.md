@@ -11,18 +11,47 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<slug> [--brief from calendar]"
+metadata:
+  version: "0.1.0"
+  owner: digital-agency
+  review_cadence: quarterly
+  work_shape: generate-draft
+  output_class: draft-for-review
 ---
 
 # Draft post
 
-Create a blog post seed file for the Payload import pipeline.
+## When to use
 
-## Brand resolution
+Draft a blog post seed JSON for the Payload import pipeline when a calendar brief or
+user request specifies a post slug and topic.
 
-Read [../../references/brand-resolution.md](../../references/brand-resolution.md).
-Run `brand-voice` **enforce** on excerpt and body before committing the seed.
+## What this skill does not do
 
-## Artefact
+- Does not plan the monthly calendar (`content-calendar`)
+- Does not merge, publish, or run `import-content-seed.ts`
+- Does not perform SEO review (`content-seo-review` runs on the seed PR)
+
+## Preconditions
+
+- Website target repo with `apps/site/src/collections/Posts.ts`
+- Read [../../references/brand-resolution.md](../../references/brand-resolution.md)
+- Run `brand-voice` **enforce** on excerpt and body before finishing
+
+## Trust spine
+
+| Failure mode | Mitigation |
+| ------------ | ---------- |
+| Direct apply vs draft | Seed JSON in PR only; human merges then imports as Payload draft |
+| Brand safety | brand-voice enforce; reads `carinyaparc/brand/`, never `website/docs/brand/` |
+| Blast radius | Writes only under `apps/site/content/seeds/posts/` |
+| DoD bypass | Does not mark content published |
+
+## Workflow
+
+Follow [prompts/run.prompt.md](prompts/run.prompt.md).
+
+## Outputs
 
 `apps/site/content/seeds/posts/{slug}.json` on the **website** target repo.
 
@@ -42,12 +71,7 @@ Schema derived from `apps/site/src/collections/Posts.ts`:
 | `image` | public path | no |
 | `body` | markdown string | yes |
 
-## Router
-
-Follow [prompts/run.prompt.md](prompts/run.prompt.md).
-
 ## Related skills
 
-- `edit-content` — editorial pass on captions/social; use for tone review if needed
-- `content-seo-review` — SEO review on the seed PR
-- `brand-voice` — enforce before finalising
+- `content-seo-review` — SEO review on seed PR
+- `content-calendar` — slot briefs that feed drafts

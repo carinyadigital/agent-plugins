@@ -11,18 +11,47 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<slug> [--brief from calendar]"
+metadata:
+  version: "0.1.0"
+  owner: digital-agency
+  review_cadence: quarterly
+  work_shape: generate-draft
+  output_class: draft-for-review
 ---
 
 # Draft recipe
 
-Create a recipe seed file for the Payload import pipeline.
+## When to use
 
-## Brand resolution
+Draft a recipe seed JSON when a calendar brief or user request specifies a recipe slug
+and topic.
 
-Read [../../references/brand-resolution.md](../../references/brand-resolution.md).
-Run `brand-voice` **enforce** on excerpt and instruction steps.
+## What this skill does not do
 
-## Artefact
+- Does not plan the monthly calendar (`content-calendar`)
+- Does not merge, publish, or run `import-content-seed.ts`
+- Does not audit site-wide structured data (`technical-seo-audit`)
+
+## Preconditions
+
+- Website target repo with `apps/site/src/collections/Recipes.ts`
+- Read [../../references/brand-resolution.md](../../references/brand-resolution.md)
+- Run `brand-voice` **enforce** on excerpt and instruction steps
+
+## Trust spine
+
+| Failure mode | Mitigation |
+| ------------ | ---------- |
+| Direct apply vs draft | Seed JSON in PR only; human merges then imports as Payload draft |
+| Brand safety | brand-voice enforce on recipe copy |
+| Blast radius | Writes only under `apps/site/content/seeds/recipes/` |
+| DoD bypass | Does not mark recipe live |
+
+## Workflow
+
+Follow [prompts/run.prompt.md](prompts/run.prompt.md).
+
+## Outputs
 
 `apps/site/content/seeds/recipes/{slug}.json` on the **website** target repo.
 
@@ -46,16 +75,8 @@ Schema derived from `apps/site/src/collections/Recipes.ts`:
 | `ingredients` | `[{ "item": "..." }]` | yes, min 1 |
 | `instructions` | `[{ "step": "..." }]` | yes, min 1 |
 
-## Structured data requirements
-
-- `prepTime`, `cookTime`, `totalTime` must be valid ISO 8601 durations when set
-- `totalTime` should equal prep + cook when both provided
-- Ingredients use full lines in `item` (quantity + ingredient)
-- Instructions are numbered steps in separate array entries
-
-## Router
-
-Follow [prompts/run.prompt.md](prompts/run.prompt.md).
+Structured data: valid ISO 8601 durations; `totalTime` equals prep + cook when both set;
+ingredients as full lines in `item`.
 
 ## Related skills
 

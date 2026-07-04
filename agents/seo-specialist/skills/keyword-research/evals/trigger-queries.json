@@ -1,0 +1,20 @@
+[
+  {
+    "query": "Research keywords for farm stay accommodation on the mid-north coast.",
+    "should_trigger": true
+  },
+  {
+    "query": "Keyword research for regenerative farming recipes topic.",
+    "should_trigger": true
+  },
+  {
+    "query": "Run a technical SEO audit on production.",
+    "should_trigger": false,
+    "note": "technical-seo-audit skill"
+  },
+  {
+    "query": "Write competitive brief for farm tourism market.",
+    "should_trigger": false,
+    "note": "competitive-brief skill"
+  }
+]

@@ -4,7 +4,7 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-Standalone connector plugins in this repo live under `connectors/<slug>/.mcp.json`.
+MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edit that file to swap providers or add stack-specific servers.
 
 ## Companion practice (recommended co-install)
 
@@ -17,17 +17,16 @@ alignment or research synthesis. Do not bundle duplicate copies of those skills 
 
 ## Connectors for this plugin
 
-| Category | Placeholder | Bundled in `.mcp.json` | Also in `connectors/` |
-| -------- | ----------- | ---------------------- | ------------------------------ |
-| Source control | `~~source control` | GitHub | GitHub, GitLab |
-| Knowledge base | `~~knowledge base` | Notion | — |
-| Chat | `~~chat` | Slack | — |
-| CMS | `~~CMS` | — | — |
-| Social scheduling | `~~social scheduling` | — | — |
+| Category | Placeholder | Bundled in `.mcp.json` |
+| -------- | ----------- | ---------------------- |
+| Source control | `~~source control` | GitHub, GitLab |
+| Knowledge base | `~~knowledge base` | Notion |
+| Chat | `~~chat` | Slack |
+| CMS | `~~CMS` | — |
+| Social scheduling | `~~social scheduling` | — |
 
-Other options in each category: GitLab (source control), Confluence or Google Drive
-(knowledge base), Microsoft Teams (chat), Contentful/Sanity/WordPress (CMS), Buffer or
-Later (social scheduling).
+Other options in each category: Confluence or Google Drive (knowledge base), Microsoft
+Teams (chat), Contentful/Sanity/WordPress (CMS), Buffer or Later (social scheduling).
 
 ## Used by skill
 

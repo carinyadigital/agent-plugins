@@ -10,9 +10,8 @@ Each agent plugin is designed to be provider-agnostic: they can be deployed behi
 What's included
 
 - **[Agents](#agents)** — named, end-to-end workflow agents across engineering, product, and operations (Frontend Engineer through Delivery Lead). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
-- **[Local maintainer tooling](./.agents)** — crew config, steering, and skill quality tooling for contributors: grade eval runs and QA skills before shipping (not a marketplace plugin).
 - **[Skill plugins](#skill-plugins)** — the underlying skills and commands, bundled by discipline. Install these on their own if you just want the skills without a full agent.
-- **[Connectors](#mcp-integrations)** — MCP data connectors, one provider per plugin. Install the ones your workflows need alongside agents and practices.
+- **[Connectors](#mcp-integrations)** — MCP data connections bundled in each practice plugin's `.mcp.json`. Install the practice that matches your workflow; edit `.mcp.json` to swap providers.
 
 ## Agents
 
@@ -36,9 +35,7 @@ For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-e
 ## Repository Layout
 
 ```
-.agents/               # Local maintainer tooling — config, steering, work, plugin-eval, skills-qa
 agents/                # Named agents — one self-contained plugin each
-connectors/            # MCP connector plugins — one provider each
 skills/                # Skill + command bundles by discipline
 managed-agents/        # Managed Agent cookbooks — one dir per agent
 scripts/               # validate.py · sync-agent-skills.py (+ orchestrate.py, deploy-managed-agent.sh — coming soon)
@@ -55,7 +52,7 @@ See [agency-hub/README.md](./agency-hub/README.md) for the full bootstrap flow.
 In Cowork, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`), any directory under `skills/`, or any connector under `connectors/` and drop it in.
+- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`) or any practice plugin directory (e.g. `delivery-practice/`) and drop it in.
 
 ### Claude Managed Agents
 
@@ -66,7 +63,7 @@ Coming soon.
 In Cursor, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`), any directory under `skills/`, or any connector under `connectors/` and drop it in.
+- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`) or any practice plugin directory (e.g. `delivery-practice/`) and drop it in.
 
 ### Cursor Cloud Agents
 
@@ -79,9 +76,8 @@ Coming soon.
 | **Agents** | Self-contained plugins that own a workflow end to end — system prompt plus the skills it uses. Cowork and the Managed Agent wrapper both reference the same directory. | `agents/<slug>/` |
 | **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once per discipline; each agent bundles a synced copy of the ones it needs. | `skills/<discipline>/skills/` (source) · `agents/<slug>/skills/` (bundled) |
 | **Commands** | Slash actions you trigger explicitly (`/implement`). | `skills/<discipline>/commands/` |
-| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `connectors/<slug>/.mcp.json` |
+| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `<practice>/.mcp.json` |
 | **Managed-agent wrappers** | `agent.yaml` + depth-1 subagents + steering examples for headless deployment. | `managed-agents/<slug>/` |
-| **Maintainer tooling** | Crew config, steering, eval grading, and skill design QA for contributors. | `.agents/` |
 
 Everything is file-based — markdown and JSON, no build step.
 
@@ -98,18 +94,19 @@ Install skill plugins for the disciplines you need.
 
 ## MCP Integrations
 
-Each connector is a standalone plugin under `connectors/`. Install the providers your stack uses — agents will bundle recommended connectors later.
+Each practice plugin bundles recommended MCP servers in its `.mcp.json`. Edit that file to swap providers or add stack-specific servers.
 
-| Plugin | Provider | Type | URL / package |
-|---|---|---|---|
-| **[context7](./connectors/context7)** | [Context7](https://context7.com/) | npx | `@upstash/context7-mcp` |
-| **[figma](./connectors/figma)** | [Figma](https://www.figma.com/) | HTTP | `https://mcp.figma.com/mcp` |
-| **[github](./connectors/github)** | [GitHub](https://github.com/) | HTTP | `https://api.githubcopilot.com/mcp/` |
-| **[gitlab](./connectors/gitlab)** | [GitLab](https://gitlab.com/) | HTTP | `https://gitlab.com/api/v4/mcp` |
-| **[vercel](./connectors/vercel)** | [Vercel](https://vercel.com/) | HTTP | `https://mcp.vercel.com` |
-| **[linear](./connectors/linear)** | [Linear](https://linear.app/) | HTTP | `https://mcp.linear.app/mcp` |
-| **[playwright](./connectors/playwright)** | [Playwright](https://playwright.dev/) | npx | `@playwright/mcp@latest` |
-| **[next-devtools](./connectors/next-devtools)** | [Next.js DevTools](https://nextjs.org/) | npx | `next-devtools-mcp@latest` |
+| Practice | Bundled providers (examples) |
+|---|---|
+| **web-development** | GitHub, GitLab, Vercel, Slack, Linear, Datadog, Playwright, Context7, Next.js DevTools |
+| **delivery-practice** | Slack, Linear, Asana, Atlassian, Notion, Figma, Amplitude, Intercom, Fireflies, GitHub, GitLab, Vercel, Playwright, Context7, Next.js DevTools |
+| **content-marketing** | GitHub, GitLab, Notion, Slack |
+| **brand-creative** | Slack, Notion, Atlassian, Figma, Fireflies |
+| **ux-design** | Figma |
+| **search-optimisation** | GitHub, GitLab, Playwright |
+| **agency-hub** | GitHub |
+
+See each practice's `CONNECTORS.md` for category placeholders and skill usage.
 
 > MCP access may require authentication, subscription, or an API key from the provider.
 
@@ -117,7 +114,7 @@ Each connector is a standalone plugin under `connectors/`. Install the providers
 
 These are reference templates — they get better when you tune them to how your firm works.
 
-- **Swap connectors** — fork a connector under `connectors/` or point `.mcp.json` at your data providers and internal systems.
+- **Swap connectors** — edit the practice plugin's `.mcp.json` to point at your data providers and internal systems.
 - **Add firm context** — drop your terminology, processes, and formatting standards into skill files.
 - **Bring your brand voice** — install `brand-creative`, run `/brand-creative:practice-setup`, then `/brand-creative:brand-voice enforce` and `/brand-creative:brand-guide write` as needed.
 - **Adjust agent scope** — edit `agents/<slug>.md` to match how your team actually runs the workflow.
@@ -185,7 +182,7 @@ Everything here is markdown and YAML. Fork, edit, PR. For new content:
 
 - New skill → add it under `skills/<discipline>/skills/`, then run `python3 scripts/sync-agent-skills.py` to propagate to any agent that bundles it.
 - New agent → `agents/<slug>/` (with `agents/<slug>.md` + `skills/`) and a matching `managed-agents/<slug>/`.
-- Skill evals → add `evals/evals.json`; run **plugin-eval** from [.agents/skills/plugin-eval/SKILL.md](./.agents/skills/plugin-eval/SKILL.md); run **skills-qa** from [.agents/skills/skills-qa/SKILL.md](./.agents/skills/skills-qa/SKILL.md) before shipping.
+- Skill evals → add `evals/evals.json` and `evals/trigger-queries.json`; run `python3 scripts/validate.py` (evals schema and `--strict` frontmatter checks). See [agency-hub/references/agency-skill-design-framework.md](./agency-hub/references/agency-skill-design-framework.md) for skill design conventions.
 - Run `python3 scripts/validate.py` before pushing — lints manifests, verifies cross-file references, checks bundled-skill drift, and validates evals schema. See [CONTRIBUTING.md](./CONTRIBUTING.md#validation).
 
 ## License

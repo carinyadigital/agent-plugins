@@ -4,7 +4,7 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-Standalone connector plugins in this repo live under `connectors/<slug>/.mcp.json`.
+MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edit that file to swap providers or add stack-specific servers.
 
 ## Companion practice (recommended co-install)
 
@@ -18,9 +18,9 @@ practice works standalone.
 
 ## Connectors for this plugin
 
-| Category | Placeholder | Bundled in `.mcp.json` | Also in `connectors/` |
-| -------- | ----------- | ---------------------- | ------------------------------ |
-| Design | `~~design` | Figma | Figma |
+| Category | Placeholder | Bundled in `.mcp.json` |
+| -------- | ----------- | ---------------------- |
+| Design | `~~design` | Figma |
 
 ## Used by skill
 

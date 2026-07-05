@@ -4,6 +4,10 @@
       "type": "http",
       "url": "https://api.githubcopilot.com/mcp/"
     },
+    "gitlab": {
+      "type": "http",
+      "url": "https://gitlab.com/api/v4/mcp"
+    },
     "playwright": {
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest"]

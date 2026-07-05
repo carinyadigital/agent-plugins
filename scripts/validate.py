@@ -668,7 +668,7 @@ class Validator:
                         "FM_METADATA_MISSING",
                         f"{rel} missing metadata.{meta_field}",
                         file=rel,
-                        hint="See .agents/references/agency-skill-design-framework.md §11",
+                        hint="See agency-hub/references/agency-skill-design-framework.md §11",
                     )
 
             work_shape = metadata_dict.get("work_shape")

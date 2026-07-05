@@ -4,7 +4,7 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-Standalone connector plugins in this repo live under `connectors/<slug>/.mcp.json`.
+MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edit that file to swap providers or add stack-specific servers.
 
 ## Companion practice (recommended co-install)
 
@@ -27,10 +27,10 @@ review run as a paired workflow.
 
 ## Connectors for this plugin
 
-| Category | Placeholder | Bundled in `.mcp.json` | Also in `connectors/` |
-| -------- | ----------- | ---------------------- | ------------------------------ |
-| Source control | `~~source control` | GitHub | GitHub, GitLab |
-| Browser automation | `~~browser automation` | Playwright | Playwright |
+| Category | Placeholder | Bundled in `.mcp.json` |
+| -------- | ----------- | ---------------------- |
+| Source control | `~~source control` | GitHub, GitLab |
+| Browser automation | `~~browser automation` | Playwright |
 
 Search Console and rank-tracking connectors are **not bundled** — live search data
 requires a dedicated connector designed separately.

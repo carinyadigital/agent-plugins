@@ -24,7 +24,7 @@ metadata:
 
 ## Status
 
-**v2 — designed, deferred.** Evaluates third-party install candidates — distinct from maintainer `.agents/skills/skills-qa` (first-party pre-ship QA). v1 ships `agency-setup` only.
+**v2 — designed, deferred.** Evaluates third-party install candidates before install. v1 ships `agency-setup` only.
 
 ## When to use
 

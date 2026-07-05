@@ -74,7 +74,7 @@ Marketplace management — designed, not built for v1:
 | **agency-setup** | **v1 — shipped** | Instance bootstrap interview |
 | **registry-browser** | v2 — deferred | Search watched registries |
 | **skill-installer** | v2 — deferred | Allowlist-gate, fetch, QA, install |
-| **skills-qa** | v2 — deferred | Evaluate third-party candidates (distinct from maintainer `.agents/skills/skills-qa`) |
+| **skills-qa** | v2 — deferred | Evaluate third-party candidates before install |
 | **auto-updater** | v2 — deferred | Check updates; apply on approval |
 | **disable / uninstall** | v2 — deferred | Manage installed community skills |
 | **related-skills-surfacer** | v2 — deferred | Suggest community skills after tasks |

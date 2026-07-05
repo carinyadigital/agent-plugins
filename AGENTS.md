@@ -23,27 +23,16 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 ├── agency-hub/                      # instance bootstrap + (v2) marketplace — install first
 │   ├── .claude-plugin/plugin.json
 │   ├── .cursor-plugin/plugin.json
-│   ├── .mcp.json
+│   ├── .mcp.json                    # bundled MCP servers (e.g. GitHub for hub bootstrap)
 │   ├── references/                  # instance profile template, setup framework
 │   └── skills/
 │       └── agency-setup/SKILL.md    # instance bootstrap; marketplace skills ported from strategy-builder-hub
-├── .agents/                         # local maintainer skills & tooling
-│   ├── config                       #   crew runtime — steering + work paths for this repo
-│   ├── steering/                    #   strategy, solution, roadmap, backlog (gitignored)
-│   ├── work/                        #   epic work artefacts (gitignored)
-│   ├── skills/                      #   plugin-eval, skills-qa
-│   └── references/                  #   agency skill design framework
 ├── agents/                          # named agents — one self-contained plugin each
 │   └── <slug>/
 │       ├── .claude-plugin/plugin.json
 │       ├── .cursor-plugin/plugin.json
 │       ├── agents/<slug>.md         #   ← canonical system prompt (one source, two wrappers)
 │       └── skills/                  #   ← bundled copies, synced from skills/
-├── connectors/                      #   MCP connector plugins — one provider each
-│   └── <slug>/
-│       ├── .claude-plugin/plugin.json
-│       ├── .cursor-plugin/plugin.json
-│       └── .mcp.json                #   ← canonical MCP definition
 ├── skills/                          #   skill plugins — skill sources, commands
 │   └── <discipline>/
 │       ├── .claude-plugin/plugin.json
@@ -69,7 +58,7 @@ Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/`
 
 Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`).
 
-Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks MCP connector wiring, validates SKILL.md frontmatter, resolves markdown cross-references, detects bundled-skill drift against canonical sources, and validates `evals/` JSON schema.
+Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks practice-plugin MCP wiring, validates SKILL.md frontmatter, resolves markdown cross-references, detects bundled-skill drift against canonical sources, and validates `evals/` JSON schema.
 
 ## Agency Hub (install first)
 
@@ -99,16 +88,7 @@ Product Manager and Delivery Lead are **personas inside `delivery-practice`**, n
 
 Each agent lives under `agents/<slug>/` with a canonical system prompt at `agents/<slug>.md`, bundled skills at `skills/`, and role-specific MCP in `.mcp.json`. Register new agents in both marketplace manifests.
 
-## Local maintainer tooling (`.agents/`)
-
-Repo-local skill quality tooling and crew runtime config for contributors — not published as a marketplace plugin:
-
-| Component | Purpose |
-| --- | --- |
-| **config** (`.agents/config`) | Steering doc paths and work directory for this repo |
-| **steering** (`.agents/steering/`) | Strategy, solution, roadmap, backlog for this repository (gitignored) |
-| **plugin-eval** (`.agents/skills/plugin-eval/SKILL.md`) | Live eval sessions — grade assertions in `evals/evals.json` |
-| **skills-qa** (`.agents/skills/skills-qa/SKILL.md`) | Evaluate a skill against the Agency Skill Design Framework before shipping |
+Strategy, roadmap, backlog, and epic work for this catalogue live in the **carinyaparc-space** coordination repo under `products/digital-agency/` — not in this repo.
 
 ## Key Files
 
@@ -116,7 +96,7 @@ Repo-local skill quality tooling and crew runtime config for contributors — no
 - `plugin.json`: Plugin metadata — name, description, version, and component discovery settings
 - `commands/*.md`: Slash commands invoked as `/plugin:command-name`
 - `skills/*/SKILL.md`: Detailed knowledge and workflows for specific tasks
-- `connectors/<slug>/.mcp.json`: Canonical MCP connector definitions (GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools)
+- `<practice>/.mcp.json`: Bundled MCP server definitions per practice plugin (GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools, and practice-specific providers)
 - `scripts/validate.py`: Structural validation — run before every PR
 - `*.local.md`: User-specific configuration (gitignored)
 

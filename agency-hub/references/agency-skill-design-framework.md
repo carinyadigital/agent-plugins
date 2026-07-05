@@ -1,15 +1,13 @@
 # Agency Skill Design Framework
 
-> Vendored copy for `agency-hub:skills-qa`. Sync from `.agents/references/agency-skill-design-framework.md` when the maintainer source changes. Do not drift.
-
 **Version:** 0.1.0
 **Last updated:** 2026-06-27
 
 Single source of truth for what makes a digital-agency skill well-designed.
 Three things consume it:
 
-- **`.agents/skills/skills-qa/SKILL.md`** — evaluates a skill against
-  this framework and produces a verdict. Cite this file; do not let the two drift.
+- **`agency-hub:skills-qa`** — evaluates a skill against this framework and
+  produces a verdict. Cite this file; do not let the two drift.
 - **`references/skill-authoring-template.md`** (when added) — starting skeleton
   for new skills, built to pass this framework by construction.
 - **`scripts/validate.py`** — mechanical validation of frontmatter, required
@@ -184,4 +182,4 @@ or environment modification patterns. No override path.
 
 ## Changelog
 
-- **0.1.0** (2026-06-27) — Initial version for local maintainer tooling in `.agents/`.
+- **0.1.0** (2026-06-27) — Initial version; canonical reference under `agency-hub/references/`.

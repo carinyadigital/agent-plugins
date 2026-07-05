@@ -5,21 +5,9 @@ Everything in this repo is markdown and JSON — no build step. Fork, edit, open
 ## Layout
 
 ```text
-.agents/                      # local maintainer tooling — config, steering, work, plugin-eval, skills-qa
-  config                      # crew runtime — steering + work paths for this repo
-  steering/                   # strategy, solution, roadmap, backlog (gitignored)
-  work/                       # epic work artefacts (gitignored)
-  skills/                     # plugin-eval, skills-qa
-  references/                 # agency skill design framework
-
 agents/<slug>/                # named agents — self-contained plugins
   agents/<slug>.md            # system prompt (canonical)
   skills/                     # bundled copies — do not edit directly
-  .claude-plugin/plugin.json
-  .cursor-plugin/plugin.json
-
-connectors/<slug>/            # MCP connector plugins — one provider each
-  .mcp.json                   # canonical MCP definition
   .claude-plugin/plugin.json
   .cursor-plugin/plugin.json
 
@@ -60,12 +48,11 @@ scripts/
 
 1. Create `skills/<discipline>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, `evals/`, `scripts/`).
 2. Add `evals/evals.json` and `evals/trigger-queries.json` to define test cases and routing expectations.
-3. Run live eval sessions with **plugin-eval** from [`.agents/skills/plugin-eval/SKILL.md`](./.agents/skills/plugin-eval/SKILL.md).
-4. Run **skills-qa** from [`.agents/skills/skills-qa/SKILL.md`](./.agents/skills/skills-qa/SKILL.md) on the skill before shipping.
-5. Register it in the discipline plugin’s `plugin.json` if needed.
-6. Add a bundled copy to any agent that should use it under `agents/<slug>/skills/<name>/`.
-7. Run `python3 scripts/sync-agent-skills.py`.
-8. Run `python3 scripts/validate.py` and fix errors.
+3. Follow [agency-hub/references/agency-skill-design-framework.md](./agency-hub/references/agency-skill-design-framework.md) for skill design conventions.
+4. Register it in the discipline plugin’s `plugin.json` if needed.
+5. Add a bundled copy to any agent that should use it under `agents/<slug>/skills/<name>/`.
+6. Run `python3 scripts/sync-agent-skills.py`.
+7. Run `python3 scripts/validate.py` and fix errors.
 
 ## Adding or changing an agent
 
@@ -148,7 +135,7 @@ when you change a plugin description.
 - Run `python3 scripts/sync-agent-skills.py` after any skill change under `skills/`.
 - Run `python3 scripts/validate.py` and fix all errors before pushing.
 - Register new plugins in both marketplace manifests.
-- Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill; run **plugin-eval**; run **skills-qa** before merge.
+- Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill; run `python3 scripts/validate.py`.
 - Describe what workflow or agent behaviour changed and how you tested it (Cowork, Cursor, or local install).
 - Keep changes focused — one skill, agent, discipline, or connector per PR when possible.
 

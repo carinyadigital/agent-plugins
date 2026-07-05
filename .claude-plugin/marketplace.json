@@ -17,54 +17,6 @@
       "description": "Complete brand practice in one install — practice-setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
     },
     {
-      "name": "github",
-      "displayName": "GitHub",
-      "source": "./connectors/github",
-      "description": "GitHub MCP server for repository management \u2014 issues, pull requests, code review, and repository search."
-    },
-    {
-      "name": "gitlab",
-      "displayName": "GitLab",
-      "source": "./connectors/gitlab",
-      "description": "GitLab MCP server for repositories, merge requests, CI/CD pipelines, issues, and wikis."
-    },
-    {
-      "name": "vercel",
-      "displayName": "Vercel",
-      "source": "./connectors/vercel",
-      "description": "Vercel MCP server for deployments, projects, environment variables, and hosting workflows."
-    },
-    {
-      "name": "figma",
-      "displayName": "Figma",
-      "source": "./connectors/figma",
-      "description": "Figma MCP server for design files, components, variables, and design-to-code workflows."
-    },
-    {
-      "name": "linear",
-      "displayName": "Linear",
-      "source": "./connectors/linear",
-      "description": "Linear MCP server for issue tracking \u2014 create issues, manage projects, and update statuses."
-    },
-    {
-      "name": "playwright",
-      "displayName": "Playwright",
-      "source": "./connectors/playwright",
-      "description": "Playwright MCP server for browser automation \u2014 screenshots, form fills, and end-to-end testing."
-    },
-    {
-      "name": "context7",
-      "displayName": "Context7",
-      "source": "./connectors/context7",
-      "description": "Context7 MCP server for up-to-date library documentation and code examples from source repositories."
-    },
-    {
-      "name": "next-devtools",
-      "displayName": "Next.js DevTools",
-      "source": "./connectors/next-devtools",
-      "description": "Next.js DevTools MCP server for App Router debugging, routing, and framework introspection."
-    },
-    {
       "name": "engineering",
       "displayName": "Engineering",
       "source": "./skills/engineering",

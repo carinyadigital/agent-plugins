@@ -4,7 +4,7 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-Standalone connector plugins in this repo live under `connectors/<slug>/.mcp.json`.
+MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edit that file to swap providers or add stack-specific servers.
 
 ## Companion practice (recommended co-install)
 
@@ -18,24 +18,23 @@ of those skills here.
 
 ## Connectors for this plugin
 
-| Category | Placeholder | Bundled in `.mcp.json` | Also in `connectors/` |
-| -------- | ----------- | ---------------------- | ------------------------------ |
-| Source control | `~~source control` | GitHub | GitHub, GitLab |
-| Hosting / deploy | `~~hosting` | Vercel | Vercel |
-| Chat | `~~chat` | Slack | — |
-| Project tracker | `~~project tracker` | Linear | Linear |
-| Observability | `~~observability` | Datadog | — |
-| Error tracking | `~~error tracking` | — | — |
-| Database | `~~database` | — | — |
-| Browser automation | — | — | Playwright |
-| Framework docs | — | — | Context7, Next.js DevTools |
+| Category | Placeholder | Bundled in `.mcp.json` |
+| -------- | ----------- | ---------------------- |
+| Source control | `~~source control` | GitHub, GitLab |
+| Hosting / deploy | `~~hosting` | Vercel |
+| Chat | `~~chat` | Slack |
+| Project tracker | `~~project tracker` | Linear |
+| Observability | `~~observability` | Datadog |
+| Error tracking | `~~error tracking` | — |
+| Database | `~~database` | — |
+| Browser automation | `~~browser automation` | Playwright |
+| Framework docs | `~~framework docs` | Context7, Next.js DevTools |
 
-Sentry, Neon Postgres, and other stack-specific MCP servers are not bundled — install
-connector plugins or configure user MCP when the target repo uses them.
+Sentry, Neon Postgres, and other stack-specific MCP servers are not bundled — add
+entries to `.mcp.json` when the target repo uses them.
 `practice-setup --check-integrations` reports what is connected.
 
-Other options in each category: GitLab (source control), PagerDuty (incidents),
-Mixpanel (analytics), Figma (design handoff).
+Other options in each category: PagerDuty (incidents), Mixpanel (analytics).
 
 ## Used by skill
 

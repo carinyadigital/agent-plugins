@@ -1,192 +1,430 @@
 # Digital Agency by Carinya Parc
 
-Reference agents, skills, and data connections for a full-service digital agency workflows - digital strategy & growth, creative & content, web development & technical, and operations.
+**Run a full-service digital agency from your IDE — practice plugins for strategy and delivery, brand and creative, content and growth, UX, search, and web engineering, with instance bootstrap and MCP connectors baked in.**
 
-Each agent plugin is designed to be provider-agnostic: they can be deployed behind your own workflow orchestration engine as a Claude (Code, Cowork, Managed Agent), or Cursor (IDE, Cloud Agent) - you choose where it runs.
+## Install in one command
+
+In [Claude Code](https://claude.com/product/claude-code), [Claude Cowork](https://claude.com/product/cowork), or **Cursor** (Settings → Plugins):
+
+```bash
+/plugin marketplace add <path-to-this-repo>
+/plugin install agency-hub@carinya-digital
+```
+
+Restart, then run `/agency-hub:agency-setup`. It bootstraps a git-versioned instance workspace (`config/`, `brand/`, `squads/`) and recommends your first practice plugin. Full walkthrough: [agency-hub/README.md](./agency-hub/README.md).
 
 > [!IMPORTANT]
-> Like any workforce, these agents require oversight and governance. They draft work products for review by qualified professionals. You are responsible for verifying outputs and for compliance with the laws and regulations that apply to your business.
+> **Every output is a draft for your review — not client-ready deliverables, not production code without review, not a substitute for qualified professional judgment.** Agents and skills draft work products; you verify accuracy, brand fit, accessibility, security, and compliance before anything ships. You are responsible for outputs that leave your firm.
 
-What's included
+## Plugins at a glance
 
-- **[Agents](#agents)** — named, end-to-end workflow agents across engineering, product, and operations (Frontend Engineer through Delivery Lead). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
-- **[Skill plugins](#skill-plugins)** — the underlying skills and commands, bundled by discipline. Install these on their own if you just want the skills without a full agent.
-- **[Connectors](#mcp-integrations)** — MCP data connections bundled in each practice plugin's `.mcp.json`. Install the practice that matches your workflow; edit `.mcp.json` to swap providers.
+Install **`agency-hub` first**, then the practice plugins that match your work.
 
-## Agents
-
-Each agent is named for the workflow it runs. They're starting points: install the ones that match your work, then tune the prompts, skills, and connectors to how your firm does it.
-
-Each agent plugin is **self-contained** — it bundles the skills it uses, so installing the agent is all you need.
-
-| Practice | Agent | What it does |
+| Plugin | Best for | First command |
 |---|---|---|
-| **Engineering** | **[Frontend Engineer](./agents/frontend-engineer)** | Builds React/Next.js UI — components, client state, styling, and page composition. Reads the target repo's conventions before changing anything. |
-| **Engineering** | **[Senior Frontend Engineer](./agents/senior-frontend-engineer)** | Peer code reviewer for React/Next.js UI changes. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts. Read-only — does not write code. |
-| **Engineering** | **[Principal Frontend Engineer](./agents/principal-frontend-engineer)** | Final technical gate on open PRs/MRs after peer review — architecture, security, and AC coverage. Tech-lead role; maps to delivery-review crew gate. |
-| **Engineering** | **[QA Engineer](./agents/qa-engineer)** | Validates changes after CI — QA workspace deploy, automated tests, AC-driven exploratory pass, defect documentation. Maps to delivery-qa crew flow. |
-| **Engineering** | **[Webops Engineer](./agents/webops-engineer)** | CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary. |
-| **Product** | **[Product Manager](./agents/product-manager)** | Full product delivery lifecycle — strategy, roadmap, backlog, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and epic validation. |
-| **Operations** | **[Delivery Lead](./agents/delivery-lead)** | Cross-cutting delivery steward — routes work to agents/skills, sprint planning, backlog tracking, stakeholder updates, epic validation. Maps to crew orchestration layer. |
-| **Engineering** | **[Principal Architect](./agents/principal-architect)** | System architecture — solution.md, ADRs, epic-level design, documentation alignment. Owns the Architecture track upstream of implementation. |
+| [agency-hub](./agency-hub) | Instance bootstrap, target bindings, squad charters | `/agency-hub:agency-setup` |
+| [brand-creative](./brand-creative) | Brand voice and visual identity | `/brand-creative:practice-setup` |
+| [delivery-practice](./delivery-practice) | Product strategy, backlog, sprint cadence, validation | `/delivery-practice:practice-setup` |
+| [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:practice-setup` |
+| [ux-design](./ux-design) | Low-fidelity wireframes and interaction specs | `/ux-design:practice-setup` |
+| [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:practice-setup` |
+| [web-development](./web-development) | Architecture, implementation, code review, QA, platform ops | `/web-development:practice-setup` |
 
-For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-event examples, and per-agent security notes — see **[managed-agents/](./managed-agents)**.
+**Which plugin first?** After `agency-setup`, the interview recommends a starting practice. Common paths:
 
-## Repository Layout
+| If you are… | Install next |
+|---|---|
+| Standing up a new client or product | `brand-creative` → `delivery-practice` |
+| Shipping a website or app | `delivery-practice` + `web-development` (+ `ux-design` for new UI) |
+| Running content and social | `brand-creative` → `content-marketing` (+ `search-optimisation` for SEO) |
+| SEO-only engagement | `search-optimisation` (+ `delivery-practice` for competitive brief) |
+
+## Worked examples
+
+Each example produces a **draft artefact for your review** — run the command, then verify assumptions, numbers, and brand fit before client delivery.
+
+### 1. Bootstrap a client instance (Agency Hub)
+
+**You have:** a new engagement — business name, one website target, no instance repo yet.
+
+**Run:** `/agency-hub:agency-setup --quick` — answer business name, first practice, and target.
+
+**You get:** a bound instance repo with `config/instance.json`, target skeletons, and a handoff to brand setup or your first practice plugin.
+
+### 2. Sprint plan from an existing backlog (Delivery Practice)
+
+**You have:** `docs/product/backlog.md` with epics in the Now phase and open risks.
+
+**Run:** `/delivery-practice:sprint plan 3` — point at the backlog and name sprint goals.
+
+**You get:** a sprint plan with scoped work, dependencies, and stakeholder-facing summary — aligned to your practice profile cadence and escalation model.
+
+### 3. Implement a UI task against design and AC (Web Development)
+
+**You have:** approved `docs/work/{epic}/design.md`, `tasks.md` with Gherkin AC, and a bound target repo.
+
+**Run:** `/web-development:implement CHK01-01` — the skill reads the target repo's own `AGENTS.md` / `CLAUDE.md` before changing code.
+
+**You get:** implemented code on a feature branch, ready for `/web-development:code-review` and your normal PR workflow.
+
+More personas and commands: [Named personas](#named-personas) · [Extended persona catalog](#extended-persona-catalog) · [Skill & command reference](#skill--command-reference).
+
+---
+
+## Named personas
+
+Twelve job-titled entry points for digital agency work. Each name maps to **exactly one** slash command under a practice plugin — personas are not separate agent plugins; they share one skill library per practice.
+
+| Persona | What it does | Command |
+|---|---|---|
+| **Product Manager** | Product strategy, roadmap, specs from problem statements | `/delivery-practice:product write` |
+| **Delivery Lead** | Sprint planning, stakeholder updates, metrics review | `/delivery-practice:sprint plan` |
+| **Content Strategist** | Editorial calendar and social inventory curation | `/content-marketing:content-calendar write` |
+| **Content Writer** | Blog posts, recipes, captions, and light edits for CMS import | `/content-marketing:draft-post` |
+| **SEO Specialist** | Keyword research, technical audits, on-page content review | `/search-optimisation:keyword-research` |
+| **Brand Lead** | Voice lifecycle and visual identity guide | `/brand-creative:brand-voice write` |
+| **UX Designer** | Low-fidelity wireframes from a brief | `/ux-design:wireframe` |
+| **Frontend Engineer** | React/Next.js UI — components, client state, styling | `/web-development:implement` |
+| **Senior Frontend Engineer** | Peer code review against design docs and AC | `/web-development:code-review` |
+| **Principal Frontend Engineer** | Final technical gate on open PRs — architecture, security, AC | `/web-development:final-code-review` |
+| **Principal Architect** | System architecture, ADRs, epic-level design | `/web-development:solution write` |
+| **QA Engineer** | QA deploy, automated suite, exploratory pass, defect docs | `/web-development:exploratory-pass` |
+
+Run each plugin's `practice-setup` before first use — every skill reads your instance profile and practice profile. Skipping setup is the most common reason output stays generic.
+
+## Extended persona catalog
+
+Each persona below is named for the job it does. Start with the [named personas](#named-personas) above, then tune the underlying skill, practice profile, and connectors to how your firm works.
+
+| Persona | What it does | Plugin | Command |
+|---|---|---|---|
+| **Backlog Owner** | Epic breakdown, Now-phase scope, delivery risks | `delivery-practice` | `/delivery-practice:backlog write` |
+| **Task Decomposer** | Gherkin acceptance criteria per epic | `delivery-practice` | `/delivery-practice:tasks write` |
+| **Epic Validator** | Final sign-off against AC and roadmap gates | `delivery-practice` | `/delivery-practice:validate` |
+| **Research Synthesizer** | Themes from interviews, surveys, and tickets | `delivery-practice` | `/delivery-practice:synthesize-research` |
+| **Competitive Analyst** | Competitive analysis brief | `delivery-practice` | `/delivery-practice:competitive-brief` |
+| **Spec Writer** | Feature spec or PRD from a problem statement | `delivery-practice` | `/delivery-practice:write-spec` |
+| **Voice Enforcer** | On-brand copy check against brand voice | `brand-creative` | `/brand-creative:brand-voice enforce` |
+| **Visual Identity Author** | Colors, type, logo, UI tokens | `brand-creative` | `/brand-creative:brand-guide write` |
+| **Media Analyst** | Vision analysis — subjects, season, mood, quality | `content-marketing` | `/content-marketing:analyse-media` |
+| **Caption Writer** | Caption variants and channel copy | `content-marketing` | `/content-marketing:write-captions` |
+| **Technical SEO Auditor** | Production audit → tracked issues | `search-optimisation` | `/search-optimisation:technical-seo-audit` |
+| **ADR Author** | Architecture decision register and ADR files | `web-development` | `/web-development:adr write` |
+| **Epic Designer** | Epic-level technical design | `web-development` | `/web-development:design write` |
+| **MR Author** | Merge request description from the branch | `web-development` | `/web-development:create-mr` |
+| **Docs Steward** | Pre/post-sprint documentation pass | `web-development` | `/web-development:docs review` |
+| **Debugger** | Reproduce, isolate, diagnose, fix | `web-development` | `/web-development:debug` |
+| **Tech Debt Prioritizer** | Prioritize remediation work | `web-development` | `/web-development:tech-debt` |
+| **WebOps Engineer** | CI/CD, deployment, platform health | `web-development` | `/web-development:platform-health` |
+
+Everything here ships as Claude Cowork, Claude Code, or Cursor plugins **and** as [managed-agent cookbooks](./managed-agents/) for headless deployment — same skills and prompts, two surfaces from one source.
+
+What's in the repo:
+
+- **Practice plugins** covering brand, delivery, content, UX, SEO, and web engineering — each with a `practice-setup` interview, a living `CLAUDE.md` practice profile every skill reads, and **propose profile update** so conventions can be recorded mid-engagement without re-running setup.
+- **Agency Hub** for instance bootstrap — git-versioned org profile, target bindings, and (v2) community skill marketplace management.
+- **MCP connectors** bundled per practice in `.mcp.json` — source control, hosting, design, project trackers, analytics, and browser automation.
+- **[Named personas](#named-personas)** — twelve primary entry points plus the [extended catalog](#extended-persona-catalog) above.
+- **Managed-agent cookbooks** for Cursor Cloud Agents and Claude Managed Agents — see [managed-agents/README.md](./managed-agents/README.md).
+
+## Repository layout
 
 ```
-agents/                # Named agents — one self-contained plugin each
-skills/                # Skill + command bundles by discipline
-managed-agents/        # Managed Agent cookbooks — one dir per agent
-scripts/               # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.sh
+agency-hub/               # instance bootstrap — install first
+brand-creative/           # brand voice + visual identity
+delivery-practice/        # product, roadmap, backlog, sprint, validate, …
+content-marketing/        # calendar, curation, media analysis, CMS seeds
+ux-design/                # wireframes
+search-optimisation/      # keyword research, technical audit, content SEO review
+web-development/          # solution, adr, design, implement, review, QA, platform
+managed-agents/           # CMA + Cursor Cloud Agent cookbooks
+scripts/                  # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.sh
+.claude-plugin/
+  marketplace.json        # plugin registry (name: carinya-digital)
+.cursor-plugin/
+  marketplace.json
 ```
 
-## Getting Started
+Each practice plugin has the same shape:
 
-**First install:** add **`agency-hub`** from the marketplace and run `/agency-hub:agency-setup` to bootstrap your instance workspace (`config/`, `brand/`, `squads/`). Then install practice plugins and agents.
+```
+<practice>/
+  .claude-plugin/plugin.json
+  .cursor-plugin/plugin.json
+  CLAUDE.md               # template practice profile — filled in by /<practice>:practice-setup
+  README.md
+  CONNECTORS.md           # category placeholders + bundled MCP providers
+  .mcp.json
+  skills/                 # skills — each is a /<practice>:<skill> slash command
+  references/             # practice conventions + synced meta-framework files
+  hooks/                  # pre- and post-tool hooks (stubs today)
+```
 
-See [agency-hub/README.md](./agency-hub/README.md) for the full bootstrap flow.
+## Getting started
 
-### Cowork
+### First run (all surfaces)
 
-In Cowork, open **Settings → Plugins → Add plugin** and either:
+1. Install **`agency-hub`** from the marketplace.
+2. Run **`/agency-hub:agency-setup`** — creates or binds your instance repo.
+3. Install the **practice plugins** recommended during setup.
+4. Run each practice's **`/<practice>:practice-setup`** (e.g. `/brand-creative:practice-setup`).
+5. Bind targets — website pointer (`.digital-agency/target.json` in target repos), credentials when ready.
 
-- **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`) or any practice plugin directory (e.g. `delivery-practice/`) and drop it in.
+**Run practice setup first.** Every other skill in a plugin reads from the profile it writes. The interview takes 10–20 minutes per plugin; **`--quick`** is available when you want to be productive in two minutes and refine later.
 
-### Claude Managed Agents
+### Claude Cowork
 
-Coming soon.
+1. Open the **Cowork** tab.
+2. Click **Customize** in the left sidebar.
+3. Click **Browse plugins** and install from `https://github.com/carinyaparc/digital-agency`, **or** upload a custom plugin (zip any practice directory).
+
+After install, skills fire automatically when relevant; slash commands are available via `/`.
+
+### Claude Code
+
+```bash
+/plugin marketplace add <path-to-this-repo-or-github-url>
+
+/plugin install agency-hub@carinya-digital
+/plugin install brand-creative@carinya-digital
+/plugin install delivery-practice@carinya-digital
+/plugin install content-marketing@carinya-digital
+/plugin install ux-design@carinya-digital
+/plugin install search-optimisation@carinya-digital
+# web-development — zip-install the web-development/ directory until marketplace registration lands
+
+/agency-hub:agency-setup
+/brand-creative:practice-setup
+/delivery-practice:practice-setup
+```
+
+Updates: `/plugin update`.
 
 ### Cursor
 
-In Cursor, open **Settings → Plugins → Add plugin** and either:
+In **Settings → Plugins → Add plugin**:
 
-- **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`) or any practice plugin directory (e.g. `delivery-practice/`) and drop it in.
+- **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick practice plugins from the marketplace list, or
+- **Upload a zip** — zip any practice directory (e.g. `web-development/`) and drop it in.
 
-### Cursor Cloud Agents
+### Managed Agents and Cursor Cloud Agents
 
-Coming soon.
+Headless deployment cookbooks live in [`managed-agents/`](./managed-agents/). Engineering personas deploy to **Cursor Cloud Agents**; content personas to **Claude Managed Agents**; architecture resolves at deploy time.
 
-## How It Fits Together
+```bash
+./scripts/deploy-squad-agents.sh --dry-run --instance ../your-instance-repo
+./scripts/deploy-squad-agents.sh apply --instance ../your-instance-repo
+```
+
+See [`managed-agents/README.md`](./managed-agents/README.md) for platform matrix, security tiers, and required secrets.
+
+## How it fits together
 
 | | What it is | Where it lives |
 |---|---|---|
-| **Agents** | Self-contained plugins that own a workflow end to end — system prompt plus the skills it uses. Cowork and the Managed Agent wrapper both reference the same directory. | `agents/<slug>/` |
-| **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once per discipline; each agent bundles a synced copy of the ones it needs. | `skills/<discipline>/skills/` (source) · `agents/<slug>/skills/` (bundled) |
-| **Commands** | Slash actions you trigger explicitly (`/implement`). | `skills/<discipline>/commands/` |
-| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `<practice>/.mcp.json` |
-| **Managed-agent wrappers** | `agent.yaml` + depth-1 subagents + steering examples for headless deployment. | `managed-agents/<slug>/` |
+| **Practice plugins** | Self-contained service bundles — skills, hooks, MCP, and a template practice profile. Install the ones you need. | `<practice>/` |
+| **Skills** | Domain expertise Claude draws on automatically — and slash actions you trigger explicitly: `/delivery-practice:backlog`, `/web-development:implement`. | `<practice>/skills/<skill>/SKILL.md` |
+| **Personas** | Job titles that map to skills — shared libraries inside each practice, not separate plugins. | Each practice's `README.md` |
+| **Instance profile** | Git-versioned org facts, brand path, target bindings, squad charters. | `<instance-repo>/config/instance.json`, `brand/`, `squads/` |
+| **Practice profile** | Per-practice conventions — stack defaults, persona preference, output formats, review gates. | `~/.claude/plugins/config/digital-agency/<practice>/CLAUDE.md` |
+| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — repos, hosting, design, trackers, chat. | `<practice>/.mcp.json` |
+| **Managed-agent cookbooks** | `agent.yaml` + steering examples for headless deployment. | [`managed-agents/<slug>/`](./managed-agents/) |
+| **Artefact consumption** | Downstream practices read upstream outputs by path — brand voice, brand guide, wireframes — without hard install dependencies. | Resolved via instance/target pointers |
 
-Everything is file-based — markdown and JSON, no build step.
+Everything is markdown and JSON. No build step.
 
-## Skill Plugins
+## Practice plugins by service line
 
-Install skill plugins for the disciplines you need.
+Grouped by where the work sits. Each plugin's **`practice-setup`** is what tailors it to your firm — start there.
+
+### Strategy & delivery
 
 | Plugin | What it adds |
 |---|---|
-| **[engineering](./skills/engineering)** | Architecture, epic design, implementation, code review, debugging, and technical debt. |
-| **[product-management](./skills/product-management)** | Product strategy, roadmap, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming. |
-| **[brand-creative](./brand-creative)** | Complete brand practice — practice-setup, brand-voice lifecycle, and brand-guide visual identity. Writes to instance `brand/` when bound. |
-| **[content-marketing](./content-marketing)** | Complete content practice — editorial calendar, social curation, media analysis, and CMS seed drafting. Content Strategist and Content Writer personas; reads brand voice from resolved brand path. |
+| **[delivery-practice](./delivery-practice)** | Product strategy, outcome-based roadmap, backlog and tasks, sprint planning, epic validation, specs, stakeholder updates, research synthesis, competitive briefs, metrics review, and skill routing. Two personas (Product Manager, Delivery Lead), one skill library. |
 
-## MCP Integrations
+### Brand, creative & content
 
-Each practice plugin bundles recommended MCP servers in its `.mcp.json`. Edit that file to swap providers or add stack-specific servers.
-
-| Practice | Bundled providers (examples) |
+| Plugin | What it adds |
 |---|---|
-| **web-development** | GitHub, GitLab, Vercel, Slack, Linear, Datadog, Playwright, Context7, Next.js DevTools |
-| **delivery-practice** | Slack, Linear, Asana, Atlassian, Notion, Figma, Amplitude, Intercom, Fireflies, GitHub, GitLab, Vercel, Playwright, Context7, Next.js DevTools |
-| **content-marketing** | GitHub, GitLab, Notion, Slack |
-| **brand-creative** | Slack, Notion, Atlassian, Figma, Fireflies |
-| **ux-design** | Figma |
-| **search-optimisation** | GitHub, GitLab, Playwright |
-| **agency-hub** | GitHub |
+| **[brand-creative](./brand-creative)** | Brand voice lifecycle (discover, write, enforce) and visual identity guide (colors, type, logo, UI tokens). Writes to instance `brand/` when bound. |
+| **[content-marketing](./content-marketing)** | Editorial calendar, social curation, media analysis, captions, and CMS seed drafting (posts and recipes). Two personas (Content Strategist, Content Writer). Reads brand voice from resolved brand path. |
+| **[ux-design](./ux-design)** | Practice setup and wireframe skill for low-fidelity layout and interaction specs. Writes to instance `design/` when bound; `web-development` reads wireframes via artefact consumption. |
 
-See each practice's `CONNECTORS.md` for category placeholders and skill usage.
+### Growth & search
 
-> MCP access may require authentication, subscription, or an API key from the provider.
+| Plugin | What it adds |
+|---|---|
+| **[search-optimisation](./search-optimisation)** | Keyword research, production technical SEO audits, and on-page content SEO review. One persona (SEO Specialist). Optional pairing with `content-marketing` for seed review. |
 
-## Making It Yours
+### Engineering & platform
 
-These are reference templates — they get better when you tune them to how your firm works.
+| Plugin | What it adds |
+|---|---|
+| **[web-development](./web-development)** | Architecture (`solution`, `adr`), epic design, implementation, peer and final code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Six personas share one library; `delivery-practice` is the recommended companion for backlog, tasks, sprint, and validate. |
 
-- **Swap connectors** — edit the practice plugin's `.mcp.json` to point at your data providers and internal systems.
-- **Add firm context** — drop your terminology, processes, and formatting standards into skill files.
-- **Bring your brand voice** — install `brand-creative`, run `/brand-creative:practice-setup`, then `/brand-creative:brand-voice enforce` and `/brand-creative:brand-guide write` as needed.
-- **Adjust agent scope** — edit `agents/<slug>.md` to match how your team actually runs the workflow.
-- **Add your own** — copy the structure for workflows we haven't covered.
+### Platform
 
-## Skill & Command Reference
+| Plugin | What it adds |
+|---|---|
+| **[agency-hub](./agency-hub)** | Instance bootstrap via `agency-setup`. v2 adds community skill discovery, installation QA, and update management (designed, deferred — stubs exist for shape validation). |
 
-<details>
-<summary><b>engineering</b> — solution, adr, design, implement, code review, final-code-review, docs, debug, tech-debt, deploy-qa, run-automated-suite, exploratory-pass, document-defects</summary>
+**Companion practices:** `content-marketing` and `search-optimisation` invoke `/delivery-practice:backlog` and related skills rather than bundling duplicates. `web-development` invokes delivery skills for planning cadence during implementation. Neither direction requires the companion installed — skills degrade gracefully and document the pairing.
 
-See [engineering README](./skills/engineering/README.md) for full detail.
+## MCP connectors
 
-| Skill | Modes | Description | Artefact |
-| ----- | ----- | ----------- | -------- |
-| **solution** | write, review, refine | System architecture (stub or full) | `docs/architecture/solution.md` |
-| **adr** | plan, write, review | Architecture decision register and ADR files | `register.md`, `ADR-NNNN.md` |
-| **design** | write, review | Epic-level technical design | `docs/work/{epic}/design.md` |
-| **implement** | — | Implement a task against approved design and tasks | code |
-| **code-review** | review, fix | Review a branch or PR; fix addresses findings | code review / code |
-| **create-mr** | run | Merge request description from the branch | MR / PR |
-| **docs** | review, refine | Pre-sprint or sprint-end documentation pass | review / `refine-session.md` |
-| **debug** | run | Reproduce, isolate, diagnose, and fix bugs | debug report |
-| **tech-debt** | run | Prioritize technical debt remediation | remediation plan |
+Each practice plugin bundles recommended MCP servers in its `.mcp.json`. Edit that file to swap providers or add stack-specific servers. Skills produce usable output when no connector is configured — connectors are enhancements, not hard dependencies unless a skill doc says otherwise.
 
-</details>
+| Practice | Bundled providers (examples) | Categories |
+|---|---|---|
+| **agency-hub** | GitHub | source control |
+| **brand-creative** | Slack, Notion, Atlassian, Figma, Fireflies | chat, knowledge base, design, meeting transcription |
+| **delivery-practice** | Slack, Linear, Asana, Atlassian, Notion, Figma, Amplitude, Intercom, Fireflies, GitHub, GitLab, Vercel, Playwright, Context7, Next.js DevTools | chat, project tracker, design, analytics, feedback, competitive intel, source control, hosting, browser automation |
+| **content-marketing** | GitHub, GitLab, Notion, Slack | source control, knowledge base, chat |
+| **ux-design** | Figma | design |
+| **search-optimisation** | GitHub, GitLab, Playwright | source control, browser automation |
+| **web-development** | GitHub, GitLab, Vercel, Slack, Linear, Datadog, Playwright, Context7, Next.js DevTools | source control, hosting, chat, observability, browser automation |
 
-<details>
-<summary><b>product-management</b> — product, roadmap, backlog, tasks, sprint, validate, write-spec, stakeholder-update, synthesize-research, competitive-brief, metrics-review, product-brainstorming, skills-index</summary>
+Plugins use `~~category` placeholders in skill prose (e.g. `~~project tracker`, `~~hosting`) so workflows stay tool-agnostic. See each practice's [CONNECTORS.md](./delivery-practice/CONNECTORS.md) for the full placeholder map.
 
-See [product-management README](./skills/product-management/README.md) for full detail.
+> Connectors marked "customer subscription" need your own account and API key. Configure them in each plugin's `.mcp.json` or via `claude mcp` in Claude Code.
 
-| Skill | Modes | Description | Artefact |
-| ----- | ----- | ----------- | -------- |
-| **product** | write, review, refine | Product strategy doc, PRD, pitch, vision, personas | `docs/product/product.md` |
-| **roadmap** | write, review, refine | Outcome-based delivery phases with exit criteria | `docs/product/roadmap.md` |
-| **backlog** | write, review, refine | Epic breakdown, Now-phase scope, delivery risks | `docs/product/backlog.md` |
-| **tasks** | write, review, refine | Gherkin acceptance criteria per epic | `docs/work/{epic}/tasks.md` |
-| **sprint** | plan, retrospective | Sprint plan and retrospective | `docs/work/sprint-{id}/plan.md` / `retrospective.md` |
-| **validate** | run | Final epic sign-off against AC and roadmap gates | validation report |
-| **write-spec** | run | Feature spec or PRD from a problem statement | feature spec |
-| **stakeholder-update** | run | Status update tailored to audience | stakeholder update |
-| **synthesize-research** | run | Themes and insights from user research | research synthesis |
-| **competitive-brief** | run | Competitive analysis brief | competitive brief |
-| **metrics-review** | run | Product metrics review with actions | metrics report |
-| **product-brainstorming** | run | Sparring partner for ideas (no deliverable) | conversation |
-| **skills-index** | run | Routes vague requests to the right skill | skill routing |
+## Instance bootstrap and practice profile
 
-</details>
+Two layers of configuration tailor generic skills to your firm:
 
-<details>
-<summary><b>brand-creative</b> — practice-setup, brand-guide, brand-voice</summary>
+| Layer | Path | Captures |
+|---|---|---|
+| **Instance profile** (shared, git-versioned) | `<instance-repo>/config/instance.json`, `brand/`, `squads/` | Business identity, target bindings, brand artefacts, squad charters |
+| **Practice profile** (per plugin) | `~/.claude/plugins/config/digital-agency/<practice>/CLAUDE.md` | Stack defaults, persona preference, output formats, review gates, connector status |
 
-See [brand-creative README](./brand-creative/README.md) for full detail.
+**Run once per plugin you install:**
 
-| Skill | Modes | Description | Artefact |
-| ----- | ----- | ----------- | -------- |
-| **brand-guide** | write, review, refine | Visual identity — colors, type, logo, UI tokens | `docs/brand/brand-guide.md` |
-| **brand-voice** | discover, write, review, refine, enforce | Voice lifecycle and on-brand copy | `docs/brand/brand-voice.md`, `discovery-report.md`, inline content |
+| Command | Writes |
+|---|---|
+| `/agency-hub:agency-setup` | Instance repo + handoff to first practice |
+| `/<practice>:practice-setup` | Practice profile for that service line |
 
-</details>
+Framework: [`agency-hub/references/agency-setup-framework.md`](./agency-hub/references/agency-setup-framework.md) and synced [`practice-setup-framework.md`](./delivery-practice/references/practice-setup-framework.md) copies in each practice.
+
+**Living profile.** Every skill except `practice-setup` uses **propose profile update** — show the exact diff, ask, write on yes. No skill auto-writes a full profile without confirmation.
+
+## Making it yours
+
+These are reference templates. They get better when you tune them to how your firm works — and the customization mechanism is the plugin itself.
+
+- **Run instance and practice setup.** `agency-setup` and `practice-setup` **are** the customization mechanism. They interview you, read seed documents, and write profiles after you confirm the summary.
+- **Edit profiles directly.** Instance facts live in your instance repo; practice conventions at `~/.claude/plugins/config/digital-agency/<practice>/CLAUDE.md`. They survive plugin updates.
+- **Propose profile updates from any skill.** When a stable convention surfaces mid-engagement (tone corrections, sprint length, MR template), skills show the exact change and ask before writing.
+- **Swap connectors.** Point `.mcp.json` at your source control, hosting, design, and tracker stack. Skills fall back gracefully when a connector is not configured.
+- **Bring your brand and templates.** Drop terminology, house style, and branded templates into the instance `brand/` directory and practice profiles.
+- **Fork skills for house style.** Every skill is a markdown file under `skills/`. Edit steps, gates, and output formats.
+- **Deploy squads.** Bind targets, configure secrets, and apply schedules with `deploy-squad-agents.sh`.
+
+No build step. Everything is markdown and JSON.
+
+## Skill & command reference
+
+The full map across all practice plugins. Run `practice-setup` in each plugin before other commands.
+
+### agency-hub
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/agency-hub:agency-setup` | agency-setup | Interview → bind instance repo → write config → hand off |
+| `/agency-hub:agency-setup --quick` | agency-setup | Minimal path: business name, one practice, one target |
+| `/agency-hub:agency-setup --check-integrations` | agency-setup | Report MCP connector status only |
+
+v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …) are designed but not shipped — see [agency-hub/README.md](./agency-hub/README.md).
+
+### brand-creative
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/brand-creative:practice-setup` | practice-setup | Learns voice strictness, channels, seed material; writes practice profile |
+| `/brand-creative:brand-voice` | brand-voice | discover, write, review, refine, enforce — `brand/brand-voice.md` |
+| `/brand-creative:brand-guide` | brand-guide | write, review, refine — visual identity and UI tokens |
+
+### delivery-practice
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/delivery-practice:practice-setup` | practice-setup | Learns cadence, personas, escalation; writes practice profile |
+| `/delivery-practice:product` | product | write, review, refine — `docs/product/product.md` |
+| `/delivery-practice:roadmap` | roadmap | write, review, refine — `docs/product/roadmap.md` |
+| `/delivery-practice:backlog` | backlog | write, review, refine — `docs/product/backlog.md` |
+| `/delivery-practice:tasks` | tasks | write, review, refine — `docs/work/{epic}/tasks.md` |
+| `/delivery-practice:sprint` | sprint | plan, retrospective |
+| `/delivery-practice:validate` | validate | Epic completion sign-off against AC and roadmap gates |
+| `/delivery-practice:write-spec` | write-spec | Feature spec or PRD from a problem statement |
+| `/delivery-practice:stakeholder-update` | stakeholder-update | Status update tailored to audience |
+| `/delivery-practice:synthesize-research` | synthesize-research | Themes and insights from user research |
+| `/delivery-practice:competitive-brief` | competitive-brief | Competitive analysis brief |
+| `/delivery-practice:metrics-review` | metrics-review | Product metrics review with actions |
+| `/delivery-practice:product-brainstorming` | product-brainstorming | Sparring partner for ideas (no deliverable) |
+| `/delivery-practice:skills-index` | skills-index | Routes vague requests to the right skill |
+
+### content-marketing
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/content-marketing:practice-setup` | practice-setup | Learns channels, persona preference, seed sources |
+| `/content-marketing:content-calendar` | content-calendar | write, review — editorial calendar and slot briefs |
+| `/content-marketing:curate-content` | curate-content | Rank social inventory for upcoming posts |
+| `/content-marketing:analyse-media` | analyse-media | Vision analysis — subjects, season, mood, quality |
+| `/content-marketing:write-captions` | write-captions | Caption variants and channel copy |
+| `/content-marketing:edit-content` | edit-content | Select or lightly edit best caption variant |
+| `/content-marketing:draft-post` | draft-post | Blog post seed JSON for CMS import |
+| `/content-marketing:draft-recipe` | draft-recipe | Recipe seed JSON for CMS import |
+
+### ux-design
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/ux-design:practice-setup` | practice-setup | Learns in-scope pages/flows and reference sources |
+| `/ux-design:wireframe` | wireframe | Low-fidelity layout and interaction spec from a brief |
+
+### search-optimisation
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/search-optimisation:practice-setup` | practice-setup | Learns target site, keyword themes, audit cadence |
+| `/search-optimisation:keyword-research` | keyword-research | Topic keyword docs with intent and content opportunities |
+| `/search-optimisation:technical-seo-audit` | technical-seo-audit | Production audit → tracked issues |
+| `/search-optimisation:content-seo-review` | content-seo-review | On-page SEO review of content seeds |
+
+### web-development
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/web-development:practice-setup` | practice-setup | Learns stack, personas, target binding, connectors |
+| `/web-development:solution` | solution | write, review, refine — `docs/architecture/solution.md` |
+| `/web-development:adr` | adr | plan, write, review — ADR register and decision records |
+| `/web-development:design` | design | write, review — `docs/work/{epic}/design.md` |
+| `/web-development:implement` | implement | Implement a task against approved design and AC |
+| `/web-development:code-review` | code-review | run, fix — peer review against design and tasks |
+| `/web-development:final-code-review` | final-code-review | Final technical gate on open PRs |
+| `/web-development:create-mr` | create-mr | Open merge request for implemented work |
+| `/web-development:docs` | docs | Pre/post-sprint documentation pass |
+| `/web-development:debug` | debug | Bug investigation and fix |
+| `/web-development:tech-debt` | tech-debt | Technical debt audit and prioritization |
+| `/web-development:deploy-qa` | deploy-qa | Prepare QA workspace |
+| `/web-development:run-automated-suite` | run-automated-suite | Run automated tests in QA workspace |
+| `/web-development:exploratory-pass` | exploratory-pass | AC-driven exploratory validation |
+| `/web-development:document-defects` | document-defects | Record defects from QA pass |
+| `/web-development:platform-health` | platform-health | CI/CD, deployment, and platform health check |
 
 ## Contributing
 
-Everything here is markdown and YAML. Fork, edit, PR. For new content:
+Everything here is markdown and JSON. Fork, edit, PR. See [CONTRIBUTING.md](./CONTRIBUTING.md) for design principles and the validation checklist.
 
-- New skill → add it under the owning practice plugin's `skills/<name>/` directory (e.g. `delivery-practice/skills/backlog/`).
-- After editing shared meta-framework references, run `python3 scripts/sync-references.py`.
-- Skill evals → add `evals/evals.json` and `evals/trigger-queries.json`; run `python3 scripts/validate.py` (evals schema and `--strict` frontmatter checks). See [agency-hub/references/agency-skill-design-framework.md](./agency-hub/references/agency-skill-design-framework.md) for skill design conventions.
-- Run `python3 scripts/validate.py` before pushing — lints manifests, verifies cross-file references, and validates evals schema. See [CONTRIBUTING.md](./CONTRIBUTING.md#validation).
+- **New skill** → add `<practice>/skills/<skill-name>/SKILL.md` with `name` and `description` frontmatter. Invokable as `/<practice>:<skill-name>`.
+- **New persona row** → add the skill under the owning practice and a row in that practice's README Agents/Personas table mapping the job title to the slash command.
+- **Shared meta-framework edits** → run `python3 scripts/sync-references.py` after changing `instance-profile-template.md` or `practice-setup-framework.md`.
+- **Validate before opening a PR** — `python3 scripts/validate.py` lints manifests, verifies cross-file references, and validates evals schema. See [AGENTS.md](./AGENTS.md) for repo conventions.
 
 ## License
 
-[MIT](./LICENSE)
+Licensed under the [MIT License](./LICENSE).
 
-(c) 2026 Carinya Parc Pty Ltd.
+Copyright 2026 Carinya Parc Pty Ltd.

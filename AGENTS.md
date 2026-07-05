@@ -51,14 +51,14 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 │       ├── subagents/*.yaml         #   depth-1 leaf workers
 │       ├── steering-examples.json
 │       └── README.md                #   security tier + handoff notes
-└── scripts/                         # sync-agent-skills.py, sync-references.py, validate.py
+└── scripts/                         # sync-references.py, validate.py, plugin-check.py
 ```
 
-Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/`, `brand-creative/skills/`, `delivery-practice/skills/`, `content-marketing/skills/`, `ux-design/skills/`, or `search-optimisation/skills/` — it propagates bundled copies into agents that bundle those skills. **Edit discipline skills in `skills/`**, **brand skills in `brand-creative/skills/`**, **delivery skills in `delivery-practice/skills/`**, **content skills in `content-marketing/skills/`**, **UX skills in `ux-design/skills/`**, and **SEO skills in `search-optimisation/skills/`**, not in agent bundles.
+Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `delivery-practice/skills/`, `content-marketing/skills/`, `ux-design/skills/`, `search-optimisation/skills/`, `web-development/skills/`, `agency-hub/skills/`).
 
 Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`).
 
-Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks practice-plugin MCP wiring, validates SKILL.md frontmatter, resolves markdown cross-references, detects bundled-skill drift against canonical sources, and validates `evals/` JSON schema.
+Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks practice-plugin MCP wiring, validates SKILL.md frontmatter, resolves markdown cross-references, and validates `evals/` JSON schema. Use `python3 scripts/plugin-check.py <plugin-dir>` for fast per-plugin checks while iterating.
 
 ## Agency Hub (install first)
 
@@ -103,7 +103,7 @@ Strategy, roadmap, backlog, and epic work for this catalogue live in the **carin
 ## Development Workflow
 
 1. Edit markdown files directly — changes take effect immediately
-2. After skill changes under `skills/`, run `python3 scripts/sync-agent-skills.py`
+2. After editing shared meta-framework references, run `python3 scripts/sync-references.py`
 3. Run `python3 scripts/validate.py` — fix errors before pushing
 4. Test commands with `/plugin:command-name` syntax (Cowork) or install via Cursor Settings → Plugins
 5. Skills are invoked automatically when their trigger conditions match

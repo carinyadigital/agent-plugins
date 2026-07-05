@@ -848,7 +848,7 @@ class Validator:
                         "SKILL_DRIFT",
                         f"{rel_bundle} drift: file {rel_path!r} differs from {self.rel(source_dir)}",
                         file=rel_bundle,
-                        hint="Run python3 scripts/sync-agent-skills.py",
+                        hint="Edit the canonical skill under the owning practice plugin, not a bundled copy",
                     )
 
                 for rel_path in sorted(bundle_rel_paths & source_rel_paths):
@@ -861,7 +861,7 @@ class Validator:
                             "SKILL_DRIFT",
                             f"{rel_bundle} drift: {rel_path} content differs from source",
                             file=rel_bundle,
-                            hint="Run python3 scripts/sync-agent-skills.py",
+                            hint="Edit the canonical skill under the owning practice plugin, not a bundled copy",
                         )
 
         practice_drift = self.check_practice_plugin_skill_drift(sources)
@@ -896,7 +896,7 @@ class Validator:
                 "SKILL_DRIFT",
                 f"{rel_bundle} drift: file {rel_path!r} differs from {self.rel(source_dir)}",
                 file=rel_bundle,
-                hint="Run python3 scripts/sync-agent-skills.py",
+                hint="Edit the canonical skill under the owning practice plugin, not a bundled copy",
             )
 
         for rel_path in sorted(bundle_rel_paths & source_rel_paths):
@@ -909,7 +909,7 @@ class Validator:
                     "SKILL_DRIFT",
                     f"{rel_bundle} drift: {rel_path} content differs from source",
                     file=rel_bundle,
-                    hint="Run python3 scripts/sync-agent-skills.py",
+                    hint="Edit the canonical skill under the owning practice plugin, not a bundled copy",
                 )
         return drift_count
 

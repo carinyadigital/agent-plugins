@@ -78,18 +78,11 @@ segment for practice plugins/`agency-hub`). Present the list of affected plugins
 before proceeding — a release should never silently include a plugin the
 user didn't mean to ship.
 
-### 2. Re-sync generated content
+If shared meta-framework reference files changed (`instance-profile-template.md`,
+`practice-setup-framework.md`), run `python3 scripts/sync-references.py` before
+the gates below.
 
-```bash
-python3 scripts/sync-agent-skills.py
-```
-
-This is a no-op today (no `agents/<slug>/skills/` bundles currently exist
-post-migration to practice plugins), but keep it in the sequence — it's the
-closest equivalent to `vercel-plugin`'s build step, and it becomes load-bearing
-again the moment any agent plugin bundles a skill copy.
-
-### 3. Fast gate — plugin-check
+### 2. Fast gate — plugin-check
 
 ```bash
 python3 scripts/plugin-check.py <plugin-dir-1> [<plugin-dir-2> ...]
@@ -99,7 +92,7 @@ Scoped to just the plugin(s) being released: manifest completeness, MCP
 definitions, SKILL.md frontmatter, JSON sanity. Fix and re-run until clean —
 do not proceed on a failure here.
 
-### 4. Confirm and write the version bump
+### 3. Confirm and write the version bump
 
 For each target plugin, read the current `version` from
 `<plugin>/.claude-plugin/plugin.json`, propose a bump (see "does not do"
@@ -109,14 +102,14 @@ both `<plugin>/.claude-plugin/plugin.json` and
 `validate.py` will fail the release if these two drift, and marketplace
 entries must match `name`/`description` against both.
 
-### 5. Update CHANGELOG.md
+### 4. Update CHANGELOG.md
 
 Move the relevant `[Unreleased]` bullets for each released plugin into a new
 dated section. If releasing multiple plugins in one pass, group bullets under
 per-plugin sub-headings so the entry is unambiguous about which plugin got
 which version.
 
-### 6. Full gate — validate
+### 5. Full gate — validate
 
 ```bash
 python3 scripts/validate.py
@@ -127,7 +120,7 @@ plugin.json sync, cross-references, bundled-skill drift, evals schema,
 managed-agent cookbooks. See Preconditions if this is currently red for
 reasons unrelated to your change.
 
-### 7. Test gate
+### 6. Test gate
 
 ```bash
 python3 -m unittest discover -s tests -p "test_*.py" -v
@@ -137,14 +130,14 @@ Must pass. (`test_repo_validation_passes` and
 `test_json_format_emits_parseable_report` both call into `validate.py` and
 will fail alongside it — see Preconditions.)
 
-### 8. Commit
+### 7. Commit
 
 ```bash
 git add -A
 git commit -m "release: <plugin-slug>@<version>[, <plugin-slug-2>@<version-2>]"
 ```
 
-### 9. Tag — one tag per plugin, not one repo-wide tag
+### 8. Tag — one tag per plugin, not one repo-wide tag
 
 Independent plugin versions mean a single `v1.2.0`-style repo tag is
 ambiguous about which plugin it refers to. Tag per plugin instead:
@@ -155,7 +148,7 @@ git tag <plugin-slug>-v<version>
 
 Repeat for each plugin released in this pass.
 
-### 10. Push
+### 9. Push
 
 ```bash
 git push
@@ -172,6 +165,6 @@ git push --tags
 
 ## Dry run
 
-Pass `--dry-run` (or if the user just wants a preview): run steps 1–3, 6, and
-7 only. Report what *would* change — target plugins, proposed version bumps,
+Pass `--dry-run` (or if the user just wants a preview): run steps 1–2, 5, and
+6 only. Report what *would* change — target plugins, proposed version bumps,
 changelog draft — without writing files, committing, or tagging.

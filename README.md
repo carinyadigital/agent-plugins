@@ -38,7 +38,7 @@ For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-e
 agents/                # Named agents — one self-contained plugin each
 skills/                # Skill + command bundles by discipline
 managed-agents/        # Managed Agent cookbooks — one dir per agent
-scripts/               # validate.py · sync-agent-skills.py (+ orchestrate.py, deploy-managed-agent.sh — coming soon)
+scripts/               # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.sh
 ```
 
 ## Getting Started
@@ -180,10 +180,10 @@ See [brand-creative README](./brand-creative/README.md) for full detail.
 
 Everything here is markdown and YAML. Fork, edit, PR. For new content:
 
-- New skill → add it under `skills/<discipline>/skills/`, then run `python3 scripts/sync-agent-skills.py` to propagate to any agent that bundles it.
-- New agent → `agents/<slug>/` (with `agents/<slug>.md` + `skills/`) and a matching `managed-agents/<slug>/`.
+- New skill → add it under the owning practice plugin's `skills/<name>/` directory (e.g. `delivery-practice/skills/backlog/`).
+- After editing shared meta-framework references, run `python3 scripts/sync-references.py`.
 - Skill evals → add `evals/evals.json` and `evals/trigger-queries.json`; run `python3 scripts/validate.py` (evals schema and `--strict` frontmatter checks). See [agency-hub/references/agency-skill-design-framework.md](./agency-hub/references/agency-skill-design-framework.md) for skill design conventions.
-- Run `python3 scripts/validate.py` before pushing — lints manifests, verifies cross-file references, checks bundled-skill drift, and validates evals schema. See [CONTRIBUTING.md](./CONTRIBUTING.md#validation).
+- Run `python3 scripts/validate.py` before pushing — lints manifests, verifies cross-file references, and validates evals schema. See [CONTRIBUTING.md](./CONTRIBUTING.md#validation).
 
 ## License
 

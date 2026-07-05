@@ -144,9 +144,9 @@ Do not mark PASS without reading the implementing content.
 | write-captions | `content-marketing/skills/write-captions` |
 | edit-content | `content-marketing/skills/edit-content` |
 | curate-content | `content-marketing/skills/curate-content` |
-| keyword-research | `skills/seo/skills/keyword-research` |
-| technical-seo-audit | `skills/seo/skills/technical-seo-audit` |
-| content-seo-review | `skills/seo/skills/content-seo-review` |
+| keyword-research | `search-optimisation/skills/keyword-research` |
+| technical-seo-audit | `search-optimisation/skills/technical-seo-audit` |
+| content-seo-review | `search-optimisation/skills/content-seo-review` |
 
 See `.notes/eval-baselines.md` for Sprint 4 coverage matrix and baseline status.
 

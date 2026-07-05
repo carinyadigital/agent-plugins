@@ -314,6 +314,11 @@ class Validator:
             for skill_dir in ux_design_skills.iterdir():
                 if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                     sources[skill_dir.name] = skill_dir
+        search_optimisation_skills = ROOT / "search-optimisation" / "skills"
+        if search_optimisation_skills.is_dir():
+            for skill_dir in search_optimisation_skills.iterdir():
+                if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
+                    sources[skill_dir.name] = skill_dir
         return sources
 
     def source_skill_paths(self) -> list[Path]:
@@ -323,6 +328,7 @@ class Validator:
         paths.extend(sorted(ROOT.glob("delivery-practice/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("content-marketing/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("ux-design/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("search-optimisation/skills/*/SKILL.md")))
         return sorted(set(paths))
 
     def marketplace_entries(self) -> list[dict[str, Any]]:
@@ -717,6 +723,7 @@ class Validator:
             (ROOT / "delivery-practice", "delivery-practice/skills/*/*.md"),
             (ROOT / "content-marketing", "content-marketing/skills/*/*.md"),
             (ROOT / "ux-design", "ux-design/skills/*/*.md"),
+            (ROOT / "search-optimisation", "search-optimisation/skills/*/*.md"),
         ]
 
         checked_files: list[Path] = []
@@ -729,6 +736,7 @@ class Validator:
                 "delivery-practice",
                 "content-marketing",
                 "ux-design",
+                "search-optimisation",
             }:
                 checked_files.extend(sorted(base.glob("skills/*/*.md")))
             else:

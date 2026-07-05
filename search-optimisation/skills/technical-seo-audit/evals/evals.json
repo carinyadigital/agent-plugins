@@ -1,0 +1,16 @@
+{
+  "skill_name": "technical-seo-audit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Technical SEO audit on https://example.com — focus metadata and sitemap.",
+      "expected_output": "GitHub issues labelled type:seo-recommendation with squad ownership, evidence, and recommended fix per finding.",
+      "assertions": [
+        "Creates GitHub issues (or documents planned issues) with type:seo-recommendation label",
+        "Each issue includes evidence, impact, recommended fix, and page URL",
+        "Owning squad label is assigned per target or instance conventions",
+        "Does not open PRs or edit code directly"
+      ]
+    }
+  ]
+}

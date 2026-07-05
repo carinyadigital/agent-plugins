@@ -85,9 +85,9 @@ First-party plugins from the digital-agency catalogue — installed via marketpl
 
 **Hub:** `agency-hub`
 
-**Practice plugins:** `brand-creative`, `delivery-practice` (shipped); `web-development`, `content-marketing`, `social-media`, `seo` (pending)
+**Practice plugins:** `brand-creative`, `delivery-practice`, `content-marketing`, `ux-design`, `search-optimisation` (shipped); `web-development`, `social-media` (pending)
 
-**Interim catalogue (until practice plugins ship):** `engineering`, `content`, `seo` skill plugins; named agents under `agents/`
+**Interim catalogue (until practice plugins ship):** `engineering` skill plugin; named agents under `agents/`
 
 **Connectors:** `github`, `gitlab`, `vercel`, `figma`, `linear`, `playwright`, `context7`, `next-devtools`
 

@@ -200,6 +200,6 @@ Practices are MECE — one self-contained plugin per practice. Planning and cade
 | `web-development` | `web-development` | `delivery-practice` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/delivery-practice:backlog`, `/delivery-practice:sprint` |
 | `content-marketing` | `content-marketing` | `delivery-practice` | `content` | Shipped; run `/content-marketing:practice-setup` after bootstrap; needs `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` |
 | `social-media` | `social-media` | TBD | `content` | Practice pending — interim: `content-marketing` skills for captions and curation |
-| `seo` | `seo` | `delivery-practice` | `seo` | Practice pending — interim: `seo`, `seo-specialist`; needs `/delivery-practice:competitive-brief` |
+| `seo` | `search-optimisation` | `delivery-practice` | `seo` | Shipped; run `/search-optimisation:practice-setup` after bootstrap; needs `/delivery-practice:competitive-brief` |
 
 Write `services.recommendedPlugins` with the practice plugin name(s) plus `delivery-practice` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.

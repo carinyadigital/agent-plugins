@@ -89,10 +89,10 @@
       "description": "Minimal UX practice in one install — practice-setup interview and wireframe skill for low-fidelity layout and interaction specs. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/."
     },
     {
-      "name": "seo",
-      "displayName": "SEO",
-      "source": "./skills/seo",
-      "description": "SEO practice \u2014 keyword research, technical SEO audits, and content SEO review. Recommendations via GitHub issues; implementation handed to engineering squads."
+      "name": "search-optimisation",
+      "displayName": "Search Optimisation",
+      "source": "./search-optimisation",
+      "description": "Complete search and technical SEO practice in one install — practice-setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes delivery-practice for competitive brief."
     },
     {
       "name": "frontend-engineer",
@@ -129,12 +129,6 @@
       "displayName": "Webops Engineer",
       "source": "./agents/webops-engineer",
       "description": "Agentic webops engineer \u2014 CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary."
-    },
-    {
-      "name": "seo-specialist",
-      "displayName": "SEO Specialist",
-      "source": "./agents/seo-specialist",
-      "description": "Agentic SEO specialist \u2014 keyword research, technical audits, content SEO review. Recommendations via GitHub issues; no code implementation."
     }
   ]
 }

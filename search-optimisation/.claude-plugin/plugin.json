@@ -1,0 +1,20 @@
+{
+  "name": "search-optimisation",
+  "displayName": "Search Optimisation",
+  "version": "0.1.0",
+  "description": "Complete search and technical SEO practice in one install — practice-setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes delivery-practice for competitive brief.",
+  "author": {
+    "name": "Digital Agency"
+  },
+  "license": "MIT",
+  "keywords": [
+    "seo",
+    "search-optimisation",
+    "keyword-research",
+    "technical-seo",
+    "audit",
+    "content-seo",
+    "practice-setup"
+  ],
+  "skills": "./skills/"
+}

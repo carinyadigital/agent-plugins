@@ -23,6 +23,7 @@ PRACTICE_PLUGINS = (
     "delivery-practice",
     "content-marketing",
     "ux-design",
+    "search-optimisation",
 )
 
 

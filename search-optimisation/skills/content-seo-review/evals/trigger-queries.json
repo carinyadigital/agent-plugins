@@ -1,0 +1,20 @@
+[
+  {
+    "query": "Review this content seed PR for on-page SEO.",
+    "should_trigger": true
+  },
+  {
+    "query": "SEO review of spring-garden-tips post seed JSON.",
+    "should_trigger": true
+  },
+  {
+    "query": "Audit sitemap and robots.txt on production.",
+    "should_trigger": false,
+    "note": "technical-seo-audit skill"
+  },
+  {
+    "query": "Draft a new blog post seed.",
+    "should_trigger": false,
+    "note": "/content-marketing:draft-post companion skill"
+  }
+]

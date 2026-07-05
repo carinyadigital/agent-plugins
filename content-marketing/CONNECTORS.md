@@ -42,3 +42,12 @@ Later (social scheduling).
 
 Brand voice is **artifact consumption** — read `<resolved-brand-path>/brand-voice.md`;
 no dependency on `brand-creative` being installed.
+
+## Optional companion (search-optimisation)
+
+| Practice | Relationship | Invoke |
+| -------- | ------------ | ------ |
+| **search-optimisation** | Optional pairing | `/search-optimisation:content-seo-review` |
+
+Neither practice requires the other. Install `search-optimisation` when content
+production and SEO review run as a paired workflow.

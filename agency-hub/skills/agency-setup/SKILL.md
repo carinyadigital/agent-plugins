@@ -125,7 +125,7 @@ Map to **practice plugins** (MECE — one install per practice). Recommend; do n
 | `web-development` | `web-development` | `delivery-practice` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
 | `content-marketing` | `content-marketing` | `delivery-practice` | Shipped — run `/content-marketing:practice-setup` after bootstrap; invoke `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` for companion skills |
 | `social-media` | `social-media` | TBD | Practice plugin pending — interim: `content-marketing` skills for captions and curation |
-| `seo` | `seo` | `delivery-practice` | Practice plugin pending — interim: `seo`, `seo-specialist` |
+| `seo` | `search-optimisation` | `delivery-practice` | Practice plugin shipped — run `/search-optimisation:practice-setup` after bootstrap; invoke `/delivery-practice:competitive-brief` for companion skill |
 
 When recommending `delivery-practice`, name the skills the practice needs (e.g. `web-development` → `/delivery-practice:backlog`, `/delivery-practice:sprint`; `content-marketing` → `/delivery-practice:backlog`, `/delivery-practice:synthesize-research`). `brand-creative` never needs a companion.
 

@@ -1,0 +1,16 @@
+{
+  "skill_name": "keyword-research",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Keyword research for topic sustainable-accommodation — eco-friendly stays in regional NSW.",
+      "expected_output": "docs/work/seo/keyword-research-sustainable-accommodation.md with intent clusters, target keywords, and content opportunities.",
+      "assertions": [
+        "Writes docs/work/seo/keyword-research-sustainable-accommodation.md",
+        "Topic slug in filename is kebab-case matching the topic",
+        "Includes search intent groupings and recommended content angles",
+        "Does not open GitHub issues or audit technical SEO"
+      ]
+    }
+  ]
+}

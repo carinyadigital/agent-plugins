@@ -73,6 +73,12 @@ Content skills read `<resolved-brand-path>/brand-voice.md` directly — no bundl
 `brand-voice` skill and no install dependency on `brand-creative`. If the file does
 not exist, ask the user for tone guidance inline.
 
+## Optional companion (search-optimisation)
+
+Content seeds produced by `draft-post` and `draft-recipe` can be reviewed for on-page
+SEO via `/search-optimisation:content-seo-review`. Neither practice requires the other
+installed — document the optional pairing in both READMEs rather than a hard dependency.
+
 ## Prerequisites
 
 - **Instance profile** (optional) — `agency-hub:agency-setup` writes

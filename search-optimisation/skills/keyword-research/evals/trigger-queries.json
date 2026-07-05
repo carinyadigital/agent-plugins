@@ -1,0 +1,20 @@
+[
+  {
+    "query": "Research keywords for sustainable accommodation in regional areas.",
+    "should_trigger": true
+  },
+  {
+    "query": "Keyword research for seasonal recipe content topic.",
+    "should_trigger": true
+  },
+  {
+    "query": "Run a technical SEO audit on production.",
+    "should_trigger": false,
+    "note": "technical-seo-audit skill"
+  },
+  {
+    "query": "Write competitive brief for the accommodation market.",
+    "should_trigger": false,
+    "note": "/delivery-practice:competitive-brief companion skill"
+  }
+]

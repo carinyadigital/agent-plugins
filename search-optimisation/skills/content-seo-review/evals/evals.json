@@ -1,0 +1,16 @@
+{
+  "skill_name": "content-seo-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Content SEO review on seed PR — content/seeds/posts/spring-garden-tips.json",
+      "expected_output": "PR review comments on title, meta description, heading structure, keyword usage, and internal linking.",
+      "assertions": [
+        "Review covers title, description/excerpt SEO fields, and body heading structure",
+        "Comments reference keyword targets where relevant",
+        "Does not rewrite the seed file directly — review comments only",
+        "Does not run technical site-wide audit"
+      ]
+    }
+  ]
+}

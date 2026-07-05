@@ -9,7 +9,7 @@ cross-repo references, bundled-skill drift, or evals schema. Those stay in
 `validate.py`, which only makes sense once a plugin is registered in both
 marketplace manifests.
 
-Run this while iterating on a practice, skill, or connector before it's
+Run this while iterating on a practice or skill plugin before it's
 registered anywhere, and as the per-plugin gate before a release.
 
 Usage: python3 scripts/plugin-check.py [PLUGIN_DIR ...] [options]
@@ -146,38 +146,17 @@ class PluginChecker:
             else:
                 self.v.pass_(f"{self.rel(mcp_path)} defines {len(servers)} server(s)")
         elif isinstance(mcp, dict) and mcp:
-            # connectors/<slug>/.mcp.json legacy shape: server(s) at top level,
-            # referenced explicitly from plugin.json via "mcpServers": "./.mcp.json"
-            self.v.pass_(f"{self.rel(mcp_path)} defines {len(mcp)} server(s)")
-            self._check_connector_manifest_ref(plugin_dir, mcp_path)
+            self.v.fail(
+                "MCP_SHAPE_INVALID",
+                f"{self.rel(mcp_path)} must use the mcpServers wrapper shape",
+                file=self.rel(mcp_path),
+            )
         else:
             self.v.fail(
                 "MCP_EMPTY",
                 f"{self.rel(mcp_path)} must define at least one MCP server",
                 file=self.rel(mcp_path),
             )
-
-    def _check_connector_manifest_ref(self, plugin_dir: Path, mcp_path: Path) -> None:
-        if plugin_dir.parent.name != "connectors":
-            return
-        for manifest_path in (
-            plugin_dir / ".claude-plugin" / "plugin.json",
-            plugin_dir / ".cursor-plugin" / "plugin.json",
-        ):
-            if not manifest_path.is_file():
-                continue
-            manifest = self.v.load_json(manifest_path)
-            if not isinstance(manifest, dict):
-                continue
-            if manifest.get("mcpServers") != "./.mcp.json":
-                self.v.fail(
-                    "MCP_REF_MISSING",
-                    f'{self.rel(manifest_path)} must set "mcpServers": "./.mcp.json"',
-                    file=self.rel(manifest_path),
-                )
-            else:
-                self.v.pass_(f"{self.rel(manifest_path)} references .mcp.json")
-
     def _check_hooks(self, plugin_dir: Path) -> None:
         hooks_path = plugin_dir / "hooks" / "hooks.json"
         if not hooks_path.is_file():

@@ -96,34 +96,20 @@ class McpShapeTests(unittest.TestCase):
             errors = [i for i in checker.v.issues if i.severity == "error"]
             self.assertEqual(errors, [], msg=[e.message for e in errors])
 
-    def test_connector_mcp_shape_requires_manifest_ref(self) -> None:
+    def test_legacy_mcp_shape_fails(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
-            connectors_dir = Path(tmp) / "connectors"
-            plugin_dir = connectors_dir / "example"
+            plugin_dir = Path(tmp) / "some-practice"
             make_plugin_manifests(plugin_dir, author={"name": "Test"})
-            write_json(plugin_dir / ".mcp.json", {"example": {"type": "http", "url": "https://x"}})
+            write_json(
+                plugin_dir / ".mcp.json",
+                {"github": {"type": "http", "url": "https://api.githubcopilot.com/mcp/"}},
+            )
 
             checker = plugin_check.PluginChecker("pretty")
             checker.check_plugin(plugin_dir)
 
             codes = [i.code for i in checker.v.issues if i.severity == "error"]
-            self.assertIn("MCP_REF_MISSING", codes)
-
-            # Now fix it and confirm it passes.
-            fixed = {
-                "name": "example",
-                "version": "0.1.0",
-                "description": "Test plugin.",
-                "author": {"name": "Test"},
-                "mcpServers": "./.mcp.json",
-            }
-            write_json(plugin_dir / ".claude-plugin" / "plugin.json", fixed)
-            write_json(plugin_dir / ".cursor-plugin" / "plugin.json", fixed)
-
-            checker2 = plugin_check.PluginChecker("pretty")
-            checker2.check_plugin(plugin_dir)
-            errors2 = [i for i in checker2.v.issues if i.severity == "error"]
-            self.assertEqual(errors2, [], msg=[e.message for e in errors2])
+            self.assertIn("MCP_SHAPE_INVALID", codes)
 
 
 class CliTests(unittest.TestCase):

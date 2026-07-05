@@ -2,7 +2,8 @@
 """
 Structural validation for the Digital Agency plugin monorepo.
 
-Checks marketplace manifests, plugin.json completeness, MCP connectors,
+Checks marketplace manifests, plugin.json completeness, practice-plugin MCP
+definitions,
 SKILL.md frontmatter, cross-file references, bundled-skill drift, and
 evals.json schema.
 
@@ -580,40 +581,36 @@ class Validator:
                         )
 
     def check_mcp_connectors(self) -> None:
-        connectors_dir = ROOT / "connectors"
-        if not connectors_dir.is_dir():
-            self.warn("CONNECTORS_DIR_MISSING", "connectors/ directory not found")
-            return
+        checked: set[str] = set()
+        for entry in self.marketplace_entries():
+            if not isinstance(entry, dict):
+                continue
+            source = entry.get("source")
+            if not isinstance(source, str):
+                continue
+            plugin_dir = self.plugin_dir(source)
+            if plugin_dir is None or not plugin_dir.is_dir():
+                continue
+            mcp_path = plugin_dir / ".mcp.json"
+            if not mcp_path.is_file():
+                continue
+            rel_source = self.rel(plugin_dir)
+            if rel_source in checked:
+                continue
+            checked.add(rel_source)
 
-        for connector_dir in sorted(connectors_dir.iterdir()):
-            if not connector_dir.is_dir():
-                continue
-            mcp_path = connector_dir / ".mcp.json"
             mcp = self.load_json(mcp_path)
-            if mcp is None:
+            if not isinstance(mcp, dict):
                 continue
-            if not isinstance(mcp, dict) or not mcp:
+            servers = mcp.get("mcpServers")
+            if not isinstance(servers, dict) or not servers:
                 self.fail(
                     "MCP_EMPTY",
-                    f"{self.rel(mcp_path)} must define at least one MCP server",
+                    f"{self.rel(mcp_path)} mcpServers must define at least one server",
                     file=self.rel(mcp_path),
                 )
             else:
-                self.pass_(f"{self.rel(mcp_path)} defines {len(mcp)} server(s)")
-
-            for manifest_path in self.plugin_manifest_paths(connector_dir):
-                manifest = self.load_json(manifest_path)
-                if not isinstance(manifest, dict):
-                    continue
-                mcp_ref = manifest.get("mcpServers")
-                if mcp_ref != "./.mcp.json":
-                    self.fail(
-                        "MCP_REF_MISSING",
-                        f'{self.rel(manifest_path)} must set "mcpServers": "./.mcp.json"',
-                        file=self.rel(manifest_path),
-                    )
-                else:
-                    self.pass_(f"{self.rel(manifest_path)} references .mcp.json")
+                self.pass_(f"{self.rel(mcp_path)} defines {len(servers)} server(s)")
 
     def check_skill_frontmatter(self) -> None:
         for skill_path in self.source_skill_paths():
@@ -1203,7 +1200,7 @@ class Validator:
             ("marketplaceParity", "Claude ↔ Cursor marketplace parity", self.check_marketplace_parity),
             ("marketplacePluginSync", "Marketplace ↔ plugin.json sync", self.check_marketplace_plugin_sync),
             ("pluginManifests", "Per-plugin manifest completeness", self.check_plugin_manifests),
-            ("mcpConnectors", "MCP connector definitions", self.check_mcp_connectors),
+            ("mcpConnectors", "Practice plugin MCP definitions", self.check_mcp_connectors),
             ("skillFrontmatter", "SKILL.md YAML frontmatter", self.check_skill_frontmatter),
             ("markdownReferences", "Markdown cross-reference resolution", self.check_markdown_references),
             ("agentPrompts", "Agent canonical prompt files", self.check_agent_prompts),

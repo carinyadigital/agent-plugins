@@ -8,6 +8,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2026-07-05] — Connector integrations
+
+New bundled MCP connectors and updated connector documentation across five
+practice plugins.
+
+### content-marketing — v0.2.0
+
+- Bundled Canva MCP (`https://mcp.canva.com/mcp`) for social graphics and
+  template autofill
+- Updated CONNECTORS.md and practice-setup integration check to include Canva
+
+### search-optimisation — v0.2.0
+
+- Bundled Ahrefs MCP for SEO intelligence (keyword volume, difficulty,
+  backlink data)
+- Updated CONNECTORS.md, README, and practice-setup skill for Ahrefs and
+  optional Semrush / Search Console guidance
+
+### web-development — v0.2.0
+
+- Bundled Sentry MCP (`https://mcp.sentry.dev/mcp`) for error tracking
+- Updated CONNECTORS.md and practice-setup integration check to include Sentry
+
+### brand-creative — v0.1.1
+
+- CONNECTORS.md: document Canva, Google Drive, and SharePoint as design and
+  file-storage options
+
+### ux-design — v0.1.1
+
+- CONNECTORS.md: document Canva as an optional design reference for social-sized
+  layouts
+
 ## [2026-07-05] — Practice plugins v0.1.0
 
 First tagged release of the MECE practice-plugin catalogue: seven

@@ -10,6 +10,10 @@ tools: ["Read", "Write", "WebFetch", "mcp__*__slack_send_message"]
 
 # Registry Sync Agent
 
+## Status
+
+**v2 — designed, deferred.** Only meaningful once watched registries exist (Phase 3). v1 ships `agency-setup` only.
+
 ## Purpose
 
 The community ships skills. This agent notices.

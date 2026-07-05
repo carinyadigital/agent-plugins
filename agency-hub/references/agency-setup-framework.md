@@ -96,13 +96,10 @@ Show before the interview (adapt to context):
 
 ### 2. Services wanted
 
-Map to practice areas and recommended catalogue plugins (see `instance-profile-template.md` service table):
+Map to **practice plugins** (MECE — self-contained install units). See `instance-profile-template.md` § Service → plugin mapping:
 
-- Web development
-- Content marketing
-- Social media
-- SEO
-- Brand / creative
+- `brand-creative` — shipped; no `core` companion
+- `web-development`, `content-marketing`, `social-media`, `seo` — practice plugins pending; recommend interim catalogue entries and `core` where noted
 
 Quick mode: one primary practice. Full mode: all that apply now vs later.
 
@@ -129,6 +126,10 @@ Which apply **now** vs **later**:
 
 For each active target: repository path/URL if known. Website binding requires writing `.digital-agency/target.json` in the target repo **after user confirms** — propose the diff first.
 
+### Target pointers — legacy migration
+
+The canonical pointer filename is `.digital-agency/target.json` (product-named, generic). If an earlier hand-built instance used a business-named pointer, `--check-integrations` (or setup) should detect it and propose rename before the instance is treated as supported.
+
 ## Write Tier 1 and Tier 2 config
 
 After interview, before any write:
@@ -152,13 +153,13 @@ After instance config write (or on `--full` setup completion), ensure personal m
 2. **`allowlist.yaml`** — copy from `${CLAUDE_PLUGIN_ROOT}/references/allowlist-default.yaml` if missing; set `mode` per team size / deployment context (restrictive for firm-internal, confirm permissive explicitly for solo).
 3. **`install-log.yaml`** — create as `[]` if missing (from `references/install-log-template.yaml`).
 
-Tell the user where these live. Marketplace skills read them before install.
+Tell the user where these live. v2 marketplace skills read them before install.
 
 ## Hand off to brand-creative
 
-Do not duplicate brand interview logic. After config write:
+Do not duplicate brand interview logic — plugins are self-contained; `agency-hub` cannot invoke another plugin's skill directly. After config write, user-mediated hand-off within the same conversation:
 
-> Next: brand setup. Install **`brand-creative`** from the marketplace if needed, then run **`/brand-creative:practice-setup`** in this conversation. It reads seed material from setup and writes to `<instance-root>/brand/`. Content skills resolve brand via `config/instance.json`.
+> Next: brand setup. Install **`brand-creative`** from the marketplace if needed, then run **`/brand-creative:practice-setup`** in this conversation. It reads seed material from setup and writes to `<instance-root>/brand/`.
 
 If the user declines now, note in `instance.json` `seedMaterial.notes` that brand-creative practice-setup is pending.
 
@@ -177,7 +178,12 @@ Report: **connected** (successful probe), **configured but not verified**, or **
 1. Show instance profile and target skeleton changes in plain language.
 2. Wait for explicit confirmation before writing.
 3. After write: remind user they can edit files directly, run `--redo`, or `--check-integrations`.
-4. Close with **next steps** — install first practice plugin, run `/brand-creative:practice-setup`, deploy first scheduled agent (`deploy-squad-agents.sh --dry-run`).
+4. Close with **next steps**:
+   - Install the first recommended **practice plugin**
+   - Install **`core`** if that practice needs shared roles (`web-development` → yes; `brand-creative` → no)
+   - Run that practice's **`practice-setup`**
+   - Hand off to `/brand-creative:practice-setup` when brand is in scope
+   - Deploy first scheduled agent (`deploy-squad-agents.sh --dry-run`)
 
 ## Living profile rules
 

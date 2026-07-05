@@ -2,7 +2,7 @@
 
 The first plugin to install from `digital-agency`. It bootstraps a **team-shared, git-versioned instance workspace** — org profile, target bindings, squad charters — that every practice plugin's setup reads from.
 
-**v1 ships `agency-setup`.** Marketplace management skills are ported from `strategy-builder-hub` and may be refined in a later pass.
+**v1 ships `agency-setup` only.** Marketplace management skills are designed (see `references/agency-skill-design-framework.md`) but deferred until Phase 3 — ported stubs exist in `skills/` for shape validation, not as v1 deliverables.
 
 ## Who this is for
 
@@ -10,7 +10,7 @@ Anyone adopting the digital-agency catalogue for real work — any business, age
 
 ## First run: agency-setup
 
-Interviews the business, creates or binds an instance repo, writes `config/` and target skeletons, then hands off to brand voice setup.
+Interviews the business, creates or binds an instance repo, writes `config/` and target skeletons, then hands off to brand setup and the first practice plugin.
 
 ```
 /agency-hub:agency-setup
@@ -22,7 +22,7 @@ Interviews the business, creates or binds an instance repo, writes `config/` and
 | `--full` | Full interview including seed material review |
 | `--redo` | Ignore existing profile; re-interview and overwrite on confirmation |
 | `--resume` | Continue a paused interview |
-| `--check-integrations` | Report MCP connector status only; no interview |
+| `--check-integrations` | Report MCP connector status and legacy target-pointer paths; no interview |
 
 ## Config tiers
 
@@ -43,15 +43,26 @@ Link-first: `agency-setup` provides a template URL; the human creates the privat
 - **GitHub connector** — optional for `--check-integrations`; required when binding target repos hosted on GitHub.
 - **Instance template** — `digital-agency-instance` template repo (when published). Until then, create an empty private repo with the directory skeleton described in `references/agency-setup-framework.md`.
 
-## Commands
+## Commands (v1)
 
 | Command | Does |
 |---|---|
 | `/agency-hub:agency-setup` | Detect state → interview → bind instance repo → write config → hand off to brand-creative |
+| `/agency-hub:agency-setup --quick` | Minimal path: business name, one practice, one target |
+| `/agency-hub:agency-setup --redo` | Ignore existing profile, re-interview, overwrite on confirmation |
+| `/agency-hub:agency-setup --resume` | Continue a paused interview |
+| `/agency-hub:agency-setup --check-integrations` | Report connector status only, no interview |
+
+## Commands (v2 — deferred)
+
+Marketplace management — designed, not built for v1:
+
+| Command | Purpose |
+|---|---|
 | `/agency-hub:registry-browser [query]` | Search watched registries for community skills |
-| `/agency-hub:skill-installer [skill]` | Install a community skill (allowlist + QA gate) |
-| `/agency-hub:skills-qa [skill]` | Evaluate a skill against the Agency Skill Design Framework |
-| `/agency-hub:auto-updater` | Check for updates; apply only on explicit approval |
+| `/agency-hub:skill-installer [skill]` | Allowlist-gate, fetch, QA, install |
+| `/agency-hub:skills-qa [skill]` | Evaluate a third-party candidate |
+| `/agency-hub:auto-updater` | Check updates; apply on explicit approval |
 | `/agency-hub:disable [skill]` | Disable an installed community skill |
 | `/agency-hub:uninstall [skill]` | Uninstall a community skill |
 | `/agency-hub:related-skills-surfacer` | Suggest relevant community skills after a task |
@@ -60,20 +71,20 @@ Link-first: `agency-setup` provides a template URL; the human creates the privat
 
 | Skill | Status | Purpose |
 |---|---|---|
-| **agency-setup** | Shipped | Instance bootstrap interview |
-| **registry-browser** | Shipped (port) | Search watched registries |
-| **skill-installer** | Shipped (port) | Allowlist-gate, fetch, QA, install |
-| **skills-qa** | Shipped (port) | Evaluate third-party candidates — refine against agency framework later |
-| **auto-updater** | Shipped (port) | Check updates; apply on approval |
-| **disable / uninstall** | Shipped (port) | Manage installed community skills |
-| **related-skills-surfacer** | Shipped (port) | Suggest community skills after tasks |
-| **skill-manager** | Reference | Workflows used by disable/uninstall |
+| **agency-setup** | **v1 — shipped** | Instance bootstrap interview |
+| **registry-browser** | v2 — deferred | Search watched registries |
+| **skill-installer** | v2 — deferred | Allowlist-gate, fetch, QA, install |
+| **skills-qa** | v2 — deferred | Evaluate third-party candidates (distinct from maintainer `.agents/skills/skills-qa`) |
+| **auto-updater** | v2 — deferred | Check updates; apply on approval |
+| **disable / uninstall** | v2 — deferred | Manage installed community skills |
+| **related-skills-surfacer** | v2 — deferred | Suggest community skills after tasks |
+| **skill-manager** | v2 — reference | Workflows used by disable/uninstall |
 
-## Security posture
+## Security posture (v2)
 
-Same defense-in-depth as strategy-builder-hub: watched registries ≠ trust, restrictive allowlist defaults fail-closed, raw `SKILL.md` before install, skills-qa + injection scan, human approval + SHA pinning in `install-log.yaml`. See `skills/skill-installer/references/allowlist.md`.
+When marketplace management ships: watched registries ≠ trust, restrictive allowlist defaults fail-closed, raw `SKILL.md` before install, skills-qa + injection scan, human approval + SHA pinning in `install-log.yaml`. See `skills/skill-installer/references/allowlist.md`.
 
-## Scheduled agents
+## Scheduled agents (v2)
 
 | Agent | Cadence | Purpose |
 |---|---|---|
@@ -81,9 +92,11 @@ Same defense-in-depth as strategy-builder-hub: watched registries ≠ trust, res
 
 ## After setup
 
-1. Install the first practice plugin recommended during setup (e.g. `brand`, `engineering`, `content`).
-2. Run that practice's setup skill when available.
-3. Deploy the first scheduled agent — see `digital-agency/scripts/deploy-squad-agents.sh`.
+1. Install the first **practice plugin** recommended during setup (e.g. `brand-creative`).
+2. Install **`core`** if that practice needs shared roles (`web-development` → `core`; `brand-creative` → none).
+3. Run that practice's **`practice-setup`** (e.g. `/brand-creative:practice-setup`).
+4. Bind targets — website pointer (`.digital-agency/target.json`), social credentials when ready.
+5. Deploy the first scheduled agent — see `digital-agency/scripts/deploy-squad-agents.sh`.
 
 ## References
 

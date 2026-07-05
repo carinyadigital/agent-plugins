@@ -19,6 +19,10 @@ metadata:
 ---
 # Skill Manager
 
+## Status
+
+**v2 — designed, deferred.** Reference for disable/uninstall workflows; v1 ships `agency-setup` only.
+
 ## When to use
 
 Reference loaded by `uninstall` and `disable` — not user-invocable directly.

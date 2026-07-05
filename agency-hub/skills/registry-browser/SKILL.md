@@ -18,6 +18,10 @@ metadata:
 ---
 # /agency-hub:registry-browser
 
+## Status
+
+**v2 — designed, deferred.** Marketplace management ships in Phase 3; v1 ships `agency-setup` only.
+
 ## When to use
 
 Search watched registries; preview full SKILL.md; add registries to watchlist on confirmation.

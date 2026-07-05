@@ -19,6 +19,10 @@ metadata:
 ---
 # /agency-hub:related-skills-surfacer
 
+## Status
+
+**v2 — designed, deferred.** Marketplace management ships in Phase 3; v1 ships `agency-setup` only.
+
 ## When to use
 
 Suggest community skills matching recent task — once, non-intrusively; strong matches only.

@@ -19,6 +19,10 @@ metadata:
 ---
 # /agency-hub:disable
 
+## Status
+
+**v2 — designed, deferred.** Marketplace management ships in Phase 3; v1 ships `agency-setup` only.
+
 ## When to use
 
 Temporarily disable community skill — rename SKILL.md and hooks so discovery/triggers stop; files remain for re-enable.

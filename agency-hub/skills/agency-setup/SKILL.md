@@ -3,10 +3,10 @@ name: agency-setup
 description: >
   Instance bootstrap interview — detects existing instance state, guides repo
   creation (link-first), interviews business identity/services/cadence/targets,
-  writes config/instance.json and target skeletons, then hands off to brand-voice
-  setup. Use on first install, when the user says "set up my instance" or
-  "bootstrap my agency workspace", or to re-run integration checks after adding MCP
-  connectors.
+  writes config/instance.json and target skeletons, then hands off to
+  brand-creative practice-setup. Use on first install, when the user says "set up
+  my instance" or "bootstrap my agency workspace", or to re-run integration checks
+  after adding MCP connectors.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
 disable-model-invocation: true
@@ -100,7 +100,9 @@ For each server in `${CLAUDE_PLUGIN_ROOT}/.mcp.json`:
 - Configured but not probeable → ⚪ configured but not verified
 - Missing → ✗ not found + manual fallback
 
-Write findings; if `--check-integrations` only, stop here unless user asks to continue setup.
+Write findings. Also scan bound target repos for legacy business-named pointer files (non-`.digital-agency/target.json`); if found, propose rename to `.digital-agency/target.json` per framework § Target pointers.
+
+If `--check-integrations` only, stop here unless user asks to continue setup.
 
 ### Step 4 — Interview
 
@@ -115,13 +117,17 @@ Follow framework sections. **2–3 prompts per turn.** Wait for typed answers wh
 
 #### 4b — Services wanted
 
-| Practice area | Maps to plugins (recommend, don't install) |
-|---|---|
-| web-development | engineering, product-management, frontend-engineer, delivery-lead, qa-engineer, webops-engineer, principal-architect |
-| content-marketing | content, brand, content-strategist, content-writer |
-| social-media | content, content-strategist, content-writer |
-| seo | seo, seo-specialist |
-| brand-creative | brand-creative |
+Map to **practice plugins** (MECE — one install per practice). Recommend; do not install autonomously. See `instance-profile-template.md` service table for full mapping.
+
+| Practice area | Practice plugin | `core` companion | Notes |
+|---|---|---|---|
+| `brand-creative` | `brand-creative` | none | Shipped — no companion install |
+| `web-development` | `web-development` | `core` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
+| `content-marketing` | `content-marketing` | `core` | Practice plugin pending — interim: `content`, `content-strategist`, `content-writer` |
+| `social-media` | `social-media` | TBD | Practice plugin pending — interim: `content`, `content-strategist`, `content-writer` |
+| `seo` | `seo` | TBD | Practice plugin pending — interim: `seo`, `seo-specialist` |
+
+When recommending `core`, name the roles the practice needs (e.g. `web-development` → `/core:product-manager`, `/core:delivery-lead`). `brand-creative` never needs `core`.
 
 Quick: one primary. Full: now vs later for each.
 
@@ -190,7 +196,7 @@ On **yes**:
 
 ### Step 7 — Hand off to brand-creative
 
-Do not run the brand interview here. Say:
+Do not run the brand interview here — plugins are self-contained and `agency-hub` cannot invoke another plugin's skill directly. User-mediated hand-off within the same conversation:
 
 > **Brand setup next.** If `brand-creative` is not installed, install it from the marketplace. Then run `/brand-creative:practice-setup` in this conversation — it reads seed material from instance setup and writes to `<instance-root>/brand/`.
 
@@ -198,14 +204,15 @@ If deferred, set `seedMaterial.notes` accordingly.
 
 ### Step 8 — Next steps
 
-Close with:
+Close with a concrete path — not a pile of config files:
 
-1. **Install** first recommended practice plugin from marketplace.
-2. **Brand** — install `brand-creative` if needed; run `/brand-creative:practice-setup`.
-3. **Bind targets** — complete website pointer, social credentials when available.
-4. **Deploy** — dry-run first scheduled agent:
+1. **Install** the first recommended **practice plugin** from the marketplace.
+2. **`core` companion** — if that practice needs shared roles it does not own (e.g. `web-development` → install `core`, then use `/core:product-manager` and `/core:delivery-lead`; `brand-creative` needs no companion).
+3. **Practice setup** — run that practice's `practice-setup` skill (e.g. `/brand-creative:practice-setup` for brand).
+4. **Bind targets** — complete website `.digital-agency/target.json` pointer, social credentials when available.
+5. **Deploy** — launch the first scheduled agent (dry-run first):
    `./digital-agency/scripts/deploy-squad-agents.sh --dry-run --instance <path>`
-5. **Edit anytime** — change `config/instance.json` directly or `/agency-hub:agency-setup --redo`.
+6. **Edit anytime** — change `config/instance.json` directly or `/agency-hub:agency-setup --redo`.
 
 ## Pause and resume
 
@@ -230,7 +237,7 @@ Location: instance repo `config/.agency-setup-resume.json` if instance exists; e
 
 **Input:** Acme Co, single business, web-development + content, website target, quick mode.
 
-**Expected output:** `config/instance.json` complete; `targets/website.json` skeleton; `plugins.json` lists agency-hub + engineering + content; squad charters for site/content; handoff message to brand-voice.
+**Expected output:** `config/instance.json` complete; `targets/website.json` skeleton; `plugins.json` lists `agency-hub` + recommended practice plugins; squad charters for site/content; handoff to `/brand-creative:practice-setup` and next-steps naming `core` if web-development was chosen.
 
 ## Outputs
 

@@ -19,6 +19,10 @@ metadata:
 ---
 # /agency-hub:uninstall
 
+## Status
+
+**v2 — designed, deferred.** Marketplace management ships in Phase 3; v1 ships `agency-setup` only.
+
 ## When to use
 
 Fully remove hub-installed community skill — confirm paths, delete files, log uninstall.

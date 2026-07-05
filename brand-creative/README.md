@@ -1,18 +1,21 @@
 # brand-creative
 
-Root-level **practice plugin** — one install delivers the complete brand service: setup interview, voice lifecycle, and visual identity guide. Pilot for the practice-packaging pattern used by future practice plugins.
+Root-level **practice plugin** — one install delivers the complete brand service:
+setup interview, voice lifecycle, and visual identity guide. Self-contained under
+the MECE practice model: edit skills here only; nothing is vendored from elsewhere.
 
-Install standalone (Try tier) or after `agency-hub:agency-setup` recommends it.
+Install standalone or after `agency-hub:agency-setup` recommends it.
 
 ## Who this is for
 
-Teams that want brand voice and visual identity in one plugin rather than assembling discipline skills separately. Works with or without an instance repo:
+Teams that want brand voice and visual identity in one plugin. Works with or
+without an instance repo:
 
 | Context | Brand artefacts land at |
 |---|---|
 | Instance repo (`config/instance.json` present) | `<instance-root>/brand/` |
 | Target repo (`.digital-agency/target.json` pointer) | Instance `brand/` via pointer |
-| Standalone / Try tier | `docs/brand/` in the current project |
+| Standalone (no instance) | `docs/brand/` in the current project |
 
 ## First run: practice-setup
 
@@ -45,23 +48,28 @@ Direct invocation works post-setup:
 /brand-creative:brand-guide write --from figma
 ```
 
-## Relationship to `skills/brand`
-
-The `brand` discipline plugin remains available for fine-grained Try-tier installs. `brand-creative` vendors copies of `brand-guide` and `brand-voice` from `skills/brand/` — edit the canonical skills there, then run `python3 scripts/sync-agent-skills.py`.
+Path resolution for all skills: `references/brand-conventions.md`.
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:agency-setup` writes `config/instance.json`; practice-setup reads business identity and seed material without re-asking.
-- **Connectors** (optional) — Notion, Atlassian, Slack, Figma, Fireflies enable `brand-voice discover`. Visual guide generation benefits from Figma.
+- **Instance profile** (optional) — `agency-hub:agency-setup` writes
+  `config/instance.json`; practice-setup reads business identity and seed material
+  without re-asking.
+- **Connectors** (optional) — Notion, Atlassian, Slack, Figma, Fireflies enable
+  `brand-voice discover`. Visual guide generation benefits from Figma.
 
 ## After setup
 
-1. Content and engineering skills read brand from the resolved path automatically.
+1. Content and engineering roles read brand from the resolved path automatically.
 2. Re-run `/brand-creative:practice-setup --redo` to refresh voice or guide.
-3. Use `brand-voice enforce` for on-brand copy; `brand-guide review` after design changes.
+3. Use `brand-voice enforce` for on-brand copy; `brand-guide review` after design
+   changes.
 
 ## References
 
 - `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/brand-conventions.md` — path resolution and artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; read-only copy)
+- `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
+
+Meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`)
+are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

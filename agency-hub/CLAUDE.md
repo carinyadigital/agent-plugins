@@ -81,15 +81,17 @@ Authoritative audit trail: `install-log.yaml` in this directory.
 
 ## Built-in plugins
 
-First-party plugins from the digital-agency catalogue — installed via marketplace, **not** via `skill-installer`. `uninstall` and `disable` refuse to touch them.
+First-party plugins from the digital-agency catalogue — installed via marketplace, **not** via v2 `skill-installer`. `uninstall` and `disable` (when shipped) refuse to touch them.
 
 **Hub:** `agency-hub`
 
-**Practice skills:** `engineering`, `product-management`, `brand`, `content`, `seo`
+**Practice plugins:** `brand-creative` (shipped); `web-development`, `content-marketing`, `social-media`, `seo` (pending)
+
+**Shared roles:** `core` (pending — Product Manager, Delivery Lead, and other cross-practice roles)
+
+**Interim catalogue (until practice plugins ship):** `engineering`, `product-management`, `brand`, `content`, `seo` skill plugins; named agents under `agents/`
 
 **Connectors:** `github`, `gitlab`, `vercel`, `figma`, `linear`, `playwright`, `context7`, `next-devtools`
-
-**Agents:** `frontend-engineer`, `senior-frontend-engineer`, `principal-frontend-engineer`, `qa-engineer`, `webops-engineer`, `product-manager`, `delivery-lead`, `principal-architect`, `content-strategist`, `content-writer`, `seo-specialist`
 
 ---
 

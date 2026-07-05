@@ -20,6 +20,10 @@ metadata:
 ---
 # /agency-hub:skill-installer
 
+## Status
+
+**v2 — designed, deferred.** Marketplace management ships in Phase 3; v1 ships `agency-setup` only.
+
 ## When to use
 
 Install community skill — allowlist, raw SKILL.md, trust check, skills-qa, explicit yes before any write.

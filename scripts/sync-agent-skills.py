@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-Re-sync bundled skills from the skills source tree.
+Re-sync bundled skills from canonical source trees.
 
-Agent plugins under agents/<slug>/skills/<name>/ and practice plugins under
-<practice>/skills/<name>/ are vendored copies of skills/<discipline>/skills/<name>/.
-The skills/ tree is the source of truth; run this after editing a skill there to
-propagate the change into every agent and practice plugin that bundles it.
+Agent plugins under agents/<slug>/skills/<name>/ bundle copies from:
+  - skills/<discipline>/skills/<name>/  (discipline plugins)
+  - brand-creative/skills/<name>/       (brand-guide, brand-voice — MECE owned here)
+
+Run after editing a canonical skill to propagate into every agent that bundles it.
 
 Usage: python3 scripts/sync-agent-skills.py
 """
@@ -15,21 +16,29 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENTS = ROOT / "agents"
-PRACTICES = ROOT / "skills"
+DISCIPLINES = ROOT / "skills"
+BRAND_CREATIVE_SKILLS = ROOT / "brand-creative" / "skills"
+BRAND_CONVENTIONS = ROOT / "brand-creative" / "references" / "brand-conventions.md"
 
-# Root-level practice plugins → skills/<discipline>/ source
-PRACTICE_PLUGINS: dict[str, str] = {
-    "brand-creative": "brand",
+# agent slug -> skill names to skip when syncing (MECE — skill lives elsewhere only)
+SKIP_AGENT_BUNDLES: dict[str, set[str]] = {
+    "frontend-engineer": {"brand-guide"},
 }
-
-# index every skill name -> source dir in practices (skip shared refs)
-src_by_name: dict[str, Path] = {}
-for sk in PRACTICES.glob("*/skills/*"):
-    if sk.is_dir() and sk.name != "references":
-        src_by_name[sk.name] = sk
 
 synced = 0
 missing: list[str] = []
+
+
+def build_skill_sources() -> dict[str, Path]:
+    sources: dict[str, Path] = {}
+    for sk in DISCIPLINES.glob("*/skills/*"):
+        if sk.is_dir() and sk.name != "references":
+            sources[sk.name] = sk
+    if BRAND_CREATIVE_SKILLS.is_dir():
+        for sk in BRAND_CREATIVE_SKILLS.iterdir():
+            if sk.is_dir() and sk.name not in {"references", "practice-setup"}:
+                sources[sk.name] = sk
+    return sources
 
 
 def sync_skill_bundle(dest: Path, src: Path) -> None:
@@ -40,7 +49,7 @@ def sync_skill_bundle(dest: Path, src: Path) -> None:
 
 
 def sync_discipline_refs(dest_skills_dir: Path, discipline: str) -> None:
-    refs = PRACTICES / discipline / "skills" / "references"
+    refs = DISCIPLINES / discipline / "skills" / "references"
     if not refs.is_dir():
         return
     dest = dest_skills_dir / "references"
@@ -48,50 +57,48 @@ def sync_discipline_refs(dest_skills_dir: Path, discipline: str) -> None:
     shutil.copytree(refs, dest)
 
 
+def sync_brand_conventions(dest_skills_dir: Path) -> None:
+    if not BRAND_CONVENTIONS.is_file():
+        return
+    dest_dir = dest_skills_dir / "references"
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(BRAND_CONVENTIONS, dest_dir / "brand-conventions.md")
+
+
+src_by_name = build_skill_sources()
+
 for agent_dir in sorted(AGENTS.glob("*")):
     skills_dir = agent_dir / "skills"
     if not skills_dir.is_dir():
         continue
 
+    skip = SKIP_AGENT_BUNDLES.get(agent_dir.name, set())
     disciplines_used: set[str] = set()
+    uses_brand = False
+
     for bundled in sorted(skills_dir.iterdir()):
         if not bundled.is_dir() or bundled.name == "references":
+            continue
+        if bundled.name in skip:
+            shutil.rmtree(bundled, ignore_errors=True)
             continue
         src = src_by_name.get(bundled.name)
         if not src:
             missing.append(str(bundled.relative_to(ROOT)))
             continue
         sync_skill_bundle(bundled, src)
-        disciplines_used.add(src.parent.parent.name)
+        if src.parent.parent.name == "brand-creative":
+            uses_brand = True
+        else:
+            disciplines_used.add(src.parent.parent.name)
 
     for discipline in disciplines_used:
         sync_discipline_refs(skills_dir, discipline)
 
-for practice_name, discipline in sorted(PRACTICE_PLUGINS.items()):
-    practice_dir = ROOT / practice_name
-    dest_skills = practice_dir / "skills"
-    if not dest_skills.is_dir():
-        missing.append(f"{practice_name}/skills/ (missing practice plugin dir)")
-        continue
+    if uses_brand:
+        sync_brand_conventions(skills_dir)
 
-    src_skills_root = PRACTICES / discipline / "skills"
-    for src in sorted(src_skills_root.iterdir()):
-        if not src.is_dir() or src.name == "references":
-            continue
-        dest = dest_skills / src.name
-        sync_skill_bundle(dest, src)
-
-    sync_discipline_refs(dest_skills, discipline)
-
-    refs = src_skills_root / "references"
-    plugin_refs = practice_dir / "references"
-    if refs.is_dir():
-        plugin_refs.mkdir(parents=True, exist_ok=True)
-        for ref_file in sorted(refs.iterdir()):
-            if ref_file.is_file():
-                shutil.copy2(ref_file, plugin_refs / ref_file.name)
-
-print(f"synced {synced} bundled skill dir(s) from skills/")
+print(f"synced {synced} bundled skill dir(s)")
 if missing:
     print("WARN: no skills source found for:", file=sys.stderr)
     for m in missing:

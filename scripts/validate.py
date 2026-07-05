@@ -292,7 +292,9 @@ class Validator:
         return sources
 
     def source_skill_paths(self) -> list[Path]:
-        return sorted(ROOT.glob("skills/*/skills/*/SKILL.md"))
+        paths = sorted(ROOT.glob("skills/*/skills/*/SKILL.md"))
+        paths.extend(sorted(ROOT.glob("agency-hub/skills/*/SKILL.md")))
+        return sorted(set(paths))
 
     def marketplace_entries(self) -> list[dict[str, Any]]:
         entries: list[dict[str, Any]] = []
@@ -681,12 +683,15 @@ class Validator:
         patterns = [
             (ROOT / "skills", "skills/*/skills/*/SKILL.md"),
             (ROOT / "agents", "agents/*/agents/*.md"),
+            (ROOT / "agency-hub", "agency-hub/skills/*/*.md"),
         ]
 
         checked_files: list[Path] = []
-        for base, _ in patterns:
+        for base, pattern in patterns:
             if base.name == "skills":
                 checked_files.extend(sorted(base.glob("*/skills/*/*.md")))
+            elif base.name == "agency-hub":
+                checked_files.extend(sorted(base.glob("skills/*/*.md")))
             else:
                 checked_files.extend(sorted(base.glob("*/*/*.md")))
 

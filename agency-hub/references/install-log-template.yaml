@@ -1,0 +1,7 @@
+# Install audit log for agency-hub community skills.
+# Append-only — see skill-installer/references/install-log-schema.md.
+#
+# Created by /agency-hub:agency-setup if missing.
+# Path: ~/.claude/plugins/config/digital-agency/agency-hub/install-log.yaml
+
+[]

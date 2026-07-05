@@ -46,6 +46,10 @@ scripts/               # validate.py · sync-agent-skills.py (+ orchestrate.py, 
 
 ## Getting Started
 
+**First install:** add **`agency-hub`** from the marketplace and run `/agency-hub:agency-setup` to bootstrap your instance workspace (`config/`, `brand/`, `squads/`). Then install practice plugins and agents.
+
+See [agency-hub/README.md](./agency-hub/README.md) for the full bootstrap flow.
+
 ### Cowork
 
 In Cowork, open **Settings → Plugins → Add plugin** and either:

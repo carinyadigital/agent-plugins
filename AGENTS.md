@@ -5,6 +5,13 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 ## Repository Structure
 
 ```
+├── agency-hub/                      # instance bootstrap + (v2) marketplace — install first
+│   ├── .claude-plugin/plugin.json
+│   ├── .cursor-plugin/plugin.json
+│   ├── .mcp.json
+│   ├── references/                  # instance profile template, setup framework
+│   └── skills/
+│       └── agency-setup/SKILL.md    # instance bootstrap; marketplace skills ported from strategy-builder-hub
 ├── .agents/                         # local maintainer skills & tooling
 │   ├── config                       #   crew runtime — steering + work paths for this repo
 │   ├── steering/                    #   strategy, solution, roadmap, backlog (gitignored)
@@ -46,6 +53,14 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/` — it propagates bundled copies into every agent under `agents/` that uses that skill. **Edit skills in `skills/`**, not in agent bundles.
 
 Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks MCP connector wiring, validates SKILL.md frontmatter, resolves markdown cross-references, detects bundled-skill drift against `skills/`, and validates `evals/` JSON schema. Use `--format json` for CI; `--strict` once skills ship full agency-framework frontmatter. CI runs the same check on every PR via `.github/workflows/validate.yml`. Install the local pre-commit hook with `scripts/install-git-hooks.sh`. A `version-bump` GitHub Action (coming soon) will patch-bump each plugin's `plugin.json` `version` so a branch ends up exactly one patch ahead of `main`.
+
+## Agency Hub (install first)
+
+| Plugin | Skills (v1) | Status |
+| ------ | ----------- | ------ |
+| `agency-hub` | `agency-setup` + marketplace skills (ported from strategy-builder-hub) | Shipped; skills-qa alignment with agency framework — refine later |
+
+Bootstraps a git-versioned instance repo (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `agency-hub/README.md` and `agency-hub/references/agency-setup-framework.md`.
 
 ## Agents (current roster)
 

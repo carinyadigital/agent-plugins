@@ -33,8 +33,13 @@ own documentation always wins over these defaults.
    truth for stack, structure, naming, and commands.
 2. If present, read `docs/architecture/*` for routing and structure
    decisions already made.
-3. If present, read `docs/brand/brand-guide.md` for colors, typography,
-   and UI tokens.
+3. **Brand tokens (read-only)** — resolve the brand directory (first match wins):
+   explicit user path → `config/instance.json` at working root →
+   `<instance-root>/brand/` → `.digital-agency/target.json` pointer → instance
+   `brand/` → `docs/brand/` in the current project. If
+   `<brand-dir>/brand-guide.md` exists, read it for colors, typography, and UI
+   tokens. If it does not exist, ask the user for tokens inline — do not author a
+   brand guide (use `/brand-creative:brand-guide write` or practice-setup).
 4. Confirm package manager and runtime version from `package.json` /
    `.nvmrc` before running anything.
 

@@ -1,8 +1,7 @@
 # Brand conventions
 
-Canonical rules for paths, artefacts, and skill boundaries. Skills under
-`skills/brand/` should read this file when resolving paths or
-routing near-miss requests.
+Canonical rules for paths, artefacts, and skill boundaries. All `brand-creative`
+skills read this file when resolving paths or routing near-miss requests.
 
 ## Brand path resolution
 
@@ -16,8 +15,8 @@ order — first match wins:
 3. **Inside a target repo** — `.digital-agency/target.json` exists at the working
    root → read the pointer, resolve the instance root, then
    `<instance-root>/brand/`.
-4. **Standalone / Try tier** — no instance or target pointer → `docs/brand/` in
-   the current project (legacy default).
+4. **Standalone** — no instance or target pointer → `docs/brand/` in the current
+   project.
 
 When `config/instance.json` defines `brand.voice` or related paths, treat them as
 relative to the instance root unless the user overrides.

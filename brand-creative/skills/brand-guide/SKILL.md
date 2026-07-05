@@ -20,14 +20,14 @@ Visual identity guide for agents building UI, slides, or formatted artefacts.
 
 ## Conventions
 
-Read [../references/brand-conventions.md](../references/brand-conventions.md) when
+Read [../../references/brand-conventions.md](../../references/brand-conventions.md) when
 checking artefact boundaries or resolving paths.
 
 ## Artefact
 
 Default path: `<brand-dir>/brand-guide.md` — colors, typography, logo, imagery,
 spacing, and UI tokens. Resolve `<brand-dir>` per
-[../references/brand-conventions.md](../references/brand-conventions.md).
+[../../references/brand-conventions.md](../../references/brand-conventions.md).
 
 ## Path resolution
 

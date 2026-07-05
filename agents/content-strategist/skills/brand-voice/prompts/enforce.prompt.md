@@ -5,13 +5,17 @@ apply voice constants and tone flexes, validate output, explain brand choices.
 
 Read [SKILL.md](../SKILL.md) and [references/voice-constant-tone-flexes.md](../references/voice-constant-tone-flexes.md).
 
+## Path
+
+Resolve `<brand-dir>` per [brand-conventions.md](../../references/brand-conventions.md).
+
 ## Load guidelines (stop at first hit)
 
 1. **Session** — guidelines generated earlier in this conversation
-2. **File** — `docs/brand/brand-voice.md` (or user-named path)
-3. **Ask user** — suggest `brand-voice discover`, `brand-voice write`, or paste guidelines
+2. **File** — `<brand-dir>/brand-voice.md` (or user-named path)
+3. **Ask user** — suggest `/brand-creative:brand-voice discover`, `write`, or paste guidelines
 
-Read `docs/brand/brand.local.md` for `strictness` (strict | balanced | flexible)
+Read `<brand-dir>/brand.local.md` for `strictness` (strict | balanced | flexible)
 and `always_explain` (default true if unset).
 
 ## Analyze the request

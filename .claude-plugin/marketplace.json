@@ -77,12 +77,6 @@
       "description": "Product management practice \u2014 strategy (product, roadmap, backlog), epic tasks, sprint planning, validation, plus operational skills for specs, stakeholder updates, research synthesis, competitive analysis, metrics, and brainstorming. Delivery skills follow docs/product/ and docs/work/{epic}/ conventions."
     },
     {
-      "name": "brand",
-      "displayName": "Brand",
-      "source": "./skills/brand",
-      "description": "Brand practice \u2014 visual identity guide (brand-guide) and voice lifecycle (brand-voice discover, write, review, refine, enforce). Artefacts live under docs/brand/."
-    },
-    {
       "name": "content",
       "displayName": "Content",
       "source": "./skills/content",

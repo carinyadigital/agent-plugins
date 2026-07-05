@@ -5,6 +5,9 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 ## Repository Structure
 
 ```
+├── brand-creative/                  # practice plugin — brand-guide, brand-voice, practice-setup (MECE owned)
+│   ├── references/                  # brand-conventions + synced meta-framework files
+│   └── skills/
 ├── agency-hub/                      # instance bootstrap + (v2) marketplace — install first
 │   ├── .claude-plugin/plugin.json
 │   ├── .cursor-plugin/plugin.json
@@ -47,18 +50,21 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 │       ├── subagents/*.yaml         #   depth-1 leaf workers
 │       ├── steering-examples.json
 │       └── README.md                #   security tier + handoff notes
-└── scripts/                         # sync-agent-skills.py, validate.py (+ orchestrate.py, deploy-managed-agent.sh — coming soon)
+└── scripts/                         # sync-agent-skills.py, sync-references.py, validate.py
 ```
 
-Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/` — it propagates bundled copies into every agent under `agents/` that uses that skill. **Edit skills in `skills/`**, not in agent bundles.
+Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/` or `brand-creative/skills/` — it propagates bundled copies into agents that bundle those skills. **Edit discipline skills in `skills/`** and **brand skills in `brand-creative/skills/`**, not in agent bundles.
 
-Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks MCP connector wiring, validates SKILL.md frontmatter, resolves markdown cross-references, detects bundled-skill drift against `skills/`, and validates `evals/` JSON schema. Use `--format json` for CI; `--strict` once skills ship full agency-framework frontmatter. CI runs the same check on every PR via `.github/workflows/validate.yml`. Install the local pre-commit hook with `scripts/install-git-hooks.sh`. A `version-bump` GitHub Action (coming soon) will patch-bump each plugin's `plugin.json` `version` so a branch ends up exactly one patch ahead of `main`.
+Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`).
+
+Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks MCP connector wiring, validates SKILL.md frontmatter, resolves markdown cross-references, detects bundled-skill drift against canonical sources, and validates `evals/` JSON schema.
 
 ## Agency Hub (install first)
 
 | Plugin | Skills (v1) | Status |
 | ------ | ----------- | ------ |
 | `agency-hub` | `agency-setup` + marketplace skills (ported from strategy-builder-hub) | Shipped; skills-qa alignment with agency framework — refine later |
+| `brand-creative` | `practice-setup`, `brand-guide`, `brand-voice` | Shipped; first MECE practice plugin |
 
 Bootstraps a git-versioned instance repo (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `agency-hub/README.md` and `agency-hub/references/agency-setup-framework.md`.
 
@@ -66,14 +72,14 @@ Bootstraps a git-versioned instance repo (`config/instance.json`, `config/target
 
 | Slug | Practice | Bundled skills | Status |
 | ---- | -------- | -------------- | ------ |
-| `frontend-engineer` | Engineering | `implement`, `code-review`, `create-mr`, `brand-guide`, `component-scaffold` (agent-local) | Shipped; not yet operationally proven |
+| `frontend-engineer` | Engineering | `implement`, `code-review`, `create-mr`, `component-scaffold` (agent-local); reads `brand-guide.md` from resolved brand path | Shipped; not yet operationally proven |
 | `senior-frontend-engineer` | Engineering | `code-review`, `design` | Shipped; not yet operationally proven |
 | `product-manager` | Product | All 13 product-management skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; not yet operationally proven |
 | `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `design`, `validate` | Shipped; not yet operationally proven |
 | `qa-engineer` | Engineering | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Shipped; not yet operationally proven |
 | `webops-engineer` | Engineering | `deploy-qa`, `debug`, `platform-health` | Shipped; not yet operationally proven |
-| `content-strategist` | Content | `content-calendar`, `curate-content`, `synthesize-research`, `brand-voice`, `backlog` | Shipped; not yet operationally proven |
-| `content-writer` | Content | `draft-post`, `draft-recipe`, `write-captions`, `edit-content`, `brand-voice` | Shipped; not yet operationally proven |
+| `content-strategist` | Content | `content-calendar`, `curate-content`, `synthesize-research`, `brand-voice` (synced from brand-creative), `backlog` | Shipped; not yet operationally proven |
+| `content-writer` | Content | `draft-post`, `draft-recipe`, `write-captions`, `edit-content`, `brand-voice` (synced from brand-creative) | Shipped; not yet operationally proven |
 | `seo-specialist` | SEO | `keyword-research`, `technical-seo-audit`, `content-seo-review`, `competitive-brief` | Shipped; not yet operationally proven |
 | `delivery-lead` | Operations (cross-cutting) | `skills-index`, `backlog`, `tasks`, `sprint`, `validate`, `stakeholder-update`, `metrics-review` | Shipped; not yet operationally proven |
 | `principal-architect` | Engineering (Architecture) | `solution`, `adr`, `design`, `docs` | Shipped; not yet operationally proven |

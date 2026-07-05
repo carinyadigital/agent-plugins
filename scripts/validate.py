@@ -72,9 +72,9 @@ MARKETPLACE_SYNC_FIELDS = ("name", "description")
 SKIP_DRIFT_NAMES = frozenset({"references", "practice-setup"})
 IGNORE_DRIFT_FILES = frozenset({".DS_Store"})
 
-# Root-level practice plugins → skills/<discipline>/ source (see sync-agent-skills.py)
-PRACTICE_PLUGINS: dict[str, str] = {
-    "brand-creative": "brand",
+# Agents that must not bundle a skill even when a source exists (MECE ownership)
+SKIP_AGENT_BUNDLES: dict[str, frozenset[str]] = {
+    "frontend-engineer": frozenset({"brand-guide"}),
 }
 
 
@@ -294,6 +294,11 @@ class Validator:
         for skill_dir in ROOT.glob("skills/*/skills/*"):
             if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                 sources[skill_dir.name] = skill_dir
+        brand_creative_skills = ROOT / "brand-creative" / "skills"
+        if brand_creative_skills.is_dir():
+            for skill_dir in brand_creative_skills.iterdir():
+                if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
+                    sources[skill_dir.name] = skill_dir
         return sources
 
     def source_skill_paths(self) -> list[Path]:
@@ -773,11 +778,23 @@ class Validator:
             if not skills_dir.is_dir():
                 continue
 
+            skip_bundles = SKIP_AGENT_BUNDLES.get(agent_dir.name, frozenset())
+
             for bundled_dir in sorted(skills_dir.iterdir()):
                 if not bundled_dir.is_dir() or bundled_dir.name in SKIP_DRIFT_NAMES:
                     continue
 
                 rel_bundle = self.rel(bundled_dir)
+                if bundled_dir.name in skip_bundles:
+                    self.fail(
+                        "SKILL_DRIFT",
+                        f"{rel_bundle} must not bundle {bundled_dir.name!r} — MECE owned by brand-creative only",
+                        file=rel_bundle,
+                        hint="Remove the bundled copy; frontend-engineer reads brand-guide.md from the resolved path",
+                    )
+                    drift_count += 1
+                    continue
+
                 source_dir = sources.get(bundled_dir.name)
                 if source_dir is None:
                     agent_local += 1
@@ -824,48 +841,9 @@ class Validator:
             )
 
     def check_practice_plugin_skill_drift(self, sources: dict[str, Path]) -> int:
-        drift_count = 0
-        practice_local = 0
-
-        for practice_name, discipline in sorted(PRACTICE_PLUGINS.items()):
-            skills_dir = ROOT / practice_name / "skills"
-            if not skills_dir.is_dir():
-                self.fail(
-                    "PRACTICE_PLUGIN_MISSING",
-                    f"Practice plugin {practice_name!r} has no skills/ directory",
-                    file=f"{practice_name}/skills/",
-                    hint="Create the practice plugin layout per design",
-                )
-                continue
-
-            for bundled_dir in sorted(skills_dir.iterdir()):
-                if not bundled_dir.is_dir() or bundled_dir.name in SKIP_DRIFT_NAMES:
-                    continue
-
-                rel_bundle = self.rel(bundled_dir)
-                source_dir = sources.get(bundled_dir.name)
-                if source_dir is None:
-                    practice_local += 1
-                    self.pass_(f"{rel_bundle} is practice-local (no skills/ source)")
-                    continue
-
-                expected_discipline = source_dir.parent.parent.name
-                if expected_discipline != discipline:
-                    drift_count += 1
-                    self.fail(
-                        "PRACTICE_PLUGIN_SOURCE",
-                        f"{practice_name} bundles {bundled_dir.name!r} from {expected_discipline!r}, expected {discipline!r}",
-                        file=rel_bundle,
-                    )
-                    continue
-
-                drift_count += self._compare_bundled_tree(rel_bundle, bundled_dir, source_dir)
-
-        if drift_count == 0:
-            self.pass_(
-                f"No practice plugin skill drift detected ({practice_local} practice-local skill dir(s) skipped)"
-            )
-        return drift_count
+        """Practice plugins own their skills outright — no vendoring drift to check."""
+        self.pass_("Practice plugins own skills outright (no discipline vendoring drift check)")
+        return 0
 
     def _compare_bundled_tree(
         self, rel_bundle: str, bundled_dir: Path, source_dir: Path

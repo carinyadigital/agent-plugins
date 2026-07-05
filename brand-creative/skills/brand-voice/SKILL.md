@@ -24,7 +24,7 @@ content.
 
 ## Conventions
 
-Read [../references/brand-conventions.md](../references/brand-conventions.md) when
+Read [../../references/brand-conventions.md](../../references/brand-conventions.md) when
 resolving paths, loading settings, or routing near-miss requests.
 
 ## Artefacts
@@ -35,11 +35,11 @@ resolving paths, loading settings, or routing near-miss requests.
 | `write`, `review`, `refine` | `<brand-dir>/brand-voice.md` |
 | `enforce` | inline content (no file) |
 
-Resolve `<brand-dir>` per [../references/brand-conventions.md](../references/brand-conventions.md).
+Resolve `<brand-dir>` per [../../references/brand-conventions.md](../../references/brand-conventions.md).
 
 ## Path resolution
 
-Resolve paths per [../references/brand-conventions.md](../references/brand-conventions.md).
+Resolve paths per [../../references/brand-conventions.md](../../references/brand-conventions.md).
 If the user names a different path, use it for read/write instead of defaults.
 
 ## Settings

@@ -93,7 +93,7 @@ Install skill plugins for the disciplines you need.
 |---|---|
 | **[engineering](./skills/engineering)** | Architecture, epic design, implementation, code review, debugging, and technical debt. |
 | **[product-management](./skills/product-management)** | Product strategy, roadmap, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming. |
-| **[brand](./skills/brand)** | Visual brand guide and brand voice lifecycle — discover, write, review, refine, and enforce on-brand copy. |
+| **[brand-creative](./brand-creative)** | Complete brand practice — practice-setup, brand-voice lifecycle, and brand-guide visual identity. Writes to instance `brand/` when bound. |
 | **[content](./skills/content)** | Media analysis, captions, editorial review, and curation — reads brand from carinyaparc instance config. |
 
 ## MCP Integrations
@@ -119,7 +119,7 @@ These are reference templates — they get better when you tune them to how your
 
 - **Swap connectors** — fork a connector under `connectors/` or point `.mcp.json` at your data providers and internal systems.
 - **Add firm context** — drop your terminology, processes, and formatting standards into skill files.
-- **Bring your brand voice** — `/brand-voice write` and `/brand-voice enforce` teach agents your voice; `/brand-guide write` for visual identity in `docs/brand/`.
+- **Bring your brand voice** — install `brand-creative`, run `/brand-creative:practice-setup`, then `/brand-creative:brand-voice enforce` and `/brand-creative:brand-guide write` as needed.
 - **Adjust agent scope** — edit `agents/<slug>.md` to match how your team actually runs the workflow.
 - **Add your own** — copy the structure for workflows we haven't covered.
 
@@ -168,9 +168,9 @@ See [product-management README](./skills/product-management/README.md) for full 
 </details>
 
 <details>
-<summary><b>brand</b> — brand-guide, brand-voice</summary>
+<summary><b>brand-creative</b> — practice-setup, brand-guide, brand-voice</summary>
 
-See [brand README](./skills/brand/README.md) for full detail.
+See [brand-creative README](./brand-creative/README.md) for full detail.
 
 | Skill | Modes | Description | Artefact |
 | ----- | ----- | ----------- | -------- |

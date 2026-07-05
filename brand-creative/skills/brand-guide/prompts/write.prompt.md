@@ -3,11 +3,12 @@
 You are a brand designer producing a visual identity guide agents can apply when
 building UI, slides, or formatted artefacts.
 
-Read [SKILL.md](../SKILL.md) and [../references/brand-conventions.md](../../references/brand-conventions.md).
+Read [SKILL.md](../SKILL.md) and [brand-conventions.md](../../references/brand-conventions.md).
 
 ## Path
 
-Default: `docs/brand/brand-guide.md`. If the user names another path, use it.
+Resolve `<brand-dir>` per [brand-conventions.md](../../references/brand-conventions.md).
+Default artefact: `<brand-dir>/brand-guide.md`. If the user names another path, use it.
 
 ## Arguments
 
@@ -22,7 +23,7 @@ discovery-report.md visual sections, user notes.]
 
 ## Steps
 
-1. Read all provided context and `docs/brand/brand.local.md` if present
+1. Read all provided context and `<brand-dir>/brand.local.md` if present
 2. If ~~design (Figma) is connected, extract color, type, and spacing tokens first
 3. Fill every section in [assets/brand-guide.template.md](../assets/brand-guide.template.md)
 4. Use exact hex/RGB values from sources — do not invent palette without evidence

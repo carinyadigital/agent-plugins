@@ -14,6 +14,9 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 ├── content-marketing/               # practice plugin — calendar, drafts, captions, analyse-media (MECE owned)
 │   ├── references/                  # content-conventions + synced meta-framework files
 │   └── skills/
+├── ux-design/                       # practice plugin — wireframe, practice-setup (MECE owned)
+│   ├── references/                  # ux-design-conventions + synced meta-framework files
+│   └── skills/
 ├── agency-hub/                      # instance bootstrap + (v2) marketplace — install first
 │   ├── .claude-plugin/plugin.json
 │   ├── .cursor-plugin/plugin.json
@@ -59,7 +62,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 └── scripts/                         # sync-agent-skills.py, sync-references.py, validate.py
 ```
 
-Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/`, `brand-creative/skills/`, `delivery-practice/skills/`, or `content-marketing/skills/` — it propagates bundled copies into agents that bundle those skills. **Edit discipline skills in `skills/`**, **brand skills in `brand-creative/skills/`**, **delivery skills in `delivery-practice/skills/`**, and **content skills in `content-marketing/skills/`**, not in agent bundles.
+Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/`, `brand-creative/skills/`, `delivery-practice/skills/`, `content-marketing/skills/`, or `ux-design/skills/` — it propagates bundled copies into agents that bundle those skills. **Edit discipline skills in `skills/`**, **brand skills in `brand-creative/skills/`**, **delivery skills in `delivery-practice/skills/`**, **content skills in `content-marketing/skills/`**, and **UX skills in `ux-design/skills/`**, not in agent bundles.
 
 Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`).
 
@@ -73,6 +76,7 @@ Run `python3 scripts/validate.py` before opening a PR — it lints marketplace a
 | `brand-creative` | `practice-setup`, `brand-guide`, `brand-voice` | Shipped; first MECE practice plugin |
 | `delivery-practice` | `practice-setup` + 13 delivery skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; second MECE practice plugin — Product Manager and Delivery Lead personas, no separate agent plugins |
 | `content-marketing` | `practice-setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Shipped; third MECE practice plugin — Content Strategist and Content Writer personas, no separate agent plugins; reads `brand-voice.md` via artifact consumption; invokes `/delivery-practice:backlog` and `/delivery-practice:synthesize-research` as companion skills |
+| `ux-design` | `practice-setup`, `wireframe` | Shipped; minimal v1 — no dedicated persona; writes wireframes to `<instance-root>/design/`; downstream practices read via artifact consumption |
 
 Bootstraps a git-versioned instance repo (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `agency-hub/README.md` and `agency-hub/references/agency-setup-framework.md`.
 

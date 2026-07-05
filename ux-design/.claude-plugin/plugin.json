@@ -1,0 +1,20 @@
+{
+  "name": "ux-design",
+  "displayName": "UX Design",
+  "version": "0.1.0",
+  "description": "Minimal UX practice in one install — practice-setup interview and wireframe skill for low-fidelity layout and interaction specs. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/.",
+  "author": {
+    "name": "Digital Agency"
+  },
+  "license": "MIT",
+  "keywords": [
+    "ux",
+    "ux-design",
+    "wireframe",
+    "interaction-design",
+    "layout",
+    "practice-setup",
+    "user-experience"
+  ],
+  "skills": "./skills/"
+}

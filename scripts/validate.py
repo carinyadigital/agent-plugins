@@ -1085,9 +1085,9 @@ class Validator:
             path for path in managed_dir.iterdir() if path.is_dir() and path.name != ".git"
         )
         if not cookbook_dirs:
-            self.fail(
+            self.warn(
                 "COOKBOOKS_EMPTY",
-                "managed-agents/ has no agent cookbooks",
+                "managed-agents/ has no agent cookbooks (transitional: personas now live in practice plugins)",
                 file="managed-agents/",
             )
             return

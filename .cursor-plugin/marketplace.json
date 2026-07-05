@@ -17,10 +17,10 @@
       "description": "Complete brand practice in one install — practice-setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
     },
     {
-      "name": "engineering",
-      "displayName": "Engineering",
-      "source": "./skills/engineering",
-      "description": "Engineering practice \u2014 architecture (solution, adr), epic design, implementation, code review, merge requests, documentation passes, debugging, and technical debt. Delivery skills follow docs/work/{epic}/ conventions; install with Frontend Engineer agent or standalone."
+      "name": "web-development",
+      "displayName": "Web Development",
+      "source": "./web-development",
+      "description": "Complete web engineering practice in one install \u2014 practice-setup interview, architecture, epic design, implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes delivery-practice for planning cadence."
     },
     {
       "name": "delivery-practice",
@@ -45,42 +45,6 @@
       "displayName": "Search Optimisation",
       "source": "./search-optimisation",
       "description": "Complete search and technical SEO practice in one install — practice-setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes delivery-practice for competitive brief."
-    },
-    {
-      "name": "frontend-engineer",
-      "displayName": "Frontend Engineer",
-      "source": "./agents/frontend-engineer",
-      "description": "Agentic frontend engineer role: React/Next.js App Router, TypeScript, Tailwind, Base UI. Builds and maintains UI, client state, and styling, reading the target repo's own AGENTS.md/CLAUDE.md for conventions before making changes. Does not own data-model/backend (Payload collections, schema, infra)."
-    },
-    {
-      "name": "senior-frontend-engineer",
-      "displayName": "Senior Frontend Engineer",
-      "source": "./agents/senior-frontend-engineer",
-      "description": "Agentic senior frontend engineer role: peer code reviewer for React/Next.js App Router, TypeScript, Tailwind, and accessibility. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts. Does not write code or approve in hosted UIs."
-    },
-    {
-      "name": "principal-frontend-engineer",
-      "displayName": "Principal Frontend Engineer",
-      "source": "./agents/principal-frontend-engineer",
-      "description": "Agentic principal frontend engineer / tech lead \u2014 final technical gate on open PRs/MRs after peer review. Validates React/Next.js architecture, security, and acceptance-criteria coverage. Maps to delivery-review tech-lead gate."
-    },
-    {
-      "name": "qa-engineer",
-      "displayName": "QA Engineer",
-      "source": "./agents/qa-engineer",
-      "description": "Agentic QA engineer \u2014 validates changes after CI: deploy QA workspace, run automated tests, AC-driven exploratory pass, document defects. Maps to delivery-qa crew flow."
-    },
-    {
-      "name": "principal-architect",
-      "displayName": "Principal Architect",
-      "source": "./agents/principal-architect",
-      "description": "Agentic principal architect \u2014 system architecture (solution.md), ADRs, epic-level design, and documentation alignment. Owns the Architecture track upstream of implementation."
-    },
-    {
-      "name": "webops-engineer",
-      "displayName": "Webops Engineer",
-      "source": "./agents/webops-engineer",
-      "description": "Agentic webops engineer \u2014 CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary."
     }
   ]
 }

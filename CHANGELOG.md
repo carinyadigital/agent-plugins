@@ -8,40 +8,106 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### Changed
+## [2026-07-05] — Practice plugins v0.1.0
 
-- **MCP connectors decentralised to practice plugins** — standalone connector plugins removed from marketplace; provider definitions now live in each practice's `.mcp.json` (root `connectors/` deleted)
-- **`.crew/` consolidated into `.agents/`** — crew config, steering, and work paths moved under `.agents/`; `.crew/` removed (superseded — see Removed below)
-- **AGENCY03 complete** — repo-local maintainer tooling in `.agents/` (`plugin-eval`, `skills-qa`, skill-design framework); `agency-builder-hub` removed from marketplace (superseded — see Removed below)
-- **plugin-eval** replaces **eval-grader** — live eval sessions via `.agents/skills/plugin-eval/SKILL.md` (superseded — see Removed below)
-- Skill plugins moved from `plugins/skills/` to repo root `skills/`
-- MCP connector plugins moved from `plugins/connectors/` to repo root `connectors/`
-- **Practice plugins own skills outright** — `scripts/sync-agent-skills.py` removed; no bundled-skill sync step after skill edits
+First tagged release of the MECE practice-plugin catalogue: seven
+independently versioned plugins, each tagged individually
+(`<plugin>-v0.1.0`) and installed as a complete practice — a practice-setup
+interview plus an owned skill library — rather than the earlier standalone
+agent-plugin architecture.
 
-### Added
+### agency-hub — v0.1.0
 
-- **`.github/workflows/validate.yml`** — CI gate running `validate.py` and unit tests on PRs
-- **`tests/test_validate.py`** — unit tests for `validate.py` frontmatter parsing and repo validation
-- **`scripts/validate.py`** — structural validation for marketplace manifests, plugin.json, MCP connectors, SKILL.md frontmatter, markdown cross-references, bundled-skill drift, and evals schema (`--format json`, `--strict`, `--skip-drift`)
-- **`.agents/`** local maintainer tooling — `plugin-eval` skill, `skills-qa` skill, and Agency Skill Design Framework in `references/`
-- Connector plugins under `plugins/connectors/` — GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools
-- Agent plugin **senior-frontend-engineer** — peer code reviewer for React/Next.js UI; bundles `code-review` and `design` from the engineering practice
-- Agent plugin **product-manager** — full product delivery lifecycle; bundles all 13 skills from the product-management practice
-- Agent plugin **principal-frontend-engineer** — final technical gate on open PRs/MRs; bundles `final-code-review`, `code-review`, `design`, `validate`
-- Engineering skill **final-code-review** — post-MR architecture and AC gate (adapted from delivery-review crew)
-- Agent plugin **qa-engineer** — QA validation after CI; bundles `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects`
-- Engineering QA skills — `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` (adapted from delivery-qa crew)
-- Agent plugin **delivery-lead** — cross-cutting delivery orchestration; bundles sprint, backlog, tasks, validate, stakeholder-update, metrics-review, skills-index
-- Agent plugin **principal-architect** — system architecture track; bundles `solution`, `adr`, `design`, `docs`
+- Bootstraps a git-versioned instance workspace (`config/`, `brand/`,
+  `squads/`) via `agency-setup`
+- Skills: agency-setup, auto-updater, disable, registry-browser,
+  related-skills-surfacer, skill-installer, skill-manager, skills-qa,
+  uninstall
 
-### Removed
+### brand-creative — v0.1.0
 
-- **`scripts/sync-agent-skills.py`** — practice plugins own skills outright; agent bundled-skill sync retired with the old `agents/<slug>/skills/` layout
-- **`scripts/install-git-hooks.sh`** and **`scripts/git-hooks/pre-commit`** — optional local pre-commit hook removed; CI runs validation on push/PR
-- **`.agents/`** — repo-local maintainer tooling removed; steering and epic work live in `carinyaparc-space` under `products/digital-agency/`; Agency Skill Design Framework is canonical at `agency-hub/references/agency-skill-design-framework.md`; structural checks remain in `scripts/validate.py`
-- **agency-builder-hub** marketplace plugin — maintainer tooling moved to `.agents/` (superseded by removal above)
-- **eval-grader** agent — replaced by **plugin-eval** skill
-- `agency-core` practice plugin — MCP connectors moved to `plugins/connectors/`
+- Complete brand practice — practice-setup interview, brand-voice lifecycle,
+  brand-guide visual identity
+- Writes to the instance `brand/` directory when bound; standalone Try tier
+  uses `docs/brand/`
+- Skills: brand-guide, brand-voice, practice-setup
+
+### content-marketing — v0.1.0
+
+- Complete content practice — practice-setup interview, editorial calendar,
+  social curation, media analysis, CMS seed drafting
+- Two personas (Content Strategist, Content Writer); reads brand voice from
+  resolved brand path; invokes delivery-practice for backlog and research
+- Skills: analyse-media, content-calendar, curate-content, draft-post,
+  draft-recipe, edit-content, practice-setup, write-captions
+
+### delivery-practice — v0.1.0
+
+- Complete delivery practice — practice-setup interview, product strategy,
+  backlog and sprint cadence, validation, operational skills
+- Two personas (Product Manager, Delivery Lead)
+- Skills: backlog, competitive-brief, metrics-review, practice-setup,
+  product, product-brainstorming, roadmap, skills-index, sprint,
+  stakeholder-update, synthesize-research, tasks, validate, write-spec
+
+### search-optimisation — v0.1.0
+
+- Complete search and technical SEO practice — practice-setup interview,
+  keyword research, technical audits, content SEO review
+- One persona (SEO Specialist); retires the standalone seo-specialist agent
+  plugin; invokes delivery-practice for competitive brief
+- Skills: content-seo-review, keyword-research, practice-setup,
+  technical-seo-audit
+
+### ux-design — v0.1.0
+
+- Minimal UX practice — practice-setup interview and wireframe skill for
+  low-fidelity layout and interaction specs
+- Writes to the instance `design/` directory when bound; standalone Try tier
+  uses `docs/design/`
+- Skills: practice-setup, wireframe
+
+### web-development — v0.1.0
+
+- Complete web engineering practice — practice-setup interview, architecture,
+  epic design, implementation, code review, QA, platform operations
+- Six personas (Frontend Engineer through WebOps); consolidates the former
+  frontend-engineer, senior-frontend-engineer, principal-frontend-engineer,
+  qa-engineer, principal-architect, and webops-engineer agent plugins, plus
+  the standalone `skills/engineering` plugin, into one owned skill library
+- Reads brand-guide from resolved brand path; invokes delivery-practice for
+  planning cadence
+- Skills: adr, code-review, create-mr, debug, deploy-qa, design, docs,
+  document-defects, exploratory-pass, final-code-review, implement,
+  platform-health, practice-setup, run-automated-suite, solution, tech-debt
+
+### Repository infrastructure
+
+- **MCP connectors decentralised to practice plugins** — standalone connector
+  plugins removed from marketplace; provider definitions now live in each
+  practice's `.mcp.json` (root `connectors/` deleted)
+- **`.agents/` local maintainer tooling removed** — steering and epic work
+  moved to `carinyaparc-space`; the canonical Agency Skill Design Framework
+  now lives at `agency-hub/references/agency-skill-design-framework.md`;
+  structural checks remain in `scripts/validate.py`
+- **`scripts/validate.py`** — structural validation for marketplace
+  manifests, plugin.json, MCP connectors, SKILL.md frontmatter, markdown
+  cross-references, bundled-skill drift, and evals schema (`--format json`,
+  `--strict`, `--skip-drift`)
+- **`scripts/plugin-check.py`** — fast, plugin-scoped manifest/MCP/SKILL.md
+  check used as the release fast gate
+- **`.github/workflows/validate.yml`** — CI gate running `validate.py` and
+  unit tests on PRs
+- **`tests/test_validate.py`** — unit tests for `validate.py` frontmatter
+  parsing and repo validation
+- **`scripts/sync-agent-skills.py`** and **`scripts/install-git-hooks.sh`**
+  removed — practice plugins own skills outright; CI runs validation on
+  push/PR instead of a local pre-commit hook
+- `agency-builder-hub` marketplace plugin and **eval-grader** agent removed —
+  superseded by `.agents/` tooling and the **plugin-eval** skill (both since
+  folded into `agency-hub`)
+- `agency-core` practice plugin removed — MCP connectors moved into each
+  practice's own `.mcp.json`
 
 ## [0.1.0] - 2026-06-21
 

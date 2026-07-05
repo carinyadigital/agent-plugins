@@ -16,6 +16,9 @@ MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edi
 | Design | `~~design` | Figma |
 | Meeting transcription | `~~meeting transcription` | Fireflies |
 
+Other options in each category: Canva (`https://mcp.canva.com/mcp` — design and
+template generation; OAuth per user), Google Drive or SharePoint (file storage).
+
 ## Used by skill
 
 | Skill | Mode | Connectors |
@@ -26,4 +29,5 @@ MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edi
 | **brand-voice** | write | Manual upload or discovery report (no MCP required) |
 | **brand-voice** | enforce | None — reads local `brand-voice.md` |
 
-Other options in each category: Google Drive or SharePoint (file storage — connect when available), Gong (meeting transcription), Microsoft Teams (chat).
+Gong (meeting transcription) and Microsoft Teams (chat) are also supported when
+configured in `.mcp.json`.

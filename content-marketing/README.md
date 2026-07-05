@@ -86,7 +86,7 @@ installed — document the optional pairing in both READMEs rather than a hard d
   without re-asking.
 - **delivery-practice** (recommended companion) — backlog and research synthesis;
   see CONNECTORS.md.
-- **Connectors** (optional) — source control for seed PRs; CMS and social scheduling
+- **Connectors** (optional) — source control for seed PRs; Canva for social graphics; CMS and social scheduling when configured.
   tools when connected supercharge distribution workflows.
 
 ## After setup

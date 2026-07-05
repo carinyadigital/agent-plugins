@@ -80,7 +80,9 @@ Tell user: "Say **pause** anytime — I'll save progress for `--resume`."
 
 Before interview (or as sole action when flag set):
 
-> SEO workflows use source control for recommendations and browser automation for live site checks when connected. Let me check what's available.
+> SEO workflows use source control for recommendations, browser automation for live site
+> checks, and SEO intelligence (Ahrefs) for keyword and backlink data when connected.
+> Let me check what's available.
 
 For each server in `${CLAUDE_PLUGIN_ROOT}/.mcp.json`:
 
@@ -88,7 +90,8 @@ For each server in `${CLAUDE_PLUGIN_ROOT}/.mcp.json`:
 - Configured but not probeable → ⚪ configured but not verified
 - Missing → ✗ not found + manual fallback
 
-Note Search Console / rank-tracking are not bundled — report as gap if user asks about live search data.
+Note Google Search Console and Semrush are not bundled — report as optional add-ons
+when the user asks about live search data beyond Ahrefs.
 
 If `--check-integrations` only, stop here unless user asks to continue setup.
 

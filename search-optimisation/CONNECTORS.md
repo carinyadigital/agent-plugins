@@ -31,16 +31,22 @@ review run as a paired workflow.
 | -------- | ----------- | ---------------------- |
 | Source control | `~~source control` | GitHub, GitLab |
 | Browser automation | `~~browser automation` | Playwright |
+| SEO intelligence | `~~SEO intelligence` | Ahrefs |
 
-Search Console and rank-tracking connectors are **not bundled** — live search data
-requires a dedicated connector designed separately.
+Google Search Console is not bundled — connect when your client supports it.
+Ahrefs and Semrush require a paid subscription and user authentication (MCP key or
+OAuth). Configure credentials in `.mcp.json` or via `claude mcp` / Cursor MCP
+settings before live queries.
+
+Other options in each category: Semrush (`https://mcp.semrush.com/v2/mcp` — SEO
+intelligence), Google Search Console (search performance).
 
 ## Used by skill
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **practice-setup** | `--check-integrations` | GitHub, Playwright |
-| **keyword-research** | run | None required — web search and static analysis |
+| **practice-setup** | `--check-integrations` | GitHub, Playwright, Ahrefs |
+| **keyword-research** | run | SEO intelligence (optional — enriches volume and difficulty signals) |
 | **technical-seo-audit** | run | Playwright (live checks), GitHub (issues) |
 | **content-seo-review** | run | Source control (PR review); none required for local seed paths |
 

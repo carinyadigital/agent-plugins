@@ -91,7 +91,7 @@ For each server in `${CLAUDE_PLUGIN_ROOT}/.mcp.json`:
 - Configured but not probeable → ⚪ configured but not verified
 - Missing → ✗ not found + manual fallback
 
-Note Sentry, Neon, and other stack-specific MCP categories even when not bundled — report manual fallback.
+Note Neon and other stack-specific MCP categories even when not bundled — report manual fallback.
 
 If `--check-integrations` only, stop here unless user asks to continue setup.
 

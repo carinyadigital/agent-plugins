@@ -69,7 +69,7 @@ pairing — paste or reference content directly when `content-marketing` is not 
 - **Instance profile** (optional) — `agency-hub:agency-setup` writes
   `config/instance.json`; practice-setup reads business identity without re-asking.
 - **delivery-practice** (recommended companion) — competitive brief; see CONNECTORS.md.
-- **Connectors** (optional) — source control for issues; Playwright for live site checks.
+- **Connectors** (optional) — source control for issues; Playwright for live site checks; Ahrefs for keyword and backlink data (requires subscription).
 
 ## After setup
 

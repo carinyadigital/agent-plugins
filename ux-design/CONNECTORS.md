@@ -22,6 +22,9 @@ practice works standalone.
 | -------- | ----------- | ---------------------- |
 | Design | `~~design` | Figma |
 
+Other options in each category: Canva (`https://mcp.canva.com/mcp` — quick visual
+reference for social-sized layouts).
+
 ## Used by skill
 
 | Skill | Mode | Connectors |

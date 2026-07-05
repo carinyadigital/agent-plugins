@@ -25,14 +25,14 @@ of those skills here.
 | Chat | `~~chat` | Slack |
 | Project tracker | `~~project tracker` | Linear |
 | Observability | `~~observability` | Datadog |
-| Error tracking | `~~error tracking` | — |
+| Error tracking | `~~error tracking` | Sentry |
 | Database | `~~database` | — |
 | Browser automation | `~~browser automation` | Playwright |
 | Framework docs | `~~framework docs` | Context7, Next.js DevTools |
 
-Sentry, Neon Postgres, and other stack-specific MCP servers are not bundled — add
-entries to `.mcp.json` when the target repo uses them.
-`practice-setup --check-integrations` reports what is connected.
+Neon Postgres and other stack-specific MCP servers are not bundled — add entries to
+`.mcp.json` when the target repo uses them. `practice-setup --check-integrations`
+reports what is connected.
 
 Other options in each category: PagerDuty (incidents), Mixpanel (analytics).
 
@@ -40,7 +40,7 @@ Other options in each category: PagerDuty (incidents), Mixpanel (analytics).
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **practice-setup** | `--check-integrations` | GitHub, Vercel, Slack, Linear, Datadog |
+| **practice-setup** | `--check-integrations` | GitHub, Vercel, Slack, Linear, Datadog, Sentry |
 | **create-mr** | run | Source control |
 | **deploy-qa** | run | Source control, hosting |
 | **run-automated-suite** | run | Source control (CI status) |

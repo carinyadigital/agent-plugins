@@ -22,17 +22,22 @@ alignment or research synthesis. Do not bundle duplicate copies of those skills 
 | Source control | `~~source control` | GitHub, GitLab |
 | Knowledge base | `~~knowledge base` | Notion |
 | Chat | `~~chat` | Slack |
+| Creative / design | `~~design` | Canva |
 | CMS | `~~CMS` | — |
 | Social scheduling | `~~social scheduling` | — |
 
-Other options in each category: Confluence or Google Drive (knowledge base), Microsoft
-Teams (chat), Contentful/Sanity/WordPress (CMS), Buffer or Later (social scheduling).
+Canva requires per-user OAuth. Use for social graphics and template autofill when
+connected; skills still work from briefs and brand voice alone.
+
+Other options in each category: Figma (`https://mcp.figma.com/mcp` — design reference),
+Confluence or Google Drive (knowledge base), Microsoft Teams (chat),
+Contentful/Sanity/WordPress (CMS), Buffer or Later (social scheduling).
 
 ## Used by skill
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **practice-setup** | `--check-integrations` | GitHub, Notion, Slack |
+| **practice-setup** | `--check-integrations` | GitHub, Notion, Slack, Canva |
 | **content-calendar** | write, review | Knowledge base (optional seed material) |
 | **draft-post**, **draft-recipe** | run | Source control (seed PRs) |
 | **curate-content** | run | None required — inventory JSON input |

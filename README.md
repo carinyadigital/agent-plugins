@@ -280,10 +280,10 @@ Each practice plugin bundles recommended MCP servers in its `.mcp.json`. Edit th
 | **agency-hub** | GitHub | source control |
 | **brand-creative** | Slack, Notion, Atlassian, Figma, Fireflies | chat, knowledge base, design, meeting transcription |
 | **delivery-practice** | Slack, Linear, Asana, Atlassian, Notion, Figma, Amplitude, Intercom, Fireflies, GitHub, GitLab, Vercel, Playwright, Context7, Next.js DevTools | chat, project tracker, design, analytics, feedback, competitive intel, source control, hosting, browser automation |
-| **content-marketing** | GitHub, GitLab, Notion, Slack | source control, knowledge base, chat |
+| **content-marketing** | GitHub, GitLab, Notion, Slack, Canva | source control, knowledge base, chat, design |
 | **ux-design** | Figma | design |
-| **search-optimisation** | GitHub, GitLab, Playwright | source control, browser automation |
-| **web-development** | GitHub, GitLab, Vercel, Slack, Linear, Datadog, Playwright, Context7, Next.js DevTools | source control, hosting, chat, observability, browser automation |
+| **search-optimisation** | GitHub, GitLab, Playwright, Ahrefs | source control, browser automation, SEO intelligence |
+| **web-development** | GitHub, GitLab, Vercel, Slack, Linear, Datadog, Sentry, Playwright, Context7, Next.js DevTools | source control, hosting, chat, observability, error tracking, browser automation |
 
 Plugins use `~~category` placeholders in skill prose (e.g. `~~project tracker`, `~~hosting`) so workflows stay tool-agnostic. See each practice's [CONNECTORS.md](./delivery-practice/CONNECTORS.md) for the full placeholder map.
 

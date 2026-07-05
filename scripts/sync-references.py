@@ -21,6 +21,7 @@ CANONICAL = {
 PRACTICE_PLUGINS = (
     "brand-creative",
     "delivery-practice",
+    "content-marketing",
 )
 
 

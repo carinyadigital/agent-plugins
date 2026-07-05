@@ -1,0 +1,16 @@
+{
+  "skill": "analyse-media",
+  "cases": [
+    {
+      "id": "analyse-winter-paddock",
+      "prompt": "Analyse media photos/winter-paddock-green.jpg — cattle in lush green pasture, cool-season morning light.",
+      "expected_output": "JSON with subjects, season, moods, contentType, altText, description, qualityScore, publishable.",
+      "assertions": [
+        "Returns valid JSON with all required fields",
+        "Subjects are specific not generic",
+        "Season reflects brand seasonal calendar or stated climate cues",
+        "Alt text is specific and descriptive"
+      ]
+    }
+  ]
+}

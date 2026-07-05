@@ -10,7 +10,7 @@ Instance binding (which agent, which repos, which schedule) lives in
 
 | Platform | Agents | Notes |
 | -------- | ------ | ----- |
-| **Claude Managed Agents (CMA)** | `content-strategist`, `content-writer`, `seo-specialist` | Content and research personas; Anthropic admin API |
+| **Claude Managed Agents (CMA)** | `content-marketing` (personas), `seo-specialist` | Content and research personas; Anthropic admin API |
 | **Cursor Cloud Agents** | `frontend-engineer`, `senior-frontend-engineer`, `principal-frontend-engineer`, `qa-engineer`, `webops-engineer` | Code, review, QA, platform; Cursor Automations API |
 | **Either** | `principal-architect` | Architecture; resolve at deploy time |
 

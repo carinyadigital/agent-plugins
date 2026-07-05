@@ -77,10 +77,10 @@
       "description": "Complete delivery practice in one install — practice-setup interview, product strategy, backlog and sprint cadence, validation, and operational skills. Two personas (Product Manager, Delivery Lead), one owned skill library."
     },
     {
-      "name": "content",
-      "displayName": "Content",
-      "source": "./skills/content",
-      "description": "Content practice \u2014 media analysis, captions, editorial review, curation, content calendar, and Payload seed drafting (draft-post, draft-recipe). Reads brand from carinyaparc instance config."
+      "name": "content-marketing",
+      "displayName": "Content Marketing",
+      "source": "./content-marketing",
+      "description": "Complete content practice in one install — practice-setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes delivery-practice for backlog and research."
     },
     {
       "name": "seo",
@@ -123,18 +123,6 @@
       "displayName": "Webops Engineer",
       "source": "./agents/webops-engineer",
       "description": "Agentic webops engineer \u2014 CI/CD, deployment, dependency hygiene, and platform health. Resolves frontend-engineer infra boundary."
-    },
-    {
-      "name": "content-strategist",
-      "displayName": "Content Strategist",
-      "source": "./agents/content-strategist",
-      "description": "Agentic content strategist \u2014 editorial calendar, briefs, and backlog alignment. Reads brand from carinyaparc instance. Never publishes."
-    },
-    {
-      "name": "content-writer",
-      "displayName": "Content Writer",
-      "source": "./agents/content-writer",
-      "description": "Agentic content writer \u2014 drafts Payload post/recipe seed JSON in PRs. Applies brand voice. Never merges or publishes."
     },
     {
       "name": "seo-specialist",

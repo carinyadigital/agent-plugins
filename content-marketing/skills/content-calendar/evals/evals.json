@@ -1,0 +1,15 @@
+{
+  "skill": "content-calendar",
+  "cases": [
+    {
+      "id": "calendar-write-month",
+      "prompt": "Write the July 2026 content calendar — monthly theme from seasonal calendar, 2 blog slots and 1 recipe slot with briefs.",
+      "expected_output": "docs/product/content-calendar.md with month theme, slot table (date, type, title brief, keywords), aligned to brand/seasonal-calendar.md when present.",
+      "assertions": [
+        "Writes or updates docs/product/content-calendar.md in the instance or target repo",
+        "Includes monthly theme and slot table with briefs per slot",
+        "Monthly theme references seasonal context from brand files when present"
+      ]
+    }
+  ]
+}

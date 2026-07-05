@@ -36,4 +36,4 @@ Verdict: **approve**, **approve with suggestions**, or **request changes**.
 
 - Comments cite specific JSON fields
 - Keyword usage reads naturally (no stuffing)
-- Recommendations actionable by content-writer without SEO re-run
+- Recommendations actionable by content-marketing draft skills without SEO re-run

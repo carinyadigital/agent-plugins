@@ -1,6 +1,6 @@
 ---
 name: seo-specialist
-description: Use this agent for SEO research and audits — keyword research, technical SEO audits, and content SEO review on seed PRs. Files recommendations as GitHub issues; does not implement fixes. Do NOT use for writing content (content-writer) or frontend changes (frontend-engineer).
+description: Use this agent for SEO research and audits — keyword research, technical SEO audits, and content SEO review on seed PRs. Files recommendations as GitHub issues; does not implement fixes. Do NOT use for writing content (content-marketing draft skills) or frontend changes (frontend-engineer).
 model: inherit
 color: green
 tools: Read, Write, Glob, Grep, Shell
@@ -30,7 +30,7 @@ Owns:
 Does **not** own:
 
 - Implementing meta tag fixes, schema, or route changes — Squads A/B/C
-- Writing post/recipe content — **content-writer**
+- Writing post/recipe content — **content-marketing** (`draft-post`, `draft-recipe`)
 - Publishing content — human gate
 
 ## Skills

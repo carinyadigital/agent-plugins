@@ -94,7 +94,7 @@ Install skill plugins for the disciplines you need.
 | **[engineering](./skills/engineering)** | Architecture, epic design, implementation, code review, debugging, and technical debt. |
 | **[product-management](./skills/product-management)** | Product strategy, roadmap, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming. |
 | **[brand-creative](./brand-creative)** | Complete brand practice — practice-setup, brand-voice lifecycle, and brand-guide visual identity. Writes to instance `brand/` when bound. |
-| **[content](./skills/content)** | Media analysis, captions, editorial review, and curation — reads brand from carinyaparc instance config. |
+| **[content-marketing](./content-marketing)** | Complete content practice — editorial calendar, social curation, media analysis, and CMS seed drafting. Content Strategist and Content Writer personas; reads brand voice from resolved brand path. |
 
 ## MCP Integrations
 

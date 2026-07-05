@@ -30,7 +30,7 @@ scripts/
 .claude-plugin/marketplace.json
 ```
 
-**Source of truth:** edit skills under `skills/`, not under `agents/`. Agent plugins bundle synced copies so they stay installable on their own. Edit MCP connectors under `connectors/`, not in agent bundles.
+**Source of truth:** edit skills under `skills/`, not under `agents/`. Agent plugins bundle synced copies so they stay installable on their own. Edit MCP servers in the owning practice plugin's `.mcp.json`, not in agent bundles.
 
 ## Changing a skill
 
@@ -66,21 +66,19 @@ scripts/
 
 Follow existing agents (e.g. `agents/frontend-engineer/`, `agents/principal-architect/`, `agents/delivery-lead/`) for structure and naming. See the [Agents roster](../../AGENTS.md#agents-current-roster) in `AGENTS.md`.
 
-## Adding or changing a connector
+## Adding or changing MCP servers
 
-1. Add `connectors/<slug>/` with:
-   - `.mcp.json` — one MCP server definition
-   - `.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json` with `"mcpServers": "./.mcp.json"`
-2. Register the plugin in both marketplace manifests (keep fields in sync with `plugin.json`).
+1. Edit `<practice>/.mcp.json` — add or update entries under `mcpServers`.
+2. Update `<practice>/CONNECTORS.md` so category placeholders and bundled providers stay in sync.
 3. Do not commit secrets or API keys — use env var placeholders where providers require auth.
 4. Run `python3 scripts/validate.py`.
 
-Follow existing connectors (e.g. `connectors/github/`) for structure and naming.
+Follow existing practice plugins (e.g. `web-development/.mcp.json`) for structure and naming.
 
 ## Commands and connectors
 
 - **Commands** — slash actions live in `skills/<discipline>/commands/`. Invoked as `/plugin:command-name` in Cowork.
-- **MCP connectors** — one provider per plugin under `connectors/<slug>/.mcp.json`. Point entries at your providers; do not commit secrets or API keys.
+- **MCP connectors** — bundled per practice in `<practice>/.mcp.json`. Point entries at your providers; do not commit secrets or API keys.
 
 ## Validation
 
@@ -99,7 +97,7 @@ python3 scripts/validate.py            # full repo validation
 | Marketplace parity | Claude ↔ Cursor marketplace lists out of sync |
 | Marketplace ↔ plugin.json | `name` / `description` drift between marketplace and per-plugin manifests |
 | Plugin manifests | Missing `name`, `version`, or `description` |
-| MCP connectors | Missing or invalid `.mcp.json`; connector manifests without `mcpServers` |
+| MCP connectors | Missing or invalid practice `.mcp.json`; empty `mcpServers` |
 | SKILL.md frontmatter | Missing `name`, `description`, or `allowed-tools`; invalid agency-framework metadata (warnings by default) |
 | Markdown cross-refs | Broken relative links in skill and agent prompt files |
 | Agent prompts | Missing `agents/<slug>/agents/<slug>.md` |
@@ -137,7 +135,7 @@ when you change a plugin description.
 - Register new plugins in both marketplace manifests.
 - Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill; run `python3 scripts/validate.py`.
 - Describe what workflow or agent behaviour changed and how you tested it (Cowork, Cursor, or local install).
-- Keep changes focused — one skill, agent, discipline, or connector per PR when possible.
+- Keep changes focused — one skill, agent, discipline, or practice plugin per PR when possible.
 
 ## Local config
 

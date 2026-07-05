@@ -89,7 +89,7 @@ First-party plugins from the digital-agency catalogue — installed via marketpl
 
 **Interim catalogue (until practice plugins ship):** `engineering` skill plugin; named agents under `agents/`
 
-**Connectors:** `github`, `gitlab`, `vercel`, `figma`, `linear`, `playwright`, `context7`, `next-devtools`
+MCP servers are bundled in each practice plugin's `.mcp.json` — see `CONNECTORS.md` in the practice you install.
 
 ---
 

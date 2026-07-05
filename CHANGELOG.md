@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- **MCP connectors decentralised to practice plugins** — standalone connector plugins removed from marketplace; provider definitions now live in each practice's `.mcp.json` (root `connectors/` deleted)
 - **`.crew/` consolidated into `.agents/`** — crew config, steering, and work paths moved under `.agents/`; `.crew/` removed (superseded — see Removed below)
 - **AGENCY03 complete** — repo-local maintainer tooling in `.agents/` (`plugin-eval`, `skills-qa`, skill-design framework); `agency-builder-hub` removed from marketplace (superseded — see Removed below)
 - **plugin-eval** replaces **eval-grader** — live eval sessions via `.agents/skills/plugin-eval/SKILL.md` (superseded — see Removed below)

@@ -2,8 +2,8 @@
 name: brand-guide
 description: >
   Use when the user wants a visual brand guide — colors, typography, logo usage,
-  imagery, and UI tokens — at docs/brand/brand-guide.md (write, review, refine).
-  Do NOT use for voice, tone, or copy (brand-voice), product strategy (product),
+  imagery, and   UI tokens — at `<brand-dir>/brand-guide.md` (write, review, refine). Resolve
+  `<brand-dir>` per brand-conventions.md. Do NOT use for voice, tone, or copy (brand-voice), product strategy (product),
   or component implementation (implement).
 license: MIT
 allowed-tools:
@@ -25,8 +25,9 @@ checking artefact boundaries or resolving paths.
 
 ## Artefact
 
-Default path: `docs/brand/brand-guide.md` — colors, typography, logo, imagery,
-spacing, and UI tokens.
+Default path: `<brand-dir>/brand-guide.md` — colors, typography, logo, imagery,
+spacing, and UI tokens. Resolve `<brand-dir>` per
+[../references/brand-conventions.md](../references/brand-conventions.md).
 
 ## Path resolution
 

@@ -1,0 +1,20 @@
+{
+  "name": "brand-creative",
+  "displayName": "Brand Creative",
+  "version": "0.1.0",
+  "description": "Complete brand practice in one install — practice-setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/.",
+  "author": {
+    "name": "Digital Agency"
+  },
+  "license": "MIT",
+  "keywords": [
+    "brand",
+    "brand-guide",
+    "brand-voice",
+    "practice-setup",
+    "style-guide",
+    "tone",
+    "visual-identity"
+  ],
+  "skills": "./skills/"
+}

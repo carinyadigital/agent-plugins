@@ -6,7 +6,7 @@ description: >
   (refine), or apply voice to content (enforce). Triggers on "find brand
   guidelines", "generate brand voice", "style guide for copy", "write an email",
   "on-brand", "doesn't sound like us", "enforce voice", or "brand content audit".
-  Default artefact docs/brand/brand-voice.md. Do NOT use for visual colors/fonts
+  Default artefact under resolved brand dir (see brand-conventions.md). Do NOT use for visual colors/fonts
   (brand-guide) or product strategy (product).
 license: MIT
 allowed-tools:
@@ -31,17 +31,20 @@ resolving paths, loading settings, or routing near-miss requests.
 
 | Mode | Default path |
 | ---- | ------------ |
-| `discover` | `docs/brand/discovery-report.md` (optional save) |
-| `write`, `review`, `refine` | `docs/brand/brand-voice.md` |
+| `discover` | `<brand-dir>/discovery-report.md` (optional save) |
+| `write`, `review`, `refine` | `<brand-dir>/brand-voice.md` |
 | `enforce` | inline content (no file) |
+
+Resolve `<brand-dir>` per [../references/brand-conventions.md](../references/brand-conventions.md).
 
 ## Path resolution
 
+Resolve paths per [../references/brand-conventions.md](../references/brand-conventions.md).
 If the user names a different path, use it for read/write instead of defaults.
 
 ## Settings
 
-Read `docs/brand/brand.local.md` when present for company name, enabled
+Read `<brand-dir>/brand.local.md` when present for company name, enabled
 platforms, search depth, `strictness`, and `always_explain`.
 
 ## Gotchas

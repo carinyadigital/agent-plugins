@@ -47,7 +47,7 @@ Link-first: `agency-setup` provides a template URL; the human creates the privat
 
 | Command | Does |
 |---|---|
-| `/agency-hub:agency-setup` | Detect state → interview → bind instance repo → write config → hand off to brand-setup |
+| `/agency-hub:agency-setup` | Detect state → interview → bind instance repo → write config → hand off to brand-creative |
 | `/agency-hub:registry-browser [query]` | Search watched registries for community skills |
 | `/agency-hub:skill-installer [skill]` | Install a community skill (allowlist + QA gate) |
 | `/agency-hub:skills-qa [skill]` | Evaluate a skill against the Agency Skill Design Framework |

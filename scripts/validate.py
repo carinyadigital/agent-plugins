@@ -69,8 +69,13 @@ AGENCY_HEADINGS = (
 PLUGIN_REQUIRED_FIELDS = ("name", "version", "description")
 MARKETPLACE_SYNC_FIELDS = ("name", "description")
 
-SKIP_DRIFT_NAMES = frozenset({"references"})
+SKIP_DRIFT_NAMES = frozenset({"references", "practice-setup"})
 IGNORE_DRIFT_FILES = frozenset({".DS_Store"})
+
+# Root-level practice plugins → skills/<discipline>/ source (see sync-agent-skills.py)
+PRACTICE_PLUGINS: dict[str, str] = {
+    "brand-creative": "brand",
+}
 
 
 @dataclass
@@ -294,6 +299,7 @@ class Validator:
     def source_skill_paths(self) -> list[Path]:
         paths = sorted(ROOT.glob("skills/*/skills/*/SKILL.md"))
         paths.extend(sorted(ROOT.glob("agency-hub/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("brand-creative/skills/*/SKILL.md")))
         return sorted(set(paths))
 
     def marketplace_entries(self) -> list[dict[str, Any]]:
@@ -684,13 +690,14 @@ class Validator:
             (ROOT / "skills", "skills/*/skills/*/SKILL.md"),
             (ROOT / "agents", "agents/*/agents/*.md"),
             (ROOT / "agency-hub", "agency-hub/skills/*/*.md"),
+            (ROOT / "brand-creative", "brand-creative/skills/*/*.md"),
         ]
 
         checked_files: list[Path] = []
         for base, pattern in patterns:
             if base.name == "skills":
                 checked_files.extend(sorted(base.glob("*/skills/*/*.md")))
-            elif base.name == "agency-hub":
+            elif base.name in {"agency-hub", "brand-creative"}:
                 checked_files.extend(sorted(base.glob("skills/*/*.md")))
             else:
                 checked_files.extend(sorted(base.glob("*/*/*.md")))
@@ -808,10 +815,93 @@ class Validator:
                             hint="Run python3 scripts/sync-agent-skills.py",
                         )
 
+        practice_drift = self.check_practice_plugin_skill_drift(sources)
+        drift_count += practice_drift
+
         if drift_count == 0:
             self.pass_(
                 f"No bundled skill drift detected ({agent_local} agent-local skill dir(s) skipped)"
             )
+
+    def check_practice_plugin_skill_drift(self, sources: dict[str, Path]) -> int:
+        drift_count = 0
+        practice_local = 0
+
+        for practice_name, discipline in sorted(PRACTICE_PLUGINS.items()):
+            skills_dir = ROOT / practice_name / "skills"
+            if not skills_dir.is_dir():
+                self.fail(
+                    "PRACTICE_PLUGIN_MISSING",
+                    f"Practice plugin {practice_name!r} has no skills/ directory",
+                    file=f"{practice_name}/skills/",
+                    hint="Create the practice plugin layout per design",
+                )
+                continue
+
+            for bundled_dir in sorted(skills_dir.iterdir()):
+                if not bundled_dir.is_dir() or bundled_dir.name in SKIP_DRIFT_NAMES:
+                    continue
+
+                rel_bundle = self.rel(bundled_dir)
+                source_dir = sources.get(bundled_dir.name)
+                if source_dir is None:
+                    practice_local += 1
+                    self.pass_(f"{rel_bundle} is practice-local (no skills/ source)")
+                    continue
+
+                expected_discipline = source_dir.parent.parent.name
+                if expected_discipline != discipline:
+                    drift_count += 1
+                    self.fail(
+                        "PRACTICE_PLUGIN_SOURCE",
+                        f"{practice_name} bundles {bundled_dir.name!r} from {expected_discipline!r}, expected {discipline!r}",
+                        file=rel_bundle,
+                    )
+                    continue
+
+                drift_count += self._compare_bundled_tree(rel_bundle, bundled_dir, source_dir)
+
+        if drift_count == 0:
+            self.pass_(
+                f"No practice plugin skill drift detected ({practice_local} practice-local skill dir(s) skipped)"
+            )
+        return drift_count
+
+    def _compare_bundled_tree(
+        self, rel_bundle: str, bundled_dir: Path, source_dir: Path
+    ) -> int:
+        drift_count = 0
+        bundled_files = self.collect_tree_files(bundled_dir)
+        source_files = self.collect_tree_files(source_dir)
+
+        bundle_rel_paths = set(bundled_files)
+        source_rel_paths = set(source_files)
+        missing_in_bundle = source_rel_paths - bundle_rel_paths
+        extra_in_bundle = bundle_rel_paths - source_rel_paths
+
+        for rel_path in sorted(missing_in_bundle | extra_in_bundle):
+            drift_count += 1
+            self.drifted_bundles.append(rel_bundle)
+            self.fail(
+                "SKILL_DRIFT",
+                f"{rel_bundle} drift: file {rel_path!r} differs from {self.rel(source_dir)}",
+                file=rel_bundle,
+                hint="Run python3 scripts/sync-agent-skills.py",
+            )
+
+        for rel_path in sorted(bundle_rel_paths & source_rel_paths):
+            if self.file_digest(bundled_files[rel_path]) != self.file_digest(
+                source_files[rel_path]
+            ):
+                drift_count += 1
+                self.drifted_bundles.append(rel_bundle)
+                self.fail(
+                    "SKILL_DRIFT",
+                    f"{rel_bundle} drift: {rel_path} content differs from source",
+                    file=rel_bundle,
+                    hint="Run python3 scripts/sync-agent-skills.py",
+                )
+        return drift_count
 
     def check_evals_schema(self) -> None:
         eval_dirs = sorted(ROOT.glob("skills/*/skills/*/evals"))

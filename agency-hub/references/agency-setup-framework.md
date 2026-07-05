@@ -115,7 +115,7 @@ Quick mode: one primary practice. Full mode: all that apply now vs later.
 
 ### 4. Seed material (full mode; optional in quick)
 
-Existing site URL, past content, prior brand docs. **Read, don't copy verbatim.** Flag gaps for brand-setup handoff.
+Existing site URL, past content, prior brand docs. **Read, don't copy verbatim.** Flag gaps for `brand-creative:practice-setup` handoff.
 
 ### 5. Targets
 
@@ -154,13 +154,13 @@ After instance config write (or on `--full` setup completion), ensure personal m
 
 Tell the user where these live. Marketplace skills read them before install.
 
-## Hand off to brand-setup
+## Hand off to brand-creative
 
 Do not duplicate brand interview logic. After config write:
 
-> Next: brand voice. Run **`/brand:brand-voice discover`** then **`/brand:brand-voice write`** against seed material we noted. Content skills read from `brand/` via `config/instance.json`.
+> Next: brand setup. Install **`brand-creative`** from the marketplace if needed, then run **`/brand-creative:practice-setup`** in this conversation. It reads seed material from setup and writes to `<instance-root>/brand/`. Content skills resolve brand via `config/instance.json`.
 
-If the user declines now, note in `instance.json` `seedMaterial.notes` that brand-setup is pending.
+If the user declines now, note in `instance.json` `seedMaterial.notes` that brand-creative practice-setup is pending.
 
 ## Integrations — `--check-integrations`
 
@@ -177,7 +177,7 @@ Report: **connected** (successful probe), **configured but not verified**, or **
 1. Show instance profile and target skeleton changes in plain language.
 2. Wait for explicit confirmation before writing.
 3. After write: remind user they can edit files directly, run `--redo`, or `--check-integrations`.
-4. Close with **next steps** — install first practice plugin, run brand-setup, deploy first scheduled agent (`deploy-squad-agents.sh --dry-run`).
+4. Close with **next steps** — install first practice plugin, run `/brand-creative:practice-setup`, deploy first scheduled agent (`deploy-squad-agents.sh --dry-run`).
 
 ## Living profile rules
 

@@ -11,6 +11,12 @@
       "description": "Install first — bootstraps a git-versioned instance workspace (config/, brand/, squads/) via agency-setup; manages community skill marketplace (browse, install, QA, update)."
     },
     {
+      "name": "brand-creative",
+      "displayName": "Brand Creative",
+      "source": "./brand-creative",
+      "description": "Complete brand practice in one install — practice-setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
+    },
+    {
       "name": "github",
       "displayName": "GitHub",
       "source": "./connectors/github",

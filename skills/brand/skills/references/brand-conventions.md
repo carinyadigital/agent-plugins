@@ -4,17 +4,35 @@ Canonical rules for paths, artefacts, and skill boundaries. Skills under
 `skills/brand/` should read this file when resolving paths or
 routing near-miss requests.
 
+## Brand path resolution
+
+Resolve the brand directory before reading or writing any artefact. Apply this
+order — first match wins:
+
+1. **Explicit path named by the user** in the request — highest priority; use
+   that directory or file path.
+2. **Inside an instance repo** — `config/instance.json` exists at the working
+   root → `<instance-root>/brand/`.
+3. **Inside a target repo** — `.digital-agency/target.json` exists at the working
+   root → read the pointer, resolve the instance root, then
+   `<instance-root>/brand/`.
+4. **Standalone / Try tier** — no instance or target pointer → `docs/brand/` in
+   the current project (legacy default).
+
+When `config/instance.json` defines `brand.voice` or related paths, treat them as
+relative to the instance root unless the user overrides.
+
 ## Document layout
 
+Artefacts relative to the resolved brand directory:
+
 ```text
-docs/brand/
+<brand-dir>/
 ├── brand-guide.md          # Visual identity — colors, type, logo, UI tokens
 ├── brand-voice.md          # Voice, tone, terminology, messaging
 ├── discovery-report.md     # Optional output from brand-voice discover
 └── brand.local.md          # Gitignored firm settings (platforms, strictness)
 ```
-
-Override paths when the user names them explicitly in the request.
 
 ## Artefact boundaries
 
@@ -38,7 +56,7 @@ Override paths when the user names them explicitly in the request.
 
 ## Settings (`brand.local.md`)
 
-Optional gitignored file at `docs/brand/brand.local.md`:
+Optional gitignored file at `<brand-dir>/brand.local.md` (see path resolution above):
 
 ```yaml
 company: Example Co

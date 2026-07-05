@@ -30,7 +30,7 @@ First install of digital-agency for real work; cold-start instance bootstrap; re
 
 - **Does not create GitHub repos autonomously** — v1 is link-first; the human creates the repo.
 - **Does not install practice plugins** — recommends them; user installs from marketplace.
-- **Does not duplicate brand-voice interview** — hands off to `/brand:brand-voice discover` → `write`.
+- **Does not duplicate brand interview** — recommends `brand-creative` and hands off to `/brand-creative:practice-setup`.
 - **Does not block on email/ads/analytics targets** — writes `not-yet-designed` skeletons and continues.
 - **Does not write without explicit yes** after showing the plain-language diff.
 
@@ -121,7 +121,7 @@ Follow framework sections. **2–3 prompts per turn.** Wait for typed answers wh
 | content-marketing | content, brand, content-strategist, content-writer |
 | social-media | content, content-strategist, content-writer |
 | seo | seo, seo-specialist |
-| brand-creative | brand |
+| brand-creative | brand-creative |
 
 Quick: one primary. Full: now vs later for each.
 
@@ -188,11 +188,11 @@ On **yes**:
 6. For website pointer binding: write `.digital-agency/target.json` only after separate yes for that repo.
 7. **Initialize Tier 0 hub state** — if `~/.claude/plugins/config/digital-agency/agency-hub/` is missing or empty, create `CLAUDE.md` (from `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` template), `allowlist.yaml` (from `references/allowlist-default.yaml`), and `install-log.yaml` (`[]`). Populate hub profile fields from interview answers where available.
 
-### Step 7 — Hand off to brand-setup
+### Step 7 — Hand off to brand-creative
 
-Do not run brand interview here. Say:
+Do not run the brand interview here. Say:
 
-> **Brand voice next.** Run `/brand:brand-voice discover` then `/brand:brand-voice write` using seed material from setup. Content skills resolve brand via `config/instance.json`.
+> **Brand setup next.** If `brand-creative` is not installed, install it from the marketplace. Then run `/brand-creative:practice-setup` in this conversation — it reads seed material from instance setup and writes to `<instance-root>/brand/`.
 
 If deferred, set `seedMaterial.notes` accordingly.
 
@@ -201,7 +201,7 @@ If deferred, set `seedMaterial.notes` accordingly.
 Close with:
 
 1. **Install** first recommended practice plugin from marketplace.
-2. **Brand** — run brand-voice discover → write when ready.
+2. **Brand** — install `brand-creative` if needed; run `/brand-creative:practice-setup`.
 3. **Bind targets** — complete website pointer, social credentials when available.
 4. **Deploy** — dry-run first scheduled agent:
    `./digital-agency/scripts/deploy-squad-agents.sh --dry-run --instance <path>`
@@ -243,4 +243,4 @@ Location: instance repo `config/.agency-setup-resume.json` if instance exists; e
 | Squad charters | `squads/<squad>/charter.md` |
 | Target pointer (on confirm) | `<target-repo>/.digital-agency/target.json` |
 
-Next: `/brand:brand-voice discover`, install first practice plugin, or `--check-integrations`.
+Next: `/brand-creative:practice-setup`, install first practice plugin, or `--check-integrations`.

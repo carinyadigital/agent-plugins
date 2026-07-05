@@ -192,14 +192,14 @@ Catalogue agent slugs from digital-agency (e.g. frontend-engineer, content-write
 
 ## Service → plugin mapping
 
-Practices are MECE — one self-contained plugin per practice. Cross-practice roles (Product Manager, Delivery Lead) live in a separate **`core`** plugin; practices that need them declare it as a companion install.
+Practices are MECE — one self-contained plugin per practice. Planning and cadence skills live in **`delivery-practice`**; practices that need them declare it as a companion install and invoke skills directly.
 
-| Service (`services.enabled`) | Practice plugin | `core` companion | Squad charters | Notes |
+| Service (`services.enabled`) | Practice plugin | Companion practice | Squad charters | Notes |
 |---|---|---|---|---|
 | `brand-creative` | `brand-creative` | none | — | Shipped; run `/brand-creative:practice-setup` after bootstrap |
-| `web-development` | `web-development` | `core` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/core:product-manager`, `/core:delivery-lead` |
-| `content-marketing` | `content-marketing` | `core` | `content` | Practice pending — interim: `content`, `content-strategist`, `content-writer` |
+| `web-development` | `web-development` | `delivery-practice` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/delivery-practice:backlog`, `/delivery-practice:sprint` |
+| `content-marketing` | `content-marketing` | `delivery-practice` | `content` | Practice pending — interim: `content`, `content-strategist`, `content-writer`; needs `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` |
 | `social-media` | `social-media` | TBD | `content` | Practice pending — interim: `content`, `content-strategist`, `content-writer` |
-| `seo` | `seo` | TBD | `seo` | Practice pending — interim: `seo`, `seo-specialist` |
+| `seo` | `seo` | `delivery-practice` | `seo` | Practice pending — interim: `seo`, `seo-specialist`; needs `/delivery-practice:competitive-brief` |
 
-Write `services.recommendedPlugins` with the practice plugin name(s) plus `core` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.
+Write `services.recommendedPlugins` with the practice plugin name(s) plus `delivery-practice` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.

@@ -299,12 +299,18 @@ class Validator:
             for skill_dir in brand_creative_skills.iterdir():
                 if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                     sources[skill_dir.name] = skill_dir
+        delivery_practice_skills = ROOT / "delivery-practice" / "skills"
+        if delivery_practice_skills.is_dir():
+            for skill_dir in delivery_practice_skills.iterdir():
+                if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
+                    sources[skill_dir.name] = skill_dir
         return sources
 
     def source_skill_paths(self) -> list[Path]:
         paths = sorted(ROOT.glob("skills/*/skills/*/SKILL.md"))
         paths.extend(sorted(ROOT.glob("agency-hub/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("brand-creative/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("delivery-practice/skills/*/SKILL.md")))
         return sorted(set(paths))
 
     def marketplace_entries(self) -> list[dict[str, Any]]:
@@ -696,13 +702,14 @@ class Validator:
             (ROOT / "agents", "agents/*/agents/*.md"),
             (ROOT / "agency-hub", "agency-hub/skills/*/*.md"),
             (ROOT / "brand-creative", "brand-creative/skills/*/*.md"),
+            (ROOT / "delivery-practice", "delivery-practice/skills/*/*.md"),
         ]
 
         checked_files: list[Path] = []
         for base, pattern in patterns:
             if base.name == "skills":
                 checked_files.extend(sorted(base.glob("*/skills/*/*.md")))
-            elif base.name in {"agency-hub", "brand-creative"}:
+            elif base.name in {"agency-hub", "brand-creative", "delivery-practice"}:
                 checked_files.extend(sorted(base.glob("skills/*/*.md")))
             else:
                 checked_files.extend(sorted(base.glob("*/*/*.md")))

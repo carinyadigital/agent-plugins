@@ -119,15 +119,15 @@ Follow framework sections. **2–3 prompts per turn.** Wait for typed answers wh
 
 Map to **practice plugins** (MECE — one install per practice). Recommend; do not install autonomously. See `instance-profile-template.md` service table for full mapping.
 
-| Practice area | Practice plugin | `core` companion | Notes |
+| Practice area | Practice plugin | Companion practice | Notes |
 |---|---|---|---|
 | `brand-creative` | `brand-creative` | none | Shipped — no companion install |
-| `web-development` | `web-development` | `core` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
-| `content-marketing` | `content-marketing` | `core` | Practice plugin pending — interim: `content`, `content-strategist`, `content-writer` |
+| `web-development` | `web-development` | `delivery-practice` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
+| `content-marketing` | `content-marketing` | `delivery-practice` | Practice plugin pending — interim: `content`, `content-strategist`, `content-writer` |
 | `social-media` | `social-media` | TBD | Practice plugin pending — interim: `content`, `content-strategist`, `content-writer` |
-| `seo` | `seo` | TBD | Practice plugin pending — interim: `seo`, `seo-specialist` |
+| `seo` | `seo` | `delivery-practice` | Practice plugin pending — interim: `seo`, `seo-specialist` |
 
-When recommending `core`, name the roles the practice needs (e.g. `web-development` → `/core:product-manager`, `/core:delivery-lead`). `brand-creative` never needs `core`.
+When recommending `delivery-practice`, name the skills the practice needs (e.g. `web-development` → `/delivery-practice:backlog`, `/delivery-practice:sprint`; `content-marketing` → `/delivery-practice:backlog`, `/delivery-practice:synthesize-research`). `brand-creative` never needs a companion.
 
 Quick: one primary. Full: now vs later for each.
 
@@ -207,8 +207,8 @@ If deferred, set `seedMaterial.notes` accordingly.
 Close with a concrete path — not a pile of config files:
 
 1. **Install** the first recommended **practice plugin** from the marketplace.
-2. **`core` companion** — if that practice needs shared roles it does not own (e.g. `web-development` → install `core`, then use `/core:product-manager` and `/core:delivery-lead`; `brand-creative` needs no companion).
-3. **Practice setup** — run that practice's `practice-setup` skill (e.g. `/brand-creative:practice-setup` for brand).
+2. **`delivery-practice` companion** — if that practice needs planning and cadence skills it does not own (e.g. `web-development` → install `delivery-practice`, then use `/delivery-practice:backlog` and `/delivery-practice:sprint`; `brand-creative` needs no companion).
+3. **Practice setup** — run that practice's `practice-setup` skill (e.g. `/brand-creative:practice-setup` for brand; `/delivery-practice:practice-setup` for delivery).
 4. **Bind targets** — complete website `.digital-agency/target.json` pointer, social credentials when available.
 5. **Deploy** — launch the first scheduled agent (dry-run first):
    `./digital-agency/scripts/deploy-squad-agents.sh --dry-run --instance <path>`

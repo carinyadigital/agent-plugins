@@ -1,0 +1,27 @@
+{
+  "name": "delivery-practice",
+  "displayName": "Delivery Practice",
+  "version": "0.1.0",
+  "description": "Complete delivery practice in one install — practice-setup interview, product strategy, backlog and sprint cadence, validation, and operational skills. Two personas (Product Manager, Delivery Lead), one owned skill library.",
+  "author": {
+    "name": "Digital Agency"
+  },
+  "license": "MIT",
+  "keywords": [
+    "delivery",
+    "product-management",
+    "product",
+    "roadmap",
+    "backlog",
+    "tasks",
+    "sprint",
+    "validate",
+    "practice-setup",
+    "stakeholder",
+    "research",
+    "competitive-analysis",
+    "metrics",
+    "brainstorming"
+  ],
+  "skills": "./skills/"
+}

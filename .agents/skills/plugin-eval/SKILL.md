@@ -131,9 +131,9 @@ Do not mark PASS without reading the implementing content.
 | Skill | Path |
 | ----- | ---- |
 | design | `skills/engineering/skills/design` |
-| tasks | `skills/product-management/skills/tasks` |
-| backlog | `skills/product-management/skills/backlog` |
-| validate | `skills/product-management/skills/validate` |
+| tasks | `delivery-practice/skills/tasks` |
+| backlog | `delivery-practice/skills/backlog` |
+| validate | `delivery-practice/skills/validate` |
 | implement | `skills/engineering/skills/implement` |
 | code-review | `skills/engineering/skills/code-review` |
 | create-mr | `skills/engineering/skills/create-mr` |

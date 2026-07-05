@@ -71,10 +71,10 @@
       "description": "Engineering practice \u2014 architecture (solution, adr), epic design, implementation, code review, merge requests, documentation passes, debugging, and technical debt. Delivery skills follow docs/work/{epic}/ conventions; install with Frontend Engineer agent or standalone."
     },
     {
-      "name": "product-management",
-      "displayName": "Product Management",
-      "source": "./skills/product-management",
-      "description": "Product management practice \u2014 strategy (product, roadmap, backlog), epic tasks, sprint planning, validation, plus operational skills for specs, stakeholder updates, research synthesis, competitive analysis, metrics, and brainstorming. Delivery skills follow docs/product/ and docs/work/{epic}/ conventions."
+      "name": "delivery-practice",
+      "displayName": "Delivery Practice",
+      "source": "./delivery-practice",
+      "description": "Complete delivery practice in one install — practice-setup interview, product strategy, backlog and sprint cadence, validation, and operational skills. Two personas (Product Manager, Delivery Lead), one owned skill library."
     },
     {
       "name": "content",
@@ -101,12 +101,6 @@
       "description": "Agentic senior frontend engineer role: peer code reviewer for React/Next.js App Router, TypeScript, Tailwind, and accessibility. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts. Does not write code or approve in hosted UIs."
     },
     {
-      "name": "product-manager",
-      "displayName": "Product Manager",
-      "source": "./agents/product-manager",
-      "description": "Agentic product manager role: strategy docs, roadmaps, backlogs, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and competitive briefs. Follows docs/product/ and docs/work/{epic}/ conventions."
-    },
-    {
       "name": "principal-frontend-engineer",
       "displayName": "Principal Frontend Engineer",
       "source": "./agents/principal-frontend-engineer",
@@ -117,12 +111,6 @@
       "displayName": "QA Engineer",
       "source": "./agents/qa-engineer",
       "description": "Agentic QA engineer \u2014 validates changes after CI: deploy QA workspace, run automated tests, AC-driven exploratory pass, document defects. Maps to delivery-qa crew flow."
-    },
-    {
-      "name": "delivery-lead",
-      "displayName": "Delivery Lead",
-      "source": "./agents/delivery-lead",
-      "description": "Agentic delivery lead \u2014 orchestrates the delivery chain: routes to agents/skills, sprint planning, backlog tracking, stakeholder updates, and epic validation. Cross-cutting steward mapping to crew orchestration layer."
     },
     {
       "name": "principal-architect",

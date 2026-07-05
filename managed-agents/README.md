@@ -10,11 +10,13 @@ Instance binding (which agent, which repos, which schedule) lives in
 
 | Platform | Agents | Notes |
 | -------- | ------ | ----- |
-| **Claude Managed Agents (CMA)** | `product-manager`, `content-strategist`, `content-writer`, `seo-specialist` | Strategy, content, and research personas; Anthropic admin API |
+| **Claude Managed Agents (CMA)** | `content-strategist`, `content-writer`, `seo-specialist` | Content and research personas; Anthropic admin API |
 | **Cursor Cloud Agents** | `frontend-engineer`, `senior-frontend-engineer`, `principal-frontend-engineer`, `qa-engineer`, `webops-engineer` | Code, review, QA, platform; Cursor Automations API |
-| **Either** | `delivery-lead`, `principal-architect` | Orchestration and architecture; resolve at deploy time |
+| **Either** | `principal-architect` | Architecture; resolve at deploy time |
 
-Spike scope (Sprint 3): `product-manager`, `delivery-lead`, `frontend-engineer` only.
+Product Manager and Delivery Lead personas live in the **`delivery-practice`** plugin — invoke skills directly (`/delivery-practice:product`, `/delivery-practice:sprint`); no standalone agent plugin or CMA cookbook.
+
+Spike scope (Sprint 3): `frontend-engineer` only (product-manager and delivery-lead cookbooks retired with agent plugins).
 
 ## Cookbook layout
 

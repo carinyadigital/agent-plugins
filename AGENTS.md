@@ -8,6 +8,9 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 ├── brand-creative/                  # practice plugin — brand-guide, brand-voice, practice-setup (MECE owned)
 │   ├── references/                  # brand-conventions + synced meta-framework files
 │   └── skills/
+├── delivery-practice/               # practice plugin — product, backlog, sprint, validate, … (MECE owned)
+│   ├── references/                  # delivery-conventions + synced meta-framework files
+│   └── skills/
 ├── agency-hub/                      # instance bootstrap + (v2) marketplace — install first
 │   ├── .claude-plugin/plugin.json
 │   ├── .cursor-plugin/plugin.json
@@ -53,7 +56,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 └── scripts/                         # sync-agent-skills.py, sync-references.py, validate.py
 ```
 
-Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/` or `brand-creative/skills/` — it propagates bundled copies into agents that bundle those skills. **Edit discipline skills in `skills/`** and **brand skills in `brand-creative/skills/`**, not in agent bundles.
+Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/`, `brand-creative/skills/`, or `delivery-practice/skills/` — it propagates bundled copies into agents that bundle those skills. **Edit discipline skills in `skills/`**, **brand skills in `brand-creative/skills/`**, and **delivery skills in `delivery-practice/skills/`**, not in agent bundles.
 
 Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`).
 
@@ -65,6 +68,7 @@ Run `python3 scripts/validate.py` before opening a PR — it lints marketplace a
 | ------ | ----------- | ------ |
 | `agency-hub` | `agency-setup` + marketplace skills (ported from strategy-builder-hub) | Shipped; skills-qa alignment with agency framework — refine later |
 | `brand-creative` | `practice-setup`, `brand-guide`, `brand-voice` | Shipped; first MECE practice plugin |
+| `delivery-practice` | `practice-setup` + 13 delivery skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; second MECE practice plugin — Product Manager and Delivery Lead personas, no separate agent plugins |
 
 Bootstraps a git-versioned instance repo (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `agency-hub/README.md` and `agency-hub/references/agency-setup-framework.md`.
 
@@ -74,15 +78,14 @@ Bootstraps a git-versioned instance repo (`config/instance.json`, `config/target
 | ---- | -------- | -------------- | ------ |
 | `frontend-engineer` | Engineering | `implement`, `code-review`, `create-mr`, `component-scaffold` (agent-local); reads `brand-guide.md` from resolved brand path | Shipped; not yet operationally proven |
 | `senior-frontend-engineer` | Engineering | `code-review`, `design` | Shipped; not yet operationally proven |
-| `product-manager` | Product | All 13 product-management skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; not yet operationally proven |
-| `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `design`, `validate` | Shipped; not yet operationally proven |
+| `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `design`, `validate` (synced from delivery-practice) | Shipped; not yet operationally proven |
 | `qa-engineer` | Engineering | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Shipped; not yet operationally proven |
 | `webops-engineer` | Engineering | `deploy-qa`, `debug`, `platform-health` | Shipped; not yet operationally proven |
-| `content-strategist` | Content | `content-calendar`, `curate-content`, `synthesize-research`, `brand-voice` (synced from brand-creative), `backlog` | Shipped; not yet operationally proven |
+| `content-strategist` | Content | `content-calendar`, `curate-content`, `synthesize-research`, `brand-voice` (synced from brand-creative), `backlog` (synced from delivery-practice) | Shipped; not yet operationally proven |
 | `content-writer` | Content | `draft-post`, `draft-recipe`, `write-captions`, `edit-content`, `brand-voice` (synced from brand-creative) | Shipped; not yet operationally proven |
-| `seo-specialist` | SEO | `keyword-research`, `technical-seo-audit`, `content-seo-review`, `competitive-brief` | Shipped; not yet operationally proven |
-| `delivery-lead` | Operations (cross-cutting) | `skills-index`, `backlog`, `tasks`, `sprint`, `validate`, `stakeholder-update`, `metrics-review` | Shipped; not yet operationally proven |
 | `principal-architect` | Engineering (Architecture) | `solution`, `adr`, `design`, `docs` | Shipped; not yet operationally proven |
+
+Product Manager and Delivery Lead are **personas inside `delivery-practice`**, not standalone agent plugins. Invoke skills directly: `/delivery-practice:product`, `/delivery-practice:sprint`, etc.
 
 Each agent lives under `agents/<slug>/` with a canonical system prompt at `agents/<slug>.md`, bundled skills at `skills/`, and role-specific MCP in `.mcp.json`. Register new agents in both marketplace manifests.
 

@@ -1,102 +1,81 @@
 # Digital Agency Plugins
 
-Claude and Cursor plugins and Managed Agent templates for digital agency workflows. Each named agent ships two ways from one source.
+Claude and Cursor plugins for digital agency workflows, organised as **MECE practice plugins** — each practice is a self-contained install unit that owns its skill library outright. Personas (Frontend Engineer, Product Manager, Content Writer, SEO Specialist, …) are invoked via slash commands on the owning practice plugin, not as separate agent plugins.
 
 ## Repository Structure
 
 ```
-├── brand-creative/                  # practice plugin — brand-guide, brand-voice, practice-setup (MECE owned)
-│   ├── references/                  # brand-conventions + synced meta-framework files
-│   └── skills/
-├── delivery-practice/               # practice plugin — product, backlog, sprint, validate, … (MECE owned)
-│   ├── references/                  # delivery-conventions + synced meta-framework files
-│   └── skills/
-├── content-marketing/               # practice plugin — calendar, drafts, captions, analyse-media (MECE owned)
-│   ├── references/                  # content-conventions + synced meta-framework files
-│   └── skills/
-├── ux-design/                       # practice plugin — wireframe, practice-setup (MECE owned)
-│   ├── references/                  # ux-design-conventions + synced meta-framework files
-│   └── skills/
-├── search-optimisation/             # practice plugin — keyword-research, technical-seo-audit, content-seo-review (MECE owned)
-│   ├── references/                  # search-optimisation-conventions + synced meta-framework files
-│   └── skills/
 ├── agency-hub/                      # instance bootstrap + (v2) marketplace — install first
 │   ├── .claude-plugin/plugin.json
 │   ├── .cursor-plugin/plugin.json
 │   ├── .mcp.json                    # bundled MCP servers (e.g. GitHub for hub bootstrap)
-│   ├── references/                  # instance profile template, setup framework
+│   ├── references/                  # agency-setup framework, instance profile template (canonical)
 │   └── skills/
 │       └── agency-setup/SKILL.md    # instance bootstrap; marketplace skills ported from strategy-builder-hub
-├── agents/                          # named agents — one self-contained plugin each
-│   └── <slug>/
-│       ├── .claude-plugin/plugin.json
-│       ├── .cursor-plugin/plugin.json
-│       ├── agents/<slug>.md         #   ← canonical system prompt (one source, two wrappers)
-│       └── skills/                  #   ← bundled copies, synced from skills/
-├── skills/                          #   skill plugins — skill sources, commands
-│   └── <discipline>/
-│       ├── .claude-plugin/plugin.json
-│       ├── .cursor-plugin/plugin.json
-│       ├── commands/
-│       └── skills/
-│           └── <name>/
-│               ├── SKILL.md
-│               ├── prompts/
-│               ├── agents/      #   sub-agents for this skill
-│               ├── evals/       #   evals.json + trigger-queries.json
-│               └── scripts/     #   optional helper scripts
-├── managed-agents/                  #   CMA cookbooks (coming soon) — one dir per named agent
-│   └── <slug>/
-│       ├── agent.yaml               #   system + skills → ../../agents/<slug>/...
-│       ├── subagents/*.yaml         #   depth-1 leaf workers
-│       ├── steering-examples.json
-│       └── README.md                #   security tier + handoff notes
-└── scripts/                         # sync-references.py, validate.py, plugin-check.py
+├── brand-creative/                  # practice plugin — brand-guide, brand-voice, practice-setup
+├── delivery-practice/               # practice plugin — product, roadmap, backlog, sprint, validate, …
+├── content-marketing/               # practice plugin — calendar, drafts, captions, analyse-media, …
+├── ux-design/                       # practice plugin — wireframe, practice-setup
+├── search-optimisation/             # practice plugin — keyword-research, technical-seo-audit, content-seo-review
+├── web-development/                 # practice plugin — solution, design, implement, code-review, deploy-qa, …
+├── managed-agents/                  # CMA cookbooks (coming soon) — headless deployment definitions
+├── hooks/                           # repo-level hooks.json (empty scaffold)
+├── tests/                           # unit tests for the validation scripts
+└── scripts/                         # sync-references.py, validate.py, plugin-check.py, deploy-squad-agents.sh
+```
+
+Every practice plugin follows the same internal layout:
+
+```
+<practice>/
+├── .claude-plugin/plugin.json       # Claude manifest
+├── .cursor-plugin/plugin.json       # Cursor manifest (kept identical)
+├── .mcp.json                        # bundled MCP servers for this practice
+├── hooks/hooks.json                 # empty scaffold
+├── references/                      # <practice>-conventions.md + synced meta-framework files
+└── skills/
+    └── <name>/
+        ├── SKILL.md                 # frontmatter: name, description, allowed-tools, metadata
+        ├── assets/                  # optional templates
+        └── references/              # optional skill-local references
 ```
 
 Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `delivery-practice/skills/`, `content-marketing/skills/`, `ux-design/skills/`, `search-optimisation/skills/`, `web-development/skills/`, `agency-hub/skills/`).
 
-Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`).
+Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md` — canonical in `agency-hub/references/`; `practice-setup-framework.md` — canonical in `brand-creative/references/`). Synced copies land in every practice plugin's `references/`.
 
 Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks practice-plugin MCP wiring, validates SKILL.md frontmatter, resolves markdown cross-references, and validates `evals/` JSON schema. Use `python3 scripts/plugin-check.py <plugin-dir>` for fast per-plugin checks while iterating.
 
-## Agency Hub (install first)
+## Plugin catalogue
 
-| Plugin | Skills (v1) | Status |
-| ------ | ----------- | ------ |
-| `agency-hub` | `agency-setup` + marketplace skills (ported from strategy-builder-hub) | Shipped; skills-qa alignment with agency framework — refine later |
-| `brand-creative` | `practice-setup`, `brand-guide`, `brand-voice` | Shipped; first MECE practice plugin |
-| `delivery-practice` | `practice-setup` + 13 delivery skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; second MECE practice plugin — Product Manager and Delivery Lead personas, no separate agent plugins |
-| `content-marketing` | `practice-setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Shipped; third MECE practice plugin — Content Strategist and Content Writer personas, no separate agent plugins; reads `brand-voice.md` via artifact consumption; invokes `/delivery-practice:backlog` and `/delivery-practice:synthesize-research` as companion skills |
-| `ux-design` | `practice-setup`, `wireframe` | Shipped; minimal v1 — no dedicated persona; writes wireframes to `<instance-root>/design/`; downstream practices read via artifact consumption |
-| `search-optimisation` | `practice-setup` + 3 SEO skills (`keyword-research`, `technical-seo-audit`, `content-seo-review`) | Shipped; one persona (SEO Specialist), no separate agent plugin; invokes `/delivery-practice:competitive-brief` as companion skill |
+| Plugin | Skills (v1) | Personas | Status |
+| ------ | ----------- | -------- | ------ |
+| `agency-hub` | `agency-setup` + marketplace skills (`skill-installer`, `registry-browser`, `skills-qa`, `auto-updater`, `uninstall`, `disable`, `skill-manager`, `related-skills-surfacer`) | — | Shipped; install first |
+| `brand-creative` | `practice-setup`, `brand-guide`, `brand-voice` | — | Shipped |
+| `delivery-practice` | `practice-setup` + 13 delivery skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Product Manager, Delivery Lead | Shipped |
+| `content-marketing` | `practice-setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Content Strategist, Content Writer | Shipped; reads `brand-voice.md` via artifact consumption; invokes `/delivery-practice:backlog` and `/delivery-practice:synthesize-research` as companion skills |
+| `ux-design` | `practice-setup`, `wireframe` | — | Shipped; minimal v1 — writes wireframes to `<instance-root>/design/`; downstream practices read via artifact consumption |
+| `search-optimisation` | `practice-setup` + 3 SEO skills (`keyword-research`, `technical-seo-audit`, `content-seo-review`) | SEO Specialist | Shipped; invokes `/delivery-practice:competitive-brief` as companion skill |
+| `web-development` | `practice-setup` + 15 engineering skills (`solution`, `adr`, `design`, `implement`, `code-review`, `final-code-review`, `create-mr`, `debug`, `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects`, `platform-health`, `tech-debt`, `docs`) | Frontend Engineer, Senior Frontend Engineer, Principal Frontend Engineer, QA Engineer, WebOps Engineer, Principal Architect | Shipped; not yet operationally proven — reads `brand-guide.md` from resolved brand path; invokes `/delivery-practice:backlog` and `/delivery-practice:sprint` as companion skills |
 
-Bootstraps a git-versioned instance repo (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `agency-hub/README.md` and `agency-hub/references/agency-setup-framework.md`.
+`agency-hub` bootstraps a git-versioned instance repo (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `agency-hub/README.md` and `agency-hub/references/agency-setup-framework.md`.
 
-## Agents (current roster)
+**Cross-practice relationships:**
 
-| Slug | Practice | Bundled skills | Status |
-| ---- | -------- | -------------- | ------ |
-| `frontend-engineer` | Engineering | `implement`, `code-review`, `create-mr`, `component-scaffold` (agent-local); reads `brand-guide.md` from resolved brand path | Shipped; not yet operationally proven |
-| `senior-frontend-engineer` | Engineering | `code-review`, `design` | Shipped; not yet operationally proven |
-| `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `design`, `validate` (synced from delivery-practice) | Shipped; not yet operationally proven |
-| `qa-engineer` | Engineering | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Shipped; not yet operationally proven |
-| `webops-engineer` | Engineering | `deploy-qa`, `debug`, `platform-health` | Shipped; not yet operationally proven |
-| `principal-architect` | Engineering (Architecture) | `solution`, `adr`, `design`, `docs` | Shipped; not yet operationally proven |
+- **Artifact consumption** — read another practice's output file (e.g. `web-development` reads `brand-guide.md` and wireframes from `design/`).
+- **Companion practice** — co-install and invoke skills directly (e.g. `web-development` → `/delivery-practice:backlog`; `content-marketing` → `/delivery-practice:synthesize-research`). Skills are invoked as `/<plugin>:<skill>`.
 
-Product Manager and Delivery Lead are **personas inside `delivery-practice`**, not standalone agent plugins. Content Strategist and Content Writer are **personas inside `content-marketing`**, not standalone agent plugins. SEO Specialist is a **persona inside `search-optimisation`**, not a standalone agent plugin. Invoke skills directly: `/delivery-practice:product`, `/content-marketing:content-calendar write`, `/search-optimisation:keyword-research`, etc.
-
-Each agent lives under `agents/<slug>/` with a canonical system prompt at `agents/<slug>.md`, bundled skills at `skills/`, and role-specific MCP in `.mcp.json`. Register new agents in both marketplace manifests.
+**Retired:** standalone agent plugins under `agents/` and discipline skill folders under `skills/` — skills now live only inside their owning practice plugin. `social-media` practice plugin is pending; interim: `content-marketing` skills for captions and curation.
 
 Strategy, roadmap, backlog, and epic work for this catalogue live in the **carinyaparc-space** coordination repo under `products/digital-agency/` — not in this repo.
 
 ## Key Files
 
-- `.claude-plugin/marketplace.json` / `.cursor-plugin/marketplace.json`: Marketplace manifests — register all plugins with source paths
-- `plugin.json`: Plugin metadata — name, description, version, and component discovery settings
-- `commands/*.md`: Slash commands invoked as `/plugin:command-name`
-- `skills/*/SKILL.md`: Detailed knowledge and workflows for specific tasks
+- `.claude-plugin/marketplace.json` / `.cursor-plugin/marketplace.json`: Marketplace manifests — register all plugins with source paths (keep both in sync)
+- `<plugin>/.claude-plugin/plugin.json` / `<plugin>/.cursor-plugin/plugin.json`: Plugin metadata — name, description, version, and skill discovery (keep both in sync)
+- `<plugin>/skills/*/SKILL.md`: Skill definitions — invoked as `/<plugin>:<skill>` or triggered automatically by description match
 - `<practice>/.mcp.json`: Bundled MCP server definitions per practice plugin (GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools, and practice-specific providers)
+- `<practice>/references/<practice>-conventions.md`: Canonical path resolution and artefact boundaries for that practice
 - `scripts/validate.py`: Structural validation — run before every PR
 - `*.local.md`: User-specific configuration (gitignored)
 
@@ -105,5 +84,5 @@ Strategy, roadmap, backlog, and epic work for this catalogue live in the **carin
 1. Edit markdown files directly — changes take effect immediately
 2. After editing shared meta-framework references, run `python3 scripts/sync-references.py`
 3. Run `python3 scripts/validate.py` — fix errors before pushing
-4. Test commands with `/plugin:command-name` syntax (Cowork) or install via Cursor Settings → Plugins
+4. Test commands with `/plugin:skill-name` syntax (Cowork) or install via Cursor Settings → Plugins
 5. Skills are invoked automatically when their trigger conditions match

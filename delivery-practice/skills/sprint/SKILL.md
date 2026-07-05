@@ -12,6 +12,12 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<mode: plan|retrospective> <sprint-id> [--context <notes>]"
+metadata:
+  version: "0.1.0"
+  owner: delivery-practice
+  review_cadence: quarterly
+  work_shape: orchestrate-delivery
+  output_class: tracking-update
 ---
 
 # Sprint

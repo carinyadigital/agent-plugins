@@ -8,6 +8,12 @@ license: MIT
 allowed-tools:
   - Read
 argument-hint: <query>
+metadata:
+  version: "0.1.0"
+  owner: delivery-practice
+  review_cadence: quarterly
+  work_shape: orchestrate-delivery
+  output_class: decision-support
 ---
 
 # Skills index

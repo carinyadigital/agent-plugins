@@ -11,6 +11,12 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<time period or metric focus>"
+metadata:
+  version: "0.1.0"
+  owner: delivery-practice
+  review_cadence: quarterly
+  work_shape: monitor-and-report
+  output_class: decision-support
 ---
 
 # Metrics Review

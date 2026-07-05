@@ -98,8 +98,9 @@ Show before the interview (adapt to context):
 
 Map to **practice plugins** (MECE — self-contained install units). See `instance-profile-template.md` § Service → plugin mapping:
 
-- `brand-creative` — shipped; no `core` companion
-- `web-development`, `content-marketing`, `social-media`, `seo` — practice plugins pending; recommend interim catalogue entries and `core` where noted
+- `brand-creative`, `ux-design` — shipped; no companion install
+- `web-development`, `content-marketing`, `seo` (`search-optimisation`) — shipped; recommend `delivery-practice` as companion for planning and cadence skills
+- `social-media` — practice plugin pending; interim: `content-marketing` skills for captions and curation
 
 Quick mode: one primary practice. Full mode: all that apply now vs later.
 

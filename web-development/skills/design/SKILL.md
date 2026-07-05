@@ -14,6 +14,12 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<mode: write|review> <epic> [--mode walking-skeleton|tdd] [--context <notes>]"
+metadata:
+  version: "0.1.0"
+  owner: web-development
+  review_cadence: quarterly
+  work_shape: generate-draft
+  output_class: draft-for-review
 ---
 
 # Design

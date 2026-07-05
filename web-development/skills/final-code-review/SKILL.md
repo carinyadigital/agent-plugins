@@ -13,6 +13,12 @@ allowed-tools:
   - Grep
   - Shell
 argument-hint: "[branch-or-pr-or-mr-url]"
+metadata:
+  version: "0.1.0"
+  owner: web-development
+  review_cadence: quarterly
+  work_shape: review-and-gate
+  output_class: decision-support
 ---
 
 # Final code review

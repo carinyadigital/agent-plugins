@@ -12,6 +12,12 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<branch-name-or-mr-url>"
+metadata:
+  version: "0.1.0"
+  owner: web-development
+  review_cadence: quarterly
+  work_shape: implement-and-ship
+  output_class: tracking-update
 ---
 
 # Deploy QA

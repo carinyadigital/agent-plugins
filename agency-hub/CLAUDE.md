@@ -85,9 +85,7 @@ First-party plugins from the digital-agency catalogue — installed via marketpl
 
 **Hub:** `agency-hub`
 
-**Practice plugins:** `brand-creative`, `delivery-practice`, `content-marketing`, `ux-design`, `search-optimisation` (shipped); `web-development`, `social-media` (pending)
-
-**Interim catalogue (until practice plugins ship):** `engineering` skill plugin; named agents under `agents/`
+**Practice plugins:** `brand-creative`, `delivery-practice`, `content-marketing`, `ux-design`, `search-optimisation`, `web-development` (shipped); `social-media` (pending — interim: `content-marketing` skills for captions and curation)
 
 MCP servers are bundled in each practice plugin's `.mcp.json` — see `CONNECTORS.md` in the practice you install.
 

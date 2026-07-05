@@ -10,6 +10,12 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<topic, problem, or idea to explore>"
+metadata:
+  version: "0.1.0"
+  owner: delivery-practice
+  review_cadence: quarterly
+  work_shape: generate-draft
+  output_class: decision-support
 ---
 
 # Product Brainstorming

@@ -15,6 +15,12 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<mode: discover|write|review|refine|enforce> [args...]"
+metadata:
+  version: "0.1.0"
+  owner: brand-creative
+  review_cadence: quarterly
+  work_shape: generate-draft
+  output_class: draft-for-review
 ---
 
 # Brand voice

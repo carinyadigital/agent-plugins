@@ -197,9 +197,10 @@ Practices are MECE — one self-contained plugin per practice. Planning and cade
 | Service (`services.enabled`) | Practice plugin | Companion practice | Squad charters | Notes |
 |---|---|---|---|---|
 | `brand-creative` | `brand-creative` | none | — | Shipped; run `/brand-creative:practice-setup` after bootstrap |
-| `web-development` | `web-development` | `delivery-practice` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/delivery-practice:backlog`, `/delivery-practice:sprint` |
+| `web-development` | `web-development` | `delivery-practice` | `site`, `blog`, `recipes` | Shipped; run `/web-development:practice-setup` after bootstrap; needs `/delivery-practice:backlog`, `/delivery-practice:sprint` |
 | `content-marketing` | `content-marketing` | `delivery-practice` | `content` | Shipped; run `/content-marketing:practice-setup` after bootstrap; needs `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` |
 | `social-media` | `social-media` | TBD | `content` | Practice pending — interim: `content-marketing` skills for captions and curation |
 | `seo` | `search-optimisation` | `delivery-practice` | `seo` | Shipped; run `/search-optimisation:practice-setup` after bootstrap; needs `/delivery-practice:competitive-brief` |
+| `ux-design` | `ux-design` | none | — | Shipped; run `/ux-design:practice-setup` after bootstrap; writes wireframes to `<instance-root>/design/` |
 
 Write `services.recommendedPlugins` with the practice plugin name(s) plus `delivery-practice` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.

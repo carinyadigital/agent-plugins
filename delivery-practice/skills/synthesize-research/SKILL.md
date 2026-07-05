@@ -11,6 +11,12 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "<research topic or question>"
+metadata:
+  version: "0.1.0"
+  owner: delivery-practice
+  review_cadence: quarterly
+  work_shape: generate-draft
+  output_class: decision-support
 ---
 
 # Synthesize Research

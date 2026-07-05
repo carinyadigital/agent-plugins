@@ -122,10 +122,11 @@ Map to **practice plugins** (MECE — one install per practice). Recommend; do n
 | Practice area | Practice plugin | Companion practice | Notes |
 |---|---|---|---|
 | `brand-creative` | `brand-creative` | none | Shipped — no companion install |
-| `web-development` | `web-development` | `delivery-practice` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
+| `web-development` | `web-development` | `delivery-practice` | Shipped — run `/web-development:practice-setup` after bootstrap; invoke `/delivery-practice:backlog`, `/delivery-practice:sprint` for companion skills |
 | `content-marketing` | `content-marketing` | `delivery-practice` | Shipped — run `/content-marketing:practice-setup` after bootstrap; invoke `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` for companion skills |
 | `social-media` | `social-media` | TBD | Practice plugin pending — interim: `content-marketing` skills for captions and curation |
-| `seo` | `search-optimisation` | `delivery-practice` | Practice plugin shipped — run `/search-optimisation:practice-setup` after bootstrap; invoke `/delivery-practice:competitive-brief` for companion skill |
+| `seo` | `search-optimisation` | `delivery-practice` | Shipped — run `/search-optimisation:practice-setup` after bootstrap; invoke `/delivery-practice:competitive-brief` for companion skill |
+| `ux-design` | `ux-design` | none | Shipped — run `/ux-design:practice-setup` after bootstrap; writes wireframes to `<instance-root>/design/` |
 
 When recommending `delivery-practice`, name the skills the practice needs (e.g. `web-development` → `/delivery-practice:backlog`, `/delivery-practice:sprint`; `content-marketing` → `/delivery-practice:backlog`, `/delivery-practice:synthesize-research`). `brand-creative` never needs a companion.
 

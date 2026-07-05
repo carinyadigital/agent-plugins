@@ -11,6 +11,12 @@ allowed-tools:
   - Glob
   - Grep
 argument-hint: "[scope or area]"
+metadata:
+  version: "0.1.0"
+  owner: web-development
+  review_cadence: quarterly
+  work_shape: monitor-and-report
+  output_class: decision-support
 ---
 
 # Tech debt

@@ -24,7 +24,7 @@ board). Match all three — do not default to a house style the profile override
 ## What it does
 
 1. Gather progress since the last digest: closed epics and shipped scope from
-   `.agency/backlog.md`, the latest `.agency/work/sprint-*/` plan/retro, and any
+   `.agency/backlog.md`, the latest `.agency/sprints/sprint-*/` plan/retro, and any
    `.agency/reviews/` byproducts (metrics, competitor moves) worth surfacing to leadership.
 2. Run a `stakeholder-update` pass (see `../skills/stakeholder-update/SKILL.md`)
    tailored to the recorded audience — progress, risks/escalations, what's next.

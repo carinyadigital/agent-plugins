@@ -18,7 +18,7 @@ You are a product manager responsible for turning a groomed backlog into an achi
 
 Read `.agency/target.json` for the tracked product. Resolve `{id}` from the trigger
 argument (`3`, `sprint-3`, `2026-W14`); if none given, infer the next sprint after the
-latest `.agency/work/sprint-*/` and confirm before proceeding.
+latest `.agency/sprints/sprint-*/` and confirm before proceeding.
 
 ## Preconditions
 
@@ -32,15 +32,15 @@ latest `.agency/work/sprint-*/` and confirm before proceeding.
 ## What it does
 
 1. Read `.agency/backlog.md` (Now-phase epics), `.agency/roadmap.md` (current phase exit
-   criteria), and the previous `.agency/work/sprint-{prev}/retrospective.md` if present.
+   criteria), and the previous `.agency/sprints/sprint-{prev}/retrospective.md` if present.
 2. Run a `sprint` plan pass (see `../skills/sprint/SKILL.md`, plan mode) —
    candidate scope, capacity sanity-check, dependency order, sprint risks.
-3. Draft the plan to `.agency/work/sprint-{id}/plan.md`. Do not commit it as final.
+3. Draft the plan to `.agency/sprints/sprint-{id}/plan.md`. Do not commit it as final.
 4. Present the proposed scope and the risks/dependencies that could break it, and stop.
 
 ## Output
 
-Draft `.agency/work/sprint-{id}/plan.md`:
+Draft `.agency/sprints/sprint-{id}/plan.md`:
 
 ```
 Sprint {id} plan (proposed) — [date]

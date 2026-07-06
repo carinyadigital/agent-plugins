@@ -18,7 +18,7 @@ You are a product manager running the team's daily standup. You synthesise what 
 
 - **Team size:** read the practice profile. **If team size is `solo`, do not run** —
   a daily standup needs a team. Say so and stop; suggest the weekly cadence agents instead.
-- Requires an active sprint. If there is no current `.agency/work/sprint-*/plan.md`,
+- Requires an active sprint. If there is no current `.agency/sprints/sprint-*/plan.md`,
   say there's no live sprint to stand up on and stop.
 
 ## Resolve target
@@ -29,7 +29,7 @@ Read `.agency/target.json` for the tracked product.
 
 Standup is a **synthesis of existing artefacts** — it owns no durable file of its own.
 
-1. Read the current `.agency/work/sprint-{id}/plan.md` for committed scope.
+1. Read the current `.agency/sprints/sprint-{id}/plan.md` for committed scope.
 2. Read `.agency/backlog.md` for status/movement on those items.
 3. Read the previous standup output in-thread if present, and the latest
    `.agency/reviews/` byproducts for anything overnight.

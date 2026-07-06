@@ -6,7 +6,7 @@ owner: <!-- squad -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - .agency/work/sprint-{id}/plan.md
+  - .agency/sprints/sprint-{id}/plan.md
 ---
 
 # Sprint retrospective -- {Sprint id}

@@ -1,6 +1,6 @@
 # Sprint — plan mode
 
-Prepare `.agency/work/sprint-{id}/plan.md` before the sprint starts.
+Prepare `.agency/sprints/sprint-{id}/plan.md` before the sprint starts.
 
 Read [SKILL.md](../SKILL.md).
 

@@ -10,7 +10,7 @@ Canonical rules for paths, epics, and artefact boundaries. Skills that touch
 .agency/                      target.json, product.md, roadmap.md, backlog.md
 .agency/architecture/         solution.md, decisions/register.md, ADR-*.md
 .agency/work/{epic}/          design.md, tasks.md, refine-session.md
-.agency/work/sprint-{id}/     plan.md, retrospective.md
+.agency/sprints/sprint-{id}/     plan.md, retrospective.md
 .agency/reviews/              agent byproducts: competitor-scan, metrics, digests
 ```
 
@@ -50,7 +50,7 @@ Override paths when the user names them explicitly in the request.
 | ADR decisions | `register.md`, `ADR-NNNN-*.md` | solution narrative |
 | Epic implementation spec | `.agency/work/{epic}/design.md` | solution, backlog |
 | Task Gherkin (and optional EARS) | `.agency/work/{epic}/tasks.md` | backlog, design |
-| Sprint plan / retro | `.agency/work/sprint-{id}/` | product backlog |
+| Sprint plan / retro | `.agency/sprints/sprint-{id}/` | product backlog |
 
 ## Acceptance criteria
 

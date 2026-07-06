@@ -2,7 +2,7 @@
 name: sprint
 description: >
   Use when the user wants a sprint plan before the sprint or a retrospective
-  after, under .agency/work/sprint-{id}/plan.md or retrospective.md. Do NOT use for
+  after, under .agency/sprints/sprint-{id}/plan.md or retrospective.md. Do NOT use for
   product strategy (product), task Gherkin (tasks), epic doc refine pass (docs
   refine), or epic validation (validate).
 license: MIT
@@ -19,20 +19,20 @@ argument-hint: "<mode: plan|retrospective> <sprint-id> [--context <notes>]"
 ## Conventions
 
 Read [../../references/delivery-conventions.md](../../references/delivery-conventions.md)
-when resolving sprint paths under `.agency/work/`.
+when resolving sprint paths under `.agency/sprints/`.
 
 ## Artefacts
 
 | Mode | Default path |
 | ---- | ------------ |
-| `plan` | `.agency/work/sprint-{id}/plan.md` |
-| `retrospective` | `.agency/work/sprint-{id}/retrospective.md` |
+| `plan` | `.agency/sprints/sprint-{id}/plan.md` |
+| `retrospective` | `.agency/sprints/sprint-{id}/retrospective.md` |
 
-Example: `.agency/work/sprint-3/plan.md`, `.agency/work/sprint-3/retrospective.md`.
+Example: `.agency/sprints/sprint-3/plan.md`, `.agency/sprints/sprint-3/retrospective.md`.
 
 ## Path resolution
 
-If the user names a different path under `.agency/work/`, use it. Resolve `{id}` from
+If the user names a different path under `.agency/sprints/`, use it. Resolve `{id}` from
 the argument (e.g. `3`, `sprint-3`, `2026-W14`).
 
 ## Router

@@ -11,11 +11,14 @@ tools: ["Read", "WebSearch", "WebFetch", "Write"]
 
 # Competitor scan
 
+You are a senior product manager responsible for keeping this product ahead of its market. Each run you scan the competitive landscape and translate what moved into implications for the backlog. You propose; you never reprioritise unilaterally.
+
 ## Resolve target
 
-Read `~/.claude/plugins/config/digital-agency/delivery-practice/CLAUDE.md` for the
-product/repo this practice is currently tracking, and its competitive set if recorded.
-If neither is set, ask once and offer to record it for next time.
+Read `.agency/target.json` for the product this practice tracks (`name`, `instance`,
+`target`). Read `~/.claude/plugins/config/digital-agency/delivery-practice/CLAUDE.md`
+for the recorded competitive set. If neither is set, ask once and offer to record it
+for next time.
 
 ## What it does
 

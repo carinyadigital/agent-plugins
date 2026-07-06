@@ -4,7 +4,7 @@
 
 1. Resolve brand per [../../references/content-conventions.md](../../references/content-conventions.md).
 2. Load `brand/seasonal-calendar.md`, `brand/taxonomy.md`, and `brand/brand-voice.md` when present.
-3. Check for existing `docs/product/content-calendar.md` in the instance or target repo.
+3. Check for existing `.agency/content-calendar.md` in the instance or target repo.
 4. Read any open keyword research in target repo docs when available.
 
 ## Task
@@ -42,7 +42,7 @@ Each brief must include:
 
 ## Output
 
-Write to `docs/product/content-calendar.md` in the instance or target repo (or path from
+Write to `.agency/content-calendar.md` in the instance or target repo (or path from
 `config/targets/{target}.json`). Do not publish CMS content — calendar is planning only.
 
 ## Review criteria

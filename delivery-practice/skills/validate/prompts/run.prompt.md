@@ -5,14 +5,14 @@ production-ready and every acceptance criterion is satisfied.
 
 Read [SKILL.md](../SKILL.md) and
 [../../references/delivery-conventions.md](../../references/delivery-conventions.md).
-Resolve `{epic}` from the user's epic slug or Epic ID via `docs/product/backlog.md`.
+Resolve `{epic}` from the user's epic slug or Epic ID via `.agency/backlog.md`.
 
 ## Negative constraints
 
 A validation report MUST NOT:
 
 - Write new acceptance criteria — it verifies criteria already in tasks.md
-- Include implementation detail → solution.md or docs/work/{epic}/design.md
+- Include implementation detail → solution.md or .agency/work/{epic}/design.md
 - Reopen decisions that were closed during the sprint → raise a follow-up story instead
 - Include business rationale → product.md
 
@@ -29,20 +29,20 @@ You need the following for the target epic:
 
 | Input                 | Location                         | Required    |
 | --------------------- | -------------------------------- | ----------- |
-| Product backlog       | `docs/product/backlog.md`        | Yes         |
-| Tasks                 | `docs/work/{epic}/tasks.md`           | Yes         |
-| Design                | `docs/work/{epic}/design.md`          | If exists   |
+| Product backlog       | `.agency/backlog.md`        | Yes         |
+| Tasks                 | `.agency/work/{epic}/tasks.md`           | Yes         |
+| Design                | `.agency/work/{epic}/design.md`          | If exists   |
 | Application code      | `{repo}:src/`                    | Yes         |
-| Solution architecture | `docs/architecture/solution.md`  | If relevant |
-| ADRs                  | `docs/architecture/decisions/`   | If relevant |
+| Solution architecture | `.agency/architecture/solution.md`  | If relevant |
+| ADRs                  | `.agency/architecture/decisions/`   | If relevant |
 
 ## Steps
 
 ### Phase 1: Gather context
 
-1. Read `docs/product/backlog.md` — locate the epic row (Epic ID, Title, Work path `docs/work/{epic}/`)
-2. Read `docs/work/{epic}/tasks.md` and collect all tasks
-3. Read `docs/work/{epic}/design.md` if it exists
+1. Read `.agency/backlog.md` — locate the epic row (Epic ID, Title, Work path `.agency/work/{epic}/`)
+2. Read `.agency/work/{epic}/tasks.md` and collect all tasks
+3. Read `.agency/work/{epic}/design.md` if it exists
 4. Read the solution architecture if the epic touches architectural boundaries
 5. Read any relevant ADRs referenced by the design or requirements
 
@@ -51,7 +51,7 @@ You need the following for the target epic:
 If the epic has many tasks, spawn **ac-evidence-verifier** (see validate SKILL.md)
 and merge its matrix. Otherwise build the matrix yourself.
 
-For every task in `docs/work/{epic}/tasks.md`, build a table:
+For every task in `.agency/work/{epic}/tasks.md`, build a table:
 
 | Task     | Criterion                    | Evidence                             | Status                |
 | -------- | ---------------------------- | ------------------------------------ | --------------------- |
@@ -97,7 +97,7 @@ If a design document exists:
 
 ### Phase 6: Update tasks and backlog
 
-Based on the acceptance matrix, update `docs/work/{epic}/tasks.md`:
+Based on the acceptance matrix, update `.agency/work/{epic}/tasks.md`:
 
 1. **Completed criteria**: Check the box `- [x]`
 2. **Incomplete or partial criteria**: Uncheck the box `- [ ]` and append a
@@ -107,14 +107,14 @@ Based on the acceptance matrix, update `docs/work/{epic}/tasks.md`:
    - Some criteria fail or partial -> `in-progress`
    - No criteria pass -> `not started`
 4. **New tasks**: If validation reveals work not covered, add tasks to the
-   `docs/work/{epic}/tasks.md` following existing ID and format conventions
-5. **Epic status**: Update epic status in `docs/product/backlog.md` when the epic is complete
+   `.agency/work/{epic}/tasks.md` following existing ID and format conventions
+5. **Epic status**: Update epic status in `.agency/backlog.md` when the epic is complete
 
 ### Phase 7: Pre-report validation
 
 Before writing the report, confirm:
 
-- [ ] Every task in `docs/work/{epic}/tasks.md` appears in the acceptance matrix
+- [ ] Every task in `.agency/work/{epic}/tasks.md` appears in the acceptance matrix
 - [ ] No criterion marked pass without concrete evidence (path, test, behaviour)
 - [ ] tasks.md and backlog.md updates preserve existing ID and format conventions
 - [ ] Epic status in backlog set to complete only if all tasks are verified done

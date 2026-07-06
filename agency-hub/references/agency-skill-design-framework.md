@@ -108,7 +108,7 @@ assumptions — never proceed silently.
 **Flag 🔴 if:** silent proceed on insufficient inputs.
 
 ### 5. Definition of Done
-What artefact or state counts as complete? Path conventions (`docs/work/{epic}/`,
+What artefact or state counts as complete? Path conventions (`.agency/work/{epic}/`,
 target repo layout) stated or deferred explicitly to target repo docs.
 
 **Flag 🔴 if:** no completion criteria for `implement-and-ship` or

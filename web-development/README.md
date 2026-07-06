@@ -58,7 +58,7 @@ After instance bootstrap (or standalone):
 | `--resume` | Continue a paused interview |
 | `--check-integrations` | Report MCP connector status only; no interview |
 
-`setup` detects or creates `.digital-agency/target.json` for Golden Path 2
+`setup` detects or creates `.agency/target.json` for Golden Path 2
 target binding.
 
 ## Skills
@@ -66,9 +66,9 @@ target binding.
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile, target binding, stack defaults |
-| **solution** | write, review, refine — `docs/architecture/solution.md` |
+| **solution** | write, review, refine — `.agency/architecture/solution.md` |
 | **adr** | write, review, plan — ADR register and decision records |
-| **design** | write, review — `docs/work/{epic}/design.md` |
+| **design** | write, review — `.agency/work/{epic}/design.md` |
 | **implement** | Implement a task against approved design and AC |
 | **code-review** | run, fix — peer review against design and tasks |
 | **final-code-review** | Final technical gate on open PRs |

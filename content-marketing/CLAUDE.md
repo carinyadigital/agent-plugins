@@ -11,7 +11,7 @@ Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
 Brand voice is read from the resolved brand path — see references/content-conventions.md.
-Content artefacts (calendar, seeds) live in the instance or target repo docs tree.
+Content artefacts (calendar, seeds) live in the instance or target repo `.agency/` tree.
 -->
 
 # Content Marketing — Practice Profile

@@ -30,7 +30,7 @@ Interviews the business, creates or binds an instance repo, writes `config/` and
 |---|---|---|
 | **0 — Personal hub state** | Marketplace preferences on this machine | `~/.claude/plugins/config/digital-agency/agency-hub/` (`CLAUDE.md`, `allowlist.yaml`, `install-log.yaml`) |
 | **1 — Instance profile** | Shared org/brand/config facts, versioned in git | `<instance-repo>/config/instance.json`, `<instance-repo>/brand/` |
-| **2 — Target bindings** | Per-target connection details | `<instance-repo>/config/targets/<name>.json` + `.digital-agency/target.json` in target repos |
+| **2 — Target bindings** | Per-target connection details | `<instance-repo>/config/targets/<name>.json` + `.agency/target.json` in target repos |
 
 Unlike personal dotfile config, Tier 1 lives in a **private instance repo** — multiple agents and humans read it over months.
 
@@ -95,7 +95,7 @@ When marketplace management ships: watched registries ≠ trust, restrictive all
 1. Install the first **practice plugin** recommended during setup (e.g. `brand-creative`).
 2. Install **`core`** if that practice needs shared roles (`web-development` → `core`; `brand-creative` → none).
 3. Run that practice's **`setup`** (e.g. `/brand-creative:setup`).
-4. Bind targets — website pointer (`.digital-agency/target.json`), social credentials when ready.
+4. Bind targets — website pointer (`.agency/target.json`), social credentials when ready.
 5. Deploy the first scheduled agent — see `digital-agency/scripts/deploy-squad-agents.sh`.
 
 ## References

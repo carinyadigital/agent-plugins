@@ -3,7 +3,7 @@
 ## Before running
 
 1. Read `${CLAUDE_PLUGIN_ROOT}/references/search-optimisation-conventions.md`.
-2. Resolve target via `.digital-agency/target.json` or instance target config.
+2. Resolve target via `.agency/target.json` or instance target config.
 3. Default audit URL: production URL from target config (or `--url` override).
 4. Read public `robots.txt` and sitemap config in repo when available.
 5. Read squad charter for label conventions when present in the instance repo.
@@ -49,7 +49,7 @@ Create GitHub issues via **github** connector. Priority order:
 2. **P2** — missing OG tags, incomplete structured data
 3. **P3** — CWV improvements, metadata polish
 
-Also write a summary to `docs/work/seo/technical-seo-audit-{YYYY-MM-DD}.md` if
+Also write a summary to `.agency/work/seo/technical-seo-audit-{YYYY-MM-DD}.md` if
 no issues were created (audit trail).
 
 ## Review criteria

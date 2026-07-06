@@ -7,7 +7,7 @@ Read [SKILL.md](../SKILL.md) for path resolution, frontmatter, and boundaries.
 
 ## Path
 
-Default: `docs/product/product.md`. If the user names another path, use it.
+Default: `.agency/product.md`. If the user names another path, use it.
 
 ## Arguments
 
@@ -35,7 +35,7 @@ Product stage: existing pitch product.md, user research, stakeholder map.]
 1. Read context and existing pitch product.md if present
 2. Carry forward §1–§5, updated if needed
 3. §6 Target users
-4. §7 Outcome metrics — reference `docs/architecture/solution.md §2.1` for thresholds; do not restate numbers
+4. §7 Outcome metrics — reference `.agency/architecture/solution.md §2.1` for thresholds; do not restate numbers
 5. §8 Product principles — commercial only
 6. §9 Stakeholders and RACI
 7. §10 Dependencies and sequencing

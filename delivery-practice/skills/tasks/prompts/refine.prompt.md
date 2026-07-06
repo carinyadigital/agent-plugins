@@ -1,6 +1,6 @@
 # Tasks — refine mode
 
-Refine `docs/work/{epic}/tasks.md`. Resolve `{epic}` from argument or backlog.
+Refine `.agency/work/{epic}/tasks.md`. Resolve `{epic}` from argument or backlog.
 
 Read [SKILL.md](../SKILL.md).
 

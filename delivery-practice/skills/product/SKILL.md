@@ -2,7 +2,7 @@
 name: product
 description: >
   Use when the user wants a product strategy doc, PRD, pitch, vision, personas,
-  or outcomes at docs/product/product.md (write, review, refine). Do NOT use for
+  or outcomes at .agency/product.md (write, review, refine). Do NOT use for
   phased delivery plan (roadmap), epics or backlog (backlog), architecture
   (solution), tasks or Gherkin (tasks), or implementation (implement).
 license: MIT
@@ -23,7 +23,7 @@ when checking artefact boundaries.
 
 ## Artefact
 
-Default path: `docs/product/product.md` — strategy document (_why_, _who_, _what_).
+Default path: `.agency/product.md` — strategy document (_why_, _who_, _what_).
 Readable by a non-technical stakeholder without a glossary.
 
 ## Path resolution

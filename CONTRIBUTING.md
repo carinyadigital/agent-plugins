@@ -94,6 +94,7 @@ python3 scripts/plugin-check.py <dir>  # fast check for one practice plugin
 | Markdown cross-refs | Broken relative links in skill files |
 | Evals schema | Malformed `evals/evals.json` or `evals/trigger-queries.json` |
 | JSON sanity | Any `*.json` in the repo that fails to parse |
+| Legacy artefact paths | References to legacy delivery paths under docs/product, docs/work, or dot-digital-agency (use `.agency/` instead) |
 
 Options:
 

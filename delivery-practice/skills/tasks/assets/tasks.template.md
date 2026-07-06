@@ -7,9 +7,9 @@ owner: <!-- squad -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - docs/product/backlog.md
-  - docs/work/{epic}/design.md
-  - docs/architecture/solution.md
+  - .agency/backlog.md
+  - .agency/work/{epic}/design.md
+  - .agency/architecture/solution.md
 ---
 
 <!--

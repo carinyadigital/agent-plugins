@@ -1,7 +1,7 @@
 ---
 name: setup
 description: >
-  Web development practice setup interview — detects or creates .digital-agency/target.json
+  Web development practice setup interview — detects or creates .agency/target.json
   binding, reads instance profile from `/agency-hub:setup`, interviews tech stack, deployment
   platform, connectors, and persona preference (six engineering personas vs merged),
   writes practice profile. Use on first install after `/agency-hub:setup`, when the user says
@@ -57,7 +57,7 @@ Structured-aggregation; integration table reports ✓ only on successful MCP pro
 
 ### Step 0 — Detect existing state
 
-1. **Read** `.digital-agency/target.json` at working root if present — note target slug, instance pointer, binding status.
+1. **Read** `.agency/target.json` at working root if present — note target slug, instance pointer, binding status.
 2. **Read** `config/instance.json` if present — note `status`, target definitions under `config/targets/`, squad structure.
 3. **Resolve brand path** per `web-development-conventions.md` — check whether `brand-guide.md` exists (informational only; do not create it here).
 4. **Inspect target repo** when bound — read `package.json`, `AGENTS.md` / `CLAUDE.md`, CI config for stack hints.
@@ -101,11 +101,11 @@ If `--check-integrations` only, stop here unless user asks to continue setup.
 
 #### 3a — Target binding (full mode; abbreviated in quick)
 
-If `.digital-agency/target.json` is missing and the user is in a target repo:
+If `.agency/target.json` is missing and the user is in a target repo:
 
 - Confirm this repo should be bound to an instance target.
 - Resolve instance root (from user path or `config/targets/`).
-- On confirmation, create `.digital-agency/target.json` with instance pointer and target slug.
+- On confirmation, create `.agency/target.json` with `name`, `instance`, and `target`, plus the `.agency/` scaffold per `agency-setup-framework.md` § Target repo `.agency/` scaffold when this is the first bind.
 
 If already bound, confirm binding is correct.
 
@@ -135,7 +135,7 @@ If backlog, task AC, sprint, or epic validation is needed during implementation,
 List every file to create/update:
 
 - `~/.claude/plugins/config/digital-agency/web-development/CLAUDE.md` — practice profile with target binding, stack, deployment, persona preference, integration table
-- `.digital-agency/target.json` — only when user confirmed first-time binding in Step 3a
+- `.agency/target.json` — only when user confirmed first-time binding in Step 3a
 
 List deliberate skips. Ask: **"Write these files? (yes/no)"** — wait.
 
@@ -143,7 +143,7 @@ List deliberate skips. Ask: **"Write these files? (yes/no)"** — wait.
 
 Write `~/.claude/plugins/config/digital-agency/web-development/CLAUDE.md` from `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` template with interview answers filled. Set `Status: complete`.
 
-Write `.digital-agency/target.json` when confirmed in Step 3a.
+Write `.agency/target.json` (with `name`, `instance`, `target`) and `.agency/` scaffold when confirmed in Step 3a.
 
 Delete resume file if present.
 
@@ -195,7 +195,7 @@ Location: `<instance-root>/config/.web-development-setup-resume.json` if instanc
 
 ## Worked example
 
-**Input:** Target repo with Next.js + TypeScript detected; `--quick`; solo operator; merged persona; Vercel hosting; `.digital-agency/target.json` created on confirmation.
+**Input:** Target repo with Next.js + TypeScript detected; `--quick`; solo operator; merged persona; Vercel hosting; `.agency/target.json` created on confirmation.
 
 **Expected output:** Practice profile at personal config path with stack, deployment, and merged persona recorded; target binding file written; handoff to `/web-development:implement` or `/web-development:solution write`.
 
@@ -204,6 +204,6 @@ Location: `<instance-root>/config/.web-development-setup-resume.json` if instanc
 | Artefact | Path |
 | -------- | ---- |
 | Practice profile | `~/.claude/plugins/config/digital-agency/web-development/CLAUDE.md` |
-| Target binding (when confirmed) | `.digital-agency/target.json` at target repo root |
+| Target binding (when confirmed) | `.agency/target.json` at target repo root |
 
 Next: invoke persona-appropriate skills, install `delivery-practice` for companion skills, or `--check-integrations`.

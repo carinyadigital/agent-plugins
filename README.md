@@ -53,7 +53,7 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 ### 2. Sprint plan from an existing backlog (Delivery Practice)
 
-**You have:** `docs/product/backlog.md` with epics in the Now phase and open risks.
+**You have:** `.agency/backlog.md` with epics in the Now phase and open risks.
 
 **Run:** `/delivery-practice:sprint plan 3` — point at the backlog and name sprint goals.
 
@@ -61,7 +61,7 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 ### 3. Implement a UI task against design and AC (Web Development)
 
-**You have:** approved `docs/work/{epic}/design.md`, `tasks.md` with Gherkin AC, and a bound target repo.
+**You have:** approved `.agency/work/{epic}/design.md`, `tasks.md` with Gherkin AC, and a bound target repo.
 
 **Run:** `/web-development:implement CHK01-01` — the skill reads the target repo's own `AGENTS.md` / `CLAUDE.md` before changing code.
 
@@ -168,7 +168,7 @@ Each practice plugin has the same shape:
 2. Run **`/agency-hub:setup`** — creates or binds your instance repo.
 3. Install the **practice plugins** recommended during setup.
 4. Run each practice's **`/<practice>:setup`** (e.g. `/brand-creative:setup`).
-5. Bind targets — website pointer (`.digital-agency/target.json` in target repos), credentials when ready.
+5. Bind targets — website pointer (`.agency/target.json` in target repos), credentials when ready.
 
 **Run practice setup first.** Every other skill in a plugin reads from the profile it writes. The interview takes 10–20 minutes per plugin; **`--quick`** is available when you want to be productive in two minutes and refine later.
 
@@ -350,10 +350,10 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | Command | Skill | What it does |
 |---|---|---|
 | `/delivery-practice:setup` | setup | Learns cadence, personas, escalation; writes practice profile |
-| `/delivery-practice:product` | product | write, review, refine — `docs/product/product.md` |
-| `/delivery-practice:roadmap` | roadmap | write, review, refine — `docs/product/roadmap.md` |
-| `/delivery-practice:backlog` | backlog | write, review, refine — `docs/product/backlog.md` |
-| `/delivery-practice:tasks` | tasks | write, review, refine — `docs/work/{epic}/tasks.md` |
+| `/delivery-practice:product` | product | write, review, refine — `.agency/product.md` |
+| `/delivery-practice:roadmap` | roadmap | write, review, refine — `.agency/roadmap.md` |
+| `/delivery-practice:backlog` | backlog | write, review, refine — `.agency/backlog.md` |
+| `/delivery-practice:tasks` | tasks | write, review, refine — `.agency/work/{epic}/tasks.md` |
 | `/delivery-practice:sprint` | sprint | plan, retrospective |
 | `/delivery-practice:validate` | validate | Epic completion sign-off against AC and roadmap gates |
 | `/delivery-practice:write-spec` | write-spec | Feature spec or PRD from a problem statement |
@@ -398,9 +398,9 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | Command | Skill | What it does |
 |---|---|---|
 | `/web-development:setup` | setup | Learns stack, personas, target binding, connectors |
-| `/web-development:solution` | solution | write, review, refine — `docs/architecture/solution.md` |
+| `/web-development:solution` | solution | write, review, refine — `.agency/architecture/solution.md` |
 | `/web-development:adr` | adr | plan, write, review — ADR register and decision records |
-| `/web-development:design` | design | write, review — `docs/work/{epic}/design.md` |
+| `/web-development:design` | design | write, review — `.agency/work/{epic}/design.md` |
 | `/web-development:implement` | implement | Implement a task against approved design and AC |
 | `/web-development:code-review` | code-review | run, fix — peer review against design and tasks |
 | `/web-development:final-code-review` | final-code-review | Final technical gate on open PRs |

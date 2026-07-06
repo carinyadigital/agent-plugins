@@ -4,7 +4,7 @@ Verify observable behaviour against acceptance criteria.
 
 ## Steps
 
-1. Parse acceptance criteria from `docs/work/{epic}/tasks.md` into a checklist.
+1. Parse acceptance criteria from `.agency/work/{epic}/tasks.md` into a checklist.
 2. Read the diff or changed files for scope context.
 3. For each criterion, execute the smallest verification that proves or
    disproves it — Shell for CLI checks, Read for static inspection, browser

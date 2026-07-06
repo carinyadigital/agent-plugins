@@ -3,7 +3,7 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Code review — branch feat/cp08-sentry against docs/work/cp08-performance/design.md and tasks.md.",
+      "prompt": "Code review — branch feat/cp08-sentry against .agency/work/cp08-performance/design.md and tasks.md.",
       "expected_output": "Structured review verdict with blocking vs non-blocking findings mapped to Gherkin AC.",
       "assertions": [
         "Verdict distinguishes blocking and non-blocking findings",

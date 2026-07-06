@@ -3,11 +3,11 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "We finished product.md and roadmap.md. Write the product backlog for the checkout epics — CHK01 foundation, CHK02 payment, CHK03 confirmation — with work paths under docs/work/.",
-      "expected_output": "docs/product/backlog.md with epic table: Epic IDs, titles, docs/work/checkout-foundation/, docs/work/payment-placement/, docs/work/order-confirmation/ (two-word slugs), no full Gherkin scenarios in backlog.",
+      "prompt": "We finished product.md and roadmap.md. Write the product backlog for the checkout epics — CHK01 foundation, CHK02 payment, CHK03 confirmation — with work paths under .agency/work/.",
+      "expected_output": ".agency/backlog.md with epic table: Epic IDs, titles, .agency/work/checkout-foundation/, .agency/work/payment-placement/, .agency/work/order-confirmation/ (two-word slugs), no full Gherkin scenarios in backlog.",
       "assertions": [
-        "Output is or updates docs/product/backlog.md",
-        "Every epic row includes a docs/work/ path with kebab-case slug of at most two words",
+        "Output is or updates .agency/backlog.md",
+        "Every epic row includes a .agency/work/ path with kebab-case slug of at most two words",
         "No Feature:/Scenario: Gherkin blocks in the product backlog",
         "Epic IDs (CHK01 etc.) appear in the table but work paths use title slugs not IDs"
       ]

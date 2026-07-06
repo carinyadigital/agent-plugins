@@ -2,7 +2,7 @@
 name: roadmap
 description: >
   Use when the user wants outcome-based delivery phases, exit criteria, or
-  roadmap review at docs/product/roadmap.md. Requires product.md for write. Do
+  roadmap review at .agency/roadmap.md. Requires product.md for write. Do
   NOT use for epic breakdown or work paths (backlog), PRD (product), per-epic
   design (design), tasks (tasks), or architecture detail (solution).
 license: MIT
@@ -23,7 +23,7 @@ when checking artefact boundaries.
 
 ## Artefact
 
-Default path: `docs/product/roadmap.md` — outcome-based phases with exit criteria.
+Default path: `.agency/roadmap.md` — outcome-based phases with exit criteria.
 
 ## Path resolution
 

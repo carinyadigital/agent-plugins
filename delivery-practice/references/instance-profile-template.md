@@ -56,7 +56,7 @@ Tier 1 config lives in the **instance repo** (git-versioned), not in user dotfil
 | Field | Values / purpose |
 |---|---|
 | `status` | `template` until setup completes; then `complete` |
-| `instance` | Short slug — repo name, used in `.digital-agency/target.json` pointers |
+| `instance` | Short slug — repo name, used in `.agency/target.json` pointers |
 | `business.context` | `single-business` \| `agency-serving-clients` |
 | `services.enabled` | Practice areas active now: `web-development`, `content-marketing`, `social-media`, `seo`, `brand-creative` |
 | `services.recommendedPlugins` | Catalogue plugin names to install next |
@@ -97,33 +97,50 @@ Set `catalogue` during setup to the GitHub org/repo slug (or equivalent source i
   "status": "skeleton",
   "repository": null,
   "binding": {
-    "pointerFile": ".digital-agency/target.json",
+    "pointerFile": ".agency/target.json",
     "pointerSchema": {
+      "name": "<target-repo-slug>",
       "instance": "<instance-slug>",
       "target": "website"
     }
   },
   "artefactPaths": {
-    "product": "docs/product/product.md",
-    "backlog": "docs/product/backlog.md",
-    "roadmap": "docs/product/roadmap.md",
-    "solution": "docs/architecture/solution.md"
+    "product": ".agency/product.md",
+    "backlog": ".agency/backlog.md",
+    "roadmap": ".agency/roadmap.md",
+    "solution": ".agency/architecture/solution.md"
   }
 }
 ```
 
 **Target repo pointer** — after user confirms, write in the target repository:
 
-Path: `.digital-agency/target.json`
+Path: `.agency/target.json`
 
 ```json
 {
+  "name": "<target-repo-slug>",
   "instance": "<instance-slug>",
   "target": "website"
 }
 ```
 
-The `instance` value matches `config/instance.json` → `instance`. Practice agents read this file to locate the instance repo.
+The `name` field carries target repo identity (typically the git repo slug). The `instance` value matches `config/instance.json` → `instance`. Practice agents read this file to locate the instance repo and resolve the target without inferring identity from paths.
+
+**Target repo scaffold** — on bind, also create the `.agency/` directory skeleton:
+
+```text
+.agency/
+  target.json
+  product.md
+  roadmap.md
+  backlog.md
+  work/
+  architecture/
+  reviews/
+```
+
+Stub markdown files may contain placeholder headings only. Epic and architecture subdirectories are populated by practice skills.
 
 ## File: `config/targets/<name>.json` — social (proven)
 

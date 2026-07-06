@@ -6,9 +6,9 @@ epic_id: CHK01
 
 # Tasks -- Checkout Foundation (CHK01)
 
-Tasks for `docs/work/checkout-foundation/`, epic CHK01 from `docs/product/backlog.md`.
+Tasks for `.agency/work/checkout-foundation/`, epic CHK01 from `.agency/backlog.md`.
 
-Companion artefacts: `./design.md` · `docs/architecture/solution.md`
+Companion artefacts: `./design.md` · `.agency/architecture/solution.md`
 
 ## 1. Summary
 

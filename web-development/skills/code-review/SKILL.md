@@ -36,7 +36,7 @@ prior review (`fix` mode).
 
 ## Preconditions
 
-- `docs/work/{epic}/design.md` and `tasks.md` in workspace
+- `.agency/work/{epic}/design.md` and `tasks.md` in workspace
 - Branch, PR, or diff specified (default: `git diff`)
 
 ## Trust spine

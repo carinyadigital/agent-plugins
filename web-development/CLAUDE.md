@@ -10,7 +10,7 @@ The `setup` skill copies or updates the user config at:
 Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
-Engineering artefacts (solution, work/, ADRs) live in the target repo docs tree.
+Engineering artefacts (solution, work/, ADRs) live in the target repo `.agency/` tree.
 Brand guide is read from the resolved brand path — see references/web-development-conventions.md.
 -->
 
@@ -33,7 +33,7 @@ Brand guide is read from the resolved brand path — see references/web-developm
 
 ## Target binding
 
-- **Target repo:** [PLACEHOLDER — path or slug from .digital-agency/target.json]
+- **Target repo:** [PLACEHOLDER — path or slug from .agency/target.json]
 - **Instance root:** [PLACEHOLDER — resolved instance path or none]
 - **Binding status:** [PLACEHOLDER — bound | standalone | pending]
 

@@ -1,6 +1,6 @@
 ---
 name: tasks-ac-reviewer
-description: Use this agent when reviewing a code diff against Gherkin acceptance criteria in docs/work/{epic}/tasks.md. Typical triggers include pre-PR review, verifying a story implementation, or checking that every changed behaviour maps to a task criterion. See "When to invoke" in the agent body.
+description: Use this agent when reviewing a code diff against Gherkin acceptance criteria in .agency/work/{epic}/tasks.md. Typical triggers include pre-PR review, verifying a story implementation, or checking that every changed behaviour maps to a task criterion. See "When to invoke" in the agent body.
 model: inherit
 color: blue
 tools: Read, Grep, Glob, Bash
@@ -15,7 +15,7 @@ You map code changes to task acceptance criteria only.
 
 ## Scope
 
-- Read `docs/work/{epic}/tasks.md` for the epic in scope.
+- Read `.agency/work/{epic}/tasks.md` for the epic in scope.
 - Review `git diff` (or user-specified files).
 - Do not review style unless it violates an AC.
 

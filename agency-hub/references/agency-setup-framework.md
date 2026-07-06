@@ -27,7 +27,7 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 | 1 — Instance | `<instance-repo>/config/plugins.json` | Installed catalogue plugins |
 | 1 — Instance | `<instance-repo>/config/.setup-resume.json` | Paused interview after instance repo is bound |
 | 2 — Target | `<instance-repo>/config/targets/<name>.json` | Per-target binding skeletons |
-| 2 — Target | `<target-repo>/.digital-agency/target.json` | Pointer from target repo to instance |
+| 2 — Target | `<target-repo>/.agency/target.json` | Pointer from target repo to instance |
 
 **In-repo templates (read-only):** `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md` and `${CLAUDE_PLUGIN_ROOT}/references/agency-setup-framework.md`. Never modify installed plugin templates.
 
@@ -124,11 +124,24 @@ Which apply **now** vs **later**:
 | `social` | Proven — write skeleton; social publishing connector binding deferred until credentials |
 | `email`, `ads`, `analytics` | **Not yet designed** — write `status: not-yet-designed` skeleton; do not block |
 
-For each active target: repository path/URL if known. Website binding requires writing `.digital-agency/target.json` in the target repo **after user confirms** — propose the diff first.
+For each active target: repository path/URL if known. Website binding requires writing `.agency/target.json` and scaffolding the `.agency/` directory in the target repo **after user confirms** — propose the diff first.
 
-### Target pointers — legacy migration
+### Target repo `.agency/` scaffold
 
-The canonical pointer filename is `.digital-agency/target.json` (product-named, generic). If an earlier hand-built instance used a business-named pointer, `--check-integrations` (or setup) should detect it and propose rename before the instance is treated as supported.
+On bind (after separate confirmation per target repo), create:
+
+```text
+.agency/
+  target.json            ← binding pointer + repo identity (name, instance, target)
+  product.md             ← empty stub or placeholder headings
+  roadmap.md
+  backlog.md
+  work/                  ← epic folders created by delivery skills
+  architecture/          ← solution.md, decisions/ created by web-development skills
+  reviews/               ← agent byproducts (competitor-scan, metrics, digests)
+```
+
+`target.json` must include a `name` field carrying the target repo identity (typically the git repo slug). Skills resolve the target by reading this file — they do not infer identity from the directory name.
 
 ## Write Tier 1 and Tier 2 config
 
@@ -170,6 +183,11 @@ Read `${CLAUDE_PLUGIN_ROOT}/.mcp.json`. For each server:
 | Server | Enables in agency-hub |
 |---|---|
 | github | Validate target repo access; read seed repos |
+
+For each bound target repo, verify:
+
+- `.agency/target.json` exists at the target repo root
+- `target.json` includes `name`, `instance`, and `target` fields
 
 Report: **connected** (successful probe), **configured but not verified**, or **not found**. Name degraded steps. Offer to continue setup after the report.
 

@@ -2,7 +2,7 @@
 name: validate
 description: >
   Use when the user wants final epic completion sign-off: every task in
-  docs/work/{epic}/tasks.md verified against Gherkin AC and roadmap phase exit
+  .agency/work/{epic}/tasks.md verified against Gherkin AC and roadmap phase exit
   criteria. Pass epic slug or ID. Do NOT use for PR or branch code review
   (code-review), writing tasks (tasks), or sprint retrospective (sprint). Not
   for drafting backlog or design.

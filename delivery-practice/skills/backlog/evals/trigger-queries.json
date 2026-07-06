@@ -23,7 +23,7 @@
     "note": "product skill"
   },
   {
-    "query": "Write docs/work/checkout-foundation/design.md for the walking skeleton.",
+    "query": "Write .agency/work/checkout-foundation/design.md for the walking skeleton.",
     "should_trigger": false,
     "note": "design skill"
   },

@@ -6,7 +6,7 @@ owner: <!-- squad -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - docs/product/backlog.md
+  - .agency/backlog.md
 ---
 
 # Sprint plan -- {Sprint id}

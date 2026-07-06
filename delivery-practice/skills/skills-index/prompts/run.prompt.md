@@ -18,10 +18,10 @@ below to identify the best match and direct them to the right skill.
 
 | Skill | Description (excerpt) | Artefact | Phase | Role |
 | --- | --- | --- | --- | --- |
-| product | product.md: write, review, refine | docs/product/product.md | strategy | pm |
-| roadmap | Phased delivery roadmap | docs/product/roadmap.md | strategy | pm |
-| backlog | Product backlog: write, review, refine epics | docs/product/backlog.md | discovery | pm |
-| tasks | Break epic design into tasks with Gherkin AC | docs/work/{epic}/tasks.md | discovery | pm |
+| product | product.md: write, review, refine | .agency/product.md | strategy | pm |
+| roadmap | Phased delivery roadmap | .agency/roadmap.md | strategy | pm |
+| backlog | Product backlog: write, review, refine epics | .agency/backlog.md | discovery | pm |
+| tasks | Break epic design into tasks with Gherkin AC | .agency/work/{epic}/tasks.md | discovery | pm |
 | sprint | Sprint plan or retrospective | plan.md / retrospective.md | delivery | pm |
 | validate | Epic validation vs AC and roadmap gates | validation report | delivery | pm |
 | write-spec | Feature spec or PRD from a problem statement | feature spec | discovery | pm |

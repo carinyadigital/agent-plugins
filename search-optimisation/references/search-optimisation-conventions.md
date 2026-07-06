@@ -9,7 +9,7 @@ near-miss requests.
 Resolve the website or app target in this order:
 
 1. **Explicit path or URL** named by the user in the request.
-2. **Inside a target repo** — `.digital-agency/target.json` at working root → read
+2. **Inside a target repo** — `.agency/target.json` at working root → read
    `productionUrl`, content seed paths, and squad label conventions.
 3. **Instance target config** — `config/targets/{target}.json` in the instance repo.
 4. **Inspect project** — infer production URL from deployment config or ask the user.
@@ -19,7 +19,7 @@ Default audit URL is the resolved production URL. Override with `--url` on
 
 ## SEO work documents
 
-Default path: `docs/work/seo/` on the target repo docs tree.
+Default path: `.agency/work/seo/` on the target repo `.agency/` tree.
 
 Override when the user names a path explicitly or when target config defines an SEO
 work directory.

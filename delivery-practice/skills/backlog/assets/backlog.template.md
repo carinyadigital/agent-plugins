@@ -6,22 +6,22 @@ owner: <!-- squad -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - docs/product/product.md
-  - docs/product/roadmap.md
-  - docs/architecture/solution.md
+  - .agency/product.md
+  - .agency/roadmap.md
+  - .agency/architecture/solution.md
 ---
 
 <!--
 DRAFTING AIDE — DELETE BEFORE SAVING.
 §3 epic breakdown table; §4 epic detail for Now-phase epics.
-Epic work path: docs/work/{epic}/ — slug from title or short title, max two words, kebab-case.
+Epic work path: .agency/work/{epic}/ — slug from title or short title, max two words, kebab-case.
 -->
 
 # Backlog -- {Name}
 
-- **Product:** [`docs/product/product.md`](../product/product.md)
-- **Solution:** [`docs/architecture/solution.md`](../architecture/solution.md)
-- **Roadmap:** [`docs/product/roadmap.md`](../product/roadmap.md)
+- **Product:** `.agency/product.md`
+- **Solution:** `.agency/architecture/solution.md`
+- **Roadmap:** `.agency/roadmap.md`
 
 ## 1. Summary
 
@@ -40,8 +40,8 @@ Epic work path: docs/work/{epic}/ — slug from title or short title, max two wo
 | Convention | Value |
 | ---------- | ----- |
 | Epic ID | `{PREFIX}{nn}` |
-| Epic work path | `docs/work/{epic}/` (title or short title slug, max two words) |
-| Task ID | `{PREFIX}{nn}-{nn}` in `docs/work/{epic}/tasks.md` |
+| Epic work path | `.agency/work/{epic}/` (title or short title slug, max two words) |
+| Task ID | `{PREFIX}{nn}-{nn}` in `.agency/work/{epic}/tasks.md` |
 | Status | Not started, In progress, In review, Done, Blocked |
 | Priority | P0–P3 |
 | Estimation | Fibonacci story points |
@@ -61,7 +61,7 @@ Epic work path: docs/work/{epic}/ — slug from title or short title, max two wo
 
 **Dependencies.**
 
-**Status.** **Work path:** `docs/work/{epic}/`
+**Status.** **Work path:** `.agency/work/{epic}/`
 
 ## 5. Dependency graph
 

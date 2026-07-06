@@ -46,7 +46,7 @@ instance or target repo.
 | Accountability gap | Review mode produces explicit planning-ready verdict |
 | Brand safety | Themes align with seasonal calendar and brand voice |
 | Scope boundaries | Calendar briefs only — execution is draft-post/draft-recipe |
-| Blast radius | Writes `docs/product/content-calendar.md` on instance repo |
+| Blast radius | Writes `.agency/content-calendar.md` on instance repo |
 
 ## Workflow
 
@@ -57,7 +57,7 @@ instance or target repo.
 
 | Mode | Default path |
 | ---- | ------------ |
-| `write`, `review` | `docs/product/content-calendar.md` (instance repo) |
+| `write`, `review` | `.agency/content-calendar.md` (instance repo) |
 
 Path may be overridden in `config/targets/{target}.json` or user explicit path.
 

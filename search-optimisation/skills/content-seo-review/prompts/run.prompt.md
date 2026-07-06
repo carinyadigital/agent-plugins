@@ -4,7 +4,7 @@
 
 1. Read `${CLAUDE_PLUGIN_ROOT}/references/search-optimisation-conventions.md`.
 2. Load the seed JSON file(s) in the PR diff or path named by the user.
-3. Read relevant `docs/work/seo/keyword-research-*.md` for target keywords.
+3. Read relevant `.agency/work/seo/keyword-research-*.md` for target keywords.
 4. Check slug uniqueness and URL structure against the target site's routing.
 
 ## Review checklist

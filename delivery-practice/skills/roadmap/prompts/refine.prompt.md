@@ -9,7 +9,7 @@ What shipped, what did not, what is now blocked, and what phase gate evidence
 now exists. The sequencing strategy stays intact unless the context
 explicitly requires a resequence.
 
-Read [SKILL.md](../SKILL.md) for path resolution. Default: `docs/product/roadmap.md`.
+Read [SKILL.md](../SKILL.md) for path resolution. Default: `.agency/roadmap.md`.
 
 ## What this refinement is not
 
@@ -33,7 +33,7 @@ A roadmap refinement MUST NOT:
 <artifacts>
 [Provided by the caller:
   Required: the roadmap.md to refine
-  Recommended: docs/work/sprint-{id}/retrospective.md, velocity data, dependency status
+  Recommended: .agency/work/sprint-{id}/retrospective.md, velocity data, dependency status
     updates, gate review outcomes
   Optional: product.md (for strategic alignment check), backlog.md (for what
     actually shipped)]

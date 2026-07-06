@@ -3,11 +3,11 @@ name: backlog
 description: >
   Use when the user wants to write, review, or refine the product backlog,
   decompose delivery into epics, set Now-phase scope, or manage epic rows (e.g.
-  CHK01). Default artefact docs/product/backlog.md. Do NOT use for business
+  CHK01). Default artefact .agency/backlog.md. Do NOT use for business
   strategy or PRD (product), phase exit criteria (roadmap), Gherkin tasks
   (tasks), epic design.md (design), architecture (solution), sprint retro
   (sprint), or pre-sprint doc alignment (docs). Task breakdown per epic lives at
-  docs/work/{epic}/ via tasks.
+  .agency/work/{epic}/ via tasks.
 license: MIT
 allowed-tools:
   - Read
@@ -26,7 +26,7 @@ setting work paths, resolving epic IDs, or checking artefact boundaries.
 
 ## Artefact
 
-Default path: `docs/product/backlog.md` — product-level backlog (epics by default).
+Default path: `.agency/backlog.md` — product-level backlog (epics by default).
 
 ## Path resolution
 
@@ -38,13 +38,13 @@ path instead of the default.
 - **Epic-level (default):** epic breakdown table, Now-phase epic detail, dependency
   graph, delivery risks. Later phases are placeholders unless `--depth full`.
 - **With stories:** when the user requests `--stories`, a small product, or
-  explicitly asks — lightweight story rows only; full Gherkin → `docs/work/{epic}/tasks.md`
+  explicitly asks — lightweight story rows only; full Gherkin → `.agency/work/{epic}/tasks.md`
   via **tasks**.
 
 ## Gotchas
 
 - **Work path slug** comes from title or short title (max two words), not Epic ID.
-- **Full Gherkin** belongs in `docs/work/{epic}/tasks.md`, not in the product backlog.
+- **Full Gherkin** belongs in `.agency/work/{epic}/tasks.md`, not in the product backlog.
 - **`--stories`** adds high-level rows only; do not paste task-level AC here.
 - **Architecture and APIs** stay in `solution.md`; epic detail stays in `design.md`.
 
@@ -61,7 +61,7 @@ path instead of the default.
 ## Router
 
 1. Mode: `write`, `review`, or `refine`.
-2. Resolve path (default `docs/product/backlog.md`).
+2. Resolve path (default `.agency/backlog.md`).
 3. One prompt under [prompts/](prompts/).
 
 **write** — `--depth full` for all phases; `--stories` for story-level rows in the product backlog.

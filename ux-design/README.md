@@ -46,7 +46,7 @@ Path resolution for all skills: `references/ux-design-conventions.md`.
 | Context | Design artefacts land at |
 | ------- | ------------------------ |
 | Instance repo (`config/instance.json` present) | `<instance-root>/design/` |
-| Target repo (`.digital-agency/target.json` pointer) | Instance `design/` via pointer |
+| Target repo (`.agency/target.json` pointer) | Instance `design/` via pointer |
 | Standalone (no instance) | `docs/design/` in the current project |
 
 ## Brand guide (artifact consumption)

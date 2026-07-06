@@ -2,7 +2,7 @@
 name: docs
 description: >
   Use for pre-sprint documentation alignment (review) or sprint-end epic
-  documentation pass (refine) — product, solution, and docs/work/{epic}/design.md.
+  documentation pass (refine) — product, solution, and .agency/work/{epic}/design.md.
   Produces refine-session.md on refine. Do NOT use for sprint retrospective
   (sprint retrospective), epic validation against AC (validate), writing backlog
   (backlog), or initial architecture (solution write). Not a substitute for code
@@ -29,11 +29,11 @@ Pre-sprint and sprint-end passes on product, solution, and epic design.
 
 | Artefact | Default |
 | -------- | ------- |
-| Product | `docs/product/product.md` |
-| Solution | `docs/architecture/solution.md` |
-| ADR register | `docs/architecture/decisions/register.md` |
-| Epic design | `docs/work/{epic}/design.md` |
-| Refine session | `docs/work/{epic}/refine-session.md` |
+| Product | `.agency/product.md` |
+| Solution | `.agency/architecture/solution.md` |
+| ADR register | `.agency/architecture/decisions/register.md` |
+| Epic design | `.agency/work/{epic}/design.md` |
+| Refine session | `.agency/work/{epic}/refine-session.md` |
 
 ## Gotchas
 

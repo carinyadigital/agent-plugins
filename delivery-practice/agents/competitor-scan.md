@@ -29,6 +29,8 @@ If neither is set, ask once and offer to record it for next time.
 
 ## Output
 
+Write scan summary to `.agency/reviews/competitor-scan-{YYYY-MM-DD}.md` when the user approves persistence.
+
 ```
 Competitor scan — [date]
 What moved: [...]

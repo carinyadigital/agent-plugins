@@ -22,8 +22,8 @@ Default: unstaged changes from `git diff`. User may specify branch, PR, or file 
 
 Spawn in parallel before synthesizing:
 
-1. **tasks-ac-reviewer** — AC coverage vs `docs/work/{epic}/tasks.md`
-2. **design-drift-reviewer** — scope vs `docs/work/{epic}/design.md`
+1. **tasks-ac-reviewer** — AC coverage vs `.agency/work/{epic}/tasks.md`
+2. **design-drift-reviewer** — scope vs `.agency/work/{epic}/design.md`
 
 Read agents' key-file lists. Merge into this review.
 

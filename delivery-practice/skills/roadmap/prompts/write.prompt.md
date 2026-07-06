@@ -7,20 +7,20 @@ work against the product strategy.
 
 ## Path
 
-Default: `docs/product/roadmap.md`. If the user names another path, use it.
+Default: `.agency/roadmap.md`. If the user names another path, use it.
 
 ## Negative constraints
 
 roadmap.md MUST NOT contain:
 
-- Story-level acceptance criteria or epic detail → `docs/product/backlog.md`
-- Implementation patterns or tech stack → `docs/architecture/solution.md`
-- Business strategy → `docs/product/product.md`
+- Story-level acceptance criteria or epic detail → `.agency/backlog.md`
+- Implementation patterns or tech stack → `.agency/architecture/solution.md`
+- Business strategy → `.agency/product.md`
 
 ## Context
 
 <artifacts>
-[Provided by the caller: docs/product/product.md, docs/product/backlog.md
+[Provided by the caller: .agency/product.md, .agency/backlog.md
 (epic list with dependencies), cross-squad dependency context.]
 </artifacts>
 

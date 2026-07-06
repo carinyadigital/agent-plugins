@@ -3,7 +3,7 @@ name: final-code-review
 description: >
   Use when the user wants a final technical gate on an open PR or MR after
   peer review — architecture boundaries, security, and acceptance-criteria
-  coverage against docs/work/{epic}/tasks.md. Do NOT use for pre-PR peer
+  coverage against .agency/work/{epic}/tasks.md. Do NOT use for pre-PR peer
   review (code-review), business stakeholder sign-off (validate), or
   implementation (implement).
 license: MIT

@@ -26,7 +26,7 @@ A solution review MUST NOT:
 - Invent new architectural decisions without grounding in the product
   context or existing ADRs
 - Add business rationale or commercial framing → belongs in `product.md`
-- Add story-level acceptance criteria → belongs in `docs/work/{epic}/tasks.md`
+- Add story-level acceptance criteria → belongs in `.agency/work/{epic}/tasks.md`
 - Rewrite the solution wholesale — it raises findings and amends unambiguous
   gaps directly; major restructuring requires `write mode`
 
@@ -37,7 +37,7 @@ A solution review MUST NOT:
   Required: the solution.md to review
   Recommended: product.md (to validate architectural alignment with product
   goals), ADR register (to check decision coverage)
-  Optional: epic design.md under docs/work/{epic}/, codebase structure]
+  Optional: epic design.md under .agency/work/{epic}/, codebase structure]
 </artifacts>
 
 ## Steps
@@ -71,7 +71,7 @@ statements?
 
 Does the architectural style named here match what is actually described in
 the building block view? Are the key technology choices consistent with
-`docs/architecture/solution.md` §3? Does each principle name a concrete trade-off?
+`.agency/architecture/solution.md` §3? Does each principle name a concrete trade-off?
 
 ### §4 Building block view
 

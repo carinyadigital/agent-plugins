@@ -14,7 +14,7 @@ without an instance repo:
 | Context | Brand artefacts land at |
 |---|---|
 | Instance repo (`config/instance.json` present) | `<instance-root>/brand/` |
-| Target repo (`.digital-agency/target.json` pointer) | Instance `brand/` via pointer |
+| Target repo (`.agency/target.json` pointer) | Instance `brand/` via pointer |
 | Standalone (no instance) | `docs/brand/` in the current project |
 
 ## First run: setup

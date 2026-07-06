@@ -50,10 +50,10 @@ After instance bootstrap (or standalone):
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile and delivery defaults |
-| **product** | write, review, refine — `docs/product/product.md` |
-| **roadmap** | write, review, refine — `docs/product/roadmap.md` |
-| **backlog** | write, review, refine — `docs/product/backlog.md` |
-| **tasks** | write, review, refine — `docs/work/{epic}/tasks.md` |
+| **product** | write, review, refine — `.agency/product.md` |
+| **roadmap** | write, review, refine — `.agency/roadmap.md` |
+| **backlog** | write, review, refine — `.agency/backlog.md` |
+| **tasks** | write, review, refine — `.agency/work/{epic}/tasks.md` |
 | **sprint** | plan, retrospective |
 | **validate** | Epic completion sign-off |
 | **write-spec** | Feature spec or PRD |

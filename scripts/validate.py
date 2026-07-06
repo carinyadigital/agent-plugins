@@ -1032,6 +1032,57 @@ class Validator:
                     file="hooks/hooks.json",
                 )
 
+    LEGACY_ARTEFACT_PATH_PATTERNS = (
+        re.compile(r"docs/product/"),
+        re.compile(r"docs/work/"),
+        re.compile(r"docs/architecture/"),
+        re.compile(r"\.digital-agency/"),
+    )
+
+    LEGACY_ARTEFACT_PATH_SKIP_PARTS = frozenset({".git", "node_modules", ".cursor"})
+
+    LEGACY_ARTEFACT_PATH_SKIP_FILES = frozenset({"scripts/validate.py"})
+
+    def check_legacy_artefact_paths(self) -> None:
+        """Fail if any tracked file still references pre-.agency/ artefact paths."""
+        offenders: list[tuple[str, int, str]] = []
+        for path in sorted(ROOT.rglob("*")):
+            if not path.is_file():
+                continue
+            rel = self.rel(path)
+            if rel in self.LEGACY_ARTEFACT_PATH_SKIP_FILES:
+                continue
+            if any(part in self.LEGACY_ARTEFACT_PATH_SKIP_PARTS for part in path.parts):
+                continue
+            if path.suffix in {".png", ".jpg", ".gif", ".webp", ".woff", ".woff2"}:
+                continue
+            try:
+                text = path.read_text(encoding="utf-8")
+            except (UnicodeDecodeError, OSError):
+                continue
+            for line_no, line in enumerate(text.splitlines(), start=1):
+                for pattern in self.LEGACY_ARTEFACT_PATH_PATTERNS:
+                    if pattern.search(line):
+                        offenders.append((self.rel(path), line_no, line.strip()))
+                        break
+
+        if offenders:
+            for file_path, line_no, snippet in offenders[:20]:
+                self.fail(
+                    "LEGACY_ARTEFACT_PATH",
+                    f"Legacy artefact path reference: {snippet[:120]}",
+                    file=file_path,
+                    line=line_no,
+                    hint="Use .agency/ paths per delivery-conventions.md",
+                )
+            if len(offenders) > 20:
+                self.fail(
+                    "LEGACY_ARTEFACT_PATH",
+                    f"... and {len(offenders) - 20} more legacy path reference(s)",
+                )
+        else:
+            self.pass_("No legacy docs/product, docs/work, or .digital-agency path references")
+
     def parse_cookbook_yaml(self, text: str) -> dict[str, Any]:
         data: dict[str, Any] = {}
         catalogue: dict[str, str] = {}
@@ -1208,6 +1259,7 @@ class Validator:
             ("evalsSchema", "evals.json and trigger-queries.json schema", self.check_evals_schema),
             ("jsonFiles", "Repository JSON sanity", self.check_json_files),
             ("hooksJson", "hooks/hooks.json validity", self.check_hooks_json),
+            ("legacyArtefactPaths", "No legacy artefact paths under docs/ or dot-digital-agency", self.check_legacy_artefact_paths),
             ("managedAgentCookbooks", "Managed-agent cookbook definitions", self.check_managed_agent_cookbooks),
         ]
 

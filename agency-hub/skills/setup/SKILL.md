@@ -100,7 +100,7 @@ For each server in `${CLAUDE_PLUGIN_ROOT}/.mcp.json`:
 - Configured but not probeable → ⚪ configured but not verified
 - Missing → ✗ not found + manual fallback
 
-Write findings. Also scan bound target repos for legacy business-named pointer files (non-`.digital-agency/target.json`); if found, propose rename to `.digital-agency/target.json` per framework § Target pointers.
+Write findings. For each bound target repo, verify `.agency/target.json` exists and includes `name`, `instance`, and `target`.
 
 If `--check-integrations` only, stop here unless user asks to continue setup.
 
@@ -150,7 +150,7 @@ For each channel discussed:
 
 | Target | Action |
 |---|---|
-| website | Skeleton in `config/targets/website.json`; if repo path known, **propose** `.digital-agency/target.json` content separately |
+| website | Skeleton in `config/targets/website.json`; if repo path known, **propose** `.agency/` scaffold + `target.json` separately |
 | social | Skeleton; `enabled: false` until social publishing connector credentials |
 | email, ads, analytics | Skeleton with `status: not-yet-designed` — note "coming soon", continue |
 
@@ -165,7 +165,7 @@ List every file to create/update in plain language:
 - `config/targets/*.json`
 - `config/deployments/*.json` (all `enabled: false`)
 - `squads/*/charter.md` skeletons
-- Any `.digital-agency/target.json` in external repos (separate confirmation)
+- Any `.agency/` scaffold in external target repos (separate confirmation per repo)
 
 List deliberate skips/placeholders. Ask: **"Write these files? (yes/no)"** — wait.
 
@@ -191,7 +191,7 @@ On **yes**:
 ```
 
 5. Delete resume file if present.
-6. For website pointer binding: write `.digital-agency/target.json` only after separate yes for that repo.
+6. For website target binding (after separate yes for that repo): write `.agency/target.json` with `name`, `instance`, and `target`, plus stub files for `product.md`, `roadmap.md`, `backlog.md`, and empty `work/`, `architecture/`, and `reviews/` directories per framework § Target repo `.agency/` scaffold.
 7. **Initialize Tier 0 hub state** — if `~/.claude/plugins/config/digital-agency/agency-hub/` is missing or empty, create `CLAUDE.md` (from `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` template), `allowlist.yaml` (from `references/allowlist-default.yaml`), and `install-log.yaml` (`[]`). Populate hub profile fields from interview answers where available.
 
 ### Step 7 — Hand off to brand-creative
@@ -209,7 +209,7 @@ Close with a concrete path — not a pile of config files:
 1. **Install** the first recommended **practice plugin** from the marketplace.
 2. **`delivery-practice` companion** — if that practice needs planning and cadence skills it does not own (e.g. `web-development` → install `delivery-practice`, then use `/delivery-practice:backlog` and `/delivery-practice:sprint`; `brand-creative` needs no companion).
 3. **Practice setup** — run that practice's `setup` skill (e.g. `/brand-creative:setup` for brand; `/delivery-practice:setup` for delivery).
-4. **Bind targets** — complete website `.digital-agency/target.json` pointer, social credentials when available.
+4. **Bind targets** — complete `.agency/` scaffold and `target.json` in each target repo, social credentials when available.
 5. **Deploy** — launch the first scheduled agent (dry-run first):
    `./digital-agency/scripts/deploy-squad-agents.sh --dry-run --instance <path>`
 6. **Edit anytime** — change `config/instance.json` directly or `/agency-hub:setup --redo`.
@@ -248,6 +248,6 @@ Location: instance repo `config/.setup-resume.json` if instance exists; else per
 | Target skeletons | `config/targets/<name>.json` |
 | Deployment scaffolds | `config/deployments/*.json` |
 | Squad charters | `squads/<squad>/charter.md` |
-| Target pointer (on confirm) | `<target-repo>/.digital-agency/target.json` |
+| Target pointer (on confirm) | `<target-repo>/.agency/target.json` + `.agency/` scaffold |
 
 Next: `/brand-creative:setup`, install first practice plugin, or `--check-integrations`.

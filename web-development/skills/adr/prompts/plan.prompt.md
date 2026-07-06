@@ -5,7 +5,7 @@ need ADRs before technical design can proceed.
 
 ## Output
 
-Default register: `docs/architecture/decisions/register.md`. If the user names
+Default register: `.agency/architecture/decisions/register.md`. If the user names
 another path, use it. Update the register only — do **not** create
 `proposed-adrs.md`, `adr-plan.md`, or other plan files.
 
@@ -14,8 +14,8 @@ does not exist yet.
 
 ## Steps
 
-1. Read `docs/product/product.md`, `docs/architecture/solution.md`, and the
-   existing register at `docs/architecture/decisions/register.md`
+1. Read `.agency/product.md`, `.agency/architecture/solution.md`, and the
+   existing register at `.agency/architecture/decisions/register.md`
 2. Identify areas with ambiguity, new technology, integration patterns, or
    architectural trade-offs
 3. For each area: would deciding differently change architecture, data model,

@@ -2,7 +2,7 @@
 name: keyword-research
 description: >
   Use when researching keywords for a topic area — search intent, volume signals,
-  and content opportunities. Output at docs/work/seo/keyword-research-{topic}.md on
+  and content opportunities. Output at .agency/work/seo/keyword-research-{topic}.md on
   the target repo. Do NOT use for technical site audits (technical-seo-audit) or
   competitive product analysis (/delivery-practice:competitive-brief).
 license: MIT
@@ -54,7 +54,7 @@ Follow [prompts/run.prompt.md](prompts/run.prompt.md). Topic slug becomes the fi
 
 ## Outputs
 
-`docs/work/seo/keyword-research-{topic}.md` on the **target** repo (or override path per conventions).
+`.agency/work/seo/keyword-research-{topic}.md` on the **target** repo (or override path per conventions).
 
 ## Related skills
 

@@ -12,7 +12,7 @@ Extract discrete, reproducible defect reports from validation output.
    - `stepsToReproduce` — numbered steps
    - `expected` — what should happen
    - `observed` — what actually happened
-3. Map failures to acceptance criteria from `docs/work/{epic}/tasks.md` where
+3. Map failures to acceptance criteria from `.agency/work/{epic}/tasks.md` where
    possible.
 4. Deduplicate against prior defects — do not re-report fixed issues unless
    they still reproduce.

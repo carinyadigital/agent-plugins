@@ -1,17 +1,20 @@
 # Delivery conventions
 
 Canonical rules for paths, epics, and artefact boundaries. Skills that touch
-`docs/work/{epic}/` should read this file when resolving `{epic}` or writing under
-`docs/work/`.
+`.agency/work/{epic}/` should read this file when resolving `{epic}` or writing under
+`.agency/work/`.
 
 ## Document layout
 
 ```text
-docs/product/          product.md, roadmap.md, backlog.md
-docs/architecture/     solution.md, decisions/register.md, ADR-*.md
-docs/work/{epic}/           design.md, tasks.md, refine-session.md
-docs/work/sprint-{id}/      plan.md, retrospective.md
+.agency/                      target.json, product.md, roadmap.md, backlog.md
+.agency/architecture/         solution.md, decisions/register.md, ADR-*.md
+.agency/work/{epic}/          design.md, tasks.md, refine-session.md
+.agency/work/sprint-{id}/     plan.md, retrospective.md
+.agency/reviews/              agent byproducts: competitor-scan, metrics, digests
 ```
+
+Repo identity lives in `.agency/target.json` (`name`, `instance`, `target`) — not inferred from the directory name.
 
 Override paths when the user names them explicitly in the request.
 
@@ -19,10 +22,10 @@ Override paths when the user names them explicitly in the request.
 
 | Rule | Detail |
 | ---- | ------ |
-| Source | Epic **title** or **short title** from `docs/product/backlog.md` |
+| Source | Epic **title** or **short title** from `.agency/backlog.md` |
 | Format | kebab-case, **at most two words** |
 | Not the ID | `CHK01` → resolve row → e.g. `checkout-foundation` |
-| Work path | `docs/work/{epic}/` (trailing slash in tables is fine) |
+| Work path | `.agency/work/{epic}/` (trailing slash in tables is fine) |
 
 | Title | Slug | Invalid |
 | ----- | ---- | ------- |
@@ -34,24 +37,24 @@ Override paths when the user names them explicitly in the request.
 
 - Slug: `checkout-foundation`
 - Epic ID: `CHK01` → read backlog row → slug
-- Path: `docs/work/checkout-foundation/` or `.../tasks.md`
+- Path: `.agency/work/checkout-foundation/` or `.../tasks.md`
 
 ## Artefact boundaries
 
 | Content | Belongs in | Not in |
 | ------- | ---------- | ------ |
-| Business strategy, personas, outcomes | `docs/product/product.md` | backlog, solution |
-| Phase sequencing, exit criteria | `docs/product/roadmap.md` | backlog, product |
-| Epic list, deps, points, work paths | `docs/product/backlog.md` | roadmap detail |
-| Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | design (cite only) |
+| Business strategy, personas, outcomes | `.agency/product.md` | backlog, solution |
+| Phase sequencing, exit criteria | `.agency/roadmap.md` | backlog, product |
+| Epic list, deps, points, work paths | `.agency/backlog.md` | roadmap detail |
+| Architecture, NFRs, cross-epic patterns | `.agency/architecture/solution.md` | design (cite only) |
 | ADR decisions | `register.md`, `ADR-NNNN-*.md` | solution narrative |
-| Epic implementation spec | `docs/work/{epic}/design.md` | solution, backlog |
-| Task Gherkin (and optional EARS) | `docs/work/{epic}/tasks.md` | backlog, design |
-| Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
+| Epic implementation spec | `.agency/work/{epic}/design.md` | solution, backlog |
+| Task Gherkin (and optional EARS) | `.agency/work/{epic}/tasks.md` | backlog, design |
+| Sprint plan / retro | `.agency/work/sprint-{id}/` | product backlog |
 
 ## Acceptance criteria
 
-- **Default:** Gherkin in `docs/work/{epic}/tasks.md` (≥1 scenario per task).
+- **Default:** Gherkin in `.agency/work/{epic}/tasks.md` (≥1 scenario per task).
 - **EARS:** optional via `tasks write --ears` or when rules are clearer than scenarios.
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
 

@@ -49,10 +49,10 @@ This skill writes code against an approved design. It MUST NOT:
   in `solution.md` and should be raised as a new ADR via `adr write`, not
   changed unilaterally during implementation.
 - Rewrite acceptance criteria or add new tasks — task scope is fixed by
-  `docs/work/{epic}/tasks.md`; if scope needs to change, update tasks via **tasks** skill
+  `.agency/work/{epic}/tasks.md`; if scope needs to change, update tasks via **tasks** skill
   first.
 - Introduce new public APIs or contract shapes that are not specified in
-  `docs/architecture/solution.md` or the design — if required, pause and update
+  `.agency/architecture/solution.md` or the design — if required, pause and update
   solution.md (or raise an ADR) before implementing.
 - Perform unsolicited refactoring outside the task's declared `Files Changed`
   set — scope creep invalidates the review.
@@ -62,7 +62,7 @@ This skill writes code against an approved design. It MUST NOT:
   or the task must be split.
 - Commit while any validation check is failing (format, lint, typecheck, build, or tests) — fix every failure or split the task.
 - Add comments that cite external markdown documents, ticket IDs, or
-  cross-repo file paths (e.g. `CART02-07 | docs/architecture/solution.md §5.1`).
+  cross-repo file paths (e.g. `CART02-07 | .agency/architecture/solution.md §5.1`).
   Code must stand on its own. Comments should explain non-obvious intent or
   trade-offs in plain language — not trace back to planning artefacts.
 

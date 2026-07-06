@@ -6,7 +6,7 @@ aligned before implementation begins.
 
 ## Paths
 
-Defaults: `docs/product/product.md`, `docs/architecture/solution.md`.
+Defaults: `.agency/product.md`, `.agency/architecture/solution.md`.
 If the user names other paths, use them.
 
 ## Steps
@@ -26,4 +26,4 @@ Summarise blocking vs non-blocking findings. Do not rewrite wholesale.
 
 - Business strategy changes → product skill
 - Implementation detail or code → design.md or solution.md §6–§7
-- Story AC → docs/work/{epic}/tasks.md
+- Story AC → .agency/work/{epic}/tasks.md

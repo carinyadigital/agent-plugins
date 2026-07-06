@@ -7,9 +7,9 @@ Read [SKILL.md](../SKILL.md) and
 
 ## Path
 
-Default: `docs/product/backlog.md`. User-named paths override.
+Default: `.agency/backlog.md`. User-named paths override.
 
-For Gherkin and sprint feasibility, use **tasks review** on `docs/work/{epic}/tasks.md`.
+For Gherkin and sprint feasibility, use **tasks review** on `.agency/work/{epic}/tasks.md`.
 
 ## Context
 
@@ -23,7 +23,7 @@ Optional: sprint retrospective notes]
 
 1. Read backlog.md and context
 2. Check alignment with product.md §4–§5 and roadmap current phase
-3. Verify each epic has a valid `docs/work/{epic}/` path (title or short title slug, max two words)
+3. Verify each epic has a valid `.agency/work/{epic}/` path (title or short title slug, max two words)
 4. Apply epic criteria; amend unambiguous fixes; report verdict
 
 ## Review checklist

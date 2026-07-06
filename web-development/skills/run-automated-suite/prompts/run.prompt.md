@@ -4,7 +4,7 @@ Execute the project's automated test command and report pass/fail.
 
 ## Steps
 
-1. Read acceptance criteria from `docs/work/{epic}/tasks.md` if available —
+1. Read acceptance criteria from `.agency/work/{epic}/tasks.md` if available —
    context for interpreting failures.
 2. From the workspace root, run the test command — read from `package.json`
    (typically `pnpm test`, `npm test`, or project-specific script). Use the

@@ -2,7 +2,7 @@
 name: adr
 description: >
   Use when the user wants ADR register planning, writing ADR-NNNN files, or ADR
-  review under docs/architecture/decisions/. Do NOT use for full architecture
+  review under .agency/architecture/decisions/. Do NOT use for full architecture
   narrative (solution), epic design (design), or product strategy (product).
   Proposals stay in register.md only until accepted.
 license: MIT
@@ -20,8 +20,8 @@ argument-hint: "<mode: plan|write|review> [target] [flags]"
 
 | Artefact | Default path |
 | -------- | ------------ |
-| Register | `docs/architecture/decisions/register.md` |
-| ADR document | `docs/architecture/decisions/ADR-{NUMBER}-{short-title}.md` |
+| Register | `.agency/architecture/decisions/register.md` |
+| ADR document | `.agency/architecture/decisions/ADR-{NUMBER}-{short-title}.md` |
 
 ## Path resolution
 

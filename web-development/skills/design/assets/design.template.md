@@ -9,8 +9,8 @@ status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
   - <!-- solution.md -->
-  - docs/work/{epic}/tasks.md
-  - docs/architecture/solution.md
+  - .agency/work/{epic}/tasks.md
+  - .agency/architecture/solution.md
 ---
 
 <!--
@@ -20,7 +20,7 @@ DO NOT INCLUDE in this design.md:
     → cite solution.md §{N.M} instead; do not re-narrate
   - Business rationale                  → product.md
   - Phase sequencing                    → roadmap.md
-  - Story-level acceptance criteria     → docs/work/{epic}/tasks.md (tasks skill)
+  - Story-level acceptance criteria     → .agency/work/{epic}/tasks.md (tasks skill)
 
 Walking-skeleton mode (2–4 pages): §1 The slice, §2 Files shipped,
   §3 Acceptance gates, §4 What was NOT delivered, §5 Open questions, §6 Handoff.
@@ -33,7 +33,7 @@ TDD mode (5–10 pages): §1 Scope, §2 Architecture fit, §3 Files and componen
 
 # Design -- {Epic Title} ({EPIC-ID})
 
-Design for epic {EPIC-ID} at `docs/work/{epic}/`. Architecture-wide patterns are authoritative in
+Design for epic {EPIC-ID} at `.agency/work/{epic}/`. Architecture-wide patterns are authoritative in
 [`solution.md`](solution.md) and are not repeated here.
 
 ## 1. Scope / The slice

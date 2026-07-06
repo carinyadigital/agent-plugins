@@ -12,7 +12,7 @@ Resolve `<design-dir>` in this order — first match wins:
 1. **Explicit path named by the user** in the request.
 2. **Inside an instance repo** — `config/instance.json` at working root →
    `<instance-root>/design/`.
-3. **Inside a target repo** — `.digital-agency/target.json` at working root →
+3. **Inside a target repo** — `.agency/target.json` at working root →
    resolve instance root, then `<instance-root>/design/`.
 4. **Standalone** — no instance or target pointer → `docs/design/` in the current
    project.
@@ -31,7 +31,7 @@ directory using the same order as `brand-creative` conventions:
 1. **Explicit path named by the user** in the request.
 2. **Inside an instance repo** — `config/instance.json` at working root →
    `<instance-root>/brand/`.
-3. **Inside a target repo** — `.digital-agency/target.json` at working root →
+3. **Inside a target repo** — `.agency/target.json` at working root →
    resolve instance root, then `<instance-root>/brand/`.
 4. **Standalone** — no instance or target pointer → `docs/brand/` in the current
    project.
@@ -46,7 +46,7 @@ skill; read the artefact directly when present.
 artifact-consumption pattern as `brand-guide.md`. No install dependency in either
 direction.
 
-Epic-level technical design (`docs/work/{epic}/design.md`) remains owned by
+Epic-level technical design (`.agency/work/{epic}/design.md`) remains owned by
 `web-development:design` — wireframes here are UX layout specs, not implementation
 design docs.
 
@@ -70,9 +70,9 @@ co-install. Document in CONNECTORS.md.
 | ------- | ---------- | ------ |
 | Page/flow layout, interaction notes | `<design-dir>/{page-or-flow}.md` | brand-guide, epic design.md |
 | Visual tokens, colour, typography | `brand/brand-guide.md` | wireframe specs |
-| Epic implementation spec, file list | `docs/work/{epic}/design.md` | wireframe specs |
-| Business strategy, personas | `docs/product/product.md` | wireframe specs |
-| Task Gherkin AC | `docs/work/{epic}/tasks.md` | wireframe specs |
+| Epic implementation spec, file list | `.agency/work/{epic}/design.md` | wireframe specs |
+| Business strategy, personas | `.agency/product.md` | wireframe specs |
+| Task Gherkin AC | `.agency/work/{epic}/tasks.md` | wireframe specs |
 
 Wireframe specs describe **what the user sees and does** at low fidelity. They do
 not prescribe component names, file paths, or API contracts — those belong in

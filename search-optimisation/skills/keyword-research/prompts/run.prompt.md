@@ -3,13 +3,13 @@
 ## Before running
 
 1. Read `${CLAUDE_PLUGIN_ROOT}/references/search-optimisation-conventions.md`.
-2. Resolve target repo via `.digital-agency/target.json` or instance target config.
-3. Read `docs/product/product.md` and relevant backlog epics for context when present.
+2. Resolve target repo via `.agency/target.json` or instance target config.
+3. Read `.agency/product.md` and relevant backlog epics for context when present.
 4. Check existing files in the SEO work directory to avoid duplication.
 
 ## Task
 
-Research keywords for the given topic and write `docs/work/seo/keyword-research-{topic}.md`.
+Research keywords for the given topic and write `.agency/work/seo/keyword-research-{topic}.md`.
 
 ### Document structure
 

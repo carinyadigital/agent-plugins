@@ -7,7 +7,7 @@ Read [SKILL.md](../SKILL.md) for path resolution.
 
 ## Path
 
-Default: `docs/product/product.md`. If the user names another path, review that file.
+Default: `.agency/product.md`. If the user names another path, review that file.
 
 ## Context
 

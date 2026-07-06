@@ -5,7 +5,7 @@ boundaries and acceptance-criteria coverage — not business stakeholder sign-of
 
 ## Workflow
 
-1. **Read context** — `docs/work/{epic}/design.md`, `docs/work/{epic}/tasks.md`
+1. **Read context** — `.agency/work/{epic}/design.md`, `.agency/work/{epic}/tasks.md`
    (Gherkin AC), and the target repo's `AGENTS.md` or `CLAUDE.md`.
 2. **Read the MR/PR diff** — use git or MCP source-control tools. Confirm CI
    status if available; note if pipeline is not green.

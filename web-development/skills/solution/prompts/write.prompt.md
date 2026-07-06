@@ -6,7 +6,7 @@ You are a Senior Solution Architect writing arc42-lite solution design.
 
 ## Path
 
-Default: `docs/architecture/solution.md`. If the user names another path, use it.
+Default: `.agency/architecture/solution.md`. If the user names another path, use it.
 
 ## Stage (`--stage`)
 
@@ -17,15 +17,15 @@ Default: `docs/architecture/solution.md`. If the user names another path, use it
 
 solution.md MUST NOT contain:
 
-- Commercial rationale, personas, positioning → `docs/product/product.md`
-- Story-level acceptance criteria → `docs/work/{epic}/tasks.md`
-- Phase sequencing → `docs/product/roadmap.md`
+- Commercial rationale, personas, positioning → `.agency/product.md`
+- Story-level acceptance criteria → `.agency/work/{epic}/tasks.md`
+- Phase sequencing → `.agency/roadmap.md`
 
 ## Context
 
 <artifacts>
-[Stub: docs/product/product.md, architecture principles, system boundary
-Full: product.md, docs/work/{epic}/design.md (walking-skeleton), ADR register,
+[Stub: .agency/product.md, architecture principles, system boundary
+Full: product.md, .agency/work/{epic}/design.md (walking-skeleton), ADR register,
 accepted ADRs]
 </artifacts>
 
@@ -48,7 +48,7 @@ accepted ADRs]
 7. §6 Data model and ubiquitous language
 8. §7 Cross-cutting concepts — observability, errors, security, testing
 9. §8 Deployment and environments
-10. §9 Architectural decisions — links to ADRs in `docs/architecture/decisions/`; mark gaps as "_(Not yet written)_"
+10. §9 Architectural decisions — links to ADRs in `.agency/architecture/decisions/`; mark gaps as "_(Not yet written)_"
 11. §10 Risks, technical debt, open questions
 12. §11 Graduation candidates — patterns that may lift org-wide when reused
 13. Delete the `<!-- DO NOT INCLUDE -->` comment block before saving

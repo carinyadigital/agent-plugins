@@ -5,9 +5,9 @@ owner: <!-- Squad name -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - docs/product/product.md
-  - docs/product/backlog.md
-  - docs/architecture/solution.md
+  - .agency/product.md
+  - .agency/backlog.md
+  - .agency/architecture/solution.md
 ---
 
 <!--

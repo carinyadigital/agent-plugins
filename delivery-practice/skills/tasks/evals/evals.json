@@ -3,10 +3,10 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Write tasks for checkout-foundation (CHK01) from docs/work/checkout-foundation/design.md — Gherkin AC for each task.",
-      "expected_output": "docs/work/checkout-foundation/tasks.md with canonical task schema and ≥1 Gherkin scenario per task.",
+      "prompt": "Write tasks for checkout-foundation (CHK01) from .agency/work/checkout-foundation/design.md — Gherkin AC for each task.",
+      "expected_output": ".agency/work/checkout-foundation/tasks.md with canonical task schema and ≥1 Gherkin scenario per task.",
       "assertions": [
-        "Creates or updates docs/work/checkout-foundation/tasks.md",
+        "Creates or updates .agency/work/checkout-foundation/tasks.md",
         "Every task includes Acceptance (Gherkin) with Given/When/Then",
         "Task IDs use CHK01- prefix",
         "No new epics added to backlog.md"

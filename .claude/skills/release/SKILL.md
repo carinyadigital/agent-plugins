@@ -79,7 +79,7 @@ before proceeding — a release should never silently include a plugin the
 user didn't mean to ship.
 
 If shared meta-framework reference files changed (`instance-profile-template.md`,
-`practice-setup-framework.md`), run `python3 scripts/sync-references.py` before
+`setup-framework.md`), run `python3 scripts/sync-references.py` before
 the gates below.
 
 ### 2. Fast gate — plugin-check

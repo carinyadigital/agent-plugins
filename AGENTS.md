@@ -5,7 +5,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 ## Repository Structure
 
 ```
-├── brand-creative/                  # practice plugin — brand-guide, brand-voice, practice-setup (MECE owned)
+├── brand-creative/                  # practice plugin — brand-guide, brand-voice, setup (MECE owned)
 │   ├── references/                  # brand-conventions + synced meta-framework files
 │   └── skills/
 ├── delivery-practice/               # practice plugin — product, backlog, sprint, validate, … (MECE owned)
@@ -14,7 +14,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 ├── content-marketing/               # practice plugin — calendar, drafts, captions, analyse-media (MECE owned)
 │   ├── references/                  # content-conventions + synced meta-framework files
 │   └── skills/
-├── ux-design/                       # practice plugin — wireframe, practice-setup (MECE owned)
+├── ux-design/                       # practice plugin — wireframe, setup (MECE owned)
 │   ├── references/                  # ux-design-conventions + synced meta-framework files
 │   └── skills/
 ├── search-optimisation/             # practice plugin — keyword-research, technical-seo-audit, content-seo-review (MECE owned)
@@ -26,7 +26,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 │   ├── .mcp.json                    # bundled MCP servers (e.g. GitHub for hub bootstrap)
 │   ├── references/                  # instance profile template, setup framework
 │   └── skills/
-│       └── agency-setup/SKILL.md    # instance bootstrap; marketplace skills ported from strategy-builder-hub
+│       └── setup/SKILL.md    # instance bootstrap; marketplace skills ported from strategy-builder-hub
 ├── agents/                          # named agents — one self-contained plugin each
 │   └── <slug>/
 │       ├── .claude-plugin/plugin.json
@@ -56,7 +56,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 
 Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `delivery-practice/skills/`, `content-marketing/skills/`, `ux-design/skills/`, `search-optimisation/skills/`, `web-development/skills/`, `agency-hub/skills/`).
 
-Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`).
+Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `setup-framework.md`).
 
 Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks practice-plugin MCP wiring, validates SKILL.md frontmatter, resolves markdown cross-references, and validates `evals/` JSON schema. Use `python3 scripts/plugin-check.py <plugin-dir>` for fast per-plugin checks while iterating.
 
@@ -64,12 +64,12 @@ Run `python3 scripts/validate.py` before opening a PR — it lints marketplace a
 
 | Plugin | Skills (v1) | Status |
 | ------ | ----------- | ------ |
-| `agency-hub` | `agency-setup` + marketplace skills (ported from strategy-builder-hub) | Shipped; skills-qa alignment with agency framework — refine later |
-| `brand-creative` | `practice-setup`, `brand-guide`, `brand-voice` | Shipped; first MECE practice plugin |
-| `delivery-practice` | `practice-setup` + 13 delivery skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; second MECE practice plugin — Product Manager and Delivery Lead personas, no separate agent plugins |
-| `content-marketing` | `practice-setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Shipped; third MECE practice plugin — Content Strategist and Content Writer personas, no separate agent plugins; reads `brand-voice.md` via artifact consumption; invokes `/delivery-practice:backlog` and `/delivery-practice:synthesize-research` as companion skills |
-| `ux-design` | `practice-setup`, `wireframe` | Shipped; minimal v1 — no dedicated persona; writes wireframes to `<instance-root>/design/`; downstream practices read via artifact consumption |
-| `search-optimisation` | `practice-setup` + 3 SEO skills (`keyword-research`, `technical-seo-audit`, `content-seo-review`) | Shipped; one persona (SEO Specialist), no separate agent plugin; invokes `/delivery-practice:competitive-brief` as companion skill |
+| `agency-hub` | `setup` + marketplace skills (ported from strategy-builder-hub) | Shipped; skills-qa alignment with agency framework — refine later |
+| `brand-creative` | `setup`, `brand-guide`, `brand-voice` | Shipped; first MECE practice plugin |
+| `delivery-practice` | `setup` + 13 delivery skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; second MECE practice plugin — Product Manager and Delivery Lead personas, no separate agent plugins |
+| `content-marketing` | `setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Shipped; third MECE practice plugin — Content Strategist and Content Writer personas, no separate agent plugins; reads `brand-voice.md` via artifact consumption; invokes `/delivery-practice:backlog` and `/delivery-practice:synthesize-research` as companion skills |
+| `ux-design` | `setup`, `wireframe` | Shipped; minimal v1 — no dedicated persona; writes wireframes to `<instance-root>/design/`; downstream practices read via artifact consumption |
+| `search-optimisation` | `setup` + 3 SEO skills (`keyword-research`, `technical-seo-audit`, `content-seo-review`) | Shipped; one persona (SEO Specialist), no separate agent plugin; invokes `/delivery-practice:competitive-brief` as companion skill |
 
 Bootstraps a git-versioned instance repo (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `agency-hub/README.md` and `agency-hub/references/agency-setup-framework.md`.
 

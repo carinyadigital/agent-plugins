@@ -5,7 +5,7 @@ setup interview, editorial calendar, social curation, media analysis, and CMS se
 drafting. Self-contained under the MECE practice model: edit skills here only; nothing
 is vendored from elsewhere.
 
-Install standalone or after `agency-hub:agency-setup` recommends it. Declare
+Install standalone or after `agency-hub:setup` recommends it. Declare
 `delivery-practice` as a **companion practice** for backlog and research synthesis —
 invoke `/delivery-practice:backlog` and `/delivery-practice:synthesize-research`
 directly rather than bundling duplicate copies.
@@ -13,7 +13,7 @@ directly rather than bundling duplicate copies.
 ## Personas
 
 Two personas share one skill library. Choose the default persona during
-`practice-setup` (merged for one-person shops; distinct for larger teams).
+`setup` (merged for one-person shops; distinct for larger teams).
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
@@ -36,12 +36,12 @@ For backlog alignment and research themes, invoke the companion practice:
 /delivery-practice:synthesize-research
 ```
 
-## First run: practice-setup
+## First run: setup
 
 After instance bootstrap (or standalone):
 
 ```
-/content-marketing:practice-setup
+/content-marketing:setup
 ```
 
 | Flag | Behaviour |
@@ -56,7 +56,7 @@ After instance bootstrap (or standalone):
 
 | Skill | Purpose |
 | ----- | ------- |
-| **practice-setup** | Interview → write practice profile and content defaults |
+| **setup** | Interview → write practice profile and content defaults |
 | **content-calendar** | write, review — editorial calendar and slot briefs |
 | **curate-content** | Rank social inventory for upcoming posts |
 | **analyse-media** | Vision analysis — subjects, season, mood, quality |
@@ -81,8 +81,8 @@ installed — document the optional pairing in both READMEs rather than a hard d
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:agency-setup` writes
-  `config/instance.json`; practice-setup reads business identity and house tone hints
+- **Instance profile** (optional) — `agency-hub:setup` writes
+  `config/instance.json`; setup reads business identity and house tone hints
   without re-asking.
 - **delivery-practice** (recommended companion) — backlog and research synthesis;
   see CONNECTORS.md.
@@ -92,7 +92,7 @@ installed — document the optional pairing in both READMEs rather than a hard d
 ## After setup
 
 1. Use Content Strategist skills for planning; Content Writer skills for drafts.
-2. Re-run `/content-marketing:practice-setup --redo` to refresh content defaults.
+2. Re-run `/content-marketing:setup --redo` to refresh content defaults.
 3. Read brand voice from the resolved brand path before every customer-facing draft.
 
 ## References
@@ -102,5 +102,5 @@ installed — document the optional pairing in both READMEs rather than a hard d
 - `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
 - `references/prompt-refinement.md` — quality checks for analyse-media and write-captions
 
-Meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`)
+Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

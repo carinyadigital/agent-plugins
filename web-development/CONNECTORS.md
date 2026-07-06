@@ -31,7 +31,7 @@ of those skills here.
 | Framework docs | `~~framework docs` | Context7, Next.js DevTools |
 
 Neon Postgres and other stack-specific MCP servers are not bundled — add entries to
-`.mcp.json` when the target repo uses them. `practice-setup --check-integrations`
+`.mcp.json` when the target repo uses them. `setup --check-integrations`
 reports what is connected.
 
 Other options in each category: PagerDuty (incidents), Mixpanel (analytics).
@@ -40,7 +40,7 @@ Other options in each category: PagerDuty (incidents), Mixpanel (analytics).
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **practice-setup** | `--check-integrations` | GitHub, Vercel, Slack, Linear, Datadog, Sentry |
+| **setup** | `--check-integrations` | GitHub, Vercel, Slack, Linear, Datadog, Sentry |
 | **create-mr** | run | Source control |
 | **deploy-qa** | run | Source control, hosting |
 | **run-automated-suite** | run | Source control (CI status) |

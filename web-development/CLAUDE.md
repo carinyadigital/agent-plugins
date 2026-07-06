@@ -4,7 +4,7 @@ TEMPLATE — do not write user data here.
 This file ships with the plugin and shows the structure the practice config should have.
 It is replaced on every plugin update. Never write user data here.
 
-The `practice-setup` skill copies or updates the user config at:
+The `setup` skill copies or updates the user config at:
   ~/.claude/plugins/config/digital-agency/web-development/CLAUDE.md
 
 Instance-wide org facts live in the instance repo at:
@@ -16,13 +16,13 @@ Brand guide is read from the resolved brand path — see references/web-developm
 
 # Web Development — Practice Profile
 
-*Written by `/web-development:practice-setup` or initialized on first use.*
+*Written by `/web-development:setup` or initialized on first use.*
 
 ---
 
 ## Status
 
-`template` — run `/web-development:practice-setup` to fill this in.
+`template` — run `/web-development:setup` to fill this in.
 
 ## Who's using this
 
@@ -68,7 +68,7 @@ Brand guide is read from the resolved brand path — see references/web-developm
 | Project tracker | [✓ / ✗] | Manual issue references |
 | Observability | [✓ / ✗] | Manual log paste |
 
-*Re-check: `/web-development:practice-setup --check-integrations`*
+*Re-check: `/web-development:setup --check-integrations`*
 
 ---
 
@@ -91,4 +91,4 @@ When merged, greet as a single engineering partner and route internally to the r
 
 ---
 
-*Re-run: `/web-development:practice-setup --redo`*
+*Re-run: `/web-development:setup --redo`*

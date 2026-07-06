@@ -17,7 +17,7 @@ Apply this order — first match wins:
 4. **Standalone** — no instance or target pointer → treat the current project as
    the target; read `AGENTS.md` / `CLAUDE.md` for local conventions.
 
-`practice-setup` may create `.digital-agency/target.json` on first-time binding when
+`setup` may create `.digital-agency/target.json` on first-time binding when
 the user confirms target association.
 
 ## Brand guide (artifact consumption)
@@ -122,7 +122,7 @@ Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
 ## Personas
 
 Six personas share one skill library. Choose the default persona during
-`practice-setup` (merged for one-person shops; distinct for larger teams).
+`setup` (merged for one-person shops; distinct for larger teams).
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |

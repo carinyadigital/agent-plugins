@@ -5,7 +5,7 @@ setup interview, product strategy, backlog and sprint cadence, validation, and
 operational skills. Self-contained under the MECE practice model: edit skills here
 only; nothing is vendored from elsewhere.
 
-Install standalone or after `agency-hub:agency-setup` recommends it. Other
+Install standalone or after `agency-hub:setup` recommends it. Other
 practices (content-marketing, web-development, search-optimisation) declare this
 as a **companion practice** and invoke skills directly — e.g.
 `/delivery-practice:backlog`, `/delivery-practice:sprint`.
@@ -13,7 +13,7 @@ as a **companion practice** and invoke skills directly — e.g.
 ## Personas
 
 Two personas share one skill library. Choose the default persona during
-`practice-setup` (merged for one-person shops; distinct for larger teams).
+`setup` (merged for one-person shops; distinct for larger teams).
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
@@ -29,12 +29,12 @@ Invoke skills directly — there is no separate agent plugin per persona:
 /delivery-practice:backlog review
 ```
 
-## First run: practice-setup
+## First run: setup
 
 After instance bootstrap (or standalone):
 
 ```
-/delivery-practice:practice-setup
+/delivery-practice:setup
 ```
 
 | Flag | Behaviour |
@@ -49,7 +49,7 @@ After instance bootstrap (or standalone):
 
 | Skill | Purpose |
 | ----- | ------- |
-| **practice-setup** | Interview → write practice profile and delivery defaults |
+| **setup** | Interview → write practice profile and delivery defaults |
 | **product** | write, review, refine — `docs/product/product.md` |
 | **roadmap** | write, review, refine — `docs/product/roadmap.md` |
 | **backlog** | write, review, refine — `docs/product/backlog.md` |
@@ -68,8 +68,8 @@ Path and boundary rules: `references/delivery-conventions.md`.
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:agency-setup` writes
-  `config/instance.json`; practice-setup reads cadence and risk posture without
+- **Instance profile** (optional) — `agency-hub:setup` writes
+  `config/instance.json`; setup reads cadence and risk posture without
   re-asking.
 - **Connectors** (optional) — project tracker, chat, knowledge base, analytics,
   and competitive intelligence MCP servers supercharge stakeholder updates,
@@ -78,7 +78,7 @@ Path and boundary rules: `references/delivery-conventions.md`.
 ## After setup
 
 1. Use Product Manager skills for strategy; Delivery Lead skills for cadence.
-2. Re-run `/delivery-practice:practice-setup --redo` to refresh delivery defaults.
+2. Re-run `/delivery-practice:setup --redo` to refresh delivery defaults.
 3. Companion practices invoke shared skills here — do not duplicate `backlog`,
    `synthesize-research`, or `competitive-brief` in other plugins.
 
@@ -88,5 +88,5 @@ Path and boundary rules: `references/delivery-conventions.md`.
 - `references/delivery-conventions.md` — path resolution and artefact boundaries
 - `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
 
-Meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`)
+Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

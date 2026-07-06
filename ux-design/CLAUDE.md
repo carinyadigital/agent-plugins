@@ -4,7 +4,7 @@ TEMPLATE — do not write user data here.
 This file ships with the plugin and shows the structure the practice config should have.
 It is replaced on every plugin update. Never write user data here.
 
-The `practice-setup` skill copies or updates the user config at:
+The `setup` skill copies or updates the user config at:
   ~/.claude/plugins/config/digital-agency/ux-design/CLAUDE.md
 
 Instance-wide org facts live in the instance repo at:
@@ -15,13 +15,13 @@ Wireframe artefacts live at the resolved design path — see references/ux-desig
 
 # UX Design — Practice Profile
 
-*Written by `/ux-design:practice-setup` or initialized on first use.*
+*Written by `/ux-design:setup` or initialized on first use.*
 
 ---
 
 ## Status
 
-`template` — run `/ux-design:practice-setup` to fill this in.
+`template` — run `/ux-design:setup` to fill this in.
 
 ## Who's using this
 
@@ -54,7 +54,7 @@ _(Figma links, prior wireframes, or competitor references to seed from — patte
 | ----------- | ------ | ----------------------- |
 | Design (Figma) | [✓ / ✗] | Manual upload or paste links |
 
-*Re-check: `/ux-design:practice-setup --check-integrations`*
+*Re-check: `/ux-design:setup --check-integrations`*
 
 ---
 
@@ -64,4 +64,4 @@ _(Figma links, prior wireframes, or competitor references to seed from — patte
 
 ---
 
-*Re-run: `/ux-design:practice-setup --redo`*
+*Re-run: `/ux-design:setup --redo`*

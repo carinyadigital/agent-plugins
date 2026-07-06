@@ -35,7 +35,7 @@ forgotten.
   `last_verified` as Some Concern.
 - The **auto-updater** treats a stale `last_verified` as a re-verification
   trigger even when the git SHA hasn't changed.
-- The user's freshness thresholds (set at agency-setup) can be **tighter** than
+- The user's freshness thresholds (set at agency-hub setup) can be **tighter** than
   the author's window — the tighter of the two wins.
 
 Without these fields, the hub flags the skill as "freshness unknown" and warns

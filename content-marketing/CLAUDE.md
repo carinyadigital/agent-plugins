@@ -4,7 +4,7 @@ TEMPLATE — do not write user data here.
 This file ships with the plugin and shows the structure the practice config should have.
 It is replaced on every plugin update. Never write user data here.
 
-The `practice-setup` skill copies or updates the user config at:
+The `setup` skill copies or updates the user config at:
   ~/.claude/plugins/config/digital-agency/content-marketing/CLAUDE.md
 
 Instance-wide org facts live in the instance repo at:
@@ -16,13 +16,13 @@ Content artefacts (calendar, seeds) live in the instance or target repo docs tre
 
 # Content Marketing — Practice Profile
 
-*Written by `/content-marketing:practice-setup` or initialized on first use.*
+*Written by `/content-marketing:setup` or initialized on first use.*
 
 ---
 
 ## Status
 
-`template` — run `/content-marketing:practice-setup` to fill this in.
+`template` — run `/content-marketing:setup` to fill this in.
 
 ## Who's using this
 
@@ -58,7 +58,7 @@ Determines which artefact types this practice actually produces.
 | Knowledge base | [✓ / ✗] | Manual upload of seed material |
 | Chat | [✓ / ✗] | Paste threads in chat |
 
-*Re-check: `/content-marketing:practice-setup --check-integrations`*
+*Re-check: `/content-marketing:setup --check-integrations`*
 
 ---
 
@@ -86,4 +86,4 @@ _(URLs or paths from setup — pattern-match tone; do not copy proprietary conte
 
 ---
 
-*Re-run: `/content-marketing:practice-setup --redo`*
+*Re-run: `/content-marketing:setup --redo`*

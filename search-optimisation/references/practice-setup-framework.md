@@ -1,17 +1,17 @@
 # Practice setup framework — digital-agency
 
-Every root-level practice plugin's `practice-setup` skill follows this framework. Plugin skills add only **plugin-specific** questions on top; org-wide facts live once in the instance profile (`config/instance.json`) written by `agency-hub:agency-setup`.
+Every root-level practice plugin's `setup` skill follows this framework. Plugin skills add only **plugin-specific** questions on top; org-wide facts live once in the instance profile (`config/instance.json`) written by `agency-hub:setup`.
 
 ## Invocation
 
 | Command | Behaviour |
 |---|---|
-| `/<plugin>:practice-setup` | Detect existing setup; offer quick vs full if mode not specified |
-| `/<plugin>:practice-setup --quick` | Short path: skip answered instance facts + minimal plugin questions |
-| `/<plugin>:practice-setup --full` | Full plugin interview; review seed documents when provided |
-| `/<plugin>:practice-setup --redo` | Ignore existing brand artefacts for this run; re-interview and overwrite on confirmation |
-| `/<plugin>:practice-setup --check-integrations` | Report MCP connector status for this plugin; no interview unless user asks to continue |
-| `/<plugin>:practice-setup --resume` | Continue a paused interview from the saved session file |
+| `/<plugin>:setup` | Detect existing setup; offer quick vs full if mode not specified |
+| `/<plugin>:setup --quick` | Short path: skip answered instance facts + minimal plugin questions |
+| `/<plugin>:setup --full` | Full plugin interview; review seed documents when provided |
+| `/<plugin>:setup --redo` | Ignore existing brand artefacts for this run; re-interview and overwrite on confirmation |
+| `/<plugin>:setup --check-integrations` | Report MCP connector status for this plugin; no interview unless user asks to continue |
+| `/<plugin>:setup --resume` | Continue a paused interview from the saved session file |
 
 Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load the session first; other flags adjust what happens after resume.
 
@@ -22,8 +22,8 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 | 1 — Instance | `<instance-repo>/config/instance.json` | Shared org/brand/config facts — read, do not re-ask when complete |
 | 1 — Instance | `<instance-repo>/brand/*` | Brand artefacts — voice, guide, discovery report, settings |
 | 0 — Personal | `~/.claude/plugins/config/digital-agency/<plugin>/CLAUDE.md` | Plugin practice profile — plugin-specific conventions only |
-| 0 — Personal | `~/.claude/plugins/config/digital-agency/<plugin>/practice-setup-resume.json` | Paused interview before instance exists |
-| 1 — Instance | `<instance-repo>/config/.<plugin>-practice-setup-resume.json` | Paused interview after instance repo is bound |
+| 0 — Personal | `~/.claude/plugins/config/digital-agency/<plugin>/setup-resume.json` | Paused interview before instance exists |
+| 1 — Instance | `<instance-repo>/config/.<plugin>-setup-resume.json` | Paused interview after instance repo is bound |
 
 **Brand path resolution:** Read `${CLAUDE_PLUGIN_ROOT}/references/brand-conventions.md` — instance `brand/`, target pointer, or `docs/brand/` fallback.
 
@@ -53,7 +53,7 @@ When `config/instance.json` exists and `status: complete`:
 
 - **Skip** business identity and house tone questions — reference the instance profile ("see instance profile").
 - **Use** `seedMaterial.sources` and `seedMaterial.notes` as starting context.
-- **Do not write** to `config/instance.json` from practice-setup — propose updates separately if new org facts emerge.
+- **Do not write** to `config/instance.json` from setup — propose updates separately if new org facts emerge.
 
 When no instance profile exists (standalone Try tier), ask minimal business identity only if needed for voice generation (company name for examples).
 
@@ -62,7 +62,7 @@ When no instance profile exists (standalone Try tier), ask minimal business iden
 After the instance layer is satisfied (or skipped):
 
 1. **Mode** — `--quick` or `--full` if not already set.
-2. Run the **plugin-specific** questions defined in the skill (`practice-setup/SKILL.md` below the framework section).
+2. Run the **plugin-specific** questions defined in the skill (`setup/SKILL.md` below the framework section).
 3. **Quick mode:** enforcement strictness + one seed doc; skip discovery unless user requests it.
 4. **Full mode:** request seed material; read for tone and vocabulary — not to copy proprietary content verbatim.
 5. **Write practice profile** to personal config path and **brand artefacts** to resolved brand path on confirmation.
@@ -94,7 +94,7 @@ Write outputs to the resolved brand directory. Write `brand.local.md` settings (
 
 ## Pause and resume
 
-**Pause:** Write resume JSON with: `plugin`, `skill`, `mode`, `startedAt`, `instanceRoot`, `brandDir`, `answers`, `remainingSteps`, `lastStepCompleted`. Tell the user to run `/<plugin>:practice-setup --resume`.
+**Pause:** Write resume JSON with: `plugin`, `skill`, `mode`, `startedAt`, `instanceRoot`, `brandDir`, `answers`, `remainingSteps`, `lastStepCompleted`. Tell the user to run `/<plugin>:setup --resume`.
 
 **Resume:** Load session, summarize progress, continue from `remainingSteps`. Delete session file after successful write.
 
@@ -107,6 +107,6 @@ Write outputs to the resolved brand directory. Write `brand.local.md` settings (
 
 ## Living profile rules
 
-- **`practice-setup`** is the only skill that may **auto-apply** a full profile and brand write (after confirmation above).
+- **`setup`** is the only skill that may **auto-apply** a full profile and brand write (after confirmation above).
 - **Every other skill** uses **propose profile update** for stable conventions — show exact diff, ask, write only on yes.
-- Org-level facts discovered later → propose update to `config/instance.json` (human edit or `agency-setup --redo`). Plugin-specific facts → propose update to plugin `CLAUDE.md` or `brand.local.md`.
+- Org-level facts discovered later → propose update to `config/instance.json` (human edit or `setup --redo`). Plugin-specific facts → propose update to plugin `CLAUDE.md` or `brand.local.md`.

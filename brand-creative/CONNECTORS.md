@@ -23,7 +23,7 @@ template generation; OAuth per user), Google Drive or SharePoint (file storage).
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **practice-setup** | discover chain | Notion, Confluence, Slack, Figma, Fireflies |
+| **setup** | discover chain | Notion, Confluence, Slack, Figma, Fireflies |
 | **brand-voice** | discover | Notion, Confluence, Slack, Figma, Fireflies |
 | **brand-guide** | write | Figma (primary for visual tokens) |
 | **brand-voice** | write | Manual upload or discovery report (no MCP required) |

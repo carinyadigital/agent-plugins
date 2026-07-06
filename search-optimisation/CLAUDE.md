@@ -4,7 +4,7 @@ TEMPLATE — do not write user data here.
 This file ships with the plugin and shows the structure the practice config should have.
 It is replaced on every plugin update. Never write user data here.
 
-The `practice-setup` skill copies or updates the user config at:
+The `setup` skill copies or updates the user config at:
   ~/.claude/plugins/config/digital-agency/search-optimisation/CLAUDE.md
 
 Instance-wide org facts live in the instance repo at:
@@ -15,13 +15,13 @@ SEO work artefacts land on the target repo — see references/search-optimisatio
 
 # Search Optimisation — Practice Profile
 
-*Written by `/search-optimisation:practice-setup` or initialized on first use.*
+*Written by `/search-optimisation:setup` or initialized on first use.*
 
 ---
 
 ## Status
 
-`template` — run `/search-optimisation:practice-setup` to fill this in.
+`template` — run `/search-optimisation:setup` to fill this in.
 
 ## Who's using this
 
@@ -77,7 +77,7 @@ _(One-off | monthly | quarterly | ad hoc — and focus areas if recurring.)_
 | Source control (GitHub) | [✓ / ✗] | Manual issue paste |
 | Browser automation (Playwright) | [✓ / ✗] | Static repo analysis only |
 
-*Re-check: `/search-optimisation:practice-setup --check-integrations`*
+*Re-check: `/search-optimisation:setup --check-integrations`*
 
 ---
 
@@ -87,4 +87,4 @@ _(One-off | monthly | quarterly | ad hoc — and focus areas if recurring.)_
 
 ---
 
-*Re-run: `/search-optimisation:practice-setup --redo`*
+*Re-run: `/search-optimisation:setup --redo`*

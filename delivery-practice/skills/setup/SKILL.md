@@ -1,10 +1,10 @@
 ---
-name: practice-setup
+name: setup
 description: >
   Delivery practice setup interview — reads instance cadence and risk posture from
-  agency-setup, interviews reporting format, escalation model, and persona preference
+  `/agency-hub:setup`, interviews reporting format, escalation model, and persona preference
   (Product Manager vs Delivery Lead vs merged), writes practice profile. Use on first
-  install after agency-setup, when the user says "set up delivery" or "configure sprint
+  install after `/agency-hub:setup`, when the user says "set up delivery" or "configure sprint
   cadence", or to redo delivery defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
@@ -19,7 +19,7 @@ metadata:
   sourcing_policy: "volatile-facts-must-be-sourced"
 ---
 
-# /delivery-practice:practice-setup
+# /delivery-practice:setup
 
 ## When to use
 
@@ -29,7 +29,7 @@ cadence or escalation model changes. Explicit invocation only.
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for cadence and risk posture.
-- **Does not write `config/instance.json`** — owned by `agency-hub:agency-setup`.
+- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
 - **Does not install other plugins** — user installs from marketplace.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce product/roadmap/backlog artefacts** — those are separate skills after setup.
@@ -147,7 +147,7 @@ Close with persona-appropriate handoff:
 **Either:**
 
 4. **Route** — `/delivery-practice:skills-index` when unsure which skill to use.
-5. **Refresh** — `/delivery-practice:practice-setup --redo` to redo delivery defaults only.
+5. **Refresh** — `/delivery-practice:setup --redo` to redo delivery defaults only.
 
 ## Pause and resume
 
@@ -156,7 +156,7 @@ On pause, write JSON:
 ```json
 {
   "plugin": "delivery-practice",
-  "skill": "practice-setup",
+  "skill": "setup",
   "mode": "quick|full",
   "startedAt": "ISO-8601",
   "instanceRoot": "<path or null>",
@@ -166,7 +166,7 @@ On pause, write JSON:
 }
 ```
 
-Location: `<instance-root>/config/.delivery-practice-practice-setup-resume.json` if instance exists; else personal hub path per framework.
+Location: `<instance-root>/config/.delivery-setup-resume.json` if instance exists; else personal hub path per framework.
 
 ## Worked example
 

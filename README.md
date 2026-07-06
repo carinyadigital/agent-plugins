@@ -11,7 +11,7 @@ In [Claude Code](https://claude.com/product/claude-code), [Claude Cowork](https:
 /plugin install agency-hub@carinya-digital
 ```
 
-Restart, then run `/agency-hub:agency-setup`. It bootstraps a git-versioned instance workspace (`config/`, `brand/`, `squads/`) and recommends your first practice plugin. Full walkthrough: [agency-hub/README.md](./agency-hub/README.md).
+Restart, then run `/agency-hub:setup`. It bootstraps a git-versioned instance workspace (`config/`, `brand/`, `squads/`) and recommends your first practice plugin. Full walkthrough: [agency-hub/README.md](./agency-hub/README.md).
 
 > [!IMPORTANT]
 > **Every output is a draft for your review — not client-ready deliverables, not production code without review, not a substitute for qualified professional judgment.** Agents and skills draft work products; you verify accuracy, brand fit, accessibility, security, and compliance before anything ships. You are responsible for outputs that leave your firm.
@@ -22,15 +22,15 @@ Install **`agency-hub` first**, then the practice plugins that match your work.
 
 | Plugin | Best for | First command |
 |---|---|---|
-| [agency-hub](./agency-hub) | Instance bootstrap, target bindings, squad charters | `/agency-hub:agency-setup` |
-| [brand-creative](./brand-creative) | Brand voice and visual identity | `/brand-creative:practice-setup` |
-| [delivery-practice](./delivery-practice) | Product strategy, backlog, sprint cadence, validation | `/delivery-practice:practice-setup` |
-| [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:practice-setup` |
-| [ux-design](./ux-design) | Low-fidelity wireframes and interaction specs | `/ux-design:practice-setup` |
-| [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:practice-setup` |
-| [web-development](./web-development) | Architecture, implementation, code review, QA, platform ops | `/web-development:practice-setup` |
+| [agency-hub](./agency-hub) | Instance bootstrap, target bindings, squad charters | `/agency-hub:setup` |
+| [brand-creative](./brand-creative) | Brand voice and visual identity | `/brand-creative:setup` |
+| [delivery-practice](./delivery-practice) | Product strategy, backlog, sprint cadence, validation | `/delivery-practice:setup` |
+| [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:setup` |
+| [ux-design](./ux-design) | Low-fidelity wireframes and interaction specs | `/ux-design:setup` |
+| [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
+| [web-development](./web-development) | Architecture, implementation, code review, QA, platform ops | `/web-development:setup` |
 
-**Which plugin first?** After `agency-setup`, the interview recommends a starting practice. Common paths:
+**Which plugin first?** After `setup`, the interview recommends a starting practice. Common paths:
 
 | If you are… | Install next |
 |---|---|
@@ -47,7 +47,7 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 **You have:** a new engagement — business name, one website target, no instance repo yet.
 
-**Run:** `/agency-hub:agency-setup --quick` — answer business name, first practice, and target.
+**Run:** `/agency-hub:setup --quick` — answer business name, first practice, and target.
 
 **You get:** a bound instance repo with `config/instance.json`, target skeletons, and a handoff to brand setup or your first practice plugin.
 
@@ -90,7 +90,7 @@ Twelve job-titled entry points for digital agency work. Each name maps to **exac
 | **Principal Architect** | System architecture, ADRs, epic-level design | `/web-development:solution write` |
 | **QA Engineer** | QA deploy, automated suite, exploratory pass, defect docs | `/web-development:exploratory-pass` |
 
-Run each plugin's `practice-setup` before first use — every skill reads your instance profile and practice profile. Skipping setup is the most common reason output stays generic.
+Run each plugin's `setup` before first use — every skill reads your instance profile and practice profile. Skipping setup is the most common reason output stays generic.
 
 ## Extended persona catalog
 
@@ -121,7 +121,7 @@ Everything here ships as Claude Cowork, Claude Code, or Cursor plugins **and** a
 
 What's in the repo:
 
-- **Practice plugins** covering brand, delivery, content, UX, SEO, and web engineering — each with a `practice-setup` interview, a living `CLAUDE.md` practice profile every skill reads, and **propose profile update** so conventions can be recorded mid-engagement without re-running setup.
+- **Practice plugins** covering brand, delivery, content, UX, SEO, and web engineering — each with a `setup` interview, a living `CLAUDE.md` practice profile every skill reads, and **propose profile update** so conventions can be recorded mid-engagement without re-running setup.
 - **Agency Hub** for instance bootstrap — git-versioned org profile, target bindings, and (v2) community skill marketplace management.
 - **MCP connectors** bundled per practice in `.mcp.json` — source control, hosting, design, project trackers, analytics, and browser automation.
 - **[Named personas](#named-personas)** — twelve primary entry points plus the [extended catalog](#extended-persona-catalog) above.
@@ -151,7 +151,7 @@ Each practice plugin has the same shape:
 <practice>/
   .claude-plugin/plugin.json
   .cursor-plugin/plugin.json
-  CLAUDE.md               # template practice profile — filled in by /<practice>:practice-setup
+  CLAUDE.md               # template practice profile — filled in by /<practice>:setup
   README.md
   CONNECTORS.md           # category placeholders + bundled MCP providers
   .mcp.json
@@ -165,9 +165,9 @@ Each practice plugin has the same shape:
 ### First run (all surfaces)
 
 1. Install **`agency-hub`** from the marketplace.
-2. Run **`/agency-hub:agency-setup`** — creates or binds your instance repo.
+2. Run **`/agency-hub:setup`** — creates or binds your instance repo.
 3. Install the **practice plugins** recommended during setup.
-4. Run each practice's **`/<practice>:practice-setup`** (e.g. `/brand-creative:practice-setup`).
+4. Run each practice's **`/<practice>:setup`** (e.g. `/brand-creative:setup`).
 5. Bind targets — website pointer (`.digital-agency/target.json` in target repos), credentials when ready.
 
 **Run practice setup first.** Every other skill in a plugin reads from the profile it writes. The interview takes 10–20 minutes per plugin; **`--quick`** is available when you want to be productive in two minutes and refine later.
@@ -193,9 +193,9 @@ After install, skills fire automatically when relevant; slash commands are avail
 /plugin install search-optimisation@carinya-digital
 # web-development — zip-install the web-development/ directory until marketplace registration lands
 
-/agency-hub:agency-setup
-/brand-creative:practice-setup
-/delivery-practice:practice-setup
+/agency-hub:setup
+/brand-creative:setup
+/delivery-practice:setup
 ```
 
 Updates: `/plugin update`.
@@ -235,7 +235,7 @@ Everything is markdown and JSON. No build step.
 
 ## Practice plugins by service line
 
-Grouped by where the work sits. Each plugin's **`practice-setup`** is what tailors it to your firm — start there.
+Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to your firm — start there.
 
 ### Strategy & delivery
 
@@ -267,7 +267,7 @@ Grouped by where the work sits. Each plugin's **`practice-setup`** is what tailo
 
 | Plugin | What it adds |
 |---|---|
-| **[agency-hub](./agency-hub)** | Instance bootstrap via `agency-setup`. v2 adds community skill discovery, installation QA, and update management (designed, deferred — stubs exist for shape validation). |
+| **[agency-hub](./agency-hub)** | Instance bootstrap via `setup`. v2 adds community skill discovery, installation QA, and update management (designed, deferred — stubs exist for shape validation). |
 
 **Companion practices:** `content-marketing` and `search-optimisation` invoke `/delivery-practice:backlog` and related skills rather than bundling duplicates. `web-development` invokes delivery skills for planning cadence during implementation. Neither direction requires the companion installed — skills degrade gracefully and document the pairing.
 
@@ -302,18 +302,18 @@ Two layers of configuration tailor generic skills to your firm:
 
 | Command | Writes |
 |---|---|
-| `/agency-hub:agency-setup` | Instance repo + handoff to first practice |
-| `/<practice>:practice-setup` | Practice profile for that service line |
+| `/agency-hub:setup` | Instance repo + handoff to first practice |
+| `/<practice>:setup` | Practice profile for that service line |
 
-Framework: [`agency-hub/references/agency-setup-framework.md`](./agency-hub/references/agency-setup-framework.md) and synced [`practice-setup-framework.md`](./delivery-practice/references/practice-setup-framework.md) copies in each practice.
+Framework: [`agency-hub/references/agency-setup-framework.md`](./agency-hub/references/agency-setup-framework.md) and synced [`setup-framework.md`](./delivery-practice/references/practice-setup-framework.md) copies in each practice.
 
-**Living profile.** Every skill except `practice-setup` uses **propose profile update** — show the exact diff, ask, write on yes. No skill auto-writes a full profile without confirmation.
+**Living profile.** Every skill except `setup` uses **propose profile update** — show the exact diff, ask, write on yes. No skill auto-writes a full profile without confirmation.
 
 ## Making it yours
 
 These are reference templates. They get better when you tune them to how your firm works — and the customization mechanism is the plugin itself.
 
-- **Run instance and practice setup.** `agency-setup` and `practice-setup` **are** the customization mechanism. They interview you, read seed documents, and write profiles after you confirm the summary.
+- **Run instance and practice setup.** `setup` and `setup` **are** the customization mechanism. They interview you, read seed documents, and write profiles after you confirm the summary.
 - **Edit profiles directly.** Instance facts live in your instance repo; practice conventions at `~/.claude/plugins/config/digital-agency/<practice>/CLAUDE.md`. They survive plugin updates.
 - **Propose profile updates from any skill.** When a stable convention surfaces mid-engagement (tone corrections, sprint length, MR template), skills show the exact change and ask before writing.
 - **Swap connectors.** Point `.mcp.json` at your source control, hosting, design, and tracker stack. Skills fall back gracefully when a connector is not configured.
@@ -325,15 +325,15 @@ No build step. Everything is markdown and JSON.
 
 ## Skill & command reference
 
-The full map across all practice plugins. Run `practice-setup` in each plugin before other commands.
+The full map across all practice plugins. Run `setup` in each plugin before other commands.
 
 ### agency-hub
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/agency-hub:agency-setup` | agency-setup | Interview → bind instance repo → write config → hand off |
-| `/agency-hub:agency-setup --quick` | agency-setup | Minimal path: business name, one practice, one target |
-| `/agency-hub:agency-setup --check-integrations` | agency-setup | Report MCP connector status only |
+| `/agency-hub:setup` | setup | Interview → bind instance repo → write config → hand off |
+| `/agency-hub:setup --quick` | setup | Minimal path: business name, one practice, one target |
+| `/agency-hub:setup --check-integrations` | setup | Report MCP connector status only |
 
 v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …) are designed but not shipped — see [agency-hub/README.md](./agency-hub/README.md).
 
@@ -341,7 +341,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/brand-creative:practice-setup` | practice-setup | Learns voice strictness, channels, seed material; writes practice profile |
+| `/brand-creative:setup` | setup | Learns voice strictness, channels, seed material; writes practice profile |
 | `/brand-creative:brand-voice` | brand-voice | discover, write, review, refine, enforce — `brand/brand-voice.md` |
 | `/brand-creative:brand-guide` | brand-guide | write, review, refine — visual identity and UI tokens |
 
@@ -349,7 +349,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/delivery-practice:practice-setup` | practice-setup | Learns cadence, personas, escalation; writes practice profile |
+| `/delivery-practice:setup` | setup | Learns cadence, personas, escalation; writes practice profile |
 | `/delivery-practice:product` | product | write, review, refine — `docs/product/product.md` |
 | `/delivery-practice:roadmap` | roadmap | write, review, refine — `docs/product/roadmap.md` |
 | `/delivery-practice:backlog` | backlog | write, review, refine — `docs/product/backlog.md` |
@@ -368,7 +368,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/content-marketing:practice-setup` | practice-setup | Learns channels, persona preference, seed sources |
+| `/content-marketing:setup` | setup | Learns channels, persona preference, seed sources |
 | `/content-marketing:content-calendar` | content-calendar | write, review — editorial calendar and slot briefs |
 | `/content-marketing:curate-content` | curate-content | Rank social inventory for upcoming posts |
 | `/content-marketing:analyse-media` | analyse-media | Vision analysis — subjects, season, mood, quality |
@@ -381,14 +381,14 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/ux-design:practice-setup` | practice-setup | Learns in-scope pages/flows and reference sources |
+| `/ux-design:setup` | setup | Learns in-scope pages/flows and reference sources |
 | `/ux-design:wireframe` | wireframe | Low-fidelity layout and interaction spec from a brief |
 
 ### search-optimisation
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/search-optimisation:practice-setup` | practice-setup | Learns target site, keyword themes, audit cadence |
+| `/search-optimisation:setup` | setup | Learns target site, keyword themes, audit cadence |
 | `/search-optimisation:keyword-research` | keyword-research | Topic keyword docs with intent and content opportunities |
 | `/search-optimisation:technical-seo-audit` | technical-seo-audit | Production audit → tracked issues |
 | `/search-optimisation:content-seo-review` | content-seo-review | On-page SEO review of content seeds |
@@ -397,7 +397,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/web-development:practice-setup` | practice-setup | Learns stack, personas, target binding, connectors |
+| `/web-development:setup` | setup | Learns stack, personas, target binding, connectors |
 | `/web-development:solution` | solution | write, review, refine — `docs/architecture/solution.md` |
 | `/web-development:adr` | adr | plan, write, review — ADR register and decision records |
 | `/web-development:design` | design | write, review — `docs/work/{epic}/design.md` |
@@ -420,7 +420,7 @@ Everything here is markdown and JSON. Fork, edit, PR. See [CONTRIBUTING.md](./CO
 
 - **New skill** → add `<practice>/skills/<skill-name>/SKILL.md` with `name` and `description` frontmatter. Invokable as `/<practice>:<skill-name>`.
 - **New persona row** → add the skill under the owning practice and a row in that practice's README Agents/Personas table mapping the job title to the slash command.
-- **Shared meta-framework edits** → run `python3 scripts/sync-references.py` after changing `instance-profile-template.md` or `practice-setup-framework.md`.
+- **Shared meta-framework edits** → run `python3 scripts/sync-references.py` after changing `instance-profile-template.md` or `setup-framework.md`.
 - **Validate before opening a PR** — `python3 scripts/validate.py` lints manifests, verifies cross-file references, and validates evals schema. See [AGENTS.md](./AGENTS.md) for repo conventions.
 
 ## License

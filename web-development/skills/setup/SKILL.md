@@ -1,10 +1,10 @@
 ---
-name: practice-setup
+name: setup
 description: >
   Web development practice setup interview — detects or creates .digital-agency/target.json
-  binding, reads instance profile from agency-setup, interviews tech stack, deployment
+  binding, reads instance profile from `/agency-hub:setup`, interviews tech stack, deployment
   platform, connectors, and persona preference (six engineering personas vs merged),
-  writes practice profile. Use on first install after agency-setup, when the user says
+  writes practice profile. Use on first install after `/agency-hub:setup`, when the user says
   "set up web development" or "bind target repo", or to redo engineering defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
@@ -19,7 +19,7 @@ metadata:
   sourcing_policy: "volatile-facts-must-be-sourced"
 ---
 
-# /web-development:practice-setup
+# /web-development:setup
 
 ## When to use
 
@@ -29,7 +29,7 @@ after stack or deployment platform changes. Explicit invocation only.
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for target hints.
-- **Does not write `config/instance.json`** — owned by `agency-hub:agency-setup`.
+- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
 - **Does not install other plugins** — user installs `delivery-practice` from marketplace when planning companion skills are needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce solution, design, or code artefacts** — those are separate skills after setup.
@@ -172,7 +172,7 @@ Close with persona-appropriate handoff:
 **Either:**
 
 4. **Backlog** — `/delivery-practice:backlog` (companion; requires delivery-practice install)
-5. **Refresh** — `/web-development:practice-setup --redo` to redo engineering defaults only.
+5. **Refresh** — `/web-development:setup --redo` to redo engineering defaults only.
 
 ## Pause and resume
 
@@ -181,7 +181,7 @@ On pause, write JSON:
 ```json
 {
   "plugin": "web-development",
-  "skill": "practice-setup",
+  "skill": "setup",
   "mode": "quick|full",
   "startedAt": "ISO-8601",
   "instanceRoot": "<path or null>",
@@ -191,7 +191,7 @@ On pause, write JSON:
 }
 ```
 
-Location: `<instance-root>/config/.web-development-practice-setup-resume.json` if instance exists; else personal hub path per framework.
+Location: `<instance-root>/config/.web-development-setup-resume.json` if instance exists; else personal hub path per framework.
 
 ## Worked example
 

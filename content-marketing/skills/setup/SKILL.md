@@ -1,10 +1,10 @@
 ---
-name: practice-setup
+name: setup
 description: >
   Content marketing practice setup interview — reads instance business identity and house
-  tone hints from agency-setup, interviews content cadence, primary channels, distribution
+  tone hints from `/agency-hub:setup`, interviews content cadence, primary channels, distribution
   connectors, and persona preference (Content Strategist vs Content Writer vs merged),
-  writes practice profile. Use on first install after agency-setup, when the user says
+  writes practice profile. Use on first install after `/agency-hub:setup`, when the user says
   "set up content" or "configure editorial calendar", or to redo content defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
@@ -19,7 +19,7 @@ metadata:
   sourcing_policy: "volatile-facts-must-be-sourced"
 ---
 
-# /content-marketing:practice-setup
+# /content-marketing:setup
 
 ## When to use
 
@@ -29,7 +29,7 @@ cadence or channel mix changes. Explicit invocation only.
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for business name and house tone hints.
-- **Does not write `config/instance.json`** — owned by `agency-hub:agency-setup`.
+- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
 - **Does not install other plugins** — user installs `delivery-practice` from marketplace when backlog/research companion skills are needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce calendar or seed artefacts** — those are separate skills after setup.
@@ -161,7 +161,7 @@ Close with persona-appropriate handoff:
 **Either:**
 
 4. **Media analysis** — `/content-marketing:analyse-media <path>`
-5. **Refresh** — `/content-marketing:practice-setup --redo` to redo content defaults only.
+5. **Refresh** — `/content-marketing:setup --redo` to redo content defaults only.
 
 ## Pause and resume
 
@@ -170,7 +170,7 @@ On pause, write JSON:
 ```json
 {
   "plugin": "content-marketing",
-  "skill": "practice-setup",
+  "skill": "setup",
   "mode": "quick|full",
   "startedAt": "ISO-8601",
   "instanceRoot": "<path or null>",
@@ -180,7 +180,7 @@ On pause, write JSON:
 }
 ```
 
-Location: `<instance-root>/config/.content-marketing-practice-setup-resume.json` if instance exists; else personal hub path per framework.
+Location: `<instance-root>/config/.content-marketing-setup-resume.json` if instance exists; else personal hub path per framework.
 
 ## Worked example
 

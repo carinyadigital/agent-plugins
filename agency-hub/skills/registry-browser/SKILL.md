@@ -20,7 +20,7 @@ metadata:
 
 ## Status
 
-**v2 — designed, deferred.** Marketplace management ships in Phase 3; v1 ships `agency-setup` only.
+**v2 — designed, deferred.** Marketplace management ships in Phase 3; v1 ships `setup` only.
 
 ## When to use
 
@@ -30,7 +30,7 @@ Search watched registries; preview full SKILL.md; add registries to watchlist on
 
 | Input | If missing |
 |---|---|
-| Hub profile with watched registries | Offer to add registry or agency-setup |
+| Hub profile with watched registries | Offer to add registry or setup |
 
 ## Provisional mode
 
@@ -111,7 +111,7 @@ No default registries are pre-configured. Add registries you trust via this comm
 
 ## Propose profile update
 
-When a stable convention surfaces during this run (thresholds, naming, tone, output format, or recurring corrections), **propose a profile update**: show the exact diff against `~/.claude/plugins/config/digital-agency/agency-hub/CLAUDE.md` (instance-wide facts go to `<instance-repo>/config/instance.json`), ask for confirmation, and write only on yes. Only `/agency-hub:agency-setup` auto-applies a full profile write.
+When a stable convention surfaces during this run (thresholds, naming, tone, output format, or recurring corrections), **propose a profile update**: show the exact diff against `~/.claude/plugins/config/digital-agency/agency-hub/CLAUDE.md` (instance-wide facts go to `<instance-repo>/config/instance.json`), ask for confirmation, and write only on yes. Only `/agency-hub:setup` auto-applies a full profile write.
 
 ## Outputs
 

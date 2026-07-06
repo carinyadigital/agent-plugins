@@ -4,7 +4,7 @@ TEMPLATE — do not write user data here.
 This file ships with the plugin and shows the structure the hub config should have.
 It is replaced on every plugin update. Never write user data here.
 
-The `agency-setup` skill (and marketplace skills) copy or update the user config at:
+The `setup` skill (and marketplace skills) copy or update the user config at:
   ~/.claude/plugins/config/digital-agency/agency-hub/CLAUDE.md
 
 Instance-wide org facts live in the instance repo at:
@@ -13,7 +13,7 @@ Instance-wide org facts live in the instance repo at:
 
 # Agency Hub — Personal Marketplace Profile
 
-*Written by `/agency-hub:agency-setup` or initialized on first marketplace use.*
+*Written by `/agency-hub:setup` or initialized on first marketplace use.*
 
 ---
 
@@ -31,7 +31,7 @@ Instance-wide org facts live in the instance repo at:
 | GitHub | [✓ / ✗] | Registry browse and install fall back to manual URL paste |
 | Slack | [✓ / ✗] | Registry-sync digest written to file instead of chat |
 
-*Re-check: `/agency-hub:agency-setup --check-integrations`*
+*Re-check: `/agency-hub:setup --check-integrations`*
 
 ---
 
@@ -93,4 +93,4 @@ MCP servers are bundled in each practice plugin's `.mcp.json` — see `CONNECTOR
 
 ---
 
-*Re-run: `/agency-hub:agency-setup --redo`*
+*Re-run: `/agency-hub:setup --redo`*

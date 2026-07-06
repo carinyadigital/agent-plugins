@@ -29,7 +29,7 @@ reference for social-sized layouts).
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **practice-setup** | `--check-integrations` | Figma |
+| **setup** | `--check-integrations` | Figma |
 | **wireframe** | write | Figma (optional — extract layout reference) |
 | **wireframe** | write | None required — brief and brand-guide.md suffice |
 

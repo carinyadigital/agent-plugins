@@ -4,17 +4,17 @@ Root-level **practice plugin** — minimal v1 delivers setup interview and one
 wireframe skill. Self-contained under the MECE practice model: edit skills here
 only; nothing is vendored from elsewhere.
 
-Install standalone or after `agency-hub:agency-setup` recommends it. Recommend
+Install standalone or after `agency-hub:setup` recommends it. Recommend
 `web-development` as a **companion practice** for implementation — it reads
 `<design-dir>/*.md` via artifact consumption; no install dependency in either
 direction.
 
-## First run: practice-setup
+## First run: setup
 
 After instance bootstrap (or standalone):
 
 ```
-/ux-design:practice-setup
+/ux-design:setup
 ```
 
 | Flag | Behaviour |
@@ -29,7 +29,7 @@ After instance bootstrap (or standalone):
 
 | Skill | Purpose |
 | ----- | ------- |
-| **practice-setup** | Interview → write practice profile and wireframe scope defaults |
+| **setup** | Interview → write practice profile and wireframe scope defaults |
 | **wireframe** | Produce low-fidelity layout/interaction spec from a brief |
 
 Direct invocation works post-setup:
@@ -57,8 +57,8 @@ tokens and visual patterns — no bundled skill and no install dependency on
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:agency-setup` writes
-  `config/instance.json`; practice-setup reads business identity without re-asking.
+- **Instance profile** (optional) — `agency-hub:setup` writes
+  `config/instance.json`; setup reads business identity without re-asking.
 - **Figma** (optional) — connected Figma enables reference extraction during setup
   and wireframe write.
 - **web-development** (recommended companion) — reads wireframes before UI
@@ -68,7 +68,7 @@ tokens and visual patterns — no bundled skill and no install dependency on
 
 1. Run `/ux-design:wireframe` for each page or flow in scope.
 2. Hand off to `/web-development:implement` when wireframes are approved.
-3. Re-run `/ux-design:practice-setup --redo` to refresh scope or references.
+3. Re-run `/ux-design:setup --redo` to refresh scope or references.
 
 ## References
 
@@ -76,5 +76,5 @@ tokens and visual patterns — no bundled skill and no install dependency on
 - `references/ux-design-conventions.md` — path resolution and artefact boundaries
 - `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
 
-Meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`)
+Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

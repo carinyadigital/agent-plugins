@@ -4,7 +4,7 @@ Root-level **practice plugin** — one install delivers the complete brand servi
 setup interview, voice lifecycle, and visual identity guide. Self-contained under
 the MECE practice model: edit skills here only; nothing is vendored from elsewhere.
 
-Install standalone or after `agency-hub:agency-setup` recommends it.
+Install standalone or after `agency-hub:setup` recommends it.
 
 ## Who this is for
 
@@ -17,12 +17,12 @@ without an instance repo:
 | Target repo (`.digital-agency/target.json` pointer) | Instance `brand/` via pointer |
 | Standalone (no instance) | `docs/brand/` in the current project |
 
-## First run: practice-setup
+## First run: setup
 
 Golden path 3 — brand voice setup after instance bootstrap:
 
 ```
-/brand-creative:practice-setup
+/brand-creative:setup
 ```
 
 | Flag | Behaviour |
@@ -37,7 +37,7 @@ Golden path 3 — brand voice setup after instance bootstrap:
 
 | Skill | Purpose |
 |---|---|
-| **practice-setup** | Interview → discover → write → review → save to resolved brand path |
+| **setup** | Interview → discover → write → review → save to resolved brand path |
 | **brand-voice** | discover, write, review, refine, enforce |
 | **brand-guide** | write, review, refine (visual identity, UI tokens) |
 
@@ -52,8 +52,8 @@ Path resolution for all skills: `references/brand-conventions.md`.
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:agency-setup` writes
-  `config/instance.json`; practice-setup reads business identity and seed material
+- **Instance profile** (optional) — `agency-hub:setup` writes
+  `config/instance.json`; setup reads business identity and seed material
   without re-asking.
 - **Connectors** (optional) — Notion, Atlassian, Slack, Figma, Fireflies enable
   `brand-voice discover`. Visual guide generation benefits from Figma.
@@ -61,7 +61,7 @@ Path resolution for all skills: `references/brand-conventions.md`.
 ## After setup
 
 1. Content and engineering roles read brand from the resolved path automatically.
-2. Re-run `/brand-creative:practice-setup --redo` to refresh voice or guide.
+2. Re-run `/brand-creative:setup --redo` to refresh voice or guide.
 3. Use `brand-voice enforce` for on-brand copy; `brand-guide review` after design
    changes.
 
@@ -71,5 +71,5 @@ Path resolution for all skills: `references/brand-conventions.md`.
 - `references/brand-conventions.md` — path resolution and artefact boundaries
 - `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
 
-Meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`)
+Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

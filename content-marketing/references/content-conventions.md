@@ -83,7 +83,7 @@ skills.
 ## Personas
 
 Two personas share one skill library. Choose the default persona during
-`practice-setup` (merged for one-person shops; distinct for larger teams).
+`setup` (merged for one-person shops; distinct for larger teams).
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |

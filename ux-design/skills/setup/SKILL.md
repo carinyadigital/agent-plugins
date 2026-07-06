@@ -1,10 +1,10 @@
 ---
-name: practice-setup
+name: setup
 description: >
   UX design practice setup interview — reads instance business identity from
-  agency-setup, interviews which pages/flows are in scope for wireframing and any
+  `/agency-hub:setup`, interviews which pages/flows are in scope for wireframing and any
   existing design references to seed from, writes practice profile. Use on first
-  install after agency-setup, when the user says "set up UX" or "configure
+  install after `/agency-hub:setup`, when the user says "set up UX" or "configure
   wireframes", or to redo UX defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
@@ -19,7 +19,7 @@ metadata:
   sourcing_policy: "volatile-facts-must-be-sourced"
 ---
 
-# /ux-design:practice-setup
+# /ux-design:setup
 
 ## When to use
 
@@ -29,7 +29,7 @@ or reference material changes. Explicit invocation only.
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile.
-- **Does not write `config/instance.json`** — owned by `agency-hub:agency-setup`.
+- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
 - **Does not install other plugins** — user installs `web-development` from marketplace when implementation companion is needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce wireframe artefacts** — those are separate skill invocations after setup.
@@ -135,7 +135,7 @@ Delete resume file if present.
 Close with:
 
 1. **Wireframe a page** — `/ux-design:wireframe {page-or-flow}` for each item in scope.
-2. **Refresh scope** — `/ux-design:practice-setup --redo` when pages or references change.
+2. **Refresh scope** — `/ux-design:setup --redo` when pages or references change.
 3. **Implement** — install `web-development` and invoke `/web-development:implement` when wireframes are approved.
 
 ## Pause and resume
@@ -145,7 +145,7 @@ On pause, write JSON:
 ```json
 {
   "plugin": "ux-design",
-  "skill": "practice-setup",
+  "skill": "setup",
   "mode": "quick|full",
   "startedAt": "ISO-8601",
   "instanceRoot": "<path or null>",
@@ -156,7 +156,7 @@ On pause, write JSON:
 }
 ```
 
-Location: `<instance-root>/config/.ux-design-practice-setup-resume.json` if instance exists; else personal hub path per framework.
+Location: `<instance-root>/config/.ux-design-setup-resume.json` if instance exists; else personal hub path per framework.
 
 ## Worked example
 

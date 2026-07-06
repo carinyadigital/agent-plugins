@@ -2,7 +2,7 @@
   "name": "delivery-practice",
   "displayName": "Delivery Practice",
   "version": "0.1.0",
-  "description": "Complete delivery practice in one install — practice-setup interview, product strategy, backlog and sprint cadence, validation, and operational skills. Two personas (Product Manager, Delivery Lead), one owned skill library.",
+  "description": "Complete delivery practice in one install — setup interview, product strategy, backlog and sprint cadence, validation, and operational skills. Two personas (Product Manager, Delivery Lead), one owned skill library.",
   "author": {
     "name": "Digital Agency"
   },
@@ -16,7 +16,7 @@
     "tasks",
     "sprint",
     "validate",
-    "practice-setup",
+    "setup",
     "stakeholder",
     "research",
     "competitive-analysis",

@@ -37,7 +37,7 @@ Contentful/Sanity/WordPress (CMS), Buffer or Later (social scheduling).
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **practice-setup** | `--check-integrations` | GitHub, Notion, Slack, Canva |
+| **setup** | `--check-integrations` | GitHub, Notion, Slack, Canva |
 | **content-calendar** | write, review | Knowledge base (optional seed material) |
 | **draft-post**, **draft-recipe** | run | Source control (seed PRs) |
 | **curate-content** | run | None required — inventory JSON input |

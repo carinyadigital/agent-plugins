@@ -1,10 +1,10 @@
 ---
-name: practice-setup
+name: setup
 description: >
   Search optimisation practice setup interview — reads instance business identity from
-  agency-setup, interviews target site(s), search visibility baseline, priority keyword
+  `/agency-hub:setup`, interviews target site(s), search visibility baseline, priority keyword
   themes, competitor set, and technical audit cadence, writes practice profile. Use on
-  first install after agency-setup, when the user says "set up SEO" or "configure search
+  first install after `/agency-hub:setup`, when the user says "set up SEO" or "configure search
   optimisation", or to redo SEO defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
@@ -19,7 +19,7 @@ metadata:
   sourcing_policy: "volatile-facts-must-be-sourced"
 ---
 
-# /search-optimisation:practice-setup
+# /search-optimisation:setup
 
 ## When to use
 
@@ -29,7 +29,7 @@ site, keyword priorities, or audit cadence changes. Explicit invocation only.
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for business name and context.
-- **Does not write `config/instance.json`** — owned by `agency-hub:agency-setup`.
+- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
 - **Does not install other plugins** — user installs `delivery-practice` from marketplace when competitive brief companion skill is needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce keyword research or audit artefacts** — those are separate skills after setup.
@@ -148,7 +148,7 @@ Close with SEO Specialist handoff:
 2. **Technical audit** — `/search-optimisation:technical-seo-audit`
 3. **Content review** — `/search-optimisation:content-seo-review <pr-url or seed path>`
 4. **Competitive brief** — `/delivery-practice:competitive-brief` (companion; requires delivery-practice install)
-5. **Refresh** — `/search-optimisation:practice-setup --redo` to redo SEO defaults only.
+5. **Refresh** — `/search-optimisation:setup --redo` to redo SEO defaults only.
 
 ## Pause and resume
 
@@ -157,7 +157,7 @@ On pause, write JSON:
 ```json
 {
   "plugin": "search-optimisation",
-  "skill": "practice-setup",
+  "skill": "setup",
   "mode": "quick|full",
   "startedAt": "ISO-8601",
   "instanceRoot": "<path or null>",
@@ -167,7 +167,7 @@ On pause, write JSON:
 }
 ```
 
-Location: `<instance-root>/config/.search-optimisation-practice-setup-resume.json` if instance exists; else personal hub path per framework.
+Location: `<instance-root>/config/.search-optimisation-setup-resume.json` if instance exists; else personal hub path per framework.
 
 ## Worked example
 

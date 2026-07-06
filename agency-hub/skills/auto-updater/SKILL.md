@@ -20,7 +20,7 @@ metadata:
 
 ## Status
 
-**v2 — designed, deferred.** Marketplace management ships in Phase 3; v1 ships `agency-setup` only.
+**v2 — designed, deferred.** Marketplace management ships in Phase 3; v1 ships `setup` only.
 
 ## When to use
 
@@ -30,7 +30,7 @@ Check installed community skills for updates; show diff; apply only after explic
 
 | Input | If missing |
 |---|---|
-| Hub engagement profile with installed list | Offer agency-setup |
+| Hub engagement profile with installed list | Offer setup |
 | User approval for each apply | Never auto-apply |
 
 ## Provisional mode
@@ -203,7 +203,7 @@ If an update breaks something: `/agency-hub:auto-updater --rollback [skill]` res
 
 ## Propose profile update
 
-When a stable convention surfaces during this run (thresholds, naming, tone, output format, or recurring corrections), **propose a profile update**: show the exact diff against `~/.claude/plugins/config/digital-agency/agency-hub/CLAUDE.md` (instance-wide facts go to `<instance-repo>/config/instance.json`), ask for confirmation, and write only on yes. Only `/agency-hub:agency-setup` auto-applies a full profile write.
+When a stable convention surfaces during this run (thresholds, naming, tone, output format, or recurring corrections), **propose a profile update**: show the exact diff against `~/.claude/plugins/config/digital-agency/agency-hub/CLAUDE.md` (instance-wide facts go to `<instance-repo>/config/instance.json`), ask for confirmation, and write only on yes. Only `/agency-hub:setup` auto-applies a full profile write.
 
 ## Outputs
 

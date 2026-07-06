@@ -10,7 +10,7 @@ read this file to verify provenance and to compare pinned revisions.
 ~/.claude/plugins/config/digital-agency/agency-hub/install-log.yaml
 ```
 
-Created empty by `/agency-hub:agency-setup` if it does not exist.
+Created empty by `/agency-hub:setup` if it does not exist.
 
 ## Design rules
 

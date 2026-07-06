@@ -70,7 +70,7 @@ AGENCY_HEADINGS = (
 PLUGIN_REQUIRED_FIELDS = ("name", "version", "description")
 MARKETPLACE_SYNC_FIELDS = ("name", "description")
 
-SKIP_DRIFT_NAMES = frozenset({"references", "practice-setup"})
+SKIP_DRIFT_NAMES = frozenset({"references", "setup"})
 IGNORE_DRIFT_FILES = frozenset({".DS_Store"})
 
 # Agents that must not bundle a skill even when a source exists (MECE ownership)

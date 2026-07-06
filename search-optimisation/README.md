@@ -5,7 +5,7 @@ technical SEO service: setup interview, keyword research, production audits, and
 content SEO review. Self-contained under the MECE practice model: edit skills here
 only; nothing is vendored from elsewhere.
 
-Install standalone or after `agency-hub:agency-setup` recommends it. Declare
+Install standalone or after `agency-hub:setup` recommends it. Declare
 `delivery-practice` as a **companion practice** for competitive brief — invoke
 `/delivery-practice:competitive-brief` directly rather than bundling a duplicate copy.
 
@@ -31,12 +31,12 @@ For competitive landscape input, invoke the companion practice:
 /delivery-practice:competitive-brief
 ```
 
-## First run: practice-setup
+## First run: setup
 
 After instance bootstrap (or standalone):
 
 ```
-/search-optimisation:practice-setup
+/search-optimisation:setup
 ```
 
 | Flag | Behaviour |
@@ -51,7 +51,7 @@ After instance bootstrap (or standalone):
 
 | Skill | Purpose |
 | ----- | ------- |
-| **practice-setup** | Interview → write practice profile and SEO defaults |
+| **setup** | Interview → write practice profile and SEO defaults |
 | **keyword-research** | Topic keyword docs with intent and content opportunities |
 | **technical-seo-audit** | Production audit → GitHub issues |
 | **content-seo-review** | On-page SEO review of content seeds |
@@ -66,8 +66,8 @@ pairing — paste or reference content directly when `content-marketing` is not 
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:agency-setup` writes
-  `config/instance.json`; practice-setup reads business identity without re-asking.
+- **Instance profile** (optional) — `agency-hub:setup` writes
+  `config/instance.json`; setup reads business identity without re-asking.
 - **delivery-practice** (recommended companion) — competitive brief; see CONNECTORS.md.
 - **Connectors** (optional) — source control for issues; Playwright for live site checks; Ahrefs for keyword and backlink data (requires subscription).
 
@@ -76,7 +76,7 @@ pairing — paste or reference content directly when `content-marketing` is not 
 1. Run `/search-optimisation:keyword-research` for priority topics.
 2. Run `/search-optimisation:technical-seo-audit` on a cadence defined at setup.
 3. Run `/search-optimisation:content-seo-review` on seed PRs before merge.
-4. Re-run `/search-optimisation:practice-setup --redo` to refresh SEO defaults.
+4. Re-run `/search-optimisation:setup --redo` to refresh SEO defaults.
 
 ## References
 
@@ -84,5 +84,5 @@ pairing — paste or reference content directly when `content-marketing` is not 
 - `references/search-optimisation-conventions.md` — path resolution, labels, artefact boundaries
 - `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
 
-Meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`)
+Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

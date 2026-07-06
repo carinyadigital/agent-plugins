@@ -1,10 +1,10 @@
 ---
-name: practice-setup
+name: setup
 description: >
   Brand practice setup interview — detects instance profile and existing brand
   artefacts, interviews enforcement strictness and discovery platforms, runs
   brand-voice discover → write → review and brand-guide write, saves to the
-  resolved brand path. Use on first install after agency-setup, when the user
+  resolved brand path. Use on first install after `/agency-hub:setup`, when the user
   says "set up brand" or "configure brand voice", or to redo brand only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
@@ -19,7 +19,7 @@ metadata:
   sourcing_policy: "volatile-facts-must-be-sourced"
 ---
 
-# /brand-creative:practice-setup
+# /brand-creative:setup
 
 ## When to use
 
@@ -28,7 +28,7 @@ First brand setup after instance bootstrap; standalone Try-tier brand setup; re-
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile.
-- **Does not write `config/instance.json`** — owned by `agency-hub:agency-setup`.
+- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
 - **Does not install other plugins** — user installs from marketplace.
 - **Does not write without explicit yes** after showing the plain-language diff.
 - **Does not use `docs/brand/`** when an instance or target pointer exists — resolves per `brand-conventions.md`.
@@ -147,7 +147,7 @@ Close with:
 1. **Enforce voice** — `/brand-creative:brand-voice enforce` for on-brand copy.
 2. **Refine** — `/brand-creative:brand-voice refine` after team resolves open questions.
 3. **Visual updates** — `/brand-creative:brand-guide write --from figma` when design source changes.
-4. **Refresh** — `/brand-creative:practice-setup --redo` to redo brand only.
+4. **Refresh** — `/brand-creative:setup --redo` to redo brand only.
 
 ## Pause and resume
 
@@ -156,7 +156,7 @@ On pause, write JSON:
 ```json
 {
   "plugin": "brand-creative",
-  "skill": "practice-setup",
+  "skill": "setup",
   "mode": "quick|full",
   "startedAt": "ISO-8601",
   "instanceRoot": "<path or null>",
@@ -167,7 +167,7 @@ On pause, write JSON:
 }
 ```
 
-Location: `<instance-root>/config/.brand-creative-practice-setup-resume.json` if instance exists; else personal hub path per framework.
+Location: `<instance-root>/config/.brand-creative-setup-resume.json` if instance exists; else personal hub path per framework.
 
 ## Worked example
 

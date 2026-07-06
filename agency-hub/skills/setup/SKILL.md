@@ -1,10 +1,10 @@
 ---
-name: agency-setup
+name: setup
 description: >
   Instance bootstrap interview — detects existing instance state, guides repo
   creation (link-first), interviews business identity/services/cadence/targets,
   writes config/instance.json and target skeletons, then hands off to
-  brand-creative practice-setup. Use on first install, when the user says "set up
+  brand-creative setup. Use on first install, when the user says "set up
   my instance" or "bootstrap my agency workspace", or to re-run integration checks
   after adding MCP connectors.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
@@ -20,7 +20,7 @@ metadata:
   sourcing_policy: "volatile-facts-must-be-sourced"
 ---
 
-# /agency-hub:agency-setup
+# /agency-hub:setup
 
 ## When to use
 
@@ -30,7 +30,7 @@ First install of digital-agency for real work; cold-start instance bootstrap; re
 
 - **Does not create GitHub repos autonomously** — v1 is link-first; the human creates the repo.
 - **Does not install practice plugins** — recommends them; user installs from marketplace.
-- **Does not duplicate brand interview** — recommends `brand-creative` and hands off to `/brand-creative:practice-setup`.
+- **Does not duplicate brand interview** — recommends `brand-creative` and hands off to `/brand-creative:setup`.
 - **Does not block on email/ads/analytics targets** — writes `not-yet-designed` skeletons and continues.
 - **Does not write without explicit yes** after showing the plain-language diff.
 
@@ -42,7 +42,7 @@ Detect existing state per framework § Startup. Honour flags: `--quick`, `--full
 
 ## Provisional mode
 
-Partial interview → write resume JSON (`config/.agency-setup-resume.json` in instance repo, or `~/.claude/plugins/config/digital-agency/agency-hub/agency-setup-resume.json` before repo exists). Offer `--resume` on next run.
+Partial interview → write resume JSON (`config/.setup-resume.json` in instance repo, or `~/.claude/plugins/config/digital-agency/agency-hub/setup-resume.json` before repo exists). Offer `--resume` on next run.
 
 ## Trust spine
 
@@ -123,9 +123,9 @@ Map to **practice plugins** (MECE — one install per practice). Recommend; do n
 |---|---|---|---|
 | `brand-creative` | `brand-creative` | none | Shipped — no companion install |
 | `web-development` | `web-development` | `delivery-practice` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
-| `content-marketing` | `content-marketing` | `delivery-practice` | Shipped — run `/content-marketing:practice-setup` after bootstrap; invoke `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` for companion skills |
+| `content-marketing` | `content-marketing` | `delivery-practice` | Shipped — run `/content-marketing:setup` after bootstrap; invoke `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` for companion skills |
 | `social-media` | `social-media` | TBD | Practice plugin pending — interim: `content-marketing` skills for captions and curation |
-| `seo` | `search-optimisation` | `delivery-practice` | Practice plugin shipped — run `/search-optimisation:practice-setup` after bootstrap; invoke `/delivery-practice:competitive-brief` for companion skill |
+| `seo` | `search-optimisation` | `delivery-practice` | Practice plugin shipped — run `/search-optimisation:setup` after bootstrap; invoke `/delivery-practice:competitive-brief` for companion skill |
 
 When recommending `delivery-practice`, name the skills the practice needs (e.g. `web-development` → `/delivery-practice:backlog`, `/delivery-practice:sprint`; `content-marketing` → `/delivery-practice:backlog`, `/delivery-practice:synthesize-research`). `brand-creative` never needs a companion.
 
@@ -198,7 +198,7 @@ On **yes**:
 
 Do not run the brand interview here — plugins are self-contained and `agency-hub` cannot invoke another plugin's skill directly. User-mediated hand-off within the same conversation:
 
-> **Brand setup next.** If `brand-creative` is not installed, install it from the marketplace. Then run `/brand-creative:practice-setup` in this conversation — it reads seed material from instance setup and writes to `<instance-root>/brand/`.
+> **Brand setup next.** If `brand-creative` is not installed, install it from the marketplace. Then run `/brand-creative:setup` in this conversation — it reads seed material from instance setup and writes to `<instance-root>/brand/`.
 
 If deferred, set `seedMaterial.notes` accordingly.
 
@@ -208,11 +208,11 @@ Close with a concrete path — not a pile of config files:
 
 1. **Install** the first recommended **practice plugin** from the marketplace.
 2. **`delivery-practice` companion** — if that practice needs planning and cadence skills it does not own (e.g. `web-development` → install `delivery-practice`, then use `/delivery-practice:backlog` and `/delivery-practice:sprint`; `brand-creative` needs no companion).
-3. **Practice setup** — run that practice's `practice-setup` skill (e.g. `/brand-creative:practice-setup` for brand; `/delivery-practice:practice-setup` for delivery).
+3. **Practice setup** — run that practice's `setup` skill (e.g. `/brand-creative:setup` for brand; `/delivery-practice:setup` for delivery).
 4. **Bind targets** — complete website `.digital-agency/target.json` pointer, social credentials when available.
 5. **Deploy** — launch the first scheduled agent (dry-run first):
    `./digital-agency/scripts/deploy-squad-agents.sh --dry-run --instance <path>`
-6. **Edit anytime** — change `config/instance.json` directly or `/agency-hub:agency-setup --redo`.
+6. **Edit anytime** — change `config/instance.json` directly or `/agency-hub:setup --redo`.
 
 ## Pause and resume
 
@@ -221,7 +221,7 @@ On pause, write JSON:
 ```json
 {
   "plugin": "agency-hub",
-  "skill": "agency-setup",
+  "skill": "setup",
   "mode": "quick|full",
   "startedAt": "ISO-8601",
   "instanceRoot": "<path or null>",
@@ -231,13 +231,13 @@ On pause, write JSON:
 }
 ```
 
-Location: instance repo `config/.agency-setup-resume.json` if instance exists; else personal hub path above.
+Location: instance repo `config/.setup-resume.json` if instance exists; else personal hub path above.
 
 ## Worked example
 
 **Input:** Acme Co, single business, web-development + content, website target, quick mode.
 
-**Expected output:** `config/instance.json` complete; `targets/website.json` skeleton; `plugins.json` lists `agency-hub` + recommended practice plugins; squad charters for site/content; handoff to `/brand-creative:practice-setup` and next-steps naming `core` if web-development was chosen.
+**Expected output:** `config/instance.json` complete; `targets/website.json` skeleton; `plugins.json` lists `agency-hub` + recommended practice plugins; squad charters for site/content; handoff to `/brand-creative:setup` and next-steps naming `core` if web-development was chosen.
 
 ## Outputs
 
@@ -250,4 +250,4 @@ Location: instance repo `config/.agency-setup-resume.json` if instance exists; e
 | Squad charters | `squads/<squad>/charter.md` |
 | Target pointer (on confirm) | `<target-repo>/.digital-agency/target.json` |
 
-Next: `/brand-creative:practice-setup`, install first practice plugin, or `--check-integrations`.
+Next: `/brand-creative:setup`, install first practice plugin, or `--check-integrations`.

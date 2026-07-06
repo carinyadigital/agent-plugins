@@ -65,7 +65,7 @@ Follow existing practice plugins (e.g. `web-development/.mcp.json`) for structur
 
 ## Syncing shared references
 
-After editing shared meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`):
+After editing shared meta-framework files (`instance-profile-template.md`, `setup-framework.md`):
 
 ```bash
 python3 scripts/sync-references.py        # propagate to practice plugin copies

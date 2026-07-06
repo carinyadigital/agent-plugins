@@ -1,17 +1,17 @@
 # Agency setup framework — digital-agency
 
-Every `agency-hub` bootstrap follows this framework. The `agency-setup` skill implements it; practice plugins read the output — they do not re-ask org-wide facts captured here.
+Every `agency-hub` bootstrap follows this framework. The `setup` skill implements it; practice plugins read the output — they do not re-ask org-wide facts captured here.
 
 ## Invocation
 
 | Command | Behaviour |
 |---|---|
-| `/agency-hub:agency-setup` | Detect existing setup; offer quick vs full if mode not specified |
-| `/agency-hub:agency-setup --quick` | Business name, primary practice, one target; sensible defaults elsewhere |
-| `/agency-hub:agency-setup --full` | Full interview; review seed documents when provided |
-| `/agency-hub:agency-setup --redo` | Ignore existing profile; re-interview and overwrite on confirmation |
-| `/agency-hub:agency-setup --resume` | Continue a paused interview from the saved session file |
-| `/agency-hub:agency-setup --check-integrations` | Report MCP connector status; no interview unless user asks to continue |
+| `/agency-hub:setup` | Detect existing setup; offer quick vs full if mode not specified |
+| `/agency-hub:setup --quick` | Business name, primary practice, one target; sensible defaults elsewhere |
+| `/agency-hub:setup --full` | Full interview; review seed documents when provided |
+| `/agency-hub:setup --redo` | Ignore existing profile; re-interview and overwrite on confirmation |
+| `/agency-hub:setup --resume` | Continue a paused interview from the saved session file |
+| `/agency-hub:setup --check-integrations` | Report MCP connector status; no interview unless user asks to continue |
 
 Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load the session first; other flags adjust what happens after resume.
 
@@ -22,10 +22,10 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 | 0 — Personal | `~/.claude/plugins/config/digital-agency/agency-hub/CLAUDE.md` | Hub marketplace profile — watched registries, installed community skills, update prefs |
 | 0 — Personal | `~/.claude/plugins/config/digital-agency/agency-hub/allowlist.yaml` | Install allowlist — copy from `references/allowlist-default.yaml` if missing |
 | 0 — Personal | `~/.claude/plugins/config/digital-agency/agency-hub/install-log.yaml` | SHA-pinned install audit log |
-| 0 — Personal | `~/.claude/plugins/config/digital-agency/agency-hub/agency-setup-resume.json` | Paused interview before instance repo exists |
+| 0 — Personal | `~/.claude/plugins/config/digital-agency/agency-hub/setup-resume.json` | Paused interview before instance repo exists |
 | 1 — Instance | `<instance-repo>/config/instance.json` | Shared org/brand/config facts |
 | 1 — Instance | `<instance-repo>/config/plugins.json` | Installed catalogue plugins |
-| 1 — Instance | `<instance-repo>/config/.agency-setup-resume.json` | Paused interview after instance repo is bound |
+| 1 — Instance | `<instance-repo>/config/.setup-resume.json` | Paused interview after instance repo is bound |
 | 2 — Target | `<instance-repo>/config/targets/<name>.json` | Per-target binding skeletons |
 | 2 — Target | `<target-repo>/.digital-agency/target.json` | Pointer from target repo to instance |
 
@@ -40,7 +40,7 @@ Before asking questions:
 1. **Is the working directory an instance repo?** Look for `config/instance.json`.
    - **`status: complete`** — summarize what's on file; offer refresh, `--redo`, or `--check-integrations` only. Do not re-interview unless the user chooses refresh or passed `--redo`.
    - **`status: template` or partial** — offer to resume or start fresh.
-2. **If not an instance repo** — check for `~/.claude/plugins/config/digital-agency/agency-hub/agency-setup-resume.json` (paused session) or proceed to repo creation (link-first, § Repo creation).
+2. **If not an instance repo** — check for `~/.claude/plugins/config/digital-agency/agency-hub/setup-resume.json` (paused session) or proceed to repo creation (link-first, § Repo creation).
 3. **Legacy hand-edited config** — if non-standard paths are found, offer to normalize into `config/instance.json` without deleting legacy files without confirmation.
 
 ## Repo creation (v1 — link-first)
@@ -83,7 +83,7 @@ Show before the interview (adapt to context):
 >
 > **Quick (~5 min):** business name, one practice, one target. **Full (~20 min):** services, cadence, risk posture, seed material, all target skeletons.
 >
-> Quick or full? (Upgrade anytime with `/agency-hub:agency-setup --full`.)
+> Quick or full? (Upgrade anytime with `/agency-hub:setup --full`.)
 
 ## Interview sections
 
@@ -112,7 +112,7 @@ Quick mode: one primary practice. Full mode: all that apply now vs later.
 
 ### 4. Seed material (full mode; optional in quick)
 
-Existing site URL, past content, prior brand docs. **Read, don't copy verbatim.** Flag gaps for `brand-creative:practice-setup` handoff.
+Existing site URL, past content, prior brand docs. **Read, don't copy verbatim.** Flag gaps for `brand-creative:setup` handoff.
 
 ### 5. Targets
 
@@ -159,9 +159,9 @@ Tell the user where these live. v2 marketplace skills read them before install.
 
 Do not duplicate brand interview logic — plugins are self-contained; `agency-hub` cannot invoke another plugin's skill directly. After config write, user-mediated hand-off within the same conversation:
 
-> Next: brand setup. Install **`brand-creative`** from the marketplace if needed, then run **`/brand-creative:practice-setup`** in this conversation. It reads seed material from setup and writes to `<instance-root>/brand/`.
+> Next: brand setup. Install **`brand-creative`** from the marketplace if needed, then run **`/brand-creative:setup`** in this conversation. It reads seed material from setup and writes to `<instance-root>/brand/`.
 
-If the user declines now, note in `instance.json` `seedMaterial.notes` that brand-creative practice-setup is pending.
+If the user declines now, note in `instance.json` `seedMaterial.notes` that brand-creative setup is pending.
 
 ## Integrations — `--check-integrations`
 
@@ -181,12 +181,12 @@ Report: **connected** (successful probe), **configured but not verified**, or **
 4. Close with **next steps**:
    - Install the first recommended **practice plugin**
    - Install **`core`** if that practice needs shared roles (`web-development` → yes; `brand-creative` → no)
-   - Run that practice's **`practice-setup`**
-   - Hand off to `/brand-creative:practice-setup` when brand is in scope
+   - Run that practice's **`setup`**
+   - Hand off to `/brand-creative:setup` when brand is in scope
    - Deploy first scheduled agent (`deploy-squad-agents.sh --dry-run`)
 
 ## Living profile rules
 
-- **`agency-setup`** is the only skill that may auto-apply a full instance profile write (after confirmation).
+- **`setup`** is the only skill that may auto-apply a full instance profile write (after confirmation).
 - Practice plugins use **propose profile update** for stable conventions discovered later — show diff, ask, write only on yes.
 - Target binding completion (pointer files, connector credentials) may be done incrementally after bootstrap.

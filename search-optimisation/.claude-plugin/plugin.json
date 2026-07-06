@@ -2,7 +2,7 @@
   "name": "search-optimisation",
   "displayName": "Search Optimisation",
   "version": "0.2.0",
-  "description": "Complete search and technical SEO practice in one install \u2014 practice-setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes delivery-practice for competitive brief.",
+  "description": "Complete search and technical SEO practice in one install \u2014 setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes delivery-practice for competitive brief.",
   "author": {
     "name": "Digital Agency"
   },
@@ -14,7 +14,7 @@
     "technical-seo",
     "audit",
     "content-seo",
-    "practice-setup"
+    "setup"
   ],
   "skills": "./skills/"
 }

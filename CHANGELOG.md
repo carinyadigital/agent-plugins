@@ -52,14 +52,14 @@ agent-plugin architecture.
 ### agency-hub — v0.1.0
 
 - Bootstraps a git-versioned instance workspace (`config/`, `brand/`,
-  `squads/`) via `agency-setup`
+  `squads/`) via `setup`
 - Skills: agency-setup, auto-updater, disable, registry-browser,
   related-skills-surfacer, skill-installer, skill-manager, skills-qa,
   uninstall
 
 ### brand-creative — v0.1.0
 
-- Complete brand practice — practice-setup interview, brand-voice lifecycle,
+- Complete brand practice — setup interview, brand-voice lifecycle,
   brand-guide visual identity
 - Writes to the instance `brand/` directory when bound; standalone Try tier
   uses `docs/brand/`
@@ -67,7 +67,7 @@ agent-plugin architecture.
 
 ### content-marketing — v0.1.0
 
-- Complete content practice — practice-setup interview, editorial calendar,
+- Complete content practice — setup interview, editorial calendar,
   social curation, media analysis, CMS seed drafting
 - Two personas (Content Strategist, Content Writer); reads brand voice from
   resolved brand path; invokes delivery-practice for backlog and research
@@ -76,7 +76,7 @@ agent-plugin architecture.
 
 ### delivery-practice — v0.1.0
 
-- Complete delivery practice — practice-setup interview, product strategy,
+- Complete delivery practice — setup interview, product strategy,
   backlog and sprint cadence, validation, operational skills
 - Two personas (Product Manager, Delivery Lead)
 - Skills: backlog, competitive-brief, metrics-review, practice-setup,
@@ -85,7 +85,7 @@ agent-plugin architecture.
 
 ### search-optimisation — v0.1.0
 
-- Complete search and technical SEO practice — practice-setup interview,
+- Complete search and technical SEO practice — setup interview,
   keyword research, technical audits, content SEO review
 - One persona (SEO Specialist); retires the standalone seo-specialist agent
   plugin; invokes delivery-practice for competitive brief
@@ -94,7 +94,7 @@ agent-plugin architecture.
 
 ### ux-design — v0.1.0
 
-- Minimal UX practice — practice-setup interview and wireframe skill for
+- Minimal UX practice — setup interview and wireframe skill for
   low-fidelity layout and interaction specs
 - Writes to the instance `design/` directory when bound; standalone Try tier
   uses `docs/design/`
@@ -102,7 +102,7 @@ agent-plugin architecture.
 
 ### web-development — v0.1.0
 
-- Complete web engineering practice — practice-setup interview, architecture,
+- Complete web engineering practice — setup interview, architecture,
   epic design, implementation, code review, QA, platform operations
 - Six personas (Frontend Engineer through WebOps); consolidates the former
   frontend-engineer, senior-frontend-engineer, principal-frontend-engineer,

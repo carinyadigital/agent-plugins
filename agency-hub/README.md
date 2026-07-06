@@ -2,18 +2,18 @@
 
 The first plugin to install from `digital-agency`. It bootstraps a **team-shared, git-versioned instance workspace** — org profile, target bindings, squad charters — that every practice plugin's setup reads from.
 
-**v1 ships `agency-setup` only.** Marketplace management skills are designed (see `references/agency-skill-design-framework.md`) but deferred until Phase 3 — ported stubs exist in `skills/` for shape validation, not as v1 deliverables.
+**v1 ships `setup` only.** Marketplace management skills are designed (see `references/agency-skill-design-framework.md`) but deferred until Phase 3 — ported stubs exist in `skills/` for shape validation, not as v1 deliverables.
 
 ## Who this is for
 
 Anyone adopting the digital-agency catalogue for real work — any business, agency, or in-house team. Install `agency-hub` before any practice plugin.
 
-## First run: agency-setup
+## First run: setup
 
 Interviews the business, creates or binds an instance repo, writes `config/` and target skeletons, then hands off to brand setup and the first practice plugin.
 
 ```
-/agency-hub:agency-setup
+/agency-hub:setup
 ```
 
 | Flag | Behaviour |
@@ -36,7 +36,7 @@ Unlike personal dotfile config, Tier 1 lives in a **private instance repo** — 
 
 ## Repo creation (v1)
 
-Link-first: `agency-setup` provides a template URL; the human creates the private repo and confirms the path. The agent then writes config into the existing repo. API-driven repo creation is deferred.
+Link-first: `setup` provides a template URL; the human creates the private repo and confirms the path. The agent then writes config into the existing repo. API-driven repo creation is deferred.
 
 ## Prerequisites
 
@@ -47,11 +47,11 @@ Link-first: `agency-setup` provides a template URL; the human creates the privat
 
 | Command | Does |
 |---|---|
-| `/agency-hub:agency-setup` | Detect state → interview → bind instance repo → write config → hand off to brand-creative |
-| `/agency-hub:agency-setup --quick` | Minimal path: business name, one practice, one target |
-| `/agency-hub:agency-setup --redo` | Ignore existing profile, re-interview, overwrite on confirmation |
-| `/agency-hub:agency-setup --resume` | Continue a paused interview |
-| `/agency-hub:agency-setup --check-integrations` | Report connector status only, no interview |
+| `/agency-hub:setup` | Detect state → interview → bind instance repo → write config → hand off to brand-creative |
+| `/agency-hub:setup --quick` | Minimal path: business name, one practice, one target |
+| `/agency-hub:setup --redo` | Ignore existing profile, re-interview, overwrite on confirmation |
+| `/agency-hub:setup --resume` | Continue a paused interview |
+| `/agency-hub:setup --check-integrations` | Report connector status only, no interview |
 
 ## Commands (v2 — deferred)
 
@@ -71,7 +71,7 @@ Marketplace management — designed, not built for v1:
 
 | Skill | Status | Purpose |
 |---|---|---|
-| **agency-setup** | **v1 — shipped** | Instance bootstrap interview |
+| **setup** | **v1 — shipped** | Instance bootstrap interview |
 | **registry-browser** | v2 — deferred | Search watched registries |
 | **skill-installer** | v2 — deferred | Allowlist-gate, fetch, QA, install |
 | **skills-qa** | v2 — deferred | Evaluate third-party candidates before install |
@@ -94,7 +94,7 @@ When marketplace management ships: watched registries ≠ trust, restrictive all
 
 1. Install the first **practice plugin** recommended during setup (e.g. `brand-creative`).
 2. Install **`core`** if that practice needs shared roles (`web-development` → `core`; `brand-creative` → none).
-3. Run that practice's **`practice-setup`** (e.g. `/brand-creative:practice-setup`).
+3. Run that practice's **`setup`** (e.g. `/brand-creative:setup`).
 4. Bind targets — website pointer (`.digital-agency/target.json`), social credentials when ready.
 5. Deploy the first scheduled agent — see `digital-agency/scripts/deploy-squad-agents.sh`.
 

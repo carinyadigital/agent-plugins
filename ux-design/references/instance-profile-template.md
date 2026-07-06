@@ -1,6 +1,6 @@
 # Instance profile template — digital-agency
 
-> Written by `/agency-hub:agency-setup`. Every practice plugin reads `config/instance.json` before producing output. Edit directly for small fixes; re-run `agency-setup --redo` to refresh.
+> Written by `/agency-hub:setup`. Every practice plugin reads `config/instance.json` before producing output. Edit directly for small fixes; re-run `setup --redo` to refresh.
 
 Tier 1 config lives in the **instance repo** (git-versioned), not in user dotfiles.
 
@@ -74,7 +74,7 @@ Set `status: complete` and `setup.completedAt` (ISO 8601) when the interview fin
 | `config/deployments/*.json` | Scheduled agent deployments (`enabled: false` until configured) |
 | `config/cadence/*.md` | Ritual templates (weekly planning, editorial review, etc.) |
 | `squads/<squad>/charter.md` | Squad mission, roster, target paths, cadence, DoD |
-| `brand/*` | Brand voice and guide — populated by `/brand-creative:practice-setup` |
+| `brand/*` | Brand voice and guide — populated by `/brand-creative:setup` |
 
 ## File: `config/plugins.json`
 
@@ -152,7 +152,7 @@ For `email`, `ads`, `analytics` — write skeleton only:
   "type": "email",
   "enabled": false,
   "status": "not-yet-designed",
-  "notes": "Target schema not designed — agency-setup does not block on this"
+  "notes": "Target schema not designed — setup does not block on this"
 }
 ```
 
@@ -171,7 +171,7 @@ status: skeleton
 
 ## Mission
 
-<!-- Filled during agency-setup or practice setup -->
+<!-- Filled during agency-hub setup or practice setup -->
 
 ## Roster
 
@@ -196,10 +196,10 @@ Practices are MECE — one self-contained plugin per practice. Planning and cade
 
 | Service (`services.enabled`) | Practice plugin | Companion practice | Squad charters | Notes |
 |---|---|---|---|---|
-| `brand-creative` | `brand-creative` | none | — | Shipped; run `/brand-creative:practice-setup` after bootstrap |
+| `brand-creative` | `brand-creative` | none | — | Shipped; run `/brand-creative:setup` after bootstrap |
 | `web-development` | `web-development` | `delivery-practice` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/delivery-practice:backlog`, `/delivery-practice:sprint` |
-| `content-marketing` | `content-marketing` | `delivery-practice` | `content` | Shipped; run `/content-marketing:practice-setup` after bootstrap; needs `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` |
+| `content-marketing` | `content-marketing` | `delivery-practice` | `content` | Shipped; run `/content-marketing:setup` after bootstrap; needs `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` |
 | `social-media` | `social-media` | TBD | `content` | Practice pending — interim: `content-marketing` skills for captions and curation |
-| `seo` | `search-optimisation` | `delivery-practice` | `seo` | Shipped; run `/search-optimisation:practice-setup` after bootstrap; needs `/delivery-practice:competitive-brief` |
+| `seo` | `search-optimisation` | `delivery-practice` | `seo` | Shipped; run `/search-optimisation:setup` after bootstrap; needs `/delivery-practice:competitive-brief` |
 
 Write `services.recommendedPlugins` with the practice plugin name(s) plus `delivery-practice` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.

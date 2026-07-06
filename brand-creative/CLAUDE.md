@@ -4,7 +4,7 @@ TEMPLATE — do not write user data here.
 This file ships with the plugin and shows the structure the practice config should have.
 It is replaced on every plugin update. Never write user data here.
 
-The `practice-setup` skill copies or updates the user config at:
+The `setup` skill copies or updates the user config at:
   ~/.claude/plugins/config/digital-agency/brand-creative/CLAUDE.md
 
 Instance-wide org facts live in the instance repo at:
@@ -16,13 +16,13 @@ references/brand-conventions.md.
 
 # Brand Creative — Practice Profile
 
-*Written by `/brand-creative:practice-setup` or initialized on first use.*
+*Written by `/brand-creative:setup` or initialized on first use.*
 
 ---
 
 ## Status
 
-`template` — run `/brand-creative:practice-setup` to fill this in.
+`template` — run `/brand-creative:setup` to fill this in.
 
 ## Who's using this
 
@@ -41,7 +41,7 @@ references/brand-conventions.md.
 | Figma | [✓ / ✗] | Manual token export or docs |
 | Fireflies | [✓ / ✗] | Skip transcript discovery |
 
-*Re-check: `/brand-creative:practice-setup --check-integrations`*
+*Re-check: `/brand-creative:setup --check-integrations`*
 
 ---
 
@@ -75,4 +75,4 @@ _(URLs or paths from setup — pattern-match tone; do not copy proprietary conte
 
 ---
 
-*Re-run: `/brand-creative:practice-setup --redo`*
+*Re-run: `/brand-creative:setup --redo`*

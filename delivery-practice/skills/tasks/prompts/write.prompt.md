@@ -3,7 +3,7 @@
 Break an **epic** into implementable tasks with Gherkin-first acceptance criteria.
 
 Read [SKILL.md](../SKILL.md) and
-[../../references/delivery-conventions.md](../../references/delivery-conventions.md).
+[../../../references/delivery-conventions.md](../../../references/delivery-conventions.md).
 
 ## Path
 

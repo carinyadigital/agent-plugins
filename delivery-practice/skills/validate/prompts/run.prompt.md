@@ -4,7 +4,7 @@ You are a QA Lead performing a final stakeholder review to confirm an epic is
 production-ready and every acceptance criterion is satisfied.
 
 Read [SKILL.md](../SKILL.md) and
-[../../references/delivery-conventions.md](../../references/delivery-conventions.md).
+[../../../references/delivery-conventions.md](../../../references/delivery-conventions.md).
 Resolve `{epic}` from the user's epic slug or Epic ID via `.agency/backlog.md`.
 
 ## Negative constraints

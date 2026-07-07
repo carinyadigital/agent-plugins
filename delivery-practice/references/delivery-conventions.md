@@ -77,8 +77,12 @@ Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
 | `design.md` for one epic | **design** |
 | `tasks.md`, Gherkin AC | **tasks** |
 | Implement code | **implement** |
-| PR / branch code review | **code-review** |
-| Address code review feedback | **code-review** `fix` |
+| PR / branch code review | **code-review** (web-development) |
+| Address code review feedback | **code-review** `fix` (web-development) |
+| UX review of implemented UI | **ux-design-review** (web-development) |
+| Open MR/PR or babysit to merge-ready | **merge-request** (web-development) |
+| Review MR/PR as reviewer | **merge-request-review** (web-development) |
+| Autonomous epic delivery loop | **ralph** (web-development) |
 | Epic done vs AC + roadmap gates | **validate** |
 | Sprint plan or retro | **sprint** |
 | Pre-sprint doc review / post-sprint doc pass | **docs** |

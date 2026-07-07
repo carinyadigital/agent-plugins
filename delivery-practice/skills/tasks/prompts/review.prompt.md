@@ -3,7 +3,7 @@
 Review `.agency/work/{epic}/tasks.md` for sprint readiness.
 
 Read [SKILL.md](../SKILL.md) and
-[../../references/delivery-conventions.md](../../references/delivery-conventions.md).
+[../../../references/delivery-conventions.md](../../../references/delivery-conventions.md).
 Resolve `{epic}` from the argument or backlog.
 
 ## Context

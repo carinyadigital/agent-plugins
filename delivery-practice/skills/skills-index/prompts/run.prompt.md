@@ -34,9 +34,10 @@ below to identify the best match and direct them to the right skill.
 
 ## Sibling plugins
 
-Architecture, implementation, and code review skills live in the **engineering**
+Architecture, implementation, and code review skills live in the **web-development**
 practice plugin: **solution**, **adr**, **design**, **implement**, **code-review**,
-**create-mr**, **docs**, **debug**, **tech-debt**.
+**ux-design-review**, **merge-request**, **merge-request-review**, **ralph**, **docs**,
+**debug**, **tech-debt**.
 
 For end-to-end delivery, suggest the next skill in the flow (product → roadmap →
 backlog → design → tasks → implement → validate) or ask which phase the user is in.

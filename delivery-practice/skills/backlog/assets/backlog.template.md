@@ -19,9 +19,9 @@ Epic work path: .agency/work/{epic}/ — slug from title or short title, max two
 
 # Backlog -- {Name}
 
-- **Product:** `.agency/product.md`
-- **Solution:** `.agency/architecture/solution.md`
-- **Roadmap:** `.agency/roadmap.md`
+- **Product:** [`.agency/product.md`](../product/product.md)
+- **Solution:** [`.agency/architecture/solution.md`](../architecture/solution.md)
+- **Roadmap:** [`.agency/roadmap.md`](../product/roadmap.md)
 
 ## 1. Summary
 

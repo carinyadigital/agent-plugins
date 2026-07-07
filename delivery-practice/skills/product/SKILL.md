@@ -16,11 +16,6 @@ argument-hint: "<mode: write|review|refine> [--stage pitch|product] [--context <
 
 # Product
 
-## Conventions
-
-Read [../../references/delivery-conventions.md](../../references/delivery-conventions.md)
-when checking artefact boundaries.
-
 ## Artefact
 
 Default path: `.agency/product.md` — strategy document (_why_, _who_, _what_).

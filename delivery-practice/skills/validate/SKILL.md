@@ -27,7 +27,7 @@ When the epic has many tasks (roughly >5) or complex Gherkin, spawn **ac-evidenc
 ([agents/ac-evidence-verifier.md](agents/ac-evidence-verifier.md)) to build the acceptance
 matrix before writing the report and updating tasks.md.
 
-For skill changes in this repo, add `evals/evals.json` and run `python3 scripts/validate.py`. See [agency-hub/references/agency-skill-design-framework.md](../../../agency-hub/references/agency-skill-design-framework.md) for design conventions.
+For eval runs on skills in this repo, use root **eval-grader** (`agents/eval-grader.md`).
 
 ## Gotchas
 

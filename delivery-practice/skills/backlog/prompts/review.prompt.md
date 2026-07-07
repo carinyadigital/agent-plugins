@@ -3,7 +3,7 @@
 Critical review of the **product backlog** for planning readiness.
 
 Read [SKILL.md](../SKILL.md) and
-[references/delivery-conventions.md](../../references/delivery-conventions.md).
+[../../../references/delivery-conventions.md](../../../references/delivery-conventions.md).
 
 ## Path
 

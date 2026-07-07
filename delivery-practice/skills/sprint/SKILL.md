@@ -18,8 +18,7 @@ argument-hint: "<mode: plan|retrospective> <sprint-id> [--context <notes>]"
 
 ## Conventions
 
-Read [../../references/delivery-conventions.md](../../references/delivery-conventions.md)
-when resolving sprint paths under `.agency/sprints/`.
+Read [../../references/delivery-conventions.md](../../references/delivery-conventions.md) when resolving sprint paths under `.agency/sprints/`.
 
 ## Artefacts
 

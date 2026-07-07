@@ -16,11 +16,6 @@ argument-hint: "<mode: write|review|refine> [--context <notes>]"
 
 # Roadmap
 
-## Conventions
-
-Read [../../references/delivery-conventions.md](../../references/delivery-conventions.md)
-when checking artefact boundaries.
-
 ## Artefact
 
 Default path: `.agency/roadmap.md` — outcome-based phases with exit criteria.

@@ -3,7 +3,7 @@
 Refine the **product backlog** at `.agency/backlog.md` (or user-named path).
 
 Read [SKILL.md](../SKILL.md) and
-[references/delivery-conventions.md](../../references/delivery-conventions.md).
+[../../../references/delivery-conventions.md](../../../references/delivery-conventions.md).
 
 ## The five activities (epics)
 

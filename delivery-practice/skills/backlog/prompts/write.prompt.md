@@ -4,7 +4,7 @@ You are a Senior Delivery Engineer writing the **product backlog** (epic-level
 by default).
 
 Read [SKILL.md](../SKILL.md) and
-[references/delivery-conventions.md](../../references/delivery-conventions.md).
+[../../../references/delivery-conventions.md](../../../references/delivery-conventions.md).
 
 ## Path
 

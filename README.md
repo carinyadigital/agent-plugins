@@ -111,7 +111,7 @@ Each persona below is named for the job it does. Start with the [named personas]
 | **Technical SEO Auditor** | Production audit → tracked issues | `search-optimisation` | `/search-optimisation:technical-seo-audit` |
 | **ADR Author** | Architecture decision register and ADR files | `web-development` | `/web-development:adr write` |
 | **Epic Designer** | Epic-level technical design | `web-development` | `/web-development:design write` |
-| **MR Author** | Merge request description from the branch | `web-development` | `/web-development:create-mr` |
+| **MR Author** | Merge request description from the branch | `web-development` | `/web-development:merge-request` |
 | **Docs Steward** | Pre/post-sprint documentation pass | `web-development` | `/web-development:docs review` |
 | **Debugger** | Reproduce, isolate, diagnose, fix | `web-development` | `/web-development:debug` |
 | **Tech Debt Prioritizer** | Prioritize remediation work | `web-development` | `/web-development:tech-debt` |
@@ -404,7 +404,10 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | `/web-development:implement` | implement | Implement a task against approved design and AC |
 | `/web-development:code-review` | code-review | run, fix — peer review against design and tasks |
 | `/web-development:final-code-review` | final-code-review | Final technical gate on open PRs |
-| `/web-development:create-mr` | create-mr | Open merge request for implemented work |
+| `/web-development:merge-request` | merge-request | Open merge request for implemented work |
+| `/web-development:merge-request-review` | merge-request-review | Review an MR/PR as its reviewer |
+| `/web-development:ux-design-review` | ux-design-review | UX review of implemented UI |
+| `/web-development:ralph` | ralph | Autonomous epic delivery loop |
 | `/web-development:docs` | docs | Pre/post-sprint documentation pass |
 | `/web-development:debug` | debug | Bug investigation and fix |
 | `/web-development:tech-debt` | tech-debt | Technical debt audit and prioritization |

@@ -29,7 +29,7 @@ and how delegation thresholds are calibrated.
 
 | Value | What it is | Example skills | Mandatory failure modes |
 |---|---|---|---|
-| `implement-and-ship` | Changes code or repo artefacts toward a stated task and definition of done. | implement, create-mr, component-scaffold | Direct apply vs draft; Repo blast radius; Definition-of-done bypass |
+| `implement-and-ship` | Changes code or repo artefacts toward a stated task and definition of done. | implement, merge-request, component-scaffold | Direct apply vs draft; Repo blast radius; Definition-of-done bypass |
 | `review-and-gate` | Reads diffs or artefacts and produces a verdict — blocking or non-blocking. Does not apply changes. | code-review, brand-guide review, validate | Accountability gap; Definition-of-done bypass |
 | `generate-draft` | Produces markdown or copy for human review before use or publish. | design write, product write, brand-voice write | Direct apply vs draft; Brand/client safety |
 | `orchestrate-delivery` | Plans, decomposes, or routes work across artefacts without directly shipping. | backlog, tasks, sprint plan, skills-index | Accountability gap; Scope boundaries |

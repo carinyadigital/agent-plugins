@@ -129,7 +129,7 @@ Six personas share one skill library. Choose the default persona during
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
-| **Frontend Engineer** | `implement`, `code-review`, `create-mr` | Build — UI, client state, styling |
+| **Frontend Engineer** | `implement`, `code-review`, `merge-request` | Build — UI, client state, styling |
 | **Senior Frontend Engineer** | `code-review`, `design` | Peer review — diffs vs design and AC |
 | **Principal Frontend Engineer** | `final-code-review`, `code-review`, `design` | Final gate — architecture and AC on open PRs |
 | **Principal Architect** | `solution`, `adr`, `design`, `docs` | Architecture — solution, ADRs, epic design |
@@ -149,7 +149,11 @@ Epic sign-off uses `/delivery-practice:validate` (companion skill), not a local 
 | PR / branch code review | **code-review** | Senior FE / Principal FE |
 | Address review feedback | **code-review** `fix` | Frontend Engineer |
 | Final PR gate | **final-code-review** | Principal Frontend Engineer |
-| Open merge request | **create-mr** | Frontend Engineer |
+| Open merge request | **merge-request** | Frontend Engineer |
+| Babysit MR/PR to merge-ready | **merge-request** `babysit` | Frontend Engineer |
+| Review MR/PR as reviewer | **merge-request-review** | Senior FE / Principal FE |
+| UX review of implemented UI | **ux-design-review** | Frontend Engineer |
+| Autonomous epic delivery loop | **ralph** | Frontend Engineer |
 | Pre/post-sprint doc pass | **docs** | Principal Architect |
 | Bug investigation | **debug** | WebOps Engineer |
 | Technical debt audit | **tech-debt** | Principal Architect |

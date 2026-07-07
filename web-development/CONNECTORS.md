@@ -41,7 +41,9 @@ Other options in each category: PagerDuty (incidents), Mixpanel (analytics).
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
 | **setup** | `--check-integrations` | GitHub, Vercel, Slack, Linear, Datadog, Sentry |
-| **create-mr** | run | Source control |
+| **merge-request** | create, babysit | Source control |
+| **merge-request-review** | run | Source control |
+| **ux-design-review** | review, fix | Figma, Playwright |
 | **deploy-qa** | run | Source control, hosting |
 | **run-automated-suite** | run | Source control (CI status) |
 | **platform-health** | run | Hosting, observability, error tracking |

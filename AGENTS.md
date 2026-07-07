@@ -77,7 +77,7 @@ Bootstraps a git-versioned instance repo (`config/instance.json`, `config/target
 
 | Slug | Practice | Bundled skills | Status |
 | ---- | -------- | -------------- | ------ |
-| `frontend-engineer` | Engineering | `implement`, `code-review`, `create-mr`, `component-scaffold` (agent-local); reads `brand-guide.md` from resolved brand path | Shipped; not yet operationally proven |
+| `frontend-engineer` | Engineering | `implement`, `code-review`, `merge-request`, `component-scaffold` (agent-local); reads `brand-guide.md` from resolved brand path | Shipped; not yet operationally proven |
 | `senior-frontend-engineer` | Engineering | `code-review`, `design` | Shipped; not yet operationally proven |
 | `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `design`, `validate` (synced from delivery-practice) | Shipped; not yet operationally proven |
 | `qa-engineer` | Engineering | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Shipped; not yet operationally proven |

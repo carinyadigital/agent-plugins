@@ -17,7 +17,7 @@ Six personas share one skill library. Choose the default persona during
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
-| **Frontend Engineer** | `implement`, `code-review`, `create-mr` | Build — UI, client state, styling |
+| **Frontend Engineer** | `implement`, `code-review`, `merge-request` | Build — UI, client state, styling |
 | **Senior Frontend Engineer** | `code-review`, `design` | Peer review — diffs vs design and AC |
 | **Principal Frontend Engineer** | `final-code-review`, `code-review`, `design` | Final gate — architecture and AC on open PRs |
 | **Principal Architect** | `solution`, `adr`, `design`, `docs` | Architecture — solution, ADRs, epic design |
@@ -72,7 +72,10 @@ target binding.
 | **implement** | Implement a task against approved design and AC |
 | **code-review** | run, fix — peer review against design and tasks |
 | **final-code-review** | Final technical gate on open PRs |
-| **create-mr** | Open merge request for implemented work |
+| **merge-request** | Open merge request for implemented work (or babysit to merge-ready) |
+| **merge-request-review** | Review an MR/PR as its reviewer |
+| **ux-design-review** | UX review of implemented UI vs design source |
+| **ralph** | Autonomous epic delivery loop |
 | **docs** | Pre/post-sprint documentation pass |
 | **debug** | Bug investigation |
 | **tech-debt** | Technical debt audit |

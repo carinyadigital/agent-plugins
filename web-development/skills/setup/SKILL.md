@@ -155,7 +155,7 @@ Close with persona-appropriate handoff:
 
 1. **Implement** — `/web-development:implement <task-id>`
 2. **Review** — `/web-development:code-review <branch>`
-3. **MR** — `/web-development:create-mr`
+3. **MR** — `/web-development:merge-request`
 
 **Principal Architect path:**
 

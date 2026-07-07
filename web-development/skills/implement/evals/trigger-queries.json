@@ -15,6 +15,6 @@
   {
     "query": "Open a merge request for the current branch.",
     "should_trigger": false,
-    "note": "create-mr skill"
+    "note": "merge-request skill"
   }
 ]

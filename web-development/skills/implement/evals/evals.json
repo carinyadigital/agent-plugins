@@ -8,7 +8,7 @@
       "assertions": [
         "Reads .agency/work/{epic}/tasks.md and design.md before editing code",
         "Changes are limited to files and scope implied by the task AC",
-        "Does not open a PR (create-mr is separate)",
+        "Does not open a PR (merge-request is separate)",
         "Does not mark epic complete (validate is separate)"
       ]
     }

@@ -11,12 +11,35 @@ expanding its scope.
 be refactored, relevant existing codebase files]
 </artifacts>
 
+## Scope
+
+The caller may pass an action-tier threshold after `fix`. Address every finding
+**at or above** the threshold; leave the rest untouched and list them under
+"Findings Not Addressed (below threshold)". Action order (high → low):
+`blocking` > `warning` > `suggestion` — assigned by the risk matrix in
+[../references/finding-classification.md](../references/finding-classification.md).
+
+| Command | Addresses |
+| ------- | --------- |
+| `code-review fix` (default) | blocking + warning + suggestion |
+| `code-review fix warning` | blocking + warning |
+| `code-review fix blocking` | blocking only |
+
+`all` is an accepted alias for the default.
+
 ## Steps
 
 1. Read the review output (or the stated issues) in full before touching
    any files
-2. Categorise each finding: blocking issue, warning, or suggestion — work
-   through blocking issues first
+2. Categorise each finding by its action label: `[blocking]`, `[warning]`,
+   or `[suggestion]` (the review output prefixes every finding with one).
+   Drop findings below the active scope threshold (see Scope)
+   and list them under "Findings Not Addressed (below threshold)". Within scope,
+   work through blocking issues first. Route by source: guideline and
+   behaviour-preserving best-practice/deprecation findings are fixable inline; a
+   best-practice change that alters observable behaviour, or any
+   architecture-pattern divergence, is deferred (new follow-up item or ADR) —
+   record it under "Findings Deferred"
 3. Read every file you will modify before making any changes
 4. Make targeted changes: one concern at a time, smallest diff that fixes
    the finding
@@ -48,21 +71,24 @@ and why`
   language; do not add comments that trace back to tickets, story IDs,
   or markdown document sections — the code must be self-contained
 - Do not introduce new public APIs or expand scope — that requires a new
-  story and a design document
+  work item and, where the project uses one, a design document
+- Fixes must not reintroduce violations from
+  [../references/quality-checklist.md](../references/quality-checklist.md)
 
 ## Negative constraints
 
 This mode addresses review feedback. It MUST NOT:
 
-- Add new features or expand the scope of the story — raise a new story
-  via the backlog instead.
-- Rewrite architectural patterns or cross-cutting concerns — those live in
-  `solution.md`; raise an ADR via `adr write` if a pattern needs to change.
+- Add new features or expand the scope of the change — raise a new
+  follow-up item in whatever tracker the repo uses instead.
+- Rewrite architectural patterns or cross-cutting concerns — those belong in
+  the project's architecture docs/ADRs (if any); raise a design decision
+  there if a pattern needs to change.
 - Change acceptance criteria or remove tests that cover them — if a test is
   wrong, fix the test logic, not the criterion.
 - Suppress or skip failing tests to make the build pass — fix the
-  underlying issue or split the story.
-- Commit while any validation check is failing (format, lint, typecheck, build, or tests) — fix every failure or split the story.
+  underlying issue or split the work.
+- Commit while any validation check is failing (format, lint, typecheck, build, or tests) — fix every failure or split the work.
 - Add comments that cite external markdown documents, ticket IDs, or
   cross-repo file paths. Code must stand on its own.
 - Perform cosmetic reformatting outside the files named in the review —
@@ -76,7 +102,8 @@ After completing the fixes, write a summary:
 ## Code Review Fix Summary
 
 **Branch:** feat/PROJ-001-context-assembler
-**Review findings addressed:** 3 blocking, 1 warning, 1 suggestion
+**Scope:** warning (blocking + warning)
+**Review findings addressed:** 2 blocking, 1 warning
 
 ### Changes Made
 
@@ -85,12 +112,15 @@ After completing the fixes, write a summary:
   - Warning: extracted budget enforcement into `enforceBudget()` helper
 - `src/context/assembler.test.ts` [modified]
   - Blocking: added test for path-traversal rejection
-  - Suggestion: renamed `it('works')` to describe the actual behaviour
 
-### Findings Not Addressed
+### Findings Not Addressed (below threshold)
 
-- Suggestion: consider switching token estimation to tiktoken — deferred;
-  tracked as PROJ-008
+- Suggestion: rename `it('works')` — out of scope for `fix warning`
+
+### Findings Deferred
+
+- Best-practice: switch token estimation to tiktoken — alters behaviour;
+  raised as new work item PROJ-008
 
 ### Verification
 

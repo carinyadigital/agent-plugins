@@ -1,0 +1,37 @@
+[
+  {
+    "query": "Run a ralph loop over the checkout-foundation epic until every task is implemented, reviewed, and merged.",
+    "should_trigger": true
+  },
+  {
+    "query": "Set up an autonomous delivery loop for CHK01 — implement, review, fix, validate, MR — and let it run overnight.",
+    "should_trigger": true
+  },
+  {
+    "query": "Start an iterative loop: keep going until all tests pass, output COMPLETE when done.",
+    "should_trigger": true
+  },
+  {
+    "query": "Cancel the ralph loop, it's stuck.",
+    "should_trigger": true
+  },
+  {
+    "query": "How far along is the ralph loop?",
+    "should_trigger": true
+  },
+  {
+    "query": "Implement CHK01-01 against the approved design.",
+    "should_trigger": false,
+    "note": "implement — a single task, once"
+  },
+  {
+    "query": "Review this branch against the acceptance criteria.",
+    "should_trigger": false,
+    "note": "code-review"
+  },
+  {
+    "query": "Is epic CHK01 done? Validate against tasks.md.",
+    "should_trigger": false,
+    "note": "validate"
+  }
+]

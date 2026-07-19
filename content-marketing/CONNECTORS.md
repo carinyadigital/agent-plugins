@@ -39,10 +39,10 @@ Contentful/Sanity/WordPress (CMS), Buffer or Later (social scheduling).
 | ----- | ---- | ---------- |
 | **setup** | `--check-integrations` | GitHub, Notion, Slack, Canva |
 | **content-calendar** | write, review | Knowledge base (optional seed material) |
-| **draft-post**, **draft-recipe** | run | Source control (seed PRs) |
-| **curate-content** | run | None required — inventory JSON input |
-| **analyse-media** | run | None required — local media path |
-| **write-captions**, **edit-content** | run | None — reads brand-voice.md locally |
+| **draft-post**, **draft-recipe** | — | Source control (seed PRs) |
+| **curate-content** | — | None required — inventory JSON input |
+| **analyse-media** | — | None required — local media path |
+| **write-captions**, **edit-content** | — | None — reads brand-voice.md locally |
 
 Brand voice is **artifact consumption** — read `<resolved-brand-path>/brand-voice.md`;
 no dependency on `brand-creative` being installed.

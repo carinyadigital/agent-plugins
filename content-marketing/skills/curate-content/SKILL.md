@@ -1,16 +1,15 @@
 ---
 name: curate-content
 description: >
-  Use when selecting the best assets to post next from an approved media inventory.
-  Reads brand from instance repo config. Do NOT use for
-  analysing single images (analyse-media) or writing captions (write-captions).
+  Rank assets from an approved media inventory for upcoming social posts. Use
+  when selecting what to post next, curating from inventory JSON, or choosing
+  seasonal assets. Reads brand from the instance repo. Do NOT use for analysing
+  a single image (analyse-media) or writing captions (write-captions).
 license: MIT
-allowed-tools:
-  - Read
-  - Glob
-  - Grep
+allowed-tools: Read Glob Grep
 argument-hint: "<inventory json> [--date YYYY-MM-DD]"
 metadata:
+  author: Carinya Parc
   version: "0.1.0"
   owner: content-marketing
   review_cadence: quarterly
@@ -20,34 +19,53 @@ metadata:
 
 # Curate content
 
-## When to use
+You select the best assets to post next from an approved inventory. Pass inventory
+JSON after the skill name; optional `--date` (default today).
 
-Rank assets from an approved inventory for upcoming social posts.
+Read [content-conventions.md](../../references/content-conventions.md). Load
+`brand-voice.md` and `seasonal-calendar.md` from the resolved brand path.
 
-## What this skill does not do
+## Inputs
 
-- Does not analyse a single image (`analyse-media`)
-- Does not write captions (`write-captions`)
-- Does not schedule or publish to Instagram
+| Input            | Location                                     | Required   |
+| ---------------- | -------------------------------------------- | ---------- |
+| Inventory        | JSON array of approved assets with tags      | Yes        |
+| Recent posts     | Array of recently posted mediaKeys           | If known   |
+| Curation date    | `--date YYYY-MM-DD` or today                 | No         |
+| Brand voice      | `<resolved-brand-path>/brand-voice.md`       | If present |
+| Seasonal calendar| `<resolved-brand-path>/seasonal-calendar.md` | If present |
 
-## Preconditions
+Inventory items include: `mediaKey`, `subjects`, `season`, `moods`, `qualityScore`,
+`contentType`, `processedAt`.
 
-- Inventory JSON with approved assets and tags
-- Read [../../references/content-conventions.md](../../references/content-conventions.md)
-- Optional `--date` for curation date (default today)
+## Steps
 
-## Trust spine
+1. Resolve brand. Derive active seasonal events from the seasonal calendar for the
+   curation date's month.
+2. Rank candidates by priority: (1) seasonal relevance, (2) content variety —
+   no consecutive same primary subject, (3) recency balance — prefer recent but
+   surface older when seasonally relevant, (4) quality when other factors equal.
+3. Select up to 3 assets. Rank best-to-post-next (rank 1 first). One-sentence
+   reason each. Only select `mediaKey`s present in inventory.
+4. Enforce subject diversity: no two adjacent ranks share the same primary subject.
+5. Set `lowInventoryWarning` when fewer than 7 unposted assets remain.
+6. Respond ONLY with valid JSON in the output format below.
 
-| Failure mode | Mitigation |
-| ------------ | ---------- |
-| Accountability gap | Ranked selection with per-asset rationale |
-| Brand safety | Seasonal and voice alignment in rationale |
-| Scope boundaries | Selection only — captioning is downstream |
+## Quality rules
 
-## Workflow
+- All `mediaKey`s must exist in the input inventory
+- Reasons cite seasonal or variety rationale
+- Rank 1 is the recommended next post
+- Selection only — captioning is downstream (`write-captions`)
 
-Follow [prompts/run.prompt.md](prompts/run.prompt.md). Pass inventory JSON; optional `--date`.
+## Output format
 
-## Outputs
-
-Ranked asset selection with rationale per pick, diversity and seasonal alignment noted.
+```json
+{
+  "selections": [
+    { "rank": 1, "mediaKey": "", "reason": "" }
+  ],
+  "inventoryDepth": 0,
+  "lowInventoryWarning": false
+}
+```

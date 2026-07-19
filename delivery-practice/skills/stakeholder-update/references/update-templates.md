@@ -1,15 +1,8 @@
+# Stakeholder update templates reference
 
-# Stakeholder Update
-
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../../CONNECTORS.md).
+Audience templates, G/Y/R status, ROAM risk framing, and meeting facilitation notes. Load when drafting for a specific audience.
 
 Generate a stakeholder update tailored to the audience and cadence.
-
-## Usage
-
-```
-/stakeholder-update $ARGUMENTS
-```
 
 ## Workflow
 

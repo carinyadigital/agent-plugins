@@ -1,15 +1,8 @@
+# Metrics frameworks reference
 
-# Metrics Review
-
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../../CONNECTORS.md).
+North Star / L1 hierarchy, common metrics, OKRs, review cadences, and dashboard design. Load when the review needs framework depth.
 
 Review and analyze product metrics, identify trends, and surface actionable insights.
-
-## Usage
-
-```
-/metrics-review $ARGUMENTS
-```
 
 ## Workflow
 

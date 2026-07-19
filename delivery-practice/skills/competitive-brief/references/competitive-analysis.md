@@ -1,15 +1,8 @@
+# Competitive analysis reference
 
-# Competitive Brief
-
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../../CONNECTORS.md).
+Detailed frameworks for competitive briefs. Load when building matrices, positioning analysis, win/loss, or trend sections.
 
 Create a competitive analysis brief for one or more competitors or a feature area.
-
-## Usage
-
-```
-/competitive-brief $ARGUMENTS
-```
 
 ## Workflow
 

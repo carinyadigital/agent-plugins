@@ -1,15 +1,8 @@
+# Research synthesis reference
 
-# Synthesize Research
-
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../../CONNECTORS.md).
+Thematic analysis, affinity mapping, survey interpretation, personas, and opportunity sizing. Load when synthesis needs methodological depth.
 
 Synthesize user research from multiple sources into structured insights and recommendations.
-
-## Usage
-
-```
-/synthesize-research $ARGUMENTS
-```
 
 ## Workflow
 

@@ -1,0 +1,7 @@
+# Ephemeral agent byproducts — regenerated on demand
+reviews/
+
+# Local-only overrides
+*.local.md
+.DS_Store
+Thumbs.db

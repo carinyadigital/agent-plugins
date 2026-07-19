@@ -132,13 +132,15 @@ On bind (after separate confirmation per target repo), create:
 
 ```text
 .agency/
+  .gitignore             ← copy from ${CLAUDE_PLUGIN_ROOT}/references/dot-agency/.gitignore
+  README.md              ← copy from ${CLAUDE_PLUGIN_ROOT}/references/dot-agency/README.md
   target.json            ← binding pointer + repo identity (name, instance, target)
   product.md             ← empty stub or placeholder headings
   roadmap.md
   backlog.md
   work/                  ← epic folders created by delivery skills
   architecture/          ← solution.md, decisions/ created by web-development skills
-  reviews/               ← agent byproducts (competitor-scan, metrics, digests)
+  reviews/               ← agent byproducts (competitor-scan, metrics, digests); gitignored
 ```
 
 `target.json` must include a `name` field carrying the target repo identity (typically the git repo slug). Skills resolve the target by reading this file — they do not infer identity from the directory name.
@@ -201,7 +203,7 @@ Report: **connected** (successful probe), **configured but not verified**, or **
    - Install **`core`** if that practice needs shared roles (`web-development` → yes; `brand-creative` → no)
    - Run that practice's **`setup`**
    - Hand off to `/brand-creative:setup` when brand is in scope
-   - Deploy first scheduled agent (`deploy-squad-agents.sh --dry-run`)
+   - Deploy first scheduled agent (`python3 scripts/deploy-squad-agents.py --dry-run`)
 
 ## Living profile rules
 

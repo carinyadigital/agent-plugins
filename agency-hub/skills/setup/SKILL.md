@@ -123,11 +123,11 @@ Map to **practice plugins** (MECE — one install per practice). Recommend; do n
 |---|---|---|---|
 | `brand-creative` | `brand-creative` | none | Shipped — no companion install |
 | `web-development` | `web-development` | `delivery-practice` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
-| `content-marketing` | `content-marketing` | `delivery-practice` | Shipped — run `/content-marketing:setup` after bootstrap; invoke `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` for companion skills |
+| `content-marketing` | `content-marketing` | `delivery-practice` | Shipped — run `/content-marketing:setup` after bootstrap; invoke `/delivery-practice:tasks --product`, `/delivery-practice:synthesize-research` for companion skills |
 | `social-media` | `social-media` | TBD | Practice plugin pending — interim: `content-marketing` skills for captions and curation |
 | `seo` | `search-optimisation` | `delivery-practice` | Practice plugin shipped — run `/search-optimisation:setup` after bootstrap; invoke `/delivery-practice:competitive-brief` for companion skill |
 
-When recommending `delivery-practice`, name the skills the practice needs (e.g. `web-development` → `/delivery-practice:backlog`, `/delivery-practice:sprint`; `content-marketing` → `/delivery-practice:backlog`, `/delivery-practice:synthesize-research`). `brand-creative` never needs a companion.
+When recommending `delivery-practice`, name the skills the practice needs (e.g. `web-development` → `/delivery-practice:tasks --product`, `/delivery-practice:sprint-planning`; `content-marketing` → `/delivery-practice:tasks --product`, `/delivery-practice:synthesize-research`). `brand-creative` never needs a companion.
 
 Quick: one primary. Full: now vs later for each.
 
@@ -150,7 +150,7 @@ For each channel discussed:
 
 | Target | Action |
 |---|---|
-| website | Skeleton in `config/targets/website.json`; if repo path known, **propose** `.agency/` scaffold + `target.json` separately |
+| website | Skeleton in `config/targets/website.json`; if repo path known, **propose** `.agency/` scaffold (`.gitignore`, `README.md`, `target.json`, stubs) + `target.json` separately |
 | social | Skeleton; `enabled: false` until social publishing connector credentials |
 | email, ads, analytics | Skeleton with `status: not-yet-designed` — note "coming soon", continue |
 
@@ -165,7 +165,7 @@ List every file to create/update in plain language:
 - `config/targets/*.json`
 - `config/deployments/*.json` (all `enabled: false`)
 - `squads/*/charter.md` skeletons
-- Any `.agency/` scaffold in external target repos (separate confirmation per repo)
+- Any `.agency/` scaffold in external target repos — `.gitignore` and `README.md` from `${CLAUDE_PLUGIN_ROOT}/references/dot-agency/`, plus `target.json` and artefact stubs (separate confirmation per repo)
 
 List deliberate skips/placeholders. Ask: **"Write these files? (yes/no)"** — wait.
 
@@ -191,7 +191,7 @@ On **yes**:
 ```
 
 5. Delete resume file if present.
-6. For website target binding (after separate yes for that repo): write `.agency/target.json` with `name`, `instance`, and `target`, plus stub files for `product.md`, `roadmap.md`, `backlog.md`, and empty `work/`, `architecture/`, and `reviews/` directories per framework § Target repo `.agency/` scaffold.
+6. For website target binding (after separate yes for that repo): scaffold `.agency/` per framework § Target repo `.agency/` scaffold — copy `.gitignore` and `README.md` from `${CLAUDE_PLUGIN_ROOT}/references/dot-agency/`; write `target.json` with `name`, `instance`, and `target`; add stub files for `product.md`, `roadmap.md`, `backlog.md`; create empty `work/`, `architecture/`, and `reviews/` directories.
 7. **Initialize Tier 0 hub state** — if `~/.claude/plugins/config/digital-agency/agency-hub/` is missing or empty, create `CLAUDE.md` (from `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` template), `allowlist.yaml` (from `references/allowlist-default.yaml`), and `install-log.yaml` (`[]`). Populate hub profile fields from interview answers where available.
 
 ### Step 7 — Hand off to brand-creative
@@ -207,11 +207,11 @@ If deferred, set `seedMaterial.notes` accordingly.
 Close with a concrete path — not a pile of config files:
 
 1. **Install** the first recommended **practice plugin** from the marketplace.
-2. **`delivery-practice` companion** — if that practice needs planning and cadence skills it does not own (e.g. `web-development` → install `delivery-practice`, then use `/delivery-practice:backlog` and `/delivery-practice:sprint`; `brand-creative` needs no companion).
+2. **`delivery-practice` companion** — if that practice needs planning and cadence skills it does not own (e.g. `web-development` → install `delivery-practice`, then use `/delivery-practice:tasks --product` and `/delivery-practice:sprint-planning`; `brand-creative` needs no companion).
 3. **Practice setup** — run that practice's `setup` skill (e.g. `/brand-creative:setup` for brand; `/delivery-practice:setup` for delivery).
 4. **Bind targets** — complete `.agency/` scaffold and `target.json` in each target repo, social credentials when available.
 5. **Deploy** — launch the first scheduled agent (dry-run first):
-   `./digital-agency/scripts/deploy-squad-agents.sh --dry-run --instance <path>`
+   `python3 digital-agency/scripts/deploy-squad-agents.py --dry-run --instance <path>`
 6. **Edit anytime** — change `config/instance.json` directly or `/agency-hub:setup --redo`.
 
 ## Pause and resume
@@ -248,6 +248,6 @@ Location: instance repo `config/.setup-resume.json` if instance exists; else per
 | Target skeletons | `config/targets/<name>.json` |
 | Deployment scaffolds | `config/deployments/*.json` |
 | Squad charters | `squads/<squad>/charter.md` |
-| Target pointer (on confirm) | `<target-repo>/.agency/target.json` + `.agency/` scaffold |
+| Target pointer (on confirm) | `<target-repo>/.agency/` scaffold (`.gitignore`, `README.md`, `target.json`, stubs, dirs) |
 
 Next: `/brand-creative:setup`, install first practice plugin, or `--check-integrations`.

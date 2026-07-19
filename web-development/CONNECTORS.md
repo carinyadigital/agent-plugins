@@ -44,11 +44,11 @@ Other options in each category: PagerDuty (incidents), Mixpanel (analytics).
 | **merge-request** | create, babysit | Source control |
 | **merge-request-review** | run | Source control |
 | **ux-design-review** | review, fix | Figma, Playwright |
-| **deploy-qa** | run | Source control, hosting |
-| **run-automated-suite** | run | Source control (CI status) |
-| **platform-health** | run | Hosting, observability, error tracking |
-| **debug** | run | Source control, observability (optional) |
-| **implement** | run | Source control (branch context) |
+| **deploy-qa** | — | Source control, hosting |
+| **run-automated-suite** | — | Source control (CI status) |
+| **platform-health** | — | Hosting, observability, error tracking |
+| **debug** | — | Source control, observability (optional) |
+| **implement** | — | Source control (branch context) |
 
 Brand guide is **artifact consumption** — read `<resolved-brand-path>/brand-guide.md`;
 no dependency on `brand-creative` being installed.

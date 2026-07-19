@@ -3,22 +3,49 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Write tasks for checkout-foundation (CHK01) from .agency/work/checkout-foundation/design.md — Gherkin AC for each task.",
-      "expected_output": ".agency/work/checkout-foundation/tasks.md with canonical task schema and ≥1 Gherkin scenario per task.",
+      "prompt": "Write tasks for checkout-foundation (CHK01) from .agency/work/checkout-foundation/design.md.",
+      "expected_output": ".agency/work/checkout-foundation/tasks.md with stories, each with a statement, independent test criterion and Gherkin AC, and tasks beneath them.",
       "assertions": [
         "Creates or updates .agency/work/checkout-foundation/tasks.md",
-        "Every task includes Acceptance (Gherkin) with Given/When/Then",
-        "Task IDs use CHK01- prefix",
-        "No new epics added to backlog.md"
+        "Every story has an As a/I want/So that statement",
+        "Every story has an independent test criterion",
+        "Every story has >=1 Gherkin scenario with observable Then clauses",
+        "Task IDs use CHK01- prefix and carry [S{n}] labels",
+        "Story 1 is identified as the MVP",
+        "Does not write .agency/backlog.md for an existing epic"
       ]
     },
     {
       "id": 2,
-      "prompt": "Review tasks.md for payment-placement — sprint-ready?",
-      "expected_output": "Verdict sprint-ready / acceptable with amendments / not ready with checklist.",
+      "prompt": "Break docs/specs/payments-rfc.md into a backlog.",
+      "expected_output": "An epic row added to backlog.md and a matching tasks.md written, both paths reported.",
       "assertions": [
-        "Checks Gherkin presence and observable Then clauses",
-        "Does not implement code"
+        "Reads the spec at the given path",
+        "Derives a kebab-case slug of at most two words",
+        "Reads backlog.md before assigning an Epic ID so it does not collide",
+        "Writes both .agency/backlog.md and .agency/work/{slug}/tasks.md",
+        "Reports both paths in the summary"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write the epics for this product from product.md and roadmap.md.",
+      "expected_output": ".agency/backlog.md with an epic table, Now-phase detail, dependency graph and risks.",
+      "assertions": [
+        "Writes .agency/backlog.md only",
+        "Every Now-phase epic traces to a product.md outcome",
+        "No full Gherkin in backlog.md",
+        "Work path slugs are at most two words and not Epic IDs"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Write tasks for auth-tokens with EARS.",
+      "expected_output": "tasks.md where every story carries Gherkin plus EARS statements using the five patterns.",
+      "assertions": [
+        "Every story has both Gherkin and EARS sections",
+        "EARS statements use THE SYSTEM SHALL",
+        "EARS statements do not restate a Gherkin scenario"
       ]
     }
   ]

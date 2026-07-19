@@ -1,25 +1,21 @@
-[
-  {
-    "query": "Create tasks.md for epic CHK01 with Gherkin acceptance criteria.",
-    "should_trigger": true
-  },
-  {
-    "query": "Write Gherkin scenarios for checkout-foundation tasks from the design doc.",
-    "should_trigger": true
-  },
-  {
-    "query": "Add CHK02 and CHK03 to the product backlog with work paths.",
-    "should_trigger": false,
-    "note": "backlog"
-  },
-  {
-    "query": "Implement CHK01-03 — scaffold the checkout module.",
-    "should_trigger": false,
-    "note": "implement"
-  },
-  {
-    "query": "Validate epic CHK01 is complete against all acceptance criteria.",
-    "should_trigger": false,
-    "note": "validate"
-  }
-]
+{
+  "skill_name": "tasks",
+  "should_trigger": [
+    "break this spec into a backlog",
+    "turn this RFC into tickets",
+    "write the epics for this product",
+    "decompose checkout-foundation",
+    "write tasks for CHK01",
+    "what stories do we need for the payments epic",
+    "split this design doc into implementable work"
+  ],
+  "should_not_trigger": [
+    "groom the backlog",
+    "is this sprint-ready",
+    "plan sprint 3",
+    "write the epic design",
+    "write the architecture",
+    "implement CHK01-01",
+    "validate CHK01"
+  ]
+}

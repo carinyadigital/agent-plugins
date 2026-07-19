@@ -2,7 +2,7 @@
 name: backlog-grooming
 description: >
   Weekly backlog grooming for the product named in the practice profile's
-  target. Runs a backlog refine pass — reprioritise, break down oversized epics,
+  target. Runs a backlog-refine pass — reprioritise, break down oversized epics,
   re-estimate, tighten scope, defer misaligned items. Proposes the diff; never
   writes backlog.md without approval. Trigger: "groom the backlog", "refine the
   backlog", or on schedule.
@@ -24,8 +24,8 @@ for the tracked repo. If neither is set, ask once and offer to record it.
 
 1. Read `.agency/backlog.md`, plus `.agency/product.md` §5 and `.agency/roadmap.md`
    for the goals and phase gates to groom against.
-2. Run a `backlog` refine pass (see `../skills/backlog/SKILL.md`, refine mode) —
-   the five activities: remove → break down → prioritise → estimate → tighten epic scope.
+2. Run a **backlog-refine** pass (see `../skills/backlog-refine/SKILL.md`) —
+   the five activities: remove → split → prioritise → re-estimate → tighten acceptance.
 3. Fold in anything surfaced since last run: closed epics, new `.agency/reviews/`
    byproducts (competitor-scan gaps, metrics signals), and status drift.
 4. Draft the diff to `.agency/backlog.md` — bumped priorities, split epics, revised
@@ -48,6 +48,6 @@ Planning-ready verdict: [...]
 
 ## What it does NOT do
 
-- Does not modify backlog.md directly — proposes only, same as playbook-monitor.
-- Does not write Gherkin — task-level AC lives in `.agency/work/{epic}/tasks.md` via **tasks**.
-- Does not re-narrate architecture or roadmap phasing — cites them, stays in the backlog.
+- Create new epics from product/roadmap (use `/delivery-practice:tasks --product`)
+- Plan a sprint (use `/delivery-practice:sprint-planning`)
+- Sign off an epic (use `/delivery-practice:validate`)

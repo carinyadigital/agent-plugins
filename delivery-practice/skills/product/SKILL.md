@@ -2,8 +2,11 @@
 name: product
 description: >
   Use when the user wants a product strategy doc, PRD, pitch, vision, personas,
-  or outcomes at .agency/product.md (write, review, refine). Do NOT use for
-  phased delivery plan (roadmap), epics or backlog (backlog), architecture
+  or outcomes at .agency/product.md. Two modes: write (draft or re-author)
+  and review (critique, update for currency, amend in place). Triggers on
+  "write the PRD", "draft a product pitch", "who are our personas", "review the
+  product strategy", "is this strategy still current". Do NOT use for
+  phased delivery plan (roadmap), epics or backlog (tasks), architecture
   (solution), tasks or Gherkin (tasks), or implementation (implement).
 license: MIT
 allowed-tools:
@@ -11,7 +14,14 @@ allowed-tools:
   - Write
   - Glob
   - Grep
-argument-hint: "<mode: write|review|refine> [--stage pitch|product] [--context <notes>]"
+argument-hint: "<mode: write|review> [--stage pitch|product] [--context <notes>]"
+metadata:
+  author: Carinya Parc
+  version: "1.0"
+  owner: product
+  work_shape: generate-draft
+  output_class: draft-for-review
+  review_cadence: as-needed
 ---
 
 # Product
@@ -46,11 +56,11 @@ path instead of the default.
 
 ## Related skills
 
-- `roadmap`, `backlog`, `solution`
+- `roadmap`, `tasks`, `solution`
 
 ## Router
 
-1. Mode: `write`, `review`, or `refine`.
+1. Mode: `write` or `review`.
 2. Resolve target path (default or user override).
 3. One prompt under [prompts/](prompts/).
 

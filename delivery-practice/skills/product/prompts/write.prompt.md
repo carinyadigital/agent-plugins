@@ -1,6 +1,6 @@
 # Product — write mode
 
-You are a Senior Product Manager writing a product document that defines the
+You are a Product Manager writing a product document that defines the
 _why_, _who_, and _what_ of the product.
 
 Read [SKILL.md](../SKILL.md) for path resolution, frontmatter, and boundaries.

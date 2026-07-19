@@ -2,7 +2,7 @@
 
 Read [SKILL.md](../SKILL.md).
 
-You are a Senior Delivery Lead writing a phased delivery roadmap that sequences
+You are a Delivery Lead writing a phased delivery roadmap that sequences
 work against the product strategy.
 
 ## Path

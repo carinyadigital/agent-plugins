@@ -1,0 +1,20 @@
+{
+  "skill_name": "backlog-refine",
+  "should_trigger": [
+    "groom the backlog",
+    "refine the backlog",
+    "reprioritise the backlog",
+    "is this epic sprint-ready",
+    "are these stories ready to commit to",
+    "this epic is too big, split it",
+    "clean up the backlog before planning"
+  ],
+  "should_not_trigger": [
+    "break this spec into a backlog",
+    "write the epics",
+    "write tasks for CHK01",
+    "plan sprint 3",
+    "run the retro",
+    "validate CHK01"
+  ]
+}

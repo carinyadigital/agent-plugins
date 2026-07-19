@@ -33,7 +33,7 @@ latest `.agency/sprints/sprint-*/` and confirm before proceeding.
 
 1. Read `.agency/backlog.md` (Now-phase epics), `.agency/roadmap.md` (current phase exit
    criteria), and the previous `.agency/sprints/sprint-{prev}/retrospective.md` if present.
-2. Run a `sprint` plan pass (see `../skills/sprint/SKILL.md`, plan mode) —
+2. Run a **sprint-planning** pass (see `../skills/sprint-planning/SKILL.md`) —
    candidate scope, capacity sanity-check, dependency order, sprint risks.
 3. Draft the plan to `.agency/sprints/sprint-{id}/plan.md`. Do not commit it as final.
 4. Present the proposed scope and the risks/dependencies that could break it, and stop.

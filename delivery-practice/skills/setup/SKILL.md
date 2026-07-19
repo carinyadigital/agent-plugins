@@ -136,11 +136,11 @@ Close with persona-appropriate handoff:
 
 1. **Strategy** — `/delivery-practice:product write`
 2. **Roadmap** — `/delivery-practice:roadmap write`
-3. **Backlog** — `/delivery-practice:backlog write`
+3. **Backlog** — `/delivery-practice:tasks --product`
 
 **Delivery Lead path:**
 
-1. **Sprint** — `/delivery-practice:sprint plan`
+1. **Sprint** — `/delivery-practice:sprint-planning`
 2. **Status** — `/delivery-practice:stakeholder-update`
 3. **Metrics** — `/delivery-practice:metrics-review`
 
@@ -172,7 +172,7 @@ Location: `<instance-root>/config/.delivery-setup-resume.json` if instance exist
 
 **Input:** Instance profile complete; `--quick`; solo operator; merged persona; weekly bullet updates to sponsor.
 
-**Expected output:** Practice profile at personal config path with cadence, escalation, and merged persona recorded; handoff to `/delivery-practice:product write` or `/delivery-practice:sprint plan`.
+**Expected output:** Practice profile at personal config path with cadence, escalation, and merged persona recorded; handoff to `/delivery-practice:product write` or `/delivery-practice:sprint-planning`.
 
 ## Outputs
 

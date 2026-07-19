@@ -31,8 +31,8 @@ no `retrospective.md`, and confirm.
 
 1. Read `.agency/sprints/sprint-{id}/plan.md` (committed scope) and current
    `.agency/backlog.md` status to establish what actually shipped.
-2. Run a `sprint` retrospective pass (see `../skills/sprint/SKILL.md`,
-   retrospective mode) — went well / didn't / actions, with delivery signal
+2. Run a **sprint-retro** pass (see `../skills/sprint-retro/SKILL.md`) —
+   went well / didn't / actions, with delivery signal
    (completed vs carried, scope creep, blockers).
 3. Draft the retro to `.agency/sprints/sprint-{id}/retrospective.md`.
 4. Where an action implies backlog work (a fix, a carried item, a new risk), draft

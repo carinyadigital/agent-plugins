@@ -1,14 +1,14 @@
 # delivery-practice
 
 Root-level **practice plugin** — one install delivers the complete delivery service:
-setup interview, product strategy, backlog and sprint cadence, validation, and
-operational skills. Self-contained under the MECE practice model: edit skills here
-only; nothing is vendored from elsewhere.
+setup interview, product strategy, tasks/backlog decomposition, sprint planning and
+retro, validation, and operational skills. Self-contained under the MECE practice
+model: edit skills here only; nothing is vendored from elsewhere.
 
 Install standalone or after `agency-hub:setup` recommends it. Other
 practices (content-marketing, web-development, search-optimisation) declare this
 as a **companion practice** and invoke skills directly — e.g.
-`/delivery-practice:backlog`, `/delivery-practice:sprint`.
+`/delivery-practice:tasks --product`, `/delivery-practice:sprint-planning`.
 
 ## Personas
 
@@ -18,15 +18,15 @@ Two personas share one skill library. Choose the default persona during
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
 | **Product Manager** | `product`, `product-brainstorming`, `roadmap`, `write-spec`, `synthesize-research` | Strategy — what to build and why |
-| **Delivery Lead** | `sprint`, `stakeholder-update`, `metrics-review` | Cadence — keeping work moving and stakeholders informed |
-| **Shared (both)** | `backlog`, `competitive-brief`, `skills-index`, `tasks`, `validate` | Planning artefacts and routing |
+| **Delivery Lead** | `sprint-planning`, `sprint-retro`, `stakeholder-update`, `metrics-review` | Cadence — keeping work moving and stakeholders informed |
+| **Shared (both)** | `tasks`, `backlog-refine`, `competitive-brief`, `skills-index`, `validate` | Planning artefacts and routing |
 
 Invoke skills directly — there is no separate agent plugin per persona:
 
 ```
 /delivery-practice:product write
-/delivery-practice:sprint plan 3
-/delivery-practice:backlog review
+/delivery-practice:sprint-planning 3
+/delivery-practice:backlog-refine
 ```
 
 ## First run: setup
@@ -50,11 +50,12 @@ After instance bootstrap (or standalone):
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile and delivery defaults |
-| **product** | write, review, refine — `.agency/product.md` |
-| **roadmap** | write, review, refine — `.agency/roadmap.md` |
-| **backlog** | write, review, refine — `.agency/backlog.md` |
-| **tasks** | write, review, refine — `.agency/work/{epic}/tasks.md` |
-| **sprint** | plan, retrospective |
+| **product** | write, review — `.agency/product.md` |
+| **roadmap** | write, review — `.agency/roadmap.md` |
+| **tasks** | `--product` → `.agency/backlog.md`; `{epic}` → `.agency/work/{epic}/tasks.md` |
+| **backlog-refine** | Groom backlog or judge sprint readiness |
+| **sprint-planning** | Sprint plan — `.agency/sprints/sprint-{id}/plan.md` |
+| **sprint-retro** | Sprint retrospective — `.agency/sprints/sprint-{id}/retrospective.md` |
 | **validate** | Epic completion sign-off |
 | **write-spec** | Feature spec or PRD |
 | **stakeholder-update** | Status update for sponsors |
@@ -79,8 +80,8 @@ Path and boundary rules: `references/delivery-conventions.md`.
 
 1. Use Product Manager skills for strategy; Delivery Lead skills for cadence.
 2. Re-run `/delivery-practice:setup --redo` to refresh delivery defaults.
-3. Companion practices invoke shared skills here — do not duplicate `backlog`,
-   `synthesize-research`, or `competitive-brief` in other plugins.
+3. Companion practices invoke shared skills here — do not duplicate `tasks`,
+   `backlog-refine`, `synthesize-research`, or `competitive-brief` in other plugins.
 
 ## References
 

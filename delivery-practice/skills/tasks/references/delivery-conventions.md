@@ -55,9 +55,9 @@ Override paths when the user names them explicitly in the request.
 - **Default:** Gherkin in `.agency/work/{epic}/tasks.md`, on the **story**
   (≥1 scenario each). A foundational task with no parent story carries its own.
 - **EARS:** via `tasks --ears`, or where a rule is clearer than a scenario.
-  Five patterns: see `skills/tasks/references/acceptance-criteria.md`.
+  Five patterns: see [acceptance-criteria.md](acceptance-criteria.md).
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
-- **Schema:** field-by-field rules in `skills/tasks/references/work-item-schema.md`.
+- **Schema:** field-by-field rules in [work-item-schema.md](work-item-schema.md).
 
 ## Design modes
 
@@ -87,17 +87,3 @@ Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
 | Sprint retrospective | **sprint-retro** |
 | Review a set of documents for quality, boundaries, consistency | **docs-review** |
 | Which skill to use? | **skills-index** |
-
-## Agency layout notes
-
-Repo identity lives in `.agency/target.json` (`name`, `instance`, `target`) — not inferred from the directory name.
-
-Additional agency trees (not used by all skills):
-
-```text
-.agency/reviews/              agent byproducts: competitor-scan, metrics, digests
-```
-
-Cross-plugin skills live in `web-development` (design, implement, code-review, …).
-Invoke as `/web-development:<skill>` when recommending from delivery-practice.
-

@@ -73,7 +73,15 @@ outranks these when the two conflict.
 - Copy is concise, front-loaded, and free of blame ("Couldn't save — check
   your connection", not "You entered invalid data").
 
-## Using this reference
+## Using this reference — the false-positive risk
+
+This is the softest of the review's inputs and therefore the easiest to abuse. A
+heuristic finding is only legitimate when the app is *inconsistent with itself* or the
+design source, not when it differs from this list. If the app consistently does
+something differently from what is written here, that is the app's convention and this
+reference is silent.
+
+
 
 Findings from this bar are category **Visual Polish**, **Interaction/UX**,
 or **Content**, and are held to the same evidence rule as everything else:

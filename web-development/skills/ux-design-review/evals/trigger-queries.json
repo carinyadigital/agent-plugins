@@ -1,0 +1,52 @@
+[
+  {
+    "query": "Review the checkout page UI before I ship it.",
+    "should_trigger": true
+  },
+  {
+    "query": "Is this component accessible? Check it against WCAG AA.",
+    "should_trigger": true
+  },
+  {
+    "query": "Does the new summary card match the Figma design?",
+    "should_trigger": true
+  },
+  {
+    "query": "Check the new settings page at mobile and tablet widths.",
+    "should_trigger": true
+  },
+  {
+    "query": "Re-review the UI, I've pushed fixes for the focus ring.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the UX review findings.",
+    "should_trigger": false,
+    "note": "ux-design-fix — write path must never route here"
+  },
+  {
+    "query": "Address the accessibility issues you found.",
+    "should_trigger": false,
+    "note": "ux-design-fix"
+  },
+  {
+    "query": "Review my branch for bugs and security issues.",
+    "should_trigger": false,
+    "note": "code-review — correctness, not rendered experience"
+  },
+  {
+    "query": "Review the design.md document for the checkout epic.",
+    "should_trigger": false,
+    "note": "design — reviews a document, not rendered UI"
+  },
+  {
+    "query": "Build the new payment form component.",
+    "should_trigger": false,
+    "note": "implement"
+  },
+  {
+    "query": "Review MR 88 as the assigned reviewer and post comments.",
+    "should_trigger": false,
+    "note": "merge-request-review"
+  }
+]

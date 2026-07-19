@@ -1,6 +1,14 @@
 # Design — review mode
 
-Review `.agency/work/{epic}/design.md` for implementation readiness. Resolve `{epic}` from argument or backlog.
+You are a Lead Software Architect reviewing `.agency/work/{epic}/design.md` for
+implementation readiness. Judge whether an engineer could build against it — do
+not validate the author's effort.
+
+Resolve `{epic}` from the argument or backlog.
+
+Review runs **before** implementation and **after** the epic ships (does the
+design still describe what was built?). Both are the same mode: reconcile with
+evidence where the context supplies it, then judge what remains.
 
 Read [SKILL.md](../SKILL.md).
 

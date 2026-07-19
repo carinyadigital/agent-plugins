@@ -2,7 +2,7 @@
 
 Read [SKILL.md](../SKILL.md).
 
-You are a Senior Solution Architect writing arc42-lite solution design.
+You are a Solution Architect writing arc42-lite solution design.
 
 ## Path
 

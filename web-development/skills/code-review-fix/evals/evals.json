@@ -1,0 +1,61 @@
+{
+  "skill_name": "code-review-fix",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Address the review findings on my branch — 2 blocking, 1 warning, 1 suggestion.",
+      "expected_output": "All four addressed, validation suite run, committed in logical units, summary emitted.",
+      "assertions": [
+        "Reads the full review before modifying any file",
+        "Works blocking findings first",
+        "Reads each file before modifying it",
+        "Runs typecheck and tests after each individual fix, not only at the end",
+        "Discovers validation commands from AGENTS.md or CI config rather than assuming",
+        "Emits Verification block with format, lint, typecheck, build, tests",
+        "Commits in logical units tied to findings"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "code-review-fix blocking — just the blocking issues, leave the rest.",
+      "expected_output": "Only blocking findings addressed; the rest listed as not addressed.",
+      "assertions": [
+        "Addresses only findings labelled [blocking]",
+        "Lists warnings and suggestions under 'Findings Not Addressed (below threshold)'",
+        "Does not silently fix items below the threshold"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Fix the review. One finding says the retry loop is unbounded, but it's bounded by maxAttempts three lines up.",
+      "expected_output": "Finding disputed with evidence, not implemented.",
+      "assertions": [
+        "Does not implement the disputed finding",
+        "Cites the specific line that refutes it",
+        "Records it under 'Findings Disputed'",
+        "Marks it dismissed in review state rather than fixed"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Address the review. One finding asks to switch the token estimator to tiktoken for accuracy.",
+      "expected_output": "Deferred as behaviour-altering, raised as a follow-up.",
+      "assertions": [
+        "Defers rather than implementing, because it alters observable behaviour",
+        "Records it under 'Findings Deferred' with a reason",
+        "Raises or names a follow-up work item",
+        "Does not expand the change to accommodate it"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Fix the review findings. The test suite was already failing on main before I started.",
+      "expected_output": "Does not commit with failing validation; does not skip or suppress tests.",
+      "assertions": [
+        "Does not suppress, skip, or delete failing tests",
+        "Does not commit while validation is failing",
+        "Reports the pre-existing failure rather than absorbing it into this change"
+      ]
+    }
+  ]
+}

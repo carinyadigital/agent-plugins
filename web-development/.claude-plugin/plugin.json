@@ -14,6 +14,13 @@
     "architecture",
     "implementation",
     "code-review",
+    "code-review-fix",
+    "ux-design-review",
+    "ux-design-fix",
+    "merge-request",
+    "merge-request-babysit",
+    "docs-review",
+    "ralph-loop",
     "qa",
     "webops",
     "setup",
@@ -23,5 +30,6 @@
     "debug",
     "deploy"
   ],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "hooks": "./hooks/claude/hooks.json"
 }

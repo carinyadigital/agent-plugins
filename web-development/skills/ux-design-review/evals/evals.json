@@ -1,0 +1,101 @@
+{
+  "skill_name": "ux-design-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review the checkout flow UI on my branch — 4 changed components, dev server runs on 3000.",
+      "expected_output": "Structured verdict with coverage statement, findings grouped by action label, evidence per finding. No source files modified.",
+      "assertions": [
+        "Drives the browser once and produces a shared capture bundle",
+        "Does NOT let each lens drive the browser independently",
+        "Emits Result, Scope, Design source, Coverage, Lenses run in the header",
+        "Opens with what works well before the findings",
+        "Every finding prefixed with [blocking], [warning], or [suggestion]",
+        "Every visual finding cites a screenshot path plus state and viewport",
+        "Modifies no file outside .ux-review/ and .agency/reviews/",
+        "Closes by pointing at ux-design-fix rather than offering to fix"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Review the UI. The page has a live 'time remaining' counter and a rotating hero carousel.",
+      "expected_output": "Dynamic regions stabilised or masked; differences across paired captures reported as flake, not deviations.",
+      "assertions": [
+        "Disables animation and waits for fonts before capturing",
+        "Captures twice and compares",
+        "Marks the counter and carousel as unstable regions in the manifest",
+        "Does NOT report the varying regions as design-fidelity deviations",
+        "Caps confidence at Tentative for any finding resting on an unstable region"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Check accessibility on the new payment form. Axe reports zero violations.",
+      "expected_output": "Refuses to claim conformance from the scan; runs the manual criteria from the traversal record.",
+      "assertions": [
+        "Does NOT report 'accessibility passed' on the basis of a clean scan",
+        "States that zero violations means the automatable portion passed and nothing more",
+        "Judges focus order (2.4.3) and focus visibility (2.4.7) from the keyboard traversal record",
+        "Judges reflow (1.4.10) from the 320-equivalent capture",
+        "Names which manual criteria were verified in the coverage statement",
+        "Marks manual criteria unverified rather than passed when the traversal record is missing"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Review the summary card. It has 12px padding, the Figma shows 16px, and the repo has a space-400 token set to 16px.",
+      "expected_output": "One merged finding carrying both the screenshot and the file:line, with the token named as the fix.",
+      "assertions": [
+        "Reports this as ONE finding, not separate fidelity and design-system findings",
+        "Cites both a screenshot and a file:line as evidence",
+        "Names space-400 as the remediation rather than prescribing 16px",
+        "Takes Design Fidelity as the category with the system cause recorded"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Review the UI. The error message overflows its container at 375px but looks fine at 1440px.",
+      "expected_output": "Caught by the experience lens at the state-by-viewport intersection.",
+      "assertions": [
+        "Exercises the error state at the small viewport, not only the default state",
+        "Reports the finding once with the viewport recorded, not once per viewport",
+        "States the user impact rather than prescribing a pixel fix"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Review the UI. No dev server starts — the app needs backend env vars I don't have.",
+      "expected_output": "Degrades to static-only, states reduced coverage, does not fake live results.",
+      "assertions": [
+        "Does not spend long fighting the environment before degrading",
+        "Runs the conformance system pass and markup-level accessibility subset",
+        "Marks all live-only checks unverified rather than passed",
+        "States the reduced coverage explicitly in the verdict",
+        "A PASS is explicitly partial"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Re-review the checkout UI. I fixed the focus ring, and the designer updated the Figma since your last pass.",
+      "expected_output": "Incremental review; design-side drift detected and reported separately from code changes.",
+      "assertions": [
+        "Reads .agency/reviews/ux-{branch}.json and reviews incrementally",
+        "Compares the design source ref and detects it changed",
+        "Re-derives fidelity findings for components whose design moved even where code did not change",
+        "Reports 'newly diverged because the design moved' separately from newly introduced",
+        "Does not re-raise accepted deviations or dismissed findings"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Review this UI change. The mockup specifies a placeholder colour that fails 4.5:1 contrast.",
+      "expected_output": "Accessibility wins; the design source is flagged as the problem.",
+      "assertions": [
+        "Raises the contrast failure as a blocking Accessibility finding",
+        "Does NOT treat matching the mockup as satisfying the review",
+        "Flags the design source itself as needing correction",
+        "Applies the accessibility override regardless of severity band"
+      ]
+    }
+  ]
+}

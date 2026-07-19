@@ -7,7 +7,7 @@ here only; nothing is vendored from elsewhere.
 
 Install standalone or after `agency-hub:setup` recommends it. Declare
 `delivery-practice` as a **companion practice** for backlog, tasks, sprint, and
-validate — invoke `/delivery-practice:backlog` and related skills directly rather
+validate — invoke `/delivery-practice:tasks --product` and related skills directly rather
 than bundling duplicate copies.
 
 ## Personas
@@ -17,10 +17,10 @@ Six personas share one skill library. Choose the default persona during
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
-| **Frontend Engineer** | `implement`, `code-review`, `merge-request` | Build — UI, client state, styling |
-| **Senior Frontend Engineer** | `code-review`, `design` | Peer review — diffs vs design and AC |
+| **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `ux-design-fix` | Build — UI, client state, styling |
+| **Senior Frontend Engineer** | `code-review`, `design`, `ux-design-review` | Peer review — diffs vs design and AC |
 | **Principal Frontend Engineer** | `final-code-review`, `code-review`, `design` | Final gate — architecture and AC on open PRs |
-| **Principal Architect** | `solution`, `adr`, `design`, `docs` | Architecture — solution, ADRs, epic design |
+| **Principal Architect** | `solution`, `adr`, `design`, `docs-review` | Architecture — solution, ADRs, epic design |
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 
@@ -36,9 +36,9 @@ Invoke skills directly — there is no separate agent plugin per persona:
 For planning cadence during implementation, invoke the companion practice:
 
 ```
-/delivery-practice:backlog review
-/delivery-practice:tasks write checkout-foundation
-/delivery-practice:sprint plan 3
+/delivery-practice:backlog-refine
+/delivery-practice:tasks checkout-foundation
+/delivery-practice:sprint-planning 3
 /delivery-practice:validate checkout-foundation
 ```
 
@@ -66,17 +66,21 @@ target binding.
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile, target binding, stack defaults |
-| **solution** | write, review, refine — `.agency/architecture/solution.md` |
-| **adr** | write, review, plan — ADR register and decision records |
+| **solution** | write, review — `.agency/architecture/solution.md` |
+| **adr** | plan, write, review — ADR register and decision records |
 | **design** | write, review — `.agency/work/{epic}/design.md` |
 | **implement** | Implement a task against approved design and AC |
-| **code-review** | run, fix — peer review against design and tasks |
+| **code-review** | Read-only peer review against design and tasks |
+| **code-review-fix** | Address code-review findings without behaviour change |
 | **final-code-review** | Final technical gate on open PRs |
-| **merge-request** | Open merge request for implemented work (or babysit to merge-ready) |
+| **merge-request** | Open merge request for implemented work |
+| **merge-request-babysit** | Drive an open MR/PR to merge-ready |
 | **merge-request-review** | Review an MR/PR as its reviewer |
-| **ux-design-review** | UX review of implemented UI vs design source |
-| **ralph** | Autonomous epic delivery loop |
-| **docs** | Pre/post-sprint documentation pass |
+| **ux-design-review** | Read-only UX review of implemented UI vs design source |
+| **ux-design-fix** | Address UX review findings or direct UI fixes |
+| **ralph-loop-setup** | Seed and configure an autonomous delivery loop |
+| **ralph-loop** | Run an autonomous epic delivery loop |
+| **docs-review** | Read-only document-set quality and consistency review |
 | **debug** | Bug investigation |
 | **tech-debt** | Technical debt audit |
 | **deploy-qa** | Prepare QA workspace (shared by QA and WebOps personas) |
@@ -98,7 +102,7 @@ not exist, ask the user for design guidance inline.
 - **Instance profile** (optional) — `agency-hub:setup` writes
   `config/instance.json`; setup reads cadence and target hints without
   re-asking.
-- **delivery-practice** (recommended companion) — backlog, tasks, sprint, validate;
+- **delivery-practice** (recommended companion) — tasks, backlog-refine, sprint-planning, sprint-retro, validate;
   see CONNECTORS.md.
 - **Connectors** (optional) — source control, hosting, observability, and chat MCP
   servers supercharge deploy, QA, and platform-health workflows.

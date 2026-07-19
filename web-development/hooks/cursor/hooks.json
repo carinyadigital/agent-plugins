@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterAgentResponse": [
+      {
+        "command": "./hooks/cursor/ralph-capture.sh"
+      }
+    ],
+    "stop": [
+      {
+        "command": "./hooks/cursor/ralph-stop.sh",
+        "loop_limit": 200
+      }
+    ]
+  }
+}

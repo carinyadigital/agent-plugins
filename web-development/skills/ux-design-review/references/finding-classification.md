@@ -1,22 +1,37 @@
 # Finding classification
 
 Every UX review finding is classified on three independent axes: **Category**
-(what kind), **Severity** (how bad), and **Confidence** (how certain).
-Sub-agents attach all three to each finding; the main review ranks by
-severity and gates/verifies by confidence using the risk matrix below.
-(Same model as the code-review skill, with UX categories.)
+(what kind), **Severity** (how bad), and **Confidence** (how certain). Same model as
+the `code-review` skill, with UX categories and an accessibility override in place of
+the security one.
+
+Confidence is produced in two stages. A lens attaches a **prior** to each finding it
+raises. That prior is then replaced by an independent rating from `finding-verifier`,
+which never sees the raising lens's reasoning. A lens that has just spent its context
+arguing a defect exists cannot also judge whether it is real.
+
+Pipeline: lenses raise → [merge-protocol.md](merge-protocol.md) dedupes and adjusts for
+independent corroboration → `finding-verifier` rates confidence → the risk matrix below
+assigns the action label.
 
 ## Category
+
+Listed in **precedence order**. A defect that attracts several categories takes the
+highest (see [merge-protocol.md](merge-protocol.md) step 2).
 
 | Category | Covers | Primary source |
 | -------- | ------ | -------------- |
 | Accessibility | WCAG 2.2 AA failures — cite the criterion | accessibility-reviewer |
-| Design Fidelity | Deviation from the resolved design source | design-fidelity-reviewer |
-| Interaction/UX | Broken/missing states, confusing flows, feedback gaps | interaction-states-reviewer |
-| Responsiveness | Viewport adaptation, overflow, touch ergonomics | responsive-reviewer |
-| Design System | Hard-coded values over tokens, reinvented components, pattern drift | design-system-reviewer |
+| Interaction/UX | Broken/missing states, confusing flows, feedback gaps | experience-reviewer |
+| Responsiveness | Viewport adaptation, overflow, touch ergonomics | experience-reviewer |
+| Design Fidelity | Deviation from the resolved design source | conformance-reviewer |
+| Design System | Hard-coded values over tokens, reinvented components, pattern drift | conformance-reviewer |
 | Visual Polish | Alignment, spacing rhythm, typography, hierarchy | ux-heuristics pass |
 | Content | Copy clarity, grammar, tone, terminology consistency | any lens |
+
+Accessibility leads the order because it carries the compliance override: a defect that
+is both an a11y failure and a fidelity deviation is blocking on the a11y ground,
+whatever it looks like.
 
 Correctness, security, and performance are **not** categories here — route
 them to the code-review skill.
@@ -48,6 +63,10 @@ Certainty the finding is a true positive.
 Static-only findings cap at **Probable** for anything a live check could
 have confirmed — reserve Confirmed for what was actually rendered and seen.
 
+Findings resting on a region the capture marked **unstable** cap at **Tentative**: the
+evidence did not reproduce across paired captures, so the difference may be flake rather
+than defect. See [capture-protocol.md](capture-protocol.md) §2.
+
 ## Risk matrix
 
 Group each axis into High / Medium / Low, then read the action:
@@ -55,28 +74,37 @@ Group each axis into High / Medium / Low, then read the action:
 - **Confidence:** High = Confirmed/Probable, Medium = Possible, Low = Tentative/Speculative.
 - **Severity:** High = Critical/Major, Medium = Moderate, Low = Minor/Trivial.
 
+Confidence entering this matrix is the **verifier's** rating, not the raising lens's
+prior.
+
 | Severity ↓ / Confidence → | High | Medium | Low |
 | ------------------------- | ---- | ------ | --- |
-| **High** (Critical/Major) | blocking | blocking | verify further |
+| **High** (Critical/Major) | blocking | blocking | escalate |
 | **Medium** (Moderate) | warning | warning | drop |
 | **Low** (Minor/Trivial) | suggestion | suggestion | drop |
 
-- **verify further** — re-test the state, re-capture, or re-run the check;
-  promote to blocking if confirmed, drop if refuted. The only cell that
-  triggers extra evaluation.
+- **escalate** — a high-severity finding the verifier could not confirm, usually because
+  the state was unreachable or the region was unstable. Do not drop it and do not block
+  on it. Surface it under Warnings as `[warning] unverified`, saying what could not be
+  established. A possible blocking accessibility defect deserves a human's attention
+  even on thin evidence.
 - **Override:** Accessibility-category findings at Medium+ confidence are
   always **blocking**, regardless of severity band — the AA bar is a
   compliance floor, the analogue of code-review's Security override.
 - **Rank** findings within each action tier by severity (highest first).
-- **Verdict:** FAIL if any blocking finding remains after verification. A
-  PASS with reduced coverage (static-only lenses) must say so.
+- **Verdict:** FAIL if any blocking finding remains. A PASS with reduced coverage
+  (static-only, unreachable states, single browser) must say so.
 
 ## Who uses what
 
-- **Sub-agents** — attach Category, Severity, and Confidence (with
-  evidence: screenshot path or file:line) to each finding. Drop only
-  **Speculative** findings; return the rest.
-- **Main review** — rank by severity, apply the matrix to assign the
-  action label (`[blocking]` / `[warning]` / `[suggestion]` — the labels
-  `ux-design-review fix` routes on), verify the *verify further* cells,
-  then produce the verdict with the coverage statement.
+- **Lenses** — attach Category, Severity, and a Confidence **prior**, with evidence
+  (screenshot path, `file:line`, axe rule, WCAG criterion). Drop only **Speculative**
+  findings; return the rest.
+- **Merge step** ([merge-protocol.md](merge-protocol.md)) — dedupe across components,
+  states, and viewports; resolve category by precedence; take max severity; raise
+  confidence only for *independent* corroboration.
+- **`finding-verifier`** — rates confidence independently. May re-render one state to
+  settle a finding. Its rating replaces the prior.
+- **Main review** — rank by severity, apply the matrix to assign the action label
+  (`[blocking]` / `[warning]` / `[suggestion]` — the labels `ux-design-fix`
+  routes on), then produce the verdict with the coverage statement.

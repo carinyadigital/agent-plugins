@@ -51,9 +51,11 @@ implementation, invoke companion skills directly — do not bundle local copies:
 
 | Need | Invoke |
 | ---- | ------ |
-| Epic registry, backlog alignment | `/delivery-practice:backlog` |
+| Epics / backlog from product | `/delivery-practice:tasks --product` |
 | Task Gherkin AC | `/delivery-practice:tasks` |
-| Sprint plan or retro | `/delivery-practice:sprint` |
+| Groom backlog or check sprint readiness | `/delivery-practice:backlog-refine` |
+| Sprint plan | `/delivery-practice:sprint-planning` |
+| Sprint retrospective | `/delivery-practice:sprint-planning-retro` |
 | Epic completion sign-off | `/delivery-practice:validate` |
 | Which planning skill to use | `/delivery-practice:skills-index` |
 
@@ -64,7 +66,7 @@ Recommend `delivery-practice` as a co-install. Document in CONNECTORS.md.
 ```text
 .agency/                      target.json, product.md, roadmap.md, backlog.md
 .agency/architecture/         solution.md, decisions/register.md, ADR-NNNN-*.md
-.agency/work/{epic}/          design.md, tasks.md, refine-session.md
+.agency/work/{epic}/          design.md, tasks.md
 .agency/sprints/sprint-{id}/     plan.md, retrospective.md
 .agency/reviews/              agent byproducts: competitor-scan, metrics, digests
 ```
@@ -109,9 +111,9 @@ Override paths when the user names them explicitly in the request.
 
 ## Acceptance criteria
 
-- **Default:** Gherkin in `.agency/work/{epic}/tasks.md` (≥1 scenario per task).
-- **EARS:** optional via `/delivery-practice:tasks write --ears` or when rules are clearer than scenarios.
-- **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks** companion skill).
+- **Default:** Gherkin in `.agency/work/{epic}/tasks.md`, on the **story** (≥1 scenario each).
+- **EARS:** optional via `/delivery-practice:tasks --ears` or when rules are clearer than scenarios.
+- **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
 
 ## Design modes
 
@@ -129,10 +131,10 @@ Six personas share one skill library. Choose the default persona during
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
-| **Frontend Engineer** | `implement`, `code-review`, `merge-request` | Build — UI, client state, styling |
-| **Senior Frontend Engineer** | `code-review`, `design` | Peer review — diffs vs design and AC |
+| **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `ux-design-fix` | Build — UI, client state, styling |
+| **Senior Frontend Engineer** | `code-review`, `design`, `ux-design-review` | Peer review — diffs vs design and AC |
 | **Principal Frontend Engineer** | `final-code-review`, `code-review`, `design` | Final gate — architecture and AC on open PRs |
-| **Principal Architect** | `solution`, `adr`, `design`, `docs` | Architecture — solution, ADRs, epic design |
+| **Principal Architect** | `solution`, `adr`, `design`, `docs-review` | Architecture — solution, ADRs, epic design |
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 
@@ -147,14 +149,16 @@ Epic sign-off uses `/delivery-practice:validate` (companion skill), not a local 
 | `design.md` for one epic | **design** | Senior FE / Principal FE / Architect |
 | Implement code | **implement** | Frontend Engineer |
 | PR / branch code review | **code-review** | Senior FE / Principal FE |
-| Address review feedback | **code-review** `fix` | Frontend Engineer |
+| Address review feedback | **code-review-fix** | Frontend Engineer |
 | Final PR gate | **final-code-review** | Principal Frontend Engineer |
 | Open merge request | **merge-request** | Frontend Engineer |
-| Babysit MR/PR to merge-ready | **merge-request** `babysit` | Frontend Engineer |
+| Babysit MR/PR to merge-ready | **merge-request-babysit** | Frontend Engineer |
 | Review MR/PR as reviewer | **merge-request-review** | Senior FE / Principal FE |
 | UX review of implemented UI | **ux-design-review** | Frontend Engineer |
-| Autonomous epic delivery loop | **ralph** | Frontend Engineer |
-| Pre/post-sprint doc pass | **docs** | Principal Architect |
+| Address UX review feedback | **ux-design-fix** | Frontend Engineer |
+| Seed autonomous delivery loop | **ralph-loop-setup** | Frontend Engineer |
+| Run autonomous delivery loop | **ralph-loop** | Frontend Engineer |
+| Review a document set | **docs-review** | Principal Architect |
 | Bug investigation | **debug** | WebOps Engineer |
 | Technical debt audit | **tech-debt** | Principal Architect |
 | QA workspace prep | **deploy-qa** | QA / WebOps |
@@ -162,4 +166,4 @@ Epic sign-off uses `/delivery-practice:validate` (companion skill), not a local 
 | Exploratory AC pass | **exploratory-pass** | QA Engineer |
 | Document defects | **document-defects** | QA Engineer |
 | Platform health check | **platform-health** | WebOps Engineer |
-| PRD, phases, backlog, tasks, sprint, validate | `/delivery-practice:*` | Companion — any persona |
+| PRD, phases, tasks, backlog-refine, sprint-*, validate | `/delivery-practice:*` | Companion — any persona |

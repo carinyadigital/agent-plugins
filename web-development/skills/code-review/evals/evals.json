@@ -3,22 +3,86 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Code review — branch feat/cp08-sentry against .agency/work/cp08-performance/design.md and tasks.md.",
-      "expected_output": "Structured review verdict with blocking vs non-blocking findings mapped to Gherkin AC.",
+      "prompt": "Review my working diff — a new checkout API route with input validation and a repository call.",
+      "expected_output": "Structured verdict with change summary, effort rating, findings grouped by action label, and AC coverage. No source files modified.",
       "assertions": [
-        "Verdict distinguishes blocking and non-blocking findings",
-        "Findings reference tasks.md Gherkin AC or design.md scope",
-        "Does not implement new features beyond addressing review fix mode",
-        "Does not mark epic complete (validate is separate)"
+        "Emits Result, Risk level, Scope reviewed, Review effort in the header",
+        "Includes a Change summary section before the findings",
+        "Every finding is prefixed with [blocking], [warning], or [suggestion]",
+        "Every finding carries Category | Severity | Confidence",
+        "Every finding cites file path and line",
+        "Modifies no file outside .agency/reviews/",
+        "Closes by pointing at code-review-fix rather than offering to fix"
       ]
     },
     {
       "id": 2,
-      "prompt": "Code review fix — address the blocking findings from the prior review on feat/cp08-sentry.",
-      "expected_output": "Targeted fixes for review findings without changing behaviour outside scope.",
+      "prompt": "Review this one-line lockfile bump PR.",
+      "expected_output": "Eligibility gate skips or reduces the review; no sub-agents spawned.",
       "assertions": [
-        "Changes address stated review findings only",
-        "Does not expand scope beyond the prior review output"
+        "Does not spawn the full sub-agent set",
+        "States why the review was skipped or reduced in one line",
+        "Does not manufacture findings to justify the run"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Review this feature branch. Criterion 3 (retry on timeout) has no test, and there are four files under src/scheduler/ that the design doc never mentions.",
+      "expected_output": "requirements-reviewer connects the uncovered criterion to the unmapped files rather than reporting them as unrelated.",
+      "assertions": [
+        "Reports criterion 3 as fail or partial with evidence",
+        "Flags the src/scheduler/ files as scope drift",
+        "Connects the two — notes the unmapped work may be the uncovered criterion built elsewhere",
+        "Does not report them as two wholly unrelated findings"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Review the branch — it adds a migration that drops a column and backfills a new one.",
+      "expected_output": "Rated L effort on the data path. Data Integrity findings on reversibility and backfill safety.",
+      "assertions": [
+        "Rates review effort L because a data path is touched, regardless of diff size",
+        "Raises at least one Data Integrity category finding",
+        "Checks migration reversibility and rollback path",
+        "Checks backfill is batched, resumable, and safe to re-run",
+        "Applies the Data Integrity severity floors (irreversible migration → Critical)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Review this diff. It has a regex passed to a test matcher, and a SQL query built from a request parameter.",
+      "expected_output": "SQL injection raised as blocking. Test-matcher regex not raised as ReDoS.",
+      "assertions": [
+        "Raises the SQL injection as Security, blocking",
+        "Does NOT raise ReDoS on the test-matcher regex",
+        "Traces input provenance before raising either",
+        "Cites a CWE or OWASP identifier for the injection finding"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Re-review the branch — I've pushed two commits since your last review, and I disagreed with the retry-loop finding.",
+      "expected_output": "Incremental review of the delta only. Dismissed finding not re-raised. Delta reported.",
+      "assertions": [
+        "Reads .agency/reviews/{branch}.json and reviews from the recorded SHA",
+        "Does not re-raise the dismissed retry-loop finding for unchanged code",
+        "Includes a 'Since last review' section with fixed / still open / newly introduced",
+        "Updates the review state file with the new head SHA"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Review this large refactor — it spans 40 files, adds two modules, and touches the auth middleware.",
+      "expected_output": "L effort, parallel sub-agents, merged and verified findings.",
+      "assertions": [
+        "Spawns sub-agents in parallel rather than reviewing serially",
+        "Spawns architecture-reviewer (new modules) and a security-focused pass (auth)",
+        "Resolves Review Context once and shares it — no per-agent re-fetching",
+        "Deduplicates findings raised by more than one agent into a single entry",
+        "Raises confidence where independent agents corroborate the same defect",
+        "Does NOT treat two findings resting on the same source as corroboration",
+        "Runs finding-verifier per candidate before assigning action labels",
+        "Runs no sub-agent at the deep tier"
       ]
     }
   ]

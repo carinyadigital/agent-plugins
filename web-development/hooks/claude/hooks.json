@@ -1,0 +1,15 @@
+{
+  "description": "Ralph loop stop hook for self-referential delivery loops (Claude Code)",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/claude/stop-hook.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

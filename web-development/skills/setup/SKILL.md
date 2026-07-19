@@ -128,7 +128,7 @@ Record which persona greets the user by default.
 
 #### 3e — Companion practice
 
-If backlog, task AC, sprint, or epic validation is needed during implementation, recommend installing `delivery-practice` and invoking `/delivery-practice:backlog`, `/delivery-practice:tasks`, `/delivery-practice:sprint`, and `/delivery-practice:validate` — do not bundle those skills here.
+If backlog, task AC, sprint, or epic validation is needed during implementation, recommend installing `delivery-practice` and invoking `/delivery-practice:tasks --product`, `/delivery-practice:tasks`, `/delivery-practice:sprint-planning`, and `/delivery-practice:validate` — do not bundle those skills here.
 
 ### Step 4 — Summarize before write
 
@@ -171,7 +171,7 @@ Close with persona-appropriate handoff:
 
 **Either:**
 
-4. **Backlog** — `/delivery-practice:backlog` (companion; requires delivery-practice install)
+4. **Backlog** — `/delivery-practice:tasks --product` (companion; requires delivery-practice install)
 5. **Refresh** — `/web-development:setup --redo` to redo engineering defaults only.
 
 ## Pause and resume

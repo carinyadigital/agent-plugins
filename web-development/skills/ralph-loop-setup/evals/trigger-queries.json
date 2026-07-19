@@ -1,0 +1,47 @@
+[
+  {
+    "query": "Set up a ralph loop for the checkout-foundation epic, don't start it yet.",
+    "should_trigger": true
+  },
+  {
+    "query": "Configure an autonomous delivery loop for CHK01 — implement, review, fix, validate, MR.",
+    "should_trigger": true
+  },
+  {
+    "query": "I want a ralph loop with my own custom steps, walk me through it.",
+    "should_trigger": true
+  },
+  {
+    "query": "Seed a loop that repeats this prompt until the docs are complete.",
+    "should_trigger": true
+  },
+  {
+    "query": "What presets can a ralph loop use?",
+    "should_trigger": true
+  },
+  {
+    "query": "Start the ralph loop.",
+    "should_trigger": false,
+    "note": "ralph-loop — running, not seeding"
+  },
+  {
+    "query": "How far along is the ralph loop?",
+    "should_trigger": false,
+    "note": "ralph-loop status"
+  },
+  {
+    "query": "Cancel the ralph loop.",
+    "should_trigger": false,
+    "note": "ralph-loop cancel"
+  },
+  {
+    "query": "Break epic CHK01 into tasks with Gherkin acceptance criteria.",
+    "should_trigger": false,
+    "note": "tasks"
+  },
+  {
+    "query": "Implement CHK01-01 against the approved design.",
+    "should_trigger": false,
+    "note": "implement"
+  }
+]

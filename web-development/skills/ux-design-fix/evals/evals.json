@@ -1,0 +1,94 @@
+{
+  "skill_name": "ux-design-fix",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Address the UX review findings — 1 blocking accessibility, 2 warnings.",
+      "expected_output": "Review mode. Accessibility first, visual verification per fix, neighbour re-check, validation suite, committed.",
+      "assertions": [
+        "Reads the full review before modifying any file",
+        "Works the accessibility finding first",
+        "Uses the review's captures as the baseline rather than re-capturing one",
+        "Re-renders and re-captures each visual fix rather than assuming it worked",
+        "Re-runs the specific axe rule or traversal step that failed",
+        "Re-checks neighbouring layout for shift after a spacing change",
+        "Runs format, lint, typecheck, build, tests before committing",
+        "Updates review state with fixed / deferred / dismissed"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The summary card padding looks tighter than the cards around it. Can you fix it?",
+      "expected_output": "Direct mode. Captures a baseline first, fixes via the token, verifies against the baseline.",
+      "assertions": [
+        "Captures a baseline of the component before making any change",
+        "Does not apply an action-tier threshold — the instruction is the scope",
+        "Checks whether a spacing token exists and uses it rather than a hard-coded value",
+        "Compares the after-capture against its own baseline",
+        "Re-checks the sibling cards for shift",
+        "Does not restyle anything beyond the padding that was asked about",
+        "Writes no review state, since no review ran"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Build the new saved-cards step for the checkout flow.",
+      "expected_output": "Declines and routes to implement — this adds UI that does not exist.",
+      "assertions": [
+        "Does not treat this as a UI fix",
+        "Routes to implement",
+        "States the boundary: new UI and flows are implement, changes to existing UI are this skill"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Fix the review findings. There's no dev server available right now.",
+      "expected_output": "Stops rather than making unverifiable visual changes.",
+      "assertions": [
+        "States that visual fixes cannot be verified without a live environment",
+        "Does not make visual changes it cannot check",
+        "Does not report a finding as fixed without visual evidence"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "The card looks wrong.",
+      "expected_output": "Asks which card and what 'wrong' means before changing anything.",
+      "assertions": [
+        "Asks a clarifying question rather than guessing the element or the problem",
+        "Does not make a speculative change"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Fix the review. One finding wants a lighter placeholder to match the design, but that colour fails contrast.",
+      "expected_output": "Accessibility wins; the conflict is reported, not silently resolved.",
+      "assertions": [
+        "Does not implement a change that regresses accessibility",
+        "Reports the conflict between the design source and the contrast requirement",
+        "Defers to the design source owner rather than picking a side silently"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Fix the UX findings. One says the card is misaligned at 768, but the review's capture had an animating timer in frame.",
+      "expected_output": "Disputed with evidence from a stable re-capture.",
+      "assertions": [
+        "Re-captures with the determinism rules applied",
+        "Does not implement the disputed finding",
+        "Records it under Disputed with the reason",
+        "Marks it dismissed in review state rather than fixed"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Address the review. One finding suggests reworking the whole checkout step flow to be clearer.",
+      "expected_output": "Deferred as a redesign, not implemented.",
+      "assertions": [
+        "Defers rather than redesigning the flow",
+        "Routes it to the design source owner as a follow-up",
+        "Does not expand the change to accommodate it"
+      ]
+    }
+  ]
+}

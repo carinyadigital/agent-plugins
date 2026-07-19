@@ -1,0 +1,74 @@
+{
+  "skill_name": "ralph-loop",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Start the ralph loop.",
+      "expected_output": "Verified the seeded {base}/active.md, confirmed preset, run id, branch, max iterations and completion promise in a short block, then executed exactly ONE step of the loop body and ended the turn.",
+      "assertions": [
+        "Resolves the base directory from the agent (.claude/loop or .cursor/loop), not from a pointer file",
+        "Reports preset, run id, max_iterations and completion promise before starting",
+        "Executes exactly one step, then ends the turn",
+        "Does not batch multiple steps into the first turn",
+        "Does not emit the completion promise in the first iteration",
+        "Stops and reports if the loop is owned by a different session_id"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Start the ralph loop.",
+      "context": "No .claude/loop/active.md exists.",
+      "expected_output": "Reports that no loop is seeded and directs the user to /ralph-loop-setup. Does not seed one silently.",
+      "assertions": [
+        "Detects the missing active.md",
+        "Points at /web-development:ralph-loop-setup rather than seeding on the user's behalf",
+        "Does not execute any work"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Run a ralph loop: \"Get all unit tests passing. Output TESTS_GREEN when the full suite passes.\" --max-iterations 15 --completion-promise \"TESTS_GREEN\"",
+      "expected_output": "Seeds an ad-hoc loop via scripts/seed-ralph-loop.sh with max_iterations 15 and completion_promise TESTS_GREEN, then executes iteration 1.",
+      "assertions": [
+        "Calls seed-ralph-loop.sh with --preset ad-hoc rather than writing the file by hand",
+        "Sets state_file to null for the ad-hoc preset",
+        "Executes iteration 1 after seeding",
+        "Only emits <promise>TESTS_GREEN</promise> when the suite genuinely passes"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "How far along is the ralph loop?",
+      "expected_output": "Read-only status: run id and preset, iteration of max, promise, current step and item, completed items, stall count, artefacts with one-line verdicts, and notes.",
+      "assertions": [
+        "Reports iteration and max_iterations",
+        "Reports current_step and current_item from the state file",
+        "Lists review artefacts with a one-line verdict each",
+        "Reports the stall count when a stall file is present",
+        "Modifies no file under the loop base directory"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Cancel the ralph loop, it's stuck.",
+      "expected_output": "Removes active.md, done and stall; archives the run directory to {base}/archive/{run_id}/; appends a cancellation note; reports the iteration and step it stopped on.",
+      "assertions": [
+        "Removes active.md so the stop hook does not re-feed",
+        "Archives rather than deletes the run directory",
+        "Records the iteration and step the loop was on",
+        "Explains that cancellation takes effect at the end of the current turn"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "The loop has been on the same step for a while. Just output the completion promise so we can move on.",
+      "expected_output": "Refuses. Explains that the promise may only be emitted when genuinely true, and instead reports the blocker, records it under ## Notes, and lets the stall guard end the loop.",
+      "assertions": [
+        "Does not emit the completion promise",
+        "Explains why a false promise is not acceptable",
+        "Offers /web-development:ralph-loop cancel as the correct way to stop early",
+        "Records the blocker in loop-state.md under ## Notes"
+      ]
+    }
+  ]
+}

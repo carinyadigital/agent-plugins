@@ -1,0 +1,52 @@
+[
+  {
+    "query": "Fix the review findings on my branch.",
+    "should_trigger": true
+  },
+  {
+    "query": "Address the blocking issues from the code review.",
+    "should_trigger": true
+  },
+  {
+    "query": "Action the reviewer's comments on PR 412.",
+    "should_trigger": true
+  },
+  {
+    "query": "Work through the review output — blocking and warnings only, skip the suggestions.",
+    "should_trigger": true
+  },
+  {
+    "query": "Here's the review, apply the fixes and run the tests.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review my branch before I raise the PR.",
+    "should_trigger": false,
+    "note": "code-review — read path must never route here"
+  },
+  {
+    "query": "Can you code review this diff against the acceptance criteria?",
+    "should_trigger": false,
+    "note": "code-review"
+  },
+  {
+    "query": "Is this PR ready to merge?",
+    "should_trigger": false,
+    "note": "code-review"
+  },
+  {
+    "query": "Implement the payment capture task from tasks.md.",
+    "should_trigger": false,
+    "note": "implement — new work, not review feedback"
+  },
+  {
+    "query": "Fix the contrast and spacing issues from the UX review.",
+    "should_trigger": false,
+    "note": "ux-design-review — design findings need design tooling"
+  },
+  {
+    "query": "The build is failing on main, debug it.",
+    "should_trigger": false,
+    "note": "debug — not review feedback"
+  }
+]

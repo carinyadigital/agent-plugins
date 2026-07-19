@@ -1,9 +1,11 @@
 ---
 name: solution
 description: >
-  Use when the user wants to write, review, or refine system architecture at
-  .agency/architecture/solution.md (stub or full arc42-lite). Do NOT use for business
-  strategy (product), delivery phases (roadmap), epic list (backlog), per-epic
+  Use when the user wants to write or review system architecture at
+  .agency/architecture/solution.md (stub or full arc42-lite). Triggers on "write
+  the architecture", "solution design", "arc42", "review the architecture",
+  "does solution.md match what we built". Do NOT use for business
+  strategy (product), delivery phases (roadmap), epic list (tasks), per-epic
   design.md (design), task Gherkin (tasks), or ADR files (adr write). Story AC
   belongs in .agency/work/{epic}/tasks.md.
 license: MIT
@@ -12,14 +14,21 @@ allowed-tools:
   - Write
   - Glob
   - Grep
-argument-hint: "<mode: write|review|refine> [--stage stub|full] [--context <notes>]"
+argument-hint: "<mode: write|review> [--stage stub|full] [--context <notes>]"
+metadata:
+  author: Carinya Parc
+  version: "1.0"
+  owner: architecture
+  work_shape: generate-draft
+  output_class: draft-for-review
+  review_cadence: as-needed
 ---
 
 # Solution
 
 ## Conventions
 
-Read [../../references/web-development-conventions.md](../../references/web-development-conventions.md)
+Read [delivery-conventions.md](../tasks/references/delivery-conventions.md)
 for artefact boundaries.
 
 ## Artefact
@@ -50,11 +59,11 @@ path instead of the default.
 
 ## Related skills
 
-- `product`, `backlog`, `tasks`, `design`, `adr`
+- `product`, `tasks`, `design`, `adr`
 
 ## Router
 
-1. Mode: `write`, `review`, or `refine`.
+1. Mode: `write` or `review`.
 2. Resolve target path (default or user override).
 3. One prompt under [prompts/](prompts/).
 

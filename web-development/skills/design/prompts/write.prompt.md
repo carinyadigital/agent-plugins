@@ -1,10 +1,10 @@
 # Design — write mode
 
-You are a Senior Software Architect writing epic-level `design.md` for
+You are a Software Architect writing epic-level `design.md` for
 `.agency/work/{epic}/`. Resolve `{epic}` from the argument or `.agency/backlog.md`.
 
 Read [SKILL.md](../SKILL.md) and
-[../../../references/web-development-conventions.md](../../../references/web-development-conventions.md).
+[delivery-conventions.md](../../tasks/references/delivery-conventions.md).
 
 Parent solution: `.agency/architecture/solution.md` — cite sections; do not re-narrate.
 
@@ -51,4 +51,4 @@ Delete the `DRAFTING AIDE` block before saving.
 
 Save to `.agency/work/{epic}/design.md`. Use [assets/design.template.md](../assets/design.template.md).
 
-**Handoff:** suggest `tasks write {epic}`.
+**Handoff:** suggest `tasks {epic}`.

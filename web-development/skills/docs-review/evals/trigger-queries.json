@@ -1,0 +1,56 @@
+[
+  {
+    "query": "Review the docs in docs/ — are they any good?",
+    "should_trigger": true
+  },
+  {
+    "query": "Is our documentation consistent? I think a few pages contradict each other.",
+    "should_trigger": true
+  },
+  {
+    "query": "Do these docs overlap? Feels like the same thing is explained in three places.",
+    "should_trigger": true
+  },
+  {
+    "query": "Audit the handbook — structure, duplication, whether it hangs together.",
+    "should_trigger": true
+  },
+  {
+    "query": "Are the boundaries between these documents clear?",
+    "should_trigger": true
+  },
+  {
+    "query": "Review the README and the contributing guide for quality.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the broken links and inconsistent terminology in the docs.",
+    "should_trigger": false,
+    "note": "write operation — docs-review is read-only and reports only"
+  },
+  {
+    "query": "Write the architecture document for the payments service.",
+    "should_trigger": false,
+    "note": "solution — authoring, not review"
+  },
+  {
+    "query": "Review my branch before I raise the PR.",
+    "should_trigger": false,
+    "note": "code-review"
+  },
+  {
+    "query": "Review the checkout page for accessibility and design fidelity.",
+    "should_trigger": false,
+    "note": "ux-design-review"
+  },
+  {
+    "query": "Review the product strategy doc — is the positioning right?",
+    "should_trigger": false,
+    "note": "product review — judges the strategy, not the writing"
+  },
+  {
+    "query": "Run the sprint retrospective.",
+    "should_trigger": false,
+    "note": "sprint-retro"
+  }
+]

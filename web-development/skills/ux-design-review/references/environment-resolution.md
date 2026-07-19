@@ -47,27 +47,78 @@ Use whatever the host provides, in preference order:
 
 ## Standard review pass
 
-- **Viewports:** 1440×900 (desktop, default), 768 (tablet), 375 (mobile).
-- **Screenshots:** every finding gets one; captures go to the session
-  scratch directory or a gitignored `.ux-review/` — **never committed**.
-  Name them `<page-or-component>-<state>-<viewport>.png`.
-- **Console:** collect errors/warnings while exercising flows.
-- **Accessibility scan:** inject axe-core (`@axe-core/playwright` or
-  equivalent) on each changed page — see
-  [accessibility-checklist.md](accessibility-checklist.md) for what the
-  scan does and does not cover.
-- **State setup:** reach loading/empty/error states by throttling,
-  emptying data, or invalid input; a state you cannot reach is reported as
-  unverified, not assumed to pass.
+The capture itself — what to capture, in what states and viewports, and how to make it
+reproducible — is specified in
+[capture-protocol.md](capture-protocol.md). Drive the browser **once**, produce the
+evidence bundle there, and hand it to every lens. Do not let lenses drive the browser
+independently.
+
+## Browser coverage
+
+One Chromium, unless the host provides more. Cross-browser rendering differences
+(Safari's form controls, Firefox's font rendering) are **out of scope** and go in the
+coverage statement as a stated limitation, not silently omitted. A reader who assumes
+Safari was checked because the review did not say otherwise has been misled.
+
+## Review state
+
+Look for `.agency/reviews/ux-{branch}.json`. If present, this branch has been reviewed
+before and the run is **incremental**.
+
+```json
+{
+  "branch": "feat/checkout-summary",
+  "last_reviewed_sha": "a1b2c3d",
+  "design_source_ref": "figma:123:456@v12",
+  "reviewed_at": "2026-07-19T09:00:00Z",
+  "findings": [
+    {
+      "id": "ux-001",
+      "component": "PaymentForm",
+      "states": ["default", "focus"],
+      "viewports": [375, 1440],
+      "category": "Accessibility",
+      "criterion": "2.4.7",
+      "severity": "Major",
+      "action": "blocking",
+      "status": "open",
+      "summary": "Card number field has no visible focus indicator"
+    }
+  ],
+  "accepted_deviations": [
+    { "component": "SummaryCard", "what": "denser padding than mockup", "why": "work item PROJ-12 states intentional" }
+  ],
+  "unreachable_states": [
+    { "component": "PaymentForm", "state": "declined", "why": "needs gateway sandbox" }
+  ]
+}
+```
+
+On an incremental run:
+
+- Re-capture only the components the diff touched, plus anything whose design source
+  ref changed (see
+  [design-source-resolution.md](design-source-resolution.md) — Design-side drift).
+- **Never re-raise a `dismissed` finding** for unchanged code and an unchanged design.
+- **Never re-raise an `accepted_deviation`.** These are re-litigated on every run today,
+  which is the fastest way to make a reviewer stop reading the fidelity section.
+- **Retry `unreachable_states`** rather than skipping them silently — the environment
+  may have improved.
+- Report the delta: fixed, still open, newly introduced, and *newly diverged because the
+  design moved*.
 
 ## Recording the resolution
 
 ```text
 Environment: <URL | dev-server cmd | storybook | static-only>
 Driver: <playwright script | browser MCP | n/a>
+Browser: <Chromium only | list>
 Viewports: <tested list>
+Theme: <light only | light + dark | forced-colors tested>
+Review mode: <full | incremental from <sha>>
 Not testable: <states/flows unreachable, and why>
 ```
 
-Every verdict includes a coverage statement derived from this bundle:
-which lenses ran live, which ran static, which did not run.
+Every verdict includes a coverage statement derived from this bundle and the capture
+manifest: which lenses ran live, which ran static, which did not run, which states were
+unreachable, and which browsers and themes were **not** covered.

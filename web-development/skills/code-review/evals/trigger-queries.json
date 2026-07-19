@@ -1,20 +1,62 @@
 [
   {
-    "query": "Review branch feat/cp08-sentry against design.md and tasks.md.",
+    "query": "Review my branch before I raise the PR.",
     "should_trigger": true
   },
   {
-    "query": "Code review fix — address blocking findings from last review.",
+    "query": "Can you code review this diff against the acceptance criteria?",
     "should_trigger": true
   },
   {
-    "query": "Implement CP08-01 in code.",
-    "should_trigger": false,
-    "note": "implement skill"
+    "query": "Review PR 412 — is it ready to merge?",
+    "should_trigger": true
   },
   {
-    "query": "Sign off epic CP08 as complete.",
+    "query": "Check this change for security issues and scope creep before I push.",
+    "should_trigger": true
+  },
+  {
+    "query": "Re-review the branch, I've pushed three more commits since last time.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the review findings on my branch.",
     "should_trigger": false,
-    "note": "validate skill"
+    "note": "code-review-fix — write path must never route here"
+  },
+  {
+    "query": "Address the blocking issues from the code review.",
+    "should_trigger": false,
+    "note": "code-review-fix"
+  },
+  {
+    "query": "Apply the reviewer's comments from the PR.",
+    "should_trigger": false,
+    "note": "code-review-fix"
+  },
+  {
+    "query": "Review MR 88 as the assigned reviewer and post inline comments.",
+    "should_trigger": false,
+    "note": "merge-request-review — publishes to the provider"
+  },
+  {
+    "query": "Implement CHK01-03 against the design and tasks.",
+    "should_trigger": false,
+    "note": "implement"
+  },
+  {
+    "query": "Sign off the checkout-foundation epic against its acceptance criteria.",
+    "should_trigger": false,
+    "note": "validate"
+  },
+  {
+    "query": "Review the checkout page for accessibility and design fidelity.",
+    "should_trigger": false,
+    "note": "ux-design-review"
+  },
+  {
+    "query": "Open a PR for the current branch.",
+    "should_trigger": false,
+    "note": "merge-request"
   }
 ]

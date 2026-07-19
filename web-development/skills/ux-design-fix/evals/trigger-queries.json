@@ -1,0 +1,74 @@
+[
+  {
+    "query": "Fix the UX review findings.",
+    "should_trigger": true
+  },
+  {
+    "query": "Address the accessibility issues from the review — blocking only.",
+    "should_trigger": true
+  },
+  {
+    "query": "The summary card padding looks off compared to the others.",
+    "should_trigger": true,
+    "note": "direct mode — no review involved"
+  },
+  {
+    "query": "The checkout modal breaks on mobile, can you sort it out?",
+    "should_trigger": true,
+    "note": "direct mode"
+  },
+  {
+    "query": "The focus ring is invisible on the search field.",
+    "should_trigger": true,
+    "note": "direct mode, accessibility"
+  },
+  {
+    "query": "Swap the hard-coded padding for the token.",
+    "should_trigger": true
+  },
+  {
+    "query": "The header text wraps awkwardly at tablet width.",
+    "should_trigger": true,
+    "note": "direct mode, responsive"
+  },
+  {
+    "query": "Review the checkout page UI before I ship it.",
+    "should_trigger": false,
+    "note": "ux-design-review — read path"
+  },
+  {
+    "query": "Is this component accessible?",
+    "should_trigger": false,
+    "note": "ux-design-review — a question, not a change request"
+  },
+  {
+    "query": "Build the payment form component from the design.",
+    "should_trigger": false,
+    "note": "implement — new UI, not a change to existing UI"
+  },
+  {
+    "query": "Add a saved-cards step to the checkout flow.",
+    "should_trigger": false,
+    "note": "implement — adds a flow that did not exist"
+  },
+  {
+    "query": "Implement CHK01-03 against the design and tasks.",
+    "should_trigger": false,
+    "note": "implement"
+  },
+  {
+    "query": "Fix the review findings on my branch.",
+    "should_trigger": false,
+    "note": "code-review-fix — code findings, different verification toolchain"
+  },
+  {
+    "query": "Address the blocking issues from the code review.",
+    "should_trigger": false,
+    "note": "code-review-fix"
+  },
+  {
+    "query": "Rethink how the checkout flow is structured.",
+    "should_trigger": false,
+    "note": "neither — pattern-level redesign is a design conversation"
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "skill_name": "docs-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review the docs/ folder — 6 markdown files covering install, config, deployment, and API usage.",
+      "expected_output": "Report with scope statement, map, findings by tier, set-level checks, and a recommended order of work. No files modified.",
+      "assertions": [
+        "States what was included and excluded from scope",
+        "Says whether the doc map was declared or inferred",
+        "Reviews inline without spawning sub-agents at this size",
+        "Groups findings as blocking / warning / suggestion",
+        "Every finding cites a path and a heading or line",
+        "Ends with a recommended order of work, not just a finding list",
+        "Modifies no files"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Review these docs. getting-started.md says the default port is 8080; reference/config.md says 3000.",
+      "expected_output": "Divergent duplication raised as blocking, with a determination of which is correct.",
+      "assertions": [
+        "Classifies this as divergent duplication, not verbatim duplication",
+        "Rates it blocking",
+        "States which value is correct and the basis for that conclusion, or says explicitly it could not be established",
+        "Does not merely report that the two documents disagree"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Review the docs. The quickstart repeats the default port and the auth flow summary, then links to the reference pages for full detail.",
+      "expected_output": "Restatement recognised as legitimate and not flagged.",
+      "assertions": [
+        "Does NOT flag the quickstart repetition as duplication",
+        "Applies the restatement test — repetition that points at a source of truth is not a finding",
+        "Does not suggest removing orienting summaries from the quickstart"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Review this 40-document documentation site.",
+      "expected_output": "Per-document pass batched across agents; cross-document passes done by the parent with the whole set in view.",
+      "assertions": [
+        "Batches the per-document quality pass across document-quality-reviewer agents",
+        "Does NOT parallelise boundaries, duplication, or consistency checks",
+        "States the reason cross-document work is not batched, or simply performs it centrally",
+        "Reports set-wide patterns once with examples and a count rather than one finding per instance"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Review docs/. Two documents both look like the authority on deployment, and one page is linked from nothing.",
+      "expected_output": "Contested boundary and orphan both raised; boundary sequenced first in the recommended order.",
+      "assertions": [
+        "Raises the contested boundary between the two deployment documents",
+        "Raises the orphan under set-level navigation",
+        "Suggests one document owns the procedure and the other links to it",
+        "Orders boundary resolution before downstream consistency fixes"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Review the docs. Every page uses sentence-case headings and second person, which is not my preference.",
+      "expected_output": "Consistent house style not raised as a finding.",
+      "assertions": [
+        "Does NOT flag consistently-applied house style as an error",
+        "Would flag only inconsistent application of the convention",
+        "Does not impose an external documentation framework on the set"
+      ]
+    }
+  ]
+}

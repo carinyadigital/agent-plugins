@@ -1,0 +1,47 @@
+[
+  {
+    "query": "Start the ralph loop.",
+    "should_trigger": true
+  },
+  {
+    "query": "Run an iterative loop: keep going until all tests pass, output COMPLETE when done.",
+    "should_trigger": true
+  },
+  {
+    "query": "Cancel the ralph loop, it's stuck.",
+    "should_trigger": true
+  },
+  {
+    "query": "How far along is the ralph loop?",
+    "should_trigger": true
+  },
+  {
+    "query": "Kick off the autonomous loop over the seeded epic and let it run overnight.",
+    "should_trigger": true
+  },
+  {
+    "query": "Set up a ralph loop for the checkout-foundation epic, don't start it yet.",
+    "should_trigger": false,
+    "note": "ralph-loop-setup — seeding, not running"
+  },
+  {
+    "query": "Configure a ralph loop with a custom set of steps.",
+    "should_trigger": false,
+    "note": "ralph-loop-setup"
+  },
+  {
+    "query": "Implement CHK01-01 against the approved design.",
+    "should_trigger": false,
+    "note": "implement — a single task, once"
+  },
+  {
+    "query": "Review this branch against the acceptance criteria.",
+    "should_trigger": false,
+    "note": "code-review"
+  },
+  {
+    "query": "Is epic CHK01 done? Validate against tasks.md.",
+    "should_trigger": false,
+    "note": "validate"
+  }
+]

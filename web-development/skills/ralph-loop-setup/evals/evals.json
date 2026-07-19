@@ -1,0 +1,63 @@
+{
+  "skill_name": "ralph-loop-setup",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Set up a ralph loop for epic checkout-foundation (CHK01), don't start it yet.",
+      "expected_output": "Resolved the epic, derived a dependency-safe task sequence, resolved the environment, and called scripts/seed-ralph-loop.sh with --preset engineering-delivery and every value passed via --set. Reported files written, configuration, expected branch, and how to start.",
+      "assertions": [
+        "Calls scripts/seed-ralph-loop.sh rather than hand-writing active.md",
+        "Passes --agent matching the host (claude or cursor)",
+        "Task sequence respects dependencies declared in tasks.md",
+        "Proposes max_iterations sized to the task count, not the bare default of 50",
+        "Writes into .claude/loop/ or .cursor/loop/ with no root-level pointer file",
+        "Does not start the loop, execute steps, or launch sub-agents",
+        "Does not create or switch git branches",
+        "Reports how to start the loop (/web-development:ralph-loop start)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Set up a ralph loop for epic checkout-foundation.",
+      "context": ".agency/work/checkout-foundation/tasks.md does not exist.",
+      "expected_output": "Fails loudly, naming the missing file, and stops. Does not invent a task sequence or seed a partial loop.",
+      "assertions": [
+        "Names the missing file explicitly",
+        "Does not seed any loop file",
+        "Does not fabricate tasks or acceptance criteria"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want a ralph loop but not for code — I want it to research a topic and produce a briefing.",
+      "expected_output": "Recommends the custom preset, interviews for the step list and completion criteria, writes the steps to a file, and seeds with --preset custom --steps-file.",
+      "assertions": [
+        "Does not force the engineering-delivery preset onto a non-engineering job",
+        "Asks for the steps and how each one advances",
+        "Points at references/preset-authoring.md for the step contract",
+        "Ensures every step writes durable state so the stall guard works"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Set up a loop with no iteration limit that runs until I say stop.",
+      "expected_output": "Explains that a loop with neither a completion promise nor an iteration limit is refused by the seed script, and proposes either a promise or a limit before seeding.",
+      "assertions": [
+        "Does not seed an unbounded loop",
+        "Explains the hard ceiling of 200 iterations",
+        "Proposes a concrete completion promise or iteration limit"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Re-seed the loop for this epic.",
+      "context": "A loop is already active at iteration 12.",
+      "expected_output": "Reports that a loop is in progress at iteration 12, and asks whether to cancel it or overwrite with --force. Does not silently clobber it.",
+      "assertions": [
+        "Detects the in-progress loop before seeding",
+        "Reports the current iteration",
+        "Requires explicit confirmation before overwriting"
+      ]
+    }
+  ]
+}

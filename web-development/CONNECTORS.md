@@ -10,7 +10,7 @@ MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edi
 
 | Practice | Relationship | Invoke |
 | -------- | ------------ | ------ |
-| **delivery-practice** | Companion practice | `/delivery-practice:backlog`, `/delivery-practice:tasks`, `/delivery-practice:sprint`, `/delivery-practice:validate` |
+| **delivery-practice** | Companion practice | `/delivery-practice:tasks --product`, `/delivery-practice:tasks`, `/delivery-practice:backlog-refine`, `/delivery-practice:sprint-planning`, `/delivery-practice:sprint-retro`, `/delivery-practice:validate` |
 
 Install `delivery-practice` alongside this plugin when implementation needs backlog
 alignment, task AC, sprint cadence, or epic sign-off. Do not bundle duplicate copies

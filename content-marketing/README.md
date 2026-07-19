@@ -7,7 +7,7 @@ is vendored from elsewhere.
 
 Install standalone or after `agency-hub:setup` recommends it. Declare
 `delivery-practice` as a **companion practice** for backlog and research synthesis —
-invoke `/delivery-practice:backlog` and `/delivery-practice:synthesize-research`
+invoke `/delivery-practice:tasks --product` and `/delivery-practice:synthesize-research`
 directly rather than bundling duplicate copies.
 
 ## Personas
@@ -32,7 +32,7 @@ Invoke skills directly — there is no separate agent plugin per persona:
 For backlog alignment and research themes, invoke the companion practice:
 
 ```
-/delivery-practice:backlog review
+/delivery-practice:backlog-refine
 /delivery-practice:synthesize-research
 ```
 

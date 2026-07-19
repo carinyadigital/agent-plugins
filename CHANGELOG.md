@@ -8,6 +8,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### delivery-practice / web-development — skills parity with carinyaparc/skills 2.1.0
+
+Breaking skill reshape aligned with upstream [carinyaparc/skills](https://github.com/carinyaparc/skills) 2.1.0. Artefact paths remain under `.agency/`.
+
+#### delivery-practice
+
+- **BREAKING:** `backlog` removed — merged into `tasks` (`tasks --product` → `.agency/backlog.md`)
+- **BREAKING:** `sprint` → `sprint-planning` + `sprint-retro`
+- **Added:** `backlog-refine`
+- **BREAKING:** `refine` mode removed from `product` and `roadmap` (use `review`)
+
+#### web-development
+
+- **BREAKING:** `code-review fix` → `code-review-fix`; reviews are read-only
+- **BREAKING:** `ux-design-review fix` → `ux-design-fix`
+- **BREAKING:** `merge-request babysit` → `merge-request-babysit`
+- **BREAKING:** `docs` → `docs-review` (read-only)
+- **BREAKING:** `ralph` → `ralph-loop` + `ralph-loop-setup`; hooks under `hooks/{claude,cursor}/`; seed via `scripts/seed-ralph-loop.sh`
+- **BREAKING:** `refine` mode removed from `solution`
+
 ## [2026-07-05] — Connector integrations
 
 New bundled MCP connectors and updated connector documentation across five

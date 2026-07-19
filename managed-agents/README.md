@@ -4,7 +4,7 @@ Cookbooks wire **catalogue plugins** to cloud platforms. Each cookbook points at
 agent prompt in `agents/<slug>/` — it does not fork or vendor prompts in `carinyaparc`.
 
 Instance binding (which agent, which repos, which schedule) lives in
-`carinyaparc/config/deployments/` and is applied by `scripts/deploy-squad-agents.sh`.
+`carinyaparc/config/deployments/` and is applied by `scripts/deploy-squad-agents.py`.
 
 ## Placement matrix
 
@@ -14,7 +14,7 @@ Instance binding (which agent, which repos, which schedule) lives in
 | **Cursor Cloud Agents** | `frontend-engineer`, `senior-frontend-engineer`, `principal-frontend-engineer`, `qa-engineer`, `webops-engineer` | Code, review, QA, platform; Cursor Automations API |
 | **Either** | `principal-architect` | Architecture; resolve at deploy time |
 
-Product Manager and Delivery Lead personas live in the **`delivery-practice`** plugin — invoke skills directly (`/delivery-practice:product`, `/delivery-practice:sprint`); no standalone agent plugin or CMA cookbook. SEO Specialist persona lives in **`search-optimisation`** — invoke skills directly (`/search-optimisation:keyword-research`, etc.); no standalone agent plugin or CMA cookbook.
+Product Manager and Delivery Lead personas live in the **`delivery-practice`** plugin — invoke skills directly (`/delivery-practice:product`, `/delivery-practice:sprint-planning`); no standalone agent plugin or CMA cookbook. SEO Specialist persona lives in **`search-optimisation`** — invoke skills directly (`/search-optimisation:keyword-research`, etc.); no standalone agent plugin or CMA cookbook.
 
 Spike scope (Sprint 3): `frontend-engineer` only (product-manager and delivery-lead cookbooks retired with agent plugins).
 
@@ -31,16 +31,16 @@ managed-agents/<slug>/
 
 ```bash
 # Plan changes (no side effects)
-./scripts/deploy-squad-agents.sh --dry-run --instance ../carinyaparc
+python3 scripts/deploy-squad-agents.py --dry-run --instance ../carinyaparc
 
 # Apply schedules (API or dashboard-import JSON)
-./scripts/deploy-squad-agents.sh apply --instance ../carinyaparc
+python3 scripts/deploy-squad-agents.py apply --instance ../carinyaparc
 
 # Spike: weekly planning only
-./scripts/deploy-squad-agents.sh apply --ritual weekly-planning --dry-run-first --instance ../carinyaparc
+python3 scripts/deploy-squad-agents.py apply --ritual weekly-planning --dry-run-first --instance ../carinyaparc
 
 # Manual trigger (when platform supports run-now)
-./scripts/deploy-squad-agents.sh apply --run-now --ritual weekly-planning --instance ../carinyaparc
+python3 scripts/deploy-squad-agents.py apply --run-now --ritual weekly-planning --instance ../carinyaparc
 ```
 
 Thin instance wrapper: `carinyaparc/scripts/deploy-agents.sh`.

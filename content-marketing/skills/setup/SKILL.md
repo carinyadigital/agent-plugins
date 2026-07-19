@@ -126,7 +126,7 @@ Record which persona greets the user by default.
 
 #### 3e — Companion practice
 
-If backlog alignment or research synthesis is needed, recommend installing `delivery-practice` and invoking `/delivery-practice:backlog` and `/delivery-practice:synthesize-research` — do not bundle those skills here.
+If backlog alignment or research synthesis is needed, recommend installing `delivery-practice` and invoking `/delivery-practice:tasks --product` and `/delivery-practice:synthesize-research` — do not bundle those skills here.
 
 ### Step 4 — Summarize before write
 
@@ -150,7 +150,7 @@ Close with persona-appropriate handoff:
 
 1. **Calendar** — `/content-marketing:content-calendar write`
 2. **Inventory** — `/content-marketing:curate-content`
-3. **Backlog** — `/delivery-practice:backlog` (companion; requires delivery-practice install)
+3. **Backlog** — `/delivery-practice:tasks --product` (companion; requires delivery-practice install)
 
 **Content Writer path:**
 

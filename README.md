@@ -55,7 +55,7 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 **You have:** `.agency/backlog.md` with epics in the Now phase and open risks.
 
-**Run:** `/delivery-practice:sprint plan 3` — point at the backlog and name sprint goals.
+**Run:** `/delivery-practice:sprint-planning 3` — point at the backlog and name sprint goals.
 
 **You get:** a sprint plan with scoped work, dependencies, and stakeholder-facing summary — aligned to your practice profile cadence and escalation model.
 
@@ -78,7 +78,7 @@ Twelve job-titled entry points for digital agency work. Each name maps to **exac
 | Persona | What it does | Command |
 |---|---|---|
 | **Product Manager** | Product strategy, roadmap, specs from problem statements | `/delivery-practice:product write` |
-| **Delivery Lead** | Sprint planning, stakeholder updates, metrics review | `/delivery-practice:sprint plan` |
+| **Delivery Lead** | Sprint planning, stakeholder updates, metrics review | `/delivery-practice:sprint-planning` |
 | **Content Strategist** | Editorial calendar and social inventory curation | `/content-marketing:content-calendar write` |
 | **Content Writer** | Blog posts, recipes, captions, and light edits for CMS import | `/content-marketing:draft-post` |
 | **SEO Specialist** | Keyword research, technical audits, on-page content review | `/search-optimisation:keyword-research` |
@@ -98,8 +98,8 @@ Each persona below is named for the job it does. Start with the [named personas]
 
 | Persona | What it does | Plugin | Command |
 |---|---|---|---|
-| **Backlog Owner** | Epic breakdown, Now-phase scope, delivery risks | `delivery-practice` | `/delivery-practice:backlog write` |
-| **Task Decomposer** | Gherkin acceptance criteria per epic | `delivery-practice` | `/delivery-practice:tasks write` |
+| **Backlog Owner** | Epic breakdown, Now-phase scope, delivery risks | `delivery-practice` | `/delivery-practice:tasks --product` |
+| **Task Decomposer** | Gherkin acceptance criteria per epic | `delivery-practice` | `/delivery-practice:tasks` |
 | **Epic Validator** | Final sign-off against AC and roadmap gates | `delivery-practice` | `/delivery-practice:validate` |
 | **Research Synthesizer** | Themes from interviews, surveys, and tickets | `delivery-practice` | `/delivery-practice:synthesize-research` |
 | **Competitive Analyst** | Competitive analysis brief | `delivery-practice` | `/delivery-practice:competitive-brief` |
@@ -112,7 +112,7 @@ Each persona below is named for the job it does. Start with the [named personas]
 | **ADR Author** | Architecture decision register and ADR files | `web-development` | `/web-development:adr write` |
 | **Epic Designer** | Epic-level technical design | `web-development` | `/web-development:design write` |
 | **MR Author** | Merge request description from the branch | `web-development` | `/web-development:merge-request` |
-| **Docs Steward** | Pre/post-sprint documentation pass | `web-development` | `/web-development:docs review` |
+| **Docs Steward** | Document-set quality and consistency review | `web-development` | `/web-development:docs-review` |
 | **Debugger** | Reproduce, isolate, diagnose, fix | `web-development` | `/web-development:debug` |
 | **Tech Debt Prioritizer** | Prioritize remediation work | `web-development` | `/web-development:tech-debt` |
 | **WebOps Engineer** | CI/CD, deployment, platform health | `web-development` | `/web-development:platform-health` |
@@ -138,7 +138,7 @@ ux-design/                # wireframes
 search-optimisation/      # keyword research, technical audit, content SEO review
 web-development/          # solution, adr, design, implement, review, QA, platform
 managed-agents/           # CMA + Cursor Cloud Agent cookbooks
-scripts/                  # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.sh
+scripts/                  # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.py
 .claude-plugin/
   marketplace.json        # plugin registry (name: carinya-digital)
 .cursor-plugin/
@@ -212,8 +212,8 @@ In **Settings → Plugins → Add plugin**:
 Headless deployment cookbooks live in [`managed-agents/`](./managed-agents/). Engineering personas deploy to **Cursor Cloud Agents**; content personas to **Claude Managed Agents**; architecture resolves at deploy time.
 
 ```bash
-./scripts/deploy-squad-agents.sh --dry-run --instance ../your-instance-repo
-./scripts/deploy-squad-agents.sh apply --instance ../your-instance-repo
+python3 scripts/deploy-squad-agents.py --dry-run --instance ../your-instance-repo
+python3 scripts/deploy-squad-agents.py apply --instance ../your-instance-repo
 ```
 
 See [`managed-agents/README.md`](./managed-agents/README.md) for platform matrix, security tiers, and required secrets.
@@ -223,7 +223,7 @@ See [`managed-agents/README.md`](./managed-agents/README.md) for platform matrix
 | | What it is | Where it lives |
 |---|---|---|
 | **Practice plugins** | Self-contained service bundles — skills, hooks, MCP, and a template practice profile. Install the ones you need. | `<practice>/` |
-| **Skills** | Domain expertise Claude draws on automatically — and slash actions you trigger explicitly: `/delivery-practice:backlog`, `/web-development:implement`. | `<practice>/skills/<skill>/SKILL.md` |
+| **Skills** | Domain expertise Claude draws on automatically — and slash actions you trigger explicitly: `/delivery-practice:tasks --product`, `/web-development:implement`. | `<practice>/skills/<skill>/SKILL.md` |
 | **Personas** | Job titles that map to skills — shared libraries inside each practice, not separate plugins. | Each practice's `README.md` |
 | **Instance profile** | Git-versioned org facts, brand path, target bindings, squad charters. | `<instance-repo>/config/instance.json`, `brand/`, `squads/` |
 | **Practice profile** | Per-practice conventions — stack defaults, persona preference, output formats, review gates. | `~/.claude/plugins/config/digital-agency/<practice>/CLAUDE.md` |
@@ -269,7 +269,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 |---|---|
 | **[agency-hub](./agency-hub)** | Instance bootstrap via `setup`. v2 adds community skill discovery, installation QA, and update management (designed, deferred — stubs exist for shape validation). |
 
-**Companion practices:** `content-marketing` and `search-optimisation` invoke `/delivery-practice:backlog` and related skills rather than bundling duplicates. `web-development` invokes delivery skills for planning cadence during implementation. Neither direction requires the companion installed — skills degrade gracefully and document the pairing.
+**Companion practices:** `content-marketing` and `search-optimisation` invoke `/delivery-practice:tasks --product` and related skills rather than bundling duplicates. `web-development` invokes delivery skills for planning cadence during implementation. Neither direction requires the companion installed — skills degrade gracefully and document the pairing.
 
 ## MCP connectors
 
@@ -319,7 +319,7 @@ These are reference templates. They get better when you tune them to how your fi
 - **Swap connectors.** Point `.mcp.json` at your source control, hosting, design, and tracker stack. Skills fall back gracefully when a connector is not configured.
 - **Bring your brand and templates.** Drop terminology, house style, and branded templates into the instance `brand/` directory and practice profiles.
 - **Fork skills for house style.** Every skill is a markdown file under `skills/`. Edit steps, gates, and output formats.
-- **Deploy squads.** Bind targets, configure secrets, and apply schedules with `deploy-squad-agents.sh`.
+- **Deploy squads.** Bind targets, configure secrets, and apply schedules with `deploy-squad-agents.py`.
 
 No build step. Everything is markdown and JSON.
 
@@ -350,11 +350,12 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | Command | Skill | What it does |
 |---|---|---|
 | `/delivery-practice:setup` | setup | Learns cadence, personas, escalation; writes practice profile |
-| `/delivery-practice:product` | product | write, review, refine — `.agency/product.md` |
-| `/delivery-practice:roadmap` | roadmap | write, review, refine — `.agency/roadmap.md` |
-| `/delivery-practice:backlog` | backlog | write, review, refine — `.agency/backlog.md` |
-| `/delivery-practice:tasks` | tasks | write, review, refine — `.agency/work/{epic}/tasks.md` |
-| `/delivery-practice:sprint` | sprint | plan, retrospective |
+| `/delivery-practice:product` | product | write, review — `.agency/product.md` |
+| `/delivery-practice:roadmap` | roadmap | write, review — `.agency/roadmap.md` |
+| `/delivery-practice:tasks` | tasks | `--product` → `.agency/backlog.md`; `{epic}` → `.agency/work/{epic}/tasks.md` |
+| `/delivery-practice:backlog-refine` | backlog-refine | Groom backlog or judge sprint readiness |
+| `/delivery-practice:sprint-planning` | sprint-planning | Sprint plan — `.agency/sprints/sprint-{id}/plan.md` |
+| `/delivery-practice:sprint-retro` | sprint-retro | Sprint retrospective — `.agency/sprints/sprint-{id}/retrospective.md` |
 | `/delivery-practice:validate` | validate | Epic completion sign-off against AC and roadmap gates |
 | `/delivery-practice:write-spec` | write-spec | Feature spec or PRD from a problem statement |
 | `/delivery-practice:stakeholder-update` | stakeholder-update | Status update tailored to audience |
@@ -398,17 +399,21 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | Command | Skill | What it does |
 |---|---|---|
 | `/web-development:setup` | setup | Learns stack, personas, target binding, connectors |
-| `/web-development:solution` | solution | write, review, refine — `.agency/architecture/solution.md` |
+| `/web-development:solution` | solution | write, review — `.agency/architecture/solution.md` |
 | `/web-development:adr` | adr | plan, write, review — ADR register and decision records |
 | `/web-development:design` | design | write, review — `.agency/work/{epic}/design.md` |
 | `/web-development:implement` | implement | Implement a task against approved design and AC |
-| `/web-development:code-review` | code-review | run, fix — peer review against design and tasks |
+| `/web-development:code-review` | code-review | Read-only peer review against design and tasks |
+| `/web-development:code-review-fix` | code-review-fix | Address code-review findings without behaviour change |
 | `/web-development:final-code-review` | final-code-review | Final technical gate on open PRs |
 | `/web-development:merge-request` | merge-request | Open merge request for implemented work |
+| `/web-development:merge-request-babysit` | merge-request-babysit | Drive an open MR/PR to merge-ready |
 | `/web-development:merge-request-review` | merge-request-review | Review an MR/PR as its reviewer |
-| `/web-development:ux-design-review` | ux-design-review | UX review of implemented UI |
-| `/web-development:ralph` | ralph | Autonomous epic delivery loop |
-| `/web-development:docs` | docs | Pre/post-sprint documentation pass |
+| `/web-development:ux-design-review` | ux-design-review | Read-only UX review of implemented UI |
+| `/web-development:ux-design-fix` | ux-design-fix | Address UX review findings or direct UI fixes |
+| `/web-development:ralph-loop-setup` | ralph-loop-setup | Seed and configure an autonomous delivery loop |
+| `/web-development:ralph-loop` | ralph-loop | Run an autonomous epic delivery loop |
+| `/web-development:docs-review` | docs-review | Read-only document-set quality and consistency review |
 | `/web-development:debug` | debug | Bug investigation and fix |
 | `/web-development:tech-debt` | tech-debt | Technical debt audit and prioritization |
 | `/web-development:deploy-qa` | deploy-qa | Prepare QA workspace |

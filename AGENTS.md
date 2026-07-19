@@ -8,7 +8,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 ├── brand-creative/                  # practice plugin — brand-guide, brand-voice, setup (MECE owned)
 │   ├── references/                  # brand-conventions + synced meta-framework files
 │   └── skills/
-├── delivery-practice/               # practice plugin — product, backlog, sprint, validate, … (MECE owned)
+├── delivery-practice/               # practice plugin — product, tasks, sprint-planning, validate, … (MECE owned)
 │   ├── references/                  # delivery-conventions + synced meta-framework files
 │   └── skills/
 ├── content-marketing/               # practice plugin — calendar, drafts, captions, analyse-media (MECE owned)
@@ -51,7 +51,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 │       ├── subagents/*.yaml         #   depth-1 leaf workers
 │       ├── steering-examples.json
 │       └── README.md                #   security tier + handoff notes
-└── scripts/                         # sync-references.py, validate.py, plugin-check.py
+└── scripts/                         # sync-references.py, validate.py, plugin-check.py, deploy-squad-agents.py
 ```
 
 Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `delivery-practice/skills/`, `content-marketing/skills/`, `ux-design/skills/`, `search-optimisation/skills/`, `web-development/skills/`, `agency-hub/skills/`).
@@ -66,8 +66,8 @@ Run `python3 scripts/validate.py` before opening a PR — it lints marketplace a
 | ------ | ----------- | ------ |
 | `agency-hub` | `setup` + marketplace skills (ported from strategy-builder-hub) | Shipped; skills-qa alignment with agency framework — refine later |
 | `brand-creative` | `setup`, `brand-guide`, `brand-voice` | Shipped; first MECE practice plugin |
-| `delivery-practice` | `setup` + 13 delivery skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; second MECE practice plugin — Product Manager and Delivery Lead personas, no separate agent plugins |
-| `content-marketing` | `setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Shipped; third MECE practice plugin — Content Strategist and Content Writer personas, no separate agent plugins; reads `brand-voice.md` via artifact consumption; invokes `/delivery-practice:backlog` and `/delivery-practice:synthesize-research` as companion skills |
+| `delivery-practice` | `setup` + delivery skills (`product`, `roadmap`, `tasks`, `backlog-refine`, `sprint-planning`, `sprint-retro`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; second MECE practice plugin — Product Manager and Delivery Lead personas, no separate agent plugins |
+| `content-marketing` | `setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Shipped; third MECE practice plugin — Content Strategist and Content Writer personas, no separate agent plugins; reads `brand-voice.md` via artifact consumption; invokes `/delivery-practice:tasks --product` and `/delivery-practice:synthesize-research` as companion skills |
 | `ux-design` | `setup`, `wireframe` | Shipped; minimal v1 — no dedicated persona; writes wireframes to `<instance-root>/design/`; downstream practices read via artifact consumption |
 | `search-optimisation` | `setup` + 3 SEO skills (`keyword-research`, `technical-seo-audit`, `content-seo-review`) | Shipped; one persona (SEO Specialist), no separate agent plugin; invokes `/delivery-practice:competitive-brief` as companion skill |
 
@@ -82,7 +82,7 @@ Bootstraps a git-versioned instance repo (`config/instance.json`, `config/target
 | `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `design`, `validate` (synced from delivery-practice) | Shipped; not yet operationally proven |
 | `qa-engineer` | Engineering | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Shipped; not yet operationally proven |
 | `webops-engineer` | Engineering | `deploy-qa`, `debug`, `platform-health` | Shipped; not yet operationally proven |
-| `principal-architect` | Engineering (Architecture) | `solution`, `adr`, `design`, `docs` | Shipped; not yet operationally proven |
+| `principal-architect` | Engineering (Architecture) | `solution`, `adr`, `design`, `docs-review` | Shipped; not yet operationally proven |
 
 Product Manager and Delivery Lead are **personas inside `delivery-practice`**, not standalone agent plugins. Content Strategist and Content Writer are **personas inside `content-marketing`**, not standalone agent plugins. SEO Specialist is a **persona inside `search-optimisation`**, not a standalone agent plugin. Invoke skills directly: `/delivery-practice:product`, `/content-marketing:content-calendar write`, `/search-optimisation:keyword-research`, etc.
 

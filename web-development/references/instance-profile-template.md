@@ -197,8 +197,8 @@ Practices are MECE — one self-contained plugin per practice. Planning and cade
 | Service (`services.enabled`) | Practice plugin | Companion practice | Squad charters | Notes |
 |---|---|---|---|---|
 | `brand-creative` | `brand-creative` | none | — | Shipped; run `/brand-creative:setup` after bootstrap |
-| `web-development` | `web-development` | `delivery-practice` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/delivery-practice:backlog`, `/delivery-practice:sprint` |
-| `content-marketing` | `content-marketing` | `delivery-practice` | `content` | Shipped; run `/content-marketing:setup` after bootstrap; needs `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` |
+| `web-development` | `web-development` | `delivery-practice` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/delivery-practice:tasks --product`, `/delivery-practice:sprint-planning` |
+| `content-marketing` | `content-marketing` | `delivery-practice` | `content` | Shipped; run `/content-marketing:setup` after bootstrap; needs `/delivery-practice:tasks --product`, `/delivery-practice:synthesize-research` |
 | `social-media` | `social-media` | TBD | `content` | Practice pending — interim: `content-marketing` skills for captions and curation |
 | `seo` | `search-optimisation` | `delivery-practice` | `seo` | Shipped; run `/search-optimisation:setup` after bootstrap; needs `/delivery-practice:competitive-brief` |
 

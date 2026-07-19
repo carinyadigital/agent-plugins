@@ -10,7 +10,7 @@ MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edi
 
 | Practice | Relationship | Invoke |
 | -------- | ------------ | ------ |
-| **delivery-practice** | Companion practice | `/delivery-practice:backlog`, `/delivery-practice:synthesize-research` |
+| **delivery-practice** | Companion practice | `/delivery-practice:tasks --product`, `/delivery-practice:synthesize-research` |
 
 Install `delivery-practice` alongside this plugin when content planning needs backlog
 alignment or research synthesis. Do not bundle duplicate copies of those skills here.

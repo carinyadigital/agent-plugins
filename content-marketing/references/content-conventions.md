@@ -35,7 +35,7 @@ not bundle local copies:
 
 | Need | Invoke |
 | ---- | ------ |
-| Content epic registry, backlog alignment | `/delivery-practice:backlog` |
+| Content epic registry, backlog alignment | `/delivery-practice:tasks --product` |
 | Research themes for planning | `/delivery-practice:synthesize-research` |
 
 Recommend `delivery-practice` as a co-install. Document in CONNECTORS.md.
@@ -77,7 +77,7 @@ skills.
 | Select best caption | **edit-content** | Content Writer |
 | Blog post seed | **draft-post** | Content Writer |
 | Recipe seed | **draft-recipe** | Content Writer |
-| Backlog alignment | `/delivery-practice:backlog` | Content Strategist (companion) |
+| Backlog alignment | `/delivery-practice:tasks --product` | Content Strategist (companion) |
 | Research for planning | `/delivery-practice:synthesize-research` | Content Strategist (companion) |
 
 ## Personas

@@ -26,13 +26,13 @@
       "name": "delivery-practice",
       "displayName": "Delivery Practice",
       "source": "./delivery-practice",
-      "description": "Complete delivery practice in one install — setup interview, product strategy, backlog and sprint cadence, validation, and operational skills. Two personas (Product Manager, Delivery Lead), one owned skill library."
+      "description": "Complete delivery practice in one install — setup interview, product strategy, tasks/backlog decomposition, sprint planning and retro, validation, and operational skills. Two personas (Product Manager, Delivery Lead), one owned skill library."
     },
     {
       "name": "content-marketing",
       "displayName": "Content Marketing",
       "source": "./content-marketing",
-      "description": "Complete content practice in one install — setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes delivery-practice for backlog and research."
+      "description": "Complete content practice in one install — setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes delivery-practice for tasks and research."
     },
     {
       "name": "ux-design",

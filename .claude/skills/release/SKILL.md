@@ -35,7 +35,7 @@ before running this on autopilot.
 - **Does not** decide semver bump type for you. Propose one from the commit
   messages touching the plugin (`fix:` → patch, `feat:` → minor, anything
   with `BREAKING CHANGE` → major) but confirm with the user before writing it.
-- **Does not** run `scripts/deploy-squad-agents.sh` or touch Managed Agent
+- **Does not** run `scripts/deploy-squad-agents.py` or touch Managed Agent
   deployment — that's a separate, later concern from `managed-agents/`.
 - **Does not** invent a single repo-wide version. Each plugin's
   `.claude-plugin/plugin.json` / `.cursor-plugin/plugin.json` is versioned

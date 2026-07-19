@@ -96,7 +96,7 @@ When marketplace management ships: watched registries ≠ trust, restrictive all
 2. Install **`core`** if that practice needs shared roles (`web-development` → `core`; `brand-creative` → none).
 3. Run that practice's **`setup`** (e.g. `/brand-creative:setup`).
 4. Bind targets — website pointer (`.agency/target.json`), social credentials when ready.
-5. Deploy the first scheduled agent — see `digital-agency/scripts/deploy-squad-agents.sh`.
+5. Deploy the first scheduled agent — see `digital-agency/scripts/deploy-squad-agents.py`.
 
 ## References
 

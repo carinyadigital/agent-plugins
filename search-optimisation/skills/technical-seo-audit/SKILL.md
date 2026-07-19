@@ -1,19 +1,15 @@
 ---
 name: technical-seo-audit
 description: >
-  Use when auditing production SEO — metadata, canonical/OG, sitemap, robots,
-  structured data, and Core Web Vitals signals. Creates GitHub issues labelled
-  type:seo-recommendation with owning squad. Do NOT implement fixes — hand to
-  engineering squads.
+  Audit production SEO — metadata, canonical/OG, sitemap, robots, structured
+  data, and Core Web Vitals signals. Use when auditing a live site or filing SEO
+  recommendations. Creates GitHub issues labelled `type:seo-recommendation` with
+  owning squad. Do NOT implement fixes — hand to engineering squads.
 license: MIT
-allowed-tools:
-  - Read
-  - Write
-  - Glob
-  - Grep
-  - Shell
+allowed-tools: Read Write Glob Grep Bash
 argument-hint: "[--url base-url] [--focus metadata|sitemap|structured-data|cwv]"
 metadata:
+  author: Carinya Parc
   version: "0.1.0"
   owner: search-optimisation
   review_cadence: quarterly
@@ -23,49 +19,75 @@ metadata:
 
 # Technical SEO audit
 
-## When to use
+You audit the production site and file prioritised recommendations as GitHub
+issues. Pass optional `--url` and `--focus` after the skill name. Do not open
+PRs or edit application code.
 
-Audit the production site and file prioritized recommendations as GitHub issues.
+Read [search-optimisation-conventions.md](../../references/search-optimisation-conventions.md).
 
-## What this skill does not do
+## Inputs
 
-- Does not open PRs or edit code
-- Does not publish content
-- Does not replace keyword research (`keyword-research`)
+| Input          | Location                                      | Required   |
+| -------------- | --------------------------------------------- | ---------- |
+| Audit URL      | Target production URL or `--url`              | Yes        |
+| Focus area     | `--focus` or full audit                       | No         |
+| robots/sitemap | Public paths + repo config                    | If present |
+| Squad labels   | Instance squad charter                        | If present |
 
-## Preconditions
+## Steps
 
-Read `${CLAUDE_PLUGIN_ROOT}/references/search-optimisation-conventions.md`.
+1. Resolve target via `.agency/target.json` or instance config. Default URL from
+   target production URL (or `--url`).
+2. Read public `robots.txt` and sitemap config in repo when available. Read squad
+   charter for label conventions when present.
+3. Audit via Playwright (live) and repo files per the checklist below.
+4. Create GitHub issues via the github connector, priority-ordered.
+5. If no issues were created, write an audit trail to
+   `.agency/work/seo/technical-seo-audit-{YYYY-MM-DD}.md`.
 
-- Playwright connector for live site checks
-- Production URL from target config or `--url` override
+## Checklist
 
-## Trust spine
+### Metadata (sample key pages)
 
-| Failure mode | Mitigation |
-| ------------ | ---------- |
-| Blast radius | Issues only — implementation handed to engineering squads |
-| DoD bypass | Each issue includes evidence and recommended fix |
-| Brand safety | N/A — technical findings only |
+Homepage, primary index pages, and sample detail pages per content type:
 
-## Workflow
+- `<title>` unique and under ~60 chars
+- `<meta name="description">` present, unique, under ~160 chars
+- `<link rel="canonical">` correct
+- Open Graph: `og:title`, `og:description`, `og:image`, `og:url`
 
-Follow [prompts/run.prompt.md](prompts/run.prompt.md).
+### Sitemap and robots
 
-Check via **playwright** connector and repo files:
+- `robots.txt` allows indexing of public content
+- Sitemap reachable and lists published content
+- No stale or 404 URLs in sitemap
 
-| Area | Repo / live |
-| ---- | ----------- |
-| Title, meta description, canonical | Live pages |
-| Open Graph / Twitter cards | Live pages |
-| `robots.txt`, `sitemap.xml` | Public static paths + live |
-| JSON-LD structured data | Live content pages |
-| Core Web Vitals | Live (lab signals via playwright) |
+### Structured data
 
-## Outputs
+- Content-type pages use appropriate schema (Article, Product, Recipe, etc.)
+- Note rich-results errors in issues
 
-GitHub issues per finding:
+### Core Web Vitals (lab)
+
+- Note LCP/CLS/INP concerns from Playwright performance metrics when available
+- Flag render-blocking or missing image dimensions as recommendations
+
+## Issue format
+
+| Priority | Examples |
+| -------- | -------- |
+| P1 | Indexing blockers, missing canonicals, broken sitemap |
+| P2 | Missing OG tags, incomplete structured data |
+| P3 | CWV improvements, metadata polish |
+
+Each issue:
 
 - **Title:** `[SEO] {short description}`
 - **Labels:** `type:seo-recommendation`, owning squad label per conventions
 - **Body:** evidence, impact, recommended fix, page URL
+
+## Quality rules
+
+- Each issue has evidence (URL, screenshot note, or HTML snippet)
+- Owning squad label assigned per conventions
+- Actionable fix description for engineering — implementation is out of scope

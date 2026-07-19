@@ -46,9 +46,9 @@ intelligence), Google Search Console (search performance).
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
 | **setup** | `--check-integrations` | GitHub, Playwright, Ahrefs |
-| **keyword-research** | run | SEO intelligence (optional — enriches volume and difficulty signals) |
-| **technical-seo-audit** | run | Playwright (live checks), GitHub (issues) |
-| **content-seo-review** | run | Source control (PR review); none required for local seed paths |
+| **keyword-research** | — | SEO intelligence (optional — enriches volume and difficulty signals) |
+| **technical-seo-audit** | — | Playwright (live checks), GitHub (issues) |
+| **content-seo-review** | — | Source control (PR review); none required for local seed paths |
 
 Competitive landscape: invoke `/delivery-practice:competitive-brief` — requires
 `delivery-practice` install, not a connector category here.

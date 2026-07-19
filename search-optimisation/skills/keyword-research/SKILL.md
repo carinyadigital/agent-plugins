@@ -1,18 +1,17 @@
 ---
 name: keyword-research
 description: >
-  Use when researching keywords for a topic area — search intent, volume signals,
-  and content opportunities. Output at .agency/work/seo/keyword-research-{topic}.md on
-  the target repo. Do NOT use for technical site audits (technical-seo-audit) or
-  competitive product analysis (/delivery-practice:competitive-brief).
+  Research keywords for a topic area — search intent, volume signals, and content
+  opportunities. Use when planning content around a topic or building keyword
+  targets for the calendar. Writes
+  `.agency/work/seo/keyword-research-{topic}.md` on the target repo. Do NOT use
+  for technical site audits (technical-seo-audit) or competitive product analysis
+  (competitive-brief).
 license: MIT
-allowed-tools:
-  - Read
-  - Write
-  - Glob
-  - Grep
+allowed-tools: Read Write Glob Grep
 argument-hint: "<topic-slug>"
 metadata:
+  author: Carinya Parc
   version: "0.1.0"
   owner: search-optimisation
   review_cadence: quarterly
@@ -22,42 +21,67 @@ metadata:
 
 # Keyword research
 
-## When to use
+You research keywords for a topic and document findings for content planning.
+Pass a kebab-case topic slug after the skill name — it becomes the filename segment.
 
-Research keywords for a topic and document findings for content calendar planning.
+Read [search-optimisation-conventions.md](../../references/search-optimisation-conventions.md).
 
-## What this skill does not do
+## Inputs
 
-- Does not audit technical SEO (`technical-seo-audit`)
-- Does not draft content seeds (`/content-marketing:draft-post`, `draft-recipe`)
-- Does not open GitHub issues
-- Does not produce a full competitive brief (`/delivery-practice:competitive-brief`)
+| Input        | Location                                      | Required   |
+| ------------ | --------------------------------------------- | ---------- |
+| Topic slug   | Argument (kebab-case)                         | Yes        |
+| Product / backlog | `.agency/product.md`, backlog epics      | If present |
+| Existing research | `.agency/work/seo/keyword-research-*.md` | Check dupes|
+| Locale       | Instance profile or user input                | Yes        |
 
-## Preconditions
+## Steps
 
-Read `${CLAUDE_PLUGIN_ROOT}/references/search-optimisation-conventions.md`.
+1. Resolve target repo via `.agency/target.json` or instance target config.
+2. Read product/backlog context when present. Check existing SEO work files to
+   avoid duplication.
+3. Research via web search: SERP analysis, People Also Ask, related queries.
+   Match locale/geography from instance profile or user input. Prioritise intent
+   aligned with the customer's product and content strategy.
+4. Write `.agency/work/seo/keyword-research-{topic}.md` using the output format.
+5. Confirm recommendations are actionable for content calendar planning.
 
-- Target repo in workspace
-- Topic slug in kebab-case for filename
+## Quality rules
 
-## Trust spine
+- Primary keyword clearly identified with rationale
+- Actionable content recommendations (not keyword lists alone)
+- No duplicate of existing keyword research files
+- Realistic for the customer's current search maturity
+- Companion only — full competitive landscape is `competitive-brief`
 
-| Failure mode | Mitigation |
-| ------------ | ---------- |
-| Direct apply vs draft | Research doc for human review before calendar slots |
-| Blast radius | Writes only under resolved SEO work directory |
-| Scope boundaries | Keyword research only — not competitive landscape brief |
+## Output format
 
-## Workflow
+```markdown
+# Keyword research — {Topic title}
 
-Follow [prompts/run.prompt.md](prompts/run.prompt.md). Topic slug becomes the filename segment.
+**Date:** {YYYY-MM-DD}
+**Topic slug:** {topic}
+**Researcher:** search-optimisation
 
-## Outputs
+## Business context
+Why this topic matters for the customer's site and audience.
 
-`.agency/work/seo/keyword-research-{topic}.md` on the **target** repo (or override path per conventions).
+## Primary keyword
+| Keyword | Intent | Priority | Notes |
+| ------- | ------ | -------- | ----- |
 
-## Related skills
+## Secondary keywords
+| Keyword | Intent | Priority | Notes |
 
-- `/content-marketing:content-calendar` — consumes keyword targets for slot briefs
-- `/content-marketing:draft-post`, `draft-recipe` — apply keywords in seeds
-- `/delivery-practice:competitive-brief` — broader competitive landscape (companion)
+## Long-tail opportunities
+Bulleted list with suggested content angles.
+
+## Content recommendations
+Specific content ideas with target keyword per slot.
+
+## Competitor snapshot
+Brief notes on who ranks and content gaps (not a full competitive brief).
+
+## Open questions
+Items needing human sign-off.
+```

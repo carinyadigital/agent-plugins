@@ -1,25 +1,5 @@
 {
   "mcpServers": {
-    "github": {
-      "type": "http",
-      "url": "https://api.githubcopilot.com/mcp/"
-    },
-    "gitlab": {
-      "type": "http",
-      "url": "https://gitlab.com/api/v4/mcp"
-    },
-    "notion": {
-      "type": "http",
-      "url": "https://mcp.notion.com/mcp"
-    },
-    "slack": {
-      "type": "http",
-      "url": "https://mcp.slack.com/mcp",
-      "oauth": {
-        "clientId": "1601185624273.8899143856786",
-        "callbackPort": 3118
-      }
-    },
     "canva": {
       "type": "http",
       "url": "https://mcp.canva.com/mcp"

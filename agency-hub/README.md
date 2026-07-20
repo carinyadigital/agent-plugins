@@ -22,7 +22,7 @@ Interviews the business, creates or binds an instance repo, writes `config/` and
 | `--full` | Full interview including seed material review |
 | `--redo` | Ignore existing profile; re-interview and overwrite on confirmation |
 | `--resume` | Continue a paused interview |
-| `--check-integrations` | Report MCP connector status and legacy target-pointer paths; no interview |
+| `--check-integrations` | Report target binding status and legacy target-pointer paths; no interview |
 
 ## Config tiers
 
@@ -40,8 +40,8 @@ Link-first: `setup` provides a template URL; the human creates the private repo 
 
 ## Prerequisites
 
-- **GitHub connector** — optional for `--check-integrations`; required when binding target repos hosted on GitHub.
 - **Instance template** — `digital-agency-instance` template repo (when published). Until then, create an empty private repo with the directory skeleton described in `references/agency-setup-framework.md`.
+- **MCP connectors** — optional; configured in practice plugins (e.g. GitHub in **web-development**), not in agency-hub.
 
 ## Commands (v1)
 
@@ -51,7 +51,7 @@ Link-first: `setup` provides a template URL; the human creates the private repo 
 | `/agency-hub:setup --quick` | Minimal path: business name, one practice, one target |
 | `/agency-hub:setup --redo` | Ignore existing profile, re-interview, overwrite on confirmation |
 | `/agency-hub:setup --resume` | Continue a paused interview |
-| `/agency-hub:setup --check-integrations` | Report connector status only, no interview |
+| `/agency-hub:setup --check-integrations` | Report target binding status only, no interview |
 
 ## Commands (v2 — deferred)
 

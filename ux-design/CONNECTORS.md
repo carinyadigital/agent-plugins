@@ -4,7 +4,7 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edit that file to swap providers or add stack-specific servers.
+Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for your stack.
 
 ## Companion practice (recommended co-install)
 
@@ -18,8 +18,8 @@ practice works standalone.
 
 ## Connectors for this plugin
 
-| Category | Placeholder | Bundled in `.mcp.json` |
-| -------- | ----------- | ---------------------- |
+| Category | Placeholder | Server |
+| -------- | ----------- | ------ |
 | Design | `~~design` | Figma |
 
 Other options in each category: Canva (`https://mcp.canva.com/mcp` — quick visual

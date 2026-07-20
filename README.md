@@ -123,7 +123,7 @@ What's in the repo:
 
 - **Practice plugins** covering brand, delivery, content, UX, SEO, and web engineering — each with a `setup` interview, a living `CLAUDE.md` practice profile every skill reads, and **propose profile update** so conventions can be recorded mid-engagement without re-running setup.
 - **Agency Hub** for instance bootstrap — git-versioned org profile, target bindings, and (v2) community skill marketplace management.
-- **MCP connectors** bundled per practice in `.mcp.json` — source control, hosting, design, project trackers, analytics, and browser automation.
+- **MCP connectors** — a minimal default per practice in `.mcp.json`; add more for your stack (source control, hosting, chat, trackers, analytics).
 - **[Named personas](#named-personas)** — twelve primary entry points plus the [extended catalog](#extended-persona-catalog) above.
 - **Managed-agent cookbooks** for Cursor Cloud Agents and Claude Managed Agents — see [managed-agents/README.md](./managed-agents/README.md).
 
@@ -273,19 +273,19 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 
 ## MCP connectors
 
-Each practice plugin bundles recommended MCP servers in its `.mcp.json`. Edit that file to swap providers or add stack-specific servers. Skills produce usable output when no connector is configured — connectors are enhancements, not hard dependencies unless a skill doc says otherwise.
+Each practice plugin bundles a **minimal default** — one or two MCP servers most relevant to that practice — in its `.mcp.json`. Add more entries for your stack; skills produce usable output when no connector is configured.
 
-| Practice | Bundled providers (examples) | Categories |
+| Practice | Default bundled | Primary categories |
 |---|---|---|
-| **agency-hub** | GitHub | source control |
-| **brand-creative** | Slack, Notion, Atlassian, Figma, Fireflies | chat, knowledge base, design, meeting transcription |
-| **delivery-practice** | Slack, Linear, Asana, Atlassian, Notion, Figma, Amplitude, Intercom, Fireflies, GitHub, GitLab, Vercel, Playwright, Context7, Next.js DevTools | chat, project tracker, design, analytics, feedback, competitive intel, source control, hosting, browser automation |
-| **content-marketing** | GitHub, GitLab, Notion, Slack, Canva | source control, knowledge base, chat, design |
+| **agency-hub** | — | no bundled MCP |
+| **brand-creative** | Fireflies | meeting transcription |
+| **delivery-practice** | Atlassian, Amplitude | project tracker, product analytics |
+| **content-marketing** | Canva | creative / design |
 | **ux-design** | Figma | design |
-| **search-optimisation** | GitHub, GitLab, Playwright, Ahrefs | source control, browser automation, SEO intelligence |
-| **web-development** | GitHub, GitLab, Vercel, Slack, Linear, Datadog, Sentry, Playwright, Context7, Next.js DevTools | source control, hosting, chat, observability, error tracking, browser automation |
+| **search-optimisation** | Ahrefs | SEO intelligence |
+| **web-development** | GitHub, Playwright, Context7 | source control, browser automation, framework docs |
 
-Plugins use `~~category` placeholders in skill prose (e.g. `~~project tracker`, `~~hosting`) so workflows stay tool-agnostic. See each practice's [CONNECTORS.md](./delivery-practice/CONNECTORS.md) for the full placeholder map.
+No server is duplicated across plugins. **agency-hub** does not bundle MCP — connectors live in practice plugins. Co-install companion practices or edit `.mcp.json` to add Slack, Notion, Vercel, Sentry, and other common servers — see each practice's CONNECTORS.md for the full placeholder map and suggested additions.
 
 > Connectors marked "customer subscription" need your own account and API key. Configure them in each plugin's `.mcp.json` or via `claude mcp` in Claude Code.
 
@@ -333,7 +333,7 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 |---|---|---|
 | `/agency-hub:setup` | setup | Interview → bind instance repo → write config → hand off |
 | `/agency-hub:setup --quick` | setup | Minimal path: business name, one practice, one target |
-| `/agency-hub:setup --check-integrations` | setup | Report MCP connector status only |
+| `/agency-hub:setup --check-integrations` | setup | Report target binding status only |
 
 v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …) are designed but not shipped — see [agency-hub/README.md](./agency-hub/README.md).
 

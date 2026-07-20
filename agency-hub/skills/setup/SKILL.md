@@ -5,8 +5,8 @@ description: >
   creation (link-first), interviews business identity/services/cadence/targets,
   writes config/instance.json and target skeletons, then hands off to
   brand-creative setup. Use on first install, when the user says "set up
-  my instance" or "bootstrap my agency workspace", or to re-run integration checks
-  after adding MCP connectors.
+  my instance" or "bootstrap my agency workspace", or to re-check target bindings
+  after config changes.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
 disable-model-invocation: true
@@ -24,7 +24,7 @@ metadata:
 
 ## When to use
 
-First install of digital-agency for real work; cold-start instance bootstrap; re-check integrations after connector changes. Explicit invocation only.
+First install of digital-agency for real work; cold-start instance bootstrap; re-check target bindings after config changes. Explicit invocation only.
 
 ## What this skill does not do
 
@@ -46,7 +46,7 @@ Partial interview → write resume JSON (`config/.setup-resume.json` in instance
 
 ## Trust spine
 
-Structured-aggregation; integration table reports ✓ only on successful MCP probe. Instance config is team-shared git artefacts — show full diff before write. Target pointer files in external repos require separate confirmation per repo.
+Structured-aggregation; instance config is team-shared git artefacts — show full diff before write. Target pointer files in external repos require separate confirmation per repo. MCP connectors are configured in practice plugins, not agency-hub.
 
 ## Workflow
 
@@ -88,19 +88,15 @@ If neither `--quick` nor `--full` was passed, show preamble (framework § Preamb
 
 Tell user: "Say **pause** anytime — I'll save progress for `--resume`."
 
-### Step 3 — Integrations (Part 0)
+### Step 3 — Target bindings (Part 0)
 
 Before business questions (skip if `--check-integrations` only):
 
-> This setup can use GitHub to validate target repos and read seed material. Let me check what's connected.
+> I'll verify target bindings for any repos already configured.
 
-For each server in `${CLAUDE_PLUGIN_ROOT}/.mcp.json`:
+For each bound target repo, verify `.agency/target.json` exists and includes `name`, `instance`, and `target`.
 
-- Probe if possible → ✓ connected
-- Configured but not probeable → ⚪ configured but not verified
-- Missing → ✗ not found + manual fallback
-
-Write findings. For each bound target repo, verify `.agency/target.json` exists and includes `name`, `instance`, and `target`.
+Report: **valid**, **missing fields**, or **not found**. Name manual next steps. MCP connectors are not part of agency-hub — run `/<practice>:setup --check-integrations` on installed practice plugins to probe GitHub, Figma, etc.
 
 If `--check-integrations` only, stop here unless user asks to continue setup.
 

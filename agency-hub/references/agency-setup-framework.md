@@ -11,7 +11,7 @@ Every `agency-hub` bootstrap follows this framework. The `setup` skill implement
 | `/agency-hub:setup --full` | Full interview; review seed documents when provided |
 | `/agency-hub:setup --redo` | Ignore existing profile; re-interview and overwrite on confirmation |
 | `/agency-hub:setup --resume` | Continue a paused interview from the saved session file |
-| `/agency-hub:setup --check-integrations` | Report MCP connector status; no interview unless user asks to continue |
+| `/agency-hub:setup --check-integrations` | Report target binding status; no interview unless user asks to continue |
 
 Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load the session first; other flags adjust what happens after resume.
 
@@ -180,18 +180,18 @@ If the user declines now, note in `instance.json` `seedMaterial.notes` that bran
 
 ## Integrations — `--check-integrations`
 
-Read `${CLAUDE_PLUGIN_ROOT}/.mcp.json`. For each server:
-
-| Server | Enables in agency-hub |
-|---|---|
-| github | Validate target repo access; read seed repos |
+Agency-hub does **not** bundle MCP servers. This flag verifies **target bindings** only.
 
 For each bound target repo, verify:
 
 - `.agency/target.json` exists at the target repo root
 - `target.json` includes `name`, `instance`, and `target` fields
 
-Report: **connected** (successful probe), **configured but not verified**, or **not found**. Name degraded steps. Offer to continue setup after the report.
+Report: **valid**, **missing fields**, or **not found**. Name manual next steps.
+
+To probe MCP connectors (GitHub, Figma, etc.), run `/<practice>:setup --check-integrations` on installed practice plugins.
+
+Offer to continue setup after the report.
 
 ## Confirm and summarize
 

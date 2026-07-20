@@ -4,34 +4,6 @@
       "type": "http",
       "url": "https://api.githubcopilot.com/mcp/"
     },
-    "gitlab": {
-      "type": "http",
-      "url": "https://gitlab.com/api/v4/mcp"
-    },
-    "vercel": {
-      "type": "http",
-      "url": "https://mcp.vercel.com"
-    },
-    "slack": {
-      "type": "http",
-      "url": "https://mcp.slack.com/mcp",
-      "oauth": {
-        "clientId": "1601185624273.8899143856786",
-        "callbackPort": 3118
-      }
-    },
-    "linear": {
-      "type": "http",
-      "url": "https://mcp.linear.app/mcp"
-    },
-    "datadog": {
-      "type": "http",
-      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"
-    },
-    "sentry": {
-      "type": "http",
-      "url": "https://mcp.sentry.dev/mcp"
-    },
     "playwright": {
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest"]
@@ -39,10 +11,6 @@
     "context7": {
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp"]
-    },
-    "next-devtools": {
-      "command": "npx",
-      "args": ["-y", "next-devtools-mcp@latest"]
     }
   }
 }

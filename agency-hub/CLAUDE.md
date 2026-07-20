@@ -24,14 +24,11 @@ Instance-wide org facts live in the instance repo at:
 
 ---
 
-## Available integrations
+## Connectors
 
-| Integration | Status | Fallback if unavailable |
-|---|---|---|
-| GitHub | [✓ / ✗] | Registry browse and install fall back to manual URL paste |
-| Slack | [✓ / ✗] | Registry-sync digest written to file instead of chat |
+Agency-hub does not bundle MCP servers. Install practice plugins and configure connectors in their `.mcp.json` files — see each practice's `CONNECTORS.md`.
 
-*Re-check: `/agency-hub:setup --check-integrations`*
+*Re-check target bindings: `/agency-hub:setup --check-integrations`*
 
 ---
 

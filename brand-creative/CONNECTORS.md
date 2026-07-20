@@ -4,30 +4,32 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edit that file to swap providers or add stack-specific servers.
+Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for your stack; skills fall back to manual upload and discovery reports when a connector is not configured.
 
-## Connectors for this plugin
+## Bundled in `.mcp.json`
 
-| Category | Placeholder | Bundled in `.mcp.json` |
-| -------- | ----------- | ---------------------- |
-| Chat | `~~chat` | Slack |
-| Knowledge base | `~~knowledge base` | Notion |
-| Wiki / docs | `~~knowledge base` | Atlassian (Confluence) |
-| Design | `~~design` | Figma |
+| Category | Placeholder | Server |
+| -------- | ----------- | ------ |
 | Meeting transcription | `~~meeting transcription` | Fireflies |
 
-Other options in each category: Canva (`https://mcp.canva.com/mcp` — design and
-template generation; OAuth per user), Google Drive or SharePoint (file storage).
+## Common additions
+
+| Category | Placeholder | Examples |
+| -------- | ----------- | -------- |
+| Design | `~~design` | Figma — see **ux-design** |
+| Knowledge base | `~~knowledge base` | Notion, Atlassian Confluence — see **delivery-practice** |
+| Chat | `~~chat` | Slack |
+| Creative / templates | `~~design` | Canva — see **content-marketing** |
+
+Gong (meeting transcription) and Microsoft Teams (chat) are also supported when
+configured in `.mcp.json`.
 
 ## Used by skill
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **setup** | discover chain | Notion, Confluence, Slack, Figma, Fireflies |
-| **brand-voice** | discover | Notion, Confluence, Slack, Figma, Fireflies |
-| **brand-guide** | write | Figma (primary for visual tokens) |
+| **setup** | discover chain | Fireflies (+ any additions) |
+| **brand-voice** | discover | Meeting transcription, knowledge base, chat (optional) |
+| **brand-guide** | write | Figma (primary for visual tokens — add or use **ux-design**) |
 | **brand-voice** | write | Manual upload or discovery report (no MCP required) |
 | **brand-voice** | enforce | None — reads local `brand-voice.md` |
-
-Gong (meeting transcription) and Microsoft Teams (chat) are also supported when
-configured in `.mcp.json`.

@@ -4,26 +4,37 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~project tracker` might mean Linear, Asana, or any other tracker with an MCP server.
 
-Plugins are **tool-agnostic** — they describe workflows in terms of categories (project tracker, design, product analytics, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
+Plugins are **tool-agnostic** — they describe workflows in terms of categories (project tracker, design, product analytics, etc.) rather than specific products. The `.mcp.json` pre-configures a minimal default; add any MCP server in that category to `.mcp.json`.
 
-MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edit that file to swap providers or add stack-specific servers.
+## Bundled in `.mcp.json`
 
-## Connectors for this plugin
+| Category | Placeholder | Server |
+| -------- | ----------- | ------ |
+| Project tracker / wiki | `~~project tracker` | Atlassian (Jira / Confluence) |
+| Product analytics | `~~product analytics` | Amplitude |
 
-| Category | Placeholder | Bundled in `.mcp.json` |
-| -------- | ----------- | ---------------------- |
-| Chat | `~~chat` | Slack |
-| Project tracker | `~~project tracker` | Linear, Asana, Atlassian (Jira/Confluence) |
-| Knowledge base | `~~knowledge base` | Notion |
-| Design | `~~design` | Figma |
-| Product analytics | `~~product analytics` | Amplitude, Pendo |
-| User feedback | `~~user feedback` | Intercom |
-| Meeting transcription | `~~meeting transcription` | Fireflies |
+## Common additions
+
+| Category | Placeholder | Examples |
+| -------- | ----------- | -------- |
+| Chat | `~~chat` | Slack (`https://mcp.slack.com/mcp`) |
+| Knowledge base | `~~knowledge base` | Notion (`https://mcp.notion.com/mcp`) |
+| Design | `~~design` | Figma — see **ux-design** |
+| User feedback | `~~user feedback` | Intercom, Pendo |
+| Meeting transcription | `~~meeting transcription` | Fireflies — see **brand-creative** |
 | Competitive intelligence | `~~competitive intelligence` | Similarweb |
-| Source control | `~~source control` | GitHub, GitLab |
-| CI/CD | `~~CI/CD` | — |
-| Hosting / deploy | `~~hosting` | Vercel |
-| Browser automation | `~~browser automation` | Playwright |
-| Framework docs | `~~framework docs` | Context7, Next.js DevTools |
+| Source control | `~~source control` | GitHub — see **web-development** |
+| Hosting / deploy | `~~hosting` | Vercel — add to **web-development** |
+| Browser automation | `~~browser automation` | Playwright — bundled in **web-development** |
 
-Other options in each category: Microsoft Teams (chat), monday.com or ClickUp (project tracker), Confluence or Guru (knowledge base), Mixpanel or Heap (product analytics), Productboard or Canny (user feedback), Gong or Dovetail (meeting transcription), Crayon or Klue (competitive intelligence).
+Other options: Linear, Asana, monday.com (project tracker); Mixpanel, Heap (analytics); Gong (meeting transcription); Crayon, Klue (competitive intelligence).
+
+## Used by skill
+
+| Skill | Mode | Connectors |
+| ----- | ---- | ---------- |
+| **setup** | `--check-integrations` | Atlassian, Amplitude (+ any additions) |
+| **metrics-review** | — | Product analytics |
+| **stakeholder-update** | — | Chat (optional) |
+| **synthesize-research** | — | Meeting transcription, knowledge base (optional) |
+| **competitive-brief** | — | Competitive intelligence (optional) |

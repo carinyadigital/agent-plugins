@@ -4,50 +4,44 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edit that file to swap providers or add stack-specific servers.
+Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for your stack.
 
 ## Companion practice (recommended co-install)
 
 | Practice | Relationship | Invoke |
 | -------- | ------------ | ------ |
 | **delivery-practice** | Companion practice | `/delivery-practice:competitive-brief` |
+| **web-development** | Companion practice | Playwright for live technical audits |
 
-Install `delivery-practice` alongside this plugin when SEO work needs competitive
-landscape input. Do not bundle a duplicate copy of `competitive-brief` here.
+Install `delivery-practice` when SEO work needs competitive landscape input.
+Co-install **web-development** (or add Playwright to `.mcp.json`) for live browser checks in **technical-seo-audit**.
 
-## Optional companion (content-marketing)
+## Bundled in `.mcp.json`
 
-| Practice | Relationship | Invoke |
-| -------- | ------------ | ------ |
-| **content-marketing** | Optional pairing | `/content-marketing:draft-post`, `/content-marketing:draft-recipe` |
-
-Neither practice requires the other. `content-seo-review` accepts pasted content or
-seed paths directly. Install `content-marketing` when content production and SEO
-review run as a paired workflow.
-
-## Connectors for this plugin
-
-| Category | Placeholder | Bundled in `.mcp.json` |
-| -------- | ----------- | ---------------------- |
-| Source control | `~~source control` | GitHub, GitLab |
-| Browser automation | `~~browser automation` | Playwright |
+| Category | Placeholder | Server |
+| -------- | ----------- | ------ |
 | SEO intelligence | `~~SEO intelligence` | Ahrefs |
 
-Google Search Console is not bundled — connect when your client supports it.
-Ahrefs and Semrush require a paid subscription and user authentication (MCP key or
-OAuth). Configure credentials in `.mcp.json` or via `claude mcp` / Cursor MCP
-settings before live queries.
+Ahrefs requires a paid subscription and user authentication (MCP key or OAuth).
+Configure credentials in `.mcp.json` or via `claude mcp` / Cursor MCP settings
+before live queries.
 
-Other options in each category: Semrush (`https://mcp.semrush.com/v2/mcp` — SEO
-intelligence), Google Search Console (search performance).
+## Common additions
+
+| Category | Placeholder | Examples |
+| -------- | ----------- | -------- |
+| Browser automation | `~~browser automation` | Playwright — bundled in **web-development** |
+| Source control | `~~source control` | GitHub — see **web-development** |
+| SEO intelligence | `~~SEO intelligence` | Semrush (`https://mcp.semrush.com/v2/mcp`) |
+| Search performance | — | Google Search Console (when supported) |
 
 ## Used by skill
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **setup** | `--check-integrations` | GitHub, Playwright, Ahrefs |
-| **keyword-research** | — | SEO intelligence (optional — enriches volume and difficulty signals) |
-| **technical-seo-audit** | — | Playwright (live checks), GitHub (issues) |
+| **setup** | `--check-integrations` | Ahrefs (+ any additions) |
+| **keyword-research** | — | SEO intelligence |
+| **technical-seo-audit** | — | Browser automation (live checks), source control (issues) |
 | **content-seo-review** | — | Source control (PR review); none required for local seed paths |
 
 Competitive landscape: invoke `/delivery-practice:competitive-brief` — requires

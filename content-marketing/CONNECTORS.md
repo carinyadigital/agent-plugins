@@ -4,7 +4,7 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edit that file to swap providers or add stack-specific servers.
+Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for your stack.
 
 ## Companion practice (recommended co-install)
 
@@ -15,31 +15,33 @@ MCP servers for this practice are bundled in `.mcp.json` at the plugin root. Edi
 Install `delivery-practice` alongside this plugin when content planning needs backlog
 alignment or research synthesis. Do not bundle duplicate copies of those skills here.
 
-## Connectors for this plugin
+## Bundled in `.mcp.json`
 
-| Category | Placeholder | Bundled in `.mcp.json` |
-| -------- | ----------- | ---------------------- |
-| Source control | `~~source control` | GitHub, GitLab |
-| Knowledge base | `~~knowledge base` | Notion |
-| Chat | `~~chat` | Slack |
+| Category | Placeholder | Server |
+| -------- | ----------- | ------ |
 | Creative / design | `~~design` | Canva |
-| CMS | `~~CMS` | — |
-| Social scheduling | `~~social scheduling` | — |
 
 Canva requires per-user OAuth. Use for social graphics and template autofill when
 connected; skills still work from briefs and brand voice alone.
 
-Other options in each category: Figma (`https://mcp.figma.com/mcp` — design reference),
-Confluence or Google Drive (knowledge base), Microsoft Teams (chat),
-Contentful/Sanity/WordPress (CMS), Buffer or Later (social scheduling).
+## Common additions
+
+| Category | Placeholder | Examples |
+| -------- | ----------- | -------- |
+| Source control | `~~source control` | GitHub — see **web-development** |
+| Knowledge base | `~~knowledge base` | Notion — see **delivery-practice** |
+| Chat | `~~chat` | Slack |
+| Design reference | `~~design` | Figma — see **ux-design** |
+| CMS | `~~CMS` | Contentful, Sanity, WordPress |
+| Social scheduling | `~~social scheduling` | Buffer, Later |
 
 ## Used by skill
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **setup** | `--check-integrations` | GitHub, Notion, Slack, Canva |
+| **setup** | `--check-integrations` | Canva (+ any additions) |
 | **content-calendar** | write, review | Knowledge base (optional seed material) |
-| **draft-post**, **draft-recipe** | — | Source control (seed PRs) |
+| **draft-post**, **draft-recipe** | — | Source control (optional seed PRs) |
 | **curate-content** | — | None required — inventory JSON input |
 | **analyse-media** | — | None required — local media path |
 | **write-captions**, **edit-content** | — | None — reads brand-voice.md locally |

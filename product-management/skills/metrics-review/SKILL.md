@@ -12,7 +12,7 @@ argument-hint: "<time period or metric focus>"
 metadata:
   author: Carinya Parc
   version: "0.1.0"
-  owner: delivery
+  owner: product
   review_cadence: quarterly
   work_shape: review-and-gate
   output_class: decision-support

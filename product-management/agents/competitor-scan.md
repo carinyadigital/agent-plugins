@@ -16,7 +16,7 @@ You are a senior product manager responsible for keeping this product ahead of i
 ## Resolve target
 
 Read `.agency/target.json` for the product this practice tracks (`name`, `instance`,
-`target`). Read `~/.claude/plugins/config/digital-agency/delivery-practice/CLAUDE.md`
+`target`). Read `~/.claude/plugins/config/digital-agency/product-management/CLAUDE.md`
 for the recorded competitive set. If neither is set, ask once and offer to record it
 for next time.
 

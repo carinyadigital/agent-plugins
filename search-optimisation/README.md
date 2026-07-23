@@ -6,8 +6,8 @@ content SEO review. Self-contained under the MECE practice model: edit skills he
 only; nothing is vendored from elsewhere.
 
 Install standalone or after `agency-hub:setup` recommends it. Declare
-`delivery-practice` as a **companion practice** for competitive brief — invoke
-`/delivery-practice:competitive-brief` directly rather than bundling a duplicate copy.
+`product-management` as a **companion practice** for competitive brief — invoke
+`/product-management:competitive-brief` directly rather than bundling a duplicate copy.
 
 ## Persona
 
@@ -28,7 +28,7 @@ Invoke skills directly — there is no separate agent plugin:
 For competitive landscape input, invoke the companion practice:
 
 ```
-/delivery-practice:competitive-brief
+/product-management:competitive-brief
 ```
 
 ## First run: setup
@@ -68,7 +68,7 @@ pairing — paste or reference content directly when `content-marketing` is not 
 
 - **Instance profile** (optional) — `agency-hub:setup` writes
   `config/instance.json`; setup reads business identity without re-asking.
-- **delivery-practice** (recommended companion) — competitive brief; see CONNECTORS.md.
+- **product-management** (recommended companion) — competitive brief; see CONNECTORS.md.
 - **Connectors** (optional) — source control for issues; Playwright for live site checks; Ahrefs for keyword and backlink data (requires subscription).
 
 ## After setup

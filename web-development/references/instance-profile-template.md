@@ -99,6 +99,7 @@ Set `catalogue` during setup to the GitHub org/repo slug (or equivalent source i
   "binding": {
     "pointerFile": ".agency/target.json",
     "pointerSchema": {
+      "name": "<target-repo-slug>",
       "instance": "<instance-slug>",
       "target": "website"
     }
@@ -118,12 +119,30 @@ Path: `.agency/target.json`
 
 ```json
 {
+  "name": "<target-repo-slug>",
   "instance": "<instance-slug>",
   "target": "website"
 }
 ```
 
-The `instance` value matches `config/instance.json` → `instance`. Practice agents read this file to locate the instance repo.
+The `name` field carries target repo identity (typically the git repo slug). The `instance` value matches `config/instance.json` → `instance`. Practice agents read this file to locate the instance repo and resolve the target without inferring identity from paths.
+
+**Target repo scaffold** — on bind, also create the `.agency/` directory skeleton:
+
+```text
+.agency/
+  .gitignore             ← from ${CLAUDE_PLUGIN_ROOT}/references/dot-agency/.gitignore
+  README.md              ← from ${CLAUDE_PLUGIN_ROOT}/references/dot-agency/README.md
+  target.json
+  product.md
+  roadmap.md
+  backlog.md
+  work/
+  architecture/
+  reviews/               ← gitignored
+```
+
+Stub markdown files may contain placeholder headings only. Epic and architecture subdirectories are populated by practice skills.
 
 ## File: `config/targets/<name>.json` — social (proven)
 
@@ -192,14 +211,14 @@ Catalogue agent slugs from digital-agency (e.g. frontend-engineer, content-write
 
 ## Service → plugin mapping
 
-Practices are MECE — one self-contained plugin per practice. Planning and cadence skills live in **`delivery-practice`**; practices that need them declare it as a companion install and invoke skills directly.
+Practices are MECE — one self-contained plugin per practice. Decomposition and sprint cadence skills live in **`delivery-practice`**; product strategy, roadmap, specs, research, metrics, and competitive briefs live in **`product-management`**. Practices that need them declare the relevant plugin as a companion install and invoke skills directly.
 
 | Service (`services.enabled`) | Practice plugin | Companion practice | Squad charters | Notes |
 |---|---|---|---|---|
 | `brand-creative` | `brand-creative` | none | — | Shipped; run `/brand-creative:setup` after bootstrap |
 | `web-development` | `web-development` | `delivery-practice` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/delivery-practice:tasks --product`, `/delivery-practice:sprint-planning` |
-| `content-marketing` | `content-marketing` | `delivery-practice` | `content` | Shipped; run `/content-marketing:setup` after bootstrap; needs `/delivery-practice:tasks --product`, `/delivery-practice:synthesize-research` |
+| `content-marketing` | `content-marketing` | `delivery-practice`, `product-management` | `content` | Shipped; run `/content-marketing:setup` after bootstrap; needs `/delivery-practice:tasks --product`, `/product-management:synthesize-research` |
 | `social-media` | `social-media` | TBD | `content` | Practice pending — interim: `content-marketing` skills for captions and curation |
-| `seo` | `search-optimisation` | `delivery-practice` | `seo` | Shipped; run `/search-optimisation:setup` after bootstrap; needs `/delivery-practice:competitive-brief` |
+| `seo` | `search-optimisation` | `product-management` | `seo` | Shipped; run `/search-optimisation:setup` after bootstrap; needs `/product-management:competitive-brief` |
 
-Write `services.recommendedPlugins` with the practice plugin name(s) plus `delivery-practice` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.
+Write `services.recommendedPlugins` with the practice plugin name(s) plus `delivery-practice` and/or `product-management` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.

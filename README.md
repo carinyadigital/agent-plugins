@@ -24,7 +24,8 @@ Install **`agency-hub` first**, then the practice plugins that match your work.
 |---|---|---|
 | [agency-hub](./agency-hub) | Instance bootstrap, target bindings, squad charters | `/agency-hub:setup` |
 | [brand-creative](./brand-creative) | Brand voice and visual identity | `/brand-creative:setup` |
-| [delivery-practice](./delivery-practice) | Product strategy, backlog, sprint cadence, validation | `/delivery-practice:setup` |
+| [product-management](./product-management) | Product strategy, roadmap, specs, research, metrics, stakeholder updates | `/product-management:setup` |
+| [delivery-practice](./delivery-practice) | Backlog, sprint cadence, epic validation | `/delivery-practice:setup` |
 | [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:setup` |
 | [ux-design](./ux-design) | Low-fidelity wireframes and interaction specs | `/ux-design:setup` |
 | [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
@@ -34,10 +35,10 @@ Install **`agency-hub` first**, then the practice plugins that match your work.
 
 | If you are… | Install next |
 |---|---|
-| Standing up a new client or product | `brand-creative` → `delivery-practice` |
-| Shipping a website or app | `delivery-practice` + `web-development` (+ `ux-design` for new UI) |
+| Standing up a new client or product | `brand-creative` → `product-management` → `delivery-practice` |
+| Shipping a website or app | `product-management` + `delivery-practice` + `web-development` (+ `ux-design` for new UI) |
 | Running content and social | `brand-creative` → `content-marketing` (+ `search-optimisation` for SEO) |
-| SEO-only engagement | `search-optimisation` (+ `delivery-practice` for competitive brief) |
+| SEO-only engagement | `search-optimisation` (+ `product-management` for competitive brief) |
 
 ## Worked examples
 
@@ -77,8 +78,8 @@ Twelve job-titled entry points for digital agency work. Each name maps to **exac
 
 | Persona | What it does | Command |
 |---|---|---|
-| **Product Manager** | Product strategy, roadmap, specs from problem statements | `/delivery-practice:product write` |
-| **Delivery Lead** | Sprint planning, stakeholder updates, metrics review | `/delivery-practice:sprint-planning` |
+| **Product Manager** | Product strategy, roadmap, specs from problem statements | `/product-management:product write` |
+| **Delivery Lead** | Tasks/backlog decomposition, sprint planning, validation | `/delivery-practice:sprint-planning` |
 | **Content Strategist** | Editorial calendar and social inventory curation | `/content-marketing:content-calendar write` |
 | **Content Writer** | Blog posts, recipes, captions, and light edits for CMS import | `/content-marketing:draft-post` |
 | **SEO Specialist** | Keyword research, technical audits, on-page content review | `/search-optimisation:keyword-research` |
@@ -101,9 +102,9 @@ Each persona below is named for the job it does. Start with the [named personas]
 | **Backlog Owner** | Epic breakdown, Now-phase scope, delivery risks | `delivery-practice` | `/delivery-practice:tasks --product` |
 | **Task Decomposer** | Gherkin acceptance criteria per epic | `delivery-practice` | `/delivery-practice:tasks` |
 | **Epic Validator** | Final sign-off against AC and roadmap gates | `delivery-practice` | `/delivery-practice:validate` |
-| **Research Synthesizer** | Themes from interviews, surveys, and tickets | `delivery-practice` | `/delivery-practice:synthesize-research` |
-| **Competitive Analyst** | Competitive analysis brief | `delivery-practice` | `/delivery-practice:competitive-brief` |
-| **Spec Writer** | Feature spec or PRD from a problem statement | `delivery-practice` | `/delivery-practice:write-spec` |
+| **Research Synthesizer** | Themes from interviews, surveys, and tickets | `product-management` | `/product-management:synthesize-research` |
+| **Competitive Analyst** | Competitive analysis brief | `product-management` | `/product-management:competitive-brief` |
+| **Spec Writer** | Feature spec or PRD from a problem statement | `product-management` | `/product-management:write-spec` |
 | **Voice Enforcer** | On-brand copy check against brand voice | `brand-creative` | `/brand-creative:brand-voice enforce` |
 | **Visual Identity Author** | Colors, type, logo, UI tokens | `brand-creative` | `/brand-creative:brand-guide write` |
 | **Media Analyst** | Vision analysis — subjects, season, mood, quality | `content-marketing` | `/content-marketing:analyse-media` |
@@ -132,7 +133,8 @@ What's in the repo:
 ```
 agency-hub/               # instance bootstrap — install first
 brand-creative/           # brand voice + visual identity
-delivery-practice/        # product, roadmap, backlog, sprint, validate, …
+product-management/       # product, roadmap, specs, research, metrics, stakeholder, …
+delivery-practice/        # backlog, tasks, sprint, retro, validate
 content-marketing/        # calendar, curation, media analysis, CMS seeds
 ux-design/                # wireframes
 search-optimisation/      # keyword research, technical audit, content SEO review
@@ -187,6 +189,7 @@ After install, skills fire automatically when relevant; slash commands are avail
 
 /plugin install agency-hub@carinya-digital
 /plugin install brand-creative@carinya-digital
+/plugin install product-management@carinya-digital
 /plugin install delivery-practice@carinya-digital
 /plugin install content-marketing@carinya-digital
 /plugin install ux-design@carinya-digital
@@ -241,7 +244,8 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 
 | Plugin | What it adds |
 |---|---|
-| **[delivery-practice](./delivery-practice)** | Product strategy, outcome-based roadmap, backlog and tasks, sprint planning, epic validation, specs, stakeholder updates, research synthesis, competitive briefs, metrics review, and skill routing. Two personas (Product Manager, Delivery Lead), one skill library. |
+| **[product-management](./product-management)** | Product strategy, outcome-based roadmap, feature specs and PRDs, research synthesis, competitive briefs, metrics review, stakeholder updates, product brainstorming, and skill routing. One persona (Product Manager), one skill library. |
+| **[delivery-practice](./delivery-practice)** | Backlog and tasks decomposition, sprint planning and retro, epic validation, and skill routing. One persona (Delivery Lead), one skill library. Consumes `product.md` and `roadmap.md` from `product-management`. |
 
 ### Brand, creative & content
 
@@ -269,7 +273,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 |---|---|
 | **[agency-hub](./agency-hub)** | Instance bootstrap via `setup`. v2 adds community skill discovery, installation QA, and update management (designed, deferred — stubs exist for shape validation). |
 
-**Companion practices:** `content-marketing` and `search-optimisation` invoke `/delivery-practice:tasks --product` and related skills rather than bundling duplicates. `web-development` invokes delivery skills for planning cadence during implementation. Neither direction requires the companion installed — skills degrade gracefully and document the pairing.
+**Companion practices:** `content-marketing` invokes `/delivery-practice:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `web-development` invokes delivery skills for planning cadence during implementation, and `delivery-practice` consumes `product.md`/`roadmap.md` from `product-management`. No direction requires the companion installed — skills degrade gracefully and document the pairing.
 
 ## MCP connectors
 
@@ -279,7 +283,8 @@ Each practice plugin bundles a **minimal default** — one or two MCP servers mo
 |---|---|---|
 | **agency-hub** | — | no bundled MCP |
 | **brand-creative** | Fireflies | meeting transcription |
-| **delivery-practice** | Atlassian, Amplitude | project tracker, product analytics |
+| **product-management** | Atlassian, Amplitude | project tracker, product analytics |
+| **delivery-practice** | Atlassian | project tracker |
 | **content-marketing** | Canva | creative / design |
 | **ux-design** | Figma | design |
 | **search-optimisation** | Ahrefs | SEO intelligence |
@@ -345,24 +350,31 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | `/brand-creative:brand-voice` | brand-voice | discover, write, review, refine, enforce — `brand/brand-voice.md` |
 | `/brand-creative:brand-guide` | brand-guide | write, review, refine — visual identity and UI tokens |
 
+### product-management
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/product-management:setup` | setup | Learns cadence, audiences, discovery workflow; writes practice profile |
+| `/product-management:product` | product | write, review — `.agency/product.md` |
+| `/product-management:roadmap` | roadmap | write, review — `.agency/roadmap.md` |
+| `/product-management:write-spec` | write-spec | Feature spec or PRD from a problem statement |
+| `/product-management:product-brainstorming` | product-brainstorming | Sparring partner for ideas (no deliverable) |
+| `/product-management:synthesize-research` | synthesize-research | Themes and insights from user research |
+| `/product-management:competitive-brief` | competitive-brief | Competitive analysis brief |
+| `/product-management:metrics-review` | metrics-review | Product metrics review with actions |
+| `/product-management:stakeholder-update` | stakeholder-update | Status update tailored to audience |
+| `/product-management:skills-index` | skills-index | Routes vague requests to the right skill |
+
 ### delivery-practice
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/delivery-practice:setup` | setup | Learns cadence, personas, escalation; writes practice profile |
-| `/delivery-practice:product` | product | write, review — `.agency/product.md` |
-| `/delivery-practice:roadmap` | roadmap | write, review — `.agency/roadmap.md` |
+| `/delivery-practice:setup` | setup | Learns cadence, sprint length, escalation; writes practice profile |
 | `/delivery-practice:tasks` | tasks | `--product` → `.agency/backlog.md`; `{epic}` → `.agency/work/{epic}/tasks.md` |
 | `/delivery-practice:backlog-refine` | backlog-refine | Groom backlog or judge sprint readiness |
 | `/delivery-practice:sprint-planning` | sprint-planning | Sprint plan — `.agency/sprints/sprint-{id}/plan.md` |
 | `/delivery-practice:sprint-retro` | sprint-retro | Sprint retrospective — `.agency/sprints/sprint-{id}/retrospective.md` |
 | `/delivery-practice:validate` | validate | Epic completion sign-off against AC and roadmap gates |
-| `/delivery-practice:write-spec` | write-spec | Feature spec or PRD from a problem statement |
-| `/delivery-practice:stakeholder-update` | stakeholder-update | Status update tailored to audience |
-| `/delivery-practice:synthesize-research` | synthesize-research | Themes and insights from user research |
-| `/delivery-practice:competitive-brief` | competitive-brief | Competitive analysis brief |
-| `/delivery-practice:metrics-review` | metrics-review | Product metrics review with actions |
-| `/delivery-practice:product-brainstorming` | product-brainstorming | Sparring partner for ideas (no deliverable) |
 | `/delivery-practice:skills-index` | skills-index | Routes vague requests to the right skill |
 
 ### content-marketing

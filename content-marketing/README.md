@@ -6,9 +6,10 @@ drafting. Self-contained under the MECE practice model: edit skills here only; n
 is vendored from elsewhere.
 
 Install standalone or after `agency-hub:setup` recommends it. Declare
-`delivery-practice` as a **companion practice** for backlog and research synthesis —
-invoke `/delivery-practice:tasks --product` and `/delivery-practice:synthesize-research`
-directly rather than bundling duplicate copies.
+`delivery-practice` (backlog) and `product-management` (research synthesis) as
+**companion practices** — invoke `/delivery-practice:tasks --product` and
+`/product-management:synthesize-research` directly rather than bundling duplicate
+copies.
 
 ## Personas
 
@@ -33,7 +34,7 @@ For backlog alignment and research themes, invoke the companion practice:
 
 ```
 /delivery-practice:backlog-refine
-/delivery-practice:synthesize-research
+/product-management:synthesize-research
 ```
 
 ## First run: setup
@@ -84,8 +85,8 @@ installed — document the optional pairing in both READMEs rather than a hard d
 - **Instance profile** (optional) — `agency-hub:setup` writes
   `config/instance.json`; setup reads business identity and house tone hints
   without re-asking.
-- **delivery-practice** (recommended companion) — backlog and research synthesis;
-  see CONNECTORS.md.
+- **delivery-practice** (recommended companion) — backlog alignment; see CONNECTORS.md.
+- **product-management** (recommended companion) — research synthesis; see CONNECTORS.md.
 - **Connectors** (optional) — source control for seed PRs; Canva for social graphics; CMS and social scheduling when configured.
   tools when connected supercharge distribution workflows.
 

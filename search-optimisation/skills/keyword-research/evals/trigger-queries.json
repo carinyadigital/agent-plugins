@@ -15,6 +15,6 @@
   {
     "query": "Write competitive brief for the accommodation market.",
     "should_trigger": false,
-    "note": "/delivery-practice:competitive-brief companion skill"
+    "note": "/product-management:competitive-brief companion skill"
   }
 ]

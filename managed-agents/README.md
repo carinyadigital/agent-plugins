@@ -14,7 +14,7 @@ Instance binding (which agent, which repos, which schedule) lives in
 | **Cursor Cloud Agents** | `frontend-engineer`, `senior-frontend-engineer`, `principal-frontend-engineer`, `qa-engineer`, `webops-engineer` | Code, review, QA, platform; Cursor Automations API |
 | **Either** | `principal-architect` | Architecture; resolve at deploy time |
 
-Product Manager and Delivery Lead personas live in the **`delivery-practice`** plugin — invoke skills directly (`/delivery-practice:product`, `/delivery-practice:sprint-planning`); no standalone agent plugin or CMA cookbook. SEO Specialist persona lives in **`search-optimisation`** — invoke skills directly (`/search-optimisation:keyword-research`, etc.); no standalone agent plugin or CMA cookbook.
+The Product Manager persona lives in the **`product-management`** plugin — invoke skills directly (`/product-management:product`, `/product-management:write-spec`); no standalone agent plugin or CMA cookbook. The Delivery Lead persona lives in the **`delivery-practice`** plugin — invoke skills directly (`/delivery-practice:tasks`, `/delivery-practice:sprint-planning`); no standalone agent plugin or CMA cookbook. SEO Specialist persona lives in **`search-optimisation`** — invoke skills directly (`/search-optimisation:keyword-research`, etc.); no standalone agent plugin or CMA cookbook.
 
 Spike scope (Sprint 3): `frontend-engineer` only (product-manager and delivery-lead cookbooks retired with agent plugins).
 

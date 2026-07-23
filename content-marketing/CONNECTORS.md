@@ -10,10 +10,12 @@ Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for
 
 | Practice | Relationship | Invoke |
 | -------- | ------------ | ------ |
-| **delivery-practice** | Companion practice | `/delivery-practice:tasks --product`, `/delivery-practice:synthesize-research` |
+| **delivery-practice** | Companion practice | `/delivery-practice:tasks --product` |
+| **product-management** | Companion practice | `/product-management:synthesize-research` |
 
-Install `delivery-practice` alongside this plugin when content planning needs backlog
-alignment or research synthesis. Do not bundle duplicate copies of those skills here.
+Install `delivery-practice` (backlog alignment) and `product-management` (research
+synthesis) alongside this plugin when content planning needs them. Do not bundle
+duplicate copies of those skills here.
 
 ## Bundled in `.mcp.json`
 

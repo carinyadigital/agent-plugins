@@ -30,7 +30,7 @@ site, keyword priorities, or audit cadence changes. Explicit invocation only.
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for business name and context.
 - **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
-- **Does not install other plugins** — user installs `delivery-practice` from marketplace when competitive brief companion skill is needed.
+- **Does not install other plugins** — user installs `product-management` from marketplace when competitive brief companion skill is needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce keyword research or audit artefacts** — those are separate skills after setup.
 
@@ -115,7 +115,7 @@ Topic clusters or keyword themes to prioritise in research — optional if unkno
 #### 3d — Competitor set
 
 Domains or brands to watch — brief list only; full competitive analysis is
-`/delivery-practice:competitive-brief` (companion practice).
+`/product-management:competitive-brief` (companion practice).
 
 #### 3e — Technical audit cadence
 
@@ -123,8 +123,8 @@ One-off vs recurring (monthly, quarterly, ad hoc) and focus areas for recurring 
 
 #### 3f — Companion practice
 
-If competitive landscape analysis is needed, recommend installing `delivery-practice` and
-invoking `/delivery-practice:competitive-brief` — do not bundle that skill here.
+If competitive landscape analysis is needed, recommend installing `product-management` and
+invoking `/product-management:competitive-brief` — do not bundle that skill here.
 
 ### Step 4 — Summarize before write
 
@@ -147,7 +147,7 @@ Close with SEO Specialist handoff:
 1. **Keyword research** — `/search-optimisation:keyword-research <topic-slug>`
 2. **Technical audit** — `/search-optimisation:technical-seo-audit`
 3. **Content review** — `/search-optimisation:content-seo-review <pr-url or seed path>`
-4. **Competitive brief** — `/delivery-practice:competitive-brief` (companion; requires delivery-practice install)
+4. **Competitive brief** — `/product-management:competitive-brief` (companion; requires product-management install)
 5. **Refresh** — `/search-optimisation:setup --redo` to redo SEO defaults only.
 
 ## Pause and resume
@@ -181,4 +181,4 @@ Location: `<instance-root>/config/.search-optimisation-setup-resume.json` if ins
 | -------- | ---- |
 | Practice profile | `~/.claude/plugins/config/digital-agency/search-optimisation/CLAUDE.md` |
 
-Next: invoke SEO skills, install `delivery-practice` for companion skills, or `--check-integrations`.
+Next: invoke SEO skills, install `product-management` for companion skills, or `--check-integrations`.

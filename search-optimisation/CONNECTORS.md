@@ -10,10 +10,10 @@ Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for
 
 | Practice | Relationship | Invoke |
 | -------- | ------------ | ------ |
-| **delivery-practice** | Companion practice | `/delivery-practice:competitive-brief` |
+| **product-management** | Companion practice | `/product-management:competitive-brief` |
 | **web-development** | Companion practice | Playwright for live technical audits |
 
-Install `delivery-practice` when SEO work needs competitive landscape input.
+Install `product-management` when SEO work needs competitive landscape input.
 Co-install **web-development** (or add Playwright to `.mcp.json`) for live browser checks in **technical-seo-audit**.
 
 ## Bundled in `.mcp.json`
@@ -44,5 +44,5 @@ before live queries.
 | **technical-seo-audit** | — | Browser automation (live checks), source control (issues) |
 | **content-seo-review** | — | Source control (PR review); none required for local seed paths |
 
-Competitive landscape: invoke `/delivery-practice:competitive-brief` — requires
-`delivery-practice` install, not a connector category here.
+Competitive landscape: invoke `/product-management:competitive-brief` — requires
+`product-management` install, not a connector category here.

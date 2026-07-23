@@ -48,9 +48,9 @@ bundle a local copy:
 
 | Need | Invoke |
 | ---- | ------ |
-| Competitive landscape brief | `/delivery-practice:competitive-brief` |
+| Competitive landscape brief | `/product-management:competitive-brief` |
 
-Recommend `delivery-practice` as a co-install. Document in CONNECTORS.md.
+Recommend `product-management` as a co-install. Document in CONNECTORS.md.
 
 ## Optional companion (content-marketing)
 
@@ -79,6 +79,6 @@ Seed paths are target-specific. Resolve in this order:
 | Keyword research for a topic | **keyword-research** |
 | Production site technical audit | **technical-seo-audit** |
 | On-page SEO review of content seeds | **content-seo-review** |
-| Competitive landscape | `/delivery-practice:competitive-brief` (companion) |
+| Competitive landscape | `/product-management:competitive-brief` (companion) |
 | Draft blog or recipe content | `/content-marketing:draft-post` or `draft-recipe` (optional companion) |
 | Implement SEO fixes in code | Engineering practice — issues only from this practice |

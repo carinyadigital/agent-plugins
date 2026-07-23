@@ -119,11 +119,11 @@ Map to **practice plugins** (MECE — one install per practice). Recommend; do n
 |---|---|---|---|
 | `brand-creative` | `brand-creative` | none | Shipped — no companion install |
 | `web-development` | `web-development` | `delivery-practice` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
-| `content-marketing` | `content-marketing` | `delivery-practice` | Shipped — run `/content-marketing:setup` after bootstrap; invoke `/delivery-practice:tasks --product`, `/delivery-practice:synthesize-research` for companion skills |
+| `content-marketing` | `content-marketing` | `delivery-practice`, `product-management` | Shipped — run `/content-marketing:setup` after bootstrap; invoke `/delivery-practice:tasks --product`, `/product-management:synthesize-research` for companion skills |
 | `social-media` | `social-media` | TBD | Practice plugin pending — interim: `content-marketing` skills for captions and curation |
-| `seo` | `search-optimisation` | `delivery-practice` | Practice plugin shipped — run `/search-optimisation:setup` after bootstrap; invoke `/delivery-practice:competitive-brief` for companion skill |
+| `seo` | `search-optimisation` | `product-management` | Practice plugin shipped — run `/search-optimisation:setup` after bootstrap; invoke `/product-management:competitive-brief` for companion skill |
 
-When recommending `delivery-practice`, name the skills the practice needs (e.g. `web-development` → `/delivery-practice:tasks --product`, `/delivery-practice:sprint-planning`; `content-marketing` → `/delivery-practice:tasks --product`, `/delivery-practice:synthesize-research`). `brand-creative` never needs a companion.
+When recommending a companion practice, name the skills it needs (e.g. `web-development` → `/delivery-practice:tasks --product`, `/delivery-practice:sprint-planning`; `content-marketing` → `/delivery-practice:tasks --product`, `/product-management:synthesize-research`; `search-optimisation` → `/product-management:competitive-brief`). `brand-creative` never needs a companion.
 
 Quick: one primary. Full: now vs later for each.
 

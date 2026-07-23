@@ -30,7 +30,7 @@ cadence or channel mix changes. Explicit invocation only.
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for business name and house tone hints.
 - **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
-- **Does not install other plugins** — user installs `delivery-practice` from marketplace when backlog/research companion skills are needed.
+- **Does not install other plugins** — user installs `delivery-practice` (backlog) and `product-management` (research) from marketplace when those companion skills are needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce calendar or seed artefacts** — those are separate skills after setup.
 - **Does not write brand-voice.md** — owned by `brand-creative`; content reads it via artifact consumption.
@@ -126,7 +126,7 @@ Record which persona greets the user by default.
 
 #### 3e — Companion practice
 
-If backlog alignment or research synthesis is needed, recommend installing `delivery-practice` and invoking `/delivery-practice:tasks --product` and `/delivery-practice:synthesize-research` — do not bundle those skills here.
+If backlog alignment or research synthesis is needed, recommend installing `delivery-practice` and/or `product-management` and invoking `/delivery-practice:tasks --product` and `/product-management:synthesize-research` — do not bundle those skills here.
 
 ### Step 4 — Summarize before write
 

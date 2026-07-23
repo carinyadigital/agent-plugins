@@ -3,10 +3,6 @@
     "atlassian": {
       "type": "http",
       "url": "https://mcp.atlassian.com/v1/mcp"
-    },
-    "amplitude": {
-      "type": "http",
-      "url": "https://mcp.amplitude.com/mcp"
     }
   }
 }

@@ -2,10 +2,9 @@
 name: setup
 description: >
   Delivery practice setup interview — reads instance cadence and risk posture from
-  `/agency-hub:setup`, interviews reporting format, escalation model, and persona preference
-  (Product Manager vs Delivery Lead vs merged), writes practice profile. Use on first
-  install after `/agency-hub:setup`, when the user says "set up delivery" or "configure sprint
-  cadence", or to redo delivery defaults only.
+  `/agency-hub:setup`, interviews reporting format, escalation model, and sprint cadence,
+  writes practice profile. Use on first install after `/agency-hub:setup`, when the user
+  says "set up delivery" or "configure sprint cadence", or to redo delivery defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
 disable-model-invocation: true
@@ -105,20 +104,17 @@ What does a stakeholder update actually look like for this business?
 
 What triggers an escalation? Who does it go to? Which channel?
 
-#### 3c — Persona preference (real branch — not cosmetic)
+#### 3c — Sprint cadence
 
-Does the customer want **Product Manager** and **Delivery Lead** as genuinely distinct personas, or merged into one working style?
+What is the sprint length (one week, two weeks, other) and where does committed scope come from? Note whether the team runs formal sprints at all — solo shops may work continuously off the backlog.
 
-- **One-person shop** → default merged; greet as single delivery partner.
-- **Larger team** → default distinct; Product Manager for strategy skills, Delivery Lead for cadence skills.
-
-Record which persona greets the user by default.
+Product strategy, roadmap, specs, research, and stakeholder communication live in the companion **product-management** plugin — recommend it if the user needs those and route there rather than re-scoping this practice.
 
 ### Step 4 — Summarize before write
 
 List every file to create/update:
 
-- `~/.claude/plugins/config/digital-agency/delivery-practice/CLAUDE.md` — practice profile with cadence, escalation, persona preference, integration table
+- `~/.claude/plugins/config/digital-agency/delivery-practice/CLAUDE.md` — practice profile with cadence, escalation, sprint cadence, integration table
 
 List deliberate skips. Ask: **"Write these files? (yes/no)"** — wait.
 
@@ -130,24 +126,16 @@ Delete resume file if present.
 
 ### Step 6 — Next steps
 
-Close with persona-appropriate handoff:
+Close with a delivery handoff:
 
-**Product Manager path:**
+1. **Backlog** — `/delivery-practice:tasks --product` to decompose product/roadmap into epics and stories.
+2. **Groom** — `/delivery-practice:backlog-refine` to check sprint readiness.
+3. **Sprint** — `/delivery-practice:sprint-planning` then `/delivery-practice:sprint-retro`.
+4. **Sign-off** — `/delivery-practice:validate` when an epic is done.
+5. **Route** — `/delivery-practice:skills-index` when unsure which skill to use.
+6. **Refresh** — `/delivery-practice:setup --redo` to redo delivery defaults only.
 
-1. **Strategy** — `/delivery-practice:product write`
-2. **Roadmap** — `/delivery-practice:roadmap write`
-3. **Backlog** — `/delivery-practice:tasks --product`
-
-**Delivery Lead path:**
-
-1. **Sprint** — `/delivery-practice:sprint-planning`
-2. **Status** — `/delivery-practice:stakeholder-update`
-3. **Metrics** — `/delivery-practice:metrics-review`
-
-**Either:**
-
-4. **Route** — `/delivery-practice:skills-index` when unsure which skill to use.
-5. **Refresh** — `/delivery-practice:setup --redo` to redo delivery defaults only.
+For product strategy, roadmap, specs, research, metrics, or stakeholder updates, install the companion **product-management** plugin (`/product-management:product write`, `/product-management:write-spec`).
 
 ## Pause and resume
 
@@ -170,9 +158,9 @@ Location: `<instance-root>/config/.delivery-setup-resume.json` if instance exist
 
 ## Worked example
 
-**Input:** Instance profile complete; `--quick`; solo operator; merged persona; weekly bullet updates to sponsor.
+**Input:** Instance profile complete; `--quick`; solo operator; two-week sprints; weekly bullet updates to sponsor.
 
-**Expected output:** Practice profile at personal config path with cadence, escalation, and merged persona recorded; handoff to `/delivery-practice:product write` or `/delivery-practice:sprint-planning`.
+**Expected output:** Practice profile at personal config path with cadence, escalation, and sprint cadence recorded; handoff to `/delivery-practice:tasks --product` or `/delivery-practice:sprint-planning`.
 
 ## Outputs
 
@@ -180,4 +168,4 @@ Location: `<instance-root>/config/.delivery-setup-resume.json` if instance exist
 | -------- | ---- |
 | Practice profile | `~/.claude/plugins/config/digital-agency/delivery-practice/CLAUDE.md` |
 
-Next: invoke Product Manager or Delivery Lead skills per persona preference, or `--check-integrations`.
+Next: invoke delivery skills (`tasks`, `sprint-planning`, `validate`), or `--check-integrations`.

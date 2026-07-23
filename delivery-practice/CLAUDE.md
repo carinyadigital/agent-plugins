@@ -26,8 +26,9 @@ references/delivery-conventions.md.
 
 ## Who's using this
 
-- **Default persona:** [PLACEHOLDER — product-manager | delivery-lead | merged]
+- **Persona:** Delivery Lead
 - **Team size:** [PLACEHOLDER — solo | small | multi-squad]
+- **Sprint cadence:** [PLACEHOLDER — one week | two weeks | continuous]
 
 ---
 
@@ -54,19 +55,8 @@ references/delivery-conventions.md.
 | Project tracker | [✓ / ✗] | Manual status from docs/ |
 | Chat | [✓ / ✗] | Paste threads in chat |
 | Knowledge base | [✓ / ✗] | Manual upload |
-| Product analytics | [✓ / ✗] | Paste metrics |
-| Competitive intelligence | [✓ / ✗] | Manual competitor notes |
 
 *Re-check: `/delivery-practice:setup --check-integrations`*
-
----
-
-## Persona preference
-
-- **Product Manager surface:** [PLACEHOLDER — primary | secondary | merged]
-- **Delivery Lead surface:** [PLACEHOLDER — primary | secondary | merged]
-
-When merged, greet as a single delivery partner and route internally to the right skill.
 
 ---
 

@@ -1,30 +1,33 @@
 # delivery-practice
 
 Root-level **practice plugin** — one install delivers the complete delivery service:
-setup interview, product strategy, tasks/backlog decomposition, sprint planning and
-retro, validation, and operational skills. Self-contained under the MECE practice
-model: edit skills here only; nothing is vendored from elsewhere.
+setup interview, tasks/backlog decomposition, sprint planning and retro, and epic
+validation. Self-contained under the MECE practice model: edit skills here only;
+nothing is vendored from elsewhere.
 
 Install standalone or after `agency-hub:setup` recommends it. Other
 practices (content-marketing, web-development, search-optimisation) declare this
 as a **companion practice** and invoke skills directly — e.g.
 `/delivery-practice:tasks --product`, `/delivery-practice:sprint-planning`.
+Product strategy, roadmap, specs, research, metrics, and stakeholder updates live
+in the companion **product-management** plugin.
 
-## Personas
+## Persona
 
-Two personas share one skill library. Choose the default persona during
-`setup` (merged for one-person shops; distinct for larger teams).
+One persona — **Delivery Lead** — owns the execution skill library: turning
+strategy into a backlog, running sprint cadence, and signing off epics.
 
-| Persona | Primary skills | Focus |
-| ------- | -------------- | ----- |
-| **Product Manager** | `product`, `product-brainstorming`, `roadmap`, `write-spec`, `synthesize-research` | Strategy — what to build and why |
-| **Delivery Lead** | `sprint-planning`, `sprint-retro`, `stakeholder-update`, `metrics-review` | Cadence — keeping work moving and stakeholders informed |
-| **Shared (both)** | `tasks`, `backlog-refine`, `competitive-brief`, `skills-index`, `validate` | Planning artefacts and routing |
+| Focus | Skills |
+| ----- | ------ |
+| **Decomposition** | `tasks`, `backlog-refine` |
+| **Cadence** | `sprint-planning`, `sprint-retro` |
+| **Sign-off** | `validate` |
+| **Routing** | `skills-index` |
 
-Invoke skills directly — there is no separate agent plugin per persona:
+Invoke skills directly — there is no separate agent plugin:
 
 ```
-/delivery-practice:product write
+/delivery-practice:tasks --product
 /delivery-practice:sprint-planning 3
 /delivery-practice:backlog-refine
 ```
@@ -40,7 +43,7 @@ After instance bootstrap (or standalone):
 | Flag | Behaviour |
 | ---- | --------- |
 | `--quick` | Reporting cadence default + escalation model; skip deep interview |
-| `--full` | Full interview including persona preference |
+| `--full` | Full interview including sprint cadence |
 | `--redo` | Re-run delivery setup only; overwrite on confirmation |
 | `--resume` | Continue a paused interview |
 | `--check-integrations` | Report MCP connector status only; no interview |
@@ -50,22 +53,17 @@ After instance bootstrap (or standalone):
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile and delivery defaults |
-| **product** | write, review — `.agency/product.md` |
-| **roadmap** | write, review — `.agency/roadmap.md` |
 | **tasks** | `--product` → `.agency/backlog.md`; `{epic}` → `.agency/work/{epic}/tasks.md` |
 | **backlog-refine** | Groom backlog or judge sprint readiness |
 | **sprint-planning** | Sprint plan — `.agency/sprints/sprint-{id}/plan.md` |
 | **sprint-retro** | Sprint retrospective — `.agency/sprints/sprint-{id}/retrospective.md` |
 | **validate** | Epic completion sign-off |
-| **write-spec** | Feature spec or PRD |
-| **stakeholder-update** | Status update for sponsors |
-| **synthesize-research** | Themes from interviews, surveys, tickets |
-| **competitive-brief** | Competitive analysis |
-| **metrics-review** | Metrics review with recommended actions |
-| **product-brainstorming** | Sparring partner for ideas |
 | **skills-index** | Route vague requests to the right skill |
 
 Path and boundary rules: `references/delivery-conventions.md`.
+
+`tasks --product` consumes `.agency/product.md` and `.agency/roadmap.md`, which
+are produced by the companion **product-management** plugin.
 
 ## Prerequisites
 
@@ -78,10 +76,11 @@ Path and boundary rules: `references/delivery-conventions.md`.
 
 ## After setup
 
-1. Use Product Manager skills for strategy; Delivery Lead skills for cadence.
+1. Decompose strategy into a backlog with `tasks`, then run sprint cadence.
 2. Re-run `/delivery-practice:setup --redo` to refresh delivery defaults.
-3. Companion practices invoke shared skills here — do not duplicate `tasks`,
-   `backlog-refine`, `synthesize-research`, or `competitive-brief` in other plugins.
+3. Companion practices invoke shared skills here — do not duplicate `tasks` or
+   `backlog-refine` in other plugins. Strategy and research skills live in
+   `product-management`.
 
 ## References
 

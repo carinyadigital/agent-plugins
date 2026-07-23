@@ -2,27 +2,22 @@
   "name": "delivery-practice",
   "displayName": "Delivery Practice",
   "version": "0.1.0",
-  "description": "Complete delivery practice in one install — setup interview, product strategy, tasks/backlog decomposition, sprint planning and retro, validation, and operational skills. Two personas (Product Manager, Delivery Lead), one owned skill library.",
+  "description": "Complete delivery practice in one install — setup interview, tasks/backlog decomposition, sprint planning and retro, and epic validation. One persona (Delivery Lead), one owned skill library. Consumes product.md and roadmap.md from the companion product-management plugin.",
   "author": {
     "name": "Digital Agency"
   },
   "license": "MIT",
   "keywords": [
     "delivery",
-    "product-management",
-    "product",
-    "roadmap",
     "tasks",
     "backlog-refine",
     "sprint-planning",
     "sprint-retro",
     "validate",
     "setup",
-    "stakeholder",
-    "research",
-    "competitive-analysis",
-    "metrics",
-    "brainstorming"
+    "epics",
+    "acceptance-criteria",
+    "sprint"
   ],
   "skills": "./skills/"
 }

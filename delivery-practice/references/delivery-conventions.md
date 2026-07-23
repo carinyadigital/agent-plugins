@@ -72,8 +72,8 @@ Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
 
 | User intent | Skill |
 | ----------- | ----- |
-| PRD, vision, why/who/what | **product** |
-| Phases, exit criteria | **roadmap** |
+| PRD, vision, why/who/what | **/product-management:product** (companion) |
+| Phases, exit criteria | **/product-management:roadmap** (companion) |
 | Epics, work paths, Now scope | **tasks --product** |
 | `design.md` for one epic | **design** |
 | `tasks.md`, stories, Gherkin AC | **tasks** |
@@ -98,6 +98,10 @@ Additional agency trees (not used by all skills):
 .agency/reviews/              agent byproducts: competitor-scan, metrics, digests
 ```
 
-Cross-plugin skills live in `web-development` (design, implement, code-review, …).
-Invoke as `/web-development:<skill>` when recommending from delivery-practice.
+Cross-plugin skills live in `web-development` (design, implement, code-review, …)
+and `product-management` (product, roadmap, write-spec, synthesize-research,
+competitive-brief, metrics-review, stakeholder-update, product-brainstorming).
+Invoke as `/web-development:<skill>` or `/product-management:<skill>` when
+recommending from delivery-practice. `product.md` and `roadmap.md` are produced
+by `product-management` and consumed here by `tasks --product`.
 

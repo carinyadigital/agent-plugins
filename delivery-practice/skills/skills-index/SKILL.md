@@ -2,8 +2,8 @@
 name: skills-index
 description: >
   Use when the user asks which skill to use, how to start delivery, or what to
-  do next without naming a skill. Routes to product, tasks, backlog-refine,
-  design, etc. Triggers on "which skill should I use", "what can I do here",
+  do next without naming a skill. Routes to tasks, backlog-refine,
+  sprint-planning, validate, etc. Triggers on "which skill should I use", "what can I do here",
   "how do I start", "what's next", "where do I begin".
   Do NOT produce artefacts or implement code — only recommend skill and mode.
 license: MIT
@@ -38,8 +38,10 @@ to identify the best match and direct them to the right skill.
    scratch; **review** critiques, updates for currency, and amends in place.
 
 For end-to-end delivery, suggest the next skill in the flow
-(product → roadmap → tasks → design → tasks → implement → validate) or ask
-which phase the user is in.
+(tasks → design → tasks → implement → validate) or ask which phase the user is
+in. Strategy inputs (product, roadmap) come from the companion
+**product-management** plugin; architecture and code (solution, design,
+implement) from **web-development**.
 
 ## Skill index
 
@@ -60,13 +62,27 @@ which phase the user is in.
 | ralph-loop | Run an autonomous loop: one step per iteration until a completion promise or a safety rail (`start`, `status`, `cancel`) | committed epic + MR | delivery | delivery | seeded loop | code / MR |
 | design | .agency/work/{epic}/design.md: write or review | design.md | discovery | architect | solution.md, backlog.md | design.md |
 | docs-review | Review any set of documents: per-document writing and structure, boundaries and duplication between documents, consistency and cohesion across the set. Read-only | doc review | any | architect | any doc set | review |
-| product | product.md: write or review | .agency/product.md | strategy | pm | — / product.md | product.md |
 | sprint-planning | Plan a sprint: goal, carry-over, capacity, committed scope, dependencies, DoD | .agency/sprints/sprint-{id}/plan.md | delivery | delivery | backlog.md, tasks.md, prior retrospective.md | plan.md |
 | sprint-retro | Review a finished sprint: commitment vs actual, themes with evidence, actions routed to owning skills | .agency/sprints/sprint-{id}/retrospective.md | delivery | delivery | plan.md, tasks.md | retrospective.md |
-| roadmap | Phased delivery roadmap: write or review | .agency/roadmap.md | strategy | pm | product.md | roadmap.md |
 | solution | Architecture solution.md: write or review | .agency/architecture/solution.md | architecture | architect | product.md | solution.md |
 | skills-index | Routes vague requests to the right skill | skill-routing | utility | utility | — | skill-routing |
 | validate | Epic validation vs AC and roadmap gates | validation report | delivery | delivery | backlog.md, tasks.md, solution.md | validation |
+
+## Companion practices (cross-plugin)
+
+Strategy, discovery, and stakeholder communication live in the
+`product-management` plugin. When the user wants these, point them there rather
+than recommending a delivery skill:
+
+| User intent | Skill |
+| ----------- | ----- |
+| PRD, vision, personas, product strategy | **/product-management:product** |
+| Feature spec from a problem statement | **/product-management:write-spec** |
+| Phases, exit criteria, roadmap | **/product-management:roadmap** |
+| Themes from interviews, surveys, tickets | **/product-management:synthesize-research** |
+| Competitor comparison, battle cards | **/product-management:competitive-brief** |
+| Metrics scorecard, trends, actions | **/product-management:metrics-review** |
+| Status for leadership, launch note, escalation | **/product-management:stakeholder-update** |
 
 ## Output format
 

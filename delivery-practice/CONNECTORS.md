@@ -11,7 +11,6 @@ Plugins are **tool-agnostic** — they describe workflows in terms of categories
 | Category | Placeholder | Server |
 | -------- | ----------- | ------ |
 | Project tracker / wiki | `~~project tracker` | Atlassian (Jira / Confluence) |
-| Product analytics | `~~product analytics` | Amplitude |
 
 ## Common additions
 
@@ -33,8 +32,12 @@ Other options: Linear, Asana, monday.com (project tracker); Mixpanel, Heap (anal
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **setup** | `--check-integrations` | Atlassian, Amplitude (+ any additions) |
-| **metrics-review** | — | Product analytics |
-| **stakeholder-update** | — | Chat (optional) |
-| **synthesize-research** | — | Meeting transcription, knowledge base (optional) |
-| **competitive-brief** | — | Competitive intelligence (optional) |
+| **setup** | `--check-integrations` | Atlassian (+ any additions) |
+| **tasks** | — | Project tracker (optional) |
+| **backlog-refine** | — | Project tracker (optional) |
+| **sprint-planning** | — | Project tracker (optional) |
+| **sprint-retro** | — | Project tracker (optional) |
+| **validate** | — | Project tracker (optional) |
+
+Strategy, research, metrics, and competitive-intelligence connectors are used by
+the companion **product-management** plugin — see its `CONNECTORS.md`.

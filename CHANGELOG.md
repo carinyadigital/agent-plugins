@@ -8,18 +8,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### delivery-practice / web-development — skills parity with carinyaparc/skills 2.1.0
+## [2026-07-24] — Product split and skills 2.1.0 alignment
 
-Breaking skill reshape aligned with upstream [carinyaparc/skills](https://github.com/carinyaparc/skills) 2.1.0. Artefact paths remain under `.agency/`.
+Skill reshape aligned with upstream [carinyaparc/skills](https://github.com/carinyaparc/skills) 2.1.0. Product strategy skills moved to a new practice plugin; delivery-practice slimmed to Delivery Lead execution. Artefact paths remain under `.agency/`.
 
-#### delivery-practice
+### product-management — v0.1.0
 
+- **Added:** New MECE practice plugin — Product Manager persona owns strategy and discovery
+- Skills: `product`, `roadmap`, `write-spec`, `product-brainstorming`, `synthesize-research`, `competitive-brief`, `metrics-review`, `stakeholder-update`, `skills-index`, `setup`
+- Product skills migrated from delivery-practice; hands off to delivery-practice for decomposition and sprint cadence
+
+### delivery-practice — v0.2.0
+
+- **BREAKING:** Product skills removed — now live in companion `product-management` plugin
 - **BREAKING:** `backlog` removed — merged into `tasks` (`tasks --product` → `.agency/backlog.md`)
 - **BREAKING:** `sprint` → `sprint-planning` + `sprint-retro`
-- **Added:** `backlog-refine`
-- **BREAKING:** `refine` mode removed from `product` and `roadmap` (use `review`)
+- **Added:** `backlog-refine`; delivery agents for standup, sprint planning, retro, and backlog grooming
+- Slimmed to Delivery Lead execution skills: `tasks`, `backlog-refine`, `sprint-planning`, `sprint-retro`, `validate`, `setup`
 
-#### web-development
+### web-development — v0.3.0
 
 - **BREAKING:** `code-review fix` → `code-review-fix`; reviews are read-only
 - **BREAKING:** `ux-design-review fix` → `ux-design-fix`
@@ -27,6 +34,7 @@ Breaking skill reshape aligned with upstream [carinyaparc/skills](https://github
 - **BREAKING:** `docs` → `docs-review` (read-only)
 - **BREAKING:** `ralph` → `ralph-loop` + `ralph-loop-setup`; hooks under `hooks/{claude,cursor}/`; seed via `scripts/seed-ralph-loop.sh`
 - **BREAKING:** `refine` mode removed from `solution`
+- **Added:** Parallel sub-agent code review, merge-request skills, ux-design-review, ralph loop with hooks
 
 ## [2026-07-05] — Connector integrations
 

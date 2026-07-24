@@ -1,7 +1,7 @@
 {
   "name": "delivery-practice",
   "displayName": "Delivery Practice",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Complete delivery practice in one install — setup interview, tasks/backlog decomposition, sprint planning and retro, and epic validation. One persona (Delivery Lead), one owned skill library. Consumes product.md and roadmap.md from the companion product-management plugin.",
   "author": {
     "name": "Digital Agency"

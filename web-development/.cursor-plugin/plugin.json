@@ -1,7 +1,7 @@
 {
   "name": "web-development",
   "displayName": "Web Development",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Complete web engineering practice in one install \u2014 setup interview, architecture, epic design, implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes delivery-practice for planning cadence.",
   "author": {
     "name": "Digital Agency"

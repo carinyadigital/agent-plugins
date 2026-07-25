@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2026-07-25] — web-development patch
+
+### web-development — v0.3.1
+
+- **Fixed:** `ralph-loop` / `ralph-loop-setup` docs — setup reports the expected branch only; `ralph-loop start` creates or checks it out before iteration 1
+
 ## [2026-07-24] — Product split and skills 2.1.0 alignment
 
 Skill reshape aligned with upstream [carinyaparc/skills](https://github.com/carinyaparc/skills) 2.1.0. Product strategy skills moved to a new practice plugin; delivery-practice slimmed to Delivery Lead execution. Artefact paths remain under `.agency/`.

@@ -83,8 +83,9 @@ Mode is `start`, `status`, or `cancel`. If no mode is given: a seeded
 point at `/web-development:ralph-loop-setup`.
 
 **start** — [prompts/start.prompt.md](prompts/start.prompt.md). Verify the
-seeded loop, confirm the branch where the preset needs one, execute iteration
-1. With `--prompt "..."` and no seeded loop, seed an ad-hoc loop first.
+seeded loop, put the working tree on the expected branch (create or check out
+as needed), execute iteration 1. With `--prompt "..."` and no seeded loop,
+seed an ad-hoc loop first.
 
 **status** — [prompts/status.prompt.md](prompts/status.prompt.md). Report
 iteration, current step, budgets used, completed items, and artefacts.
@@ -100,7 +101,8 @@ loop and archive the run directory as a record.
 - Exactly ONE step per iteration. State lives in files, not in memory.
 - Every skill step runs in a fresh sub-agent. Context isolation per step is
   what keeps a long run sharp.
-- Where a preset commits, verify the branch with `git branch --show-current`
-  first. No `Co-authored-by` trailers, no emojis in commits.
+- Where a preset commits, ensure the expected branch exists and is checked
+  out on start, then verify with `git branch --show-current` before every
+  commit. No `Co-authored-by` trailers, no emojis in commits.
 - If the external `ralph-loop-plugin` is installed, disable it. This plugin
   ships its own hooks and running both double-fires the stop hook.

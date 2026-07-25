@@ -4,9 +4,10 @@
     {
       "id": 1,
       "prompt": "Start the ralph loop.",
-      "expected_output": "Verified the seeded {base}/active.md, confirmed preset, run id, branch, max iterations and completion promise in a short block, then executed exactly ONE step of the loop body and ended the turn.",
+      "expected_output": "Verified the seeded {base}/active.md, ensured the expected branch (create or checkout if needed), confirmed preset, run id, branch, max iterations and completion promise in a short block, then executed exactly ONE step of the loop body and ended the turn.",
       "assertions": [
         "Resolves the base directory from the agent (.claude/loop or .cursor/loop), not from a pointer file",
+        "For commit presets, creates or checks out the expected branch instead of stopping on mismatch",
         "Reports preset, run id, max_iterations and completion promise before starting",
         "Executes exactly one step, then ends the turn",
         "Does not batch multiple steps into the first turn",

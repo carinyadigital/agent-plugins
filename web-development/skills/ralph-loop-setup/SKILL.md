@@ -78,7 +78,8 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
 - Derive a dependency-safe task order: topological by declared dependencies,
   stable by document order on ties. Render as
   `N. {TASK_ID} — <title> (depends on: <ids or ->)`.
-- Resolve the branch. Report the expected branch; never create or switch one.
+- Resolve the branch. Report the expected branch; never create or switch one
+  — `/web-development:ralph-loop start` does that.
 - Resolve validation commands, tracker actions, and UI signals per
   [references/environment-resolution.md](references/environment-resolution.md).
 

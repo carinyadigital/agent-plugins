@@ -10,6 +10,8 @@ loop templates. Resolve everything ONCE at setup; the loop never re-detects.
 3. Otherwise propose `feat/{epic}` and confirm with the user.
 
 Never create or switch branches during setup — report the expectation only.
+`/web-development:ralph-loop start` creates or checks out the branch before
+iteration 1.
 
 ## Validation commands
 

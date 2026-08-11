@@ -4,8 +4,8 @@ status: Current
 owner: <!-- Squad name -->
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - .agency/architecture/solution.md
-  - .agency/product.md
+  - docs/architecture/solution.md
+  - docs/product/product.md
 ---
 
 # ADR Register

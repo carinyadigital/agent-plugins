@@ -9,7 +9,7 @@ A reviewed ADR MUST NOT introduce:
 
 - New content that was not in the draft — the review finalises what is there, it does not author new rationale
 - Business justification or commercial framing → product.md
-- Implementation instructions → solution.md or .agency/work/{epic}/design.md
+- Implementation instructions → solution.md or docs/work/{work-id}/design.md
 
 ## Context
 
@@ -30,7 +30,7 @@ architecture documentation]
 8. Identify any gaps, vague sections, or missing references
 9. Directly amend the ADR to address gaps
 10. Update status to Accepted if the ADR meets quality gates
-11. Add the ADR to `.agency/architecture/decisions/register.md` (Accepted ADRs table)
+11. Add the ADR to `docs/architecture/decisions/register.md` (Accepted ADRs table)
 
 ## Quality rules
 

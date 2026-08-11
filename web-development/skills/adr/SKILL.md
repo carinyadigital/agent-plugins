@@ -2,21 +2,26 @@
 name: adr
 description: >
   Use when the user wants ADR register planning, writing ADR-NNNN files, or ADR
-  review under .agency/architecture/decisions/. Triggers on "do we need an ADR",
+  review under docs/architecture/decisions/. Triggers on "do we need an ADR",
   "write ADR-0007", "record this decision", "what decisions need making",
-  "harvest ADRs from this epic". Do NOT use for full architecture
-  narrative (solution), epic design (design), or product strategy (product).
-  Proposals stay in register.md only until accepted.
+  "harvest ADRs from this epic", "harvest ADRs from JIRA-123". Do NOT use for
+  full architecture narrative (solution), work-item design (design), or
+  product strategy (product). Proposals stay in register.md only until
+  accepted.
 license: MIT
+compatibility: Tracker resolution (plan mode, when a work-id is named) uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
-argument-hint: "<mode: plan|write|review> [epic|target] [flags]"
+  - Bash(git remote:*)
+  - Bash(gh:*)
+  - Bash(glab:*)
+argument-hint: "<mode: plan|write|review> [work-id|target] [flags]"
 metadata:
   author: Carinya Parc
-  version: "1.0"
+  version: "2.0"
   owner: architecture
   work_shape: generate-draft
   output_class: draft-for-review
@@ -29,8 +34,10 @@ metadata:
 
 | Artefact | Default path |
 | -------- | ------------ |
-| Register | `.agency/architecture/decisions/register.md` |
-| ADR document | `.agency/architecture/decisions/ADR-{NUMBER}-{short-title}.md` |
+| Register | `docs/architecture/decisions/register.md` |
+| ADR document | `docs/architecture/decisions/ADR-{NUMBER}-{short-title}.md` |
+
+Prefer `docs/architecture/decisions/`; fall back to `.agency/architecture/decisions/` when reading legacy artefacts. Write only under `docs/architecture/decisions/`.
 
 ## Path resolution
 
@@ -47,8 +54,9 @@ within the register the user targets.
 
 1. Mode: `plan`, `write`, or `review`.
 2. Resolve paths (default or user override).
-   **plan** takes an optional epic: `adr plan <epic>` harvests decisions already
-   made in `.agency/work/{epic}/design.md` and triages them into the register.
-   Without an epic it surveys product.md and solution.md for decisions still to
-   be made.
+   **plan** takes an optional work item: `adr plan <work-id>` resolves it per
+   [work-item-resolution.md](../../references/work-item-resolution.md),
+   harvests decisions already made in `docs/work/{work-id}/design.md`, and
+   triages them into the register. Without a work item it surveys product.md
+   and solution.md for decisions still to be made.
 3. [prompts/plan.prompt.md](prompts/plan.prompt.md) | [prompts/write.prompt.md](prompts/write.prompt.md) | [prompts/review.prompt.md](prompts/review.prompt.md).

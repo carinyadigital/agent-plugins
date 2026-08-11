@@ -6,30 +6,31 @@ made.
 
 Plan runs in two directions, and the argument decides which:
 
-- **Forward (no epic argument)** — survey `product.md` and `solution.md` for
-  decisions that must be made *before* technical design can proceed.
-- **Harvest (`adr plan <epic>`)** — read `.agency/work/{epic}/design.md` for
-  decisions that were *already made* during delivery and never formalised. A
-  decision made in an epic and left only in `design.md` is invisible to every
-  future reader of the architecture.
+- **Forward (no work-item argument)** — survey `product.md` and `solution.md`
+  for decisions that must be made *before* technical design can proceed.
+- **Harvest (`adr plan <work-id>`)** — read `docs/work/{work-id}/design.md`
+  for decisions that were *already made* during delivery and never
+  formalised. A decision made on a work item and left only in `design.md` is
+  invisible to every future reader of the architecture.
 
-Run both when an epic is named: harvest first, then survey.
+Run both when a work item is named: harvest first, then survey.
 
 ## Output
 
-Default register: `.agency/architecture/decisions/register.md`. If the user names
+Default register: `docs/architecture/decisions/register.md`. If the user names
 another path, use it. Update the register only — do **not** create
 `proposed-adrs.md`, `adr-plan.md`, or other plan files.
 
 Use [assets/register.template.md](../assets/register.template.md) for structure
 if the register does not exist yet.
 
-## Harvest pass (when an epic is named)
+## Harvest pass (when a work item is named)
 
-Resolve `{epic}` from the argument or the backlog, per
-[delivery-conventions.md](../../tasks/references/delivery-conventions.md).
+Resolve `{work-id}` per
+[work-item-resolution.md](../../../references/work-item-resolution.md) —
+source system, canonical ID, and type — before reading anything else.
 
-1. Read `.agency/work/{epic}/design.md` and collect every decision it records or
+1. Read `docs/work/{work-id}/design.md` and collect every decision it records or
    implies — explicit ADR candidates, technology choices, integration patterns,
    contract shapes, and data-model commitments.
 2. Cross-check each against the register's **Accepted** table and against
@@ -38,20 +39,20 @@ Resolve `{epic}` from the argument or the backlog, per
    - **Promote** — consequential and standalone. Add a **Proposed** row, then
      draft it with **adr write**.
    - **Inline** — real but not standalone; it belongs as a line in `solution.md`
-     rather than its own ADR. Record where it should go and recommend
-     `solution review`; do not edit `solution.md` from here.
+     rather than its own ADR. Record where it should go and hand off to
+     **solution**; do not edit `solution.md` from here.
    - **Defer** — cannot be settled yet. Add a **Proposed** row marked Deferrable
      with what would unblock it.
 4. Record the triage outcome for every candidate. A candidate that appears in
    none of the three lists has been dropped silently — that is the failure this
    pass exists to prevent.
 5. Where a promoted decision supersedes something already in `solution.md`, note
-   it for `solution review` to archive with
+   it for **solution** to archive with
    `<!-- ARCHIVED: superseded by ADR-#### -->`. Never delete superseded content.
 
 ## Survey pass
 
-1. Read `.agency/product.md`, `.agency/architecture/solution.md`, and the
+1. Read `docs/product/product.md`, `docs/architecture/solution.md`, and the
    existing register.
 2. Identify areas with ambiguity, new technology, integration patterns, or
    architectural trade-offs.
@@ -85,9 +86,9 @@ Plan mode MUST NOT:
 
 - Write ADR bodies — that is **adr write**
 - Edit `solution.md` — record the recommendation and hand off to
-  `solution review`
+  **solution**
 - Edit `design.md`, including archiving superseded sections — note what needs
-  archiving and let `solution review` do it
+  archiving and let **solution** do it
 - Delete rejected candidates — rejections stay recorded with their reason
 - Promote a decision that already has an Accepted ADR
 
@@ -95,9 +96,9 @@ Plan mode MUST NOT:
 
 Report in chat:
 
-- **Harvested from `{epic}`** — each candidate with its `design.md` section and
-  triage outcome (omit when no epic was named)
+- **Harvested from `{work-id}`** — each candidate with its `design.md` section
+  and triage outcome (omit when no work item was named)
 - **Surveyed** — new proposals from product/solution, Blocking or Deferrable
 - **Register changes** — rows added, revised, or rejected
-- **Handoffs** — which candidates need `adr write`, which need `solution review`,
+- **Handoffs** — which candidates need `adr write`, which need **solution**,
   and what needs archiving

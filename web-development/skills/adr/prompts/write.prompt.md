@@ -7,14 +7,14 @@ decision as an ADR.
 
 Defaults (override if the user names other paths):
 
-- Register: `.agency/architecture/decisions/register.md`
-- ADR file: `.agency/architecture/decisions/ADR-{NUMBER}-{short-title}.md`
+- Register: `docs/architecture/decisions/register.md`
+- ADR file: `docs/architecture/decisions/ADR-{NUMBER}-{short-title}.md`
 
 ## Steps
 
 1. Read [assets/adr.template.md](../assets/adr.template.md)
 2. Read the register to determine the next sequential ADR number
-3. Read related ADRs and `.agency/architecture/solution.md`
+3. Read related ADRs and `docs/architecture/solution.md`
 4. Fill problem, drivers, options, decision, consequences, confirmation
 5. Save the ADR file at the path above
 6. Add or update the row in the **Accepted ADRs** table in register.md

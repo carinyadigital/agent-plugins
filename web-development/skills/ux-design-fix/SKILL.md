@@ -20,7 +20,7 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Shell
+  - Bash
 argument-hint: "[blocking|warning|all] [review-output-path | instruction]"
 metadata:
   author: Carinya Parc
@@ -163,10 +163,11 @@ description plus the app's own consistency, which is legitimate but should be sa
 
 11. **Commit in logical units:** `fix(ui): what and why`.
 
-12. **Update review state** if `.agency/reviews/ux-{branch}.json` exists — mark each
-    finding `fixed`, `deferred`, or `dismissed` with the reason, and add anything
-    confirmed intentional to `accepted_deviations` so the next review stops raising it.
-    Direct mode with no prior review writes no state.
+12. **Update review state** if this branch has an entry in
+    `docs/reviews/ux-design-review.local.json` — mark each finding `fixed`,
+    `deferred`, or `dismissed` with the reason, and add anything confirmed
+    intentional to that entry's `accepted_deviations` so the next review stops
+    raising it. Direct mode with no prior review writes no state.
 
 ## Quality rules
 
@@ -235,6 +236,6 @@ description plus the app's own consistency, which is legitimate but should be sa
 
 ### Review state
 
-`.agency/reviews/ux-feat-checkout-summary.json` updated: 3 fixed, 1 deferred,
-1 dismissed. (Direct mode: no state written.)
+`docs/reviews/ux-design-review.local.json` entry for `feat/checkout-summary`
+updated: 3 fixed, 1 deferred, 1 dismissed. (Direct mode: no state written.)
 </example>

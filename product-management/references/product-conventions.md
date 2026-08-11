@@ -1,34 +1,45 @@
 # Product conventions
 
 Canonical rules for paths and artefact boundaries for product management skills.
-Skills that write under `.agency/` should read this file when resolving paths.
+Skills that write under `docs/product/` should read this file when resolving paths.
 
 ## Document layout
 
 ```text
-.agency/          product.md, roadmap.md
-.agency/research/         synthesis, competitive briefs, metrics reviews (optional)
-.agency/updates/          stakeholder updates (optional)
+docs/product/               product.md, roadmap.md
+docs/research/              synthesis, competitive briefs, metrics reviews (optional)
+docs/updates/               stakeholder updates (optional)
 ```
 
 Override paths when the user names them explicitly in the request.
 
-Decomposition artefacts (`backlog.md`, `work/{epic}/`, `sprints/`) are owned by the
-companion `delivery-practice` plugin — product skills read them but do not write them.
+Decomposition artefacts (`docs/product/backlog.md`, `docs/work/{work-id}/`,
+`docs/work/sprint-{id}/`) are owned by the companion `delivery-practice`
+plugin — product skills read them but do not write them.
+
+## Progressive migration bridge
+
+Prefer `docs/` artefact paths. When reading an input that is missing under
+`docs/`, fall back to the legacy `.agency/` equivalent if present
+(e.g. `.agency/product.md`, `.agency/roadmap.md`). **Write new and updated
+artefacts only under `docs/`.** Do not migrate files silently.
+
+Repo binding (`.agency/target.json`) and agency byproducts (`.agency/reviews/`)
+stay under `.agency/` permanently.
 
 ## Artefact boundaries
 
 | Content | Belongs in | Not in |
 | ------- | ---------- | ------ |
-| Business strategy, personas, outcomes, vision | `.agency/product.md` | roadmap, backlog |
-| Phase sequencing, exit criteria, themes | `.agency/roadmap.md` | product, backlog |
+| Business strategy, personas, outcomes, vision | `docs/product/product.md` | roadmap, backlog |
+| Phase sequencing, exit criteria, themes | `docs/product/roadmap.md` | product, backlog |
 | Feature spec, user stories, requirements, success metrics | feature spec / PRD | product (strategy only) |
 | Research themes, personas, opportunity areas | research synthesis | product (cite only) |
 | Competitor comparison, positioning, implications | competitive brief | product, roadmap |
 | Metrics scorecard, trends, recommended actions | metrics review | stakeholder update |
 | Audience-tailored status, launch notes, risk escalation | stakeholder update | metrics review |
-| Epic list, deps, points, work paths | `.agency/backlog.md` (delivery-practice) | product, roadmap |
-| Story statement, test criterion, Gherkin AC | `.agency/work/{epic}/tasks.md` (delivery-practice) | product artefacts |
+| Epic list, deps, points, work paths | `docs/product/backlog.md` (delivery-practice) | product, roadmap |
+| Story statement, test criterion, Gherkin AC | `docs/work/{work-id}/tasks.md` (delivery-practice) | product artefacts |
 
 ## Skill routing (near-misses)
 
@@ -42,6 +53,7 @@ companion `delivery-practice` plugin — product skills read them but do not wri
 | Compare competitors, battle cards | **competitive-brief** |
 | Metrics scorecard, trends, actions | **metrics-review** |
 | Status for leadership, launch note, risk escalation | **stakeholder-update** |
+| Review or critique an existing product.md / roadmap.md | **/web-development:docs-review** |
 | Which skill to use? | **skills-index** |
 
 ## Companion practices (cross-plugin)
@@ -54,10 +66,10 @@ Decomposition and delivery cadence live in `delivery-practice`. Invoke as
 | Decompose product/roadmap or a spec into a backlog | **/delivery-practice:tasks --product** |
 | Groom a backlog, check sprint readiness | **/delivery-practice:backlog-refine** |
 | Plan or review a sprint | **/delivery-practice:sprint-planning**, **/delivery-practice:sprint-retro** |
-| Sign off an epic vs AC and roadmap gates | **/delivery-practice:validate** |
+| Sign off a work item vs AC and roadmap gates | **/delivery-practice:validate** |
 
 Architecture and engineering skills live in `web-development`
-(`/web-development:solution`, `design`, `implement`, `code-review`, …).
+(`/web-development:solution`, `design`, `implement`, `code-review`, `docs-review`, …).
 
 ## Agency layout notes
 

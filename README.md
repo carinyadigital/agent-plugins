@@ -78,7 +78,7 @@ Twelve job-titled entry points for digital agency work. Each name maps to **exac
 
 | Persona | What it does | Command |
 |---|---|---|
-| **Product Manager** | Product strategy, roadmap, specs from problem statements | `/product-management:product write` |
+| **Product Manager** | Product strategy, roadmap, specs from problem statements | `/product-management:product` |
 | **Delivery Lead** | Tasks/backlog decomposition, sprint planning, validation | `/delivery-practice:sprint-planning` |
 | **Content Strategist** | Editorial calendar and social inventory curation | `/content-marketing:content-calendar write` |
 | **Content Writer** | Blog posts, recipes, captions, and light edits for CMS import | `/content-marketing:draft-post` |
@@ -355,7 +355,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | Command | Skill | What it does |
 |---|---|---|
 | `/product-management:setup` | setup | Learns cadence, audiences, discovery workflow; writes practice profile |
-| `/product-management:product` | product | write, review — `.agency/product.md` |
+| `/product-management:product` | product | write — `docs/product/product.md` (review via `/web-development:docs-review`) |
 | `/product-management:roadmap` | roadmap | write, review — `.agency/roadmap.md` |
 | `/product-management:write-spec` | write-spec | Feature spec or PRD from a problem statement |
 | `/product-management:product-brainstorming` | product-brainstorming | Sparring partner for ideas (no deliverable) |

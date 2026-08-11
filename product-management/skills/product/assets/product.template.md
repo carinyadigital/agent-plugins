@@ -5,9 +5,9 @@ owner: <!-- team or PM -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - .agency/roadmap.md
-  - .agency/backlog.md
-  - .agency/architecture/solution.md
+  - docs/product/roadmap.md
+  - docs/product/backlog.md
+  - docs/architecture/solution.md
 ---
 
 <!--

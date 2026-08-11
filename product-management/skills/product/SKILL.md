@@ -1,23 +1,23 @@
 ---
 name: product
 description: >
-  Use when the user wants a product strategy doc, PRD, pitch, vision, personas,
-  or outcomes at .agency/product.md. Two modes: write (draft or re-author)
-  and review (critique, update for currency, amend in place). Triggers on
-  "write the PRD", "draft a product pitch", "who are our personas", "review the
-  product strategy", "is this strategy still current". Do NOT use for
-  phased delivery plan (roadmap), epics or backlog (tasks), architecture
-  (solution), tasks or Gherkin (tasks), or implementation (implement).
+  Use when the user wants a product strategy doc, PRD, pitch, vision,
+  personas, or outcomes at docs/product/product.md. Drafts or re-authors the
+  document. Triggers on "write the PRD", "draft a product pitch", "who are
+  our personas". For reviewing or critiquing an existing product.md, use
+  docs-review instead. Do NOT use for phased delivery plan (roadmap), epics
+  or backlog (tasks), architecture (solution), tasks or Gherkin (tasks), or
+  implementation (implement).
 license: MIT
 allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
-argument-hint: "<mode: write|review> [--stage pitch|product] [--context <notes>]"
+argument-hint: "[--stage pitch|product] [--context <notes>]"
 metadata:
   author: Carinya Parc
-  version: "1.0"
+  version: "1.1"
   owner: product
   work_shape: generate-draft
   output_class: draft-for-review
@@ -26,9 +26,12 @@ metadata:
 
 # Product
 
+You are a Product Manager writing a product document that defines the
+_why_, _who_, and _what_ of the product.
+
 ## Artefact
 
-Default path: `.agency/product.md` — strategy document (_why_, _who_, _what_).
+Default path: `docs/product/product.md` — strategy document (_why_, _who_, _what_).
 Readable by a non-technical stakeholder without a glossary.
 
 ## Path resolution
@@ -36,18 +39,54 @@ Readable by a non-technical stakeholder without a glossary.
 If the user names a different file path in their request, read and write that
 path instead of the default.
 
-## Gotchas
+During progressive migration, when reading an existing product strategy prefer
+`docs/product/product.md`, then fall back to `.agency/product.md` if absent.
+Always write the new or updated document to `docs/product/product.md` (or the
+user-named path).
 
-- **No file paths, APIs, or schemas** — those belong in solution.md.
-- **No epic tables** — roadmap and backlog own sequencing and epics.
-- **Delete DRAFTING AIDE** block before saving.
+## Arguments
 
-## Stage (write mode)
+`--stage pitch|product` (default: ask if unclear).
 
-| Stage | When | Format |
-| ----- | ---- | ------ |
-| `pitch` | Phase 0, pre-foundation | Shape Up, ≤2 pages |
-| `product` | Phase 2+, post-walking-skeleton | Extended, ≤5 pages |
+## Context
+
+<artifacts>
+[Pitch: problem statement, appetite, known constraints.
+Product stage: existing pitch product.md, user research, stakeholder map.]
+</artifacts>
+
+## Steps (pitch stage)
+
+1. Read all provided context
+2. §1 Problem — evidence-based bullets
+3. §2 Appetite — investment and phasing
+4. §3 Sketch — end-to-end outcome in plain language
+5. §4 Rabbit holes — deliberate exclusions
+6. §5 No-gos — out-of-scope with reasons
+7. Delete the `DRAFTING AIDE` comment block before saving
+
+## Steps (product stage)
+
+1. Read context and existing pitch product.md if present
+2. Carry forward §1–§5, updated if needed
+3. §6 Target users
+4. §7 Outcome metrics — reference `docs/architecture/solution.md §2.1` for thresholds; do not restate numbers
+5. §8 Product principles — commercial only
+6. §9 Stakeholders and RACI
+7. §10 Dependencies and sequencing
+8. Delete the `DRAFTING AIDE` comment block before saving
+
+## Quality rules
+
+- Readable without a glossary; pitch ≤2 pages, product stage ≤5 pages
+- §7 no raw numeric thresholds; §8 not technical
+- Derive from context — do not invent requirements
+- **No file paths, APIs, or schemas** — those belong in solution.md
+- **No epic tables** — roadmap and backlog own sequencing and epics
+
+## Output
+
+Markdown with YAML frontmatter. Use [assets/product.template.md](assets/product.template.md).
 
 ## Supporting files
 
@@ -56,12 +95,7 @@ path instead of the default.
 
 ## Related skills
 
-- `roadmap`, `tasks`, `solution`
-
-## Router
-
-1. Mode: `write` or `review`.
-2. Resolve target path (default or user override).
-3. One prompt under [prompts/](prompts/).
-
-**write** — `--stage pitch|product` (default: ask if unclear).
+- `/product-management:roadmap` — sequencing and phases
+- `/delivery-practice:tasks` — epics and backlog decomposition
+- `/web-development:solution` — architecture
+- `/web-development:docs-review` — review or critique an existing product.md

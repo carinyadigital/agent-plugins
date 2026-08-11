@@ -105,10 +105,10 @@ Set `catalogue` during setup to the GitHub org/repo slug (or equivalent source i
     }
   },
   "artefactPaths": {
-    "product": ".agency/product.md",
-    "backlog": ".agency/backlog.md",
-    "roadmap": ".agency/roadmap.md",
-    "solution": ".agency/architecture/solution.md"
+    "product": "docs/product/product.md",
+    "backlog": "docs/product/backlog.md",
+    "roadmap": "docs/product/roadmap.md",
+    "solution": "docs/architecture/solution.md"
   }
 }
 ```

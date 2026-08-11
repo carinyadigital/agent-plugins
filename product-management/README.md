@@ -26,7 +26,7 @@ library. Choose defaults during `setup`.
 Invoke skills directly — there is no separate agent plugin:
 
 ```
-/product-management:product write
+/product-management:product
 /product-management:write-spec
 /product-management:roadmap write
 ```
@@ -52,7 +52,7 @@ After instance bootstrap (or standalone):
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile and product defaults |
-| **product** | write, review — `.agency/product.md` (strategy, PRD, pitch, vision, personas) |
+| **product** | write — `docs/product/product.md` (strategy, PRD, pitch, vision, personas); review via `/web-development:docs-review` |
 | **roadmap** | write, review — `.agency/roadmap.md` (Now/Next/Later, themes, OKR-aligned) |
 | **write-spec** | Feature spec or PRD from a problem statement — user stories, requirements, success metrics |
 | **product-brainstorming** | Sparring partner for exploring a problem space (no deliverable) |
@@ -96,5 +96,5 @@ Covers the full PM workflow from Anthropic's
 [product-management plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management)
 — write-spec, roadmap, stakeholder-update, synthesize-research, competitive-brief,
 metrics-review, product-brainstorming — **plus** a dedicated `product` strategy
-skill (PRD / vision / personas at `.agency/product.md`) and a `skills-index`
+skill (PRD / vision / personas at `docs/product/product.md`) and a `skills-index`
 router.

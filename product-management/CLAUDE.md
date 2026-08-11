@@ -10,8 +10,8 @@ The `setup` skill copies or updates the user config at:
 Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
-Product artefacts (product, roadmap) live in the target repo `.agency/` tree — see
-references/product-conventions.md.
+Product artefacts (product, roadmap) live in the target repo `docs/product/` tree — see
+references/product-conventions.md. Repo binding stays in `.agency/target.json`.
 -->
 
 # Product Management — Practice Profile

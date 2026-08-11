@@ -1,16 +1,16 @@
 ---
 type: Design
 mode: <!-- walking-skeleton | tdd -->
-epic: <!-- kebab-case from title or short title, max two words -->
-epic_id: <!-- e.g. CHK01 -->
+work_id: <!-- e.g. CHK01, or the tracker key (JIRA-123, ENG-45) if one resolved -->
+epic_slug: <!-- kebab-case from title, max two words — filesystem-only folder name; omit if work_id is a tracker key -->
 version: '0.1'
 owner: <!-- team or squad name -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
   - <!-- solution.md -->
-  - .agency/work/{epic}/tasks.md
-  - .agency/architecture/solution.md
+  - docs/work/{work-id}/tasks.md
+  - docs/architecture/solution.md
 ---
 
 <!--
@@ -20,7 +20,7 @@ DO NOT INCLUDE in this design.md:
     → cite solution.md §{N.M} instead; do not re-narrate
   - Business rationale                  → product.md
   - Phase sequencing                    → roadmap.md
-  - Story-level acceptance criteria     → .agency/work/{epic}/tasks.md (tasks skill)
+  - Story-level acceptance criteria     → docs/work/{work-id}/tasks.md (tasks skill)
 
 Walking-skeleton mode (2–4 pages): §1 The slice, §2 Files shipped,
   §3 Acceptance gates, §4 What was NOT delivered, §5 Open questions, §6 Handoff.
@@ -31,9 +31,9 @@ TDD mode (5–10 pages): §1 Scope, §2 Architecture fit, §3 Files and componen
   §11 Handoff, §12 Open questions.
 -->
 
-# Design -- {Epic Title} ({EPIC-ID})
+# Design -- {Work Item Title} ({WORK-ID})
 
-Design for epic {EPIC-ID} at `.agency/work/{epic}/`. Architecture-wide patterns are authoritative in
+Design for {WORK-ID} at `docs/work/{work-id}/`. Architecture-wide patterns are authoritative in
 [`solution.md`](solution.md) and are not repeated here.
 
 ## 1. Scope / The slice

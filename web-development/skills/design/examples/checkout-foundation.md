@@ -1,15 +1,15 @@
 ---
 type: Design
-epic: checkout-foundation
-epic_id: CHK01
+work_id: CHK01
+epic_slug: checkout-foundation
 level: walking-skeleton
 ---
 
 # Design -- Checkout Foundation (CHK01)
 
-Walking-skeleton design for `.agency/work/checkout-foundation/`, epic CHK01 from `.agency/backlog.md`.
+Walking-skeleton design for `docs/work/checkout-foundation/`, epic CHK01 from `docs/product/backlog.md`.
 
-Architecture-wide patterns are authoritative in `.agency/architecture/solution.md` and are not repeated here.
+Architecture-wide patterns are authoritative in `docs/architecture/solution.md` and are not repeated here.
 
 ## 1. The slice
 

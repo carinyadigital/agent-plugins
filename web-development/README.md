@@ -66,9 +66,9 @@ target binding.
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile, target binding, stack defaults |
-| **solution** | write, review — `.agency/architecture/solution.md` |
-| **adr** | plan, write, review — ADR register and decision records |
-| **design** | write, review — `.agency/work/{epic}/design.md` |
+| **solution** | write — `docs/architecture/solution.md`; review via `docs-review` |
+| **adr** | plan, write, review — `docs/architecture/decisions/` |
+| **design** | write — `docs/work/{work-id}/design.md`; review via `docs-review` |
 | **implement** | Implement a task against approved design and AC |
 | **code-review** | Read-only peer review against design and tasks |
 | **code-review-fix** | Address code-review findings without behaviour change |

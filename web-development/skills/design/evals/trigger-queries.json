@@ -8,6 +8,15 @@
     "should_trigger": true
   },
   {
+    "query": "Design JIRA-123 — how should we build this story?",
+    "should_trigger": true
+  },
+  {
+    "query": "Review the design.md for checkout-foundation before tasks.",
+    "should_trigger": false,
+    "note": "docs-review"
+  },
+  {
     "query": "Update solution.md with the orders API and module layout.",
     "should_trigger": false,
     "note": "solution"

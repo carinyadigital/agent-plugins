@@ -42,7 +42,7 @@ brand-guide skill; read the artefact directly.
 
 When a UX design practice has produced wireframes or specs, read from
 `<instance-root>/design/` (or the path named by the user). Falls back to
-`.agency/work/{epic}/design.md` for epic-level implementation specs.
+`docs/work/{work-id}/design.md` for work-item implementation specs (fall back to `.agency/work/` when reading legacy artefacts).
 
 ## Companion practice (delivery)
 
@@ -55,8 +55,8 @@ implementation, invoke companion skills directly — do not bundle local copies:
 | Task Gherkin AC | `/delivery-practice:tasks` |
 | Groom backlog or check sprint readiness | `/delivery-practice:backlog-refine` |
 | Sprint plan | `/delivery-practice:sprint-planning` |
-| Sprint retrospective | `/delivery-practice:sprint-planning-retro` |
-| Epic completion sign-off | `/delivery-practice:validate` |
+| Sprint retrospective | `/delivery-practice:sprint-retro` |
+| Work-item completion sign-off | `/delivery-practice:validate` |
 | Which planning skill to use | `/delivery-practice:skills-index` |
 
 Recommend `delivery-practice` as a co-install. Document in CONNECTORS.md.
@@ -64,10 +64,13 @@ Recommend `delivery-practice` as a co-install. Document in CONNECTORS.md.
 ## Document layout
 
 ```text
-.agency/                      target.json, product.md, roadmap.md, backlog.md
-.agency/architecture/         solution.md, decisions/register.md, ADR-NNNN-*.md
-.agency/work/{epic}/          design.md, tasks.md
-.agency/sprints/sprint-{id}/     plan.md, retrospective.md
+docs/product/                 product.md, roadmap.md, backlog.md
+docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
+docs/work/{work-id}/          design.md, tasks.md
+docs/work/{work-id}/reviews/  code-review / ux-design-review verdicts
+docs/work/sprint-{id}/        plan.md, retrospective.md
+docs/reviews/                 shared review state (*.local.json)
+.agency/target.json           target binding (permanent)
 .agency/reviews/              agent byproducts: competitor-scan, metrics, digests
 ```
 
@@ -75,43 +78,33 @@ Repo identity lives in `.agency/target.json` (`name`, `instance`, `target`) — 
 
 Override paths when the user names them explicitly in the request.
 
-## Epic slug (`{epic}`)
+## Progressive migration bridge
 
-| Rule | Detail |
-| ---- | ------ |
-| Source | Epic **title** or **short title** from `.agency/backlog.md` |
-| Format | kebab-case, **at most two words** |
-| Not the ID | `CHK01` → resolve row → e.g. `checkout-foundation` |
-| Work path | `.agency/work/{epic}/` (trailing slash in tables is fine) |
+Prefer `docs/` artefact paths. When reading an input missing under `docs/`,
+fall back to the legacy `.agency/` equivalent if present. Write new and
+updated delivery/engineering artefacts only under `docs/`. Keep
+`.agency/target.json` and `.agency/reviews/` byproducts under `.agency/`.
 
-| Title | Slug | Invalid |
-| ----- | ---- | ------- |
-| Checkout Foundation | `checkout-foundation` | `checkout-foundation-wp` |
-| Payment and Placement | `payment-placement` | `payment-and-placement` (3 words) |
-| Order Confirmation | `order-confirmation` | `CHK01` (ID, not slug) |
-
-**Resolve `{epic}` when the user passes:**
-
-- Slug: `checkout-foundation`
-- Epic ID: `CHK01` → read backlog row → slug
-- Path: `.agency/work/checkout-foundation/` or `.../tasks.md`
+Work-item ID resolution (any work item, not epic-only) is defined in
+[work-item-resolution.md](work-item-resolution.md) and
+[delivery-conventions.md](delivery-conventions.md).
 
 ## Artefact boundaries
 
 | Content | Belongs in | Not in |
 | ------- | ---------- | ------ |
-| Business strategy, personas, outcomes | `.agency/product.md` | backlog, solution |
-| Phase sequencing, exit criteria | `.agency/roadmap.md` | backlog, product |
-| Epic list, deps, points, work paths | `.agency/backlog.md` | roadmap detail |
-| Architecture, NFRs, cross-epic patterns | `.agency/architecture/solution.md` | design (cite only) |
-| ADR decisions | `register.md`, `ADR-NNNN-*.md` | solution narrative |
-| Epic implementation spec | `.agency/work/{epic}/design.md` | solution, backlog |
-| Task Gherkin (and optional EARS) | `.agency/work/{epic}/tasks.md` | backlog, design |
-| Sprint plan / retro | `.agency/sprints/sprint-{id}/` | product backlog |
+| Business strategy, personas, outcomes | `docs/product/product.md` | backlog, solution |
+| Phase sequencing, exit criteria | `docs/product/roadmap.md` | backlog, product |
+| Epic list, deps, points, work paths | `docs/product/backlog.md` | roadmap detail |
+| Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | design (cite only) |
+| ADR decisions | `docs/architecture/decisions/` | solution narrative |
+| Work-item implementation spec | `docs/work/{work-id}/design.md` | solution, backlog |
+| Task Gherkin (and optional EARS) | `docs/work/{work-id}/tasks.md` | backlog, design |
+| Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
 
 ## Acceptance criteria
 
-- **Default:** Gherkin in `.agency/work/{epic}/tasks.md`, on the **story** (≥1 scenario each).
+- **Default:** Gherkin in `docs/work/{work-id}/tasks.md`, on the **story** (or the work item itself when it carries AC).
 - **EARS:** optional via `/delivery-practice:tasks --ears` or when rules are clearer than scenarios.
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
 
@@ -123,6 +116,7 @@ Override paths when the user names them explicitly in the request.
 | `tdd` | Sprint 2+ | 5–10 pages |
 
 Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
+Design applies at whatever level the user names (`design CHK01`, `design JIRA-123`).
 
 ## Personas
 
@@ -138,7 +132,7 @@ Six personas share one skill library. Choose the default persona during
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 
-Epic sign-off uses `/delivery-practice:validate` (companion skill), not a local copy.
+Work-item sign-off uses `/delivery-practice:validate` (companion skill), not a local copy.
 
 ## Skill routing (near-misses)
 
@@ -146,7 +140,7 @@ Epic sign-off uses `/delivery-practice:validate` (companion skill), not a local 
 | ----------- | ----- | ------- |
 | System architecture | **solution** | Principal Architect |
 | ADR write/review | **adr** | Principal Architect |
-| `design.md` for one epic | **design** | Senior FE / Principal FE / Architect |
+| `design.md` for one work item | **design** | Senior FE / Principal FE / Architect |
 | Implement code | **implement** | Frontend Engineer |
 | PR / branch code review | **code-review** | Senior FE / Principal FE |
 | Address review feedback | **code-review-fix** | Frontend Engineer |

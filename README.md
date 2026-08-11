@@ -62,7 +62,7 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 ### 3. Implement a UI task against design and AC (Web Development)
 
-**You have:** approved `.agency/work/{epic}/design.md`, `tasks.md` with Gherkin AC, and a bound target repo.
+**You have:** approved `docs/work/{work-id}/design.md`, `tasks.md` with Gherkin AC, and a bound target repo.
 
 **Run:** `/web-development:implement CHK01-01` — the skill reads the target repo's own `AGENTS.md` / `CLAUDE.md` before changing code.
 
@@ -111,7 +111,7 @@ Each persona below is named for the job it does. Start with the [named personas]
 | **Caption Writer** | Caption variants and channel copy | `content-marketing` | `/content-marketing:write-captions` |
 | **Technical SEO Auditor** | Production audit → tracked issues | `search-optimisation` | `/search-optimisation:technical-seo-audit` |
 | **ADR Author** | Architecture decision register and ADR files | `web-development` | `/web-development:adr write` |
-| **Epic Designer** | Epic-level technical design | `web-development` | `/web-development:design write` |
+| **Epic Designer** | Work-item technical design | `web-development` | `/web-development:design` |
 | **MR Author** | Merge request description from the branch | `web-development` | `/web-development:merge-request` |
 | **Docs Steward** | Document-set quality and consistency review | `web-development` | `/web-development:docs-review` |
 | **Debugger** | Reproduce, isolate, diagnose, fix | `web-development` | `/web-development:debug` |
@@ -413,7 +413,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | `/web-development:setup` | setup | Learns stack, personas, target binding, connectors |
 | `/web-development:solution` | solution | write, review — `.agency/architecture/solution.md` |
 | `/web-development:adr` | adr | plan, write, review — ADR register and decision records |
-| `/web-development:design` | design | write, review — `.agency/work/{epic}/design.md` |
+| `/web-development:design` | design | write — `docs/work/{work-id}/design.md`; review via `docs-review` |
 | `/web-development:implement` | implement | Implement a task against approved design and AC |
 | `/web-development:code-review` | code-review | Read-only peer review against design and tasks |
 | `/web-development:code-review-fix` | code-review-fix | Address code-review findings without behaviour change |

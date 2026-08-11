@@ -21,7 +21,8 @@ allowed-tools:
   - Bash(git:*)
   - Bash(gh:*)
   - Bash(glab:*)
-  - Write(.agency/reviews/**)
+  - Write(docs/reviews/**)
+  - Write(docs/work/**/reviews/**)
 argument-hint: "[branch-or-pr] [--since <sha>] [--full]"
 metadata:
   author: Carinya Parc
@@ -39,9 +40,12 @@ report. You do not change it.
 
 ## Read-only contract
 
-This skill writes exactly one thing: the review state file under
-`.agency/reviews/`. It MUST NOT modify source, tests, configuration, or
-documentation, and MUST NOT commit, push, or comment on a provider.
+This skill writes exactly two things: an entry in the shared review-tracking
+file at `docs/reviews/code-review.local.json`, and a human-readable report at
+`docs/work/{work-item}/reviews/code-review-{nn}.local.md` (or
+`docs/reviews/code-review-{branch}.local.md` when no work item resolved). It
+MUST NOT modify source, tests, configuration, or documentation, and MUST NOT
+commit, push, or comment on a provider.
 
 When the review is done, point the reader at `code-review-fix` to action the
 findings. Naming the next step is not the same as taking it — do not invoke it,
@@ -74,8 +78,9 @@ Cheap checks first. Do not spend six agents on a lockfile bump.
 
 **Reduce scope** rather than skipping:
 
-- If `.agency/reviews/{branch}.json` exists and `--full` was not passed, this is
-  an **incremental** review. Review the delta from the recorded SHA. See
+- If `docs/reviews/code-review.local.json` has an entry for this branch and
+  `--full` was not passed, this is an **incremental** review. Review the delta
+  from the recorded SHA. See
   [references/context-resolution.md](references/context-resolution.md) §6.
 
 ## 2. Context
@@ -227,10 +232,25 @@ never silently dropped.
 
 ## 8. Report and persist
 
-Produce the verdict in the format below, then write
-`.agency/reviews/{branch}.json` per the schema in
-[references/context-resolution.md](references/context-resolution.md) §6, so the
-next run can go incremental. This is the only file this skill writes.
+Produce the verdict in the format below, then persist review state per the
+schema in [references/context-resolution.md](references/context-resolution.md)
+§6:
+
+1. Update (or create) this branch's entry in the shared
+   `docs/reviews/code-review.local.json`, so the next run can go incremental.
+2. Write the human-readable verdict to
+   `docs/work/{work-item}/reviews/code-review-{nn}.local.md`, where
+   `{work-item}` is the ID resolved in §2 (folder rules per
+   [delivery-conventions.md](../../references/delivery-conventions.md)) and
+   `{nn}` is the next sequential two-digit number among existing
+   `code-review-*.local.md` files in that folder (do not count other skills'
+   reports). Numbered history applies only under
+   `docs/work/{work-item}/reviews/`. When no work item resolved, write
+   `docs/reviews/code-review-{branch}.local.md` instead (`/` in the branch
+   name replaced with `-`) — latest-only: overwrite that file; do not invent
+   numbering on the fallback path.
+
+These are the only two paths this skill writes.
 
 ---
 
@@ -265,7 +285,7 @@ next run can go incremental. This is the only file this skill writes.
 - Include business or strategic rationale that belongs in a product doc.
 - Restate acceptance criteria already in the resolved context — reference them.
 - Return PASS while CI failures are unacknowledged.
-- Modify any file outside `.agency/reviews/`.
+- Modify any file outside `docs/reviews/` and `docs/work/*/reviews/`.
 
 ## Output format
 
@@ -330,3 +350,4 @@ One paragraph. Then: to action these findings, run `code-review-fix`.
 - [references/finding-classification.md](references/finding-classification.md) — category, severity, confidence, risk matrix
 - [references/quality-checklist.md](references/quality-checklist.md) — timeless review checklist
 - [references/security-checklist.md](references/security-checklist.md) — security pass, input provenance
+- [../../references/delivery-conventions.md](../../references/delivery-conventions.md) — `docs/work/{work-id}/` path rules

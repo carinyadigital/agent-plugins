@@ -11,7 +11,8 @@
         "Every finding is prefixed with [blocking], [warning], or [suggestion]",
         "Every finding carries Category | Severity | Confidence",
         "Every finding cites file path and line",
-        "Modifies no file outside .agency/reviews/",
+        "Modifies no file outside docs/reviews/ and docs/work/*/reviews/",
+        "Writes a human-readable report to docs/work/*/reviews/code-review-{nn}.local.md or the docs/reviews/code-review-{branch}.local.md fallback",
         "Closes by pointing at code-review-fix rather than offering to fix"
       ]
     },
@@ -64,7 +65,7 @@
       "prompt": "Re-review the branch — I've pushed two commits since your last review, and I disagreed with the retry-loop finding.",
       "expected_output": "Incremental review of the delta only. Dismissed finding not re-raised. Delta reported.",
       "assertions": [
-        "Reads .agency/reviews/{branch}.json and reviews from the recorded SHA",
+        "Reads its entry in docs/reviews/code-review.local.json and reviews from the recorded SHA",
         "Does not re-raise the dismissed retry-loop finding for unchanged code",
         "Includes a 'Since last review' section with fixed / still open / newly introduced",
         "Updates the review state file with the new head SHA"

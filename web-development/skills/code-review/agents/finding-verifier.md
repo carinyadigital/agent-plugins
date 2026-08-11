@@ -6,7 +6,6 @@ color: red
 tools: Read, Grep, Glob, Bash(git diff:*), Bash(git log:*), Bash(git blame:*)
 metadata:
   model_tier: fast
-  review_cadence: as-needed
 ---
 
 You rate one finding. You decide whether it is real. You do not look for new

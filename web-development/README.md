@@ -20,7 +20,7 @@ Six personas share one skill library. Choose the default persona during
 | **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `ux-design-fix` | Build — UI, client state, styling |
 | **Senior Frontend Engineer** | `code-review`, `design`, `ux-design-review` | Peer review — diffs vs design and AC |
 | **Principal Frontend Engineer** | `final-code-review`, `code-review`, `design` | Final gate — architecture and AC on open PRs |
-| **Principal Architect** | `solution`, `adr`, `design`, `docs-review` | Architecture — solution, ADRs, epic design |
+| **Principal Architect** | `solution`, `adr`, `design`, `docs-review` | Architecture — solution, ADRs, work-item design |
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 
@@ -70,13 +70,13 @@ target binding.
 | **adr** | plan, write, review — `docs/architecture/decisions/` |
 | **design** | write — `docs/work/{work-id}/design.md`; review via `docs-review` |
 | **implement** | Implement a task against approved design and AC |
-| **code-review** | Read-only peer review against design and tasks |
+| **code-review** | Read-only peer review; state in `docs/reviews/` |
 | **code-review-fix** | Address code-review findings without behaviour change |
 | **final-code-review** | Final technical gate on open PRs |
 | **merge-request** | Open merge request for implemented work |
 | **merge-request-babysit** | Drive an open MR/PR to merge-ready |
 | **merge-request-review** | Review an MR/PR as its reviewer |
-| **ux-design-review** | Read-only UX review of implemented UI vs design source |
+| **ux-design-review** | Read-only UX review; state in `docs/reviews/` |
 | **ux-design-fix** | Address UX review findings or direct UI fixes |
 | **ralph-loop-setup** | Seed and configure an autonomous delivery loop |
 | **ralph-loop** | Run an autonomous work-item delivery loop |

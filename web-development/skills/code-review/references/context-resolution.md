@@ -51,10 +51,10 @@ stop at the first match (or use several if more than one is relevant):
 - `**/design.md`, `**/DESIGN.md`, `**/SPEC*.md`, `**/RFC*.md` near the changed
   files or at the repo/module root.
 - Architecture references: `**/solution.md`, `ARCHITECTURE.md`,
-  `.agency/architecture/**`, ADR/decision folders (`**/decisions/**`,
+  `docs/architecture/**`, ADR/decision folders (`**/decisions/**`,
   `**/adr/**`, `ADR-*.md`).
-- A `.agency/work/{epic}/` (or similar) folder is one possible layout among many
-  — treat it as a candidate, never a requirement.
+- A `docs/work/{work-id}/` (or similar) folder is one possible layout among
+  many — treat it as a candidate, never a requirement.
 
 If nothing is found, scope is judged against the resolved intent only (does
 the diff do what the work item/PR description says, no more, no less).
@@ -92,8 +92,9 @@ produced.
 
 ## 6. Review state (incremental mode)
 
-Look for `.agency/reviews/{branch}.json`. If present, this branch has been
-reviewed before and the run is **incremental**:
+Look for this branch's entry in `docs/reviews/code-review.local.json`
+(`reviews[].branch`). If present, this branch has been reviewed before and the
+run is **incremental**:
 
 - Read the last reviewed SHA and the recorded findings with their statuses
   (`open`, `fixed`, `dismissed`, `deferred`).
@@ -105,33 +106,50 @@ reviewed before and the run is **incremental**:
 - Report the delta explicitly: fixed since last review, still open, newly
   introduced.
 
-If the file is absent, the run is a full review and will create it.
+If the file, or an entry for this branch, is absent, the run is a full review
+and will create one.
+
+`docs/reviews/code-review.local.json` is a single shared file, holding one
+entry per branch reviewed in this repo — it is not per-branch itself. Update
+this branch's entry in place; do not touch any other entry.
 
 Schema:
 
 ```json
 {
-  "branch": "feat/PROJ-001-context-assembler",
-  "last_reviewed_sha": "a1b2c3d",
-  "reviewed_at": "2026-07-19T09:00:00Z",
-  "findings": [
+  "reviews": [
     {
-      "id": "cr-001",
-      "file": "src/context/assembler.ts",
-      "line": 42,
-      "category": "Security",
-      "severity": "Critical",
-      "action": "blocking",
-      "status": "open",
-      "summary": "Artifact path not validated against repository root"
+      "branch": "feat/PROJ-001-context-assembler",
+      "work_item": "checkout-foundation",
+      "last_reviewed_sha": "a1b2c3d",
+      "reviewed_at": "2026-07-19T09:00:00Z",
+      "report": "docs/work/checkout-foundation/reviews/code-review-01.local.md",
+      "findings": [
+        {
+          "id": "cr-001",
+          "file": "src/context/assembler.ts",
+          "line": 42,
+          "category": "Security",
+          "severity": "Critical",
+          "action": "blocking",
+          "status": "open",
+          "summary": "Artifact path not validated against repository root"
+        }
+      ]
     }
   ]
 }
 ```
 
+`work_item` is the ID resolved in §1, or `null` when no work item resolved —
+in which case `report` points at
+`docs/reviews/code-review-{branch}.local.md` instead of a work-item folder.
+`report` always names the most recent human-readable report; earlier numbered
+reports remain on disk as history and are not referenced from the JSON.
+
 ## 7. Learnings
 
-Look for `.agency/review-learnings.md`. These are preferences captured when a
+Look for `docs/reviews/review-learnings.local.md`. These are preferences captured when a
 reader rejected or corrected a previous finding — the informal counterpart to
 written guidelines.
 

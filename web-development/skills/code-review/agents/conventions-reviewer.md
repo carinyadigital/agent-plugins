@@ -6,7 +6,6 @@ color: orange
 tools: Read, Grep, Glob, Bash(git diff:*), Bash(git log:*), Bash(gh:*), Bash(glab:*)
 metadata:
   model_tier: standard
-  review_cadence: as-needed
 ---
 
 You enforce **this team's** rules, and you quote the rule you are enforcing.

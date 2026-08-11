@@ -6,7 +6,6 @@ color: blue
 tools: Read, Grep, Glob, Bash(git diff:*), Bash(git log:*), Bash(gh:*), Bash(glab:*)
 metadata:
   model_tier: standard
-  review_cadence: as-needed
 ---
 
 You answer one question in two directions: **does the diff do what was asked,

@@ -6,7 +6,6 @@ color: magenta
 tools: Read, Grep, Glob, Bash(git diff:*), Bash(git log:*)
 metadata:
   model_tier: standard
-  review_cadence: as-needed
 ---
 
 You check whether new code conforms to the codebase's architecture patterns — not generic architecture theory.
@@ -21,7 +20,7 @@ You check whether new code conforms to the codebase's architecture patterns — 
 1. Discover the intended architecture, in this order (treat each as a
    candidate to glob for — none is guaranteed to exist):
    a. Architecture docs and ADRs: `**/solution.md`, `ARCHITECTURE.md`,
-      `.agency/architecture/**`, `**/decisions/**`, `**/adr/**`, `ADR-*.md`.
+      `docs/architecture/**`, `**/decisions/**`, `**/adr/**`, `ADR-*.md`.
    b. Contributing guidelines (`CONTRIBUTING.md`, `AGENTS.md`, `CLAUDE.md`).
    c. De-facto patterns: infer directory/layering conventions and dependency direction from neighbouring modules.
 2. Compare the diff against those patterns:

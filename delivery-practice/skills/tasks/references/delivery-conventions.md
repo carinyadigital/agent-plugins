@@ -34,7 +34,7 @@ only under `docs/`** (do not dual-write).
 | `roadmap.md` | `docs/product/roadmap.md` | `.agency/roadmap.md` |
 | `backlog.md` | `docs/product/backlog.md` | `.agency/backlog.md` |
 | `design.md` / `tasks.md` | `docs/work/{work-id}/…` | `.agency/work/{work-id}/…` |
-| `solution.md` | `docs/architecture/solution.md` | `.agency/solution.md` |
+| `solution.md` | `docs/architecture/solution.md` | `.agency/architecture/solution.md` |
 
 Repo binding (`.agency/target.json`) and agent byproducts (`.agency/reviews/`)
 are not delivery artefacts and are not dual-pathed.

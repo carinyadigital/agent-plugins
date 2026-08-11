@@ -49,7 +49,7 @@ implement) from **web-development**.
 
 | Skill | Description (excerpt) | Artefact | Track | Role | Consumes | Produces |
 | --- | --- | --- | --- | --- | --- | --- |
-| adr | Plan the register — survey product/solution for decisions still to make, or `adr plan <epic>` to harvest decisions already made in design.md — then write or review ADRs | register.md / ADR-NNNN.md | architecture | architect | solution.md, design.md | ADR-NNNN.md |
+| adr | Plan the register — survey product/solution for decisions still to make, or `adr plan <work-id>` to harvest decisions already made in design.md — then write or review ADRs | register.md / ADR-NNNN.md | architecture | architect | solution.md, design.md | ADR-NNNN.md |
 | tasks | Decompose anything into delivery work: product/roadmap into epics, an epic into stories and tasks with Gherkin AC, or any spec/RFC into both | backlog.md / tasks.md | strategy / discovery | delivery | product.md, roadmap.md, design.md, any spec | backlog.md, tasks.md |
 | backlog-refine | Groom a backlog or judge sprint readiness: reprioritise, split, re-estimate, defer; amends in place with a verdict | docs/product/backlog.md / docs/work/{work-id}/tasks.md | discovery / delivery | delivery | backlog.md, tasks.md | groomed artefact |
 | implement | Implements a task against design.md and tasks.md | code | delivery | engineer | design.md, tasks.md | code |
@@ -61,7 +61,7 @@ implement) from **web-development**.
 | merge-request-babysit | Drive an open MR/PR to merge-ready: watch CI, fix objective failures, triage threads, sync conflicts | merge-ready MR | delivery | engineer | open MR / PR | code / MR |
 | merge-request-review | Review an MR/PR as its reviewer; publish inline comments and a verdict | published review | delivery | engineer | MR / PR | published review |
 | ralph-loop-setup | Seed and configure a Ralph loop: pick a preset (engineering delivery, ad-hoc, custom), resolve the environment, set the completion promise and iteration budget; never starts the loop | seeded loop | delivery | delivery | design.md, tasks.md | loop files |
-| ralph-loop | Run an autonomous loop: one step per iteration until a completion promise or a safety rail (`start`, `status`, `cancel`) | committed epic + MR | delivery | delivery | seeded loop | code / MR |
+| ralph-loop | Run an autonomous loop: one step per iteration until a completion promise or a safety rail (`start`, `status`, `cancel`) | committed work item + MR | delivery | delivery | seeded loop | code / MR |
 | design | docs/work/{work-id}/design.md: write (review via docs-review) | design.md | discovery | architect | solution.md, backlog.md | design.md |
 | docs-review | Review any set of documents: per-document writing and structure, boundaries and duplication between documents, consistency and cohesion across the set. Read-only | doc review | any | architect | any doc set | review |
 | sprint-planning | Plan a sprint: goal, carry-over, capacity, committed scope, dependencies, DoD | docs/work/sprint-{id}/plan.md | delivery | delivery | backlog.md, tasks.md, prior retrospective.md | plan.md |

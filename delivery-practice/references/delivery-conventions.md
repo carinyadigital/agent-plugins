@@ -158,7 +158,7 @@ practice prefers `docs/`. During that window:
 | `roadmap.md` | `docs/product/roadmap.md` | `.agency/roadmap.md` |
 | `backlog.md` | `docs/product/backlog.md` | `.agency/backlog.md` |
 | `design.md` / `tasks.md` | `docs/work/{work-id}/…` | `.agency/work/{work-id}/…` |
-| `solution.md` | `docs/architecture/solution.md` | `.agency/solution.md` |
+| `solution.md` | `docs/architecture/solution.md` | `.agency/architecture/solution.md` |
 
 Do **not** apply this bridge to `.agency/target.json` or `.agency/reviews/` —
 those remain agency binding and byproduct trees under `.agency/`.

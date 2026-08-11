@@ -71,7 +71,7 @@ them there rather than recommending a product skill:
 | Groom a backlog, check sprint readiness | **/delivery-practice:backlog-refine** |
 | Sprint plan | **/delivery-practice:sprint-planning** |
 | Sprint retrospective | **/delivery-practice:sprint-retro** |
-| Epic done vs AC + roadmap gates | **/delivery-practice:validate** |
+| Work item done vs AC + roadmap gates | **/delivery-practice:validate** |
 
 ## Output format
 

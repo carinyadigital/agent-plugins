@@ -45,6 +45,10 @@ Recommend `delivery-practice` (backlog) and `product-management` (research synth
 Default path: `docs/content/content-calendar.md` in the instance repo or target
 repo `docs/` tree.
 
+Prefer `docs/content/content-calendar.md`. When reading, fall back to
+`.agency/content-calendar.md` if the `docs/` artefact is absent. **Write new and
+updated calendars only under `docs/content/`.** Do not dual-write.
+
 Override when the user names a path explicitly or when
 `config/targets/{target}.json` defines a content calendar path.
 

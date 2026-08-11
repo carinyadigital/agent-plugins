@@ -31,8 +31,8 @@ metadata:
 ---
 
 Prefer `docs/` artefact paths; fall back to `.agency/` equivalents when reading
-legacy inputs (`.agency/backlog.md`, `.agency/work/`, `.agency/architecture/`,
-`.agency/solution.md`). Write only under `docs/`.
+legacy inputs (`.agency/backlog.md`, `.agency/work/`,
+`.agency/architecture/solution.md`). Write only under `docs/`.
 
 # Validate
 

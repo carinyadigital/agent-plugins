@@ -128,8 +128,8 @@ Delete resume file if present.
 
 Close with a product-management handoff:
 
-1. **Strategy** — `/product-management:product write`
-2. **Roadmap** — `/product-management:roadmap write`
+1. **Strategy** — `/product-management:product`
+2. **Roadmap** — `/product-management:roadmap`
 3. **Spec** — `/product-management:write-spec`
 4. **Research** — `/product-management:synthesize-research`
 5. **Route** — `/product-management:skills-index` when unsure which skill to use.
@@ -160,7 +160,7 @@ Location: `<instance-root>/config/.product-setup-resume.json` if instance exists
 
 **Input:** Instance profile complete; `--quick`; solo operator; weekly bullet updates to sponsor; Now/Next/Later roadmap.
 
-**Expected output:** Practice profile at personal config path with cadence, audience, discovery sources, and roadmap format recorded; handoff to `/product-management:product write` or `/product-management:write-spec`.
+**Expected output:** Practice profile at personal config path with cadence, audience, discovery sources, and roadmap format recorded; handoff to `/product-management:product` or `/product-management:write-spec`.
 
 ## Outputs
 

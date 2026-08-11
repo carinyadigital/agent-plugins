@@ -135,7 +135,7 @@ Close with a delivery handoff:
 5. **Route** — `/delivery-practice:skills-index` when unsure which skill to use.
 6. **Refresh** — `/delivery-practice:setup --redo` to redo delivery defaults only.
 
-For product strategy, roadmap, specs, research, metrics, or stakeholder updates, install the companion **product-management** plugin (`/product-management:product write`, `/product-management:write-spec`).
+For product strategy, roadmap, specs, research, metrics, or stakeholder updates, install the companion **product-management** plugin (`/product-management:product`, `/product-management:roadmap`, `/product-management:write-spec`).
 
 ## Pause and resume
 

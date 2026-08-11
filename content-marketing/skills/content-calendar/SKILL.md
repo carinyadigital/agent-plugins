@@ -59,6 +59,9 @@ instance or target repo.
 | ---- | ------------ |
 | `write`, `review` | `docs/content/content-calendar.md` (instance repo) |
 
+Prefer `docs/content/content-calendar.md`; fall back to `.agency/content-calendar.md`
+when reading if the `docs/` artefact is absent. Write only under `docs/content/`.
+
 Path may be overridden in `config/targets/{target}.json` or user explicit path.
 
 ## Related skills

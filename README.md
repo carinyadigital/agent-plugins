@@ -25,7 +25,7 @@ Install **`agency-hub` first**, then the practice plugins that match your work.
 | [agency-hub](./agency-hub) | Instance bootstrap, target bindings, squad charters | `/agency-hub:setup` |
 | [brand-creative](./brand-creative) | Brand voice and visual identity | `/brand-creative:setup` |
 | [product-management](./product-management) | Product strategy, roadmap, specs, research, metrics, stakeholder updates | `/product-management:setup` |
-| [delivery-practice](./delivery-practice) | Backlog, sprint cadence, epic validation | `/delivery-practice:setup` |
+| [delivery-practice](./delivery-practice) | Backlog, sprint cadence, work-item validation | `/delivery-practice:setup` |
 | [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:setup` |
 | [ux-design](./ux-design) | Low-fidelity wireframes and interaction specs | `/ux-design:setup` |
 | [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
@@ -245,7 +245,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 | Plugin | What it adds |
 |---|---|
 | **[product-management](./product-management)** | Product strategy, outcome-based roadmap, feature specs and PRDs, research synthesis, competitive briefs, metrics review, stakeholder updates, product brainstorming, and skill routing. One persona (Product Manager), one skill library. |
-| **[delivery-practice](./delivery-practice)** | Backlog and tasks decomposition, sprint planning and retro, epic validation, and skill routing. One persona (Delivery Lead), one skill library. Consumes `product.md` and `roadmap.md` from `product-management`. |
+| **[delivery-practice](./delivery-practice)** | Backlog and tasks decomposition, sprint planning and retro, work-item validation, and skill routing. One persona (Delivery Lead), one skill library. Consumes `product.md` and `roadmap.md` from `product-management`. |
 
 ### Brand, creative & content
 

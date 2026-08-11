@@ -33,9 +33,11 @@ to identify the best match and direct them to the right skill.
    **Track** matches the current delivery context.
 4. Tell the user: "The best skill for this is **{skill-name}**." followed by one
    sentence explaining why. Include the **mode** when the skill uses modes
-   (e.g. `product write`, `tasks checkout-foundation`, `sprint-planning 3`).
-   Artefact skills with modes have two: **write** drafts or re-authors from
-   scratch; **review** critiques, updates for currency, and amends in place.
+   (e.g. `adr plan CHK01`, `tasks checkout-foundation`, `sprint-planning 3`).
+   Most artefact skills are write-only — drafting or re-authoring from scratch.
+   For reviewing or critiquing an existing artefact, route to **/web-development:docs-review**
+   instead. `adr` is the exception: it keeps its own **plan**, **write**, and
+   **review** modes.
 
 For end-to-end delivery, suggest the next skill in the flow
 (tasks → design → tasks → implement → validate) or ask which phase the user is

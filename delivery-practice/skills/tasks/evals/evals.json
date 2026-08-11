@@ -3,16 +3,16 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Write tasks for checkout-foundation (CHK01) from .agency/work/checkout-foundation/design.md.",
-      "expected_output": ".agency/work/checkout-foundation/tasks.md with stories, each with a statement, independent test criterion and Gherkin AC, and tasks beneath them.",
+      "prompt": "Write tasks for checkout-foundation (CHK01) from docs/work/checkout-foundation/design.md.",
+      "expected_output": "docs/work/checkout-foundation/tasks.md with stories, each with a statement, independent test criterion and Gherkin AC, and tasks beneath them.",
       "assertions": [
-        "Creates or updates .agency/work/checkout-foundation/tasks.md",
+        "Creates or updates docs/work/checkout-foundation/tasks.md",
         "Every story has an As a/I want/So that statement",
         "Every story has an independent test criterion",
         "Every story has >=1 Gherkin scenario with observable Then clauses",
         "Task IDs use CHK01- prefix and carry [S{n}] labels",
         "Story 1 is identified as the MVP",
-        "Does not write .agency/backlog.md for an existing epic"
+        "Does not write docs/product/backlog.md for an existing epic"
       ]
     },
     {
@@ -23,16 +23,16 @@
         "Reads the spec at the given path",
         "Derives a kebab-case slug of at most two words",
         "Reads backlog.md before assigning an Epic ID so it does not collide",
-        "Writes both .agency/backlog.md and .agency/work/{slug}/tasks.md",
+        "Writes both docs/product/backlog.md and docs/work/{slug}/tasks.md",
         "Reports both paths in the summary"
       ]
     },
     {
       "id": 3,
       "prompt": "Write the epics for this product from product.md and roadmap.md.",
-      "expected_output": ".agency/backlog.md with an epic table, Now-phase detail, dependency graph and risks.",
+      "expected_output": "docs/product/backlog.md with an epic table, Now-phase detail, dependency graph and risks.",
       "assertions": [
-        "Writes .agency/backlog.md only",
+        "Writes docs/product/backlog.md only",
         "Every Now-phase epic traces to a product.md outcome",
         "No full Gherkin in backlog.md",
         "Work path slugs are at most two words and not Epic IDs"
@@ -46,6 +46,29 @@
         "Every story has both Gherkin and EARS sections",
         "EARS statements use THE SYSTEM SHALL",
         "EARS statements do not restate a Gherkin scenario"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Write sub-tasks for JIRA-123.",
+      "expected_output": "Resolves the source system and type before writing anything; if Jira and Linear are both plausible or neither MCP tool is reachable, asks the user rather than guessing. Once resolved as a Jira story, writes sub-tasks inheriting the story's Gherkin AC to the story's own tasks.md (or as tracker sub-issues), using the Jira key as the canonical ID with no parallel internal ID invented.",
+      "assertions": [
+        "Reads work-item-resolution.md before acting",
+        "Does not guess between Jira and Linear when ambiguous — asks the user",
+        "Uses JIRA-123 as the canonical ID; does not invent an internal ID alongside it",
+        "Sub-tasks inherit the parent story's Gherkin scenario(s)",
+        "Writes to docs/work/JIRA-123/tasks.md (or creates tracker sub-issues), not the parent epic's tasks.md",
+        "If this is a fresh Jira/Linear resolution (not one already trusted from an existing TASKS.local.md), writes a TASKS.local.md pointer at the repo root"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Decompose CHK01-04 into sub-tasks.",
+      "expected_output": "CHK01-04 resolves to type task, a leaf item — confirms intent with the user rather than silently decomposing or refusing outright.",
+      "assertions": [
+        "Resolves the argument's type before acting",
+        "Does not silently decompose a task-type work item",
+        "Asks the user whether decomposition is genuinely intended, or suggests implement instead"
       ]
     }
   ]

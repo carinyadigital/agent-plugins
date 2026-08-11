@@ -1032,10 +1032,12 @@ class Validator:
                     file="hooks/hooks.json",
                 )
 
+    # Delivery artefacts live under docs/ (see delivery-conventions.md).
+    # Only the obsolete .digital-agency/ tree remains forbidden. During the
+    # progressive .agency/ → docs/ skill migration, .agency/ artefact refs in
+    # not-yet-migrated skills are tolerated; .agency/target.json and
+    # .agency/reviews/ byproducts stay valid permanently.
     LEGACY_ARTEFACT_PATH_PATTERNS = (
-        re.compile(r"docs/product/"),
-        re.compile(r"docs/work/"),
-        re.compile(r"docs/architecture/"),
         re.compile(r"\.digital-agency/"),
     )
 
@@ -1044,7 +1046,7 @@ class Validator:
     LEGACY_ARTEFACT_PATH_SKIP_FILES = frozenset({"scripts/validate.py"})
 
     def check_legacy_artefact_paths(self) -> None:
-        """Fail if any tracked file still references pre-.agency/ artefact paths."""
+        """Fail if any tracked file still references obsolete .digital-agency/ paths."""
         offenders: list[tuple[str, int, str]] = []
         for path in sorted(ROOT.rglob("*")):
             if not path.is_file():
@@ -1073,7 +1075,7 @@ class Validator:
                     f"Legacy artefact path reference: {snippet[:120]}",
                     file=file_path,
                     line=line_no,
-                    hint="Use .agency/ paths per delivery-conventions.md",
+                    hint="Use docs/ paths per delivery-conventions.md (.agency/target.json stays for binding)",
                 )
             if len(offenders) > 20:
                 self.fail(
@@ -1081,7 +1083,7 @@ class Validator:
                     f"... and {len(offenders) - 20} more legacy path reference(s)",
                 )
         else:
-            self.pass_("No legacy docs/product, docs/work, or .digital-agency path references")
+            self.pass_("No obsolete .digital-agency/ path references")
 
     def parse_cookbook_yaml(self, text: str) -> dict[str, Any]:
         data: dict[str, Any] = {}
@@ -1259,7 +1261,7 @@ class Validator:
             ("evalsSchema", "evals.json and trigger-queries.json schema", self.check_evals_schema),
             ("jsonFiles", "Repository JSON sanity", self.check_json_files),
             ("hooksJson", "hooks/hooks.json validity", self.check_hooks_json),
-            ("legacyArtefactPaths", "No legacy artefact paths under docs/ or dot-digital-agency", self.check_legacy_artefact_paths),
+            ("legacyArtefactPaths", "No obsolete .digital-agency/ path references", self.check_legacy_artefact_paths),
             ("managedAgentCookbooks", "Managed-agent cookbook definitions", self.check_managed_agent_cookbooks),
         ]
 

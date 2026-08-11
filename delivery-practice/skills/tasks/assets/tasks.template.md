@@ -1,9 +1,16 @@
 <!--
 DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
+This template covers the filesystem-only fallback (no Linear/Jira resolved).
+See references/work-item-resolution.md — tracker-backed repos use the
+tracker's own key as the work-id and may create sub-tasks as tracker
+sub-issues instead of markdown lines.
+Used at two levels: an epic's own tasks.md (stories + tasks, §4 present), or
+a story's own tasks.md when it gets further breakdown (sub-tasks only — omit
+§4 Stories and go straight from §3 to a flat sub-task list shaped like §5).
 DO NOT INCLUDE in tasks.md:
   - Architecture narrative → cite solution.md §N.M
   - Design narrative → cite ./design.md#section
-  - New epics → .agency/backlog.md via tasks --product
+  - New epics → docs/product/backlog.md via tasks --product
   - Business rationale → product.md
   - Definition-of-Done items inside story acceptance criteria
 Every story needs: statement, independent test criterion, ≥1 Gherkin scenario.
@@ -11,42 +18,45 @@ Every task needs: deliverable with a concrete file path, estimate, status.
 -->
 ---
 type: Tasks
-epic: <!-- kebab-case slug, max two words -->
-epic_id: <!-- e.g. CHK01 -->
+epic_slug: <!-- kebab-case, max two words — filesystem-only folder name -->
+work_id: <!-- e.g. CHK01, or the tracker key if one exists -->
 version: '0.1'
 owner: <!-- squad -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 source: <!-- design.md | path to the spec this was decomposed from -->
 related:
-  - .agency/backlog.md
-  - .agency/work/{epic}/design.md
-  - .agency/architecture/solution.md
+  - docs/product/backlog.md
+  - docs/work/{work-id}/design.md
+  - docs/architecture/solution.md
 ---
 
-# Tasks — {Epic title} ({EPIC-ID})
+# Tasks — {Work item title} ({WORK-ID})
 
 ## 1. Summary
 
-**Epic:** {EPIC-ID} | **Phase:** | **Priority:** | **Estimate:** {n} points across {n} stories / {n} tasks
+**Work item:** {WORK-ID} | **Phase:** | **Priority:** | **Estimate:** {n} points across {n} stories / {n} tasks
+<!-- Writing a story's own tasks.md instead of an epic's: drop stories/tasks
+     counts for a single sub-task count, and inherit Phase from the parent
+     epic. -->
 
 **Source.** <!-- design.md, or the spec this was decomposed from -->
 
 **Scope.**
 
-**Out of scope (this epic).** <!-- name the adjacent work deliberately excluded -->
+**Out of scope (this work item).** <!-- name the adjacent work deliberately excluded -->
 
-**MVP.** Story S1 — <!-- the thinnest slice that proves the epic works -->
+**MVP.** Story S1 — <!-- the thinnest slice that proves this work item works. Omit for a story's own tasks.md — there is no further MVP below a story. -->
 
 ## 2. Conventions
 
 | Convention | Value |
 | ---------- | ----- |
-| Story ID | `{EPIC-ID}-S{n}` |
-| Task ID | `{EPIC-ID}-{nn}` — sequential across the epic, never reused |
-| Story label | `[S{n}]` on every task with a parent story |
+| Story ID (epic's tasks.md only) | `{WORK-ID}-S{n}` |
+| Task / sub-task ID | `{WORK-ID}-{nn}` — sequential within this file, never reused |
+| Story label | `[S{n}]` on every task with a parent story (epic's tasks.md only) |
 | Parallel marker | `[P]` — different files, no incomplete dependency |
-| Acceptance | Gherkin on the story; EARS where a rule is clearer |
+| Acceptance | Gherkin on the story, or on this work item itself when it has no stories; EARS where a rule is clearer |
 | Estimate | Story points, Fibonacci |
 
 ## 3. Foundational
@@ -55,7 +65,7 @@ related:
      own Gherkin, since no story covers them. Keep genuinely shared — a
      prerequisite only one story needs belongs to that story. -->
 
-- [ ] **[{EPIC-ID}-01]** {Title} — `path/to/deliverable`
+- [ ] **[{WORK-ID}-01]** {Title} — `path/to/deliverable`
   - **Status:** not started | **Estimate:** | **Owner:**
   - **Depends on:** —
   - **Deliverable:**
@@ -71,7 +81,10 @@ related:
 
 ## 4. Stories
 
-<!-- One subsection per story, in priority order. S1 is the MVP. -->
+<!-- One subsection per story, in priority order. S1 is the MVP. Epic's
+     tasks.md only — a story's own tasks.md has no stories beneath it; go
+     straight from §3 to a flat sub-task list shaped like §5, prefixed
+     [{WORK-ID}-nn]. -->
 
 ### S1 — {Story title}
 
@@ -110,13 +123,13 @@ IF {condition} THEN THE SYSTEM SHALL {behaviour}
 
 **Tasks:**
 
-- [ ] **[{EPIC-ID}-02]** [S1] {Title} — `path/to/file`
+- [ ] **[{WORK-ID}-02]** [S1] {Title} — `path/to/file`
   - **Status:** not started | **Estimate:** | **Owner:**
-  - **Depends on:** {EPIC-ID}-01
+  - **Depends on:** {WORK-ID}-01
   - **Deliverable:**
-- [ ] **[{EPIC-ID}-03]** [P] [S1] {Title} — `path/to/file`
+- [ ] **[{WORK-ID}-03]** [P] [S1] {Title} — `path/to/file`
   - **Status:** not started | **Estimate:** | **Owner:**
-  - **Depends on:** {EPIC-ID}-01
+  - **Depends on:** {WORK-ID}-01
   - **Deliverable:**
 
 ### S2 — {Story title}
@@ -127,14 +140,14 @@ IF {condition} THEN THE SYSTEM SHALL {behaviour}
 
 <!-- Polish, documentation, observability. No story label. Omit if empty. -->
 
-- [ ] **[{EPIC-ID}-nn]** {Title} — `path/to/file`
+- [ ] **[{WORK-ID}-nn]** {Title} — `path/to/file`
   - **Status:** not started | **Estimate:** | **Owner:**
   - **Deliverable:**
 
 ## 6. Dependencies
 
 ```text
-{EPIC-ID}-01 ──┬── S1: -02 ──> -03
+{WORK-ID}-01 ──┬── S1: -02 ──> -03
                └── S2: -04 ──> -05
 ```
 
@@ -149,10 +162,10 @@ IF {condition} THEN THE SYSTEM SHALL {behaviour}
 | Story | design.md § | solution.md § |
 | ----- | ----------- | ------------- |
 
-### Definition of Done (epic-wide)
+### Definition of Done (work item-wide)
 
-<!-- Uniform across the epic. Do not repeat these inside story acceptance
-     criteria. -->
+<!-- Uniform across this work item. Do not repeat these inside story
+     acceptance criteria. -->
 
 - [ ] All Gherkin scenarios pass; all stated EARS rules hold
 - [ ] Tests written and CI green
@@ -161,4 +174,4 @@ IF {condition} THEN THE SYSTEM SHALL {behaviour}
 
 ## 8. Handoff
 
-<!-- What this epic leaves stable; what comes next -->
+<!-- What this work item leaves stable; what comes next -->

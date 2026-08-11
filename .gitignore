@@ -48,6 +48,11 @@ tmp/
 *.egg-info/
 .eggs/
 
+# Local working files (review state, pointers, notes)
+*.local.json
+*.local.md
+TASKS.local.md
+
 # Claude local files
 .claude/*.local.json
 .claude/*.local.md

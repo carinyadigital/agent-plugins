@@ -10,8 +10,8 @@ The `setup` skill copies or updates the user config at:
 Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
-Delivery artefacts (product, roadmap, backlog, work/) live in the target repo `.agency/` tree — see
-references/delivery-conventions.md.
+Delivery artefacts (product, roadmap, backlog, work/) live in the target repo `docs/` tree — see
+references/delivery-conventions.md. Repo binding stays in `.agency/target.json`.
 -->
 
 # Delivery Practice — Practice Profile

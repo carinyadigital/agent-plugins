@@ -1,16 +1,16 @@
 ---
 type: Tasks
-epic: checkout-foundation
-epic_id: CHK01
+epic_slug: checkout-foundation
+work_id: CHK01
 version: '0.1'
 owner: commerce-squad
 status: Draft
 last_updated: 2026-07-19
-source: .agency/work/checkout-foundation/design.md
+source: docs/work/checkout-foundation/design.md
 related:
-  - .agency/backlog.md
-  - .agency/work/checkout-foundation/design.md
-  - .agency/architecture/solution.md
+  - docs/product/backlog.md
+  - docs/work/checkout-foundation/design.md
+  - docs/architecture/solution.md
 ---
 
 # Tasks — Checkout Foundation (CHK01)
@@ -19,7 +19,7 @@ related:
 
 **Epic:** CHK01 | **Phase:** Now / Alpha | **Priority:** P0 | **Estimate:** 16 points across 2 stories / 6 tasks
 
-**Source.** `./design.md`, epic CHK01 in `.agency/backlog.md`.
+**Source.** `./design.md`, epic CHK01 in `docs/product/backlog.md`.
 
 **Scope.** Checkout module scaffold, orders API client, view model and mapper,
 the `(checkout)` route group, and a page shell that renders a real cart behind

@@ -7,7 +7,8 @@
     "decompose checkout-foundation",
     "write tasks for CHK01",
     "what stories do we need for the payments epic",
-    "split this design doc into implementable work"
+    "split this design doc into implementable work",
+    "write sub-tasks for JIRA-123"
   ],
   "should_not_trigger": [
     "groom the backlog",

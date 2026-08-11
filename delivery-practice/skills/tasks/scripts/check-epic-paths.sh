@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-# Validate .agency/work/{epic}/ paths in a backlog markdown file.
+# Validate docs/work/{work-id}/ paths in a backlog markdown file.
+# Filesystem-only fallback check (see references/work-item-resolution.md) —
+# not applicable once a tracker (Linear/Jira) resolves the work-id.
 # Usage: check-epic-paths.sh [path-to-backlog.md]
 # Exit 0 if all paths pass; 1 if any fail.
 
 set -euo pipefail
 
-BACKLOG="${1:-.agency/backlog.md}"
+BACKLOG="${1:-docs/product/backlog.md}"
 
 if [[ ! -f "$BACKLOG" ]]; then
   echo "skip: $BACKLOG not found"
@@ -24,9 +26,9 @@ check_slug() {
   fail=1
 }
 
-# Match .agency/work/slug/ in table cells
+# Match docs/work/slug/ in table cells
 while IFS= read -r line; do
-  if [[ "$line" =~ .agency/work/([a-z0-9-]+)/ ]]; then
+  if [[ "$line" =~ docs/work/([a-z0-9-]+)/ ]]; then
     slug="${BASH_REMATCH[1]}"
     # Count words (split on hyphen)
     IFS='-' read -ra parts <<< "$slug"
@@ -41,7 +43,7 @@ while IFS= read -r line; do
       fail=1
     fi
   fi
-done < <(grep -n '.agency/work/[a-z0-9-]*/' "$BACKLOG" || true)
+done < <(grep -n 'docs/work/[a-z0-9-]*/' "$BACKLOG" || true)
 
 if [[ $fail -eq 0 ]]; then
   echo "ok: epic work paths in $BACKLOG"

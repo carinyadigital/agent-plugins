@@ -53,7 +53,7 @@ After instance bootstrap (or standalone):
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile and delivery defaults |
-| **tasks** | `--product` → `.agency/backlog.md`; `{epic}` → `.agency/work/{epic}/tasks.md` |
+| **tasks** | `--product` → `docs/product/backlog.md`; `{work-id}` → `docs/work/{work-id}/tasks.md` |
 | **backlog-refine** | Groom backlog or judge sprint readiness |
 | **sprint-planning** | Sprint plan — `.agency/sprints/sprint-{id}/plan.md` |
 | **sprint-retro** | Sprint retrospective — `.agency/sprints/sprint-{id}/retrospective.md` |
@@ -62,8 +62,9 @@ After instance bootstrap (or standalone):
 
 Path and boundary rules: `references/delivery-conventions.md`.
 
-`tasks --product` consumes `.agency/product.md` and `.agency/roadmap.md`, which
-are produced by the companion **product-management** plugin.
+`tasks --product` prefers `docs/product/product.md` and `docs/product/roadmap.md`
+(produced by the companion **product-management** plugin) and falls back to
+`.agency/product.md` / `.agency/roadmap.md` when the `docs/` copies are absent.
 
 ## Prerequisites
 

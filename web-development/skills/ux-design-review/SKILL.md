@@ -10,8 +10,8 @@ description: >
   possible. Works with any framework or design tooling. Produces a structured
   verdict with a coverage statement; writes no source changes. Do NOT use to
   address or fix UX findings (ux-design-fix), for code correctness or
-  security review (code-review), to review a design.md document (design), or to
-  implement features (implement).
+  security review (code-review), to review a design.md document (docs-review),
+  or to implement features (implement).
 license: MIT
 compatibility: Requires git. Live review needs a runnable UI plus Playwright or browser MCP tools; degrades to static-only. Figma comparison requires a Figma MCP server.
 allowed-tools:
@@ -25,7 +25,8 @@ allowed-tools:
   - Bash(npx:*)
   - Bash(node:*)
   - Write(.ux-review/**)
-  - Write(.agency/reviews/**)
+  - Write(docs/reviews/**)
+  - Write(docs/work/**/reviews/**)
 argument-hint: "[branch-or-pr-or-url] [figma-url] [--full]"
 metadata:
   author: Carinya Parc
@@ -47,9 +48,13 @@ a frontend change, run both.
 
 ## Read-only contract
 
-This skill writes two things: the capture bundle under `.ux-review/` (gitignored, never
-committed) and the review state under `.agency/reviews/`. It MUST NOT modify source,
-styles, tests, or configuration, and MUST NOT commit or publish.
+This skill writes three things: the capture bundle under `.ux-review/` (gitignored,
+never committed), an entry in the shared review-tracking file at
+`docs/reviews/ux-design-review.local.json`, and a human-readable report at
+`docs/work/{work-item}/reviews/ux-design-review-{nn}.local.md` (or
+`docs/reviews/ux-design-review-{branch}.local.md` when no work item resolved). It
+MUST NOT modify source, styles, tests, or configuration, and MUST NOT commit or
+publish.
 
 When the review is done, point the reader at `ux-design-fix`. Naming the next
 step is not the same as taking it — do not invoke it, and do not offer a mode that
@@ -78,9 +83,10 @@ would.
 
 **Reduce scope** rather than skipping:
 
-- `.agency/reviews/ux-{branch}.json` exists and `--full` was not passed → **incremental**
-  review. Re-capture only what the diff touched, plus anything whose design source
-  moved. See [references/environment-resolution.md](references/environment-resolution.md).
+- `docs/reviews/ux-design-review.local.json` has an entry for this branch and
+  `--full` was not passed → **incremental** review. Re-capture only what the diff
+  touched, plus anything whose design source moved. See
+  [references/environment-resolution.md](references/environment-resolution.md).
 
 ## 2. Resolve
 
@@ -212,8 +218,23 @@ dropped.
 
 ## 8. Report and persist
 
-Produce the verdict below, then write `.agency/reviews/ux-{branch}.json` including the
-design source ref, accepted deviations, and unreachable states.
+Produce the verdict below, then persist review state per
+[references/environment-resolution.md](references/environment-resolution.md):
+
+1. Update (or create) this branch's entry in the shared
+   `docs/reviews/ux-design-review.local.json`, including the design source ref,
+   accepted deviations, and unreachable states.
+2. Write the human-readable verdict to
+   `docs/work/{work-item}/reviews/ux-design-review-{nn}.local.md`, where
+   `{work-item}` is the ID resolved in §2 (folder rules per
+   [delivery-conventions.md](../../references/delivery-conventions.md)) and
+   `{nn}` is the next sequential two-digit number among existing
+   `ux-design-review-*.local.md` files in that folder (do not count other
+   skills' reports). Numbered history applies only under
+   `docs/work/{work-item}/reviews/`. When no work item resolved, write
+   `docs/reviews/ux-design-review-{branch}.local.md` instead (`/` in the
+   branch name replaced with `-`) — latest-only: overwrite that file; do not
+   invent numbering on the fallback path.
 
 ---
 
@@ -244,7 +265,8 @@ design source ref, accepted deviations, and unreachable states.
 
 ## Must not
 
-- Modify any file outside `.ux-review/` and `.agency/reviews/`.
+- Modify any file outside `.ux-review/`, `docs/reviews/`, and
+  `docs/work/*/reviews/`.
 - Commit captures.
 - Mark PASS while live checks were skipped without a coverage statement naming exactly
   which lenses ran static and why.
@@ -314,3 +336,4 @@ One paragraph. Then: to action these findings, run `ux-design-fix`.
 - [references/finding-classification.md](references/finding-classification.md) — categories, severity, confidence, risk matrix
 - [references/accessibility-checklist.md](references/accessibility-checklist.md) — WCAG 2.2 AA, what automation never catches
 - [references/ux-heuristics.md](references/ux-heuristics.md) — the bar when no design source exists
+- [../../references/delivery-conventions.md](../../references/delivery-conventions.md) — `docs/work/{work-id}/` path rules

@@ -6,7 +6,6 @@ color: cyan
 tools: Read, Grep, Glob
 metadata:
   model_tier: standard
-  review_cadence: as-needed
 ---
 
 You judge whether the rendered experience holds up when something varies. Two

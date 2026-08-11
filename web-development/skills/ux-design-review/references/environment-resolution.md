@@ -62,37 +62,55 @@ Safari was checked because the review did not say otherwise has been misled.
 
 ## Review state
 
-Look for `.agency/reviews/ux-{branch}.json`. If present, this branch has been reviewed
-before and the run is **incremental**.
+Look for this branch's entry in `docs/reviews/ux-design-review.local.json`
+(`reviews[].branch`). If present, this branch has been reviewed before and the
+run is **incremental**.
+
+`docs/reviews/ux-design-review.local.json` is a single shared file, holding
+one entry per branch reviewed in this repo — it is not per-branch itself.
+Update this branch's entry in place; do not touch any other entry.
 
 ```json
 {
-  "branch": "feat/checkout-summary",
-  "last_reviewed_sha": "a1b2c3d",
-  "design_source_ref": "figma:123:456@v12",
-  "reviewed_at": "2026-07-19T09:00:00Z",
-  "findings": [
+  "reviews": [
     {
-      "id": "ux-001",
-      "component": "PaymentForm",
-      "states": ["default", "focus"],
-      "viewports": [375, 1440],
-      "category": "Accessibility",
-      "criterion": "2.4.7",
-      "severity": "Major",
-      "action": "blocking",
-      "status": "open",
-      "summary": "Card number field has no visible focus indicator"
+      "branch": "feat/checkout-summary",
+      "work_item": "checkout-foundation",
+      "last_reviewed_sha": "a1b2c3d",
+      "design_source_ref": "figma:123:456@v12",
+      "reviewed_at": "2026-07-19T09:00:00Z",
+      "report": "docs/work/checkout-foundation/reviews/ux-design-review-01.local.md",
+      "findings": [
+        {
+          "id": "ux-001",
+          "component": "PaymentForm",
+          "states": ["default", "focus"],
+          "viewports": [375, 1440],
+          "category": "Accessibility",
+          "criterion": "2.4.7",
+          "severity": "Major",
+          "action": "blocking",
+          "status": "open",
+          "summary": "Card number field has no visible focus indicator"
+        }
+      ],
+      "accepted_deviations": [
+        { "component": "SummaryCard", "what": "denser padding than mockup", "why": "work item PROJ-12 states intentional" }
+      ],
+      "unreachable_states": [
+        { "component": "PaymentForm", "state": "declined", "why": "needs gateway sandbox" }
+      ]
     }
-  ],
-  "accepted_deviations": [
-    { "component": "SummaryCard", "what": "denser padding than mockup", "why": "work item PROJ-12 states intentional" }
-  ],
-  "unreachable_states": [
-    { "component": "PaymentForm", "state": "declined", "why": "needs gateway sandbox" }
   ]
 }
 ```
+
+`work_item` is the ID resolved in the Resolve step, or `null` when no work
+item resolved — in which case `report` points at
+`docs/reviews/ux-design-review-{branch}.local.md` instead of a work-item
+folder. `report` always names the most recent human-readable report; earlier
+numbered reports remain on disk as history and are not referenced from the
+JSON.
 
 On an incremental run:
 

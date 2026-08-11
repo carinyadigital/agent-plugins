@@ -37,7 +37,7 @@
   {
     "query": "Review the design.md document for the checkout epic.",
     "should_trigger": false,
-    "note": "design — reviews a document, not rendered UI"
+    "note": "docs-review — reviews a document, not rendered UI"
   },
   {
     "query": "Build the new payment form component.",

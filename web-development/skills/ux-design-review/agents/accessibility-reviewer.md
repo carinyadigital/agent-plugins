@@ -6,7 +6,6 @@ color: purple
 tools: Read, Grep, Glob
 metadata:
   model_tier: standard
-  review_cadence: as-needed
 ---
 
 You judge WCAG 2.2 AA conformance for the UI this change touched. You cite criteria and

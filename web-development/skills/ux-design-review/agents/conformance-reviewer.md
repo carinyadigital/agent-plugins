@@ -6,7 +6,6 @@ color: magenta
 tools: Read, Grep, Glob
 metadata:
   model_tier: standard
-  review_cadence: as-needed
 ---
 
 You check the implementation against its declared design truth. That truth arrives in

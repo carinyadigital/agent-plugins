@@ -16,7 +16,7 @@
 #   seed-ralph-loop.sh --agent claude --preset engineering-delivery \
 #     --run-id checkout-foundation-20260719-101500 \
 #     --max-iterations 60 --completion-promise CHECKOUT_FOUNDATION_COMPLETE \
-#     --set EPIC=checkout-foundation --set BRANCH=feat/checkout-foundation ...
+#     --set WORK_ID=checkout-foundation --set BRANCH=feat/checkout-foundation ...
 #
 #   seed-ralph-loop.sh --agent claude --preset ad-hoc \
 #     --prompt-file /tmp/task.md --completion-promise DONE --max-iterations 20

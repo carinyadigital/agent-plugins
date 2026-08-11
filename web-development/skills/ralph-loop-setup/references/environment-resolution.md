@@ -1,17 +1,15 @@
 # Environment resolution
 
-How `/web-development:ralph-loop-setup` resolves the repo-specific values substituted into the
+How `/ralph-loop-setup` resolves the repo-specific values substituted into the
 loop templates. Resolve everything ONCE at setup; the loop never re-detects.
 
 ## Branch (`{{BRANCH}}`)
 
-1. A `Branch:` (or equivalent) declaration in the epic's tasks.md.
-2. The current branch, if its name references the epic slug or ID.
-3. Otherwise propose `feat/{epic}` and confirm with the user.
+1. A `Branch:` (or equivalent) declaration in the work item's tasks.md.
+2. The current branch, if its name references the work item's slug or ID.
+3. Otherwise propose `feat/{work-id}` and confirm with the user.
 
 Never create or switch branches during setup — report the expectation only.
-`/web-development:ralph-loop start` creates or checks out the branch before
-iteration 1.
 
 ## Validation commands
 
@@ -37,19 +35,25 @@ If nothing is discoverable, ask the user rather than guessing.
 
 ## Tracker (`{{TRACKER_SECTION}}`)
 
-Detect what the session can actually reach, in order:
+Reuse the source system already resolved for `{work-id}` per
+[work-item-resolution.md](../../../references/work-item-resolution.md) —
+including the `TASKS.local.md` pointer, when present. Do not re-run
+detection here; this section only maps the *already-resolved* system to
+concrete per-task actions:
 
-1. **Jira** — Atlassian MCP tools available AND task IDs in tasks.md look
-   like Jira keys (or tasks.md maps tasks to Jira tickets). Actions:
-   - start: transition the issue to In Progress
-   - progress: transition to In Review (or the project's equivalent), and
-     add a 1-3 sentence comment summarising what shipped
-2. **GitHub / GitLab issues** — provider MCP or CLI (`gh`, `glab`)
-   available and tasks reference issue numbers. Actions:
-   - start: assign / label in-progress
-   - progress: comment with the commit summary
-3. **None** — write exactly:
-   `No tracker configured — skip tracker actions in task-start and task-progress.`
+- **Resolved to Linear:**
+  - start: move the issue to In Progress (or the workspace's equivalent state)
+  - progress: move to In Review, and add a 1-3 sentence comment summarising
+    what shipped
+- **Resolved to Jira:**
+  - start: transition the issue to In Progress
+  - progress: transition to In Review (or the project's equivalent), and
+    add a 1-3 sentence comment summarising what shipped
+- **Resolved to GitHub / GitLab issues:**
+  - start: assign / label in-progress
+  - progress: comment with the commit summary
+- **Resolved to filesystem only** — write exactly:
+  `No tracker configured — skip tracker actions in task-start and task-progress.`
 
 Write the resolved actions as concrete instructions (tool names, target
 states) into the context file so loop iterations never re-negotiate them.

@@ -13,13 +13,13 @@
         "Writes into .claude/loop/ or .cursor/loop/ with no root-level pointer file",
         "Does not start the loop, execute steps, or launch sub-agents",
         "Does not create or switch git branches",
-        "Reports how to start the loop (/web-development:ralph-loop start)"
+        "Reports how to start the loop (/ralph-loop start)"
       ]
     },
     {
       "id": 2,
       "prompt": "Set up a ralph loop for epic checkout-foundation.",
-      "context": ".agency/work/checkout-foundation/tasks.md does not exist.",
+      "context": "docs/work/checkout-foundation/tasks.md does not exist.",
       "expected_output": "Fails loudly, naming the missing file, and stops. Does not invent a task sequence or seed a partial loop.",
       "assertions": [
         "Names the missing file explicitly",

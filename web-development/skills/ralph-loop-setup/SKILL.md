@@ -2,33 +2,35 @@
 name: ralph-loop-setup
 description: >
   Use to seed or configure a Ralph loop before running it: choose a preset
-  (engineering delivery for an epic, ad-hoc for a single repeating prompt, or
-  custom steps), resolve the environment, set the completion promise and
+  (engineering delivery for a work item, ad-hoc for a single repeating prompt,
+  or custom steps), resolve the environment, set the completion promise and
   iteration budget, and write the loop files. Triggers on "set up a ralph
-  loop", "configure a ralph loop", "ralph-loop-setup", or naming an epic to
-  loop over. Do NOT use to start, inspect, or stop a loop (ralph-loop) — setup
-  never executes loop steps.
+  loop", "configure a ralph loop", "ralph-loop-setup", or naming a work item
+  to loop over. Do NOT use to start, inspect, or stop a loop (ralph-loop) —
+  setup never executes loop steps.
 license: MIT
 allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
-  - Shell
-argument-hint: "[<epic>|--prompt \"...\"] [--preset NAME] [--max-iterations N] [--completion-promise TEXT]"
+  - Bash
+argument-hint: "[<work-id>|--prompt \"...\"] [--preset NAME] [--max-iterations N] [--completion-promise TEXT]"
 metadata:
   author: Carinya Parc
-  version: "1.0"
+  version: "2.0"
   owner: delivery
   work_shape: orchestrate-delivery
-  output_class: structured-data
+  output_class: draft-for-review
   review_cadence: as-needed
 ---
+
+Prefer `docs/`; fall back to `.agency/` when reading legacy artefacts. Write delivery artefacts only under `docs/`.
 
 # Ralph loop setup
 
 Resolve configuration and seed the loop files. **Never start the loop.** Setup
-ends with a summary and an instruction to run `/web-development:ralph-loop start`.
+ends with a summary and an instruction to run `/ralph-loop start`.
 
 Writing is done by `scripts/seed-ralph-loop.sh`, not by hand. Your job is to
 resolve values and call it. Hand-authoring the loop file reintroduces the
@@ -41,19 +43,21 @@ silently deletes the loop.
 Ask only what you cannot resolve yourself. Use structured questions, not prose.
 
 1. **Preset.** If not given:
-   - `engineering-delivery` — drive an epic through implement, review,
-     validate, and merge request, one task per iteration.
+   - `engineering-delivery` — drive a work item (typically an epic, but a
+     large story works the same way) through implement, review, validate,
+     and merge request, one task per iteration.
    - `ad-hoc` — repeat a single prompt until it is done.
    - `custom` — define your own steps.
 
-2. **Target.** The epic slug or ID for engineering delivery; the task prompt
+2. **Target.** The work item ID for engineering delivery; the task prompt
    for ad-hoc; the step list for custom.
 
 3. **Budgets.** Max iterations. Default 50, but for engineering delivery
-   propose `tasks × 6 + 10`, since a 12-task epic will not fit in 50.
+   propose `tasks × 6 + 10`, since a 12-task work item will not fit in 50.
 
-4. **Completion promise.** Propose a default and confirm it. For an epic, the
-   slug upper-snake-cased with `_COMPLETE`.
+4. **Completion promise.** Propose a default and confirm it. For a work item,
+   its canonical ID (or slug, in the filesystem-only fallback) upper-snake-cased
+   with `_COMPLETE`.
 
 5. **Environment.** Only for presets that need it, per
    [references/environment-resolution.md](references/environment-resolution.md).
@@ -70,16 +74,17 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
 
 **engineering-delivery**
 
-- Resolve `{epic}` per
-  [delivery-conventions.md](../tasks/references/delivery-conventions.md):
-  a slug, an epic ID resolved via the backlog row, or a path.
-- Locate `tasks.md` and `design.md`. Fail loudly, naming the missing file, if
-  either is absent.
+- Resolve `{work-id}` per
+  [work-item-resolution.md](../../references/work-item-resolution.md):
+  detect the source system (Linear, Jira, GitHub/GitLab, or filesystem) and
+  the canonical ID first — ask the user on any ambiguity, per that file's
+  ask-first checklist. Never guess.
+- Locate `tasks.md` and `design.md` under `docs/work/{work-id}/`. Fail
+  loudly, naming the missing file, if either is absent.
 - Derive a dependency-safe task order: topological by declared dependencies,
   stable by document order on ties. Render as
   `N. {TASK_ID} — <title> (depends on: <ids or ->)`.
-- Resolve the branch. Report the expected branch; never create or switch one
-  — `/web-development:ralph-loop start` does that.
+- Resolve the branch. Report the expected branch; never create or switch one.
 - Resolve validation commands, tracker actions, and UI signals per
   [references/environment-resolution.md](references/environment-resolution.md).
 
@@ -104,18 +109,21 @@ Call the script. Every template value goes through `--set`:
 scripts/seed-ralph-loop.sh \
   --agent claude \
   --preset engineering-delivery \
-  --run-id "{epic}-$(date -u +%Y%m%d-%H%M%S)" \
+  --run-id "{work-id}-$(date -u +%Y%m%d-%H%M%S)" \
   --max-iterations 70 \
   --completion-promise CHECKOUT_FOUNDATION_COMPLETE \
   --session-id "$SESSION_ID" \
-  --set EPIC=checkout-foundation \
+  --set WORK_ID=checkout-foundation \
   --set BRANCH=feat/checkout-foundation \
-  --set TASKS_PATH=.agency/work/checkout-foundation/tasks.md \
-  --set DESIGN_PATH=.agency/work/checkout-foundation/design.md \
+  --set TASKS_PATH=docs/work/checkout-foundation/tasks.md \
+  --set DESIGN_PATH=docs/work/checkout-foundation/design.md \
   --set FIRST_ITEM=CHK01-01 \
   --set "WORK_SEQUENCE=$(cat sequence.txt)" \
   --set "GOAL=..." --set "DONE_CRITERIA=..." --set "PRESET_CONTEXT=..."
 ```
+
+(`WORK_ID` is the canonical ID — a tracker key like `JIRA-123` when one
+resolved, otherwise the slug shown above.)
 
 Run with `--dry-run` first when anything is uncertain. The script refuses to
 overwrite a loop past iteration 1 without `--force`, and exits non-zero on any
@@ -124,7 +132,7 @@ unresolved placeholder.
 ### 4. Report
 
 Files written, resolved configuration, expected branch, and "Run
-`/web-development:ralph-loop start` to begin." Nothing else.
+`/ralph-loop start` to begin." Nothing else.
 
 ## Policies
 

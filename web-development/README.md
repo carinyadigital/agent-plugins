@@ -79,7 +79,7 @@ target binding.
 | **ux-design-review** | Read-only UX review of implemented UI vs design source |
 | **ux-design-fix** | Address UX review findings or direct UI fixes |
 | **ralph-loop-setup** | Seed and configure an autonomous delivery loop |
-| **ralph-loop** | Run an autonomous epic delivery loop |
+| **ralph-loop** | Run an autonomous work-item delivery loop |
 | **docs-review** | Read-only document-set quality and consistency review |
 | **debug** | Bug investigation |
 | **tech-debt** | Technical debt audit |

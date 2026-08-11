@@ -20,7 +20,7 @@ allowed-tools:
   - Glob
   - Grep
   - WebFetch
-  - Shell
+  - Bash
 argument-hint: "[mr-url-or-number]"
 metadata:
   author: Carinya Parc

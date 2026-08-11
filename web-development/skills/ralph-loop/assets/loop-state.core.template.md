@@ -3,12 +3,6 @@ current_step: {{FIRST_STEP}}
 current_item: {{FIRST_ITEM}}
 completed_items: []
 fix_count: 0
-metadata:
-  version: "1.0"
-  owner: web-development
-  review_cadence: as-needed
-  work_shape: orchestrate-delivery
-  output_class: applied-change
 ---
 
 # Loop state: {{RUN_ID}}

@@ -1,26 +1,26 @@
 ## Preset: engineering delivery
 
-Drive epic `{{EPIC}}` to a merge request on branch `{{BRANCH}}`, one task per
-iteration.
+Drive work item `{{WORK_ID}}` to a merge request on branch `{{BRANCH}}`, one
+task per iteration.
 
 ### Sources
 
 - Tasks and acceptance criteria: `{{TASKS_PATH}}`
-- Epic design: `{{DESIGN_PATH}}`
+- Work item design: `{{DESIGN_PATH}}`
 - Run context (task order, validation commands, tracker): `{{RUN_DIR}}/context.md`
 
 ### Sub-agent rule
 
-Every skill step (`/web-development:implement`, `/web-development:code-review`, `/web-development:ux-design-review`,
-`/delivery-practice:validate`, `/web-development:merge-request`) MUST run in a fresh sub-agent. Never inline.
+Every skill step (`/implement`, `/code-review`, `/ux-design-review`,
+`/validate`, `/merge-request`) MUST run in a fresh sub-agent. Never inline.
 Context isolation per step is what stops the orchestrator's context degrading
 across a long run.
 
 ### Commit rule
 
 All commits target `{{BRANCH}}`. Verify with `git branch --show-current`
-before every commit. Message format `{TASK_ID}: <imperative summary>` with an
-`Epic: {{EPIC}}` trailer. No `Co-authored-by` trailers, no emojis.
+before every commit. Message format `{TASK_ID}: <imperative summary>` with a
+`Work-item: {{WORK_ID}}` trailer. No `Co-authored-by` trailers, no emojis.
 
 ### Per-task steps
 
@@ -36,13 +36,13 @@ Resolve `{TASK_ID}` from `current_item` and run only the step named by
 
 #### implement
 
-1. Launch a sub-agent: `/web-development:implement {TASK_ID}`.
+1. Launch a sub-agent: `/implement {TASK_ID}`.
 2. Do not commit in this step.
 3. Set `current_step: review`, reset `fix_count: 0`.
 
 #### review
 
-1. Launch a sub-agent: `/web-development:code-review`, writing to
+1. Launch a sub-agent: `/code-review`, writing to
    `{{RUN_DIR}}/review-{TASK_ID}.md`.
 2. If there are no `[blocking]` findings, or `fix_count` has reached 3, set
    `current_step: ux_review` (record any unresolved findings under `## Notes`
@@ -51,7 +51,7 @@ Resolve `{TASK_ID}` from `current_item` and run only the step named by
 
 #### review_fix
 
-1. Launch a sub-agent: `/web-development:code-review-fix`.
+1. Launch a sub-agent: `/code-review-fix`.
 2. Increment `fix_count`.
 3. Set `current_step: review`.
 
@@ -60,7 +60,7 @@ Resolve `{TASK_ID}` from `current_item` and run only the step named by
 Only when the diff touches UI, per the UI signals in `context.md`. Otherwise
 set `current_step: validate_and_commit` and end the turn.
 
-1. Launch a sub-agent: `/web-development:ux-design-review`, writing to
+1. Launch a sub-agent: `/ux-design-review`, writing to
    `{{RUN_DIR}}/ux-review-{TASK_ID}.md`.
 2. If there are no `[blocking]` findings, or `fix_count` has reached 2, set
    `current_step: validate_and_commit`.
@@ -68,7 +68,7 @@ set `current_step: validate_and_commit` and end the turn.
 
 #### ux_review_fix
 
-1. Launch a sub-agent: `/web-development:ux-design-fix blocking`.
+1. Launch a sub-agent: `/ux-design-fix blocking`.
 2. Increment `fix_count`.
 3. Set `current_step: ux_review`.
 
@@ -89,8 +89,8 @@ Runs once, after every task is committed.
 
 #### final_review
 
-1. Launch a sub-agent reviewing the whole epic branch diff, not one task. Use
-   the strongest model available for sub-agents.
+1. Launch a sub-agent reviewing the whole work item's branch diff, not one
+   task. Use the strongest model available for sub-agents.
 2. If there are no `[blocking]` findings, or `fix_count` has reached 3, set
    `current_step: final_validation`. Otherwise set
    `current_step: final_review_fix`.
@@ -109,15 +109,15 @@ advance until green.
 
 #### final_validate
 
-Launch a sub-agent: `/delivery-practice:validate {{EPIC}}`. This checks Gherkin acceptance
-criteria and roadmap exit criteria.
+Launch a sub-agent: `/validate {{WORK_ID}}`. This checks Gherkin acceptance
+criteria and, for an epic, roadmap exit criteria.
 
 Any gap stops the loop: record it under `## Notes` and do NOT advance. Gaps are
 never promised over.
 
 #### create_mr
 
-Launch a sub-agent: `/web-development:merge-request --draft`. Record the MR URL under
+Launch a sub-agent: `/merge-request --draft`. Record the MR URL under
 `## Notes`, then set `current_step: done`.
 
 #### done

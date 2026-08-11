@@ -5,26 +5,29 @@ description: >
   loop where a stop hook re-feeds the same prompt every turn until a completion
   promise is emitted or a safety rail fires (ralph-loop start, ralph-loop
   status, ralph-loop cancel). Works for any repeating multi-step job via
-  presets, including full epic delivery through implement, review, validate,
-  and merge request. Do NOT use to seed or configure a loop (ralph-loop-setup),
-  implement a single task once (implement), review a diff (code-review), or
-  sign off an epic (validate) — the loop orchestrates those skills.
+  presets, including full work-item delivery through implement, review,
+  validate, and merge request. Do NOT use to seed or configure a loop
+  (ralph-loop-setup), implement a single task once (implement), review a
+  diff (code-review), or sign off a work item (validate) — the loop
+  orchestrates those skills.
 license: MIT
 allowed-tools:
   - Read
   - Write
   - Glob
   - Grep
-  - Shell
+  - Bash
 argument-hint: "[start|status|cancel] [--prompt \"...\"] [--max-iterations N] [--completion-promise TEXT]"
 metadata:
   author: Carinya Parc
-  version: "1.0"
-  review_cadence: as-needed
+  version: "2.0"
   owner: web-development
   work_shape: orchestrate-delivery
   output_class: applied-change
+  review_cadence: as-needed
 ---
+
+Prefer `docs/`; fall back to `.agency/` when reading legacy artefacts. Write delivery artefacts only under `docs/`.
 
 # Ralph loop
 
@@ -38,11 +41,11 @@ This skill assumes a seeded loop, except for a quick inline ad-hoc start.
 
 ## How the loop works
 
-1. `/web-development:ralph-loop-setup` resolves configuration and runs
+1. `/ralph-loop-setup` resolves configuration and runs
    `scripts/seed-ralph-loop.sh`, which writes `{base}/active.md` plus a run
    directory. `{base}` is `.claude/loop` or `.cursor/loop`, resolved from the
    agent, with no pointer file.
-2. `/web-development:ralph-loop start` verifies the seeded files and executes iteration 1.
+2. `/ralph-loop start` verifies the seeded files and executes iteration 1.
 3. The plugin hooks take over. After every turn the stop hook re-feeds the body
    of `active.md`; the agent reads its own state and runs the next step.
 4. The loop ends when the agent emits `<promise>TEXT</promise>` matching the
@@ -80,12 +83,11 @@ findings are recorded under `## Notes` so a human sees them.
 
 Mode is `start`, `status`, or `cancel`. If no mode is given: a seeded
 `{base}/active.md` implies `start`; otherwise say the loop needs seeding and
-point at `/web-development:ralph-loop-setup`.
+point at `/ralph-loop-setup`.
 
 **start** — [prompts/start.prompt.md](prompts/start.prompt.md). Verify the
-seeded loop, put the working tree on the expected branch (create or check out
-as needed), execute iteration 1. With `--prompt "..."` and no seeded loop,
-seed an ad-hoc loop first.
+seeded loop, confirm the branch where the preset needs one, execute iteration
+1. With `--prompt "..."` and no seeded loop, seed an ad-hoc loop first.
 
 **status** — [prompts/status.prompt.md](prompts/status.prompt.md). Report
 iteration, current step, budgets used, completed items, and artefacts.
@@ -101,8 +103,7 @@ loop and archive the run directory as a record.
 - Exactly ONE step per iteration. State lives in files, not in memory.
 - Every skill step runs in a fresh sub-agent. Context isolation per step is
   what keeps a long run sharp.
-- Where a preset commits, ensure the expected branch exists and is checked
-  out on start, then verify with `git branch --show-current` before every
-  commit. No `Co-authored-by` trailers, no emojis in commits.
+- Where a preset commits, verify the branch with `git branch --show-current`
+  first. No `Co-authored-by` trailers, no emojis in commits.
 - If the external `ralph-loop-plugin` is installed, disable it. This plugin
   ships its own hooks and running both double-fires the stop hook.

@@ -106,7 +106,7 @@ the state pointing at the blocked step.
 
 The stop hook gives each iteration a fresh turn against the same prompt. One
 step per turn keeps the orchestrator's context tiny, makes every hop resumable
-and inspectable via `/web-development:ralph-loop status`, and turns the transcript into an
+and inspectable via `/ralph-loop status`, and turns the transcript into an
 auditable step log. Batching steps recreates the long-context drift the loop
 exists to avoid.
 

@@ -4,10 +4,9 @@
     {
       "id": 1,
       "prompt": "Start the ralph loop.",
-      "expected_output": "Verified the seeded {base}/active.md, ensured the expected branch (create or checkout if needed), confirmed preset, run id, branch, max iterations and completion promise in a short block, then executed exactly ONE step of the loop body and ended the turn.",
+      "expected_output": "Verified the seeded {base}/active.md, confirmed preset, run id, branch, max iterations and completion promise in a short block, then executed exactly ONE step of the loop body and ended the turn.",
       "assertions": [
         "Resolves the base directory from the agent (.claude/loop or .cursor/loop), not from a pointer file",
-        "For commit presets, creates or checks out the expected branch instead of stopping on mismatch",
         "Reports preset, run id, max_iterations and completion promise before starting",
         "Executes exactly one step, then ends the turn",
         "Does not batch multiple steps into the first turn",
@@ -22,7 +21,7 @@
       "expected_output": "Reports that no loop is seeded and directs the user to /ralph-loop-setup. Does not seed one silently.",
       "assertions": [
         "Detects the missing active.md",
-        "Points at /web-development:ralph-loop-setup rather than seeding on the user's behalf",
+        "Points at /ralph-loop-setup rather than seeding on the user's behalf",
         "Does not execute any work"
       ]
     },
@@ -67,7 +66,7 @@
       "assertions": [
         "Does not emit the completion promise",
         "Explains why a false promise is not acceptable",
-        "Offers /web-development:ralph-loop cancel as the correct way to stop early",
+        "Offers /ralph-loop cancel as the correct way to stop early",
         "Records the blocker in loop-state.md under ## Notes"
       ]
     }

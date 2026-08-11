@@ -1,6 +1,6 @@
 # Prompt authoring for Ralph loops
 
-Guidance for writing ad-hoc loop prompts (`/web-development:ralph-loop-setup --prompt "..."`)
+Guidance for writing ad-hoc loop prompts (`/ralph-loop-setup --prompt "..."`)
 and for tuning the epic templates. The loop re-feeds the same prompt every
 iteration — the prompt is the whole specification.
 
@@ -14,7 +14,8 @@ iteration — the prompt is the whole specification.
   loop. You cannot encode multiple outcomes (`SUCCESS` vs `BLOCKED`) in the
   promise; rely on `max_iterations` and the stall guard for the failure
   paths.
-- Epic loops default to `{EPIC}_COMPLETE` upper-snake-cased.
+- Engineering-delivery loops default to the work item's canonical ID (or
+  slug, filesystem-only) upper-snake-cased with `_COMPLETE`.
 
 ## Completion criteria
 

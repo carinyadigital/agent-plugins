@@ -152,7 +152,7 @@ Before trusting a preset with a real job:
 
 1. `scripts/seed-ralph-loop.sh --preset {name} --dry-run` and read the output.
    Every placeholder resolved? Do the steps read clearly with real values in?
-2. Seed it and run `/web-development:ralph-loop status`. Does the state file describe a
+2. Seed it and run `/ralph-loop status`. Does the state file describe a
    sensible starting position?
 3. Run 3 or 4 iterations, then read the state file. Can you tell what happened
    from the file alone, without the transcript? If not, the steps write too

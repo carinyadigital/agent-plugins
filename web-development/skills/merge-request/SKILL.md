@@ -77,7 +77,7 @@ Gather the following before drafting anything, and reuse it for every later step
       commits, fetched via the provider CLI or MCP tool if available.
    3. Local spec file — glob for `TASK.md`, `**/tasks.md`, `**/design.md`,
       `SPEC.md`, or a project-specific equivalent named in
-      `AGENTS.md`/`CLAUDE.md`. A `.agency/work/{epic}/` layout is one candidate
+      `AGENTS.md`/`CLAUDE.md`. A `docs/work/{work-id}/` layout is one candidate
       among many — never a requirement.
    4. Fallback — `git log` on the branch, the branch name, and the diff itself.
       Always available.

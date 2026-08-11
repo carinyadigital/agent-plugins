@@ -54,7 +54,7 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 ### 2. Sprint plan from an existing backlog (Delivery Practice)
 
-**You have:** `.agency/backlog.md` with epics in the Now phase and open risks.
+**You have:** `docs/product/backlog.md` with epics in the Now phase and open risks.
 
 **Run:** `/delivery-practice:sprint-planning 3` — point at the backlog and name sprint goals.
 
@@ -370,7 +370,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | Command | Skill | What it does |
 |---|---|---|
 | `/delivery-practice:setup` | setup | Learns cadence, sprint length, escalation; writes practice profile |
-| `/delivery-practice:tasks` | tasks | `--product` → `.agency/backlog.md`; `{epic}` → `docs/work/{work-id}/tasks.md` |
+| `/delivery-practice:tasks` | tasks | `--product` → `docs/product/backlog.md`; `{work-id}` → `docs/work/{work-id}/tasks.md` |
 | `/delivery-practice:backlog-refine` | backlog-refine | Groom backlog or judge sprint readiness |
 | `/delivery-practice:sprint-planning` | sprint-planning | Sprint plan — `docs/work/sprint-{id}/plan.md` |
 | `/delivery-practice:sprint-retro` | sprint-retro | Sprint retrospective — `docs/work/sprint-{id}/retrospective.md` |

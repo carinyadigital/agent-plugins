@@ -1,9 +1,9 @@
 <!--
 DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
 DO NOT INCLUDE in a sprint plan:
-  - Gherkin acceptance criteria → .agency/work/{epic}/tasks.md
-  - New or re-prioritised epics → .agency/backlog.md
-  - Phase re-sequencing or exit criteria → .agency/roadmap.md
+  - Gherkin acceptance criteria → docs/work/{work-id}/tasks.md
+  - New or re-prioritised epics → docs/product/backlog.md
+  - Phase re-sequencing or exit criteria → docs/product/roadmap.md
   - Architecture or design detail → solution.md / design.md
   - Committed scope beyond capacity minus carry-over → make it Stretch
 -->
@@ -15,8 +15,8 @@ owner: <!-- squad -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - .agency/backlog.md
-  - .agency/roadmap.md
+  - docs/product/backlog.md
+  - docs/product/roadmap.md
 ---
 
 # Sprint plan — {Sprint id}
@@ -43,8 +43,8 @@ related:
 <!-- Tasks from the prior plan not marked done in their tasks.md. These consume
      capacity before any new work is considered. -->
 
-| Epic | Task ID | Title | Estimate | Owner | Why it carried |
-| ---- | ------- | ----- | -------- | ----- | -------------- |
+| Work item | Task ID | Title | Estimate | Owner | Why it carried |
+| --------- | ------- | ----- | -------- | ----- | -------------- |
 
 ## Retrospective actions
 
@@ -56,16 +56,16 @@ related:
 
 ## Scope
 
-| Epic ID | Title | Work path | Phase |
-| ------- | ----- | --------- | ----- |
+| Work item | Title | Work path | Phase |
+| --------- | ----- | --------- | ----- |
 
 ## Committed tasks
 
-<!-- Every task must already exist in an epic's tasks.md with ≥1 Gherkin
+<!-- Every task must already exist in a work item's tasks.md with ≥1 Gherkin
      scenario. Total points must fit within remaining capacity. -->
 
-| Epic | Task ID | Title | Estimate | Owner |
-| ---- | ------- | ----- | -------- | ----- |
+| Work item | Task ID | Title | Estimate | Owner |
+| --------- | ------- | ----- | -------- | ----- |
 
 **Committed total:** <!-- points -->
 
@@ -73,8 +73,8 @@ related:
 
 <!-- Pulled only if committed work finishes early. Not a commitment. -->
 
-| Epic | Task ID | Title | Estimate |
-| ---- | ------- | ----- | -------- |
+| Work item | Task ID | Title | Estimate |
+| --------- | ------- | ----- | -------- |
 
 ## Dependencies
 

@@ -55,9 +55,9 @@ After instance bootstrap (or standalone):
 | **setup** | Interview → write practice profile and delivery defaults |
 | **tasks** | `--product` → `docs/product/backlog.md`; `{work-id}` → `docs/work/{work-id}/tasks.md` |
 | **backlog-refine** | Groom backlog or judge sprint readiness |
-| **sprint-planning** | Sprint plan — `.agency/sprints/sprint-{id}/plan.md` |
-| **sprint-retro** | Sprint retrospective — `.agency/sprints/sprint-{id}/retrospective.md` |
-| **validate** | Epic completion sign-off |
+| **sprint-planning** | Sprint plan — `docs/work/sprint-{id}/plan.md` |
+| **sprint-retro** | Sprint retrospective — `docs/work/sprint-{id}/retrospective.md` |
+| **validate** | Work-item completion sign-off |
 | **skills-index** | Route vague requests to the right skill |
 
 Path and boundary rules: `references/delivery-conventions.md`.

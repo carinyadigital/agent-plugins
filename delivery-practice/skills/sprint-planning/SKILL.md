@@ -4,7 +4,7 @@ description: >
   Use when the user wants to plan a sprint before it starts — set the sprint
   goal, pull committed scope from the backlog and epic tasks.md files, account
   for carry-over and capacity, and record dependencies, risks, and the sprint
-  definition of done at .agency/sprints/sprint-{id}/plan.md. Triggers on "plan sprint
+  definition of done at docs/work/sprint-{id}/plan.md. Triggers on "plan sprint
   3", "what should we commit to", "set up the next sprint", "sprint planning".
   Do NOT use to review a finished sprint (sprint-retro), write stories or task
   Gherkin (tasks), groom the backlog (backlog-refine), re-sequence delivery
@@ -34,25 +34,27 @@ Assume the backlog is more optimistic than the team's velocity supports, and
 that carry-over from the last sprint has not been accounted for.
 
 Read [delivery-conventions.md](../tasks/references/delivery-conventions.md)
-for artefact boundaries and epic path resolution.
+for artefact boundaries and work item path resolution.
 
 ## Artefact
 
-Default path: `.agency/sprints/sprint-{id}/plan.md` (e.g. `.agency/sprints/sprint-3/plan.md`).
+Default path: `docs/work/sprint-{id}/plan.md` (e.g. `docs/work/sprint-3/plan.md`).
+
+Prefer `docs/`; fall back to `.agency/` equivalents when reading legacy artefacts (`.agency/backlog.md`, `.agency/roadmap.md`, `.agency/sprints/`, `.agency/work/`). Write only under `docs/`.
 
 Resolve `{id}` from the argument — `3`, `sprint-3`, and `2026-W14` are all
-valid. If the user names a different path under `.agency/work/`, use it.
+valid. If the user names a different path under `docs/work/`, use it.
 
 ## Inputs
 
 | Input                  | Location                              | Required |
 | ---------------------- | ------------------------------------- | -------- |
-| Product backlog        | `.agency/backlog.md`             | Yes      |
-| Epic tasks             | `.agency/work/{epic}/tasks.md`           | Yes      |
-| Roadmap                | `.agency/roadmap.md`             | Recommended |
-| Prior retrospective    | `.agency/sprints/sprint-{id-1}/retrospective.md` | Recommended |
-| Prior plan             | `.agency/sprints/sprint-{id-1}/plan.md`     | Recommended |
-| Epic design            | `.agency/work/{epic}/design.md`          | If relevant |
+| Product backlog        | `docs/product/backlog.md`, or the tracker | Yes  |
+| Work item tasks        | `docs/work/{work-id}/tasks.md`        | Yes      |
+| Roadmap                | `docs/product/roadmap.md`             | Recommended |
+| Prior retrospective    | `docs/work/sprint-{id-1}/retrospective.md` | Recommended |
+| Prior plan             | `docs/work/sprint-{id-1}/plan.md`     | Recommended |
+| Work item design       | `docs/work/{work-id}/design.md`       | If relevant |
 | Sprint dates, capacity | argument or `--context`               | Yes      |
 
 ## Steps
@@ -74,9 +76,9 @@ valid. If the user names a different path under `.agency/work/`, use it.
 5. **Set the sprint goal.** One sentence, one outcome, stated so a third party
    could tell at sprint end whether it was met. Two goals joined by "and" are
    two sprints.
-6. **Select scope.** Pick epics that serve the roadmap's current phase. For each,
-   record Epic ID, title, work path, and phase. Pull candidate tasks from each
-   epic's `tasks.md`.
+6. **Select scope.** Pick work items that serve the roadmap's current phase. For
+   each, record its work item ID, title, work path, and phase. Pull candidate
+   tasks from each work item's `tasks.md`.
 7. **Commit.** Assign estimates and owners. Committed work must fit inside
    capacity minus carry-over. Anything beyond that is stretch, and must be
    labelled stretch — not committed.
@@ -107,11 +109,11 @@ valid. If the user names a different path under `.agency/work/`, use it.
 
 A sprint plan MUST NOT:
 
-- Write or rewrite Gherkin acceptance criteria → `.agency/work/{epic}/tasks.md` via
+- Write or rewrite Gherkin acceptance criteria → `docs/work/{work-id}/tasks.md` via
   **tasks**
-- Add, split, or re-prioritise epics → `.agency/backlog.md` via **tasks**
+- Add, split, or re-prioritise epics → `docs/product/backlog.md` via **tasks**
   or **backlog-refine**
-- Re-sequence delivery phases or change exit criteria → `.agency/roadmap.md`
+- Re-sequence delivery phases or change exit criteria → `docs/product/roadmap.md`
   via **roadmap**
 - Add architecture or design detail → `solution.md` or `design.md`
 - Invent velocity, capacity, or team availability not supplied in the context
@@ -122,7 +124,7 @@ A sprint plan MUST NOT:
 
 ## Output
 
-Write `.agency/sprints/sprint-{id}/plan.md` from the template. Report in chat:
+Write `docs/work/sprint-{id}/plan.md` from the template. Report in chat:
 
 - **Sprint goal** and dates
 - **Capacity** — the figure used and where it came from

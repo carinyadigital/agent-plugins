@@ -29,7 +29,7 @@ Invoke skills directly — there is no separate agent plugin per persona:
 ```
 /web-development:implement CHK01-01
 /web-development:code-review feat/checkout
-/web-development:solution write
+/web-development:solution
 /web-development:deploy-qa feat/my-branch
 ```
 

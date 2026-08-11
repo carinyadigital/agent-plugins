@@ -88,7 +88,7 @@ Twelve job-titled entry points for digital agency work. Each name maps to **exac
 | **Frontend Engineer** | React/Next.js UI — components, client state, styling | `/web-development:implement` |
 | **Senior Frontend Engineer** | Peer code review against design docs and AC | `/web-development:code-review` |
 | **Principal Frontend Engineer** | Final technical gate on open PRs — architecture, security, AC | `/web-development:final-code-review` |
-| **Principal Architect** | System architecture, ADRs, epic-level design | `/web-development:solution write` |
+| **Principal Architect** | System architecture, ADRs, work-item design | `/web-development:solution` |
 | **QA Engineer** | QA deploy, automated suite, exploratory pass, defect docs | `/web-development:exploratory-pass` |
 
 Run each plugin's `setup` before first use — every skill reads your instance profile and practice profile. Skipping setup is the most common reason output stays generic.
@@ -411,8 +411,8 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | Command | Skill | What it does |
 |---|---|---|
 | `/web-development:setup` | setup | Learns stack, personas, target binding, connectors |
-| `/web-development:solution` | solution | write, review — `.agency/architecture/solution.md` |
-| `/web-development:adr` | adr | plan, write, review — ADR register and decision records |
+| `/web-development:solution` | solution | write — `docs/architecture/solution.md`; review via `docs-review` |
+| `/web-development:adr` | adr | plan, write, review — `docs/architecture/decisions/` |
 | `/web-development:design` | design | write — `docs/work/{work-id}/design.md`; review via `docs-review` |
 | `/web-development:implement` | implement | Implement a task against approved design and AC |
 | `/web-development:code-review` | code-review | Read-only peer review against design and tasks |

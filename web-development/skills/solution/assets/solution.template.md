@@ -6,7 +6,7 @@ status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
   - <!-- product.md -->
-  - .agency/architecture/decisions/register.md
+  - docs/architecture/decisions/register.md
 ---
 
 <!--
@@ -17,7 +17,7 @@ DO NOT INCLUDE in solution.md:
   - Strategic thesis or product principles      → product.md
   - Positioning or messaging                    → product.md
   - User quotes                                 → product.md
-  - Story-level acceptance criteria             → .agency/work/{epic}/tasks.md
+  - Story-level acceptance criteria             → docs/work/{work-id}/tasks.md
   - Phase sequencing or epic ordering           → roadmap.md
 -->
 

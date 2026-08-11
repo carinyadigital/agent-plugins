@@ -159,8 +159,8 @@ Close with persona-appropriate handoff:
 
 **Principal Architect path:**
 
-1. **Solution** — `/web-development:solution write`
-2. **Design** — `/web-development:design write <epic>`
+1. **Solution** — `/web-development:solution`
+2. **Design** — `/web-development:design <work-id>`
 3. **ADR** — `/web-development:adr write`
 
 **QA Engineer path:**
@@ -197,7 +197,7 @@ Location: `<instance-root>/config/.web-development-setup-resume.json` if instanc
 
 **Input:** Target repo with Next.js + TypeScript detected; `--quick`; solo operator; merged persona; Vercel hosting; `.agency/target.json` created on confirmation.
 
-**Expected output:** Practice profile at personal config path with stack, deployment, and merged persona recorded; target binding file written; handoff to `/web-development:implement` or `/web-development:solution write`.
+**Expected output:** Practice profile at personal config path with stack, deployment, and merged persona recorded; target binding file written; handoff to `/web-development:implement` or `/web-development:solution`.
 
 ## Outputs
 

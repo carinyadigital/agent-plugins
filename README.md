@@ -370,7 +370,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | Command | Skill | What it does |
 |---|---|---|
 | `/delivery-practice:setup` | setup | Learns cadence, sprint length, escalation; writes practice profile |
-| `/delivery-practice:tasks` | tasks | `--product` → `.agency/backlog.md`; `{epic}` → `.agency/work/{epic}/tasks.md` |
+| `/delivery-practice:tasks` | tasks | `--product` → `.agency/backlog.md`; `{epic}` → `docs/work/{work-id}/tasks.md` |
 | `/delivery-practice:backlog-refine` | backlog-refine | Groom backlog or judge sprint readiness |
 | `/delivery-practice:sprint-planning` | sprint-planning | Sprint plan — `docs/work/sprint-{id}/plan.md` |
 | `/delivery-practice:sprint-retro` | sprint-retro | Sprint retrospective — `docs/work/sprint-{id}/retrospective.md` |
@@ -424,7 +424,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | `/web-development:ux-design-review` | ux-design-review | Read-only UX review of implemented UI |
 | `/web-development:ux-design-fix` | ux-design-fix | Address UX review findings or direct UI fixes |
 | `/web-development:ralph-loop-setup` | ralph-loop-setup | Seed and configure an autonomous delivery loop |
-| `/web-development:ralph-loop` | ralph-loop | Run an autonomous epic delivery loop |
+| `/web-development:ralph-loop` | ralph-loop | Run an autonomous work-item delivery loop |
 | `/web-development:docs-review` | docs-review | Read-only document-set quality and consistency review |
 | `/web-development:debug` | debug | Bug investigation and fix |
 | `/web-development:tech-debt` | tech-debt | Technical debt audit and prioritization |

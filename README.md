@@ -356,7 +356,7 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 |---|---|---|
 | `/product-management:setup` | setup | Learns cadence, audiences, discovery workflow; writes practice profile |
 | `/product-management:product` | product | write — `docs/product/product.md` (review via `/web-development:docs-review`) |
-| `/product-management:roadmap` | roadmap | write, review — `.agency/roadmap.md` |
+| `/product-management:roadmap` | roadmap | write — `docs/product/roadmap.md`; review via `/web-development:docs-review` |
 | `/product-management:write-spec` | write-spec | Feature spec or PRD from a problem statement |
 | `/product-management:product-brainstorming` | product-brainstorming | Sparring partner for ideas (no deliverable) |
 | `/product-management:synthesize-research` | synthesize-research | Themes and insights from user research |

@@ -28,7 +28,7 @@ Invoke skills directly — there is no separate agent plugin:
 ```
 /product-management:product
 /product-management:write-spec
-/product-management:roadmap write
+/product-management:roadmap
 ```
 
 ## First run: setup
@@ -53,7 +53,7 @@ After instance bootstrap (or standalone):
 | ----- | ------- |
 | **setup** | Interview → write practice profile and product defaults |
 | **product** | write — `docs/product/product.md` (strategy, PRD, pitch, vision, personas); review via `/web-development:docs-review` |
-| **roadmap** | write, review — `.agency/roadmap.md` (Now/Next/Later, themes, OKR-aligned) |
+| **roadmap** | write — `docs/product/roadmap.md` (Now/Next/Later, themes, OKR-aligned); review via `/web-development:docs-review` |
 | **write-spec** | Feature spec or PRD from a problem statement — user stories, requirements, success metrics |
 | **product-brainstorming** | Sparring partner for exploring a problem space (no deliverable) |
 | **synthesize-research** | Themes, personas, opportunity areas from interviews, surveys, tickets |

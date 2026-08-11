@@ -34,10 +34,10 @@ to identify the best match and direct them to the right skill.
    **Track** matches the current product context.
 4. Tell the user: "The best skill for this is **{skill-name}**." followed by one
    sentence explaining why. Include the **mode** when the skill uses modes
-   (e.g. `roadmap write`, `roadmap review`). Artefact skills with modes have
-   two: **write** drafts or re-authors from scratch; **review** critiques,
-   updates for currency, and amends in place. `product` is write-only — for
-   reviewing or critiquing `product.md`, route to `/web-development:docs-review`.
+   (e.g. `write-spec` flags or companion `/delivery-practice:tasks --product`).
+   `product` and `roadmap` are write-only — drafting or re-authoring from
+   scratch. For reviewing or critiquing `product.md` or `roadmap.md`, route to
+   `/web-development:docs-review`.
 
 For end-to-end product work, suggest the next skill in the flow
 (product-brainstorming → synthesize-research → product → roadmap → write-spec)
@@ -50,7 +50,7 @@ backlog and sprints, hand off to the companion `delivery-practice` plugin
 | Skill | Description (excerpt) | Artefact | Track | Role | Consumes | Produces |
 | --- | --- | --- | --- | --- | --- | --- |
 | product | product.md: write (review via docs-review) | docs/product/product.md | strategy | pm | research, briefs / product.md | product.md |
-| roadmap | Outcome-based delivery phases, exit criteria, roadmap review: write or review | .agency/roadmap.md | strategy | pm | product.md | roadmap.md |
+| roadmap | roadmap.md: write (review via docs-review) | docs/product/roadmap.md | strategy | pm | product.md | roadmap.md |
 | write-spec | Feature spec or PRD from a problem statement: user stories, requirements, success metrics | feature spec / PRD | discovery | pm | problem statement, research | spec |
 | product-brainstorming | Sparring partner for exploring a problem space, generating solutions, stress-testing thinking (no deliverable) | conversation | discovery | pm | a topic, problem, or idea | thinking |
 | synthesize-research | Themes, personas, opportunity areas from interviews, surveys, or tickets | research synthesis | discovery | pm | interviews, surveys, tickets | synthesis |

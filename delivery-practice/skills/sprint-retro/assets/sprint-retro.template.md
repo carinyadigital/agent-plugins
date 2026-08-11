@@ -3,7 +3,7 @@ DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
 DO NOT INCLUDE in a retrospective:
   - Acceptance criteria verification against code → validate
   - Edits to plan.md — it is the historical record of what was committed
-  - Task Gherkin, new epics, architecture changes → record a routed action
+  - Task Gherkin, new work items, architecture changes → record a routed action
   - Any finding attributed to a named individual → describe the system
   - Any action without an owner
 -->
@@ -15,7 +15,7 @@ owner: <!-- squad -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - .agency/sprints/sprint-{id}/plan.md
+  - docs/work/sprint-{id}/plan.md
 ---
 
 # Sprint retrospective — {Sprint id}
@@ -39,8 +39,8 @@ related:
 | Tasks              |           |           |
 | Points             |           |           |
 
-| Epic | Task ID | Title | Committed | Outcome | Evidence |
-| ---- | ------- | ----- | --------- | ------- | -------- |
+| Work item | Task ID | Title | Committed | Outcome | Evidence |
+| --------- | ------- | ----- | --------- | ------- | -------- |
 
 <!-- Outcome: delivered / partial / not started / descoped mid-sprint.
      Evidence: task status in tasks.md, MR, CI run, date. -->
@@ -94,5 +94,5 @@ related:
 
 <!-- What sprint-planning must account for before committing new work. -->
 
-| Epic | Task ID | Title | Estimate | Why it carried |
-| ---- | ------- | ----- | -------- | -------------- |
+| Work item | Task ID | Title | Estimate | Why it carried |
+| --------- | ------- | ----- | -------- | -------------- |

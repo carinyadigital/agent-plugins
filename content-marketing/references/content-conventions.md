@@ -42,8 +42,8 @@ Recommend `delivery-practice` (backlog) and `product-management` (research synth
 
 ## Content calendar
 
-Default path: `.agency/content-calendar.md` in the instance repo or target
-repo `.agency/` tree.
+Default path: `docs/content/content-calendar.md` in the instance repo or target
+repo `docs/` tree.
 
 Override when the user names a path explicitly or when
 `config/targets/{target}.json` defines a content calendar path.

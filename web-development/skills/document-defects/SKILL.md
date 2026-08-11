@@ -29,7 +29,7 @@ name.
 2. Extract each defect with: `id` (`DEF-001`, `AUT-002`, `EXP-001`), `severity`
    (`blocker` / `major` / `minor`), `summary`, `stepsToReproduce`, `expected`,
    `observed`.
-3. Map failures to acceptance criteria from `.agency/work/{epic}/tasks.md` where
+3. Map failures to acceptance criteria from `docs/work/{work-id}/tasks.md` where
    possible.
 4. Deduplicate against prior defects — do not re-report fixed issues unless they
    still reproduce.

@@ -25,7 +25,7 @@ after the skill name.
 
 ## Steps
 
-1. Read acceptance criteria from `.agency/work/{epic}/tasks.md` if available —
+1. Read acceptance criteria from `docs/work/{work-id}/tasks.md` if available —
    context for interpreting failures.
 2. From the workspace root, run the test command — read from `package.json`
    (typically `pnpm test`, `npm test`, or project-specific script). Use the

@@ -24,7 +24,7 @@ exploratory step). Pass epic slug or branch after the skill name.
 
 ## Steps
 
-1. Parse acceptance criteria from `.agency/work/{epic}/tasks.md` into a checklist.
+1. Parse acceptance criteria from `docs/work/{work-id}/tasks.md` into a checklist.
 2. Read the diff or changed files for scope context.
 3. For each criterion, execute the smallest verification that proves or disproves
    it — Shell for CLI checks, Read for static inspection, browser automation

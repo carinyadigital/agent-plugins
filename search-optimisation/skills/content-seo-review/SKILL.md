@@ -30,7 +30,7 @@ Read [search-optimisation-conventions.md](../../references/search-optimisation-c
 | Input           | Location                                         | Required   |
 | --------------- | ------------------------------------------------ | ---------- |
 | Seed / PR       | PR diff or seed path                             | Yes        |
-| Keyword targets | `.agency/work/seo/keyword-research-*.md`         | If present |
+| Keyword targets | `docs/work/seo/keyword-research-*.md`         | If present |
 | Site routing    | Target site slug/URL conventions                 | Yes        |
 
 ## Steps

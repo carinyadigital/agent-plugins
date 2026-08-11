@@ -19,7 +19,7 @@ Default audit URL is the resolved production URL. Override with `--url` on
 
 ## SEO work documents
 
-Default path: `.agency/work/seo/` on the target repo `.agency/` tree.
+Default path: `docs/work/seo/` on the target repo `docs/` tree (binding stays in `.agency/target.json`).
 
 Override when the user names a path explicitly or when target config defines an SEO
 work directory.

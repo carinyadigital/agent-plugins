@@ -22,13 +22,13 @@ for the tracked repo. If neither is set, ask once and offer to record it.
 
 ## What it does
 
-1. Read `.agency/backlog.md`, plus `.agency/product.md` §5 and `.agency/roadmap.md`
+1. Read `docs/product/backlog.md`, plus `docs/product/product.md` §5 and `docs/product/roadmap.md`
    for the goals and phase gates to groom against.
 2. Run a **backlog-refine** pass (see `../skills/backlog-refine/SKILL.md`) —
    the five activities: remove → split → prioritise → re-estimate → tighten acceptance.
 3. Fold in anything surfaced since last run: closed epics, new `.agency/reviews/`
    byproducts (competitor-scan gaps, metrics signals), and status drift.
-4. Draft the diff to `.agency/backlog.md` — bumped priorities, split epics, revised
+4. Draft the diff to `docs/product/backlog.md` — bumped priorities, split epics, revised
    estimates, deferred rows with a reason each. Do not apply it.
 5. Present the diff and stop. Never write to backlog.md without approval.
 

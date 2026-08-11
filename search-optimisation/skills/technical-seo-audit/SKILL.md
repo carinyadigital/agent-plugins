@@ -43,7 +43,7 @@ Read [search-optimisation-conventions.md](../../references/search-optimisation-c
 3. Audit via Playwright (live) and repo files per the checklist below.
 4. Create GitHub issues via the github connector, priority-ordered.
 5. If no issues were created, write an audit trail to
-   `.agency/work/seo/technical-seo-audit-{YYYY-MM-DD}.md`.
+   `docs/work/seo/technical-seo-audit-{YYYY-MM-DD}.md`.
 
 ## Checklist
 

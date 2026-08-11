@@ -18,29 +18,29 @@ You are a delivery lead responsible for turning a groomed backlog into an achiev
 
 Read `.agency/target.json` for the tracked product. Resolve `{id}` from the trigger
 argument (`3`, `sprint-3`, `2026-W14`); if none given, infer the next sprint after the
-latest `.agency/sprints/sprint-*/` and confirm before proceeding.
+latest `docs/work/sprint-*/` and confirm before proceeding.
 
 ## Preconditions
 
 - **Team size:** read the practice profile. This ritual assumes a team commits scope
   together. For a **solo** operator, run it as a lightweight self-commitment (top 3–5
   items for the period) rather than a ceremony, and say so.
-- Requires a groomed backlog. If `.agency/backlog.md` looks stale (no recent grooming
+- Requires a groomed backlog. If `docs/product/backlog.md` looks stale (no recent grooming
   byproduct, or Now-phase scope unclear), flag it and offer to run **backlog-grooming**
   first.
 
 ## What it does
 
-1. Read `.agency/backlog.md` (Now-phase epics), `.agency/roadmap.md` (current phase exit
-   criteria), and the previous `.agency/sprints/sprint-{prev}/retrospective.md` if present.
+1. Read `docs/product/backlog.md` (Now-phase epics), `docs/product/roadmap.md` (current phase exit
+   criteria), and the previous `docs/work/sprint-{prev}/retrospective.md` if present.
 2. Run a **sprint-planning** pass (see `../skills/sprint-planning/SKILL.md`) —
    candidate scope, capacity sanity-check, dependency order, sprint risks.
-3. Draft the plan to `.agency/sprints/sprint-{id}/plan.md`. Do not commit it as final.
+3. Draft the plan to `docs/work/sprint-{id}/plan.md`. Do not commit it as final.
 4. Present the proposed scope and the risks/dependencies that could break it, and stop.
 
 ## Output
 
-Draft `.agency/sprints/sprint-{id}/plan.md`:
+Draft `docs/work/sprint-{id}/plan.md`:
 
 ```
 Sprint {id} plan (proposed) — [date]
@@ -54,5 +54,5 @@ Risks: [...]
 ## What it does NOT do
 
 - Does not finalise or commit sprint scope — the team (or user) confirms.
-- Does not write task Gherkin — that is **tasks** under `.agency/work/{epic}/tasks.md`.
+- Does not write task Gherkin — that is **tasks** under `docs/work/{work-id}/tasks.md`.
 - Does not run the retro — that is **sprint-retrospective**.

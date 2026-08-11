@@ -17,31 +17,31 @@ You are a delivery lead responsible for helping the team learn from the sprint j
 ## Resolve target and sprint id
 
 Read `.agency/target.json` for the tracked product. Resolve `{id}` from the trigger
-argument; if none given, use the latest `.agency/sprints/sprint-*/` with a `plan.md` and
+argument; if none given, use the latest `docs/work/sprint-*/` with a `plan.md` and
 no `retrospective.md`, and confirm.
 
 ## Preconditions
 
-- Requires `.agency/sprints/sprint-{id}/plan.md` to compare shipped vs committed. If the
-  plan is missing, run the retro from `.agency/backlog.md` status alone and note the gap.
+- Requires `docs/work/sprint-{id}/plan.md` to compare shipped vs committed. If the
+  plan is missing, run the retro from `docs/product/backlog.md` status alone and note the gap.
 - **Team size:** for a **solo** operator, run as a short self-review, not a facilitated
   session.
 
 ## What it does
 
-1. Read `.agency/sprints/sprint-{id}/plan.md` (committed scope) and current
-   `.agency/backlog.md` status to establish what actually shipped.
+1. Read `docs/work/sprint-{id}/plan.md` (committed scope) and current
+   `docs/product/backlog.md` status to establish what actually shipped.
 2. Run a **sprint-retro** pass (see `../skills/sprint-retro/SKILL.md`) —
    went well / didn't / actions, with delivery signal
    (completed vs carried, scope creep, blockers).
-3. Draft the retro to `.agency/sprints/sprint-{id}/retrospective.md`.
+3. Draft the retro to `docs/work/sprint-{id}/retrospective.md`.
 4. Where an action implies backlog work (a fix, a carried item, a new risk), draft
    candidate backlog rows — do not insert them. Hand to **backlog-grooming** to fold in.
 5. Present the retro and the proposed follow-ups, and stop.
 
 ## Output
 
-Draft `.agency/sprints/sprint-{id}/retrospective.md`:
+Draft `docs/work/sprint-{id}/retrospective.md`:
 
 ```
 Sprint {id} retrospective — [date]

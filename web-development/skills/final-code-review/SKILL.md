@@ -3,7 +3,7 @@ name: final-code-review
 description: >
   Final technical gate on an open PR or MR after peer review — architecture
   boundaries, security, and acceptance-criteria coverage against
-  `.agency/work/{epic}/tasks.md`. Use when the MR is open and CI is expected
+  `docs/work/{work-id}/tasks.md`. Use when the MR is open and CI is expected
   green. Do NOT use for pre-PR peer review (code-review), business stakeholder
   sign-off (validate), or implementation (implement).
 license: MIT
@@ -26,8 +26,8 @@ business stakeholder sign-off. Pass branch, PR, or MR URL after the skill name.
 
 ## Steps
 
-1. **Read context** — `.agency/work/{epic}/design.md`,
-   `.agency/work/{epic}/tasks.md` (Gherkin AC), and the target repo's `AGENTS.md`
+1. **Read context** — `docs/work/{work-id}/design.md`,
+   `docs/work/{work-id}/tasks.md` (Gherkin AC), and the target repo's `AGENTS.md`
    or `CLAUDE.md`.
 2. **Read the MR/PR diff** — git or MCP source-control tools. Confirm CI status
    if available; note if pipeline is not green.

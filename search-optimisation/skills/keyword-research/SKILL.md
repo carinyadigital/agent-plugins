@@ -4,7 +4,7 @@ description: >
   Research keywords for a topic area — search intent, volume signals, and content
   opportunities. Use when planning content around a topic or building keyword
   targets for the calendar. Writes
-  `.agency/work/seo/keyword-research-{topic}.md` on the target repo. Do NOT use
+  `docs/work/seo/keyword-research-{topic}.md` on the target repo. Do NOT use
   for technical site audits (technical-seo-audit) or competitive product analysis
   (competitive-brief).
 license: MIT
@@ -31,8 +31,8 @@ Read [search-optimisation-conventions.md](../../references/search-optimisation-c
 | Input        | Location                                      | Required   |
 | ------------ | --------------------------------------------- | ---------- |
 | Topic slug   | Argument (kebab-case)                         | Yes        |
-| Product / backlog | `.agency/product.md`, backlog epics      | If present |
-| Existing research | `.agency/work/seo/keyword-research-*.md` | Check dupes|
+| Product / backlog | `docs/product/product.md`, `docs/product/backlog.md` | If present |
+| Existing research | `docs/work/seo/keyword-research-*.md` | Check dupes|
 | Locale       | Instance profile or user input                | Yes        |
 
 ## Steps
@@ -43,7 +43,7 @@ Read [search-optimisation-conventions.md](../../references/search-optimisation-c
 3. Research via web search: SERP analysis, People Also Ask, related queries.
    Match locale/geography from instance profile or user input. Prioritise intent
    aligned with the customer's product and content strategy.
-4. Write `.agency/work/seo/keyword-research-{topic}.md` using the output format.
+4. Write `docs/work/seo/keyword-research-{topic}.md` using the output format.
 5. Confirm recommendations are actionable for content calendar planning.
 
 ## Quality rules

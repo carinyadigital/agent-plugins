@@ -15,7 +15,7 @@ DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
 DO NOT INCLUDE in this wireframe:
   - Component names, file paths, or API contracts → web-development:design
   - Brand tokens (hex, font stacks) → brand-guide.md (cite when used)
-  - Task Gherkin acceptance criteria → .agency/work/{epic}/tasks.md
+  - Task Gherkin acceptance criteria → docs/work/{work-id}/tasks.md
   - Business strategy narrative → product.md
 
 Low-fidelity only: layout regions, content hierarchy, interaction notes, key states.

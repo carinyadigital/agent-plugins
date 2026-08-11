@@ -25,7 +25,7 @@ for next time.
 1. Run a `competitive-brief`-style scan (see `../skills/competitive-brief/SKILL.md`)
    against the recorded competitive set — launches, pricing, positioning changes since
    last run.
-2. Read `.agency/backlog.md` for the target repo.
+2. Read `docs/product/backlog.md` for the target repo.
 3. Where the scan surfaces a gap the backlog doesn't cover, draft candidate backlog
    rows — do not insert them.
 4. Present the draft diff and stop. Never write to backlog.md without approval.

@@ -46,7 +46,7 @@
   {
     "query": "Review the product strategy doc — is the positioning right?",
     "should_trigger": false,
-    "note": "product review — judges the strategy, not the writing"
+    "note": "judges strategic soundness, not writing quality — docs-review does not evaluate positioning; re-author via product if the strategy itself needs to change"
   },
   {
     "query": "Run the sprint retrospective.",

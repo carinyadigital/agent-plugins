@@ -17,10 +17,8 @@ allowed-tools:
   - Read
   - Glob
   - Grep
-  - Bash(git
-  - log:*)
-  - Bash(git
-  - diff:*)
+  - Bash(git log:*)
+  - Bash(git diff:*)
 argument-hint: "[path-or-glob] [--focus quality|boundaries|consistency]"
 metadata:
   author: Carinya Parc

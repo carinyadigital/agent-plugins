@@ -9,7 +9,7 @@
         "Produces a validation report with acceptance matrix table",
         "Every task criterion has evidence cited",
         "Does not perform a PR code review format as primary output",
-        "Resolves CHK01 to .agency/work/checkout-foundation/"
+        "Resolves CHK01 to docs/work/checkout-foundation/"
       ]
     }
   ]

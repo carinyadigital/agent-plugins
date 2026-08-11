@@ -1,53 +1,67 @@
 ---
 name: validate
 description: >
-  Use when the user wants final epic completion sign-off: every task in
-  .agency/work/{epic}/tasks.md verified against Gherkin AC and roadmap phase exit
-  criteria. Triggers on "validate CHK01", "is this epic done", "sign off the
-  epic". Builds an acceptance matrix with evidence, updates task and epic
-  status, and produces a validation report. Do NOT use for PR or branch code
-  review (code-review), writing tasks (tasks), sprint retrospective (sprint-retro),
-  or drafting the breakdown (tasks) or design.
+  Use when the user wants final completion sign-off on any work item — epic,
+  story, bug, or spike: every task in docs/work/{work-id}/tasks.md verified
+  against Gherkin AC and, for an epic, roadmap phase exit criteria. Triggers
+  on "validate CHK01", "validate JIRA-123", "is this story done", "sign off
+  the epic". Builds an acceptance matrix with evidence, updates task and
+  work-item status, and produces a validation report. Do NOT use for PR or
+  branch code review (code-review), writing tasks (tasks), sprint
+  retrospective (sprint-retro), or drafting the breakdown (tasks) or design.
 license: MIT
+compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:
   - Read
   - Write
   - Edit
   - Glob
   - Grep
-argument-hint: "<epic-slug|epic-id>"
+  - Bash(git remote:*)
+  - Bash(gh:*)
+  - Bash(glab:*)
+argument-hint: "<work-id>"
 metadata:
   author: Carinya Parc
-  version: "1.0"
+  version: "2.0"
   owner: delivery
   work_shape: review-and-gate
   output_class: decision-support
   review_cadence: as-needed
 ---
 
+Prefer `docs/` artefact paths; fall back to `.agency/` equivalents when reading
+legacy inputs (`.agency/backlog.md`, `.agency/work/`, `.agency/architecture/`,
+`.agency/solution.md`). Write only under `docs/`.
+
 # Validate
 
-You are a QA Lead performing a final stakeholder review to confirm an epic is
-production-ready and every acceptance criterion is satisfied.
+You are a QA Lead performing a final stakeholder review to confirm a work
+item is production-ready and every acceptance criterion is satisfied — an
+epic, a story, a bug fix, or a spike's answered question.
 
-Read [delivery-conventions.md](../tasks/references/delivery-conventions.md)
-when resolving `{epic}`. Resolve the slug from `.agency/backlog.md` when
-the user passes only an Epic ID.
+Read [work-item-resolution.md](../tasks/references/work-item-resolution.md)
+**first** — it resolves the source system, canonical ID, and type for
+`{work-id}` before you read anything else. Read
+[delivery-conventions.md](../tasks/references/delivery-conventions.md) for
+paths and artefact boundaries. When the target is a story, bug, or spike,
+also note its parent epic — the report should say whether this item's
+completion unblocks or completes that epic.
 
 ## Inputs
 
 | Input                 | Location                        | Required    |
 | --------------------- | ------------------------------- | ----------- |
-| Product backlog       | `.agency/backlog.md`       | Yes         |
-| Tasks                 | `.agency/work/{epic}/tasks.md`     | Yes         |
-| Design                | `.agency/work/{epic}/design.md`    | If exists   |
+| Product backlog / tracker | `docs/product/backlog.md`, or the tracker directly | Yes |
+| Tasks                 | `docs/work/{work-id}/tasks.md`  | Yes         |
+| Design                | `docs/work/{work-id}/design.md` | If exists   |
 | Application code      | `src/` (or repo equivalent)     | Yes         |
-| Solution architecture | `.agency/architecture/solution.md` | If relevant |
-| ADRs                  | `.agency/architecture/decisions/`  | If relevant |
+| Solution architecture | `docs/architecture/solution.md` | If relevant |
+| ADRs                  | `docs/architecture/decisions/`  | If relevant |
 
 ## Sub-agents
 
-When the epic has many tasks (roughly >5) or complex Gherkin, spawn
+When the work item has many tasks (roughly >5) or complex Gherkin, spawn
 **ac-evidence-verifier** ([agents/ac-evidence-verifier.md](agents/ac-evidence-verifier.md))
 to build the acceptance matrix before writing the report and updating tasks.md.
 
@@ -57,16 +71,16 @@ For eval runs on skills in this repo, use root **eval-grader** (`agents/eval-gra
 
 ### Phase 1: Gather context
 
-1. Read `.agency/backlog.md` — locate the epic row (Epic ID, Title, work
-   path `.agency/work/{epic}/`).
-2. Read `.agency/work/{epic}/tasks.md` and collect all tasks.
-3. Read `.agency/work/{epic}/design.md` if it exists.
-4. Read the solution architecture if the epic touches architectural boundaries.
+1. Locate the work item row — `docs/product/backlog.md` (filesystem-only) or
+   the tracker directly (Title, type, work path `docs/work/{work-id}/`).
+2. Read `docs/work/{work-id}/tasks.md` and collect all tasks.
+3. Read `docs/work/{work-id}/design.md` if it exists.
+4. Read the solution architecture if the work item touches architectural boundaries.
 5. Read any ADRs referenced by the design or requirements.
 
 ### Phase 2: Build the acceptance matrix
 
-For every task in `.agency/work/{epic}/tasks.md`, build a table:
+For every task in `docs/work/{work-id}/tasks.md`, build a table:
 
 | Task     | Criterion                    | Evidence                             | Status                |
 | -------- | ---------------------------- | ------------------------------------ | --------------------- |
@@ -110,7 +124,7 @@ Note any deviations — they are not automatic failures, but must be documented.
 
 ### Phase 6: Update tasks and backlog
 
-Based on the acceptance matrix, update `.agency/work/{epic}/tasks.md`:
+Based on the acceptance matrix, update `docs/work/{work-id}/tasks.md`:
 
 1. **Completed criteria** — check the box `- [x]`.
 2. **Incomplete or partial criteria** — uncheck the box `- [ ]` and append a
@@ -119,15 +133,20 @@ Based on the acceptance matrix, update `.agency/work/{epic}/tasks.md`:
    `in-progress`; none pass → `not started`.
 4. **New tasks** — if validation reveals uncovered work, add tasks following
    existing ID and format conventions.
-5. **Epic status** — update in `.agency/backlog.md` only when every task
-   for the epic is verified done.
+5. **Work item status** — update in `docs/product/backlog.md` (filesystem-only)
+   or the tracker only when every task for this work item is verified done.
+   For a story/bug/spike, also note in the report whether its parent epic is
+   now closer to done — do not update the epic's status yourself unless the
+   user is validating the epic itself.
 
 ### Phase 7: Pre-report validation
 
-- [ ] Every task in `.agency/work/{epic}/tasks.md` appears in the acceptance matrix
+- [ ] Work item resolved per work-item-resolution.md — asked the user on any
+  ambiguity in source system or ID
+- [ ] Every task in `docs/work/{work-id}/tasks.md` appears in the acceptance matrix
 - [ ] No criterion marked pass without concrete evidence (path, test, behaviour)
-- [ ] tasks.md and backlog.md updates preserve existing ID and format conventions
-- [ ] Epic status set to complete only if all tasks are verified done
+- [ ] tasks.md and backlog.md (or tracker) updates preserve existing ID and format conventions
+- [ ] Work item status set to complete only if all its tasks are verified done
 
 ### Phase 8: Produce the validation report
 
@@ -152,17 +171,18 @@ A validation report MUST NOT:
 - Include implementation detail → that belongs in solution.md or design.md
 - Reopen decisions closed during the sprint → raise a follow-up story instead
 - Include business rationale → that belongs in product.md
-- Judge the diff — that is **code-review**; validate judges epic done-ness vs AC
+- Judge the diff — that is **code-review**; validate judges work-item done-ness vs AC
 
 ## Output format
 
 <example>
 
-## Validation Report — CF-XX: Epic Title
+## Validation Report — CF-XX: Work Item Title
 
 **Date:** YYYY-MM-DD
 **Validator:** AI QA Review
-**Epic status:** complete | incomplete
+**Resolved:** {source system} · {type} · {canonical ID}
+**Work item status:** complete | incomplete
 
 ### Summary
 
@@ -201,6 +221,6 @@ A validation report MUST NOT:
 
 ### Conclusion
 
-{Is the epic ready for stakeholder sign-off? If not, what must be resolved first?}
+{Is this work item ready for stakeholder sign-off? If not, what must be resolved first?}
 
 </example>

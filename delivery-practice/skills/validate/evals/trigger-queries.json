@@ -8,6 +8,10 @@
     "should_trigger": true
   },
   {
+    "query": "Validate JIRA-123 — is this story done?",
+    "should_trigger": true
+  },
+  {
     "query": "Review this PR for security and AC coverage.",
     "should_trigger": false,
     "note": "code-review"

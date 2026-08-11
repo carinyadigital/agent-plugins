@@ -372,9 +372,9 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | `/delivery-practice:setup` | setup | Learns cadence, sprint length, escalation; writes practice profile |
 | `/delivery-practice:tasks` | tasks | `--product` → `.agency/backlog.md`; `{epic}` → `.agency/work/{epic}/tasks.md` |
 | `/delivery-practice:backlog-refine` | backlog-refine | Groom backlog or judge sprint readiness |
-| `/delivery-practice:sprint-planning` | sprint-planning | Sprint plan — `.agency/sprints/sprint-{id}/plan.md` |
-| `/delivery-practice:sprint-retro` | sprint-retro | Sprint retrospective — `.agency/sprints/sprint-{id}/retrospective.md` |
-| `/delivery-practice:validate` | validate | Epic completion sign-off against AC and roadmap gates |
+| `/delivery-practice:sprint-planning` | sprint-planning | Sprint plan — `docs/work/sprint-{id}/plan.md` |
+| `/delivery-practice:sprint-retro` | sprint-retro | Sprint retrospective — `docs/work/sprint-{id}/retrospective.md` |
+| `/delivery-practice:validate` | validate | Work-item completion sign-off against AC and roadmap gates |
 | `/delivery-practice:skills-index` | skills-index | Routes vague requests to the right skill |
 
 ### content-marketing

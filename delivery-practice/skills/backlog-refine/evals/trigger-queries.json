@@ -5,6 +5,7 @@
     "refine the backlog",
     "reprioritise the backlog",
     "is this epic sprint-ready",
+    "is JIRA-123 sprint-ready",
     "are these stories ready to commit to",
     "this epic is too big, split it",
     "clean up the backlog before planning"

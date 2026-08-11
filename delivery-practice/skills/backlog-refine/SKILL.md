@@ -3,29 +3,36 @@ name: backlog-refine
 description: >
   Use to groom an existing backlog or judge whether a breakdown is ready to
   commit to — reprioritise, split oversized epics or stories, re-estimate,
-  defer misaligned items, and check sprint readiness of .agency/backlog.md
-  or .agency/work/{epic}/tasks.md. Triggers on "groom the backlog", "refine the
-  backlog", "is this sprint-ready", "are these stories ready", "reprioritise",
-  "this epic is too big", "clean up the backlog". Amends in place and reports a
-  verdict. Do NOT use to create a backlog or write new stories and tasks
-  (tasks), plan a sprint (sprint-planning), review a finished sprint
-  (sprint-retro), or verify an epic against its acceptance criteria (validate).
+  defer misaligned items, and check sprint readiness of docs/product/backlog.md
+  or docs/work/{work-id}/tasks.md for any work item. Triggers on "groom the
+  backlog", "refine the backlog", "is this sprint-ready", "are these stories
+  ready", "reprioritise", "this epic is too big", "clean up the backlog".
+  Amends in place and reports a verdict. Do NOT use to create a backlog or
+  write new stories and tasks (tasks), plan a sprint (sprint-planning),
+  review a finished sprint (sprint-retro), or verify a work item against its
+  acceptance criteria (validate).
 license: MIT
+compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:
   - Read
   - Write
   - Edit
   - Glob
   - Grep
-argument-hint: "[epic|backlog-path] [--context <notes>]"
+  - Bash(git remote:*)
+  - Bash(gh:*)
+  - Bash(glab:*)
+argument-hint: "[work-id|backlog-path] [--context <notes>]"
 metadata:
   author: Carinya Parc
-  version: "1.0"
+  version: "2.0"
   owner: delivery
   work_shape: review-and-gate
   output_class: decision-support
   review_cadence: as-needed
 ---
+
+Prefer `docs/` artefact paths; fall back to `.agency/` when reading legacy inputs. Write only under `docs/`.
 
 # Backlog refine
 
@@ -34,8 +41,11 @@ commitment safe to make — not to validate the author's effort. Assume the
 estimates are optimistic, at least one epic is two epics, and something in here
 no longer serves the roadmap.
 
-Read [../tasks/references/delivery-conventions.md](../tasks/references/delivery-conventions.md)
-for paths and slug resolution, and
+Read [../tasks/references/work-item-resolution.md](../tasks/references/work-item-resolution.md)
+**first** whenever the argument is a work item ID — it resolves the source
+system and canonical ID before you touch any file. Read
+[../tasks/references/delivery-conventions.md](../tasks/references/delivery-conventions.md)
+for paths, and
 [../tasks/references/work-item-schema.md](../tasks/references/work-item-schema.md)
 for the field rules this pass enforces.
 
@@ -43,13 +53,15 @@ for the field rules this pass enforces.
 
 | Argument | Target | Judgement |
 | -------- | ------ | --------- |
-| none, or a backlog path | `.agency/backlog.md` | Planning-ready? |
-| Epic slug or ID | `.agency/work/{epic}/tasks.md` | Sprint-ready? |
+| none, or a backlog path — filesystem-only | `docs/product/backlog.md` | Planning-ready? |
+| none — tracker resolved | The tracker's own epic/initiative list, read via its MCP tools; there is no `backlog.md` to groom | Planning-ready? |
+| Work item ID (epic, story, bug, or spike) | `docs/work/{work-id}/tasks.md`, or the tracker's sub-issues when one resolved | Sprint-ready? |
 | Both named | Both, in that order | Both verdicts |
 
-This skill runs on a recurring cadence against `backlog.md`, which is long-lived
-and groomed every sprint, and as a pre-commit gate against a specific epic's
-`tasks.md`. Same activities, different artefact.
+This skill runs on a recurring cadence against the backlog (`backlog.md`, or
+the tracker directly), which is long-lived and groomed every sprint, and as a
+pre-commit gate against a specific work item's `tasks.md`. Same activities,
+different artefact.
 
 ## Grooming pass
 
@@ -78,7 +90,9 @@ and record the blocker on anything that slipped.
 - [ ] Every Now-phase epic traces to a `product.md §7` outcome
 - [ ] No contradiction with `product.md` no-gos or roadmap deferred items
 - [ ] Epic granularity: one integration boundary or phase objective each
-- [ ] Work paths unique; slugs from the title, at most two words, not the Epic ID
+- [ ] Work paths unique. Filesystem-only: slugs from the title, at most two
+  words, not the Epic ID. Tracker-backed: the work path is the tracker key
+  itself — do not re-slug it
 - [ ] Dependencies acyclic; estimates present
 - [ ] No full Gherkin in the backlog — acceptance criteria belong in `tasks.md`
 - [ ] Every epic reachable from a roadmap phase

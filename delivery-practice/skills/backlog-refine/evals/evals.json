@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "Groom the backlog.",
-      "expected_output": ".agency/backlog.md amended in place with a planning-ready verdict.",
+      "expected_output": "docs/product/backlog.md amended in place with a planning-ready verdict.",
       "assertions": [
         "Applies remove, split, prioritise, re-estimate in that order",
         "Records a reason for every removal or deferral",
@@ -17,7 +17,7 @@
       "prompt": "Is checkout-foundation sprint-ready?",
       "expected_output": "Verdict against the tasks.md sprint-ready checklist, with amendments applied where unambiguous.",
       "assertions": [
-        "Reads .agency/work/checkout-foundation/tasks.md",
+        "Reads docs/work/checkout-foundation/tasks.md",
         "Checks story statements, independent test criteria and observable Then clauses",
         "Checks for dependency cycles and missing estimates",
         "Does not change any task ID",

@@ -1,6 +1,6 @@
-# Digital Agency by Carinya Parc
+# Carinya Plugins
 
-**Run a full-service digital agency from your IDE — practice plugins for strategy and delivery, brand and creative, content and growth, UX, search, and web engineering, with instance bootstrap and MCP connectors baked in.**
+**Product delivery plugins for your IDE — strategy, engineering, design, and validation in one marketplace, with optional brand, content, and SEO plugins for teams that need them. Each plugin bootstraps its own instance profile and ships MCP connectors for the tools you already use.**
 
 ## Install in one command
 
@@ -13,7 +13,15 @@ In [Claude Code](https://claude.com/product/claude-code), [Claude Cowork](https:
 Restart, then run `/<practice>:setup`. It bootstraps a git-versioned instance workspace (`config/`, `brand/`, `squads/`) and recommends your first practice plugin. Full walkthrough: [brand-creative/README.md](./brand-creative/README.md).
 
 > [!IMPORTANT]
-> **Every output is a draft for your review — not client-ready deliverables, not production code without review, not a substitute for qualified professional judgment.** Agents and skills draft work products; you verify accuracy, brand fit, accessibility, security, and compliance before anything ships. You are responsible for outputs that leave your firm.
+> **Every output is a draft for your review — not production-ready deliverables or code without review, not a substitute for qualified professional judgment.** Agents and skills draft work products; you verify accuracy, brand fit, accessibility, security, and compliance before anything ships.
+
+## Who this is for
+
+**Primary audience:** product teams shipping software — product managers, engineers, designers, and delivery leads working from specs through implementation, review, and validation.
+
+**Adjacent plugins:** `brand-creative`, `content-marketing`, and `search-optimisation` serve brand, editorial, and SEO workflows. They are genuinely disjoint buyers from the product-engineering core — install them when you need them, not because you run an agency.
+
+This repo is **not** a promise to "run a full-service digital agency from your IDE." It is a plugin catalogue for structured product delivery, with optional go-to-market plugins on the side.
 
 ## Plugins at a glance
 
@@ -68,34 +76,43 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 **You get:** implemented code on a feature branch, ready for `/product-engineering:code-review` and your normal PR workflow.
 
-More personas and commands: [Named personas](#named-personas) · [Extended persona catalog](#extended-persona-catalog) · [Skill & command reference](#skill--command-reference).
+More commands and personas: [Entry points by team role](#entry-points-by-team-role) · [Extended persona catalog](#extended-persona-catalog) · [Skill & command reference](#skill--command-reference).
 
 ---
 
-## Named personas
+## Entry points by team role
 
-Twelve job-titled entry points for digital agency work. Each name maps to **exactly one** slash command under a practice plugin — personas are not separate agent plugins; they share one skill library per practice.
+Personas are **job titles that map to slash commands** inside practice plugins — not separate agent plugins. Install the plugin, run its `setup`, then invoke the command.
 
-| Persona | What it does | Command |
+### Product team core
+
+| Role | What it does | Command |
 |---|---|---|
 | **Product Manager** | Product strategy, roadmap, specs from problem statements | `/product-management:product` |
 | **Delivery Lead** | Tasks/backlog decomposition, sprint planning, validation | `/product-management:sprint-planning` |
-| **Content Strategist** | Editorial calendar and social inventory curation | `/content-marketing:content-calendar write` |
-| **Content Writer** | Blog posts, recipes, captions, and light edits for CMS import | `/content-marketing:draft-post` |
-| **SEO Specialist** | Keyword research, technical audits, on-page content review | `/search-optimisation:keyword-research` |
+| **Architect** | System architecture, ADRs, work-item technical design | `/product-engineering:solution` |
+| **Engineer** | Implement tasks against approved design and AC | `/product-engineering:implement` |
+| **Reviewer** | Peer code review against design docs and AC | `/product-engineering:code-review` |
+| **Release gate** | Final technical sign-off on open PRs | `/product-engineering:final-code-review` |
+| **UX Designer** | Wireframes, live UX review, UX fixes | `/product-design:wireframe` |
+| **QA** | QA deploy, automated suite, exploratory pass | `/product-engineering:exploratory-pass` |
+
+Engineering skills share one library in `product-engineering`. Seniority labels (peer review vs final gate) reflect review depth, not separate plugins.
+
+### Adjacent practices (optional)
+
+| Role | What it does | Command |
+|---|---|---|
 | **Brand Lead** | Voice lifecycle and visual identity guide | `/brand-creative:brand-voice write` |
-| **UX Designer** | Low-fidelity wireframes from a brief | `/product-design:wireframe` |
-| **Frontend Engineer** | React/Next.js UI — components, client state, styling | `/product-engineering:implement` |
-| **Senior Frontend Engineer** | Peer code review against design docs and AC | `/product-engineering:code-review` |
-| **Principal Frontend Engineer** | Final technical gate on open PRs — architecture, security, AC | `/product-engineering:final-code-review` |
-| **Principal Architect** | System architecture, ADRs, work-item design | `/product-engineering:solution` |
-| **QA Engineer** | QA deploy, automated suite, exploratory pass, defect docs | `/product-engineering:exploratory-pass` |
+| **Content Strategist** | Editorial calendar and social inventory curation | `/content-marketing:content-calendar write` |
+| **Content Writer** | Blog posts, recipes, captions for CMS import | `/content-marketing:draft-post` |
+| **SEO Specialist** | Keyword research, technical audits, on-page review | `/search-optimisation:keyword-research` |
 
 Run each plugin's `setup` before first use — every skill reads your instance profile and practice profile. Skipping setup is the most common reason output stays generic.
 
 ## Extended persona catalog
 
-Each persona below is named for the job it does. Start with the [named personas](#named-personas) above, then tune the underlying skill, practice profile, and connectors to how your firm works.
+Each persona below is named for the job it does. Start with [entry points by team role](#entry-points-by-team-role), then tune the underlying skill, practice profile, and connectors to how your team works.
 
 | Persona | What it does | Plugin | Command |
 |---|---|---|---|
@@ -122,31 +139,29 @@ Everything here ships as Claude Cowork, Claude Code, or Cursor plugins **and** a
 
 What's in the repo:
 
-- **Practice plugins** covering brand, delivery, content, UX, SEO, and web engineering — each with a `setup` interview, a living `CLAUDE.md` practice profile every skill reads, and **propose profile update** so conventions can be recorded mid-engagement without re-running setup.
-- **Agency Hub** for instance bootstrap — git-versioned org profile, target bindings, and (v2) community skill marketplace management.
+- **Practice plugins** — product management, engineering, design, and optional brand/content/SEO — each with a `setup` interview, a living `CLAUDE.md` practice profile every skill reads, and **propose profile update** so conventions can be recorded mid-engagement without re-running setup.
+- **Instance bootstrap** — whichever plugin you install first writes `config/instance.json` if absent; no install-order dependency.
 - **MCP connectors** — a minimal default per practice in `.mcp.json`; add more for your stack (source control, hosting, chat, trackers, analytics).
-- **[Named personas](#named-personas)** — twelve primary entry points plus the [extended catalog](#extended-persona-catalog) above.
+- **[Entry points by team role](#entry-points-by-team-role)** — primary commands plus the [extended catalog](#extended-persona-catalog) below.
 - **Managed-agent cookbooks** for Cursor Cloud Agents and Claude Managed Agents — see [managed-agents/README.md](./managed-agents/README.md).
 
 ## Repository layout
 
 ```
-brand-creative/               # instance bootstrap — install first
 brand-creative/           # brand voice + visual identity
 product-management/       # product, roadmap, specs, research, metrics, backlog, sprint, validate
-content-marketing/        # calendar, curation, media analysis, CMS seeds
+product-engineering/      # solution, adr, design, implement, review, QA, platform
 product-design/           # wireframes, ux-design-review, ux-design-fix
+content-marketing/        # calendar, curation, media analysis, CMS seeds
 search-optimisation/      # keyword research, technical audit, content SEO review
-product-engineering/          # solution, adr, design, implement, review, QA, platform
-ralph-loop/                   # ralph-loop + ralph-loop-setup (+ hooks)
-skills-index/                 # find + related-skills-surfacer
-skill-authoring/              # skills-qa (+ Phase 0 tooling later)
+ralph-loop/               # ralph-loop + ralph-loop-setup (+ hooks)
+skills-index/             # install-aware skill router
+skill-authoring/          # skills-qa (+ Phase 0 tooling later)
 managed-agents/           # CMA + Cursor Cloud Agent cookbooks
 scripts/                  # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.py
-.claude-plugin/
-  marketplace.json        # plugin registry (name: carinya-plugins)
-.cursor-plugin/
-  marketplace.json
+references/               # canonical meta-framework (synced into practice plugins)
+.claude-plugin/marketplace.json   # plugin registry (name: carinya-plugins)
+.cursor-plugin/marketplace.json
 ```
 
 Each practice plugin has the same shape:
@@ -187,14 +202,17 @@ After install, skills fire automatically when relevant; slash commands are avail
 ### Claude Code
 
 ```bash
-/plugin marketplace add <path-to-this-repo-or-github-url>
+/plugin marketplace add carinyaparc/carinya-plugins
 
 /plugin install brand-creative@carinya-plugins
 /plugin install product-management@carinya-plugins
-/plugin install content-marketing@carinya-plugins
+/plugin install product-engineering@carinya-plugins
 /plugin install product-design@carinya-plugins
+/plugin install content-marketing@carinya-plugins
 /plugin install search-optimisation@carinya-plugins
-# product-engineering — zip-install the product-engineering/ directory until marketplace registration lands
+/plugin install ralph-loop@carinya-plugins
+/plugin install skills-index@carinya-plugins
+/plugin install skill-authoring@carinya-plugins
 
 /brand-creative:setup
 /product-management:setup
@@ -219,6 +237,20 @@ python3 scripts/deploy-squad-agents.py apply --instance ../your-instance-repo
 ```
 
 See [`managed-agents/README.md`](./managed-agents/README.md) for platform matrix, security tiers, and required secrets.
+
+### skills.sh (skill files only)
+
+Install individual skills without the full plugin surface (no hooks, MCP, or practice profiles):
+
+```bash
+# All skills from the monorepo
+npx skills add carinyaparc/carinya-plugins
+
+# One skill
+npx skills add carinyaparc/carinya-plugins/product-engineering/skills/code-review
+```
+
+Migrating from the archived flat repo? See [docs/SKILLS-MIGRATION.md](./docs/SKILLS-MIGRATION.md).
 
 ## How it fits together
 
@@ -269,6 +301,10 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 
 | Plugin | What it adds |
 |---|---|
+| **[ralph-loop](./ralph-loop)** | Self-referential delivery loops — ad-hoc and custom presets; engineering-delivery preset contributed by product-engineering. Ships hooks. |
+| **[skills-index](./skills-index)** | Install-aware skill router — `/skills-index:find` |
+| **[skill-authoring](./skill-authoring)** | Skill quality gate — `/skill-authoring:skills-qa` |
+
 **Companion practices:** `content-marketing` invokes `/product-management:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `product-engineering` invokes `/product-management:tasks` and related skills for planning cadence during implementation. No direction requires the companion installed — skills degrade gracefully and document the pairing.
 
 ## MCP connectors
@@ -325,9 +361,6 @@ No build step. Everything is markdown and JSON.
 ## Skill & command reference
 
 The full map across all practice plugins. Run `setup` in each plugin before other commands.
-
-
-v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …) are designed but not shipped — see [brand-creative/README.md](./brand-creative/README.md).
 
 ### brand-creative
 

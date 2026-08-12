@@ -340,6 +340,7 @@ class Validator:
         paths.extend(sorted(ROOT.glob("product-engineering/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("ralph-loop/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("skills-index/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("skill-authoring/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("content-marketing/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-design/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("search-optimisation/skills/*/SKILL.md")))
@@ -678,7 +679,7 @@ class Validator:
                         "FM_METADATA_MISSING",
                         f"{rel} missing metadata.{meta_field}",
                         file=rel,
-                        hint="See agency-hub/references/agency-skill-design-framework.md §11",
+                        hint="See skill-authoring/references/agency-skill-design-framework.md §11",
                     )
 
             work_shape = metadata_dict.get("work_shape")
@@ -734,6 +735,7 @@ class Validator:
             (ROOT / "product-engineering", "product-engineering/skills/*/*.md"),
             (ROOT / "ralph-loop", "ralph-loop/skills/*/*.md"),
             (ROOT / "skills-index", "skills-index/skills/*/*.md"),
+            (ROOT / "skill-authoring", "skill-authoring/skills/*/*.md"),
             (ROOT / "content-marketing", "content-marketing/skills/*/*.md"),
             (ROOT / "product-design", "product-design/skills/*/*.md"),
             (ROOT / "search-optimisation", "search-optimisation/skills/*/*.md"),
@@ -750,6 +752,7 @@ class Validator:
                 "product-engineering",
                 "ralph-loop",
                 "skills-index",
+                "skill-authoring",
                 "content-marketing",
                 "product-design",
                 "search-optimisation",

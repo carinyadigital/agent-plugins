@@ -57,6 +57,12 @@
       "displayName": "Skills Index",
       "source": "./skills-index",
       "description": "Install-aware skill router \u2014 find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task."
+    },
+    {
+      "name": "skill-authoring",
+      "displayName": "Skill Authoring",
+      "source": "./skill-authoring",
+      "description": "Skill authoring quality gate \u2014 skills-qa against the Agency Skill Design Framework. Phase 0 tooling (eval-grader, validate_skills, templates) lands here when ported."
     }
   ]
 }

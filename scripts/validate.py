@@ -305,6 +305,11 @@ class Validator:
             for skill_dir in product_management_skills.iterdir():
                 if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                     sources[skill_dir.name] = skill_dir
+        product_engineering_skills = ROOT / "product-engineering" / "skills"
+        if product_engineering_skills.is_dir():
+            for skill_dir in product_engineering_skills.iterdir():
+                if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
+                    sources[skill_dir.name] = skill_dir
         content_marketing_skills = ROOT / "content-marketing" / "skills"
         if content_marketing_skills.is_dir():
             for skill_dir in content_marketing_skills.iterdir():
@@ -327,6 +332,7 @@ class Validator:
         paths.extend(sorted(ROOT.glob("agency-hub/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("brand-creative/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-management/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("product-engineering/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("content-marketing/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-design/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("search-optimisation/skills/*/SKILL.md")))
@@ -718,6 +724,7 @@ class Validator:
             (ROOT / "agency-hub", "agency-hub/skills/*/*.md"),
             (ROOT / "brand-creative", "brand-creative/skills/*/*.md"),
             (ROOT / "product-management", "product-management/skills/*/*.md"),
+            (ROOT / "product-engineering", "product-engineering/skills/*/*.md"),
             (ROOT / "content-marketing", "content-marketing/skills/*/*.md"),
             (ROOT / "product-design", "product-design/skills/*/*.md"),
             (ROOT / "search-optimisation", "search-optimisation/skills/*/*.md"),
@@ -731,6 +738,7 @@ class Validator:
                 "agency-hub",
                 "brand-creative",
                 "product-management",
+                "product-engineering",
                 "content-marketing",
                 "product-design",
                 "search-optimisation",

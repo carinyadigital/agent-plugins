@@ -40,19 +40,19 @@ If `brand-guide.md` does not exist, proceed with layout structure only — do no
 require `brand-creative` to be installed. Do not bundle or invoke the brand-guide
 skill; read the artefact directly when present.
 
-## Downstream consumption (web-development)
+## Downstream consumption (product-engineering)
 
-`web-development` reads `<design-dir>/*.md` before implementing UI — the same
+`product-engineering` reads `<design-dir>/*.md` before implementing UI — the same
 artifact-consumption pattern as `brand-guide.md`. No install dependency in either
 direction.
 
 Epic-level technical design (`docs/work/{work-id}/design.md`) remains owned by
-`web-development:design` — wireframes here are UX layout specs, not implementation
+`/product-engineering:design` — wireframes here are UX layout specs, not implementation
 design docs.
 
-## Companion practice (web-development)
+## Companion practice (product-engineering)
 
-For implementation after wireframes are approved, recommend `web-development` as a
+For implementation after wireframes are approved, recommend `product-engineering` as a
 co-install. Document in CONNECTORS.md.
 
 ## Skill routing (near-misses)
@@ -60,7 +60,7 @@ co-install. Document in CONNECTORS.md.
 | User intent | Skill | Notes |
 | ----------- | ----- | ----- |
 | Low-fidelity page or flow layout | **wireframe** | Writes to `<design-dir>/` |
-| Epic implementation spec, ADRs | `/web-development:design` | Technical design — not this practice |
+| Epic implementation spec, ADRs | `/product-engineering:design` | Technical design — not this practice |
 | Visual brand tokens, colour, type | `/brand-creative:brand-guide` | Brand practice |
 | Usability review, research synthesis | — | Deferred in v1 — not shipped |
 
@@ -76,4 +76,4 @@ co-install. Document in CONNECTORS.md.
 
 Wireframe specs describe **what the user sees and does** at low fidelity. They do
 not prescribe component names, file paths, or API contracts — those belong in
-`web-development:design`.
+`/product-engineering:design`.

@@ -97,5 +97,5 @@ Markdown with YAML frontmatter. Use [assets/product.template.md](assets/product.
 
 - `/product-management:roadmap` — sequencing and phases
 - `/product-management:tasks` — epics and backlog decomposition
-- `/web-development:solution` — architecture
-- `/web-development:docs-review` — review or critique an existing product.md
+- `/product-engineering:solution` — architecture
+- `/product-engineering:docs-review` — review or critique an existing product.md

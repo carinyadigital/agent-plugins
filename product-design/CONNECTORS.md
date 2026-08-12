@@ -10,9 +10,9 @@ Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for
 
 | Practice | Relationship | Consumption |
 | -------- | ------------ | ----------- |
-| **web-development** | Companion practice | Reads `<design-dir>/*.md` before UI implementation |
+| **product-engineering** | Companion practice | Reads `<design-dir>/*.md` before UI implementation |
 
-Install `web-development` alongside this plugin when wireframes feed frontend
+Install `product-engineering` alongside this plugin when wireframes feed frontend
 implementation. No bundled duplicate skills and no hard install dependency — either
 practice works standalone.
 

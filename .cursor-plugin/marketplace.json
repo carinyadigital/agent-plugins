@@ -17,10 +17,10 @@
       "description": "Complete brand practice in one install \u2014 setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
     },
     {
-      "name": "web-development",
-      "displayName": "Web Development",
-      "source": "./web-development",
-      "description": "Complete web engineering practice in one install \u2014 setup interview, architecture, epic design, implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes product-management for planning cadence."
+      "name": "product-engineering",
+      "displayName": "Product Engineering",
+      "source": "./product-engineering",
+      "description": "Complete product engineering practice in one install \u2014 setup interview, architecture, epic design, implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes product-management for planning cadence."
     },
     {
       "name": "product-management",

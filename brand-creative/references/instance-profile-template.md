@@ -58,7 +58,7 @@ Tier 1 config lives in the **instance repo** (git-versioned), not in user dotfil
 | `status` | `template` until setup completes; then `complete` |
 | `instance` | Short slug — repo name, used in `.agency/target.json` pointers |
 | `business.context` | `single-business` \| `agency-serving-clients` |
-| `services.enabled` | Practice areas active now: `web-development`, `content-marketing`, `social-media`, `seo`, `brand-creative` |
+| `services.enabled` | Practice areas active now: `product-engineering`, `content-marketing`, `social-media`, `seo`, `brand-creative` |
 | `services.recommendedPlugins` | Catalogue plugin names to install next |
 | `cadence.approvalGateStrictness` | `relaxed` \| `standard` \| `strict` |
 | `riskPosture.default` | `conservative` \| `balanced` \| `aggressive` |
@@ -216,7 +216,7 @@ Practices are MECE — one self-contained plugin per practice. Product strategy,
 | Service (`services.enabled`) | Practice plugin | Companion practice | Squad charters | Notes |
 |---|---|---|---|---|
 | `brand-creative` | `brand-creative` | none | — | Shipped; run `/brand-creative:setup` after bootstrap |
-| `web-development` | `web-development` | `product-management` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/product-management:tasks --product`, `/product-management:sprint-planning` |
+| `product-engineering` | `product-engineering` | `product-management` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/product-management:tasks --product`, `/product-management:sprint-planning` |
 | `content-marketing` | `content-marketing` | `product-management` | `content` | Shipped; run `/content-marketing:setup` after bootstrap; needs `/product-management:tasks --product`, `/product-management:synthesize-research` |
 | `social-media` | `social-media` | TBD | `content` | Practice pending — interim: `content-marketing` skills for captions and curation |
 | `seo` | `search-optimisation` | `product-management` | `seo` | Shipped; run `/search-optimisation:setup` after bootstrap; needs `/product-management:competitive-brief` |

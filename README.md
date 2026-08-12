@@ -28,14 +28,14 @@ Install **`agency-hub` first**, then the practice plugins that match your work.
 | [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:setup` |
 | [product-design](./product-design) | Wireframes, live UX review, and UX design fix | `/product-design:setup` |
 | [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
-| [web-development](./web-development) | Architecture, implementation, code review, QA, platform ops | `/web-development:setup` |
+| [product-engineering](./product-engineering) | Architecture, implementation, code review, QA, platform ops | `/product-engineering:setup` |
 
 **Which plugin first?** After `setup`, the interview recommends a starting practice. Common paths:
 
 | If you are… | Install next |
 |---|---|
 | Standing up a new client or product | `brand-creative` → `product-management` |
-| Shipping a website or app | `product-management` + `web-development` (+ `product-design` for new UI) |
+| Shipping a website or app | `product-management` + `product-engineering` (+ `product-design` for new UI) |
 | Running content and social | `brand-creative` → `content-marketing` (+ `search-optimisation` for SEO) |
 | SEO-only engagement | `search-optimisation` (+ `product-management` for competitive brief) |
 
@@ -59,13 +59,13 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 **You get:** a sprint plan with scoped work, dependencies, and stakeholder-facing summary — aligned to your practice profile cadence and escalation model.
 
-### 3. Implement a UI task against design and AC (Web Development)
+### 3. Implement a UI task against design and AC (Product Engineering)
 
 **You have:** approved `docs/work/{work-id}/design.md`, `tasks.md` with Gherkin AC, and a bound target repo.
 
-**Run:** `/web-development:implement CHK01-01` — the skill reads the target repo's own `AGENTS.md` / `CLAUDE.md` before changing code.
+**Run:** `/product-engineering:implement CHK01-01` — the skill reads the target repo's own `AGENTS.md` / `CLAUDE.md` before changing code.
 
-**You get:** implemented code on a feature branch, ready for `/web-development:code-review` and your normal PR workflow.
+**You get:** implemented code on a feature branch, ready for `/product-engineering:code-review` and your normal PR workflow.
 
 More personas and commands: [Named personas](#named-personas) · [Extended persona catalog](#extended-persona-catalog) · [Skill & command reference](#skill--command-reference).
 
@@ -84,11 +84,11 @@ Twelve job-titled entry points for digital agency work. Each name maps to **exac
 | **SEO Specialist** | Keyword research, technical audits, on-page content review | `/search-optimisation:keyword-research` |
 | **Brand Lead** | Voice lifecycle and visual identity guide | `/brand-creative:brand-voice write` |
 | **UX Designer** | Low-fidelity wireframes from a brief | `/product-design:wireframe` |
-| **Frontend Engineer** | React/Next.js UI — components, client state, styling | `/web-development:implement` |
-| **Senior Frontend Engineer** | Peer code review against design docs and AC | `/web-development:code-review` |
-| **Principal Frontend Engineer** | Final technical gate on open PRs — architecture, security, AC | `/web-development:final-code-review` |
-| **Principal Architect** | System architecture, ADRs, work-item design | `/web-development:solution` |
-| **QA Engineer** | QA deploy, automated suite, exploratory pass, defect docs | `/web-development:exploratory-pass` |
+| **Frontend Engineer** | React/Next.js UI — components, client state, styling | `/product-engineering:implement` |
+| **Senior Frontend Engineer** | Peer code review against design docs and AC | `/product-engineering:code-review` |
+| **Principal Frontend Engineer** | Final technical gate on open PRs — architecture, security, AC | `/product-engineering:final-code-review` |
+| **Principal Architect** | System architecture, ADRs, work-item design | `/product-engineering:solution` |
+| **QA Engineer** | QA deploy, automated suite, exploratory pass, defect docs | `/product-engineering:exploratory-pass` |
 
 Run each plugin's `setup` before first use — every skill reads your instance profile and practice profile. Skipping setup is the most common reason output stays generic.
 
@@ -109,13 +109,13 @@ Each persona below is named for the job it does. Start with the [named personas]
 | **Media Analyst** | Vision analysis — subjects, season, mood, quality | `content-marketing` | `/content-marketing:analyse-media` |
 | **Caption Writer** | Caption variants and channel copy | `content-marketing` | `/content-marketing:write-captions` |
 | **Technical SEO Auditor** | Production audit → tracked issues | `search-optimisation` | `/search-optimisation:technical-seo-audit` |
-| **ADR Author** | Architecture decision register and ADR files | `web-development` | `/web-development:adr write` |
-| **Epic Designer** | Work-item technical design | `web-development` | `/web-development:design` |
-| **MR Author** | Merge request description from the branch | `web-development` | `/web-development:merge-request` |
-| **Docs Steward** | Document-set quality and consistency review | `web-development` | `/web-development:docs-review` |
-| **Debugger** | Reproduce, isolate, diagnose, fix | `web-development` | `/web-development:debug` |
-| **Tech Debt Prioritizer** | Prioritize remediation work | `web-development` | `/web-development:tech-debt` |
-| **WebOps Engineer** | CI/CD, deployment, platform health | `web-development` | `/web-development:platform-health` |
+| **ADR Author** | Architecture decision register and ADR files | `product-engineering` | `/product-engineering:adr write` |
+| **Epic Designer** | Work-item technical design | `product-engineering` | `/product-engineering:design` |
+| **MR Author** | Merge request description from the branch | `product-engineering` | `/product-engineering:merge-request` |
+| **Docs Steward** | Document-set quality and consistency review | `product-engineering` | `/product-engineering:docs-review` |
+| **Debugger** | Reproduce, isolate, diagnose, fix | `product-engineering` | `/product-engineering:debug` |
+| **Tech Debt Prioritizer** | Prioritize remediation work | `product-engineering` | `/product-engineering:tech-debt` |
+| **WebOps Engineer** | CI/CD, deployment, platform health | `product-engineering` | `/product-engineering:platform-health` |
 
 Everything here ships as Claude Cowork, Claude Code, or Cursor plugins **and** as [managed-agent cookbooks](./managed-agents/) for headless deployment — same skills and prompts, two surfaces from one source.
 
@@ -136,7 +136,7 @@ product-management/       # product, roadmap, specs, research, metrics, backlog,
 content-marketing/        # calendar, curation, media analysis, CMS seeds
 product-design/           # wireframes, ux-design-review, ux-design-fix
 search-optimisation/      # keyword research, technical audit, content SEO review
-web-development/          # solution, adr, design, implement, review, QA, platform
+product-engineering/          # solution, adr, design, implement, review, QA, platform
 managed-agents/           # CMA + Cursor Cloud Agent cookbooks
 scripts/                  # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.py
 .claude-plugin/
@@ -191,7 +191,7 @@ After install, skills fire automatically when relevant; slash commands are avail
 /plugin install content-marketing@carinya-plugins
 /plugin install product-design@carinya-plugins
 /plugin install search-optimisation@carinya-plugins
-# web-development — zip-install the web-development/ directory until marketplace registration lands
+# product-engineering — zip-install the product-engineering/ directory until marketplace registration lands
 
 /agency-hub:setup
 /brand-creative:setup
@@ -205,7 +205,7 @@ Updates: `/plugin update`.
 In **Settings → Plugins → Add plugin**:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/carinya-plugins` — then pick practice plugins from the marketplace list, or
-- **Upload a zip** — zip any practice directory (e.g. `web-development/`) and drop it in.
+- **Upload a zip** — zip any practice directory (e.g. `product-engineering/`) and drop it in.
 
 ### Managed Agents and Cursor Cloud Agents
 
@@ -223,7 +223,7 @@ See [`managed-agents/README.md`](./managed-agents/README.md) for platform matrix
 | | What it is | Where it lives |
 |---|---|---|
 | **Practice plugins** | Self-contained service bundles — skills, hooks, MCP, and a template practice profile. Install the ones you need. | `<practice>/` |
-| **Skills** | Domain expertise Claude draws on automatically — and slash actions you trigger explicitly: `/product-management:tasks --product`, `/web-development:implement`. | `<practice>/skills/<skill>/SKILL.md` |
+| **Skills** | Domain expertise Claude draws on automatically — and slash actions you trigger explicitly: `/product-management:tasks --product`, `/product-engineering:implement`. | `<practice>/skills/<skill>/SKILL.md` |
 | **Personas** | Job titles that map to skills — shared libraries inside each practice, not separate plugins. | Each practice's `README.md` |
 | **Instance profile** | Git-versioned org facts, brand path, target bindings, squad charters. | `<instance-repo>/config/instance.json`, `brand/`, `squads/` |
 | **Practice profile** | Per-practice conventions — stack defaults, persona preference, output formats, review gates. | `~/.claude/plugins/config/digital-agency/<practice>/CLAUDE.md` |
@@ -249,7 +249,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 |---|---|
 | **[brand-creative](./brand-creative)** | Brand voice lifecycle (discover, write, enforce) and visual identity guide (colors, type, logo, UI tokens). Writes to instance `brand/` when bound. |
 | **[content-marketing](./content-marketing)** | Editorial calendar, social curation, media analysis, captions, and CMS seed drafting (posts and recipes). Two personas (Content Strategist, Content Writer). Reads brand voice from resolved brand path. |
-| **[product-design](./product-design)** | Wireframes, live-browser UX design review, and UX design fix. Writes to instance `design/` when bound; `web-development` reads wireframes via artefact consumption. |
+| **[product-design](./product-design)** | Wireframes, live-browser UX design review, and UX design fix. Writes to instance `design/` when bound; `product-engineering` reads wireframes via artefact consumption. |
 
 ### Growth & search
 
@@ -261,7 +261,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 
 | Plugin | What it adds |
 |---|---|
-| **[web-development](./web-development)** | Architecture (`solution`, `adr`), epic design, implementation, peer and final code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Six personas share one library; `product-management` is the recommended companion for backlog, tasks, sprint, and validate. |
+| **[product-engineering](./product-engineering)** | Architecture (`solution`, `adr`), epic design, implementation, peer and final code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Six personas share one library; `product-management` is the recommended companion for backlog, tasks, sprint, and validate. |
 
 ### Platform
 
@@ -269,7 +269,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 |---|---|
 | **[agency-hub](./agency-hub)** | Instance bootstrap via `setup`. v2 adds community skill discovery, installation QA, and update management (designed, deferred — stubs exist for shape validation). |
 
-**Companion practices:** `content-marketing` invokes `/product-management:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `web-development` invokes `/product-management:tasks` and related skills for planning cadence during implementation. No direction requires the companion installed — skills degrade gracefully and document the pairing.
+**Companion practices:** `content-marketing` invokes `/product-management:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `product-engineering` invokes `/product-management:tasks` and related skills for planning cadence during implementation. No direction requires the companion installed — skills degrade gracefully and document the pairing.
 
 ## MCP connectors
 
@@ -283,7 +283,7 @@ Each practice plugin bundles a **minimal default** — one or two MCP servers mo
 | **content-marketing** | Canva | creative / design |
 | **product-design** | Figma, Playwright | design, browser automation |
 | **search-optimisation** | Ahrefs | SEO intelligence |
-| **web-development** | GitHub, Playwright, Context7 | source control, browser automation, framework docs |
+| **product-engineering** | GitHub, Playwright, Context7 | source control, browser automation, framework docs |
 
 No server is duplicated across plugins. **agency-hub** does not bundle MCP — connectors live in practice plugins. Co-install companion practices or edit `.mcp.json` to add Slack, Notion, Vercel, Sentry, and other common servers — see each practice's CONNECTORS.md for the full placeholder map and suggested additions.
 
@@ -350,8 +350,8 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | Command | Skill | What it does |
 |---|---|---|
 | `/product-management:setup` | setup | Learns cadence, audiences, discovery, escalation, sprint length; writes practice profile |
-| `/product-management:product` | product | write — `docs/product/product.md` (review via `/web-development:docs-review`) |
-| `/product-management:roadmap` | roadmap | write — `docs/product/roadmap.md`; review via `/web-development:docs-review` |
+| `/product-management:product` | product | write — `docs/product/product.md` (review via `/product-engineering:docs-review`) |
+| `/product-management:roadmap` | roadmap | write — `docs/product/roadmap.md`; review via `/product-engineering:docs-review` |
 | `/product-management:write-spec` | write-spec | Feature spec or PRD from a problem statement |
 | `/product-management:product-brainstorming` | product-brainstorming | Sparring partner for ideas (no deliverable) |
 | `/product-management:synthesize-research` | synthesize-research | Themes and insights from user research |
@@ -395,31 +395,31 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | `/search-optimisation:technical-seo-audit` | technical-seo-audit | Production audit → tracked issues |
 | `/search-optimisation:content-seo-review` | content-seo-review | On-page SEO review of content seeds |
 
-### web-development
+### product-engineering
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/web-development:setup` | setup | Learns stack, personas, target binding, connectors |
-| `/web-development:solution` | solution | write — `docs/architecture/solution.md`; review via `docs-review` |
-| `/web-development:adr` | adr | plan, write, review — `docs/architecture/decisions/` |
-| `/web-development:design` | design | write — `docs/work/{work-id}/design.md`; review via `docs-review` |
-| `/web-development:implement` | implement | Implement a task against approved design and AC |
-| `/web-development:code-review` | code-review | Read-only peer review against design and tasks |
-| `/web-development:code-review-fix` | code-review-fix | Address code-review findings without behaviour change |
-| `/web-development:final-code-review` | final-code-review | Final technical gate on open PRs |
-| `/web-development:merge-request` | merge-request | Open merge request for implemented work |
-| `/web-development:merge-request-babysit` | merge-request-babysit | Drive an open MR/PR to merge-ready |
-| `/web-development:merge-request-review` | merge-request-review | Review an MR/PR as its reviewer |
-| `/web-development:ralph-loop-setup` | ralph-loop-setup | Seed and configure an autonomous delivery loop |
-| `/web-development:ralph-loop` | ralph-loop | Run an autonomous work-item delivery loop |
-| `/web-development:docs-review` | docs-review | Read-only document-set quality and consistency review |
-| `/web-development:debug` | debug | Bug investigation and fix |
-| `/web-development:tech-debt` | tech-debt | Technical debt audit and prioritization |
-| `/web-development:deploy-qa` | deploy-qa | Prepare QA workspace |
-| `/web-development:run-automated-suite` | run-automated-suite | Run automated tests in QA workspace |
-| `/web-development:exploratory-pass` | exploratory-pass | AC-driven exploratory validation |
-| `/web-development:document-defects` | document-defects | Record defects from QA pass |
-| `/web-development:platform-health` | platform-health | CI/CD, deployment, and platform health check |
+| `/product-engineering:setup` | setup | Learns stack, personas, target binding, connectors |
+| `/product-engineering:solution` | solution | write — `docs/architecture/solution.md`; review via `docs-review` |
+| `/product-engineering:adr` | adr | plan, write, review — `docs/architecture/decisions/` |
+| `/product-engineering:design` | design | write — `docs/work/{work-id}/design.md`; review via `docs-review` |
+| `/product-engineering:implement` | implement | Implement a task against approved design and AC |
+| `/product-engineering:code-review` | code-review | Read-only peer review against design and tasks |
+| `/product-engineering:code-review-fix` | code-review-fix | Address code-review findings without behaviour change |
+| `/product-engineering:final-code-review` | final-code-review | Final technical gate on open PRs |
+| `/product-engineering:merge-request` | merge-request | Open merge request for implemented work |
+| `/product-engineering:merge-request-babysit` | merge-request-babysit | Drive an open MR/PR to merge-ready |
+| `/product-engineering:merge-request-review` | merge-request-review | Review an MR/PR as its reviewer |
+| `/product-engineering:ralph-loop-setup` | ralph-loop-setup | Seed and configure an autonomous delivery loop |
+| `/product-engineering:ralph-loop` | ralph-loop | Run an autonomous work-item delivery loop |
+| `/product-engineering:docs-review` | docs-review | Read-only document-set quality and consistency review |
+| `/product-engineering:debug` | debug | Bug investigation and fix |
+| `/product-engineering:tech-debt` | tech-debt | Technical debt audit and prioritization |
+| `/product-engineering:deploy-qa` | deploy-qa | Prepare QA workspace |
+| `/product-engineering:run-automated-suite` | run-automated-suite | Run automated tests in QA workspace |
+| `/product-engineering:exploratory-pass` | exploratory-pass | AC-driven exploratory validation |
+| `/product-engineering:document-defects` | document-defects | Record defects from QA pass |
+| `/product-engineering:platform-health` | platform-health | CI/CD, deployment, and platform health check |
 
 ## Contributing
 

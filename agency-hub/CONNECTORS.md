@@ -10,7 +10,7 @@ Plugin files use `~~category` as a placeholder for whatever tool you connect in 
 
 | Practice | Default bundled | See |
 | -------- | ----------------- | --- |
-| **web-development** | GitHub, Playwright, Context7 | [web-development/CONNECTORS.md](../web-development/CONNECTORS.md) |
+| **product-engineering** | GitHub, Playwright, Context7 | [product-engineering/CONNECTORS.md](../product-engineering/CONNECTORS.md) |
 | **product-management** | Atlassian, Amplitude | [product-management/CONNECTORS.md](../product-management/CONNECTORS.md) |
 | **brand-creative** | Fireflies | [brand-creative/CONNECTORS.md](../brand-creative/CONNECTORS.md) |
 | **content-marketing** | Canva | [content-marketing/CONNECTORS.md](../content-marketing/CONNECTORS.md) |
@@ -19,6 +19,6 @@ Plugin files use `~~category` as a placeholder for whatever tool you connect in 
 
 ## Notes
 
-- v1 instance bootstrap is **link-first** — the human creates target repos; GitHub MCP in **web-development** helps validate repo access when that plugin is installed.
+- v1 instance bootstrap is **link-first** — the human creates target repos; GitHub MCP in **product-engineering** helps validate repo access when that plugin is installed.
 - **Chat** connectors are optional and only meaningful once v2 marketplace management ships (`registry-sync` agent).
 - `/agency-hub:setup --check-integrations` verifies target bindings (`.agency/target.json` in bound repos), not MCP connector status.

@@ -166,7 +166,7 @@ Close with persona-appropriate handoff:
 **Principal Architect path:**
 
 1. **Solution** — `/product-engineering:solution`
-2. **Design** — `/product-engineering:design <work-id>`
+2. **Technical design (tdd)** — `/product-engineering:tdd <work-id>`
 3. **ADR** — `/product-engineering:adr write`
 
 **QA Engineer path:**

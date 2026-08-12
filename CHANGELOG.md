@@ -15,6 +15,17 @@ All nine catalogue plugins reset to **v0.4.0** after Phase 2 restructuring
 `ralph-loop` extract, `skills-index` / `skill-authoring` new). See
 `docs/MIGRATION.md` and `docs/CROSS-PLUGIN-CONTRACTS.md`.
 
+### product-engineering — sync with carinyaparc/skills 3.0.0
+
+- **BREAKING:** `design` skill renamed → `tdd`; artefact `docs/work/{work-id}/design.md` → `tdd.md` (legacy `design.md` still accepted). Modes `walking-skeleton|tdd` → `skeleton|full`. Invoke `/product-engineering:tdd`.
+- Consumers (`implement`, `tasks`, `validate`, `adr`, `ralph-loop*`, sprint skills, etc.) read `tdd.md` with legacy fallback.
+- Ralph-loop hooks/seed: completion-promise anchoring, turn-boundary detection, `{{TDD_PATH}}` / `{{WORK_ID}}`.
+
+### product-management / skills-index
+
+- Synced overlapping skills with [carinyaparc/skills](https://github.com/carinyaparc/skills); `skills-index:find` routes to `tdd`.
+- `product` / `roadmap`: write-only posture clarified (re-author to revise; `docs-review` is writing quality, not strategic soundness).
+
 ## [2026-07-25] — web-development patch
 
 ### web-development — v0.3.1

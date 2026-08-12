@@ -11,10 +11,10 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
-# Canonical sources for shared meta-framework files
+# Canonical sources for shared meta-framework files (repo-root references/)
 CANONICAL = {
-    "instance-profile-template.md": REPO_ROOT / "brand-creative" / "references",
-    "practice-setup-framework.md": REPO_ROOT / "brand-creative" / "references",
+    "instance-profile-template.md": REPO_ROOT / "references",
+    "practice-setup-framework.md": REPO_ROOT / "references",
 }
 
 # Practice plugins that carry synced copies

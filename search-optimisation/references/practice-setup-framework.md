@@ -25,7 +25,7 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 | 0 — Personal | `~/.claude/plugins/config/digital-agency/<plugin>/setup-resume.json` | Paused interview before instance exists |
 | 1 — Instance | `<instance-repo>/config/.<plugin>-setup-resume.json` | Paused interview after instance repo is bound |
 
-**Brand path resolution:** Read `${CLAUDE_PLUGIN_ROOT}/references/brand-conventions.md` — instance `brand/`, target pointer, or `docs/brand/` fallback.
+**Brand path resolution:** When this plugin reads brand artefacts, resolve per `${CLAUDE_PLUGIN_ROOT}/references/brand-conventions.md` (brand-creative) or the equivalent conventions file in this plugin — instance `brand/`, target pointer, or `docs/brand/` fallback.
 
 **In-repo templates (read-only):** `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md`, `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md`, `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md`. Never modify installed plugin templates.
 
@@ -35,10 +35,10 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 
 Before asking questions:
 
-1. **Resolve brand directory** per `brand-conventions.md`.
+1. **Resolve brand directory** when this practice consumes brand artefacts (per conventions).
 2. **Read** `config/instance.json` if present. Note `status`, `business`, `seedMaterial`, and any house tone hints. **Do not re-ask** facts already captured unless `--redo`.
 3. **Read** `~/.claude/plugins/config/digital-agency/<plugin>/CLAUDE.md` unless `--redo`.
-4. **Check brand artefacts** at resolved path — `brand-voice.md`, `brand-guide.md`, `brand.local.md`.
+4. **Check brand artefacts** at resolved path when applicable — `brand-voice.md`, `brand-guide.md`, `brand.local.md`.
 5. **If artefacts and practice profile are complete** and not `--redo`: summarize what's on file; offer refresh, `--redo`, or `--check-integrations` only. Do not re-interview unless the user chooses refresh or passed `--redo`.
 6. **If instance profile exists but brand is empty:** say the instance layer is done; run plugin-specific interview only.
 7. **If neither instance nor brand artefacts exist:** explain the model (instance profile optional; brand artefacts at resolved path) and proceed.
@@ -58,7 +58,7 @@ When `config/instance.json` exists and `status: complete`:
 
 ### Instance bootstrap (when `config/instance.json` is absent)
 
-1. Read `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md` (and `agency-setup-framework.md` when present in this plugin).
+1. Read `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md`.
 2. Interview minimal org facts: business name / prose name, single-business vs agency-serving-clients, primary practice, planning cadence, risk posture.
 3. Show the plain-language summary of `config/instance.json` (and optional target skeleton). **Wait for yes.**
 4. Write `config/instance.json` with `status: complete` (link-first — do not create GitHub repos autonomously).
@@ -71,34 +71,32 @@ After the instance layer is satisfied (or skipped):
 
 1. **Mode** — `--quick` or `--full` if not already set.
 2. Run the **plugin-specific** questions defined in the skill (`setup/SKILL.md` below the framework section).
-3. **Quick mode:** enforcement strictness + one seed doc; skip discovery unless user requests it.
+3. **Quick mode:** skip answered sections; minimal plugin questions.
 4. **Full mode:** request seed material; read for tone and vocabulary — not to copy proprietary content verbatim.
-5. **Write practice profile** to personal config path and **brand artefacts** to resolved brand path on confirmation.
+5. **Write practice profile** to personal config path and **practice artefacts** to their resolved paths on confirmation.
 
 ## Integrations — `--check-integrations`
 
-Read the installed plugin's `.mcp.json` (in-repo: `${CLAUDE_PLUGIN_ROOT}/.mcp.json`). For each server, report:
+Read the installed plugin's `.mcp.json` (in-repo: `${CLAUDE_PLUGIN_ROOT}/.mcp.json`) and `${CLAUDE_PLUGIN_ROOT}/CONNECTORS.md`. For each bundled server, report:
 
-| Server | Enables in brand-creative |
-|---|---|
-| notion | Discovery — brand docs in workspaces |
-| atlassian | Discovery — Confluence brand pages |
-| slack | Discovery — pinned messages, channel descriptions |
-| figma | Visual tokens for brand-guide write |
-| fireflies | Discovery — meeting transcripts with brand language |
+- **connected** (probe succeeded)
+- **configured but not verified**
+- **not in manifest**
 
-For each: **connected** (probe succeeded), **configured but not verified**, or **not in manifest**. Name which steps are degraded without each connector. Stop after report unless user asks to continue setup.
+Name which setup or skill steps are degraded without each connector. Stop after report unless user asks to continue setup.
 
 ## Delivery chain
 
-After interview, run the existing skill chain (orchestrated in conversation — no cross-plugin file calls):
+After interview, run this plugin's skill chain as defined in `setup/SKILL.md` (orchestrated in conversation — no cross-plugin file reads). Companion skills in other plugins are **invoked by slash command**, not by reading sibling plugin directories.
 
-1. `brand-voice discover` — when platforms connected and not `--quick`
-2. `brand-voice write`
-3. `brand-guide write` — parallel when visual sources exist (Figma connected or seed docs)
-4. `brand-voice review`
+When a companion plugin is required for the chain, state the install command:
 
-Write outputs to the resolved brand directory. Write `brand.local.md` settings (platforms, strictness, `always_explain`).
+```text
+Install: /plugin install <plugin>@carinya-plugins
+Then run: /<plugin>:<skill> …
+```
+
+See `docs/CROSS-PLUGIN-CONTRACTS.md` in the monorepo for the full edge list.
 
 ## Pause and resume
 
@@ -108,13 +106,13 @@ Write outputs to the resolved brand directory. Write `brand.local.md` settings (
 
 ## Confirm and summarize
 
-1. Show **practice profile** changes and **brand artefact** paths in plain language.
-2. List every file to create/update under the resolved brand directory.
+1. Show **practice profile** changes and **artefact** paths in plain language.
+2. List every file to create/update.
 3. Wait for explicit **yes** before writing.
 4. After write: remind user they can edit files directly, run `--redo`, or `--check-integrations`.
 
 ## Living profile rules
 
-- **`setup`** is the only skill that may **auto-apply** a full profile and brand write (after confirmation above).
+- **`setup`** is the only skill that may **auto-apply** a full profile write (after confirmation above).
 - **Every other skill** uses **propose profile update** for stable conventions — show exact diff, ask, write only on yes.
-- Org-level facts discovered later → propose update to `config/instance.json` (human edit or `setup --redo`). Plugin-specific facts → propose update to plugin `CLAUDE.md` or `brand.local.md`.
+- Org-level facts discovered later → propose update to `config/instance.json` (human edit or `setup --redo`). Plugin-specific facts → propose update to plugin `CLAUDE.md` or practice-local config files.

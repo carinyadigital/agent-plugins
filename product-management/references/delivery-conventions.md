@@ -139,6 +139,14 @@ Strategy skills in this plugin (`product`, `roadmap`, `write-spec`, …) produce
 them. Engineering skills live in `product-engineering` — invoke as
 `/product-engineering:<skill>` when recommending from product-management.
 
+When `product-engineering` is not installed, continue product/delivery work from
+user input and artefacts. At architecture or implementation boundaries, state:
+
+```text
+Install: /plugin install product-engineering@carinya-plugins
+Then run: /product-engineering:<skill> …
+```
+
 ### Progressive migration bridge (interim)
 
 Sibling producers and consumers may still write under `.agency/` while this

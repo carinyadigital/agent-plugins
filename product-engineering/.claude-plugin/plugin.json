@@ -1,7 +1,7 @@
 {
   "name": "product-engineering",
   "displayName": "Product Engineering",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "Complete product engineering practice in one install \u2014 setup interview, architecture, epic design, implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes product-management for planning cadence.",
   "author": {
     "name": "Digital Agency"

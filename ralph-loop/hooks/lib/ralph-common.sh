@@ -343,13 +343,13 @@ ralph_evaluate() {
   RALPH_PROMISE="$promise"
 
   if ! ralph_is_uint "$iteration"; then
-    RALPH_REASON="active loop file corrupted (iteration: '$iteration'). Stopping. Re-seed with /product-engineering:ralph-loop-setup."
+    RALPH_REASON="active loop file corrupted (iteration: '$iteration'). Stopping. Re-seed with /ralph-loop:ralph-loop-setup."
     ralph_clear_active "$base"
     return 0
   fi
 
   if ! ralph_is_uint "$max_iter"; then
-    RALPH_REASON="active loop file corrupted (max_iterations: '$max_iter'). Stopping. Re-seed with /product-engineering:ralph-loop-setup."
+    RALPH_REASON="active loop file corrupted (max_iterations: '$max_iter'). Stopping. Re-seed with /ralph-loop:ralph-loop-setup."
     ralph_clear_active "$base"
     return 0
   fi
@@ -379,7 +379,7 @@ ralph_evaluate() {
   fi
 
   if [[ $max_iter -gt 0 ]] && [[ $iteration -ge $max_iter ]]; then
-    RALPH_REASON="max iterations ($max_iter) reached. Run /product-engineering:ralph-loop status to inspect progress."
+    RALPH_REASON="max iterations ($max_iter) reached. Run /ralph-loop:ralph-loop status to inspect progress."
     ralph_clear_active "$base"
     return 0
   fi
@@ -400,7 +400,7 @@ ralph_evaluate() {
       state_path="$project/$state_file"
     fi
     if ralph_check_stall "$state_path" "$base/stall"; then
-      RALPH_REASON="no progress in $RALPH_STALL_LIMIT consecutive iterations (state unchanged: $state_file). Stopping so a human can inspect. Run /product-engineering:ralph-loop status."
+      RALPH_REASON="no progress in $RALPH_STALL_LIMIT consecutive iterations (state unchanged: $state_file). Stopping so a human can inspect. Run /ralph-loop:ralph-loop status."
       ralph_clear_active "$base"
       return 0
     fi

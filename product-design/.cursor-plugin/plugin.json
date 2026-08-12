@@ -1,7 +1,7 @@
 {
   "name": "product-design",
   "displayName": "Product Design",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "Product design practice in one install \u2014 setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/. Bundles Figma and Playwright.",
   "author": {
     "name": "Digital Agency"

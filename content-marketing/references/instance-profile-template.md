@@ -46,7 +46,7 @@ Tier 1 config lives in the **instance repo** (git-versioned), not in user dotfil
   "setup": {
     "completedAt": null,
     "mode": null,
-    "agencyHubVersion": "0.1.0"
+    "catalogueVersion": "0.4.0"
   }
 }
 ```
@@ -80,12 +80,12 @@ Set `status: complete` and `setup.completedAt` (ISO 8601) when the interview fin
 
 ```json
 {
-  "catalogue": "<your-org>/digital-agency",
+  "catalogue": "carinyaparc/carinya-plugins",
   "plugins": []
 }
 ```
 
-Set `catalogue` during setup to the GitHub org/repo slug (or equivalent source identifier) where this business installs the digital-agency marketplace — not a hard-coded publisher.
+Set `catalogue` during setup to the GitHub org/repo slug (or equivalent source identifier) where this business installs the marketplace — not a hard-coded publisher.
 
 ## File: `config/targets/<name>.json` — website (proven)
 
@@ -194,7 +194,7 @@ status: skeleton
 
 ## Roster
 
-Catalogue agent slugs from digital-agency (e.g. frontend-engineer, content-writer).
+Catalogue agent slugs from carinya-plugins (e.g. frontend-engineer, content-writer).
 
 ## Target
 
@@ -216,9 +216,9 @@ Practices are MECE — one self-contained plugin per practice. Product strategy,
 | Service (`services.enabled`) | Practice plugin | Companion practice | Squad charters | Notes |
 |---|---|---|---|---|
 | `brand-creative` | `brand-creative` | none | — | Shipped; run `/brand-creative:setup` after bootstrap |
-| `product-engineering` | `product-engineering` | `product-management` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/product-management:tasks --product`, `/product-management:sprint-planning` |
-| `content-marketing` | `content-marketing` | `product-management` | `content` | Shipped; run `/content-marketing:setup` after bootstrap; needs `/product-management:tasks --product`, `/product-management:synthesize-research` |
+| `product-engineering` | `product-engineering` | `product-management` | `site`, `blog`, `recipes` | Shipped; needs `/product-management:tasks --product`, `/product-management:sprint-planning` |
+| `content-marketing` | `content-marketing` | `product-management` | `content` | Shipped; needs `/product-management:tasks --product`, `/product-management:synthesize-research` |
 | `social-media` | `social-media` | TBD | `content` | Practice pending — interim: `content-marketing` skills for captions and curation |
-| `seo` | `search-optimisation` | `product-management` | `seo` | Shipped; run `/search-optimisation:setup` after bootstrap; needs `/product-management:competitive-brief` |
+| `seo` | `search-optimisation` | `product-management` | `seo` | Shipped; needs `/product-management:competitive-brief` |
 
 Write `services.recommendedPlugins` with the practice plugin name(s) plus `product-management` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.

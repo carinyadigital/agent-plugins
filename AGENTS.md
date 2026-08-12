@@ -59,7 +59,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 
 Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `product-design/skills/`, `search-optimisation/skills/`, `product-engineering/skills/`, `brand-creative/skills/`).
 
-Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `setup-framework.md`).
+Run `python3 scripts/sync-references.py` after editing shared meta-framework files in `references/` (`instance-profile-template.md`, `practice-setup-framework.md`).
 
 Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks practice-plugin MCP wiring, validates SKILL.md frontmatter, resolves markdown cross-references, and validates `evals/` JSON schema. Use `python3 scripts/plugin-check.py <plugin-dir>` for fast per-plugin checks while iterating.
 

@@ -1104,6 +1104,67 @@ class Validator:
         else:
             self.pass_("No obsolete .digital-agency/ path references")
 
+    CROSS_PLUGIN_SIBLING_RE = re.compile(
+        r"\.\./(?P<plugin>product-engineering|product-management|product-design|"
+        r"brand-creative|content-marketing|search-optimisation|ralph-loop|"
+        r"skills-index|skill-authoring|agency-hub|web-development|"
+        r"delivery-practice|ux-design)/"
+    )
+    CROSS_PLUGIN_PATH_ALLOWLIST = frozenset(
+        {
+            "ralph-loop/scripts/seed-ralph-loop.sh",
+        }
+    )
+
+    def plugin_dirs(self) -> list[Path]:
+        dirs: set[Path] = set()
+        for manifest in ROOT.glob("**/.claude-plugin/plugin.json"):
+            if ".git" in manifest.parts:
+                continue
+            dirs.add(manifest.parent.parent)
+        return sorted(dirs)
+
+    def check_cross_plugin_paths(self) -> None:
+        """Fail on sibling-plugin ../ paths inside plugin trees (cache-unsafe)."""
+        offenders: list[tuple[str, int, str]] = []
+        for plugin_dir in self.plugin_dirs():
+            plugin_name = plugin_dir.name
+            for path in sorted(plugin_dir.rglob("*")):
+                if not path.is_file():
+                    continue
+                rel = self.rel(path)
+                if rel in self.CROSS_PLUGIN_PATH_ALLOWLIST:
+                    continue
+                if path.suffix in {".png", ".jpg", ".gif", ".webp", ".woff", ".woff2"}:
+                    continue
+                try:
+                    text = path.read_text(encoding="utf-8")
+                except (UnicodeDecodeError, OSError):
+                    continue
+                for line_no, line in enumerate(text.splitlines(), start=1):
+                    for match in self.CROSS_PLUGIN_SIBLING_RE.finditer(line):
+                        if match.group("plugin") == plugin_name:
+                            continue
+                        offenders.append((rel, line_no, line.strip()))
+                        break
+
+        if offenders:
+            for file_path, line_no, snippet in offenders[:20]:
+                self.fail(
+                    "CROSS_PLUGIN_PATH",
+                    f"Sibling-plugin path (unsafe in plugin cache): {snippet[:120]}",
+                    file=file_path,
+                    line=line_no,
+                    hint="Use slash commands + docs/CROSS-PLUGIN-CONTRACTS.md; shell allowlist only in seed-ralph-loop.sh",
+                )
+            if len(offenders) > 20:
+                self.fail(
+                    "CROSS_PLUGIN_PATH",
+                    f"... and {len(offenders) - 20} more cross-plugin path reference(s)",
+                )
+        else:
+            self.pass_("No cache-unsafe sibling-plugin ../ references in plugin trees")
+
     def parse_cookbook_yaml(self, text: str) -> dict[str, Any]:
         data: dict[str, Any] = {}
         catalogue: dict[str, str] = {}
@@ -1281,6 +1342,7 @@ class Validator:
             ("jsonFiles", "Repository JSON sanity", self.check_json_files),
             ("hooksJson", "hooks/hooks.json validity", self.check_hooks_json),
             ("legacyArtefactPaths", "No obsolete .digital-agency/ path references", self.check_legacy_artefact_paths),
+            ("crossPluginPaths", "No cache-unsafe sibling-plugin ../ references", self.check_cross_plugin_paths),
             ("managedAgentCookbooks", "Managed-agent cookbook definitions", self.check_managed_agent_cookbooks),
         ]
 

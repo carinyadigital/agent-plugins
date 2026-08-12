@@ -99,5 +99,5 @@ Markdown with YAML frontmatter. Save to the resolved path. Use [assets/roadmap.t
 
 - `/product-management:product` — product strategy input
 - `/product-management:tasks` — epics and work paths
-- `/product-engineering:solution` — architecture
+- `/product-engineering:solution` — architecture (companion; if not installed: `/plugin install product-engineering@carinya-plugins`)
 - `/product-engineering:docs-review` — review or critique an existing roadmap.md

@@ -43,7 +43,7 @@ def _run_plugin_checks(v: PluginValidator) -> None:
         ("mcpConnectors", "Practice plugin MCP definitions", v.check_mcp_connectors),
         ("jsonFiles", "Repository JSON sanity", v.check_json_files),
         ("hooksJson", "hooks/hooks.json validity", v.check_hooks_json),
-        ("legacyArtefactPaths", "No obsolete .digital-agency/ path references", v.check_legacy_artefact_paths),
+        ("legacyArtefactPaths", "No obsolete .digital-agency/ or .agency/ path references", v.check_legacy_artefact_paths),
         ("crossPluginPaths", "No cache-unsafe sibling-plugin ../ references", v.check_cross_plugin_paths),
     ]
     for name, label, fn in checks:

@@ -18,7 +18,7 @@ You are a senior product manager responsible for keeping this product ahead of i
 
 ## Resolve target
 
-Read `.agency/target.json` for the product this practice tracks (`name`, `instance`,
+Read `config/target.json` for the product this practice tracks (`name`, `instance`,
 `target`). Read `~/.claude/plugins/config/digital-agency/product-management/CLAUDE.md`
 for the recorded competitive set. If neither is set, ask once and offer to record it
 for next time.
@@ -35,7 +35,7 @@ for next time.
 
 ## Output
 
-Write scan summary to `.agency/reviews/competitor-scan-{YYYY-MM-DD}.md` when the user approves persistence.
+Write scan summary to `docs/reviews/competitor-scan-{YYYY-MM-DD}.md` when the user approves persistence.
 
 ```
 Competitor scan — [date]

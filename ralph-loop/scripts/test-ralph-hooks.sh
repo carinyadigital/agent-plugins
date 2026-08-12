@@ -618,8 +618,8 @@ OUT="$(run_claude "$P" "$(claude_input '' other-session)")"
 assert_eq "foreign session is not conscripted" "" "$OUT"
 assert_file "foreign session leaves loop file intact" "$B/active.md"
 
-# Legacy loop files with no session_id still work everywhere.
-P="$(new_project legacy-session)"
+# Loop files with no session_id run in every session.
+P="$(new_project no-session-id)"
 B="$P/.claude/loop"
 write_loop "$B" 1 50 "X"
 OUT="$(run_claude "$P" "$(claude_input '' any-session)")"

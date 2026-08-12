@@ -12,7 +12,7 @@ Instance-wide org facts live in the instance repo at:
 
 Product and delivery artefacts (product, roadmap, backlog, work/) live in the target
 repo `docs/` tree — see references/product-conventions.md and
-references/delivery-conventions.md. Repo binding stays in `.agency/target.json`.
+references/delivery-conventions.md. Repo binding stays in `config/target.json`.
 -->
 
 # Product Management — Practice Profile

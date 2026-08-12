@@ -99,7 +99,7 @@ python3 plugin-management/scripts/validate_ralph.py  # Ralph hooks + presets
 | Evals schema | Malformed `evals/evals.json` or `evals/trigger-queries.json` |
 | JSON sanity | Any `*.json` in the repo that fails to parse |
 | Cross-plugin paths | Sibling-plugin `../` references inside plugin trees (cache-unsafe) |
-| Legacy artefact paths | References to the retired digital-agency dotted path prefix |
+| Retired artefact paths | References to `.digital-agency/` or `.agency/` |
 
 Options:
 

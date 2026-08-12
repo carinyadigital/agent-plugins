@@ -12,7 +12,7 @@
         "Every finding carries Category | Severity | Confidence",
         "Every finding cites file path and line",
         "Modifies no file outside docs/reviews/ and docs/work/*/reviews/",
-        "Writes a human-readable report to docs/work/*/reviews/code-review-{nn}.local.md or the docs/reviews/code-review-{branch}.local.md fallback",
+        "Writes a human-readable report to docs/work/*/reviews/code-review-{nn}.local.md or docs/reviews/code-review-{branch}.local.md when no work item is resolved",
         "Closes by pointing at code-review-fix rather than offering to fix"
       ]
     },

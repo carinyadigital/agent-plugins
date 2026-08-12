@@ -15,34 +15,15 @@ docs/work/{work-id}/reviews/  code-review-{nn}.local.md, ux-design-review-{nn}.l
 docs/work/sprint-{id}/      plan.md, retrospective.md
 docs/reviews/               code-review.local.json, ux-design-review.local.json,
                              review-learnings.local.md, and the latest-only
-                             {skill}-{branch}.local.md fallback when no work
-                             item resolved
+                             {skill}-{branch}.local.md when no work item
+                             resolved
 ```
 
 Override paths when the user names them explicitly in the request.
 
-
-## Progressive migration bridge (interim)
-
-While sibling skills still produce or consume artefacts under `.agency/`,
-**prefer `docs/` paths and fall back to the `.agency/` equivalent when the
-`docs/` artefact is absent**. Read whichever exists; **write new artefacts
-only under `docs/`** (do not dual-write).
-
-| Artefact | Prefer | Fall back when absent |
-| -------- | ------ | --------------------- |
-| `product.md` | `docs/product/product.md` | `.agency/product.md` |
-| `roadmap.md` | `docs/product/roadmap.md` | `.agency/roadmap.md` |
-| `backlog.md` | `docs/product/backlog.md` | `.agency/backlog.md` |
-| `tdd.md` / `tasks.md` | `docs/work/{work-id}/…` | `.agency/work/{work-id}/…` (accept legacy `design.md`) |
-| `solution.md` | `docs/architecture/solution.md` | `.agency/architecture/solution.md` |
-
-Repo binding (`.agency/target.json`) and agent byproducts (`.agency/reviews/`)
-are not delivery artefacts and are not dual-pathed.
-
 ## Work item ID (`{work-id}`)
 
-Skills no longer assume the argument is an epic. Any work item — epic,
+Any work item — epic,
 story, task, bug, spike, or whatever type the source system defines — can be
 the target of `tasks`, `tdd`, `validate`, `backlog-refine`,
 `ralph-loop-setup`, and `implement`. What changes is the *behaviour* for that
@@ -58,7 +39,7 @@ resolving `{work-id}` — it covers:
   never guess
 - Why the canonical ID is the tracker's own key when one exists, and why
   internal IDs (`{PREFIX}{nn}`, `{PREFIX}{nn}-{nn}`) are a filesystem-only
-  fallback, never a parallel scheme alongside a tracker
+  source, never a parallel scheme alongside a tracker
 
 | Rule | Detail |
 | ---- | ------ |
@@ -66,7 +47,7 @@ resolving `{work-id}` — it covers:
 | Work path | `docs/work/{work-id}/` — keyed by *this* item's own canonical ID, at whatever level it sits |
 | Parent linkage | By ID reference in the artefact, never by nesting one work item's folder inside another's |
 
-**Filesystem-only fallback** still uses slugs for the top-level backlog
+**Filesystem-only source** still uses slugs for the top-level backlog
 folder name when no tracker exists, exactly as before:
 
 | Title | Internal ID | Work path |
@@ -96,7 +77,7 @@ filesystem-safe handle and slugging it again only adds a translation step.
 | Human-readable review verdict | `docs/work/{work-id}/reviews/{skill}-{nn}.local.md` | shared JSON state |
 | Review tracking state (per branch, incremental) | `docs/reviews/{skill}.local.json` | human-readable verdicts |
 
-`docs/product/backlog.md` is a filesystem-fallback artefact: it exists only
+`docs/product/backlog.md` is a filesystem-only artefact: it exists only
 in repos with no external tracker resolved. When Linear or Jira is the
 source, the tracker itself is the backlog — skills read epic/initiative lists
 from it directly rather than maintaining a parallel `backlog.md`.
@@ -129,15 +110,6 @@ epic's design; `tdd JIRA-123` writes that story's design, sitting beside
 Writing a failing test first, red/green/refactor, and test authoring in
 general belong to **implement**.
 
-## Legacy `design.md`
-
-The `tdd` skill was previously called `design` and wrote the same artefact to
-`docs/work/{work-id}/design.md`. Any skill that reads a work item's design
-resolves `docs/work/{work-id}/tdd.md` first and falls back to
-`docs/work/{work-id}/design.md` when only the legacy file exists — treat it as
-the same artefact under its old name. Only **tdd** may rename it, and only by
-moving it (never by writing a second copy alongside).
-
 ## Skill routing (near-misses)
 
 | User intent | Skill |
@@ -160,17 +132,12 @@ moving it (never by writing a second copy alongside).
 | Review a set of documents for quality, boundaries, consistency | **/engineering:docs-review** |
 | Which skill to use? | **skills-index** |
 
-## Agency layout notes
+## Target binding
 
-Repo identity lives in `.agency/target.json` (`name`, `instance`, `target`) —
-not inferred from the directory name. That binding file stays under `.agency/`;
-delivery artefacts live under `docs/` as above.
-
-Additional agency trees (not used by all skills):
-
-```text
-.agency/reviews/              agent byproducts: competitor-scan, metrics, digests
-```
+Repo identity lives in `config/target.json` (`name`, `instance`, `target`) —
+not inferred from the directory name. Delivery artefacts live under `docs/` as
+above. Agent byproducts (competitor scans, metrics digests, stakeholder digests)
+write under `docs/reviews/`.
 
 Strategy skills in this plugin (`product`, `roadmap`, `write-spec`, …) produce
 `product.md` and `roadmap.md`; delivery skills (`tasks --product`, …) consume
@@ -189,23 +156,3 @@ Then run: /architecture:solution
 Install: /plugin install engineering@carinya-plugins
 Then run: /engineering:<skill> …
 ```
-
-### Progressive migration bridge (interim)
-
-Sibling producers and consumers may still write under `.agency/` while this
-practice prefers `docs/`. During that window:
-
-1. **Prefer** the `docs/` artefact path.
-2. **Fall back** to the `.agency/` equivalent when the `docs/` artefact is absent.
-3. **Write** new delivery artefacts only under `docs/` (do not dual-write).
-
-| Artefact | Prefer | Fall back when absent |
-| -------- | ------ | --------------------- |
-| `product.md` | `docs/product/product.md` | `.agency/product.md` |
-| `roadmap.md` | `docs/product/roadmap.md` | `.agency/roadmap.md` |
-| `backlog.md` | `docs/product/backlog.md` | `.agency/backlog.md` |
-| `tdd.md` / `tasks.md` | `docs/work/{work-id}/…` | `.agency/work/{work-id}/…` (accept legacy `design.md`) |
-| `solution.md` | `docs/architecture/solution.md` | `.agency/architecture/solution.md` |
-
-Do **not** apply this bridge to `.agency/target.json` or `.agency/reviews/` —
-those remain agency binding and byproduct trees under `.agency/`.

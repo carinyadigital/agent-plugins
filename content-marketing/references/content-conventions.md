@@ -12,7 +12,7 @@ Resolve the brand directory using the same order as `brand-creative` conventions
 1. **Explicit path named by the user** in the request.
 2. **Inside an instance repo** — `config/instance.json` at working root →
    `<instance-root>/brand/`.
-3. **Inside a target repo** — `.agency/target.json` at working root →
+3. **Inside a target repo** — `config/target.json` at working root →
    resolve instance root, then `<instance-root>/brand/`.
 4. **Standalone** — no instance or target pointer → `docs/brand/` in the current
    project.
@@ -45,9 +45,7 @@ Recommend `product-management` (backlog and research synthesis) as co-installs. 
 Default path: `docs/content/content-calendar.md` in the instance repo or target
 repo `docs/` tree.
 
-Prefer `docs/content/content-calendar.md`. When reading, fall back to
-`.agency/content-calendar.md` if the `docs/` artefact is absent. **Write new and
-updated calendars only under `docs/content/`.** Do not dual-write.
+Write new and updated calendars under `docs/content/`.
 
 Override when the user names a path explicitly or when
 `config/targets/{target}.json` defines a content calendar path.

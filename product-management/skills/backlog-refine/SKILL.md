@@ -32,7 +32,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/` artefact paths; fall back to `.agency/` when reading legacy inputs. Write only under `docs/`.
+Read and write artefacts under `docs/`.
 
 # Backlog refine
 

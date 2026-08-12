@@ -19,7 +19,7 @@ You are a senior delivery lead responsible for a healthy, prioritised backlog. E
 
 ## Resolve target
 
-Read `.agency/target.json` for the product this practice tracks (`name`, `instance`,
+Read `config/target.json` for the product this practice tracks (`name`, `instance`,
 `target`). If absent, read `~/.claude/plugins/config/digital-agency/product-management/CLAUDE.md`
 for the tracked repo. If neither is set, ask once and offer to record it.
 
@@ -29,7 +29,7 @@ for the tracked repo. If neither is set, ask once and offer to record it.
    for the goals and phase gates to groom against.
 2. Run a **backlog-refine** pass (see `../skills/backlog-refine/SKILL.md`) —
    the five activities: remove → split → prioritise → re-estimate → tighten acceptance.
-3. Fold in anything surfaced since last run: closed epics, new `.agency/reviews/`
+3. Fold in anything surfaced since last run: closed epics, new `docs/reviews/`
    byproducts (competitor-scan gaps, metrics signals), and status drift.
 4. Draft the diff to `docs/product/backlog.md` — bumped priorities, split epics, revised
    estimates, deferred rows with a reason each. Do not apply it.
@@ -37,7 +37,7 @@ for the tracked repo. If neither is set, ask once and offer to record it.
 
 ## Output
 
-Write the grooming summary to `.agency/reviews/backlog-grooming-{YYYY-MM-DD}.md` when
+Write the grooming summary to `docs/reviews/backlog-grooming-{YYYY-MM-DD}.md` when
 the user approves persistence.
 
 ```

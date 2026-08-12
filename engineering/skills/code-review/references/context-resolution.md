@@ -52,7 +52,7 @@ stop at the first match (or use several if more than one is relevant):
 - `**/tdd.md`, `**/design.md`, `**/DESIGN.md`, `**/SPEC*.md`, `**/RFC*.md` near
   the changed files or at the repo/module root. Both `tdd.md` and `design.md`
   stay in the list — `design.md` is a widespread convention in repos that never
-  used these skills, and is also this artefact's own former name.
+  used these skills.
 - Architecture references: `**/solution.md`, `ARCHITECTURE.md`,
   `docs/architecture/**`, ADR/decision folders (`**/decisions/**`,
   `**/adr/**`, `ADR-*.md`).

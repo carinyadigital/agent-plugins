@@ -33,7 +33,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+Read artefacts from `docs/work/` and `docs/architecture/`.
 
 # Code review
 
@@ -253,7 +253,7 @@ schema in [references/context-resolution.md](references/context-resolution.md)
    `docs/work/{work-item}/reviews/`. When no work item resolved, write
    `docs/reviews/code-review-{branch}.local.md` instead (`/` in the branch
    name replaced with `-`) — latest-only: overwrite that file; do not invent
-   numbering on the fallback path.
+   numbering on the branch-level path.
 
 These are the only two paths this skill writes.
 

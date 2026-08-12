@@ -12,7 +12,7 @@ order — first match wins:
    that directory or file path.
 2. **Inside an instance repo** — `config/instance.json` exists at the working
    root → `<instance-root>/brand/`.
-3. **Inside a target repo** — `.agency/target.json` exists at the working
+3. **Inside a target repo** — `config/target.json` exists at the working
    root → read the pointer, resolve the instance root, then
    `<instance-root>/brand/`.
 4. **Standalone** — no instance or target pointer → `docs/brand/` in the current

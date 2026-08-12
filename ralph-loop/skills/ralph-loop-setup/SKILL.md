@@ -25,7 +25,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+Read artefacts from `docs/work/` and `docs/architecture/`.
 
 # Ralph loop setup
 
@@ -58,7 +58,7 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
    propose `tasks × 6 + 10`, since a 12-task work item will not fit in 50.
 
 4. **Completion promise.** Propose a default and confirm it. For a work item,
-   its canonical ID (or slug, in the filesystem-only fallback) upper-snake-cased
+   its canonical ID (or slug, in the filesystem-only source) upper-snake-cased
    with `_COMPLETE`.
 
 5. **Environment.** Only for presets that need it, per
@@ -81,9 +81,8 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
   detect the source system (Linear, Jira, GitHub/GitLab, or filesystem) and
   the canonical ID first — ask the user on any ambiguity, per that file's
   ask-first checklist. Never guess.
-- Locate `tasks.md` and `tdd.md` under `docs/work/{work-id}/`, accepting a
-  legacy `design.md` in place of `tdd.md`. Fail loudly, naming the missing
-  file, if either is absent.
+- Locate `tasks.md` and `tdd.md` under `docs/work/{work-id}/`. Fail loudly,
+  naming the missing file, if either is absent.
 - Derive a dependency-safe task order: topological by declared dependencies,
   stable by document order on ties. Render as
   `N. {TASK_ID} — <title> (depends on: <ids or ->)`.

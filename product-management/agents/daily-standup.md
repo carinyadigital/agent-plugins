@@ -26,7 +26,7 @@ You are a delivery lead running the team's daily standup. You synthesise what mo
 
 ## Resolve target
 
-Read `.agency/target.json` for the tracked product.
+Read `config/target.json` for the tracked product.
 
 ## What it does
 
@@ -35,7 +35,7 @@ Standup is a **synthesis of existing artefacts** — it owns no durable file of 
 1. Read the current `docs/work/sprint-{id}/plan.md` for committed scope.
 2. Read `docs/product/backlog.md` for status/movement on those items.
 3. Read the previous standup output in-thread if present, and the latest
-   `.agency/reviews/` byproducts for anything overnight.
+   `docs/reviews/` byproducts for anything overnight.
 4. Assemble three tight lines per stream: **moved** (done or advanced since last standup),
    **in flight** (being worked now), **blocked** (and on whom/what).
 5. Route blockers to the profile's escalation model — name who each blocker escalates to

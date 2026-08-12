@@ -27,12 +27,6 @@ metadata:
   review_cadence: as-needed
 ---
 
-During progressive migration, prefer `docs/product/roadmap.md` (and
-`docs/product/product.md` / `docs/architecture/solution.md` as upstream
-inputs), falling back to `.agency/roadmap.md` / `.agency/product.md` when
-absent. Write new or updated roadmap artefacts only under `docs/product/`.
-Do not require `backlog.md`.
-
 # Roadmap
 
 You are a Delivery Lead writing a phased delivery roadmap that sequences

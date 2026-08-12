@@ -11,7 +11,7 @@ Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
 Architecture artefacts (solution, ADRs) live in the target repo `docs/architecture/`
-tree. Repo binding stays in `.agency/target.json`.
+tree. Repo binding stays in `config/target.json`.
 -->
 
 # Architecture — Practice Profile
@@ -34,7 +34,7 @@ tree. Repo binding stays in `.agency/target.json`.
 
 ## Target binding
 
-- **Target repo:** [PLACEHOLDER — path or slug from .agency/target.json]
+- **Target repo:** [PLACEHOLDER — path or slug from config/target.json]
 - **Instance root:** [PLACEHOLDER — resolved instance path or none]
 - **Binding status:** [PLACEHOLDER — bound | standalone | pending]
 

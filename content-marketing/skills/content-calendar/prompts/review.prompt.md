@@ -2,8 +2,7 @@
 
 ## Before running
 
-1. Prefer the calendar at `docs/content/content-calendar.md`; fall back to
-   `.agency/content-calendar.md` when absent.
+1. Read the calendar at `docs/content/content-calendar.md`.
 2. Resolve brand per [../../../references/content-conventions.md](../../../references/content-conventions.md).
 3. Load `brand/seasonal-calendar.md` and `brand/brand-voice.md`.
 

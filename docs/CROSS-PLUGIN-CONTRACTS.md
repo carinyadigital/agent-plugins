@@ -96,10 +96,8 @@ written by the `tdd` skill.
 | --------- | --------- |
 | tdd.md present | Proceed |
 | tdd.md absent | Stop. Recommend `/engineering:tdd {work-id}` first. |
-| Legacy `.agency/work/…/design.md` or `docs/work/…/design.md` | Read fallback only; write new artefacts under `docs/` as `tdd.md` |
 
-Primary artefact filename is `tdd.md`. Legacy `design.md` is accepted when
-reading only — the `tdd` skill migrates it to `tdd.md` on update.
+Primary artefact filename is `tdd.md`.
 
 ---
 
@@ -224,7 +222,7 @@ Each plugin is copied to an isolated cache directory at install time.
 | ------- | ------- |
 | Paths within the same plugin | `../../references/conventions.md` |
 | Sibling plugin lookup in **documented** shell contracts | `seed-ralph-loop.sh` → `../engineering/assets/ralph-presets/` |
-| Artefact paths in the user's repo | `docs/work/{id}/design.md` |
+| Artefact paths in the user's repo | `docs/work/{id}/tdd.md` |
 
 | Forbidden in skill markdown | Why |
 | --------------------------- | --- |

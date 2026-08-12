@@ -100,14 +100,14 @@ If `--check-integrations` only, stop here unless user asks to continue setup.
 
 Ask only what is still needed:
 
-1. **Target binding** — confirm target repo / standalone; create `.agency/target.json` when confirmed.
+1. **Target binding** — confirm target repo / standalone; create `config/target.json` when confirmed.
 2. **Architecture scope** — systems in scope; default solution stage (`stub` vs `full`).
 3. **ADR habit** — when to harvest (after epic / sprint end / ad hoc).
 4. **Companions** — whether `engineering` and `product-management` are installed or should be recommended (do not install them).
 
 ### Step 3a — Target binding confirmation
 
-When the user confirms target association, write `.agency/target.json` with `name`, `instance`, and `target` per framework.
+When the user confirms target association, write `config/target.json` with `name`, `instance`, and `target` per framework.
 
 ### Step 4 — Summary and write
 
@@ -149,6 +149,6 @@ Location: `<instance-root>/config/.architecture-setup-resume.json` if instance e
 | Artefact | Path |
 | -------- | ---- |
 | Practice profile | `~/.claude/plugins/config/digital-agency/architecture/CLAUDE.md` |
-| Target binding (when confirmed) | `.agency/target.json` at target repo root |
+| Target binding (when confirmed) | `config/target.json` at target repo root |
 
 Next: invoke `/architecture:solution` or `/architecture:adr`, or install companions for tdd / delivery.

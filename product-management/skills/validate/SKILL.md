@@ -31,7 +31,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/` artefact paths; fall back to `.agency/` when reading legacy inputs. Write only under `docs/`.
+Read and write artefacts under `docs/`.
 
 # Validate
 
@@ -53,7 +53,7 @@ completion unblocks or completes that epic.
 | --------------------- | ------------------------------- | ----------- |
 | Product backlog / tracker | `docs/product/backlog.md`, or the tracker directly | Yes |
 | Tasks                 | `docs/work/{work-id}/tasks.md`  | Yes         |
-| Design                | `docs/work/{work-id}/tdd.md` (or a legacy `design.md`) | If exists   |
+| Design                | `docs/work/{work-id}/tdd.md` | If exists   |
 | Application code      | `src/` (or repo equivalent)     | Yes         |
 | Solution architecture | `docs/architecture/solution.md` | If relevant |
 | ADRs                  | `docs/architecture/decisions/`  | If relevant |
@@ -74,8 +74,7 @@ For eval runs on skills in this repo, use **eval-grader**
 1. Locate the work item row — `docs/product/backlog.md` (filesystem-only) or
    the tracker directly (Title, type, work path `docs/work/{work-id}/`).
 2. Read `docs/work/{work-id}/tasks.md` and collect all tasks.
-3. Read `docs/work/{work-id}/tdd.md` if it exists, falling back to a legacy
-   `design.md`.
+3. Read `docs/work/{work-id}/tdd.md` if it exists.
 4. Read the solution architecture if the work item touches architectural boundaries.
 5. Read any ADRs referenced by the design or requirements.
 

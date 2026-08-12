@@ -19,7 +19,7 @@ You are a delivery lead responsible for turning a groomed backlog into an achiev
 
 ## Resolve target and sprint id
 
-Read `.agency/target.json` for the tracked product. Resolve `{id}` from the trigger
+Read `config/target.json` for the tracked product. Resolve `{id}` from the trigger
 argument (`3`, `sprint-3`, `2026-W14`); if none given, infer the next sprint after the
 latest `docs/work/sprint-*/` and confirm before proceeding.
 

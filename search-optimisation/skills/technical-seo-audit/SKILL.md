@@ -36,7 +36,7 @@ Read [search-optimisation-conventions.md](../../references/search-optimisation-c
 
 ## Steps
 
-1. Resolve target via `.agency/target.json` or instance config. Default URL from
+1. Resolve target via `config/target.json` or instance config. Default URL from
    target production URL (or `--url`).
 2. Read public `robots.txt` and sitemap config in repo when available. Read squad
    charter for label conventions when present.

@@ -187,7 +187,7 @@ Each practice plugin has the same shape:
 2. Run **`/<practice>:setup`** — creates or binds your instance repo.
 3. Install the **practice plugins** recommended during setup.
 4. Run each practice's **`/<practice>:setup`** (e.g. `/brand-creative:setup`).
-5. Bind targets — website pointer (`.agency/target.json` in target repos), credentials when ready.
+5. Bind targets — website pointer (`config/target.json` in target repos), credentials when ready.
 
 **Run practice setup first.** Every other skill in a plugin reads from the profile it writes. The interview takes 10–20 minutes per plugin; **`--quick`** is available when you want to be productive in two minutes and refine later.
 

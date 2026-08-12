@@ -19,7 +19,7 @@ You are a senior product manager responsible for keeping leadership honestly inf
 
 ## Resolve target and reporting rules
 
-Read `.agency/target.json` for the tracked product. Read the practice profile for the
+Read `config/target.json` for the tracked product. Read the practice profile for the
 **reporting cadence** (weekly / fortnightly / monthly), **format** (brief bullets /
 narrative / dashboard summary), and **primary audience** (sponsor / internal team /
 board). Match all three — do not default to a house style the profile overrides.
@@ -28,17 +28,17 @@ board). Match all three — do not default to a house style the profile override
 
 1. Gather progress since the last digest: closed epics and shipped scope from
    `docs/product/backlog.md`, the latest `docs/work/sprint-*/` plan/retro, and any
-   `.agency/reviews/` byproducts (metrics, competitor moves) worth surfacing to leadership.
+   `docs/reviews/` byproducts (metrics, competitor moves) worth surfacing to leadership.
 2. Run a `stakeholder-update` pass (see `../skills/stakeholder-update/SKILL.md`)
    tailored to the recorded audience — progress, risks/escalations, what's next.
 3. Apply the escalation model: anything past the profile's escalation triggers is
    flagged prominently, addressed to the escalation owner.
-4. Draft the update to `.agency/reviews/stakeholder-digest-{YYYY-MM-DD}.md`.
+4. Draft the update to `docs/reviews/stakeholder-digest-{YYYY-MM-DD}.md`.
 5. Present the draft and stop. Never send — the user reviews and sends.
 
 ## Output
 
-Draft `.agency/reviews/stakeholder-digest-{YYYY-MM-DD}.md`, formatted per profile:
+Draft `docs/reviews/stakeholder-digest-{YYYY-MM-DD}.md`, formatted per profile:
 
 ```
 [Product] status — [period]  ·  for [audience]

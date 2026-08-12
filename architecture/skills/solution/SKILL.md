@@ -23,7 +23,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/architecture/`; fall back to `.agency/architecture/` when reading legacy artefacts. Write only under `docs/architecture/`.
+Read and write architecture artefacts under `docs/architecture/`.
 
 # Solution
 

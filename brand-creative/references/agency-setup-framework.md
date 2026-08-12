@@ -27,7 +27,7 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 | 1 — Instance | `<instance-repo>/config/plugins.json` | Installed catalogue plugins |
 | 1 — Instance | `<instance-repo>/config/.setup-resume.json` | Paused interview after instance repo is bound |
 | 2 — Target | `<instance-repo>/config/targets/<name>.json` | Per-target binding skeletons |
-| 2 — Target | `<target-repo>/.agency/target.json` | Pointer from target repo to instance |
+| 2 — Target | `<target-repo>/config/target.json` | Pointer from target repo to instance |
 
 **In-repo templates (read-only):** `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md` and `${CLAUDE_PLUGIN_ROOT}/references/agency-setup-framework.md`. Never modify installed plugin templates.
 
@@ -41,7 +41,7 @@ Before asking questions:
    - **`status: complete`** — summarize what's on file; offer refresh, `--redo`, or `--check-integrations` only. Do not re-interview unless the user chooses refresh or passed `--redo`.
    - **`status: template` or partial** — offer to resume or start fresh.
 2. **If not an instance repo** — check for `~/.claude/plugins/config/digital-agency/brand-creative/setup-resume.json` (paused session) or proceed to repo creation (link-first, § Repo creation).
-3. **Legacy hand-edited config** — if non-standard paths are found, offer to normalize into `config/instance.json` without deleting legacy files without confirmation.
+3. **Non-standard config** — if config lives outside `config/instance.json`, offer to normalize into that path without deleting the existing files without confirmation.
 
 ## Repo creation (v1 — link-first)
 
@@ -124,26 +124,21 @@ Which apply **now** vs **later**:
 | `social` | Proven — write skeleton; social publishing connector binding deferred until credentials |
 | `email`, `ads`, `analytics` | **Not yet designed** — write `status: not-yet-designed` skeleton; do not block |
 
-For each active target: repository path/URL if known. Website binding requires writing `.agency/target.json` and scaffolding the `.agency/` directory in the target repo **after user confirms** — propose the diff first.
+For each active target: repository path/URL if known. Website binding requires writing `config/target.json` in the target repo **after user confirms** — propose the diff first.
 
-### Target repo `.agency/` scaffold
+### Target repo bind
 
-On bind (after separate confirmation per target repo), create:
+On bind (after separate confirmation per target repo), write:
 
 ```text
-.agency/
-  .gitignore             ← copy from ${CLAUDE_PLUGIN_ROOT}/references/dot-agency/.gitignore
-  README.md              ← copy from ${CLAUDE_PLUGIN_ROOT}/references/dot-agency/README.md
-  target.json            ← binding pointer + repo identity (name, instance, target)
-  product.md             ← empty stub or placeholder headings
-  roadmap.md
-  backlog.md
-  work/                  ← epic folders created by delivery skills
-  architecture/          ← solution.md, decisions/ created by architecture skills
-  reviews/               ← agent byproducts (competitor-scan, metrics, digests); gitignored
+config/target.json         ← binding pointer + repo identity (name, instance, target)
+docs/product/              ← product.md, roadmap.md, backlog.md (created by product skills)
+docs/architecture/         ← solution.md, decisions/ (created by architecture skills)
+docs/work/                 ← work-item folders created by delivery skills
+docs/reviews/              ← review state and agent byproducts
 ```
 
-`target.json` must include a `name` field carrying the target repo identity (typically the git repo slug). Skills resolve the target by reading this file — they do not infer identity from the directory name.
+`config/target.json` must include a `name` field carrying the target repo identity (typically the git repo slug). Skills resolve the target by reading this file — they do not infer identity from the directory name.
 
 ## Write Tier 1 and Tier 2 config
 
@@ -184,8 +179,8 @@ Agency-hub does **not** bundle MCP servers. This flag verifies **target bindings
 
 For each bound target repo, verify:
 
-- `.agency/target.json` exists at the target repo root
-- `target.json` includes `name`, `instance`, and `target` fields
+- `config/target.json` exists at the target repo root
+- `config/target.json` includes `name`, `instance`, and `target` fields
 
 Report: **valid**, **missing fields**, or **not found**. Name manual next steps.
 

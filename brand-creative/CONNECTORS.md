@@ -16,7 +16,7 @@ Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for
 
 | Category | Placeholder | Examples |
 | -------- | ----------- | -------- |
-| Design | `~~design` | Figma — see **ux-design** |
+| Design | `~~design` | Figma — see **product-design** |
 | Knowledge base | `~~knowledge base` | Notion, Atlassian Confluence — see **product-management** |
 | Chat | `~~chat` | Slack |
 | Creative / templates | `~~design` | Canva — see **content-marketing** |
@@ -30,6 +30,6 @@ configured in `.mcp.json`.
 | ----- | ---- | ---------- |
 | **setup** | discover chain | Fireflies (+ any additions) |
 | **brand-voice** | discover | Meeting transcription, knowledge base, chat (optional) |
-| **brand-guide** | write | Figma (primary for visual tokens — add or use **ux-design**) |
+| **brand-guide** | write | Figma (primary for visual tokens — add or use **product-design**) |
 | **brand-voice** | write | Manual upload or discovery report (no MCP required) |
 | **brand-voice** | enforce | None — reads local `brand-voice.md` |

@@ -14,7 +14,7 @@ Plugin files use `~~category` as a placeholder for whatever tool you connect in 
 | **product-management** | Atlassian, Amplitude | [product-management/CONNECTORS.md](../product-management/CONNECTORS.md) |
 | **brand-creative** | Fireflies | [brand-creative/CONNECTORS.md](../brand-creative/CONNECTORS.md) |
 | **content-marketing** | Canva | [content-marketing/CONNECTORS.md](../content-marketing/CONNECTORS.md) |
-| **ux-design** | Figma | [ux-design/CONNECTORS.md](../ux-design/CONNECTORS.md) |
+| **product-design** | Figma | [product-design/CONNECTORS.md](../product-design/CONNECTORS.md) |
 | **search-optimisation** | Ahrefs | [search-optimisation/CONNECTORS.md](../search-optimisation/CONNECTORS.md) |
 
 ## Notes

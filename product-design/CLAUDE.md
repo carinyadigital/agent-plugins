@@ -10,18 +10,18 @@ The `setup` skill copies or updates the user config at:
 Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
-Wireframe artefacts live at the resolved design path — see references/ux-design-conventions.md.
+Wireframe artefacts live at the resolved design path — see references/product-design-conventions.md.
 -->
 
 # UX Design — Practice Profile
 
-*Written by `/ux-design:setup` or initialized on first use.*
+*Written by `/product-design:setup` or initialized on first use.*
 
 ---
 
 ## Status
 
-`template` — run `/ux-design:setup` to fill this in.
+`template` — run `/product-design:setup` to fill this in.
 
 ## Who's using this
 
@@ -54,7 +54,7 @@ _(Figma links, prior wireframes, or competitor references to seed from — patte
 | ----------- | ------ | ----------------------- |
 | Design (Figma) | [✓ / ✗] | Manual upload or paste links |
 
-*Re-check: `/ux-design:setup --check-integrations`*
+*Re-check: `/product-design:setup --check-integrations`*
 
 ---
 
@@ -64,4 +64,4 @@ _(Figma links, prior wireframes, or competitor references to seed from — patte
 
 ---
 
-*Re-run: `/ux-design:setup --redo`*
+*Re-run: `/product-design:setup --redo`*

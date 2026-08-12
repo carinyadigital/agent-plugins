@@ -3,7 +3,7 @@ name: wireframe
 description: >
   Produce a low-fidelity layout and interaction spec from a brief. Use when the
   user names a page or flow and wants a wireframe before implementation. Writes
-  `<design-dir>/{page-or-flow}.md` (resolve path per ux-design-conventions.md).
+  `<design-dir>/{page-or-flow}.md` (resolve path per product-design-conventions.md).
   Reads brand-guide.md when present. Do NOT use for epic technical design
   (design), visual brand tokens (brand-guide), or code implementation (implement).
 license: MIT
@@ -12,7 +12,7 @@ argument-hint: "<page-or-flow> [--brief <notes>] [--from figma]"
 metadata:
   author: Carinya Parc
   version: "0.1.0"
-  owner: ux-design
+  owner: product-design
   review_cadence: quarterly
   work_shape: generate-draft
   output_class: draft-for-review
@@ -23,7 +23,7 @@ metadata:
 You produce a low-fidelity layout and interaction spec. Pass `{page-or-flow}`
 (kebab-case slug) after the skill name; optional `--brief` and `--from figma`.
 
-Read [ux-design-conventions.md](../../references/ux-design-conventions.md). Read
+Read [product-design-conventions.md](../../references/product-design-conventions.md). Read
 `<resolved-brand-path>/brand-guide.md` when present for layout patterns. Read the
 practice profile when present for in-scope pages and design references.
 
@@ -39,7 +39,7 @@ practice profile when present for in-scope pages and design references.
 
 ## Steps
 
-1. Resolve design directory per ux-design-conventions. Parse `{page-or-flow}` for
+1. Resolve design directory per product-design-conventions. Parse `{page-or-flow}` for
    the output filename.
 2. If `--brief` provided, treat it as the primary requirements source.
 3. If `--from figma` or Figma URL: extract frame structure via Figma MCP; map

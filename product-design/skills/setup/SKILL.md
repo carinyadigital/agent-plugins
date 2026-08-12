@@ -11,7 +11,7 @@ allowed-tools: Read, Grep, Glob, Write
 disable-model-invocation: true
 metadata:
   version: "0.1.0"
-  owner: "ux-design"
+  owner: "product-design"
   review_cadence: "quarterly"
   work_shape: "orchestrate-delivery"
   permission_tier: artefact-writer
@@ -19,7 +19,7 @@ metadata:
   sourcing_policy: "volatile-facts-must-be-sourced"
 ---
 
-# /ux-design:setup
+# /product-design:setup
 
 ## When to use
 
@@ -40,7 +40,7 @@ or reference material changes. Explicit invocation only.
 Read before proceeding:
 
 - `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md`
-- `${CLAUDE_PLUGIN_ROOT}/references/ux-design-conventions.md`
+- `${CLAUDE_PLUGIN_ROOT}/references/product-design-conventions.md`
 - `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md` (when instance profile may exist)
 
 Honour flags: `--quick`, `--full`, `--redo`, `--resume`, `--check-integrations`.
@@ -58,7 +58,7 @@ Structured-aggregation; integration table reports ✓ only on successful MCP pro
 ### Step 0 — Detect existing state
 
 1. **Read** `config/instance.json` if present — note `status`, business identity, seed material.
-2. **Resolve design directory** per `ux-design-conventions.md` — note whether any wireframes already exist.
+2. **Resolve design directory** per `product-design-conventions.md` — note whether any wireframes already exist.
 3. **Read** `~/.claude/plugins/config/digital-agency/ux-design/CLAUDE.md` unless `--redo`.
 4. If **complete** and not `--redo`: summarize on-file UX defaults; offer refresh, `--redo`, or `--check-integrations`. Stop unless user chooses refresh.
 5. If **paused resume file** exists: greet, summarize progress, continue or start over.
@@ -134,8 +134,8 @@ Delete resume file if present.
 
 Close with:
 
-1. **Wireframe a page** — `/ux-design:wireframe {page-or-flow}` for each item in scope.
-2. **Refresh scope** — `/ux-design:setup --redo` when pages or references change.
+1. **Wireframe a page** — `/product-design:wireframe {page-or-flow}` for each item in scope.
+2. **Refresh scope** — `/product-design:setup --redo` when pages or references change.
 3. **Implement** — install `web-development` and invoke `/web-development:implement` when wireframes are approved.
 
 ## Pause and resume
@@ -144,7 +144,7 @@ On pause, write JSON:
 
 ```json
 {
-  "plugin": "ux-design",
+  "plugin": "product-design",
   "skill": "setup",
   "mode": "quick|full",
   "startedAt": "ISO-8601",
@@ -156,13 +156,13 @@ On pause, write JSON:
 }
 ```
 
-Location: `<instance-root>/config/.ux-design-setup-resume.json` if instance exists; else personal hub path per framework.
+Location: `<instance-root>/config/.product-design-setup-resume.json` if instance exists; else personal hub path per framework.
 
 ## Worked example
 
 **Input:** Instance profile complete; `--quick`; scope `home-page`, `contact-form`; one Figma link; brand-guide absent.
 
-**Expected output:** Practice profile at personal config path with scope and references; handoff to `/ux-design:wireframe home-page`.
+**Expected output:** Practice profile at personal config path with scope and references; handoff to `/product-design:wireframe home-page`.
 
 ## Outputs
 
@@ -170,4 +170,4 @@ Location: `<instance-root>/config/.ux-design-setup-resume.json` if instance exis
 | -------- | ---- |
 | Practice profile | `~/.claude/plugins/config/digital-agency/ux-design/CLAUDE.md` |
 
-Next: `/ux-design:wireframe` for each page or flow in scope.
+Next: `/product-design:wireframe` for each page or flow in scope.

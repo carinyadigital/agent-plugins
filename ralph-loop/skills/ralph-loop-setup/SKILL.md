@@ -19,7 +19,7 @@ argument-hint: "[<work-id>|--prompt \"...\"] [--preset NAME] [--max-iterations N
 metadata:
   author: Carinya Parc
   version: "2.0"
-  owner: delivery
+  owner: ralph-loop
   work_shape: orchestrate-delivery
   output_class: draft-for-review
   review_cadence: as-needed
@@ -32,7 +32,7 @@ Prefer `docs/`; fall back to `.agency/` when reading legacy artefacts. Write del
 Resolve configuration and seed the loop files. **Never start the loop.** Setup
 ends with a summary and an instruction to run `/ralph-loop start`.
 
-Writing is done by `scripts/seed-ralph-loop.sh`, not by hand. Your job is to
+Writing is done by `${CLAUDE_PLUGIN_ROOT}/${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh`, not by hand. Your job is to
 resolve values and call it. Hand-authoring the loop file reintroduces the
 unsubstituted-placeholder failure the script exists to prevent: a stray
 `{{MAX_ITERATIONS}}` in the frontmatter fails the hook's numeric validation and
@@ -43,9 +43,9 @@ silently deletes the loop.
 Ask only what you cannot resolve yourself. Use structured questions, not prose.
 
 1. **Preset.** If not given:
-   - `engineering-delivery` — drive a work item (typically an epic, but a
-     large story works the same way) through implement, review, validate,
-     and merge request, one task per iteration.
+   - `engineering-delivery` — contributed by **product-engineering** (install that
+     plugin). Drives a work item through implement, review, validate, and merge
+     request, one task per iteration.
    - `ad-hoc` — repeat a single prompt until it is done.
    - `custom` — define your own steps.
 
@@ -75,7 +75,7 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
 **engineering-delivery**
 
 - Resolve `{work-id}` per
-  [work-item-resolution.md](../../references/work-item-resolution.md):
+  product-engineering `references/work-item-resolution.md` (companion plugin — required for engineering-delivery):
   detect the source system (Linear, Jira, GitHub/GitLab, or filesystem) and
   the canonical ID first — ask the user on any ambiguity, per that file's
   ask-first checklist. Never guess.
@@ -106,7 +106,7 @@ name, what to do, and which step comes next. See
 Call the script. Every template value goes through `--set`:
 
 ```bash
-scripts/seed-ralph-loop.sh \
+${CLAUDE_PLUGIN_ROOT}/${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh \
   --agent claude \
   --preset engineering-delivery \
   --run-id "{work-id}-$(date -u +%Y%m%d-%H%M%S)" \

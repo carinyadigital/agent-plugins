@@ -29,6 +29,7 @@ Install **`agency-hub` first**, then the practice plugins that match your work.
 | [product-design](./product-design) | Wireframes, live UX review, and UX design fix | `/product-design:setup` |
 | [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
 | [product-engineering](./product-engineering) | Architecture, implementation, code review, QA, platform ops | `/product-engineering:setup` |
+| [ralph-loop](./ralph-loop) | Self-referential delivery loops (ad-hoc / custom; engineering preset from product-engineering) | `/ralph-loop-setup` |
 
 **Which plugin first?** After `setup`, the interview recommends a starting practice. Common paths:
 
@@ -137,6 +138,7 @@ content-marketing/        # calendar, curation, media analysis, CMS seeds
 product-design/           # wireframes, ux-design-review, ux-design-fix
 search-optimisation/      # keyword research, technical audit, content SEO review
 product-engineering/          # solution, adr, design, implement, review, QA, platform
+ralph-loop/                   # ralph-loop + ralph-loop-setup (+ hooks)
 managed-agents/           # CMA + Cursor Cloud Agent cookbooks
 scripts/                  # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.py
 .claude-plugin/

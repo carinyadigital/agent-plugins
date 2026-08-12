@@ -110,5 +110,5 @@ Markdown with YAML frontmatter. Save to the resolved path. Use
 - `/architecture:adr` — architecture decisions
 - `/product-management:product` — product strategy
 - `/product-management:tasks` — epics and work paths
-- `/product-engineering:tdd` — work-item technical design
-- `/product-engineering:docs-review` — writing quality / cross-doc consistency
+- `/engineering:tdd` — work-item technical design
+- `/engineering:docs-review` — writing quality / cross-doc consistency

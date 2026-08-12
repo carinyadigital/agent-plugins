@@ -52,7 +52,7 @@ scripts/
 2. Register the plugin in `.cursor-plugin/marketplace.json` and `.claude-plugin/marketplace.json` (keep `name` and `description` in sync with each plugin's `plugin.json`).
 3. Run `python3 scripts/validate.py`.
 
-Follow existing practice plugins (e.g. `product-management/`, `product-engineering/`, `brand-creative/`) for structure and naming.
+Follow existing practice plugins (e.g. `product-management/`, `engineering/`, `brand-creative/`) for structure and naming.
 
 ## Adding or changing MCP servers
 
@@ -61,7 +61,7 @@ Follow existing practice plugins (e.g. `product-management/`, `product-engineeri
 3. Do not commit secrets or API keys — use env var placeholders where providers require auth.
 4. Run `python3 scripts/validate.py`.
 
-Follow existing practice plugins (e.g. `product-engineering/.mcp.json`) for structure and naming.
+Follow existing practice plugins (e.g. `engineering/.mcp.json`) for structure and naming.
 
 ## Syncing shared references
 

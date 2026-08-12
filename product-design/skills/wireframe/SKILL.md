@@ -49,7 +49,7 @@ practice profile when present for in-scope pages and design references.
    [wireframe.template.md](assets/wireframe.template.md). Delete the DRAFTING AIDE
    block before saving. Show full draft; confirm before write when the user has
    not pre-approved.
-6. After approval, recommend `/product-engineering:implement` with this wireframe path.
+6. After approval, recommend `/engineering:implement` with this wireframe path.
 
 ### Fidelity rules
 

@@ -99,7 +99,7 @@ Show before the interview (adapt to context):
 Map to **practice plugins** (MECE — self-contained install units). See `instance-profile-template.md` § Service → plugin mapping:
 
 - `brand-creative` — shipped; no `core` companion
-- `product-engineering`, `content-marketing`, `social-media`, `seo` — practice plugins pending; recommend interim catalogue entries and `core` where noted
+- `engineering`, `content-marketing`, `social-media`, `seo` — practice plugins pending; recommend interim catalogue entries and `core` where noted
 
 Quick mode: one primary practice. Full mode: all that apply now vs later.
 
@@ -200,7 +200,7 @@ Offer to continue setup after the report.
 3. After write: remind user they can edit files directly, run `--redo`, or `--check-integrations`.
 4. Close with **next steps**:
    - Install the first recommended **practice plugin**
-   - Install **`core`** if that practice needs shared roles (`product-engineering` → yes; `brand-creative` → no)
+   - Install **`core`** if that practice needs shared roles (`engineering` → yes; `brand-creative` → no)
    - Run that practice's **`setup`**
    - Hand off to `/brand-creative:setup` when brand is in scope
 

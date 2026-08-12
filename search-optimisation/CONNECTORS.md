@@ -11,10 +11,10 @@ Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for
 | Practice | Relationship | Invoke |
 | -------- | ------------ | ------ |
 | **product-management** | Companion practice | `/product-management:competitive-brief` |
-| **product-engineering** | Companion practice | Playwright for live technical audits |
+| **engineering** | Companion practice | Playwright for live technical audits |
 
 Install `product-management` when SEO work needs competitive landscape input.
-Co-install **product-engineering** (or add Playwright to `.mcp.json`) for live browser checks in **technical-seo-audit**.
+Co-install **engineering** (or add Playwright to `.mcp.json`) for live browser checks in **technical-seo-audit**.
 
 ## Bundled in `.mcp.json`
 
@@ -30,8 +30,8 @@ before live queries.
 
 | Category | Placeholder | Examples |
 | -------- | ----------- | -------- |
-| Browser automation | `~~browser automation` | Playwright — bundled in **product-engineering** |
-| Source control | `~~source control` | GitHub — see **product-engineering** |
+| Browser automation | `~~browser automation` | Playwright — bundled in **engineering** |
+| Source control | `~~source control` | GitHub — see **engineering** |
 | SEO intelligence | `~~SEO intelligence` | Semrush (`https://mcp.semrush.com/v2/mcp`) |
 | Search performance | — | Google Search Console (when supported) |
 

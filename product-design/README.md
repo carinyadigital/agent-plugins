@@ -5,7 +5,7 @@ design review, and UX design fix. Self-contained under the MECE practice model:
 edit skills here only; nothing is vendored from elsewhere.
 
 Install standalone or after practice `setup` (writes `config/instance.json` if absent) recommends it. Recommend
-`product-engineering` as a **companion practice** for implementation — it reads
+`engineering` as a **companion practice** for implementation — it reads
 `<design-dir>/*.md` via artifact consumption; no install dependency in either
 direction.
 
@@ -66,13 +66,13 @@ tokens and visual patterns — no bundled skill and no install dependency on
 - **Figma** (optional) — connected Figma enables reference extraction during setup
   and wireframe write.
 - **Playwright** (bundled) — used by `ux-design-review` for live-browser passes.
-- **product-engineering** (recommended companion) — reads wireframes before UI
+- **engineering** (recommended companion) — reads wireframes before UI
   implementation; see CONNECTORS.md.
 
 ## After setup
 
 1. Run `/product-design:wireframe` for each page or flow in scope.
-2. Hand off to `/product-engineering:implement` when wireframes are approved.
+2. Hand off to `/engineering:implement` when wireframes are approved.
 3. After implementation, run `/product-design:ux-design-review` (and
    `/product-design:ux-design-fix` if needed).
 4. Re-run `/product-design:setup --redo` to refresh scope or references.

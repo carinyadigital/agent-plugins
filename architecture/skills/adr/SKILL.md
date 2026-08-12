@@ -65,5 +65,5 @@ within the register the user targets.
 ## Related skills
 
 - `/architecture:solution` — system architecture narrative
-- `/product-engineering:tdd` — work-item technical design (harvest source)
-- `/product-engineering:docs-review` — writing quality / cross-doc consistency
+- `/engineering:tdd` — work-item technical design (harvest source)
+- `/engineering:docs-review` — writing quality / cross-doc consistency

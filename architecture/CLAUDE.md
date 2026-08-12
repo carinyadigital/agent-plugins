@@ -61,7 +61,7 @@ tree. Repo binding stays in `.agency/target.json`.
 
 ## Companion practices
 
-- **product-engineering:** [PLACEHOLDER — installed | recommended | not needed]
+- **engineering:** [PLACEHOLDER — installed | recommended | not needed]
 - **product-management:** [PLACEHOLDER — installed | recommended | not needed]
 
 ---

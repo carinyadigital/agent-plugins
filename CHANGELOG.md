@@ -8,10 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Engineering rename (v0.6.0)
+
+- **BREAKING:** `product-engineering` renamed to `engineering` (directory, marketplace id, slash namespace `/engineering:…`, conventions file `engineering-conventions.md`). Reinstall as `engineering@carinya-plugins`; update any hard-coded `/product-engineering:` invocations and companion docs.
+
 ### Architecture practice split
 
 - **New `architecture` plugin (v0.5.0):** `setup`, `solution`, `adr` — owns `docs/architecture/`.
-- **BREAKING (`product-engineering` v0.5.0):** `solution` and `adr` moved to `architecture`. Invoke `/architecture:solution` and `/architecture:adr`. `tdd`, `docs-review`, and `tech-debt` stay in `product-engineering`. Principal Architect persona moves to `architecture`; engineering keeps five personas.
+- **BREAKING (`engineering` v0.5.0, formerly `product-engineering`):** `solution` and `adr` moved to `architecture`. Invoke `/architecture:solution` and `/architecture:adr`. `tdd`, `docs-review`, and `tech-debt` stay in `engineering`. Principal Architect persona moves to `architecture`; engineering keeps five personas.
 - Companions, `skills-index:find`, and `docs/CROSS-PLUGIN-CONTRACTS.md` updated for the new edge.
 
 ### Migration verification complete
@@ -24,11 +28,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [2026-08-12] — Phase 3 cutover + skills sync (v0.4.0)
 
 All nine catalogue plugins reset to **v0.4.0** after Phase 2 restructuring
-(`product-engineering`, `product-design`, `product-management` merge,
+(`engineering`, `product-design`, `product-management` merge,
 `ralph-loop` extract, `skills-index` / `skill-authoring` new). See
 `docs/CROSS-PLUGIN-CONTRACTS.md`.
 
-- **BREAKING (product-engineering):** `design` → `tdd`; artefact `design.md` → `tdd.md` (legacy accepted); modes `walking-skeleton|tdd` → `skeleton|full`. Invoke `/product-engineering:tdd`.
+- **BREAKING (engineering):** `design` → `tdd`; artefact `design.md` → `tdd.md` (legacy accepted); modes `walking-skeleton|tdd` → `skeleton|full`. Invoke `/engineering:tdd`.
 - Consumers (`implement`, `tasks`, `validate`, `adr`, `ralph-loop*`, sprint skills) read `tdd.md` with legacy fallback.
 - Ralph-loop hooks/seed: completion-promise anchoring, turn-boundary detection, `{{TDD_PATH}}` / `{{WORK_ID}}`.
 - `product-management` / `skills-index` synced with [carinyaparc/skills](https://github.com/carinyaparc/skills); `find` routes to `tdd`.

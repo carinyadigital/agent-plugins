@@ -13,7 +13,7 @@ your stack.
 
 | Practice | Relationship | Consumption |
 | -------- | ------------ | ----------- |
-| **product-engineering** | Companion | `tdd`, `docs-review`, `implement`, `tech-debt` |
+| **engineering** | Companion | `tdd`, `docs-review`, `implement`, `tech-debt` |
 | **product-management** | Companion | `product`, `roadmap`, `tasks` upstream of solution |
 
 Install companions alongside this plugin when architecture feeds delivery. No

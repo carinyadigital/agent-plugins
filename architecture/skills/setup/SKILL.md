@@ -30,7 +30,7 @@ re-run after scope or binding changes. Explicit invocation only.
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile.
 - **Writes `config/instance.json` if absent** — idempotent instance bootstrap, then this practice interview.
-- **Does not install other plugins** — user installs `product-engineering` / `product-management` from marketplace when companions are needed.
+- **Does not install other plugins** — user installs `engineering` / `product-management` from marketplace when companions are needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce solution.md or ADRs** — those are separate skill invocations after setup.
 
@@ -76,7 +76,7 @@ If working directory looks project-scoped and architecture may span repos, warn 
 
 If neither `--quick` nor `--full` was passed, offer quick vs full.
 
-**Quick path:** infer target binding when possible; default solution stage `stub` if no solution.md exists else `full`; note companion install for `product-engineering`.
+**Quick path:** infer target binding when possible; default solution stage `stub` if no solution.md exists else `full`; note companion install for `engineering`.
 
 **Full path:** all plugin-specific questions below.
 
@@ -103,7 +103,7 @@ Ask only what is still needed:
 1. **Target binding** — confirm target repo / standalone; create `.agency/target.json` when confirmed.
 2. **Architecture scope** — systems in scope; default solution stage (`stub` vs `full`).
 3. **ADR habit** — when to harvest (after epic / sprint end / ad hoc).
-4. **Companions** — whether `product-engineering` and `product-management` are installed or should be recommended (do not install them).
+4. **Companions** — whether `engineering` and `product-management` are installed or should be recommended (do not install them).
 
 ### Step 3a — Target binding confirmation
 
@@ -121,8 +121,8 @@ Delete resume file if present.
 
 1. **Solution** — `/architecture:solution` (use `--stage stub` or `full`)
 2. **ADR** — `/architecture:adr plan` then `/architecture:adr write`
-3. **Work-item design** — `/product-engineering:tdd <work-id>` (companion)
-4. **Docs review** — `/product-engineering:docs-review docs/architecture/` (companion)
+3. **Work-item design** — `/engineering:tdd <work-id>` (companion)
+4. **Docs review** — `/engineering:docs-review docs/architecture/` (companion)
 5. **Refresh** — `/architecture:setup --redo`
 
 ## Pause and resume

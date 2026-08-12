@@ -52,7 +52,7 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | Loop | Order |
 | ---- | ----- |
 | Strategy → delivery | `/product-management:product` → `roadmap` → `tasks --product` → `sprint-planning` → `validate` |
-| Engineering delivery | `/architecture:solution` → `/product-engineering:tdd` → `implement` → `code-review` → `/product-design:ux-design-review` → `/product-management:validate` |
+| Engineering delivery | `/architecture:solution` → `/engineering:tdd` → `implement` → `code-review` → `/product-design:ux-design-review` → `/product-management:validate` |
 | Brand → content | `/brand-creative:brand-voice` → `/content-marketing:content-calendar` |
 
 ## Catalogue
@@ -74,18 +74,18 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | product-management | validate | Work-item sign-off vs AC |
 | architecture | solution | Architecture solution.md |
 | architecture | adr | Architecture decision records |
-| product-engineering | tdd | Work-item tdd.md |
-| product-engineering | implement | Implement a task |
-| product-engineering | code-review | Branch / PR code review |
-| product-engineering | code-review-fix | Address review findings |
-| product-engineering | merge-request | Open MR/PR |
-| product-engineering | docs-review | Cross-document quality review |
-| product-engineering | deploy-qa | Prepare QA workspace |
-| product-engineering | run-automated-suite | Run automated tests |
-| product-engineering | exploratory-pass | Exploratory QA |
-| product-engineering | document-defects | Structure defect reports |
-| product-engineering | platform-health | Platform health audit |
-| product-engineering | debug | Investigate bugs |
+| engineering | tdd | Work-item tdd.md |
+| engineering | implement | Implement a task |
+| engineering | code-review | Branch / PR code review |
+| engineering | code-review-fix | Address review findings |
+| engineering | merge-request | Open MR/PR |
+| engineering | docs-review | Cross-document quality review |
+| engineering | deploy-qa | Prepare QA workspace |
+| engineering | run-automated-suite | Run automated tests |
+| engineering | exploratory-pass | Exploratory QA |
+| engineering | document-defects | Structure defect reports |
+| engineering | platform-health | Platform health audit |
+| engineering | debug | Investigate bugs |
 | product-design | wireframe | Low-fidelity layout spec |
 | product-design | ux-design-review | Live-browser UX review |
 | product-design | ux-design-fix | Address UX findings |

@@ -145,19 +145,19 @@ moving it (never by writing a second copy alongside).
 | PRD, vision, why/who/what | **product** |
 | Phases, exit criteria | **roadmap** |
 | Epics, work paths, Now scope | **tasks --product** |
-| `tdd.md` (technical design) for one work item | **/product-engineering:tdd** |
+| `tdd.md` (technical design) for one work item | **/engineering:tdd** |
 | System architecture (`solution.md`) | **/architecture:solution** |
 | ADR plan / write / review | **/architecture:adr** |
 | `tasks.md`, stories, Gherkin AC | **tasks** |
 | Decompose any spec or RFC into a backlog | **tasks** |
 | Groom a backlog, check sprint readiness | **backlog-refine** |
-| Implement code | **/product-engineering:implement** |
-| PR / branch code review | **/product-engineering:code-review** |
-| Address code review feedback | **/product-engineering:code-review-fix** |
+| Implement code | **/engineering:implement** |
+| PR / branch code review | **/engineering:code-review** |
+| Address code review feedback | **/engineering:code-review-fix** |
 | Work item done vs AC + roadmap gates | **validate** |
 | Sprint plan | **sprint-planning** |
 | Sprint retrospective | **sprint-retro** |
-| Review a set of documents for quality, boundaries, consistency | **/product-engineering:docs-review** |
+| Review a set of documents for quality, boundaries, consistency | **/engineering:docs-review** |
 | Which skill to use? | **skills-index** |
 
 ## Agency layout notes
@@ -176,7 +176,7 @@ Strategy skills in this plugin (`product`, `roadmap`, `write-spec`, …) produce
 `product.md` and `roadmap.md`; delivery skills (`tasks --product`, …) consume
 them. Architecture skills live in `architecture` — invoke as
 `/architecture:solution` / `/architecture:adr`. Engineering skills live in
-`product-engineering` — invoke as `/product-engineering:<skill>` when recommending
+`engineering` — invoke as `/engineering:<skill>` when recommending
 from product-management.
 
 When companions are not installed, continue product/delivery work from user input
@@ -186,8 +186,8 @@ and artefacts. At architecture or implementation boundaries, state:
 Install: /plugin install architecture@carinya-plugins
 Then run: /architecture:solution
 
-Install: /plugin install product-engineering@carinya-plugins
-Then run: /product-engineering:<skill> …
+Install: /plugin install engineering@carinya-plugins
+Then run: /engineering:<skill> …
 ```
 
 ### Progressive migration bridge (interim)

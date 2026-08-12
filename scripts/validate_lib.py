@@ -72,7 +72,7 @@ PRACTICE_PLUGIN_DIRS = (
     "brand-creative",
     "content-marketing",
     "product-design",
-    "product-engineering",
+    "engineering",
     "product-management",
     "search-optimisation",
     "architecture",

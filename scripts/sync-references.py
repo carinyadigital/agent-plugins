@@ -24,7 +24,7 @@ PRACTICE_PLUGINS = (
     "content-marketing",
     "product-design",
     "search-optimisation",
-    "product-engineering",
+    "engineering",
     "architecture",
 )
 

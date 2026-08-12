@@ -43,11 +43,11 @@ silently deletes the loop.
 Ask only what you cannot resolve yourself. Use structured questions, not prose.
 
 1. **Preset.** If not given:
-   - `engineering-delivery` — contributed by **product-engineering** (requires that
+   - `engineering-delivery` — contributed by **engineering** (requires that
      plugin installed). Drives a work item through implement, review, validate, and
      merge request, one task per iteration. If the preset file cannot be resolved,
      refuse and offer:
-     `Install: /plugin install product-engineering@carinya-plugins` then re-run setup.
+     `Install: /plugin install engineering@carinya-plugins` then re-run setup.
    - `ad-hoc` — repeat a single prompt until it is done (no companion plugins).
    - `custom` — define your own steps (no companion plugins).
 
@@ -77,7 +77,7 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
 **engineering-delivery**
 
 - Resolve `{work-id}` per
-  product-engineering `references/work-item-resolution.md` (companion plugin — required for engineering-delivery):
+  engineering `references/work-item-resolution.md` (companion plugin — required for engineering-delivery):
   detect the source system (Linear, Jira, GitHub/GitLab, or filesystem) and
   the canonical ID first — ask the user on any ambiguity, per that file's
   ask-first checklist. Never guess.

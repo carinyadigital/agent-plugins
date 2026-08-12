@@ -23,9 +23,9 @@ Plugins are **tool-agnostic** — they describe workflows in terms of categories
 | User feedback | `~~user feedback` | Intercom (`https://mcp.intercom.com/mcp`), Pendo |
 | Meeting transcription | `~~meeting transcription` | Fireflies (`https://api.fireflies.ai/mcp`) — see **brand-creative** |
 | Competitive intelligence | `~~competitive intelligence` | Similarweb (`https://mcp.similarweb.com/mcp`) |
-| Source control | `~~source control` | GitHub — see **product-engineering** |
-| Hosting / deploy | `~~hosting` | Vercel — add to **product-engineering** |
-| Browser automation | `~~browser automation` | Playwright — bundled in **product-engineering** |
+| Source control | `~~source control` | GitHub — see **engineering** |
+| Hosting / deploy | `~~hosting` | Vercel — add to **engineering** |
+| Browser automation | `~~browser automation` | Playwright — bundled in **engineering** |
 
 Other options: Linear, Asana, monday.com, ClickUp (project tracker); Mixpanel, Heap (analytics); Gong (meeting transcription); Crayon, Klue (competitive intelligence).
 

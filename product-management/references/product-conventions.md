@@ -67,13 +67,13 @@ roadmap via `/product-management:tasks --product`.
 | Groom a backlog, check sprint readiness | **backlog-refine** |
 | Plan or review a sprint | **sprint-planning**, **sprint-retro** |
 | Sign off a work item vs AC and roadmap gates | **validate** |
-| Review or critique an existing product.md / roadmap.md | **/product-engineering:docs-review** |
+| Review or critique an existing product.md / roadmap.md | **/engineering:docs-review** |
 
 ## Companion practices (cross-plugin)
 
 Architecture skills live in `architecture` (`/architecture:solution`,
-`/architecture:adr`). Engineering skills live in `product-engineering`
-(`/product-engineering:tdd`, `implement`, `code-review`, `docs-review`, …).
+`/architecture:adr`). Engineering skills live in `engineering`
+(`/engineering:tdd`, `implement`, `code-review`, `docs-review`, …).
 
 When companions are not installed, continue from user input. At architecture
 boundaries:

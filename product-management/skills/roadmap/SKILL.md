@@ -114,4 +114,4 @@ Markdown with YAML frontmatter. Save to the resolved path. Use [assets/roadmap.t
 - `/product-management:product` — product strategy input (upstream)
 - `/architecture:solution` — architecture (upstream companion; if not installed: `/plugin install architecture@carinya-plugins`)
 - `/product-management:tasks --product` — epic backlog (downstream)
-- `/product-engineering:docs-review` — writing quality / cross-doc consistency (not strategic soundness)
+- `/engineering:docs-review` — writing quality / cross-doc consistency (not strategic soundness)

@@ -78,7 +78,7 @@ findings are recorded under `## Notes` so a human sees them.
 - [assets/loop-state.core.template.md](assets/loop-state.core.template.md) — per-run mutable state
 - [assets/context.core.template.md](assets/context.core.template.md) — per-run static context
 - [assets/presets/](assets/presets/) — `ad-hoc`, `custom`
-- Contributed: `product-engineering/assets/ralph-presets/engineering-delivery.md` (requires product-engineering installed)
+- Contributed: `engineering/assets/ralph-presets/engineering-delivery.md` (requires engineering installed)
 
 ## Router
 

@@ -5,9 +5,9 @@ Root-level **practice plugin** — setup interview, system solution design
 practice model: edit skills here only; nothing is vendored from elsewhere.
 
 Install standalone or after practice `setup` (writes `config/instance.json` if
-absent) recommends it. Declare `product-engineering` as a **companion practice**
+absent) recommends it. Declare `engineering` as a **companion practice**
 for work-item `tdd.md`, docs review, and implementation — invoke
-`/product-engineering:tdd` and related skills directly rather than bundling
+`/engineering:tdd` and related skills directly rather than bundling
 duplicates.
 
 ## Persona
@@ -16,8 +16,8 @@ duplicates.
 | ------- | -------------- | ----- |
 | **Principal Architect** | `solution`, `adr` | Architecture — solution.md and ADRs |
 
-Work-item technical design stays in `product-engineering` (`tdd`). Document-set
-quality review stays in `product-engineering` (`docs-review`).
+Work-item technical design stays in `engineering` (`tdd`). Document-set
+quality review stays in `engineering` (`docs-review`).
 
 ```
 /architecture:solution
@@ -28,9 +28,9 @@ quality review stays in `product-engineering` (`docs-review`).
 For work-item design and delivery:
 
 ```
-/product-engineering:tdd checkout-foundation
-/product-engineering:implement CHK01-01
-/product-engineering:docs-review docs/architecture/
+/engineering:tdd checkout-foundation
+/engineering:implement CHK01-01
+/engineering:docs-review docs/architecture/
 ```
 
 ## First run: setup
@@ -54,7 +54,7 @@ After instance bootstrap (or standalone):
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile and target hints |
-| **solution** | write — `docs/architecture/solution.md`; review via `/product-engineering:docs-review` |
+| **solution** | write — `docs/architecture/solution.md`; review via `/engineering:docs-review` |
 | **adr** | plan, write, review — `docs/architecture/decisions/` |
 
 Path and boundary rules: `references/architecture-conventions.md`.
@@ -63,7 +63,7 @@ Path and boundary rules: `references/architecture-conventions.md`.
 
 - **Instance profile** (optional) — practice `setup` writes `config/instance.json`
   if absent; setup reads cadence and target hints without re-asking.
-- **product-engineering** (recommended companion) — `tdd`, `docs-review`,
+- **engineering** (recommended companion) — `tdd`, `docs-review`,
   `implement`, and related delivery skills; see CONNECTORS.md.
 - **product-management** (optional companion) — product.md / roadmap upstream of
   solution.
@@ -74,7 +74,7 @@ Path and boundary rules: `references/architecture-conventions.md`.
 
 1. Run `/architecture:solution` (stub or full) for system architecture.
 2. Run `/architecture:adr plan` then `adr write` for consequential decisions.
-3. Hand off work-item design to `/product-engineering:tdd`.
+3. Hand off work-item design to `/engineering:tdd`.
 4. Re-run `/architecture:setup --redo` to refresh architecture defaults.
 
 ## References

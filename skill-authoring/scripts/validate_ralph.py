@@ -229,7 +229,7 @@ def check_preset_reachability(report: Report) -> None:
         REPO_ROOT,
     )
     _check_preset_dir(
-        REPO_ROOT / "product-engineering/assets/ralph-presets",
+        REPO_ROOT / "engineering/assets/ralph-presets",
         problems,
         REPO_ROOT,
     )

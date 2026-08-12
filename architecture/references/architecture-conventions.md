@@ -22,7 +22,7 @@ order — first match wins:
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
 docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
-docs/work/{work-id}/          tdd.md, tasks.md  (owned by product-engineering / product-management)
+docs/work/{work-id}/          tdd.md, tasks.md  (owned by engineering / product-management)
 ```
 
 Prefer `docs/architecture/`; fall back to `.agency/architecture/` when reading
@@ -45,9 +45,9 @@ Override paths when the user names them explicitly in the request.
 
 | Need | Invoke |
 | ---- | ------ |
-| Work-item technical design (`tdd.md`) | `/product-engineering:tdd` |
-| Document-set quality review | `/product-engineering:docs-review` |
-| Implementation | `/product-engineering:implement` |
+| Work-item technical design (`tdd.md`) | `/engineering:tdd` |
+| Document-set quality review | `/engineering:docs-review` |
+| Implementation | `/engineering:implement` |
 | Product strategy / roadmap | `/product-management:product`, `/product-management:roadmap` |
 | Epics / tasks / AC | `/product-management:tasks` |
 
@@ -67,10 +67,10 @@ See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 | ----------- | ----- | ----- |
 | System architecture / arc42 | **solution** | Writes `docs/architecture/solution.md` |
 | ADR plan / write / review | **adr** | Register + `ADR-NNNN-*.md` |
-| Work-item `tdd.md` | `/product-engineering:tdd` | Companion — not this practice |
-| Docs quality / consistency | `/product-engineering:docs-review` | Companion |
-| Tech debt audit | `/product-engineering:tech-debt` | Companion |
-| Implement code | `/product-engineering:implement` | Companion |
+| Work-item `tdd.md` | `/engineering:tdd` | Companion — not this practice |
+| Docs quality / consistency | `/engineering:docs-review` | Companion |
+| Tech debt audit | `/engineering:tech-debt` | Companion |
+| Implement code | `/engineering:implement` | Companion |
 
 ## Work-item resolution
 

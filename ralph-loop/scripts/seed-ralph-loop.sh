@@ -40,7 +40,7 @@ Seed a Ralph loop.
 
 Required:
   --agent <claude|cursor>       Which agent's directory to seed
-  --preset <name>               ad-hoc | custom | engineering-delivery (contributed by product-engineering)
+  --preset <name>               ad-hoc | custom | engineering-delivery (contributed by engineering)
 
 Common:
   --project-dir <path>          Project root (default: $PWD)
@@ -116,7 +116,7 @@ resolve_preset_file() {
     return 0
   fi
   local d
-  # Contributed presets (product-engineering ships engineering-delivery)
+  # Contributed presets (engineering ships engineering-delivery)
   if [[ -n "${RALPH_PRESET_DIRS:-}" ]]; then
     IFS=':' read -ra _ralph_preset_dirs <<< "$RALPH_PRESET_DIRS"
     for d in "${_ralph_preset_dirs[@]}"; do
@@ -124,15 +124,15 @@ resolve_preset_file() {
     done
   fi
   for d in \
-    "$REPO_ROOT/../product-engineering/assets/ralph-presets" \
-    "${CLAUDE_PLUGIN_ROOT:-}/../product-engineering/assets/ralph-presets" \
-    "${CURSOR_PLUGIN_ROOT:-}/../product-engineering/assets/ralph-presets"
+    "$REPO_ROOT/../engineering/assets/ralph-presets" \
+    "${CLAUDE_PLUGIN_ROOT:-}/../engineering/assets/ralph-presets" \
+    "${CURSOR_PLUGIN_ROOT:-}/../engineering/assets/ralph-presets"
   do
     [[ -f "$d/$name.md" ]] && { printf '%s\n' "$d/$name.md"; return 0; }
   done
   return 1
 }
-PRESET_FILE="$(resolve_preset_file "$PRESET")" || die "unknown preset '$PRESET' (not in ralph-loop assets/presets or contributed product-engineering ralph-presets)"
+PRESET_FILE="$(resolve_preset_file "$PRESET")" || die "unknown preset '$PRESET' (not in ralph-loop assets/presets or contributed engineering ralph-presets)"
 
 [[ -d "$PROJECT_DIR" ]] || die "project dir does not exist: $PROJECT_DIR"
 

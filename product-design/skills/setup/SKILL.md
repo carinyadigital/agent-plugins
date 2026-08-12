@@ -30,7 +30,7 @@ or reference material changes. Explicit invocation only.
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile.
 - **Writes `config/instance.json` if absent** — idempotent instance bootstrap, then this practice interview.
-- **Does not install other plugins** — user installs `product-engineering` from marketplace when implementation companion is needed.
+- **Does not install other plugins** — user installs `engineering` from marketplace when implementation companion is needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce wireframe artefacts** — those are separate skill invocations after setup.
 - **Does not write `brand-guide.md`** — owned by `brand-creative`; wireframe reads it via artifact consumption when present.
@@ -142,7 +142,7 @@ Close with:
 
 1. **Wireframe a page** — `/product-design:wireframe {page-or-flow}` for each item in scope.
 2. **Refresh scope** — `/product-design:setup --redo` when pages or references change.
-3. **Implement** — install `product-engineering` and invoke `/product-engineering:implement` when wireframes are approved.
+3. **Implement** — install `engineering` and invoke `/engineering:implement` when wireframes are approved.
 
 ## Pause and resume
 

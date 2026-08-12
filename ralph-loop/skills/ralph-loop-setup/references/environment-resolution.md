@@ -36,7 +36,7 @@ If nothing is discoverable, ask the user rather than guessing.
 ## Tracker (`{{TRACKER_SECTION}}`)
 
 Reuse the source system already resolved for `{work-id}` per
-product-engineering `references/work-item-resolution.md` (companion) —
+engineering `references/work-item-resolution.md` (companion) —
 including the `TASKS.local.md` pointer, when present. Do not re-run
 detection here; this section only maps the *already-resolved* system to
 concrete per-task actions:

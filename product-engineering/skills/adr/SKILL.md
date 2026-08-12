@@ -5,7 +5,7 @@ description: >
   review under docs/architecture/decisions/. Triggers on "do we need an ADR",
   "write ADR-0007", "record this decision", "what decisions need making",
   "harvest ADRs from this epic", "harvest ADRs from JIRA-123". Do NOT use for
-  full architecture narrative (solution), work-item design (design), or
+  full architecture narrative (solution), work-item technical design (tdd), or
   product strategy (product). Proposals stay in register.md only until
   accepted.
 license: MIT
@@ -13,6 +13,7 @@ compatibility: Tracker resolution (plan mode, when a work-id is named) uses Line
 allowed-tools:
   - Read
   - Write
+  - Edit
   - Glob
   - Grep
   - Bash(git remote:*)
@@ -28,6 +29,8 @@ metadata:
   review_cadence: as-needed
 ---
 
+Prefer `docs/architecture/`; fall back to `.agency/architecture/` when reading legacy artefacts. Write only under `docs/architecture/`.
+
 # ADR
 
 ## Paths
@@ -36,8 +39,6 @@ metadata:
 | -------- | ------------ |
 | Register | `docs/architecture/decisions/register.md` |
 | ADR document | `docs/architecture/decisions/ADR-{NUMBER}-{short-title}.md` |
-
-Prefer `docs/architecture/decisions/`; fall back to `.agency/architecture/decisions/` when reading legacy artefacts. Write only under `docs/architecture/decisions/`.
 
 ## Path resolution
 
@@ -56,7 +57,7 @@ within the register the user targets.
 2. Resolve paths (default or user override).
    **plan** takes an optional work item: `adr plan <work-id>` resolves it per
    [work-item-resolution.md](../../references/work-item-resolution.md),
-   harvests decisions already made in `docs/work/{work-id}/design.md`, and
+   harvests decisions already made in `docs/work/{work-id}/tdd.md`, and
    triages them into the register. Without a work item it surveys product.md
    and solution.md for decisions still to be made.
 3. [prompts/plan.prompt.md](prompts/plan.prompt.md) | [prompts/write.prompt.md](prompts/write.prompt.md) | [prompts/review.prompt.md](prompts/review.prompt.md).

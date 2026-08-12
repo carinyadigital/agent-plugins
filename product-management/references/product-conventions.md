@@ -65,7 +65,7 @@ stay under `.agency/` permanently.
 ## Companion practices (cross-plugin)
 
 Architecture and engineering skills live in `product-engineering`
-(`/product-engineering:solution`, `design`, `implement`, `code-review`, `docs-review`, …).
+(`/product-engineering:solution`, `tdd`, `implement`, `code-review`, `docs-review`, …).
 
 When `product-engineering` is not installed, continue from user input. At
 architecture boundaries:

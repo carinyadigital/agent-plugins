@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2026-08-12] — Phase 3 cutover (v0.4.0)
+## [2026-08-12] — Phase 3 cutover + skills sync (v0.4.0)
 
 All nine catalogue plugins reset to **v0.4.0** after Phase 2 restructuring
 (`product-engineering`, `product-design`, `product-management` merge,

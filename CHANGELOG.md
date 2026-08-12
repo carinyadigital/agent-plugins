@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Plugin management (v0.2.0)
+
+- **New `plugin-management` plugin (v0.2.0):** ported from tempster-plugin — `create-plugin`, `customize-plugin`, and component-authoring skills (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release) plus four sub-agents.
+- **BREAKING:** `skill-authoring` folded into `plugin-management`. Reinstall as `plugin-management@carinya-plugins`; invoke `/plugin-management:skills-qa` and `/plugin-management:skill-review` (was `/skill-authoring:…`). Scripts live under `plugin-management/scripts/`.
+
 ### Design rename (v0.5.0)
 
 - **BREAKING:** `product-design` renamed to `design` (directory, marketplace id, slash namespace `/design:…`, conventions file `design-conventions.md`). Reinstall as `design@carinya-plugins`; update any hard-coded `/product-design:` invocations and companion docs.

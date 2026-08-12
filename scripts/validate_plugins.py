@@ -64,7 +64,7 @@ class PluginValidator(Reporter):
     CROSS_PLUGIN_SIBLING_RE = re.compile(
         r"\.\./(?P<plugin>engineering|architecture|product-management|design|"
         r"brand-creative|content-marketing|search-optimisation|ralph-loop|"
-        r"skills-index|skill-authoring|agency-hub|web-development|"
+        r"skills-index|plugin-management|agency-hub|web-development|"
         r"delivery-practice|ux-design)/"
         r"(?:skills|references|assets|hooks|scripts|\.claude-plugin|\.cursor-plugin)/"
     )

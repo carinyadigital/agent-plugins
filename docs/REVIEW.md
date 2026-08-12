@@ -2,7 +2,7 @@
 
 **Original review:** `carinyaparc/skills` @ `2e7d67e` (12 Aug 2026)  
 **Last pruned:** 12 Aug 2026 against `carinya-plugins` (practice-plugin layout; validator + privilege-agent pass)  
-**Cleared:** all P0s (shellcheck CI, promise matcher + turn scope, `create_mr` reachability, Cursor-only `done` docs, `Edit` on `adr`/`tdd`, version scheme), §3.1 (`skill-review` → `skill-authoring`), §4.2 sibling routes, dual `trigger-queries` schema, link resolver, mutation-test in CI, `debug` skill, roadmap no longer requires backlog (Product → Solution → Roadmap → Backlog), §2.4 description budget (`tdd`/`tasks`/`solution`), root README delivery path tree + hierarchy, validator split (`validate_plugins.py` + `validate_skills.py` + `validate_lib.py`) with real YAML parse (PyYAML in CI), agent/orphan/description-budget contracts, `skill-authoring/template/SKILL.md` pack convention, epic-path shell scripts (rules in tasks checklist + `validate_ralph.py`), ralph-loop metadata classification keys, high-privilege agent frontmatter (`ac-evidence-verifier`, `mr-babysitter`, `eval-grader` pass validator with scoped tools + `model_tier` + `budget`), **`tdd` skill name retained** (rename to `tech-design` declined), §1.2 work-item status enum (`To do` · `In progress` · `In review` · `Blocked` · `Done` aligned across schema, templates, examples, and **validate**).
+**Cleared:** all P0s (shellcheck CI, promise matcher + turn scope, `create_mr` reachability, Cursor-only `done` docs, `Edit` on `adr`/`tdd`, version scheme), §3.1 (`skill-review` → `plugin-management`; formerly `skill-authoring`), §4.2 sibling routes, dual `trigger-queries` schema, link resolver, mutation-test in CI, `debug` skill, roadmap no longer requires backlog (Product → Solution → Roadmap → Backlog), §2.4 description budget (`tdd`/`tasks`/`solution`), root README delivery path tree + hierarchy, validator split (`validate_plugins.py` + `validate_skills.py` + `validate_lib.py`) with real YAML parse (PyYAML in CI), agent/orphan/description-budget contracts, `plugin-management/template/SKILL.md` pack convention, epic-path shell scripts (rules in tasks checklist + `validate_ralph.py`), ralph-loop metadata classification keys, high-privilege agent frontmatter (`ac-evidence-verifier`, `mr-babysitter`, `eval-grader` pass validator with scoped tools + `model_tier` + `budget`), **`tdd` skill name retained** (rename to `tech-design` declined), §1.2 work-item status enum (`To do` · `In progress` · `In review` · `Blocked` · `Done` aligned across schema, templates, examples, and **validate**).
 
 This file keeps **open** findings only. Fixed and superseded claims were removed so the list is reviewable as a backlog.
 
@@ -62,7 +62,7 @@ Validator enforces agent frontmatter (`model: inherit`, constrained tools, `mode
 |---|---|
 | `validate/.../ac-evidence-verifier` | Bash scoped to `git log/show/grep` |
 | `merge-request-babysit/.../mr-babysitter` | Bash scoped to `git`/`gh`/`glab` (still push-capable via git) |
-| `skill-authoring/.../eval-grader` | Read/Grep/Glob only; still no Bash for git-based assertions |
+| `plugin-management/.../eval-grader` | Read/Grep/Glob only; still no Bash for git-based assertions |
 
 UX `finding-verifier` still cannot re-capture (tools: Read/Grep/Glob). `architecture-reviewer` still both discovers guidelines and is told not to re-derive them.
 

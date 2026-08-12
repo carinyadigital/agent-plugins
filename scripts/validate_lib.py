@@ -78,12 +78,12 @@ PRACTICE_PLUGIN_DIRS = (
     "architecture",
     "ralph-loop",
     "skills-index",
-    "skill-authoring",
+    "plugin-management",
 )
 
 ORPHAN_SKILL_EXCLUDES = frozenset(
     {
-        "skill-authoring/template",
+        "plugin-management/template",
     }
 )
 

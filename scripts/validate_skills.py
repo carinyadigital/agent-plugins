@@ -143,7 +143,7 @@ class SkillValidator(Reporter):
                         "FM_METADATA_MISSING",
                         f"{rel} missing metadata.{meta_field}",
                         file=rel,
-                        hint="See skill-authoring/references/"
+                        hint="See plugin-management/references/"
                         "agency-skill-design-framework.md §11",
                     )
 

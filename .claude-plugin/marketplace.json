@@ -8,7 +8,7 @@
       "name": "brand-creative",
       "displayName": "Brand Creative",
       "source": "./brand-creative",
-      "description": "Complete brand practice in one install \u2014 setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
+      "description": "Complete brand practice in one install — setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
     },
     {
       "name": "architecture",
@@ -32,37 +32,37 @@
       "name": "product-management",
       "displayName": "Product Management",
       "source": "./product-management",
-      "description": "Complete product management practice in one install \u2014 setup interview, product strategy and PRDs, roadmap, feature specs, research, metrics, stakeholder updates, tasks/backlog decomposition, sprint planning and retro, and epic validation. Personas: Product Manager and Delivery Lead. One owned skill library."
+      "description": "Complete product management practice in one install — setup interview, product strategy and PRDs, roadmap, feature specs, research, metrics, stakeholder updates, tasks/backlog decomposition, sprint planning and retro, and epic validation. Personas: Product Manager and Delivery Lead. One owned skill library."
     },
     {
       "name": "content-marketing",
       "displayName": "Content Marketing",
       "source": "./content-marketing",
-      "description": "Complete content practice in one install \u2014 setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes product-management for tasks and research synthesis."
+      "description": "Complete content practice in one install — setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes product-management for tasks and research synthesis."
     },
     {
       "name": "design",
       "displayName": "Design",
       "source": "./design",
-      "description": "Design practice in one install \u2014 setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/. Bundles Figma and Playwright."
+      "description": "Design practice in one install — setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/. Bundles Figma and Playwright."
     },
     {
       "name": "search-optimisation",
       "displayName": "Search Optimisation",
       "source": "./search-optimisation",
-      "description": "Complete search and technical SEO practice in one install \u2014 setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief."
+      "description": "Complete search and technical SEO practice in one install — setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief."
     },
     {
       "name": "skills-index",
       "displayName": "Skills Index",
       "source": "./skills-index",
-      "description": "Install-aware skill router \u2014 find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task."
+      "description": "Install-aware skill router — find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task."
     },
     {
-      "name": "skill-authoring",
-      "displayName": "Skill Authoring",
-      "source": "./skill-authoring",
-      "description": "Skill authoring quality gate — skills-qa, skill-review, eval-grader, validate_ralph, and skill templates."
+      "name": "plugin-management",
+      "displayName": "Plugin Management",
+      "source": "./plugin-management",
+      "description": "Create, customize, and manage plugins for the carinya-plugins marketplace — guided create-plugin and customize-plugin workflows, component authoring (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release), plus skill quality gates (skills-qa, skill-review) and Phase 0 tooling (eval-grader, validate_ralph, templates)."
     }
   ]
 }

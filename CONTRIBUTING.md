@@ -42,7 +42,7 @@ scripts/
 
 1. Create `<practice>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, `evals/`, `scripts/`).
 2. Add `evals/evals.json` and `evals/trigger-queries.json` to define test cases and routing expectations.
-3. Follow [skill-authoring/references/agency-skill-design-framework.md](./skill-authoring/references/agency-skill-design-framework.md) for skill design conventions.
+3. Follow [plugin-management/references/agency-skill-design-framework.md](./plugin-management/references/agency-skill-design-framework.md) for skill design conventions.
 4. Register it in the practice plugin's `plugin.json` if needed.
 5. Run `python3 scripts/validate.py` and fix errors.
 
@@ -80,7 +80,7 @@ Run structural checks locally before opening a PR:
 python3 scripts/validate.py                    # full repo validation (plugins + skills)
 python3 scripts/validate_plugins.py <dir>      # scoped check for one practice plugin
 python3 scripts/validate_skills.py             # skill/agent contracts only
-python3 skill-authoring/scripts/validate_ralph.py  # Ralph hooks + presets
+python3 plugin-management/scripts/validate_ralph.py  # Ralph hooks + presets
 ```
 
 `validate.py` orchestrates plugin-domain and skill-domain checks:
@@ -94,7 +94,7 @@ python3 skill-authoring/scripts/validate_ralph.py  # Ralph hooks + presets
 | MCP connectors | Missing or invalid practice `.mcp.json`; empty `mcpServers` |
 | SKILL.md frontmatter | Missing `name`/`description`/`allowed-tools`; name/description budgets; agency metadata (warnings by default) |
 | Agent contracts | Every `**/agents/*.md`: `model: inherit`, constrained tools, `model_tier`, numeric `budget` |
-| Orphan SKILL.md | `SKILL.md` outside `skills/<name>/` (excl. `skill-authoring/template/`) |
+| Orphan SKILL.md | `SKILL.md` outside `skills/<name>/` (excl. `plugin-management/template/`) |
 | Markdown cross-refs | Broken relative links in skill files |
 | Evals schema | Malformed `evals/evals.json` or `evals/trigger-queries.json` |
 | JSON sanity | Any `*.json` in the repo that fails to parse |
@@ -115,7 +115,7 @@ when you change a plugin description.
 ### CI
 
 - **CI** — `.github/workflows/ci.yml` runs `python3 scripts/validate.py --format json`,
-  `python3 skill-authoring/scripts/validate_ralph.py --quiet`, mutation tests, and
+  `python3 plugin-management/scripts/validate_ralph.py --quiet`, mutation tests, and
   the unit tests in `tests/` on every push to `main` and on pull requests.
 
 ## Pull requests

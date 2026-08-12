@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "internal-catalog": {
+      "type": "http",
+      "url": "https://internal-catalog.example.com/mcp",
+      "headers": {
+        "X-Api-Key": "${CATALOG_API_KEY}"
+      }
+    }
+  }
+}

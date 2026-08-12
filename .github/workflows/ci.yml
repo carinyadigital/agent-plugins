@@ -23,10 +23,10 @@ jobs:
         run: python3 scripts/validate.py --format json
 
       - name: Ralph validation
-        run: python3 skill-authoring/scripts/validate_ralph.py --quiet
+        run: python3 plugin-management/scripts/validate_ralph.py --quiet
 
       - name: Ralph mutation tests
-        run: python3 skill-authoring/scripts/mutation-test.py
+        run: python3 plugin-management/scripts/mutation-test.py
 
       - name: Test
         run: python3 -m unittest discover -s tests -p "test_*.py" -v

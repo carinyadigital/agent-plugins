@@ -248,6 +248,6 @@ run in the monorepo, not in the plugin cache.
 | search-optimisation | ahrefs | |
 | ralph-loop | — | Hooks only |
 | skills-index | — | Router only |
-| skill-authoring | — | QA tooling |
+| plugin-management | — | Meta-plugin + skill QA tooling |
 
 Skills degrade when a connector is absent — see each plugin's `CONNECTORS.md`.

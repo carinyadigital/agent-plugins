@@ -103,7 +103,8 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | search-optimisation | keyword-research | Keyword research |
 | search-optimisation | technical-seo-audit | Technical SEO audit |
 | search-optimisation | content-seo-review | On-page SEO review |
-| skill-authoring | skills-qa | Skill quality gate |
+| plugin-management | create-plugin | Scaffold a new plugin |
+| plugin-management | skills-qa | Skill quality gate |
 | skills-index | find | This router |
 | skills-index | related-skills-surfacer | Suggest related uninstalled skills after a task |
 

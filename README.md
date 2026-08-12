@@ -38,7 +38,7 @@ Install the practice plugins that match your work. The first practice `setup` wr
 | [engineering](./engineering) | Technical design (tdd), implementation, code review, QA, platform ops | `/engineering:setup` |
 | [ralph-loop](./ralph-loop) | Self-referential delivery loops (ad-hoc / custom; engineering preset from engineering) | `/ralph-loop-setup` |
 | [skills-index](./skills-index) | Install-aware skill router | `/skills-index:find` |
-| [skill-authoring](./skill-authoring) | Skill quality gate (skills-qa) | `/skill-authoring:skills-qa` |
+| [plugin-management](./plugin-management) | Create/customize plugins + skill quality gates | `/plugin-management:create-plugin` |
 
 **Which plugin first?** After `setup`, the interview recommends a starting practice. Common paths:
 
@@ -157,7 +157,7 @@ content-marketing/        # calendar, curation, media analysis, CMS seeds
 search-optimisation/      # keyword research, technical audit, content SEO review
 ralph-loop/               # ralph-loop + ralph-loop-setup (+ hooks)
 skills-index/             # install-aware skill router
-skill-authoring/          # skills-qa (+ Phase 0 tooling later)
+plugin-management/        # create/customize plugins + skills-qa / skill-review
 scripts/                  # validate.py · validate_plugins.py · validate_skills.py · sync-references.py
 references/               # canonical meta-framework (synced into practice plugins)
 .claude-plugin/marketplace.json   # plugin registry (name: carinya-plugins)
@@ -212,7 +212,7 @@ After install, skills fire automatically when relevant; slash commands are avail
 /plugin install search-optimisation@carinya-plugins
 /plugin install ralph-loop@carinya-plugins
 /plugin install skills-index@carinya-plugins
-/plugin install skill-authoring@carinya-plugins
+/plugin install plugin-management@carinya-plugins
 
 /brand-creative:setup
 /product-management:setup
@@ -320,7 +320,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 |---|---|
 | **[ralph-loop](./ralph-loop)** | Self-referential delivery loops — ad-hoc and custom presets; engineering-delivery preset contributed by engineering. Ships hooks. |
 | **[skills-index](./skills-index)** | Install-aware skill router — `/skills-index:find` |
-| **[skill-authoring](./skill-authoring)** | Skill quality gate — `/skill-authoring:skills-qa` |
+| **[plugin-management](./plugin-management)** | Create/customize plugins, component authoring, marketplace registration, and skill quality gates (`skills-qa`, `skill-review`) |
 
 **Companion practices:** `content-marketing` invokes `/product-management:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `architecture` invokes `/engineering:tdd` and `/engineering:docs-review` for work-item design and doc quality. `engineering` invokes `/architecture:solution` / `/architecture:adr` and `/product-management:tasks` for architecture and planning cadence. No direction requires the companion installed — skills degrade gracefully and document the pairing.
 

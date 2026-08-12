@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "ticketing": {
+      "type": "sse",
+      "url": "https://mcp.example-ticketing.com/sse",
+      "headers": {
+        "Authorization": "Bearer ${TICKETING_API_TOKEN}"
+      }
+    }
+  }
+}

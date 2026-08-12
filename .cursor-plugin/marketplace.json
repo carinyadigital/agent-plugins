@@ -59,10 +59,10 @@
       "description": "Install-aware skill router — find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task."
     },
     {
-      "name": "skill-authoring",
-      "displayName": "Skill Authoring",
-      "source": "./skill-authoring",
-      "description": "Skill authoring quality gate — skills-qa, skill-review, eval-grader, validate_ralph, and skill templates."
+      "name": "plugin-management",
+      "displayName": "Plugin Management",
+      "source": "./plugin-management",
+      "description": "Create, customize, and manage plugins for the carinya-plugins marketplace — guided create-plugin and customize-plugin workflows, component authoring (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release), plus skill quality gates (skills-qa, skill-review) and Phase 0 tooling (eval-grader, validate_ralph, templates)."
     }
   ]
 }

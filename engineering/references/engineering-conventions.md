@@ -132,6 +132,13 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 | Task Gherkin (and optional EARS) | `docs/work/{work-id}/tasks.md` | backlog, the TDD |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
 
+## Doc comments
+
+Comments written into source, tests, config, or any other repo file MUST
+stand on their own so they can be read inline. They MUST NOT cite issue
+systems, working documents, or any other external source. Canonical agent
+instructions: [doc-comments.md](doc-comments.md).
+
 ## Acceptance criteria
 
 - **Default:** Gherkin in `docs/work/{work-id}/tasks.md`, on the **story** (or the work item itself when it carries AC).

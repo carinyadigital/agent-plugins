@@ -10,7 +10,7 @@ allowed-tools: Read Write Glob Grep Bash
 argument-hint: "<error message or problem description>"
 metadata:
   author: Carinya Parc
-  version: "0.1.0"
+  version: "0.1.1"
   owner: engineering
   review_cadence: as-needed
   work_shape: implement-and-ship
@@ -32,7 +32,10 @@ See [CONNECTORS.md](../../CONNECTORS.md) for monitoring and source-control tools
 3. **Diagnose** — form hypotheses and test them; trace the code path; find root
    cause (not just symptoms)
 4. **Fix** — propose a fix with explanation; consider side effects and edge cases;
-   suggest regression tests
+   suggest regression tests. Comments in the fix MUST follow
+   [doc-comments.md](../../references/doc-comments.md): they MUST stand on their
+   own so they can be read inline, and MUST NOT cite issue systems, working
+   documents, or any other external source.
 
 ## What to gather
 
@@ -45,6 +48,12 @@ If monitoring is connected: pull logs, error rates, and metrics around the issue
 time; correlate with recent deploys. If source control is connected: identify
 commits/PRs on affected paths. If project tracker is connected: search related
 bugs; create a ticket for the fix once identified.
+
+## Constraints
+
+A fix MUST NOT add comments that cite issue systems, working documents, or any
+other external source. Comments MUST stand on their own so they can be read
+inline. See [doc-comments.md](../../references/doc-comments.md).
 
 ## Output format
 

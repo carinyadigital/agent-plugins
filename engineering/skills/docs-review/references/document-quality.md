@@ -51,6 +51,10 @@ name which parts belong where.
 - [ ] No filler: throat-clearing openings, restated headings, or sentences that
       say a section will explain rather than explaining.
 - [ ] Consistent person and tense within the document.
+- [ ] Comments inside code samples stand on their own so they can be read
+      inline. They MUST NOT cite issue systems, working documents, or any
+      other external source. (The document body may still link related docs —
+      that is not a comment.)
 
 ## 4. Correctness and currency
 

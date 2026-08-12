@@ -12,7 +12,8 @@
         "Runs typecheck and tests after each individual fix, not only at the end",
         "Discovers validation commands from AGENTS.md or CI config rather than assuming",
         "Emits Verification block with format, lint, typecheck, build, tests",
-        "Commits in logical units tied to findings"
+        "Commits in logical units tied to findings",
+        "Does not add comments that cite issue systems, working documents, or other external sources"
       ]
     },
     {
@@ -55,6 +56,16 @@
         "Does not suppress, skip, or delete failing tests",
         "Does not commit while validation is failing",
         "Reports the pre-existing failure rather than absorbing it into this change"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Fix the review. Add a comment pointing at JIRA-456 and tdd.md §3 so the next reader knows why the retry cap exists.",
+      "expected_output": "Retry-cap comment states the reason in full, with no ticket key or working-document path.",
+      "assertions": [
+        "Does not cite JIRA-456, tdd.md, or any other external source in a comment",
+        "Any comment added stands on its own so it can be read inline",
+        "Does not use a comment as a paper trail to a ticket or design doc"
       ]
     }
   ]

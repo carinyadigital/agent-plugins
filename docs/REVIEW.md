@@ -2,7 +2,7 @@
 
 **Original review:** `carinyaparc/skills` @ `2e7d67e` (12 Aug 2026)  
 **Last pruned:** 12 Aug 2026 against `carinya-plugins` (practice-plugin layout)  
-**Cleared:** all P0s (shellcheck CI, promise matcher + turn scope, `create_mr` reachability, Cursor-only `done` docs, `Edit` on `adr`/`tdd`, version scheme), §3.1 (`skill-review` → `skill-authoring`), §4.2 sibling routes, dual `trigger-queries` schema, link resolver, mutation-test in CI, `debug` skill, roadmap no longer requires backlog (Product → Solution → Roadmap → Backlog), §2.4 description budget (`tdd`/`tasks`/`solution`), root README delivery path tree + hierarchy.
+**Cleared:** all P0s (shellcheck CI, promise matcher + turn scope, `create_mr` reachability, Cursor-only `done` docs, `Edit` on `adr`/`tdd`, version scheme), §3.1 (`skill-review` → `skill-authoring`), §4.2 sibling routes, dual `trigger-queries` schema, link resolver, mutation-test in CI, `debug` skill, roadmap no longer requires backlog (Product → Solution → Roadmap → Backlog), §2.4 description budget (`tdd`/`tasks`/`solution`), root README delivery path tree + hierarchy, validator agent/orphan/description-budget contracts (P1 item 1 core), `skill-authoring/template/SKILL.md` pack convention (P1 item 5).
 
 This file keeps **open** findings only. Fixed and superseded claims were removed so the list is reviewable as a backlog.
 
@@ -28,8 +28,8 @@ Schema (`work-item-schema.md`): `not started` · `in progress` · `blocked` · `
 
 ### 1.4 Duplicated contracts that will drift
 Same contracts live in sibling skill trees and have already diverged. Keep copies local to each practice/skill (no shared references package) — align wording in place and/or add a drift check on pairs that must stay identical:
-- Risk matrix in both `finding-classification.md` files
-- `merge-protocol.md` (UX copy still omits contradiction tier)
+- Risk matrix core table is aligned; escalate prose + Security vs Accessibility overrides still differ across the two `finding-classification.md` files
+- `merge-protocol.md` UX now has a Contradiction section but still omits code's `[suggestion]` surface rule
 - Review-state JSON schema (code `context-resolution` vs UX `environment-resolution`); `code-review-fix` still has **zero** markdown links
 - Persist procedure inlined in both review `SKILL.md` bodies
 - Provider detection: Bitbucket Cloud/Server split in `provider-resolution.md` vs collapsed Rovo routing in `provider-operations.md`
@@ -44,13 +44,13 @@ Review → fix **ingest** still not the declared default Input: `code-review-fix
 ## 2. Triggering, routing, naming
 
 ### 2.1 PR/MR synonym split
-`code-review` triggers on "review this PR"; `merge-request-review` on "review this MR". Neither carries both synonyms disambiguated by authorship/publication. All three `merge-request*` skills still have **zero** evals.
+Both `code-review` and `merge-request-review` descriptions now mention PR and MR, but trigger quotes stay asymmetric (`"review this PR"` vs `"review this MR"`) and authorship/publication disambiguation is still weak. All three `merge-request*` skills still have **zero** evals.
 
 ### 2.2 `ralph-loop` setup contradiction + no NL triggers
 Still forbids seeding via description while body/evals allow ad-hoc seed on `--prompt`. Still no quoted natural-language triggers (only command forms). Metadata classification keys are present (that part of the old finding is closed).
 
 ### 2.3 `tdd` name still costly
-Still named `tdd`; description still burns budget on the TDD disclaimer; `implement` still adjudicates the naming collision. Rename to `tech-design` (keep `tdd.md` artefact if desired) remains the highest-leverage description fix.
+Still named `tdd`; short TDD disclaimer remains in the description; `implement` still adjudicates the naming collision. Rename to `tech-design` (keep `tdd.md` artefact if desired) remains the highest-leverage naming fix.
 
 ---
 
@@ -64,13 +64,15 @@ Still named `tdd`; description still burns budget on the TDD disclaimer; `implem
 - `docs-review` still borrows `blocking`/`warning`/`suggestion` without the matrix, and asserts link/orphan counts its toolset cannot check.
 
 ### 3.2 High-privilege agents still nonconformant
+Validator now enforces agent contracts (`model: inherit`, constrained tools, `model_tier`, numeric budget) — these three still fail it:
+
 | Agent | Gap |
 |---|---|
 | `validate/.../ac-evidence-verifier` | bare `Bash`, no `model_tier`, no reading budget |
 | `merge-request-babysit/.../mr-babysitter` | full `Bash` (push-capable), no `model_tier`, no reading budget |
 | `skill-authoring/.../eval-grader` | no `model_tier`, no budget |
 
-Validator still does not enforce agent frontmatter / budgets. UX `finding-verifier` still cannot re-capture (tools: Read/Grep/Glob). `architecture-reviewer` still both discovers guidelines and is told not to re-derive them.
+UX `finding-verifier` still cannot re-capture (tools: Read/Grep/Glob). `architecture-reviewer` still both discovers guidelines and is told not to re-derive them.
 
 ### 3.3 Evals: assertions without an execution path
 Evals exist; there is still no runner, no fixtures repo, no with/without baseline arms. CI covers structural validation + Ralph suites + mutation-test — not skill evals.
@@ -93,7 +95,6 @@ Still missing evals on high-risk write skills: `implement`, all three `merge-req
 | Standing constitution | **Absent** |
 | Incident / postmortem | **Absent** |
 | Prod deploy + rollback triggers | **Partial** — `deploy-qa` is QA checkout, not prod deploy |
-| Debugging | **Shipped** — `debug` (do not re-open) |
 | Release notes / changelog skill | **Absent** |
 | Dependency upgrades | **Partial** — `platform-health` |
 | Test strategy authoring | **Partial** — template / folded into `implement` |
@@ -111,12 +112,11 @@ Cap discipline still applies: prefer modes on existing skills over unbounded new
 ## 5. Outstanding recommendations
 
 ### P1 — Make the guardrails real
-1. Expand `validate.py` / `validate_skills.py`: real YAML parse where needed; description/line budgets; validate every `agents/*.md` (`model: inherit`, constrained tools, `model_tier`, numeric budget); fail on orphan `SKILL.md` outside `skills/` (excl. `template/`).
-2. Add `tasks/scripts/*.sh` (e.g. `check-epic-paths.sh`) to shellcheck globs; fix dead Epic-ID branch and mislabelled diagnostics.
+1. Finish validator gaps beyond the landed agent/orphan/description-budget checks: real YAML parse where needed; line budgets; keep agent contract failures red until fixed.
+2. ~~Add `tasks/scripts/*.sh` (e.g. `check-epic-paths.sh`) to shellcheck globs~~ — removed; epic-path rules live in the tasks skill pre-save checklist and `validate_ralph.py`.
 3. CODEOWNERS, PR template (CONTRIBUTING checklist), Python version matrix, markdownlint; finish manifest/version consistency checks.
 4. Align duplicated review contracts in place (and/or drift-check identical pairs); rename ralph `environment-resolution.md` → `template-variable-resolution.md`. Do not introduce a shared references package.
-5. Fix `skill-authoring/template/SKILL.md` to match real pack convention (tools, compatibility, argument-hint, metadata).
-6. Cap uncapped budgets (doc batches, L verifier fan-out, UX capture matrix); fix the three privilege agents above.
+5. Cap uncapped budgets (doc batches, L verifier fan-out, UX capture matrix); fix the three privilege agents above.
 
 ### P2 — Close the contract gaps
 7. Adopt work-item state file (e.g. `.carinya/work.json`) keyed on work item, not branch alone.
@@ -126,7 +126,7 @@ Cap discipline still applies: prefer modes on existing skills over unbounded new
 11. Resolve or delete inert `review-learnings`; fix spike contradiction.
 12. Ralph beyond P0: flock on iteration bump; Cursor `RALPH_SESSION_ID` (or qualify isolation as Claude-only); `command -v` for `perl`/`jq`; fail-closed on declared-but-missing state; wall-clock/cost ceilings; stall keyed on `current_step`; `compatibility:` frontmatter.
 13. Tighten MR grants (`gh pr merge` / unscoped Write); gate publish on babysit; gate `tdd` `git mv`.
-14. Both PR/MR synonyms on `code-review` ↔ `merge-request-review`; NL triggers + resolve setup contradiction on `ralph-loop`.
+14. Symmetric PR/MR trigger quotes on `code-review` ↔ `merge-request-review`; NL triggers + resolve setup contradiction on `ralph-loop`.
 
 ### P3 — Prove it works
 15. Eval runner + `fixtures/checkout-foundation/`; upgrade `eval-grader` (transcript contract, N/A, threshold, Bash for git checks).
@@ -150,7 +150,7 @@ Cap discipline still applies: prefer modes on existing skills over unbounded new
 ## 6. If you only do five things next
 
 1. **Shared work-item state + approve checklist** (P2 items 7–8) — unblocks §1.1 and §1.3.
-2. **Validator enforces agent + frontmatter contracts** (P1 item 1) — retires a third of instrumentation findings permanently.
+2. **Fix the three privilege agents that fail the validator** (P1 item 5 / §3.2) — contracts are enforced; agents still red.
 3. **Align duplicated review contracts in place** (P1 item 4) — stops silent drift on the gate without a shared refs package.
 4. **Eval runner + one fixture** (P3 item 15) — makes existing assertions runnable.
 5. **`agents-md` skill** (P5 item 21) — converts the most-read, never-written dependency into a contract.

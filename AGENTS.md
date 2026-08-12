@@ -16,6 +16,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 │   └── skills/
 ├── product-design/                      # practice plugin — wireframe, ux-design-review, ux-design-fix (MECE owned)
 ├── ralph-loop/                          # ralph-loop + ralph-loop-setup + hooks
+├── skills-index/                        # find + related-skills-surfacer
 │   ├── references/                  # product-design-conventions + synced meta-framework files
 │   └── skills/
 ├── search-optimisation/             # practice plugin — keyword-research, technical-seo-audit, content-seo-review (MECE owned)
@@ -71,6 +72,7 @@ Run `python3 scripts/validate.py` before opening a PR — it lints marketplace a
 | `content-marketing` | `setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Shipped; MECE practice plugin — Content Strategist and Content Writer personas, no separate agent plugins; reads `brand-voice.md` via artifact consumption; invokes `/product-management:tasks --product` and `/product-management:synthesize-research` as companion skills |
 | `product-design` | `setup`, `wireframe`, `ux-design-review`, `ux-design-fix` | Shipped; writes wireframes to `<instance-root>/design/`; live-browser review/fix; downstream practices read via artifact consumption |
 | `ralph-loop` | `ralph-loop`, `ralph-loop-setup` | Shipped; ships hooks; engineering-delivery preset contributed by product-engineering |
+| `skills-index` | `find`, `related-skills-surfacer` | Shipped; install-aware router |
 | `search-optimisation` | `setup` + 3 SEO skills (`keyword-research`, `technical-seo-audit`, `content-seo-review`) | Shipped; one persona (SEO Specialist), no separate agent plugin; invokes `/product-management:competitive-brief` as companion skill |
 
 Bootstraps a git-versioned instance repo (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `agency-hub/README.md` and `agency-hub/references/agency-setup-framework.md`.

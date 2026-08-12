@@ -111,17 +111,17 @@ epic's design; `design JIRA-123` writes that story's design, sitting beside
 | PRD, vision, why/who/what | **product** |
 | Phases, exit criteria | **roadmap** |
 | Epics, work paths, Now scope | **tasks --product** |
-| `design.md` for one work item | **/web-development:design** |
+| `design.md` for one work item | **/product-engineering:design** |
 | `tasks.md`, stories, Gherkin AC | **tasks** |
 | Decompose any spec or RFC into a backlog | **tasks** |
 | Groom a backlog, check sprint readiness | **backlog-refine** |
-| Implement code | **/web-development:implement** |
-| PR / branch code review | **/web-development:code-review** |
-| Address code review feedback | **/web-development:code-review-fix** |
+| Implement code | **/product-engineering:implement** |
+| PR / branch code review | **/product-engineering:code-review** |
+| Address code review feedback | **/product-engineering:code-review-fix** |
 | Work item done vs AC + roadmap gates | **validate** |
 | Sprint plan | **sprint-planning** |
 | Sprint retrospective | **sprint-retro** |
-| Review a set of documents for quality, boundaries, consistency | **/web-development:docs-review** |
+| Review a set of documents for quality, boundaries, consistency | **/product-engineering:docs-review** |
 
 ## Agency layout notes
 
@@ -137,8 +137,8 @@ Additional agency trees (not used by all skills):
 
 Strategy skills in this plugin (`product`, `roadmap`, `write-spec`, …) produce
 `product.md` and `roadmap.md`; delivery skills (`tasks --product`, …) consume
-them. Engineering skills live in `web-development` — invoke as
-`/web-development:<skill>` when recommending from product-management.
+them. Engineering skills live in `product-engineering` — invoke as
+`/product-engineering:<skill>` when recommending from product-management.
 
 ### Progressive migration bridge (interim)
 

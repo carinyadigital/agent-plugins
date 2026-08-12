@@ -60,12 +60,12 @@ stay under `.agency/` permanently.
 | Groom a backlog, check sprint readiness | **backlog-refine** |
 | Plan or review a sprint | **sprint-planning**, **sprint-retro** |
 | Sign off a work item vs AC and roadmap gates | **validate** |
-| Review or critique an existing product.md / roadmap.md | **/web-development:docs-review** |
+| Review or critique an existing product.md / roadmap.md | **/product-engineering:docs-review** |
 
 ## Companion practices (cross-plugin)
 
-Architecture and engineering skills live in `web-development`
-(`/web-development:solution`, `design`, `implement`, `code-review`, `docs-review`, …).
+Architecture and engineering skills live in `product-engineering`
+(`/product-engineering:solution`, `design`, `implement`, `code-review`, `docs-review`, …).
 
 ## Agency layout notes
 

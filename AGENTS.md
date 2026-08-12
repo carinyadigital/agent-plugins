@@ -54,7 +54,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 └── scripts/                         # sync-references.py, validate.py, plugin-check.py, deploy-squad-agents.py
 ```
 
-Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `product-design/skills/`, `search-optimisation/skills/`, `web-development/skills/`, `agency-hub/skills/`).
+Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `product-design/skills/`, `search-optimisation/skills/`, `product-engineering/skills/`, `agency-hub/skills/`).
 
 Run `python3 scripts/sync-references.py` after editing shared meta-framework files (`instance-profile-template.md`, `setup-framework.md`).
 

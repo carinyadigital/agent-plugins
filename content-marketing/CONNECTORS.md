@@ -29,7 +29,7 @@ connected; skills still work from briefs and brand voice alone.
 
 | Category | Placeholder | Examples |
 | -------- | ----------- | -------- |
-| Source control | `~~source control` | GitHub — see **web-development** |
+| Source control | `~~source control` | GitHub — see **product-engineering** |
 | Knowledge base | `~~knowledge base` | Notion — see **product-management** |
 | Chat | `~~chat` | Slack |
 | Design reference | `~~design` | Figma — see **product-design** |

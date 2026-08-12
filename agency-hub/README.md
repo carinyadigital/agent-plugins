@@ -41,7 +41,7 @@ Link-first: `setup` provides a template URL; the human creates the private repo 
 ## Prerequisites
 
 - **Instance template** — `digital-agency-instance` template repo (when published). Until then, create an empty private repo with the directory skeleton described in `references/agency-setup-framework.md`.
-- **MCP connectors** — optional; configured in practice plugins (e.g. GitHub in **web-development**), not in agency-hub.
+- **MCP connectors** — optional; configured in practice plugins (e.g. GitHub in **product-engineering**), not in agency-hub.
 
 ## Commands (v1)
 
@@ -93,7 +93,7 @@ When marketplace management ships: watched registries ≠ trust, restrictive all
 ## After setup
 
 1. Install the first **practice plugin** recommended during setup (e.g. `brand-creative`).
-2. Install **`core`** if that practice needs shared roles (`web-development` → `core`; `brand-creative` → none).
+2. Install **`core`** if that practice needs shared roles (`product-engineering` → `core`; `brand-creative` → none).
 3. Run that practice's **`setup`** (e.g. `/brand-creative:setup`).
 4. Bind targets — website pointer (`.agency/target.json`), social credentials when ready.
 5. Deploy the first scheduled agent — see `digital-agency/scripts/deploy-squad-agents.py`.

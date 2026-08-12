@@ -227,7 +227,7 @@ Produce the verdict below, then persist review state per
 2. Write the human-readable verdict to
    `docs/work/{work-item}/reviews/ux-design-review-{nn}.local.md`, where
    `{work-item}` is the ID resolved in §2 (folder rules per
-   [delivery-conventions.md](../../references/delivery-conventions.md)) and
+   product-management `delivery-conventions.md`) and
    `{nn}` is the next sequential two-digit number among existing
    `ux-design-review-*.local.md` files in that folder (do not count other
    skills' reports). Numbered history applies only under
@@ -336,4 +336,4 @@ One paragraph. Then: to action these findings, run `ux-design-fix`.
 - [references/finding-classification.md](references/finding-classification.md) — categories, severity, confidence, risk matrix
 - [references/accessibility-checklist.md](references/accessibility-checklist.md) — WCAG 2.2 AA, what automation never catches
 - [references/ux-heuristics.md](references/ux-heuristics.md) — the bar when no design source exists
-- [../../references/delivery-conventions.md](../../references/delivery-conventions.md) — `docs/work/{work-id}/` path rules
+- product-management `delivery-conventions.md` — `docs/work/{work-id}/` path rules (companion plugin)

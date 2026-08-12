@@ -82,7 +82,7 @@ First-party plugins from the digital-agency catalogue — installed via marketpl
 
 **Hub:** `agency-hub`
 
-**Practice plugins:** `brand-creative`, `product-management`, `content-marketing`, `product-design`, `search-optimisation` (shipped); `web-development`, `social-media` (pending)
+**Practice plugins:** `brand-creative`, `product-management`, `content-marketing`, `product-design`, `search-optimisation` (shipped); `product-engineering`, `social-media` (pending)
 
 **Interim catalogue (until practice plugins ship):** `engineering` skill plugin; named agents under `agents/`
 

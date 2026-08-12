@@ -1,0 +1,33 @@
+{
+  "name": "product-engineering",
+  "displayName": "Product Engineering",
+  "version": "0.2.0",
+  "description": "Complete product engineering practice in one install \u2014 setup interview, architecture, epic design, implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes product-management for planning cadence.",
+  "author": {
+    "name": "Digital Agency"
+  },
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "product-engineering",
+    "frontend",
+    "architecture",
+    "implementation",
+    "code-review",
+    "code-review-fix",
+    "merge-request",
+    "merge-request-babysit",
+    "docs-review",
+    "ralph-loop",
+    "qa",
+    "webops",
+    "setup",
+    "solution",
+    "adr",
+    "design",
+    "debug",
+    "deploy"
+  ],
+  "skills": "./skills/",
+  "hooks": "./hooks/claude/hooks.json"
+}

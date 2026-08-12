@@ -118,12 +118,12 @@ Map to **practice plugins** (MECE — one install per practice). Recommend; do n
 | Practice area | Practice plugin | Companion practice | Notes |
 |---|---|---|---|
 | `brand-creative` | `brand-creative` | none | Shipped — no companion install |
-| `web-development` | `web-development` | `product-management` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
+| `product-engineering` | `product-engineering` | `product-management` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
 | `content-marketing` | `content-marketing` | `product-management` | Shipped — run `/content-marketing:setup` after bootstrap; invoke `/product-management:tasks --product`, `/product-management:synthesize-research` for companion skills |
 | `social-media` | `social-media` | TBD | Practice plugin pending — interim: `content-marketing` skills for captions and curation |
 | `seo` | `search-optimisation` | `product-management` | Practice plugin shipped — run `/search-optimisation:setup` after bootstrap; invoke `/product-management:competitive-brief` for companion skill |
 
-When recommending a companion practice, name the skills it needs (e.g. `web-development` → `/product-management:tasks --product`, `/product-management:sprint-planning`; `content-marketing` → `/product-management:tasks --product`, `/product-management:synthesize-research`; `search-optimisation` → `/product-management:competitive-brief`). `brand-creative` never needs a companion.
+When recommending a companion practice, name the skills it needs (e.g. `product-engineering` → `/product-management:tasks --product`, `/product-management:sprint-planning`; `content-marketing` → `/product-management:tasks --product`, `/product-management:synthesize-research`; `search-optimisation` → `/product-management:competitive-brief`). `brand-creative` never needs a companion.
 
 Quick: one primary. Full: now vs later for each.
 
@@ -203,7 +203,7 @@ If deferred, set `seedMaterial.notes` accordingly.
 Close with a concrete path — not a pile of config files:
 
 1. **Install** the first recommended **practice plugin** from the marketplace.
-2. **`product-management` companion** — if that practice needs planning and cadence skills it does not own (e.g. `web-development` → install `product-management`, then use `/product-management:tasks --product` and `/product-management:sprint-planning`; `brand-creative` needs no companion).
+2. **`product-management` companion** — if that practice needs planning and cadence skills it does not own (e.g. `product-engineering` → install `product-management`, then use `/product-management:tasks --product` and `/product-management:sprint-planning`; `brand-creative` needs no companion).
 3. **Practice setup** — run that practice's `setup` skill (e.g. `/brand-creative:setup` for brand; `/product-management:setup` for delivery).
 4. **Bind targets** — complete `.agency/` scaffold and `target.json` in each target repo, social credentials when available.
 5. **Deploy** — launch the first scheduled agent (dry-run first):
@@ -231,9 +231,9 @@ Location: instance repo `config/.setup-resume.json` if instance exists; else per
 
 ## Worked example
 
-**Input:** Acme Co, single business, web-development + content, website target, quick mode.
+**Input:** Acme Co, single business, product-engineering + content, website target, quick mode.
 
-**Expected output:** `config/instance.json` complete; `targets/website.json` skeleton; `plugins.json` lists `agency-hub` + recommended practice plugins; squad charters for site/content; handoff to `/brand-creative:setup` and next-steps naming `core` if web-development was chosen.
+**Expected output:** `config/instance.json` complete; `targets/website.json` skeleton; `plugins.json` lists `agency-hub` + recommended practice plugins; squad charters for site/content; handoff to `/brand-creative:setup` and next-steps naming `core` if product-engineering was chosen.
 
 ## Outputs
 

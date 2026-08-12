@@ -3,7 +3,7 @@
 Consolidating `carinyaparc/skills` into `carinyaparc/digital-agency-plugins`, restructuring the
 plugin set, and dissolving `agency-hub`.
 
-**Status:** proposed — not started
+**Status:** Phase 1 done · Phase 2 done on branch · Phases 0/3/4 open
 **Decisions locked:** repo `carinya-plugins` · marketplace `carinya-plugins` · no hub · 8 plugins
 
 ---
@@ -164,52 +164,49 @@ Two names change; only one redirects.
 
 ## Phase 2 — Restructure
 
-One plugin per PR. Each uses `git mv` so history follows.
+### Status: DONE
 
-- [ ] **`product-management` ← `delivery-practice`**
+One plugin per commit (this branch). Each uses `git mv` so history follows.
+
+- [x] **`product-management` ← `delivery-practice`**
   - `git mv delivery-practice/skills/{tasks,backlog-refine,sprint-planning,sprint-retro,validate} product-management/skills/`
   - Delete both `skills-index` copies (they have already diverged from each other)
   - Merge the two `setup` interviews into one
   - Merge `delivery-conventions.md` into `product-management/references/`
   - Rewrite the cross-plugin handoff language — these are now internal calls
-- [ ] **`product-design`** (rename `ux-design`)
+- [x] **`product-design`** (rename `ux-design`)
   - Move `ux-design-review`, `ux-design-fix` in from `web-development`
   - `.mcp.json` gains `playwright` — this plugin has an engineering tool surface
     (`ux-design-review` drives a real browser, `ux-design-fix` writes code)
-- [ ] **`product-engineering`** (rename `web-development`)
+- [x] **`product-engineering`** (rename `web-development`)
   - Rename dir, `plugin.json` `name`/`displayName`/`keywords`, marketplace entry
   - Remove ux + ralph skills
   - Keep the QA cluster (`deploy-qa`, `run-automated-suite`, `exploratory-pass`,
     `document-defects`, `platform-health`) here for now — QA without engineering isn't a real
     install. Revisit as `product-qa` if this plugin gets unwieldy.
-  - Consider moving `docs-review` to `skills-index` or leaving it — it reviews any doc set,
-    including `product.md`, so it's cross-cutting
-- [ ] **`ralph-loop`** (extract)
-  - `git mv web-development/skills/{ralph-loop,ralph-loop-setup} ralph-loop/skills/`
-  - `git mv web-development/hooks ralph-loop/hooks` — takes `claude/stop-hook.sh`,
-    `cursor/ralph-{capture,stop}.sh`, `lib/ralph-common.sh`. Owning `lib/` outright sidesteps
-    the no-`../`-across-plugins constraint.
-  - Ships `ad-hoc` + `custom` presets only. `product-engineering` **contributes** the
-    `engineering-delivery` preset — the loop stays domain-agnostic, the preset ships with the
-    skills it calls.
-  - Strip ralph references from `web-development-conventions.md`, `delivery-conventions.md`,
-    both `plugin.json` keyword lists, and the READMEs
-- [ ] **`skills-index`** (new)
-  - Reconcile the two divergent copies into one
+  - Left `docs-review` in `product-engineering` (cross-cutting; revisit in Phase 3)
+- [x] **`ralph-loop`** (extract)
+  - `git mv` ralph skills + hooks + seed script into `ralph-loop/`
+  - Ships `ad-hoc` + `custom` presets only. `product-engineering` **contributes**
+    `engineering-delivery` at `assets/ralph-presets/`
+  - Strip ralph references from conventions, `plugin.json` keywords, and READMEs
+- [x] **`skills-index`** (new)
+  - Reconcile the two divergent copies into `/skills-index:find`
   - Rewrite install-aware: route to installed, offer install commands for the rest
   - Absorb `related-skills-surfacer`
-- [ ] **`skill-authoring`** (new)
-  - `skills-qa` + everything ported in Phase 0
-- [ ] **Dissolve `agency-hub`**
+- [x] **`skill-authoring`** (new)
+  - `skills-qa` + `agency-skill-design-framework.md` (Phase 0 tooling still pending)
+- [x] **Dissolve `agency-hub`**
   - Delete `registry-browser`, `skill-installer`, `auto-updater`, `disable`, `uninstall`,
     `skill-manager`
   - Fold `setup` into each practice's `setup` as an idempotent bootstrap
-  - Flip the contract line in all 8 `setup` skills and in `practice-setup-framework.md`:
+  - Flip the contract line in practice `setup` skills and in `practice-setup-framework.md`:
     "Does not write `config/instance.json` — owned by `agency-hub:setup`" →
     "Writes `config/instance.json` if absent"
   - `git rm -r agency-hub`, remove from both marketplace files
 
-**Exit:** 8 plugin dirs, no `agency-hub`, `plugin-check.py` green.
+**Exit:** 9 plugin dirs (table above; locked "8" predated `skill-authoring`), no `agency-hub`,
+`plugin-check.py` / `validate.py` green.
 
 ---
 

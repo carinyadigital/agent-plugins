@@ -100,5 +100,5 @@ Covers the full PM workflow from Anthropic's
 [product-management plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management)
 — write-spec, roadmap, stakeholder-update, synthesize-research, competitive-brief,
 metrics-review, product-brainstorming — **plus** a dedicated `product` strategy
-skill and the former delivery-practice skills (`tasks`, `backlog-refine`,
+skill and the delivery skills (`tasks`, `backlog-refine`,
 `sprint-planning`, `sprint-retro`, `validate`).

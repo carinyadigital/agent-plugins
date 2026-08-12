@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Phase 0 authoring tooling ported to `skill-authoring`; Ralph hook tests in `ralph-loop/scripts/`.
 - CI gates: `validate.py` (plugins + skills), `validate_ralph.py`, mutation tests.
-- Validator split: `scripts/validate_plugins.py` + `scripts/validate_skills.py` + `validate_lib.py`; `plugin-check.py` shims to scoped plugins mode; agent contracts + orphan SKILL.md enforced.
+- Validator split: `scripts/validate_plugins.py` + `scripts/validate_skills.py` + `validate_lib.py`; agent contracts + orphan SKILL.md enforced.
 - `docs/MIGRATION.md` removed — see `docs/CROSS-PLUGIN-CONTRACTS.md`.
 
 ## [2026-08-12] — Phase 3 cutover + skills sync (v0.4.0)
@@ -71,7 +71,7 @@ First tagged MECE practice-plugin catalogue (`<plugin>-v0.1.0`): practice-setup 
 
 - MCP connectors moved into each practice's `.mcp.json` (standalone connector plugins / `connectors/` removed).
 - `.agents/` maintainer tooling removed — steering/epics → `carinyaparc-space`.
-- Added `scripts/validate.py`, `plugin-check.py`, CI (`validate.yml`), `tests/test_validate.py`.
+- Added `scripts/validate.py`, CI (`validate.yml`), `tests/test_validate.py`.
 - Removed skill sync hooks, `agency-builder-hub`, `agency-core` (MCP folded into practices).
 
 ## [0.1.0] - 2026-06-21

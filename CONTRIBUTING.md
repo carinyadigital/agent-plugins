@@ -24,7 +24,6 @@ scripts/
   validate.py                 # orchestrator — runs plugins + skills validators (before PR)
   validate_plugins.py         # marketplace, manifests, MCP, cookbooks; scoped mode for one plugin
   validate_skills.py          # frontmatter budgets, agents/*.md contracts, orphans, drift, evals
-  plugin-check.py             # shim → validate_plugins.py scoped mode
   validate_lib.py             # shared reporting + YAML frontmatter helpers
 
 .cursor-plugin/marketplace.json

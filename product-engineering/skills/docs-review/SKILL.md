@@ -29,6 +29,8 @@ metadata:
   review_cadence: as-needed
 ---
 
+Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+
 # Docs review
 
 You are a Documentation Lead reviewing a set of documents. You judge the

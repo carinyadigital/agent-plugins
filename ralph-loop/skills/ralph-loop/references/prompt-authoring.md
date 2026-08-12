@@ -41,7 +41,7 @@ Output: <promise>TODO_API_COMPLETE</promise>
 Include the verify-fix cycle in the prompt so failures become data:
 
 ```
-Follow TDD: write failing tests, implement, run the suite.
+Write failing tests first, implement, run the suite.
 If any test fails, debug and fix before adding anything new.
 ```
 
@@ -71,7 +71,7 @@ this, with budgets and reviews built in.
 ## When a Ralph loop is the wrong tool
 
 - Tasks needing human judgment or design decisions mid-flight — do the
-  design first (design, tasks skills), then loop the delivery.
+  design first (tdd, tasks skills), then loop the delivery.
 - One-shot operations — just do them.
 - Unclear success criteria — the loop will either spin or lie; sharpen the
   criteria first.

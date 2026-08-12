@@ -72,14 +72,41 @@ are never touched.
 
 ## Promise detection
 
-The `done` sentinel is the primary signal on both agents; text scanning is the
-fallback.
+Claude and Cursor each have exactly one completion-detection mechanism, not a
+primary and a fallback of each other — they use it because it is the only one
+the platform's hooks make available to that agent.
 
-That ordering matters. Claude Code has no response hook, so the fallback reads
-the transcript, and a turn ending on a tool call has no text block to scan. A
-loop that delegates every step to a sub-agent ends most turns on a tool call.
-The old implementation read only the last transcript line, so it could detect
-completion only on turns that happened to end in prose.
+- **Cursor**'s Stop hook receives no response text, so it cannot scan
+  anything itself. Detection happens earlier, in the `afterAgentResponse`
+  hook (`ralph-capture.sh`), which scans the response as it is produced and
+  writes the `done` sentinel on a match. The Stop hook only checks whether
+  that file exists.
+- **Claude Code** has no `afterAgentResponse` equivalent, so there is no
+  sentinel to write. Its Stop hook scans the transcript directly — the only
+  point at which it has access to the assistant's text at all.
+
+Text scanning must find text behind trailing tool calls: a turn ending on a
+tool call has no text block in that position, and a loop that delegates every
+step to a sub-agent ends most turns on a tool call. An early implementation
+read only the last transcript line and so could detect completion only on
+turns that happened to end in prose.
+
+Scanning must also be scoped to the CURRENT turn and anchored to the end of
+the message, or it detects the wrong thing in two different ways:
+
+- **Unscoped** (no turn boundary), it can reach past the current turn into an
+  earlier iteration — or an earlier, already-finished loop — and find a stale
+  promise nobody made this run, stopping a fresh loop at iteration 1. Scoping
+  to the current turn uses the transcript's own structure: every Ralph
+  continuation is a Stop-hook "block" whose `reason` Claude Code re-injects as
+  a genuine new user turn, which is an unambiguous boundary.
+- **Unanchored** (bare substring match), it fires on the model merely
+  *mentioning* its own stop condition — "I will only output
+  `<promise>DONE</promise>` once every task is committed" contains the tag
+  without the turn being complete. Requiring the tag to be alone on the
+  message's final line rejects a mention (there is always more text on that
+  line afterward) while still matching a genuine completion turn, which ends
+  on the tag.
 
 Comparison is literal, not glob. A promise containing `*` or `[` would
 otherwise pattern-match and end the loop early.

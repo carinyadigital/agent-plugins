@@ -10,7 +10,9 @@ The `setup` skill copies or updates the user config at:
 Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
-Engineering artefacts (solution, work/, ADRs) live in the target repo `docs/` tree. Repo binding stays in `.agency/target.json`.
+Engineering artefacts (`docs/work/`, reviews) live in the target repo `docs/` tree.
+Architecture (`docs/architecture/`) is owned by the `architecture` companion.
+Repo binding stays in `.agency/target.json`.
 Brand guide is read from the resolved brand path — see references/product-engineering-conventions.md.
 -->
 
@@ -26,7 +28,7 @@ Brand guide is read from the resolved brand path — see references/product-engi
 
 ## Who's using this
 
-- **Default persona:** [PLACEHOLDER — frontend-engineer | senior-frontend-engineer | principal-frontend-engineer | principal-architect | qa-engineer | webops-engineer | merged]
+- **Default persona:** [PLACEHOLDER — frontend-engineer | senior-frontend-engineer | principal-frontend-engineer | qa-engineer | webops-engineer | merged]
 - **Team size:** [PLACEHOLDER — solo | small | multi-squad]
 
 ---
@@ -77,7 +79,6 @@ Brand guide is read from the resolved brand path — see references/product-engi
 - **Frontend Engineer surface:** [PLACEHOLDER — primary | secondary | merged]
 - **Senior Frontend Engineer surface:** [PLACEHOLDER — primary | secondary | merged]
 - **Principal Frontend Engineer surface:** [PLACEHOLDER — primary | secondary | merged]
-- **Principal Architect surface:** [PLACEHOLDER — primary | secondary | merged]
 - **QA Engineer surface:** [PLACEHOLDER — primary | secondary | merged]
 - **WebOps Engineer surface:** [PLACEHOLDER — primary | secondary | merged]
 

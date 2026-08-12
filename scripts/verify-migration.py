@@ -21,6 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 PLUGIN_DIRS = (
+    "architecture",
     "brand-creative",
     "content-marketing",
     "product-design",
@@ -33,6 +34,7 @@ PLUGIN_DIRS = (
 )
 
 SETUP_PLUGINS = (
+    "architecture",
     "brand-creative",
     "content-marketing",
     "product-design",

@@ -60,7 +60,8 @@ co-install. Document in CONNECTORS.md.
 | User intent | Skill | Notes |
 | ----------- | ----- | ----- |
 | Low-fidelity page or flow layout | **wireframe** | Writes to `<design-dir>/` |
-| Epic implementation spec, ADRs | `/product-engineering:tdd` | Technical design — not this practice |
+| Epic implementation spec | `/product-engineering:tdd` | Technical design — not this practice |
+| System architecture / ADRs | `/architecture:solution`, `/architecture:adr` | Architecture practice |
 | Visual brand tokens, colour, type | `/brand-creative:brand-guide` | Brand practice |
 | Usability review, research synthesis | — | Deferred in v1 — not shipped |
 

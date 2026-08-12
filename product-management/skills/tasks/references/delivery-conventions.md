@@ -146,6 +146,8 @@ moving it (never by writing a second copy alongside).
 | Phases, exit criteria | **roadmap** |
 | Epics, work paths, Now scope | **tasks --product** |
 | `tdd.md` (technical design) for one work item | **tdd** |
+| System architecture (`solution.md`) | **/architecture:solution** |
+| ADR plan / write / review | **/architecture:adr** |
 | `tasks.md`, stories, Gherkin AC | **tasks** |
 | Decompose any spec or RFC into a backlog | **tasks** |
 | Groom a backlog, check sprint readiness | **backlog-refine** |

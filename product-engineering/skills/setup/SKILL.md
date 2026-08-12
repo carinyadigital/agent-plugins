@@ -3,7 +3,7 @@ name: setup
 description: >
   Web development practice setup interview — detects or creates .agency/target.json
   binding, reads instance profile from `config/instance.json` when present, interviews tech stack, deployment
-  platform, connectors, and persona preference (six engineering personas vs merged),
+  platform, connectors, and persona preference (five engineering personas vs merged),
   writes practice profile. Use on first install on first install, when the user says
   "set up web development" or "bind target repo", or to redo engineering defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
@@ -125,14 +125,17 @@ Hosting provider, CI/CD pipeline, observability/error tracking when configured.
 
 #### 3d — Persona preference (real branch — not cosmetic)
 
-Does the customer want the six engineering personas as genuinely distinct surfaces, or merged into one working style?
+Does the customer want the five engineering personas as genuinely distinct surfaces, or merged into one working style?
 
 - **One-person shop** → default merged; greet as single engineering partner.
 - **Larger team** → default distinct; route to persona-appropriate skills.
 
 Record which persona greets the user by default.
 
-#### 3e — Companion practice
+#### 3e — Companion practices
+
+If system architecture or ADRs are needed, recommend installing `architecture` and
+invoking `/architecture:solution` / `/architecture:adr` — do not bundle those skills here.
 
 If backlog, task AC, sprint, or epic validation is needed during implementation, recommend installing `product-management` and invoking `/product-management:tasks --product`, `/product-management:tasks`, `/product-management:sprint-planning`, and `/product-management:validate` — do not bundle those skills here.
 
@@ -163,11 +166,11 @@ Close with persona-appropriate handoff:
 2. **Review** — `/product-engineering:code-review <branch>`
 3. **MR** — `/product-engineering:merge-request`
 
-**Principal Architect path:**
+**Architecture companion** (when system design is needed):
 
-1. **Solution** — `/product-engineering:solution`
-2. **Technical design (tdd)** — `/product-engineering:tdd <work-id>`
-3. **ADR** — `/product-engineering:adr write`
+1. **Solution** — `/architecture:solution`
+2. **ADR** — `/architecture:adr write`
+3. **Technical design (tdd)** — `/product-engineering:tdd <work-id>`
 
 **QA Engineer path:**
 
@@ -203,7 +206,7 @@ Location: `<instance-root>/config/.product-engineering-setup-resume.json` if ins
 
 **Input:** Target repo with Next.js + TypeScript detected; `--quick`; solo operator; merged persona; Vercel hosting; `.agency/target.json` created on confirmation.
 
-**Expected output:** Practice profile at personal config path with stack, deployment, and merged persona recorded; target binding file written; handoff to `/product-engineering:implement` or `/product-engineering:solution`.
+**Expected output:** Practice profile at personal config path with stack, deployment, and merged persona recorded; target binding file written; handoff to `/product-engineering:implement` or `/architecture:solution`.
 
 ## Outputs
 

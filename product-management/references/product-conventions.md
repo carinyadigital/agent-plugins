@@ -64,15 +64,16 @@ stay under `.agency/` permanently.
 
 ## Companion practices (cross-plugin)
 
-Architecture and engineering skills live in `product-engineering`
-(`/product-engineering:solution`, `tdd`, `implement`, `code-review`, `docs-review`, …).
+Architecture skills live in `architecture` (`/architecture:solution`,
+`/architecture:adr`). Engineering skills live in `product-engineering`
+(`/product-engineering:tdd`, `implement`, `code-review`, `docs-review`, …).
 
-When `product-engineering` is not installed, continue from user input. At
-architecture boundaries:
+When companions are not installed, continue from user input. At architecture
+boundaries:
 
 ```text
-Install: /plugin install product-engineering@carinya-plugins
-Then run: /product-engineering:solution
+Install: /plugin install architecture@carinya-plugins
+Then run: /architecture:solution
 ```
 
 ## Agency layout notes

@@ -6,15 +6,16 @@ Plugin files use `~~category` as a placeholder for whatever tool the user connec
 
 Each practice bundles a **minimal default** in `.mcp.json` — one or two servers most relevant to that practice. Add more entries for your stack; skills fall back gracefully when a category is not connected.
 
-## Companion practice (recommended co-install)
+## Companion practices (recommended co-install)
 
 | Practice | Relationship | Invoke |
 | -------- | ------------ | ------ |
+| **architecture** | Companion practice | `/architecture:solution`, `/architecture:adr` |
 | **product-management** | Companion practice | `/product-management:tasks --product`, `/product-management:tasks`, `/product-management:backlog-refine`, `/product-management:sprint-planning`, `/product-management:sprint-retro`, `/product-management:validate` |
 
-Install `product-management` alongside this plugin when implementation needs backlog
-alignment, task AC, sprint cadence, or epic sign-off. Do not bundle duplicate copies
-of those skills here.
+Install `architecture` alongside this plugin when writing `solution.md` or ADRs.
+Install `product-management` when implementation needs backlog alignment, task AC,
+sprint cadence, or epic sign-off. Do not bundle duplicate copies of those skills here.
 
 ## Bundled in `.mcp.json`
 

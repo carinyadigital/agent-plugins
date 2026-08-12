@@ -310,6 +310,11 @@ class Validator:
             for skill_dir in product_engineering_skills.iterdir():
                 if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                     sources[skill_dir.name] = skill_dir
+        architecture_skills = ROOT / "architecture" / "skills"
+        if architecture_skills.is_dir():
+            for skill_dir in architecture_skills.iterdir():
+                if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
+                    sources[skill_dir.name] = skill_dir
         ralph_loop_skills = ROOT / "ralph-loop" / "skills"
         if ralph_loop_skills.is_dir():
             for skill_dir in ralph_loop_skills.iterdir():
@@ -337,6 +342,7 @@ class Validator:
         paths.extend(sorted(ROOT.glob("brand-creative/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-management/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-engineering/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("architecture/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("ralph-loop/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("skills-index/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("skill-authoring/skills/*/SKILL.md")))
@@ -731,6 +737,7 @@ class Validator:
             (ROOT / "brand-creative", "brand-creative/skills/*/*.md"),
             (ROOT / "product-management", "product-management/skills/*/*.md"),
             (ROOT / "product-engineering", "product-engineering/skills/*/*.md"),
+            (ROOT / "architecture", "architecture/skills/*/*.md"),
             (ROOT / "ralph-loop", "ralph-loop/skills/*/*.md"),
             (ROOT / "skills-index", "skills-index/skills/*/*.md"),
             (ROOT / "skill-authoring", "skill-authoring/skills/*/*.md"),
@@ -747,6 +754,7 @@ class Validator:
                 "brand-creative",
                 "product-management",
                 "product-engineering",
+                "architecture",
                 "ralph-loop",
                 "skills-index",
                 "skill-authoring",
@@ -1107,10 +1115,11 @@ class Validator:
             self.pass_("No obsolete .digital-agency/ path references")
 
     CROSS_PLUGIN_SIBLING_RE = re.compile(
-        r"\.\./(?P<plugin>product-engineering|product-management|product-design|"
+        r"\.\./(?P<plugin>product-engineering|architecture|product-management|product-design|"
         r"brand-creative|content-marketing|search-optimisation|ralph-loop|"
         r"skills-index|skill-authoring|agency-hub|web-development|"
         r"delivery-practice|ux-design)/"
+        r"(?:skills|references|assets|hooks|scripts|\.claude-plugin|\.cursor-plugin)/"
     )
     CROSS_PLUGIN_PATH_ALLOWLIST = frozenset(
         {

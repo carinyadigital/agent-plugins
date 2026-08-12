@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Architecture practice split
+
+- **New `architecture` plugin (v0.5.0):** `setup`, `solution`, `adr` — owns `docs/architecture/`.
+- **BREAKING (`product-engineering` v0.5.0):** `solution` and `adr` moved to `architecture`. Invoke `/architecture:solution` and `/architecture:adr`. `tdd`, `docs-review`, and `tech-debt` stay in `product-engineering`. Principal Architect persona moves to `architecture`; engineering keeps five personas.
+- Companions, `skills-index:find`, and `docs/CROSS-PLUGIN-CONTRACTS.md` updated for the new edge.
+
 ### Migration verification complete
 
 - Phase 0 authoring tooling ported to `skill-authoring`; Ralph hook tests in `ralph-loop/scripts/`.

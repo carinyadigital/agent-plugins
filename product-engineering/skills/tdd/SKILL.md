@@ -30,7 +30,7 @@ argument-hint: "<work-id> [--mode skeleton|full] [--context <notes>]"
 metadata:
   author: Carinya Parc
   version: "4.0"
-  owner: architecture
+  owner: product-engineering
   work_shape: generate-draft
   output_class: draft-for-review
   review_cadence: as-needed
@@ -134,9 +134,9 @@ Save to `docs/work/{work-id}/tdd.md`. Use [assets/tdd.template.md](assets/tdd.te
 ## ADR candidates
 
 Decisions recorded in `tdd.md` do not reach the architecture register on
-their own. After the work item ships, run `adr plan <work-id>` to harvest
-them — it triages each candidate into promote, inline, or defer, and hands
-the promoted ones to **adr write**.
+their own. After the work item ships, run `/architecture:adr plan <work-id>` to
+harvest them — it triages each candidate into promote, inline, or defer, and
+hands the promoted ones to `/architecture:adr write`.
 
 ## Supporting files
 
@@ -145,6 +145,8 @@ the promoted ones to **adr write**.
 
 ## Related skills
 
-- `tasks`, `solution`, `adr`
+- `/product-management:tasks` — stories and AC
+- `/architecture:solution` — system architecture
+- `/architecture:adr` — ADR harvest / write after delivery
 - `implement` — test-driven development, i.e. actually writing the tests and code
 - `docs-review` — review or critique an existing tdd.md

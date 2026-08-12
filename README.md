@@ -34,7 +34,8 @@ Install the practice plugins that match your work. The first practice `setup` wr
 | [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:setup` |
 | [product-design](./product-design) | Wireframes, live UX review, and UX design fix | `/product-design:setup` |
 | [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
-| [product-engineering](./product-engineering) | Architecture, implementation, code review, QA, platform ops | `/product-engineering:setup` |
+| [architecture](./architecture) | Solution design and ADRs | `/architecture:setup` |
+| [product-engineering](./product-engineering) | Technical design (tdd), implementation, code review, QA, platform ops | `/product-engineering:setup` |
 | [ralph-loop](./ralph-loop) | Self-referential delivery loops (ad-hoc / custom; engineering preset from product-engineering) | `/ralph-loop-setup` |
 | [skills-index](./skills-index) | Install-aware skill router | `/skills-index:find` |
 | [skill-authoring](./skill-authoring) | Skill quality gate (skills-qa) | `/skill-authoring:skills-qa` |
@@ -44,7 +45,7 @@ Install the practice plugins that match your work. The first practice `setup` wr
 | If you are… | Install next |
 |---|---|
 | Standing up a new client or product | `brand-creative` → `product-management` |
-| Shipping a website or app | `product-management` + `product-engineering` (+ `product-design` for new UI) |
+| Shipping a website or app | `product-management` + `architecture` + `product-engineering` (+ `product-design` for new UI) |
 | Running content and social | `brand-creative` → `content-marketing` (+ `search-optimisation` for SEO) |
 | SEO-only engagement | `search-optimisation` (+ `product-management` for competitive brief) |
 
@@ -90,14 +91,14 @@ Personas are **job titles that map to slash commands** inside practice plugins �
 |---|---|---|
 | **Product Manager** | Product strategy, roadmap, specs from problem statements | `/product-management:product` |
 | **Delivery Lead** | Tasks/backlog decomposition, sprint planning, validation | `/product-management:sprint-planning` |
-| **Architect** | System architecture, ADRs, work-item technical design | `/product-engineering:solution` |
+| **Architect** | System architecture and ADRs | `/architecture:solution` |
 | **Engineer** | Implement tasks against approved design and AC | `/product-engineering:implement` |
 | **Reviewer** | Peer code review against design docs and AC | `/product-engineering:code-review` |
 | **Release gate** | Final technical sign-off on open PRs | `/product-engineering:final-code-review` |
 | **UX Designer** | Wireframes, live UX review, UX fixes | `/product-design:wireframe` |
 | **QA** | QA deploy, automated suite, exploratory pass | `/product-engineering:exploratory-pass` |
 
-Engineering skills share one library in `product-engineering`. Seniority labels (peer review vs final gate) reflect review depth, not separate plugins.
+Engineering skills share one library in `product-engineering`. Architecture (`solution`, `adr`) lives in `architecture`. Seniority labels (peer review vs final gate) reflect review depth, not separate plugins.
 
 ### Adjacent practices (optional)
 
@@ -127,7 +128,7 @@ Each persona below is named for the job it does. Start with [entry points by tea
 | **Media Analyst** | Vision analysis — subjects, season, mood, quality | `content-marketing` | `/content-marketing:analyse-media` |
 | **Caption Writer** | Caption variants and channel copy | `content-marketing` | `/content-marketing:write-captions` |
 | **Technical SEO Auditor** | Production audit → tracked issues | `search-optimisation` | `/search-optimisation:technical-seo-audit` |
-| **ADR Author** | Architecture decision register and ADR files | `product-engineering` | `/product-engineering:adr write` |
+| **ADR Author** | Architecture decision register and ADR files | `architecture` | `/architecture:adr write` |
 | **Epic Designer** | Work-item technical design (TDD) | `product-engineering` | `/product-engineering:tdd` |
 | **MR Author** | Merge request description from the branch | `product-engineering` | `/product-engineering:merge-request` |
 | **Docs Steward** | Document-set quality and consistency review | `product-engineering` | `/product-engineering:docs-review` |
@@ -150,7 +151,8 @@ What's in the repo:
 ```
 brand-creative/           # brand voice + visual identity
 product-management/       # product, roadmap, specs, research, metrics, backlog, sprint, validate
-product-engineering/      # solution, adr, tdd, implement, review, QA, platform
+architecture/             # solution, adr
+product-engineering/      # tdd, implement, review, QA, platform
 product-design/           # wireframes, ux-design-review, ux-design-fix
 content-marketing/        # calendar, curation, media analysis, CMS seeds
 search-optimisation/      # keyword research, technical audit, content SEO review
@@ -293,7 +295,8 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 
 | Plugin | What it adds |
 |---|---|
-| **[product-engineering](./product-engineering)** | Architecture (`solution`, `adr`), technical design (`tdd`), implementation, peer and final code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Six personas share one library; `product-management` is the recommended companion for backlog, tasks, sprint, and validate. |
+| **[architecture](./architecture)** | Solution design (`solution`) and architecture decision records (`adr`). One persona (Principal Architect). Companion to `product-engineering` for work-item `tdd` and implementation. |
+| **[product-engineering](./product-engineering)** | Technical design (`tdd`), implementation, peer and final code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Five personas share one library; `architecture` and `product-management` are recommended companions. |
 
 ### Platform
 
@@ -303,7 +306,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 | **[skills-index](./skills-index)** | Install-aware skill router — `/skills-index:find` |
 | **[skill-authoring](./skill-authoring)** | Skill quality gate — `/skill-authoring:skills-qa` |
 
-**Companion practices:** `content-marketing` invokes `/product-management:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `product-engineering` invokes `/product-management:tasks` and related skills for planning cadence during implementation. No direction requires the companion installed — skills degrade gracefully and document the pairing.
+**Companion practices:** `content-marketing` invokes `/product-management:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `architecture` invokes `/product-engineering:tdd` and `/product-engineering:docs-review` for work-item design and doc quality. `product-engineering` invokes `/architecture:solution` / `/architecture:adr` and `/product-management:tasks` for architecture and planning cadence. No direction requires the companion installed — skills degrade gracefully and document the pairing.
 
 ## MCP connectors
 
@@ -316,6 +319,7 @@ Each practice plugin bundles a **minimal default** — one or two MCP servers mo
 | **content-marketing** | Canva | creative / design |
 | **product-design** | Figma, Playwright | design, browser automation |
 | **search-optimisation** | Ahrefs | SEO intelligence |
+| **architecture** | GitHub | source control (ADR harvest) |
 | **product-engineering** | GitHub, Playwright, Context7 | source control, browser automation, framework docs |
 
 No server is duplicated across plugins. Co-install companion practices or edit `.mcp.json` to add Slack, Notion, Vercel, Sentry, and other common servers — see each practice's CONNECTORS.md for the full placeholder map and suggested additions.
@@ -418,13 +422,19 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | `/search-optimisation:technical-seo-audit` | technical-seo-audit | Production audit → tracked issues |
 | `/search-optimisation:content-seo-review` | content-seo-review | On-page SEO review of content seeds |
 
+### architecture
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/architecture:setup` | setup | Learns target binding, architecture scope, companions |
+| `/architecture:solution` | solution | write — `docs/architecture/solution.md`; review via `/product-engineering:docs-review` |
+| `/architecture:adr` | adr | plan, write, review — `docs/architecture/decisions/` |
+
 ### product-engineering
 
 | Command | Skill | What it does |
 |---|---|---|
 | `/product-engineering:setup` | setup | Learns stack, personas, target binding, connectors |
-| `/product-engineering:solution` | solution | write — `docs/architecture/solution.md`; review via `docs-review` |
-| `/product-engineering:adr` | adr | plan, write, review — `docs/architecture/decisions/` |
 | `/product-engineering:tdd` | tdd | write — `docs/work/{work-id}/tdd.md`; review via `docs-review` |
 | `/product-engineering:implement` | implement | Implement a task against approved tdd.md and AC |
 | `/product-engineering:code-review` | code-review | Read-only peer review against tdd.md and tasks |

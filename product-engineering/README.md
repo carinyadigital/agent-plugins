@@ -1,18 +1,19 @@
 # product-engineering
 
 Root-level **practice plugin** — one install delivers the complete web engineering
-service: setup interview, architecture, technical design (tdd), implementation, code review, QA,
+service: setup interview, technical design (tdd), implementation, code review, QA,
 and platform operations. Self-contained under the MECE practice model: edit skills
 here only; nothing is vendored from elsewhere.
 
 Install standalone or after practice `setup` (writes `config/instance.json` if absent) recommends it. Declare
-`product-management` as a **companion practice** for backlog, tasks, sprint, and
-validate — invoke `/product-management:tasks --product` and related skills directly rather
+`architecture` as a **companion practice** for `solution` / `adr`, and
+`product-management` for backlog, tasks, sprint, and validate — invoke
+`/architecture:solution` and `/product-management:tasks --product` directly rather
 than bundling duplicate copies.
 
 ## Personas
 
-Six personas share one skill library. Choose the default persona during
+Five personas share one skill library. Choose the default persona during
 `setup` (merged for one-person shops; distinct for larger teams).
 
 | Persona | Primary skills | Focus |
@@ -20,22 +21,26 @@ Six personas share one skill library. Choose the default persona during
 | **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `ux-design-fix` | Build — UI, client state, styling |
 | **Senior Frontend Engineer** | `code-review`, `tdd`, `ux-design-review` | Peer review — diffs vs design and AC |
 | **Principal Frontend Engineer** | `final-code-review`, `code-review`, `tdd` | Final gate — architecture and AC on open PRs |
-| **Principal Architect** | `solution`, `adr`, `tdd`, `docs-review` | Architecture — solution, ADRs, work-item design |
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
+
+System solution design and ADRs live in the **architecture** companion
+(`/architecture:solution`, `/architecture:adr`).
 
 Invoke skills directly — there is no separate agent plugin per persona:
 
 ```
 /product-engineering:implement CHK01-01
 /product-engineering:code-review feat/checkout
-/product-engineering:solution
+/product-engineering:tdd checkout-foundation
 /product-engineering:deploy-qa feat/my-branch
 ```
 
-For planning cadence during implementation, invoke the companion practice:
+For architecture and planning cadence:
 
 ```
+/architecture:solution
+/architecture:adr plan
 /product-management:backlog-refine
 /product-management:tasks checkout-foundation
 /product-management:sprint-planning 3
@@ -66,8 +71,6 @@ target binding.
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile, target binding, stack defaults |
-| **solution** | write — `docs/architecture/solution.md`; review via `docs-review` |
-| **adr** | plan, write, review — `docs/architecture/decisions/` |
 | **tdd** | write — `docs/work/{work-id}/tdd.md`; review via `docs-review` |
 | **implement** | Implement a task against approved tdd.md and AC |
 | **code-review** | Read-only peer review; state in `docs/reviews/` |
@@ -98,6 +101,7 @@ not exist, ask the user for design guidance inline.
 - **Instance profile** (optional) — practice `setup` (writes `config/instance.json` if absent) writes
   `config/instance.json`; setup reads cadence and target hints without
   re-asking.
+- **architecture** (recommended companion) — `solution`, `adr`; see CONNECTORS.md.
 - **product-management** (recommended companion) — tasks, backlog-refine, sprint-planning, sprint-retro, validate;
   see CONNECTORS.md.
 - **Connectors** (optional) — source control, hosting, observability, and chat MCP
@@ -106,7 +110,7 @@ not exist, ask the user for design guidance inline.
 ## After setup
 
 1. Use Frontend Engineer skills for build; Senior/Principal FE for review gates.
-2. Use Principal Architect skills upstream of implementation.
+2. Use `/architecture:solution` / `/architecture:adr` upstream of implementation.
 3. Use QA and WebOps skills for validation and platform operations.
 4. Re-run `/product-engineering:setup --redo` to refresh engineering defaults.
 5. Read brand-guide from the resolved brand path before every UI implementation task.

@@ -44,6 +44,26 @@ When a UX design practice has produced wireframes or specs, read from
 `<instance-root>/design/` (or the path named by the user). Falls back to
 `docs/work/{work-id}/tdd.md` for work-item implementation specs (fall back to `.agency/work/` when reading legacy artefacts).
 
+## Companion practice (architecture)
+
+For system solution design and ADRs, invoke companion skills directly — do not
+bundle local copies:
+
+| Need | Invoke |
+| ---- | ------ |
+| System architecture (`solution.md`) | `/architecture:solution` |
+| ADR plan / write / review | `/architecture:adr` |
+
+Recommend `architecture` as a co-install. Document in CONNECTORS.md.
+
+When `architecture` is **not installed**, continue from existing
+`docs/architecture/` artefacts when present. At write boundaries:
+
+```text
+Install: /plugin install architecture@carinya-plugins
+Then run: /architecture:solution
+```
+
 ## Companion practice (delivery)
 
 For sprint participation, backlog grooming, task writing, and epic validation during
@@ -130,7 +150,7 @@ The TDD applies at whatever level the user names (`tdd CHK01`, `tdd JIRA-123`).
 
 ## Personas
 
-Six personas share one skill library. Choose the default persona during
+Five personas share one skill library. Choose the default persona during
 `setup` (merged for one-person shops; distinct for larger teams).
 
 | Persona | Primary skills | Focus |
@@ -138,19 +158,19 @@ Six personas share one skill library. Choose the default persona during
 | **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `ux-design-fix` | Build — UI, client state, styling |
 | **Senior Frontend Engineer** | `code-review`, `tdd`, `ux-design-review` | Peer review — diffs vs design and AC |
 | **Principal Frontend Engineer** | `final-code-review`, `code-review`, `tdd` | Final gate — architecture and AC on open PRs |
-| **Principal Architect** | `solution`, `adr`, `tdd`, `docs-review` | Architecture — solution, ADRs, work-item TDD |
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 
+System architecture (`solution`, `adr`) lives in the **architecture** companion.
 Work-item sign-off uses `/product-management:validate` (companion skill), not a local copy.
 
 ## Skill routing (near-misses)
 
 | User intent | Skill | Persona |
 | ----------- | ----- | ------- |
-| System architecture | **solution** | Principal Architect |
-| ADR write/review | **adr** | Principal Architect |
-| `tdd.md` for one work item | **tdd** | Senior FE / Principal FE / Architect |
+| System architecture | `/architecture:solution` | Companion — Principal Architect |
+| ADR write/review | `/architecture:adr` | Companion — Principal Architect |
+| `tdd.md` for one work item | **tdd** | Senior FE / Principal FE |
 | Implement code | **implement** | Frontend Engineer |
 | PR / branch code review | **code-review** | Senior FE / Principal FE |
 | Address review feedback | **code-review-fix** | Frontend Engineer |
@@ -164,9 +184,9 @@ Work-item sign-off uses `/product-management:validate` (companion skill), not a 
 When `product-design` is not installed: continue with code review only; recommend
 `/plugin install product-design@carinya-plugins` before UI-heavy work.
 | Run autonomous delivery loop | **/ralph-loop:ralph-loop** | Frontend Engineer |
-| Review a document set | **docs-review** | Principal Architect |
+| Review a document set | **docs-review** | Principal FE / any |
 | Bug investigation | **debug** | WebOps Engineer |
-| Technical debt audit | **tech-debt** | Principal Architect |
+| Technical debt audit | **tech-debt** | Principal FE / WebOps |
 | QA workspace prep | **deploy-qa** | QA / WebOps |
 | Run automated tests | **run-automated-suite** | QA Engineer |
 | Exploratory AC pass | **exploratory-pass** | QA Engineer |

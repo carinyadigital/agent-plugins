@@ -139,7 +139,7 @@ On bind (after separate confirmation per target repo), create:
   roadmap.md
   backlog.md
   work/                  ← epic folders created by delivery skills
-  architecture/          ← solution.md, decisions/ created by product-engineering skills
+  architecture/          ← solution.md, decisions/ created by architecture skills
   reviews/               ← agent byproducts (competitor-scan, metrics, digests); gitignored
 ```
 

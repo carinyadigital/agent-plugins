@@ -61,3 +61,9 @@ within the register the user targets.
    triages them into the register. Without a work item it surveys product.md
    and solution.md for decisions still to be made.
 3. [prompts/plan.prompt.md](prompts/plan.prompt.md) | [prompts/write.prompt.md](prompts/write.prompt.md) | [prompts/review.prompt.md](prompts/review.prompt.md).
+
+## Related skills
+
+- `/architecture:solution` — system architecture narrative
+- `/product-engineering:tdd` — work-item technical design (harvest source)
+- `/product-engineering:docs-review` — writing quality / cross-doc consistency

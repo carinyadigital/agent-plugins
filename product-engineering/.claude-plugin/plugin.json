@@ -1,8 +1,8 @@
 {
   "name": "product-engineering",
   "displayName": "Product Engineering",
-  "version": "0.4.0",
-  "description": "Complete product engineering practice in one install — setup interview, architecture, technical design (tdd), implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes product-management for planning cadence.",
+  "version": "0.5.0",
+  "description": "Complete product engineering practice in one install — setup interview, technical design (tdd), implementation, code review, QA, and platform operations. Five personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes architecture for solution/ADRs and product-management for planning cadence.",
   "author": {
     "name": "Digital Agency"
   },
@@ -11,7 +11,6 @@
     "engineering",
     "product-engineering",
     "frontend",
-    "architecture",
     "implementation",
     "code-review",
     "code-review-fix",
@@ -21,8 +20,6 @@
     "qa",
     "webops",
     "setup",
-    "solution",
-    "adr",
     "tdd",
     "debug",
     "deploy"

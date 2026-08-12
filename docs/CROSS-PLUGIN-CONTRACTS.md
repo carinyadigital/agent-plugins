@@ -29,8 +29,10 @@ fail with a slash-command reference.
 | `ralph-loop` | `product-design` | engineering-delivery preset invokes ux-design-review, ux-design-fix | Optional (UI tasks only) |
 | `ralph-loop` | `product-management` | engineering-delivery preset invokes validate | Yes for that preset |
 | `product-engineering` | self | implement reads tdd.md from tdd skill | Internal |
-| `product-management` | `product-engineering` | product/roadmap recommend solution, docs-review | Companion |
-| `product-management` | `product-engineering` | delivery skills route design/implement/review | Companion |
+| `product-management` | `architecture` | product/roadmap recommend solution | Companion |
+| `product-management` | `product-engineering` | product/roadmap recommend docs-review; delivery skills route design/implement/review | Companion |
+| `architecture` | `product-engineering` | solution/adr hand off to tdd, docs-review, implement | Companion |
+| `product-engineering` | `architecture` | tdd/implement cite solution; recommend solution/adr writes | Companion |
 | `product-engineering` | `product-management` | planning cadence, validate sign-off | Companion |
 | `product-engineering` | `product-design` | ux-design-review, ux-design-fix | Companion |
 | `product-design` | `product-engineering` | wireframe → implement; tdd.md for specs | Companion |
@@ -101,19 +103,46 @@ reading only — the `tdd` skill migrates it to `tdd.md` on update.
 
 ---
 
-## product-management → product-engineering:solution
+## product-management → architecture:solution
 
 Strategy skills (`product`, `roadmap`, `write-spec`) list architecture as a
 companion handoff.
 
 | Condition | Behaviour |
 | --------- | --------- |
-| `product-engineering` installed | Recommend `/product-engineering:solution` or `/product-engineering:docs-review` |
-| Not installed | Continue product work from user input. At architecture boundaries, say: `Install: /plugin install product-engineering@carinya-plugins` then `/product-engineering:solution` |
+| `architecture` installed | Recommend `/architecture:solution` |
+| Not installed | Continue product work from user input. At architecture boundaries, say: `Install: /plugin install architecture@carinya-plugins` then `/architecture:solution` |
+
+Document-set quality review stays on `product-engineering`:
+
+| Condition | Behaviour |
+| --------- | --------- |
+| `product-engineering` installed | Recommend `/product-engineering:docs-review` |
+| Not installed | Continue; recommend install when a docs quality pass is needed |
 
 Delivery skills route implementation to `/product-engineering:tdd`,
 `/product-engineering:implement`, etc. — see
 `product-management/references/delivery-conventions.md`.
+
+---
+
+## architecture ↔ product-engineering
+
+| Need | Invoke |
+| ---- | ------ |
+| System architecture | `/architecture:solution` |
+| ADRs | `/architecture:adr` |
+| Work-item `tdd.md` | `/product-engineering:tdd` |
+| Docs quality review | `/product-engineering:docs-review` |
+| Implementation | `/product-engineering:implement` |
+
+`implement` and `tdd` **read** `docs/architecture/solution.md` and ADRs via
+artefact consumption — no hard install dependency. Writing or updating those
+artefacts requires the `architecture` plugin (or manual edits).
+
+When `architecture` is not installed: continue engineering from existing
+architecture artefacts or user input; at write boundaries give the install
+message for `architecture`.
 
 ---
 

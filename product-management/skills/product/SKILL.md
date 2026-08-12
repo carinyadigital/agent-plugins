@@ -98,5 +98,5 @@ Markdown with YAML frontmatter. Use [assets/product.template.md](assets/product.
 
 - `/product-management:roadmap` — sequencing and phases
 - `/product-management:tasks` — epics and backlog decomposition
-- `/product-engineering:solution` — architecture (companion; if not installed: `/plugin install product-engineering@carinya-plugins`)
+- `/architecture:solution` — architecture (companion; if not installed: `/plugin install architecture@carinya-plugins`)
 - `/product-engineering:docs-review` — writing quality / cross-doc consistency (not strategic soundness)

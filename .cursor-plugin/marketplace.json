@@ -11,10 +11,16 @@
       "description": "Complete brand practice in one install — setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
     },
     {
+      "name": "architecture",
+      "displayName": "Architecture",
+      "source": "./architecture",
+      "description": "Architecture practice in one install — setup interview, solution design (arc42-lite), and ADRs. Writes to docs/architecture/. Companion to product-engineering for work-item tdd and implementation."
+    },
+    {
       "name": "product-engineering",
       "displayName": "Product Engineering",
       "source": "./product-engineering",
-      "description": "Complete product engineering practice in one install — setup interview, architecture, technical design (tdd), implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes product-management for planning cadence."
+      "description": "Complete product engineering practice in one install — setup interview, technical design (tdd), implementation, code review, QA, and platform operations. Five personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes architecture for solution/ADRs and product-management for planning cadence."
     },
     {
       "name": "ralph-loop",

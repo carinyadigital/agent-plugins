@@ -110,8 +110,8 @@ Markdown with YAML frontmatter. Save to the resolved path. Use
 
 ## Related skills
 
+- `/architecture:adr` — architecture decisions
 - `/product-management:product` — product strategy
 - `/product-management:tasks` — epics and work paths
 - `/product-engineering:tdd` — work-item technical design
-- `/product-engineering:adr` — architecture decisions
 - `/product-engineering:docs-review` — writing quality / cross-doc consistency

@@ -68,7 +68,7 @@ co-install. Document in CONNECTORS.md.
 
 | Content | Belongs in | Not in |
 | ------- | ---------- | ------ |
-| Page/flow layout, interaction notes | `<design-dir>/{page-or-flow}.md` | brand-guide, epic design.md |
+| Page/flow layout, interaction notes | `<design-dir>/{page-or-flow}.md` | brand-guide, epic tdd.md |
 | Visual tokens, colour, typography | `brand/brand-guide.md` | wireframe specs |
 | Epic implementation spec, file list | `docs/work/{work-id}/tdd.md` | wireframe specs |
 | Business strategy, personas | `docs/product/product.md` | wireframe specs |

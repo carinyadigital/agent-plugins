@@ -109,7 +109,7 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 | Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | design (cite only) |
 | ADR decisions | `docs/architecture/decisions/` | solution narrative |
 | Work-item implementation spec | `docs/work/{work-id}/tdd.md` | solution, backlog |
-| Task Gherkin (and optional EARS) | `docs/work/{work-id}/tasks.md` | backlog, design |
+| Task Gherkin (and optional EARS) | `docs/work/{work-id}/tasks.md` | backlog, the TDD |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
 
 ## Acceptance criteria
@@ -126,7 +126,7 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 | `full` | Sprint 2+ | 5–10 pages |
 
 Cite `solution.md §{N.M}` — do not re-narrate architecture in `tdd.md`.
-Design applies at whatever level the user names (`design CHK01`, `design JIRA-123`).
+The TDD applies at whatever level the user names (`tdd CHK01`, `tdd JIRA-123`).
 
 ## Personas
 
@@ -136,9 +136,9 @@ Six personas share one skill library. Choose the default persona during
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
 | **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `ux-design-fix` | Build — UI, client state, styling |
-| **Senior Frontend Engineer** | `code-review`, `design`, `ux-design-review` | Peer review — diffs vs design and AC |
-| **Principal Frontend Engineer** | `final-code-review`, `code-review`, `design` | Final gate — architecture and AC on open PRs |
-| **Principal Architect** | `solution`, `adr`, `design`, `docs-review` | Architecture — solution, ADRs, epic design |
+| **Senior Frontend Engineer** | `code-review`, `tdd`, `ux-design-review` | Peer review — diffs vs design and AC |
+| **Principal Frontend Engineer** | `final-code-review`, `code-review`, `tdd` | Final gate — architecture and AC on open PRs |
+| **Principal Architect** | `solution`, `adr`, `tdd`, `docs-review` | Architecture — solution, ADRs, work-item TDD |
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 

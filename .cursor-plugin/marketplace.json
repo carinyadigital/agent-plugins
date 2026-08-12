@@ -8,55 +8,55 @@
       "name": "brand-creative",
       "displayName": "Brand Creative",
       "source": "./brand-creative",
-      "description": "Complete brand practice in one install \u2014 setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
+      "description": "Complete brand practice in one install — setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
     },
     {
       "name": "product-engineering",
       "displayName": "Product Engineering",
       "source": "./product-engineering",
-      "description": "Complete product engineering practice in one install \u2014 setup interview, architecture, epic design, implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes product-management for planning cadence."
+      "description": "Complete product engineering practice in one install — setup interview, architecture, technical design (tdd), implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes product-management for planning cadence."
     },
     {
       "name": "ralph-loop",
       "displayName": "Ralph Loop",
       "source": "./ralph-loop",
-      "description": "Self-referential delivery loop \u2014 seed with ralph-loop-setup, run with ralph-loop. Ships ad-hoc and custom presets; product-engineering contributes the engineering-delivery preset. Includes Claude Code and Cursor stop hooks."
+      "description": "Self-referential delivery loop — seed with ralph-loop-setup, run with ralph-loop. Ships ad-hoc and custom presets; product-engineering contributes the engineering-delivery preset. Includes Claude Code and Cursor stop hooks."
     },
     {
       "name": "product-management",
       "displayName": "Product Management",
       "source": "./product-management",
-      "description": "Complete product management practice in one install \u2014 setup interview, product strategy and PRDs, roadmap, feature specs, research, metrics, stakeholder updates, tasks/backlog decomposition, sprint planning and retro, and epic validation. Personas: Product Manager and Delivery Lead. One owned skill library."
+      "description": "Complete product management practice in one install — setup interview, product strategy and PRDs, roadmap, feature specs, research, metrics, stakeholder updates, tasks/backlog decomposition, sprint planning and retro, and epic validation. Personas: Product Manager and Delivery Lead. One owned skill library."
     },
     {
       "name": "content-marketing",
       "displayName": "Content Marketing",
       "source": "./content-marketing",
-      "description": "Complete content practice in one install \u2014 setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes product-management for tasks and research synthesis."
+      "description": "Complete content practice in one install — setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes product-management for tasks and research synthesis."
     },
     {
       "name": "product-design",
       "displayName": "Product Design",
       "source": "./product-design",
-      "description": "Product design practice in one install \u2014 setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/. Bundles Figma and Playwright."
+      "description": "Product design practice in one install — setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/. Bundles Figma and Playwright."
     },
     {
       "name": "search-optimisation",
       "displayName": "Search Optimisation",
       "source": "./search-optimisation",
-      "description": "Complete search and technical SEO practice in one install \u2014 setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief."
+      "description": "Complete search and technical SEO practice in one install — setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief."
     },
     {
       "name": "skills-index",
       "displayName": "Skills Index",
       "source": "./skills-index",
-      "description": "Install-aware skill router \u2014 find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task."
+      "description": "Install-aware skill router — find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task."
     },
     {
       "name": "skill-authoring",
       "displayName": "Skill Authoring",
       "source": "./skill-authoring",
-      "description": "Skill authoring quality gate \u2014 skills-qa against the Agency Skill Design Framework. Phase 0 tooling (eval-grader, validate_skills, templates) lands here when ported."
+      "description": "Skill authoring quality gate — skills-qa against the Agency Skill Design Framework. Phase 0 tooling (eval-grader, validate_skills, templates) lands here when ported."
     }
   ]
 }

@@ -11,8 +11,8 @@ description: >
   backlog", "write the epics", "decompose checkout-foundation", "turn this
   RFC into tickets", "write tasks for CHK01", "write sub-tasks for JIRA-123",
   "what stories do we need". EARS with --ears. Do NOT use to groom an existing
-  backlog or check sprint readiness (backlog-refine), write design at any
-  level (design), write architecture (solution), phase the delivery (roadmap),
+  backlog or check sprint readiness (backlog-refine), write technical design at
+  any level (tdd), write architecture (solution), phase the delivery (roadmap),
   implement code (implement), or sign off a work item (validate).
 license: MIT
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
@@ -34,6 +34,8 @@ metadata:
   output_class: draft-for-review
   review_cadence: as-needed
 ---
+
+Prefer `docs/` artefact paths; fall back to `.agency/` when reading legacy inputs. Write only under `docs/`.
 
 # Tasks
 
@@ -58,17 +60,11 @@ determines which artefacts you write.
 | Resolved type | Source | Writes |
 | ---- | ------ | ------ |
 | `--product` or no argument | `product.md`, `roadmap.md`, `solution.md` | `docs/product/backlog.md` (epics) — filesystem-only; tracker-backed repos create epics/initiatives in the tracker instead |
-| `epic` | Backlog row or tracker epic + `docs/work/{work-id}/design.md` | `docs/work/{work-id}/tasks.md` (stories + tasks) |
+| `epic` | Backlog row or tracker epic + `docs/work/{work-id}/tdd.md` (or a legacy `design.md`) | `docs/work/{work-id}/tasks.md` (stories + tasks) |
 | `story` | Its parent epic's context + the story itself | Sub-tasks — as tracker sub-issues when a tracker resolved, else `docs/work/{story-id}/tasks.md` in its own folder (alongside, not nested inside, its parent epic's) |
 | `task`, `bug`, `spike` | The item itself | Nothing to decompose by default — see below |
 | Path to a spec, RFC, PRD, or design doc | that file | **both** — epic row (or tracker epic) *and* its `tasks.md` |
 | Pasted or described spec | `--context` | **both** |
-
-**Dual-read inputs (interim).** When reading `product.md`, `roadmap.md`,
-`solution.md`, `backlog.md`, or `design.md`, prefer the `docs/` path and fall
-back to the `.agency/` equivalent if the `docs/` file is absent — see
-[work-item-resolution.md § Dual-read](references/work-item-resolution.md#dual-read-docs-then-agency).
-Always write new artefacts under `docs/`.
 
 **`task`, `bug`, `spike` arguments.** These are leaf types (see
 [work-item-schema.md §Type](references/work-item-schema.md#type)). Do not
@@ -86,6 +82,12 @@ exists) or ask the user for the ID once they create it; never assign an
 internal ID to tracker-backed work.
 
 If the user names a different output path, use it.
+
+**Dual-read inputs (interim).** When reading `product.md`, `roadmap.md`,
+`solution.md`, `backlog.md`, or `tdd.md`, prefer the `docs/` path and fall
+back to the `.agency/` equivalent if the `docs/` file is absent — see
+[work-item-resolution.md § Dual-read](references/work-item-resolution.md#dual-read-docs-then-agency).
+Always write new artefacts under `docs/`.
 
 ## References
 
@@ -142,7 +144,7 @@ Tracker-backed repos skip this artefact — the tracker holds the epic list.
                         → Gherkin AC → its tasks
 5. Cross-cutting      polish, docs, observability
 6. Dependencies       graph and parallel opportunities
-7. Traceability + DoD story → design.md §, story → solution.md §
+7. Traceability + DoD story → tdd.md §, story → solution.md §
 8. Handoff
 ```
 
@@ -199,7 +201,7 @@ writing. Below that, write directly; the file diff is reviewable.
 - [ ] No dependency cycles
 - [ ] `[P]` markers only on tasks with no incomplete dependency
 - [ ] Story 1 is identified as the MVP
-- [ ] No architecture narrative copied from `solution.md` or `design.md` — cite sections
+- [ ] No architecture narrative copied from `solution.md` or `tdd.md` — cite sections
 
 ## Negative constraints
 
@@ -208,13 +210,13 @@ This skill decomposes. It MUST NOT:
 - Guess the source system, ID, or type when ambiguous — ask, per
   work-item-resolution.md's ask-first checklist
 - Groom an existing backlog or judge sprint readiness → **backlog-refine**
-- Write design narrative at any level → `docs/work/{work-id}/design.md` via **design**
+- Write design narrative at any level → `docs/work/{work-id}/tdd.md` via **tdd**
 - Write architecture, NFRs, or cross-epic patterns → `solution.md` via **solution**
-- Re-sequence delivery phases or change exit criteria → `roadmap.md` via **/product-management:roadmap**
-- Change business strategy, personas, or outcomes → `product.md` via **/product-management:product**
+- Re-sequence delivery phases or change exit criteria → `roadmap.md` via **roadmap**
+- Change business strategy, personas, or outcomes → `product.md` via **product**
 - Write code → **implement**
 - Paste full Gherkin into `backlog.md` — epic scope only; AC lives in `tasks.md`
-- Re-narrate design or architecture — cite `design.md §` and `solution.md §`
+- Re-narrate design or architecture — cite `tdd.md §` and `solution.md §`
 - Invent requirements the source does not support; mark gaps
   `[NEEDS CLARIFICATION]` and list them in the report
 
@@ -227,9 +229,9 @@ Write the artefacts, then report:
 - **Structure** — epic count, or story and task counts with the MVP named
 - **Dependency order** — what blocks what; which tasks are parallel
 - **Gaps** — anything marked `[NEEDS CLARIFICATION]` and what would resolve it
-- **Next** — **design** if the work item has no design yet, **implement** per task
-  once design and tasks are approved, **backlog-refine** before committing to
-  a sprint
+- **Next** — **tdd** if the work item has no technical design yet, **implement**
+  per task once the TDD and tasks are approved, **backlog-refine** before
+  committing to a sprint
 
 ## Supporting files
 

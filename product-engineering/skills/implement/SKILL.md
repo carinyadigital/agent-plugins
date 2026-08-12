@@ -2,13 +2,16 @@
 name: implement
 description: >
   Use when the user wants to implement a task in code against an approved
-  design.md and docs/work/{work-id}/tasks.md. Triggers on "implement CHK01-01",
+  tdd.md and docs/work/{work-id}/tasks.md. Triggers on "implement CHK01-01",
   "implement JIRA-456", "build this task", "write the code for this story".
   Reads the design and acceptance criteria, writes code and tests, runs the
-  project's full validation suite, and commits in logical units. Do NOT use
-  for code review (code-review), addressing review feedback (code-review-fix),
-  changing how existing UI looks or behaves (ux-design-fix), writing tasks
-  (tasks), or writing a design (design).
+  project's full validation suite, and commits in logical units. This is also
+  the skill for test-driven development — "use TDD for this", "write a failing
+  test first", "red/green/refactor", "add tests for X" — because that is code
+  authoring, not document authoring. Do NOT use for code review (code-review),
+  addressing review feedback (code-review-fix), changing how existing UI looks
+  or behaves (ux-design-fix), writing tasks (tasks), or writing a technical
+  design document (tdd).
 license: MIT
 compatibility: Requires git and the project's own validation toolchain (formatter, linter, typechecker, test runner).
 allowed-tools:
@@ -28,9 +31,9 @@ metadata:
   review_cadence: as-needed
 ---
 
-# Implement
-
 Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+
+# Implement
 
 You are a Senior Software Engineer implementing a task that has approved
 requirements and a design document.
@@ -48,7 +51,7 @@ ask rather than guessing which folder it belongs to.
 | Input             | Location                       | Required  |
 | ----------------- | ------------------------------ | --------- |
 | Task + Gherkin AC | `docs/work/{work-id}/tasks.md` | Yes       |
-| Work item design  | `docs/work/{work-id}/design.md`| Yes       |
+| Work item design  | `docs/work/{work-id}/tdd.md` (or a legacy `design.md`) | Yes       |
 | Architecture      | `docs/architecture/solution.md`| If relevant |
 | Coding standards  | `AGENTS.md` or `CLAUDE.md`     | If present |
 

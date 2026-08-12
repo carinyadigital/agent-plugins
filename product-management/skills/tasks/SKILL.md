@@ -29,7 +29,7 @@ argument-hint: "<work-id|spec-path|--product> [--ears] [--depth full] [--context
 metadata:
   author: Carinya Parc
   version: "3.0"
-  owner: delivery
+  owner: product-management
   work_shape: orchestrate-delivery
   output_class: draft-for-review
   review_cadence: as-needed

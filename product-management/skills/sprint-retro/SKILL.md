@@ -20,7 +20,7 @@ argument-hint: "<sprint-id> [--context <notes>]"
 metadata:
   author: Carinya Parc
   version: "1.0"
-  owner: delivery
+  owner: product-management
   work_shape: review-and-gate
   output_class: decision-support
   review_cadence: as-needed

@@ -108,21 +108,20 @@ epic's design; `design JIRA-123` writes that story's design, sitting beside
 
 | User intent | Skill |
 | ----------- | ----- |
-| PRD, vision, why/who/what | **/product-management:product** (companion) |
-| Phases, exit criteria | **/product-management:roadmap** (companion) |
+| PRD, vision, why/who/what | **product** |
+| Phases, exit criteria | **roadmap** |
 | Epics, work paths, Now scope | **tasks --product** |
-| `design.md` for one work item | **design** |
+| `design.md` for one work item | **/web-development:design** |
 | `tasks.md`, stories, Gherkin AC | **tasks** |
 | Decompose any spec or RFC into a backlog | **tasks** |
 | Groom a backlog, check sprint readiness | **backlog-refine** |
-| Implement code | **implement** |
-| PR / branch code review | **code-review** |
-| Address code review feedback | **code-review-fix** |
+| Implement code | **/web-development:implement** |
+| PR / branch code review | **/web-development:code-review** |
+| Address code review feedback | **/web-development:code-review-fix** |
 | Work item done vs AC + roadmap gates | **validate** |
 | Sprint plan | **sprint-planning** |
 | Sprint retrospective | **sprint-retro** |
-| Review a set of documents for quality, boundaries, consistency | **docs-review** |
-| Which skill to use? | **skills-index** |
+| Review a set of documents for quality, boundaries, consistency | **/web-development:docs-review** |
 
 ## Agency layout notes
 
@@ -136,12 +135,10 @@ Additional agency trees (not used by all skills):
 .agency/reviews/              agent byproducts: competitor-scan, metrics, digests
 ```
 
-Cross-plugin skills live in `web-development` (design, implement, code-review, …)
-and `product-management` (product, roadmap, write-spec, synthesize-research,
-competitive-brief, metrics-review, stakeholder-update, product-brainstorming).
-Invoke as `/web-development:<skill>` or `/product-management:<skill>` when
-recommending from delivery-practice. `product.md` and `roadmap.md` are produced
-by `product-management` and consumed here by `tasks --product`.
+Strategy skills in this plugin (`product`, `roadmap`, `write-spec`, …) produce
+`product.md` and `roadmap.md`; delivery skills (`tasks --product`, …) consume
+them. Engineering skills live in `web-development` — invoke as
+`/web-development:<skill>` when recommending from product-management.
 
 ### Progressive migration bridge (interim)
 

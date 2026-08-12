@@ -111,7 +111,7 @@ Markdown with YAML frontmatter. Save to the resolved path. Use
 ## Related skills
 
 - `/product-management:product` — product strategy
-- `/delivery-practice:tasks` — epics and work paths
+- `/product-management:tasks` — epics and work paths
 - `/web-development:design` — work-item design
 - `/web-development:adr` — architecture decisions
 - `/web-development:docs-review` — review or critique an existing solution.md

@@ -1,16 +1,16 @@
 ---
 name: setup
 description: >
-  Product management setup interview — reads instance cadence and risk posture from
-  `/agency-hub:setup`, interviews discovery workflow, reporting format, and stakeholder
-  audiences, writes practice profile. Use on first install after `/agency-hub:setup`, when
-  the user says "set up product management" or "configure PM defaults", or to redo product
-  defaults only.
+  Product management setup interview — reads instance cadence and risk posture,
+  interviews discovery workflow, reporting format, stakeholder audiences, escalation
+  model, and sprint cadence, writes practice profile. Use on first install, when the
+  user says "set up product management", "configure PM defaults", "set up delivery",
+  or "configure sprint cadence", or to redo product/delivery defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
 disable-model-invocation: true
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   owner: "product-management"
   review_cadence: "quarterly"
   work_shape: "orchestrate-delivery"
@@ -23,8 +23,9 @@ metadata:
 
 ## When to use
 
-First product management setup after instance bootstrap; standalone Try-tier setup; re-run
-after cadence, audience, or discovery-workflow changes. Explicit invocation only.
+First product management setup after instance bootstrap; standalone Try-tier setup;
+re-run after cadence, audience, discovery-workflow, escalation, or sprint-cadence
+changes. Explicit invocation only.
 
 ## What this skill does not do
 
@@ -32,8 +33,7 @@ after cadence, audience, or discovery-workflow changes. Explicit invocation only
 - **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
 - **Does not install other plugins** — user installs from marketplace.
 - **Does not write without explicit yes** after showing the plain-language summary.
-- **Does not produce product/roadmap/spec artefacts** — those are separate skills after setup.
-- **Does not decompose work or plan sprints** — that is the companion `delivery-practice` plugin (`/delivery-practice:tasks`, `/delivery-practice:sprint-planning`).
+- **Does not produce product/roadmap/spec/backlog artefacts** — those are separate skills after setup.
 
 ## Preconditions
 
@@ -41,6 +41,7 @@ Read before proceeding:
 
 - `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md`
 - `${CLAUDE_PLUGIN_ROOT}/references/product-conventions.md`
+- `${CLAUDE_PLUGIN_ROOT}/references/delivery-conventions.md`
 - `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md` (when instance profile may exist)
 
 Honour flags: `--quick`, `--full`, `--redo`, `--resume`, `--check-integrations`.
@@ -59,7 +60,7 @@ Structured-aggregation; integration table reports ✓ only on successful MCP pro
 
 1. **Read** `config/instance.json` if present — note `status`, cadence hints, risk posture, squad structure.
 2. **Read** `~/.claude/plugins/config/digital-agency/product-management/CLAUDE.md` unless `--redo`.
-3. If **complete** and not `--redo`: summarize on-file product defaults; offer refresh, `--redo`, or `--check-integrations`. Stop unless user chooses refresh.
+3. If **complete** and not `--redo`: summarize on-file product/delivery defaults; offer refresh, `--redo`, or `--check-integrations`. Stop unless user chooses refresh.
 4. If **paused resume file** exists: greet, summarize progress, continue or start over.
 
 ### Step 0b — Install scope check
@@ -70,7 +71,7 @@ If working directory looks project-scoped and product context may span repos, wa
 
 If neither `--quick` nor `--full` was passed, offer quick vs full.
 
-**Quick path:** reporting cadence default, primary stakeholder audience, discovery-source default.
+**Quick path:** reporting cadence default, primary stakeholder audience, discovery-source default, escalation model skeleton, sprint length default.
 
 **Full path:** all plugin-specific questions below.
 
@@ -100,7 +101,7 @@ What does a stakeholder update actually look like for this business?
 
 - Frequency (weekly, fortnightly, monthly, ad hoc)
 - Format (brief bullets, narrative, dashboard summary)
-- Primary audience (exec, engineering, partner, customer, board)
+- Primary audience (exec, engineering, partner, customer, board, sponsor)
 
 #### 3b — Discovery workflow
 
@@ -110,11 +111,19 @@ Where does product input come from — user interviews, support tickets, analyti
 
 Which roadmap shape does the team use — Now/Next/Later, quarterly themes, or OKR-aligned? Record the default for the `roadmap` skill.
 
+#### 3d — Escalation model
+
+What triggers an escalation? Who does it go to? Which channel?
+
+#### 3e — Sprint cadence
+
+What is the sprint length (one week, two weeks, other) and where does committed scope come from? Note whether the team runs formal sprints at all — solo shops may work continuously off the backlog.
+
 ### Step 4 — Summarize before write
 
 List every file to create/update:
 
-- `~/.claude/plugins/config/digital-agency/product-management/CLAUDE.md` — practice profile with cadence, stakeholder audiences, discovery sources, roadmap format, integration table
+- `~/.claude/plugins/config/digital-agency/product-management/CLAUDE.md` — practice profile with cadence, stakeholder audiences, discovery sources, roadmap format, escalation, sprint cadence, integration table
 
 List deliberate skips. Ask: **"Write these files? (yes/no)"** — wait.
 
@@ -132,10 +141,11 @@ Close with a product-management handoff:
 2. **Roadmap** — `/product-management:roadmap`
 3. **Spec** — `/product-management:write-spec`
 4. **Research** — `/product-management:synthesize-research`
-5. **Route** — `/product-management:skills-index` when unsure which skill to use.
-6. **Refresh** — `/product-management:setup --redo` to redo product defaults only.
-
-When work is ready to decompose into a backlog and sprints, hand off to the companion `delivery-practice` plugin: `/delivery-practice:tasks --product`.
+5. **Backlog** — `/product-management:tasks --product` to decompose product/roadmap into epics and stories
+6. **Groom** — `/product-management:backlog-refine` to check sprint readiness
+7. **Sprint** — `/product-management:sprint-planning` then `/product-management:sprint-retro`
+8. **Sign-off** — `/product-management:validate` when a work item is done
+9. **Refresh** — `/product-management:setup --redo` to redo defaults only
 
 ## Pause and resume
 
@@ -158,9 +168,9 @@ Location: `<instance-root>/config/.product-setup-resume.json` if instance exists
 
 ## Worked example
 
-**Input:** Instance profile complete; `--quick`; solo operator; weekly bullet updates to sponsor; Now/Next/Later roadmap.
+**Input:** Instance profile complete; `--quick`; solo operator; weekly bullet updates to sponsor; Now/Next/Later roadmap; two-week sprints.
 
-**Expected output:** Practice profile at personal config path with cadence, audience, discovery sources, and roadmap format recorded; handoff to `/product-management:product` or `/product-management:write-spec`.
+**Expected output:** Practice profile at personal config path with cadence, audience, discovery sources, roadmap format, escalation, and sprint cadence recorded; handoff to `/product-management:product` or `/product-management:tasks --product`.
 
 ## Outputs
 

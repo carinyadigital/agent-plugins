@@ -98,6 +98,6 @@ Markdown with YAML frontmatter. Save to the resolved path. Use [assets/roadmap.t
 ## Related skills
 
 - `/product-management:product` — product strategy input
-- `/delivery-practice:tasks` — epics and work paths
+- `/product-management:tasks` — epics and work paths
 - `/web-development:solution` — architecture
 - `/web-development:docs-review` — review or critique an existing roadmap.md

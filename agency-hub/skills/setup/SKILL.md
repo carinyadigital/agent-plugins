@@ -118,12 +118,12 @@ Map to **practice plugins** (MECE — one install per practice). Recommend; do n
 | Practice area | Practice plugin | Companion practice | Notes |
 |---|---|---|---|
 | `brand-creative` | `brand-creative` | none | Shipped — no companion install |
-| `web-development` | `web-development` | `delivery-practice` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
-| `content-marketing` | `content-marketing` | `delivery-practice`, `product-management` | Shipped — run `/content-marketing:setup` after bootstrap; invoke `/delivery-practice:tasks --product`, `/product-management:synthesize-research` for companion skills |
+| `web-development` | `web-development` | `product-management` | Practice plugin pending — interim catalogue: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect` |
+| `content-marketing` | `content-marketing` | `product-management` | Shipped — run `/content-marketing:setup` after bootstrap; invoke `/product-management:tasks --product`, `/product-management:synthesize-research` for companion skills |
 | `social-media` | `social-media` | TBD | Practice plugin pending — interim: `content-marketing` skills for captions and curation |
 | `seo` | `search-optimisation` | `product-management` | Practice plugin shipped — run `/search-optimisation:setup` after bootstrap; invoke `/product-management:competitive-brief` for companion skill |
 
-When recommending a companion practice, name the skills it needs (e.g. `web-development` → `/delivery-practice:tasks --product`, `/delivery-practice:sprint-planning`; `content-marketing` → `/delivery-practice:tasks --product`, `/product-management:synthesize-research`; `search-optimisation` → `/product-management:competitive-brief`). `brand-creative` never needs a companion.
+When recommending a companion practice, name the skills it needs (e.g. `web-development` → `/product-management:tasks --product`, `/product-management:sprint-planning`; `content-marketing` → `/product-management:tasks --product`, `/product-management:synthesize-research`; `search-optimisation` → `/product-management:competitive-brief`). `brand-creative` never needs a companion.
 
 Quick: one primary. Full: now vs later for each.
 
@@ -203,8 +203,8 @@ If deferred, set `seedMaterial.notes` accordingly.
 Close with a concrete path — not a pile of config files:
 
 1. **Install** the first recommended **practice plugin** from the marketplace.
-2. **`delivery-practice` companion** — if that practice needs planning and cadence skills it does not own (e.g. `web-development` → install `delivery-practice`, then use `/delivery-practice:tasks --product` and `/delivery-practice:sprint-planning`; `brand-creative` needs no companion).
-3. **Practice setup** — run that practice's `setup` skill (e.g. `/brand-creative:setup` for brand; `/delivery-practice:setup` for delivery).
+2. **`product-management` companion** — if that practice needs planning and cadence skills it does not own (e.g. `web-development` → install `product-management`, then use `/product-management:tasks --product` and `/product-management:sprint-planning`; `brand-creative` needs no companion).
+3. **Practice setup** — run that practice's `setup` skill (e.g. `/brand-creative:setup` for brand; `/product-management:setup` for delivery).
 4. **Bind targets** — complete `.agency/` scaffold and `target.json` in each target repo, social credentials when available.
 5. **Deploy** — launch the first scheduled agent (dry-run first):
    `python3 digital-agency/scripts/deploy-squad-agents.py --dry-run --instance <path>`

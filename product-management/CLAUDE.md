@@ -10,8 +10,9 @@ The `setup` skill copies or updates the user config at:
 Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
-Product artefacts (product, roadmap) live in the target repo `docs/product/` tree — see
-references/product-conventions.md. Repo binding stays in `.agency/target.json`.
+Product and delivery artefacts (product, roadmap, backlog, work/) live in the target
+repo `docs/` tree — see references/product-conventions.md and
+references/delivery-conventions.md. Repo binding stays in `.agency/target.json`.
 -->
 
 # Product Management — Practice Profile
@@ -26,8 +27,10 @@ references/product-conventions.md. Repo binding stays in `.agency/target.json`.
 
 ## Who's using this
 
+- **Personas:** Product Manager, Delivery Lead
 - **Team size:** [PLACEHOLDER — solo | small | multi-squad]
 - **Primary product surface:** [PLACEHOLDER — what the PM owns]
+- **Sprint cadence:** [PLACEHOLDER — one week | two weeks | continuous]
 
 ---
 
@@ -35,7 +38,7 @@ references/product-conventions.md. Repo binding stays in `.agency/target.json`.
 
 - **Stakeholder update frequency:** [PLACEHOLDER — weekly | fortnightly | monthly | ad hoc]
 - **Update format:** [PLACEHOLDER — brief bullets | narrative | dashboard summary]
-- **Primary audience:** [PLACEHOLDER — exec | engineering | partner | customer | board]
+- **Primary audience:** [PLACEHOLDER — exec | engineering | partner | customer | board | sponsor]
 
 ---
 
@@ -43,6 +46,14 @@ references/product-conventions.md. Repo binding stays in `.agency/target.json`.
 
 - **Input sources:** [PLACEHOLDER — user interviews | support tickets | analytics | sales | competitive signal]
 - **Roadmap format:** [PLACEHOLDER — Now/Next/Later | quarterly themes | OKR-aligned]
+
+---
+
+## Escalation model
+
+- **Triggers:** [PLACEHOLDER — blocked > N days | scope change | risk threshold]
+- **Escalate to:** [PLACEHOLDER — role or name]
+- **Channel:** [PLACEHOLDER — chat | email | meeting]
 
 ---
 

@@ -10,9 +10,9 @@ Each practice bundles a **minimal default** in `.mcp.json` — one or two server
 
 | Practice | Relationship | Invoke |
 | -------- | ------------ | ------ |
-| **delivery-practice** | Companion practice | `/delivery-practice:tasks --product`, `/delivery-practice:tasks`, `/delivery-practice:backlog-refine`, `/delivery-practice:sprint-planning`, `/delivery-practice:sprint-retro`, `/delivery-practice:validate` |
+| **product-management** | Companion practice | `/product-management:tasks --product`, `/product-management:tasks`, `/product-management:backlog-refine`, `/product-management:sprint-planning`, `/product-management:sprint-retro`, `/product-management:validate` |
 
-Install `delivery-practice` alongside this plugin when implementation needs backlog
+Install `product-management` alongside this plugin when implementation needs backlog
 alignment, task AC, sprint cadence, or epic sign-off. Do not bundle duplicate copies
 of those skills here.
 
@@ -33,7 +33,7 @@ Add these to `.mcp.json` (or connect via Cursor / Claude MCP settings) when your
 | Source control | `~~source control` | GitLab |
 | Hosting / deploy | `~~hosting` | Vercel (`https://mcp.vercel.com`) |
 | Chat | `~~chat` | Slack (`https://mcp.slack.com/mcp`) |
-| Project tracker | `~~project tracker` | Linear, Asana — see **delivery-practice** |
+| Project tracker | `~~project tracker` | Linear, Asana — see **product-management** |
 | Observability | `~~observability` | Datadog |
 | Error tracking | `~~error tracking` | Sentry (`https://mcp.sentry.dev/mcp`) |
 | Design | `~~design` | Figma — see **ux-design** |

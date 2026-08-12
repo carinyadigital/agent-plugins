@@ -16,13 +16,16 @@ Plugins are **tool-agnostic** — they describe workflows in terms of categories
 ## Common additions
 
 | Category | Placeholder | Examples |
-| -------- | ----------- | -------- |
+| -------- | ----------- | ------ |
 | Chat | `~~chat` | Slack (`https://mcp.slack.com/mcp`) |
 | Knowledge base | `~~knowledge base` | Notion (`https://mcp.notion.com/mcp`) |
 | Design | `~~design` | Figma (`https://mcp.figma.com/mcp`) — see **ux-design** |
 | User feedback | `~~user feedback` | Intercom (`https://mcp.intercom.com/mcp`), Pendo |
 | Meeting transcription | `~~meeting transcription` | Fireflies (`https://api.fireflies.ai/mcp`) — see **brand-creative** |
 | Competitive intelligence | `~~competitive intelligence` | Similarweb (`https://mcp.similarweb.com/mcp`) |
+| Source control | `~~source control` | GitHub — see **web-development** |
+| Hosting / deploy | `~~hosting` | Vercel — add to **web-development** |
+| Browser automation | `~~browser automation` | Playwright — bundled in **web-development** |
 
 Other options: Linear, Asana, monday.com, ClickUp (project tracker); Mixpanel, Heap (analytics); Gong (meeting transcription); Crayon, Klue (competitive intelligence).
 
@@ -39,3 +42,8 @@ Other options: Linear, Asana, monday.com, ClickUp (project tracker); Mixpanel, H
 | **metrics-review** | — | Product analytics |
 | **stakeholder-update** | — | Chat, project tracker (optional) |
 | **product-brainstorming** | — | None required |
+| **tasks** | — | Project tracker (optional) |
+| **backlog-refine** | — | Project tracker (optional) |
+| **sprint-planning** | — | Project tracker (optional) |
+| **sprint-retro** | — | Project tracker (optional) |
+| **validate** | — | Project tracker (optional) |

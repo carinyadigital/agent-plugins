@@ -6,16 +6,19 @@ Skills that write under `docs/product/` should read this file when resolving pat
 ## Document layout
 
 ```text
-docs/product/               product.md, roadmap.md
+docs/product/               product.md, roadmap.md, backlog.md
 docs/research/              synthesis, competitive briefs, metrics reviews (optional)
 docs/updates/               stakeholder updates (optional)
+docs/work/{work-id}/        design.md, tasks.md — see delivery-conventions.md
+docs/work/sprint-{id}/      plan.md, retrospective.md — see delivery-conventions.md
 ```
 
 Override paths when the user names them explicitly in the request.
 
 Decomposition artefacts (`docs/product/backlog.md`, `docs/work/{work-id}/`,
-`docs/work/sprint-{id}/`) are owned by the companion `delivery-practice`
-plugin — product skills read them but do not write them.
+`docs/work/sprint-{id}/`) are owned by this plugin's delivery skills
+(`tasks`, `backlog-refine`, `sprint-planning`, `sprint-retro`, `validate`).
+Strategy skills read them but do not write them — see `delivery-conventions.md`.
 
 ## Progressive migration bridge
 
@@ -38,8 +41,8 @@ stay under `.agency/` permanently.
 | Competitor comparison, positioning, implications | competitive brief | product, roadmap |
 | Metrics scorecard, trends, recommended actions | metrics review | stakeholder update |
 | Audience-tailored status, launch notes, risk escalation | stakeholder update | metrics review |
-| Epic list, deps, points, work paths | `docs/product/backlog.md` (delivery-practice) | product, roadmap |
-| Story statement, test criterion, Gherkin AC | `docs/work/{work-id}/tasks.md` (delivery-practice) | product artefacts |
+| Epic list, deps, points, work paths | `docs/product/backlog.md` (tasks) | product, roadmap |
+| Story statement, test criterion, Gherkin AC | `docs/work/{work-id}/tasks.md` (tasks) | product artefacts |
 
 ## Skill routing (near-misses)
 
@@ -53,20 +56,13 @@ stay under `.agency/` permanently.
 | Compare competitors, battle cards | **competitive-brief** |
 | Metrics scorecard, trends, actions | **metrics-review** |
 | Status for leadership, launch note, risk escalation | **stakeholder-update** |
+| Decompose product/roadmap or a spec into a backlog | **tasks --product** |
+| Groom a backlog, check sprint readiness | **backlog-refine** |
+| Plan or review a sprint | **sprint-planning**, **sprint-retro** |
+| Sign off a work item vs AC and roadmap gates | **validate** |
 | Review or critique an existing product.md / roadmap.md | **/web-development:docs-review** |
-| Which skill to use? | **skills-index** |
 
 ## Companion practices (cross-plugin)
-
-Decomposition and delivery cadence live in `delivery-practice`. Invoke as
-`/delivery-practice:<skill>` when recommending from product-management:
-
-| Intent | Skill |
-| ------ | ----- |
-| Decompose product/roadmap or a spec into a backlog | **/delivery-practice:tasks --product** |
-| Groom a backlog, check sprint readiness | **/delivery-practice:backlog-refine** |
-| Plan or review a sprint | **/delivery-practice:sprint-planning**, **/delivery-practice:sprint-retro** |
-| Sign off a work item vs AC and roadmap gates | **/delivery-practice:validate** |
 
 Architecture and engineering skills live in `web-development`
 (`/web-development:solution`, `design`, `implement`, `code-review`, `docs-review`, …).

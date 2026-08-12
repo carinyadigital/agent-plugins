@@ -300,9 +300,9 @@ class Validator:
             for skill_dir in brand_creative_skills.iterdir():
                 if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                     sources[skill_dir.name] = skill_dir
-        delivery_practice_skills = ROOT / "delivery-practice" / "skills"
-        if delivery_practice_skills.is_dir():
-            for skill_dir in delivery_practice_skills.iterdir():
+        product_management_skills = ROOT / "product-management" / "skills"
+        if product_management_skills.is_dir():
+            for skill_dir in product_management_skills.iterdir():
                 if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                     sources[skill_dir.name] = skill_dir
         content_marketing_skills = ROOT / "content-marketing" / "skills"
@@ -326,7 +326,7 @@ class Validator:
         paths = sorted(ROOT.glob("skills/*/skills/*/SKILL.md"))
         paths.extend(sorted(ROOT.glob("agency-hub/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("brand-creative/skills/*/SKILL.md")))
-        paths.extend(sorted(ROOT.glob("delivery-practice/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("product-management/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("content-marketing/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("ux-design/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("search-optimisation/skills/*/SKILL.md")))
@@ -717,7 +717,7 @@ class Validator:
             (ROOT / "agents", "agents/*/agents/*.md"),
             (ROOT / "agency-hub", "agency-hub/skills/*/*.md"),
             (ROOT / "brand-creative", "brand-creative/skills/*/*.md"),
-            (ROOT / "delivery-practice", "delivery-practice/skills/*/*.md"),
+            (ROOT / "product-management", "product-management/skills/*/*.md"),
             (ROOT / "content-marketing", "content-marketing/skills/*/*.md"),
             (ROOT / "ux-design", "ux-design/skills/*/*.md"),
             (ROOT / "search-optimisation", "search-optimisation/skills/*/*.md"),
@@ -730,7 +730,7 @@ class Validator:
             elif base.name in {
                 "agency-hub",
                 "brand-creative",
-                "delivery-practice",
+                "product-management",
                 "content-marketing",
                 "ux-design",
                 "search-optimisation",

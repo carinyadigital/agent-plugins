@@ -24,7 +24,7 @@ argument-hint: "<work-id>"
 metadata:
   author: Carinya Parc
   version: "2.0"
-  owner: delivery
+  owner: product-management
   work_shape: review-and-gate
   output_class: decision-support
   review_cadence: as-needed

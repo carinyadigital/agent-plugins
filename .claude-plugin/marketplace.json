@@ -8,49 +8,43 @@
       "name": "agency-hub",
       "displayName": "Agency Hub",
       "source": "./agency-hub",
-      "description": "Install first — bootstraps a git-versioned instance workspace (config/, brand/, squads/) via setup. Marketplace management is v2 — designed, deferred."
+      "description": "Install first \u2014 bootstraps a git-versioned instance workspace (config/, brand/, squads/) via setup. Marketplace management is v2 \u2014 designed, deferred."
     },
     {
       "name": "brand-creative",
       "displayName": "Brand Creative",
       "source": "./brand-creative",
-      "description": "Complete brand practice in one install — setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
+      "description": "Complete brand practice in one install \u2014 setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/."
     },
     {
       "name": "web-development",
       "displayName": "Web Development",
       "source": "./web-development",
-      "description": "Complete web engineering practice in one install \u2014 setup interview, architecture, epic design, implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes delivery-practice for planning cadence."
+      "description": "Complete web engineering practice in one install \u2014 setup interview, architecture, epic design, implementation, code review, QA, and platform operations. Six personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes product-management for planning cadence."
     },
     {
       "name": "product-management",
       "displayName": "Product Management",
       "source": "./product-management",
-      "description": "Complete product management practice in one install — setup interview, product strategy and PRDs, roadmap, feature specs, user research synthesis, competitive analysis, product metrics, stakeholder updates, and brainstorming. One persona (Product Manager), one owned skill library. Hands off to delivery-practice for decomposition and sprint cadence."
-    },
-    {
-      "name": "delivery-practice",
-      "displayName": "Delivery Practice",
-      "source": "./delivery-practice",
-      "description": "Complete delivery practice in one install — setup interview, tasks/backlog decomposition, sprint planning and retro, and epic validation. One persona (Delivery Lead), one owned skill library. Consumes product.md and roadmap.md from the companion product-management plugin."
+      "description": "Complete product management practice in one install \u2014 setup interview, product strategy and PRDs, roadmap, feature specs, research, metrics, stakeholder updates, tasks/backlog decomposition, sprint planning and retro, and epic validation. Personas: Product Manager and Delivery Lead. One owned skill library."
     },
     {
       "name": "content-marketing",
       "displayName": "Content Marketing",
       "source": "./content-marketing",
-      "description": "Complete content practice in one install — setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes delivery-practice for tasks and product-management for research synthesis."
+      "description": "Complete content practice in one install \u2014 setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes product-management for tasks and research synthesis."
     },
     {
       "name": "ux-design",
       "displayName": "UX Design",
       "source": "./ux-design",
-      "description": "Minimal UX practice in one install — setup interview and wireframe skill for low-fidelity layout and interaction specs. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/."
+      "description": "Minimal UX practice in one install \u2014 setup interview and wireframe skill for low-fidelity layout and interaction specs. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/."
     },
     {
       "name": "search-optimisation",
       "displayName": "Search Optimisation",
       "source": "./search-optimisation",
-      "description": "Complete search and technical SEO practice in one install — setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief."
+      "description": "Complete search and technical SEO practice in one install \u2014 setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief."
     }
   ]
 }

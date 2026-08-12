@@ -6,8 +6,8 @@ and platform operations. Self-contained under the MECE practice model: edit skil
 here only; nothing is vendored from elsewhere.
 
 Install standalone or after `agency-hub:setup` recommends it. Declare
-`delivery-practice` as a **companion practice** for backlog, tasks, sprint, and
-validate — invoke `/delivery-practice:tasks --product` and related skills directly rather
+`product-management` as a **companion practice** for backlog, tasks, sprint, and
+validate — invoke `/product-management:tasks --product` and related skills directly rather
 than bundling duplicate copies.
 
 ## Personas
@@ -36,10 +36,10 @@ Invoke skills directly — there is no separate agent plugin per persona:
 For planning cadence during implementation, invoke the companion practice:
 
 ```
-/delivery-practice:backlog-refine
-/delivery-practice:tasks checkout-foundation
-/delivery-practice:sprint-planning 3
-/delivery-practice:validate checkout-foundation
+/product-management:backlog-refine
+/product-management:tasks checkout-foundation
+/product-management:sprint-planning 3
+/product-management:validate checkout-foundation
 ```
 
 ## First run: setup
@@ -102,7 +102,7 @@ not exist, ask the user for design guidance inline.
 - **Instance profile** (optional) — `agency-hub:setup` writes
   `config/instance.json`; setup reads cadence and target hints without
   re-asking.
-- **delivery-practice** (recommended companion) — tasks, backlog-refine, sprint-planning, sprint-retro, validate;
+- **product-management** (recommended companion) — tasks, backlog-refine, sprint-planning, sprint-retro, validate;
   see CONNECTORS.md.
 - **Connectors** (optional) — source control, hosting, observability, and chat MCP
   servers supercharge deploy, QA, and platform-health workflows.

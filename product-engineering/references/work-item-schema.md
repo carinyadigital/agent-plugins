@@ -51,7 +51,7 @@ do not maintain a shadow `backlog.md`.
 | Title | Yes | Noun phrase naming the outcome (`Checkout Foundation`) |
 | Work path | Yes | `docs/work/{work-id}/` — filesystem-only repos also derive a title slug for the folder name (see delivery-conventions.md); tracker-backed repos use the key itself |
 | Phase | Yes | Matches a phase name in `roadmap.md` (`Now`, `Next`, `Later`, or named) |
-| Status | Yes | `not started` · `in progress` · `blocked` · `done` (or the tracker's native workflow states, mapped) |
+| Status | Yes | `To do` · `In progress` · `In review` · `Blocked` · `Done` (or the tracker's native workflow states, mapped) |
 | Priority | Yes | `P0`–`P3` (see below) |
 | Estimate | Yes | Story points, Fibonacci: 1, 2, 3, 5, 8, 13, 21. `TBD` only with a spike noted |
 | Depends on | No | Other work item IDs, comma separated. Must be acyclic |
@@ -98,7 +98,7 @@ parent story. Inherits its story's acceptance criteria when it has one.
 | Parallel marker | No | `[P]` — different files from its siblings, no incomplete dependency |
 | Title | Yes | Imperative, specific (`Build checkout page shell`, not `Frontend work`) |
 | Deliverable | Yes | What exists when it is done, with **at least one concrete file path** |
-| Status | Yes | `not started` · `in progress` · `blocked` · `done` |
+| Status | Yes | `To do` · `In progress` · `In review` · `Blocked` · `Done` |
 | Estimate | Yes | Points, Fibonacci. Roughly a day of work. `TBD` is not acceptable on a task |
 | Owner | No | `TBD` acceptable for an unassigned queue |
 | Depends on | No | Other work item IDs, comma separated. Must be acyclic |
@@ -163,12 +163,22 @@ because its purpose is to remove that unknown.
 
 ### Status
 
-`not started` · `in progress` · `blocked` · `done` — or the source system's
-native workflow states, mapped to these four for cross-skill reporting.
+`To do` · `In progress` · `In review` · `Blocked` · `Done` — or the source
+system's native workflow states, mapped to these five for cross-skill reporting.
 
-`blocked` requires a named blocker. Status is updated by **validate** (against
-acceptance criteria) and by **backlog-refine** (against delivery evidence) —
-not by **tasks** after the initial write.
+| Value | Meaning |
+| ----- | ------- |
+| `To do` | Not started |
+| `In progress` | Actively being worked |
+| `In review` | Implementation complete; awaiting review or sign-off |
+| `Blocked` | Cannot proceed — requires a named blocker |
+| `Done` | Acceptance criteria verified |
+
+`Blocked` requires a named blocker. Status is updated by **implement**
+(→ `In progress`), **code-review** / **merge-request-review** (→ `In review`
+when appropriate), **validate** (against acceptance criteria → `Done` or back
+to `In progress`), and **backlog-refine** (against delivery evidence) — not by
+**tasks** after the initial write.
 
 ---
 

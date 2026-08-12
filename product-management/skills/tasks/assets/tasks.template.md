@@ -58,6 +58,7 @@ related:
 | Parallel marker | `[P]` — different files, no incomplete dependency |
 | Acceptance | Gherkin on the story, or on this work item itself when it has no stories; EARS where a rule is clearer |
 | Estimate | Story points, Fibonacci |
+| Status | To do, In progress, In review, Blocked, Done |
 
 ## 3. Foundational
 
@@ -66,7 +67,7 @@ related:
      prerequisite only one story needs belongs to that story. -->
 
 - [ ] **[{WORK-ID}-01]** {Title} — `path/to/deliverable`
-  - **Status:** not started | **Estimate:** | **Owner:**
+  - **Status:** To do | **Estimate:** | **Owner:**
   - **Depends on:** —
   - **Deliverable:**
   - **Design:** [`./tdd.md`](tdd.md#section)
@@ -124,11 +125,11 @@ IF {condition} THEN THE SYSTEM SHALL {behaviour}
 **Tasks:**
 
 - [ ] **[{WORK-ID}-02]** [S1] {Title} — `path/to/file`
-  - **Status:** not started | **Estimate:** | **Owner:**
+  - **Status:** To do | **Estimate:** | **Owner:**
   - **Depends on:** {WORK-ID}-01
   - **Deliverable:**
 - [ ] **[{WORK-ID}-03]** [P] [S1] {Title} — `path/to/file`
-  - **Status:** not started | **Estimate:** | **Owner:**
+  - **Status:** To do | **Estimate:** | **Owner:**
   - **Depends on:** {WORK-ID}-01
   - **Deliverable:**
 
@@ -141,7 +142,7 @@ IF {condition} THEN THE SYSTEM SHALL {behaviour}
 <!-- Polish, documentation, observability. No story label. Omit if empty. -->
 
 - [ ] **[{WORK-ID}-nn]** {Title} — `path/to/file`
-  - **Status:** not started | **Estimate:** | **Owner:**
+  - **Status:** To do | **Estimate:** | **Owner:**
   - **Deliverable:**
 
 ## 6. Dependencies

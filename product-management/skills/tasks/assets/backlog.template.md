@@ -45,7 +45,7 @@ Epic work path: docs/work/{work-id}/ — slug from title or short title, max two
 | Epic ID | `{PREFIX}{nn}` (internal — filesystem-only fallback; a tracker key is used verbatim when one resolves) |
 | Epic work path | `docs/work/{work-id}/` (title or short title slug, max two words, when work-id is internal) |
 | Task ID | `{PREFIX}{nn}-{nn}` in `docs/work/{work-id}/tasks.md` |
-| Status | Not started, In progress, In review, Done, Blocked |
+| Status | To do, In progress, In review, Blocked, Done |
 | Priority | P0–P3 |
 | Estimation | Fibonacci story points |
 

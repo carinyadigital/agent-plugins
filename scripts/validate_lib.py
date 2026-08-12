@@ -11,7 +11,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
-import yaml
+try:
+    import yaml
+except ImportError:  # pragma: no cover - CI installs PyYAML
+    yaml = None  # type: ignore[assignment]
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -31,7 +34,6 @@ SKILL_DESC_MAX = 1024
 SKILL_NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
 MODEL_TIERS = frozenset({"fast", "standard"})
-BARE_BASH_RE = re.compile(r"(?:^|[\s,\[\"'])Bash(?:$|[\s,\]\"'])")
 
 WORK_SHAPES = (
     "implement-and-ship",
@@ -269,13 +271,17 @@ def strip_scalar(value: str) -> str | None:
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, Any] | None, str, list[str]]:
-    """Parse YAML frontmatter. Prefer PyYAML; fall back is not needed when PyYAML is present."""
+    """Parse YAML frontmatter via PyYAML when available; else a minimal fallback."""
     match = _FRONTMATTER_RE.match(text)
     if not match:
         return None, text, ["missing YAML frontmatter delimiters (---)"]
     raw = match.group(1)
     if not raw.strip():
         return None, text[match.end() :], ["empty frontmatter block"]
+    if yaml is None:
+        return None, text[match.end() :], [
+            "PyYAML is required (pip install pyyaml) to parse frontmatter"
+        ]
     try:
         data = yaml.safe_load(raw)
     except yaml.YAMLError as exc:

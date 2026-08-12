@@ -130,8 +130,9 @@ Based on the acceptance matrix, update `docs/work/{work-id}/tasks.md`:
 1. **Completed criteria** — check the box `- [x]`.
 2. **Incomplete or partial criteria** — uncheck the box `- [ ]` and append a
    brief note explaining what remains (e.g. `— not wired to scheduler`).
-3. **Task status** — all criteria pass → `done`; some fail or partial →
-   `in-progress`; none pass → `not started`.
+3. **Task status** — all criteria pass → `Done`; some fail or partial →
+   `In progress`; none pass → `To do`. When a named blocker prevents
+   verification, set `Blocked` and record the blocker.
 4. **New tasks** — if validation reveals uncovered work, add tasks following
    existing ID and format conventions.
 5. **Work item status** — update in `docs/product/backlog.md` (filesystem-only)
@@ -216,7 +217,7 @@ A validation report MUST NOT:
 
 ### Backlog Changes
 
-- CF-XX-01: status updated to `done`, all criteria checked
+- CF-XX-01: status updated to `Done`, all criteria checked
 - CF-XX-02: criterion Y unchecked, note added
 - CF-XX-04 (new): {title of new story added to address gap}
 

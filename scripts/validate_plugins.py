@@ -57,6 +57,7 @@ class PluginValidator(Reporter):
             "scripts/validate_lib.py",
             "scripts/validate_plugins.py",
             "scripts/validate_skills.py",
+            "CONTRIBUTING.md",
         }
     )
 

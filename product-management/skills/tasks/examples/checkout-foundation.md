@@ -46,7 +46,7 @@ end to end.
 ## 3. Foundational
 
 - [ ] **[CHK01-01]** Checkout module scaffold and view-model types — `modules/checkout/logic/types.ts`
-  - **Status:** not started | **Estimate:** 2 | **Owner:** TBD
+  - **Status:** To do | **Estimate:** 2 | **Owner:** TBD
   - **Depends on:** —
   - **Deliverable:** `modules/checkout/` with `logic/types.ts` defining
     `OrderViewModel` and all slice types; separate server and client barrels.
@@ -105,17 +105,17 @@ THE SYSTEM SHALL redirect /checkout to /cart rather than rendering an empty page
 **Tasks:**
 
 - [ ] **[CHK01-02]** [S1] Orders API client — `data/clients/orders-api.server.ts`
-  - **Status:** not started | **Estimate:** 3 | **Owner:** TBD
+  - **Status:** To do | **Estimate:** 3 | **Owner:** TBD
   - **Depends on:** CHK01-01
   - **Deliverable:** `createOrder()`, `getOrder()`, `listOrders()` with
     `import 'server-only'` at the top and typed error responses.
 - [ ] **[CHK01-03]** [P] [S1] Mapper and error registry — `data/mappers/order.mapper.ts`
-  - **Status:** not started | **Estimate:** 3 | **Owner:** TBD
+  - **Status:** To do | **Estimate:** 3 | **Owner:** TBD
   - **Depends on:** CHK01-01
   - **Deliverable:** `orderToViewModel(ApiOrder): OrderViewModel`, the
     `OrderPlacementErrorCode` closed enum, and `getOrderErrorMessage(code)`.
 - [ ] **[CHK01-04]** [S1] Checkout route group and page shell — `app/(checkout)/checkout/page.tsx`
-  - **Status:** not started | **Estimate:** 5 | **Owner:** TBD
+  - **Status:** To do | **Estimate:** 5 | **Owner:** TBD
   - **Depends on:** CHK01-02, CHK01-03
   - **Deliverable:** RSC page shell with the auth gate and cart rendering, plus
     `CheckoutSkeleton` for the loading state.
@@ -154,7 +154,7 @@ THEN THE SYSTEM SHALL log a warning naming CHK02 as the implementing epic.
 **Tasks:**
 
 - [ ] **[CHK01-05]** [S2] placeOrder server action stub — `modules/checkout/actions/place-order.ts`
-  - **Status:** not started | **Estimate:** 2 | **Owner:** TBD
+  - **Status:** To do | **Estimate:** 2 | **Owner:** TBD
   - **Depends on:** CHK01-03
   - **Deliverable:** Server Action matching the solution.md §7 signature,
     returning `NOT_IMPLEMENTED` and making no external call.
@@ -162,7 +162,7 @@ THEN THE SYSTEM SHALL log a warning naming CHK02 as the implementing epic.
 ## 5. Cross-cutting
 
 - [ ] **[CHK01-06]** Checkout module README and env documentation — `modules/checkout/README.md`
-  - **Status:** not started | **Estimate:** 1 | **Owner:** TBD
+  - **Status:** To do | **Estimate:** 1 | **Owner:** TBD
   - **Deliverable:** Module README covering the barrel split, plus
     `ORDERS_API_URL` added to `.env.example`.
 

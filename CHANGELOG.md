@@ -17,7 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Migration verification complete
 
 - Phase 0 authoring tooling ported to `skill-authoring`; Ralph hook tests in `ralph-loop/scripts/`.
-- CI gates: `validate.py`, `validate_skills.py`, mutation tests.
+- CI gates: `validate.py` (plugins + skills), `validate_ralph.py`, mutation tests.
+- Validator split: `scripts/validate_plugins.py` + `scripts/validate_skills.py` + `validate_lib.py`; `plugin-check.py` shims to scoped plugins mode; agent contracts + orphan SKILL.md enforced.
 - `docs/MIGRATION.md` removed — see `docs/CROSS-PLUGIN-CONTRACTS.md`.
 
 ## [2026-08-12] — Phase 3 cutover + skills sync (v0.4.0)

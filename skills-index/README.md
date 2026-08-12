@@ -15,6 +15,6 @@ Install-aware skill router for the `carinya-plugins` marketplace.
 
 ## Why a separate plugin
 
-With `agency-hub` gone there is no meta-plugin to absorb the router. Scope is
+With the hub gone there is no meta-plugin to absorb the router. Scope is
 intentionally narrow: discovery of uninstalled plugins, and workflow sequencing
 the platform does not know.

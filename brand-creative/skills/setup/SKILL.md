@@ -4,7 +4,7 @@ description: >
   Brand practice setup interview — detects instance profile and existing brand
   artefacts, interviews enforcement strictness and discovery platforms, runs
   brand-voice discover → write → review and brand-guide write, saves to the
-  resolved brand path. Use on first install after `/agency-hub:setup`, when the user
+  resolved brand path. Use on first install on first install, when the user
   says "set up brand" or "configure brand voice", or to redo brand only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
@@ -28,7 +28,7 @@ First brand setup after instance bootstrap; standalone Try-tier brand setup; re-
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile.
-- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
+- **Writes `config/instance.json` if absent** — idempotent instance bootstrap, then this practice interview.
 - **Does not install other plugins** — user installs from marketplace.
 - **Does not write without explicit yes** after showing the plain-language diff.
 - **Does not use `docs/brand/`** when an instance or target pointer exists — resolves per `brand-conventions.md`.
@@ -61,6 +61,12 @@ Structured-aggregation; integration table reports ✓ only on successful MCP pro
 4. **Inspect brand artefacts** at resolved path — `brand-voice.md`, `brand-guide.md`, `brand.local.md`.
 5. If **complete** and not `--redo`: summarize on-file brand; offer refresh, `--redo`, or `--check-integrations`. Stop unless user chooses refresh.
 6. If **paused resume file** exists: greet, summarize progress, continue or start over.
+
+### Step 0a — Instance bootstrap
+
+If `config/instance.json` is **absent**, follow `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md` → **Instance bootstrap**: interview minimal org facts, show the summary, write `config/instance.json` on yes, then continue.
+
+If present and complete, reference it — do not re-ask business identity.
 
 ### Step 0b — Install scope check
 

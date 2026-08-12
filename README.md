@@ -8,21 +8,19 @@ In [Claude Code](https://claude.com/product/claude-code), [Claude Cowork](https:
 
 ```bash
 /plugin marketplace add <path-to-this-repo>
-/plugin install agency-hub@carinya-plugins
 ```
 
-Restart, then run `/agency-hub:setup`. It bootstraps a git-versioned instance workspace (`config/`, `brand/`, `squads/`) and recommends your first practice plugin. Full walkthrough: [agency-hub/README.md](./agency-hub/README.md).
+Restart, then run `/<practice>:setup`. It bootstraps a git-versioned instance workspace (`config/`, `brand/`, `squads/`) and recommends your first practice plugin. Full walkthrough: [brand-creative/README.md](./brand-creative/README.md).
 
 > [!IMPORTANT]
 > **Every output is a draft for your review — not client-ready deliverables, not production code without review, not a substitute for qualified professional judgment.** Agents and skills draft work products; you verify accuracy, brand fit, accessibility, security, and compliance before anything ships. You are responsible for outputs that leave your firm.
 
 ## Plugins at a glance
 
-Install **`agency-hub` first**, then the practice plugins that match your work.
+Install the practice plugins that match your work. The first practice `setup` writes `config/instance.json` if absent.
 
 | Plugin | Best for | First command |
 |---|---|---|
-| [agency-hub](./agency-hub) | Instance bootstrap, target bindings, squad charters | `/agency-hub:setup` |
 | [brand-creative](./brand-creative) | Brand voice and visual identity | `/brand-creative:setup` |
 | [product-management](./product-management) | Product strategy, roadmap, specs, research, metrics, backlog, sprint cadence, validation | `/product-management:setup` |
 | [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:setup` |
@@ -46,13 +44,13 @@ Install **`agency-hub` first**, then the practice plugins that match your work.
 
 Each example produces a **draft artefact for your review** — run the command, then verify assumptions, numbers, and brand fit before client delivery.
 
-### 1. Bootstrap a client instance (Agency Hub)
+### 1. Bootstrap a client instance
 
 **You have:** a new engagement — business name, one website target, no instance repo yet.
 
-**Run:** `/agency-hub:setup --quick` — answer business name, first practice, and target.
+**Run:** `/brand-creative:setup --quick` (or any practice `setup`) — answers business name and writes `config/instance.json` if absent, then the practice interview.
 
-**You get:** a bound instance repo with `config/instance.json`, target skeletons, and a handoff to brand setup or your first practice plugin.
+**You get:** a bound instance profile and a practice profile ready for the next skill.
 
 ### 2. Sprint plan from an existing backlog (Product Management)
 
@@ -133,7 +131,7 @@ What's in the repo:
 ## Repository layout
 
 ```
-agency-hub/               # instance bootstrap — install first
+brand-creative/               # instance bootstrap — install first
 brand-creative/           # brand voice + visual identity
 product-management/       # product, roadmap, specs, research, metrics, backlog, sprint, validate
 content-marketing/        # calendar, curation, media analysis, CMS seeds
@@ -170,8 +168,8 @@ Each practice plugin has the same shape:
 
 ### First run (all surfaces)
 
-1. Install **`agency-hub`** from the marketplace.
-2. Run **`/agency-hub:setup`** — creates or binds your instance repo.
+1. Install a practice plugin from the marketplace (e.g. `brand-creative` or `product-management`).
+2. Run **`/<practice>:setup`** — creates or binds your instance repo.
 3. Install the **practice plugins** recommended during setup.
 4. Run each practice's **`/<practice>:setup`** (e.g. `/brand-creative:setup`).
 5. Bind targets — website pointer (`.agency/target.json` in target repos), credentials when ready.
@@ -191,7 +189,6 @@ After install, skills fire automatically when relevant; slash commands are avail
 ```bash
 /plugin marketplace add <path-to-this-repo-or-github-url>
 
-/plugin install agency-hub@carinya-plugins
 /plugin install brand-creative@carinya-plugins
 /plugin install product-management@carinya-plugins
 /plugin install content-marketing@carinya-plugins
@@ -199,7 +196,6 @@ After install, skills fire automatically when relevant; slash commands are avail
 /plugin install search-optimisation@carinya-plugins
 # product-engineering — zip-install the product-engineering/ directory until marketplace registration lands
 
-/agency-hub:setup
 /brand-creative:setup
 /product-management:setup
 ```
@@ -273,8 +269,6 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 
 | Plugin | What it adds |
 |---|---|
-| **[agency-hub](./agency-hub)** | Instance bootstrap via `setup`. v2 adds community skill discovery, installation QA, and update management (designed, deferred — stubs exist for shape validation). |
-
 **Companion practices:** `content-marketing` invokes `/product-management:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `product-engineering` invokes `/product-management:tasks` and related skills for planning cadence during implementation. No direction requires the companion installed — skills degrade gracefully and document the pairing.
 
 ## MCP connectors
@@ -283,7 +277,6 @@ Each practice plugin bundles a **minimal default** — one or two MCP servers mo
 
 | Practice | Default bundled | Primary categories |
 |---|---|---|
-| **agency-hub** | — | no bundled MCP |
 | **brand-creative** | Fireflies | meeting transcription |
 | **product-management** | Atlassian, Amplitude | project tracker, product analytics |
 | **content-marketing** | Canva | creative / design |
@@ -291,7 +284,7 @@ Each practice plugin bundles a **minimal default** — one or two MCP servers mo
 | **search-optimisation** | Ahrefs | SEO intelligence |
 | **product-engineering** | GitHub, Playwright, Context7 | source control, browser automation, framework docs |
 
-No server is duplicated across plugins. **agency-hub** does not bundle MCP — connectors live in practice plugins. Co-install companion practices or edit `.mcp.json` to add Slack, Notion, Vercel, Sentry, and other common servers — see each practice's CONNECTORS.md for the full placeholder map and suggested additions.
+No server is duplicated across plugins. Co-install companion practices or edit `.mcp.json` to add Slack, Notion, Vercel, Sentry, and other common servers — see each practice's CONNECTORS.md for the full placeholder map and suggested additions.
 
 > Connectors marked "customer subscription" need your own account and API key. Configure them in each plugin's `.mcp.json` or via `claude mcp` in Claude Code.
 
@@ -308,10 +301,10 @@ Two layers of configuration tailor generic skills to your firm:
 
 | Command | Writes |
 |---|---|
-| `/agency-hub:setup` | Instance repo + handoff to first practice |
+| `/<practice>:setup` | Instance repo + handoff to first practice |
 | `/<practice>:setup` | Practice profile for that service line |
 
-Framework: [`agency-hub/references/agency-setup-framework.md`](./agency-hub/references/agency-setup-framework.md) and synced [`setup-framework.md`](./product-management/references/practice-setup-framework.md) copies in each practice.
+Framework: [`brand-creative/references/agency-setup-framework.md`](./brand-creative/references/agency-setup-framework.md) and [`practice-setup-framework.md`](./brand-creative/references/practice-setup-framework.md) and synced [`setup-framework.md`](./product-management/references/practice-setup-framework.md) copies in each practice.
 
 **Living profile.** Every skill except `setup` uses **propose profile update** — show the exact diff, ask, write on yes. No skill auto-writes a full profile without confirmation.
 
@@ -333,15 +326,8 @@ No build step. Everything is markdown and JSON.
 
 The full map across all practice plugins. Run `setup` in each plugin before other commands.
 
-### agency-hub
 
-| Command | Skill | What it does |
-|---|---|---|
-| `/agency-hub:setup` | setup | Interview → bind instance repo → write config → hand off |
-| `/agency-hub:setup --quick` | setup | Minimal path: business name, one practice, one target |
-| `/agency-hub:setup --check-integrations` | setup | Report target binding status only |
-
-v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …) are designed but not shipped — see [agency-hub/README.md](./agency-hub/README.md).
+v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …) are designed but not shipped — see [brand-creative/README.md](./brand-creative/README.md).
 
 ### brand-creative
 

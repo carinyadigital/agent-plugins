@@ -74,7 +74,7 @@ fi
 ```
 
 Map changed file paths to their top-level plugin directory (the first path
-segment for practice plugins/`agency-hub`). Present the list of affected plugins to the user and confirm
+segment for practice plugins/`practice setup`). Present the list of affected plugins to the user and confirm
 before proceeding — a release should never silently include a plugin the
 user didn't mean to ship.
 

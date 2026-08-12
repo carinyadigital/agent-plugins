@@ -5,7 +5,7 @@ service: setup interview, architecture, epic design, implementation, code review
 and platform operations. Self-contained under the MECE practice model: edit skills
 here only; nothing is vendored from elsewhere.
 
-Install standalone or after `agency-hub:setup` recommends it. Declare
+Install standalone or after practice `setup` (writes `config/instance.json` if absent) recommends it. Declare
 `product-management` as a **companion practice** for backlog, tasks, sprint, and
 validate — invoke `/product-management:tasks --product` and related skills directly rather
 than bundling duplicate copies.
@@ -95,7 +95,7 @@ not exist, ask the user for design guidance inline.
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:setup` writes
+- **Instance profile** (optional) — practice `setup` (writes `config/instance.json` if absent) writes
   `config/instance.json`; setup reads cadence and target hints without
   re-asking.
 - **product-management** (recommended companion) — tasks, backlog-refine, sprint-planning, sprint-retro, validate;
@@ -115,7 +115,7 @@ not exist, ask the user for design guidance inline.
 
 - `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/product-engineering-conventions.md` — path resolution, personas, artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
+- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
 
 Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

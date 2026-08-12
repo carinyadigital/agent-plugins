@@ -4,7 +4,7 @@ Root-level **practice plugin** — one install delivers the complete brand servi
 setup interview, voice lifecycle, and visual identity guide. Self-contained under
 the MECE practice model: edit skills here only; nothing is vendored from elsewhere.
 
-Install standalone or after `agency-hub:setup` recommends it.
+Install standalone or after practice `setup` (writes `config/instance.json` if absent) recommends it.
 
 ## Who this is for
 
@@ -52,7 +52,7 @@ Path resolution for all skills: `references/brand-conventions.md`.
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:setup` writes
+- **Instance profile** (optional) — practice `setup` (writes `config/instance.json` if absent) writes
   `config/instance.json`; setup reads business identity and seed material
   without re-asking.
 - **Connectors** (optional) — Notion, Atlassian, Slack, Figma, Fireflies enable
@@ -69,7 +69,7 @@ Path resolution for all skills: `references/brand-conventions.md`.
 
 - `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/brand-conventions.md` — path resolution and artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
+- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
 
 Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

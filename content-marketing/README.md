@@ -5,7 +5,7 @@ setup interview, editorial calendar, social curation, media analysis, and CMS se
 drafting. Self-contained under the MECE practice model: edit skills here only; nothing
 is vendored from elsewhere.
 
-Install standalone or after `agency-hub:setup` recommends it. Declare
+Install standalone or after practice `setup` (writes `config/instance.json` if absent) recommends it. Declare
 `product-management` (backlog and research synthesis) as
 **companion practices** — invoke `/product-management:tasks --product` and
 `/product-management:synthesize-research` directly rather than bundling duplicate
@@ -82,7 +82,7 @@ installed — document the optional pairing in both READMEs rather than a hard d
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:setup` writes
+- **Instance profile** (optional) — practice `setup` (writes `config/instance.json` if absent) writes
   `config/instance.json`; setup reads business identity and house tone hints
   without re-asking.
 - **product-management** (recommended companion) — backlog alignment; see CONNECTORS.md.
@@ -100,7 +100,7 @@ installed — document the optional pairing in both READMEs rather than a hard d
 
 - `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/content-conventions.md` — path resolution, personas, artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
+- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
 - `references/prompt-refinement.md` — quality checks for analyse-media and write-captions
 
 Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)

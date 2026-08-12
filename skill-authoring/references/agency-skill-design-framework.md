@@ -6,7 +6,7 @@
 Single source of truth for what makes a digital-agency skill well-designed.
 Three things consume it:
 
-- **`agency-hub:skills-qa`** — evaluates a skill against this framework and
+- **`/skill-authoring:skills-qa`** — evaluates a skill against this framework and
   produces a verdict. Cite this file; do not let the two drift.
 - **`references/skill-authoring-template.md`** (when added) — starting skeleton
   for new skills, built to pass this framework by construction.
@@ -182,4 +182,4 @@ or environment modification patterns. No override path.
 
 ## Changelog
 
-- **0.1.0** (2026-06-27) — Initial version; canonical reference under `agency-hub/references/`.
+- **0.1.0** (2026-06-27) — Initial version; canonical reference under `brand-creative/references/`.

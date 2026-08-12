@@ -17,7 +17,7 @@ Everything in this repo is markdown and JSON — no build step. Fork, edit, open
   .cursor-plugin/plugin.json
   .mcp.json
 
-agency-hub/                   # instance bootstrap + marketplace management (install first)
+brand-creative/                   # instance bootstrap + marketplace management (install first)
 
 managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, …)
 
@@ -42,7 +42,7 @@ scripts/
 
 1. Create `<practice>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, `evals/`, `scripts/`).
 2. Add `evals/evals.json` and `evals/trigger-queries.json` to define test cases and routing expectations.
-3. Follow [agency-hub/references/agency-skill-design-framework.md](./agency-hub/references/agency-skill-design-framework.md) for skill design conventions.
+3. Follow [skill-authoring/references/agency-skill-design-framework.md](./skill-authoring/references/agency-skill-design-framework.md) for skill design conventions.
 4. Register it in the practice plugin's `plugin.json` if needed.
 5. Run `python3 scripts/validate.py` and fix errors.
 

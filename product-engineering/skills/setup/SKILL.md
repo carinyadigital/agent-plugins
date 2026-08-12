@@ -2,9 +2,9 @@
 name: setup
 description: >
   Web development practice setup interview — detects or creates .agency/target.json
-  binding, reads instance profile from `/agency-hub:setup`, interviews tech stack, deployment
+  binding, reads instance profile from `config/instance.json` when present, interviews tech stack, deployment
   platform, connectors, and persona preference (six engineering personas vs merged),
-  writes practice profile. Use on first install after `/agency-hub:setup`, when the user says
+  writes practice profile. Use on first install on first install, when the user says
   "set up web development" or "bind target repo", or to redo engineering defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
@@ -29,7 +29,7 @@ after stack or deployment platform changes. Explicit invocation only.
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for target hints.
-- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
+- **Writes `config/instance.json` if absent** — idempotent instance bootstrap, then this practice interview.
 - **Does not install other plugins** — user installs `product-management` from marketplace when planning companion skills are needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce solution, design, or code artefacts** — those are separate skills after setup.
@@ -64,6 +64,12 @@ Structured-aggregation; integration table reports ✓ only on successful MCP pro
 5. **Read** `~/.claude/plugins/config/digital-agency/product-engineering/CLAUDE.md` unless `--redo`.
 6. If **complete** and not `--redo`: summarize on-file engineering defaults; offer refresh, `--redo`, or `--check-integrations`. Stop unless user chooses refresh.
 7. If **paused resume file** exists: greet, summarize progress, continue or start over.
+
+### Step 0a — Instance bootstrap
+
+If `config/instance.json` is **absent**, follow `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md` → **Instance bootstrap**: interview minimal org facts, show the summary, write `config/instance.json` on yes, then continue.
+
+If present and complete, reference it — do not re-ask business identity.
 
 ### Step 0b — Install scope check
 

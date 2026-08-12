@@ -1,6 +1,6 @@
 # Practice setup framework — digital-agency
 
-Every root-level practice plugin's `setup` skill follows this framework. Plugin skills add only **plugin-specific** questions on top; org-wide facts live once in the instance profile (`config/instance.json`) written by `agency-hub:setup`.
+Every root-level practice plugin's `setup` skill follows this framework. Plugin skills add only **plugin-specific** questions on top; org-wide facts live once in the instance profile (`config/instance.json`). **Whichever practice plugin you install first bootstraps** — if `config/instance.json` is absent, that practice's `setup` writes it, then runs its own interview.
 
 ## Invocation
 
@@ -53,9 +53,17 @@ When `config/instance.json` exists and `status: complete`:
 
 - **Skip** business identity and house tone questions — reference the instance profile ("see instance profile").
 - **Use** `seedMaterial.sources` and `seedMaterial.notes` as starting context.
-- **Do not write** to `config/instance.json` from setup — propose updates separately if new org facts emerge.
+- **If `config/instance.json` is absent:** run the **instance bootstrap** subsection below, write the profile, then continue with plugin-specific questions.
+- **If present and complete:** do not rewrite it from setup — propose updates separately if new org facts emerge.
 
-When no instance profile exists (standalone Try tier), ask minimal business identity only if needed for voice generation (company name for examples).
+### Instance bootstrap (when `config/instance.json` is absent)
+
+1. Read `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md` (and `agency-setup-framework.md` when present in this plugin).
+2. Interview minimal org facts: business name / prose name, single-business vs agency-serving-clients, primary practice, planning cadence, risk posture.
+3. Show the plain-language summary of `config/instance.json` (and optional target skeleton). **Wait for yes.**
+4. Write `config/instance.json` with `status: complete` (link-first — do not create GitHub repos autonomously).
+5. Continue into the plugin-specific interview.
+
 
 ## Plugin-specific interview
 

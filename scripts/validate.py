@@ -334,7 +334,6 @@ class Validator:
 
     def source_skill_paths(self) -> list[Path]:
         paths = sorted(ROOT.glob("skills/*/skills/*/SKILL.md"))
-        paths.extend(sorted(ROOT.glob("agency-hub/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("brand-creative/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-management/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-engineering/skills/*/SKILL.md")))
@@ -729,7 +728,6 @@ class Validator:
         patterns = [
             (ROOT / "skills", "skills/*/skills/*/SKILL.md"),
             (ROOT / "agents", "agents/*/agents/*.md"),
-            (ROOT / "agency-hub", "agency-hub/skills/*/*.md"),
             (ROOT / "brand-creative", "brand-creative/skills/*/*.md"),
             (ROOT / "product-management", "product-management/skills/*/*.md"),
             (ROOT / "product-engineering", "product-engineering/skills/*/*.md"),
@@ -746,7 +744,6 @@ class Validator:
             if base.name == "skills":
                 checked_files.extend(sorted(base.glob("*/skills/*/*.md")))
             elif base.name in {
-                "agency-hub",
                 "brand-creative",
                 "product-management",
                 "product-engineering",

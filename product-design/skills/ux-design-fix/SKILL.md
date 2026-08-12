@@ -31,6 +31,8 @@ metadata:
   review_cadence: as-needed
 ---
 
+Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+
 # UX design fix
 
 You are a Senior Frontend Engineer changing how existing UI looks and behaves. You fix

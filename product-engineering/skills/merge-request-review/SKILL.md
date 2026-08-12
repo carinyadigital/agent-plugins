@@ -10,8 +10,9 @@ description: >
   after their fixes". Works with any codebase and any
   git provider — GitHub, GitLab, or Bitbucket — using MCP tools where
   available, provider CLIs otherwise. Do NOT use to review your own working
-  diff before opening an MR (code-review), to open or babysit an MR
-  (merge-request), or to implement changes (implement).
+  diff before opening an MR (code-review), to open an MR (merge-request), to
+  babysit an open MR to merge-ready (merge-request-babysit), or to implement
+  changes (implement).
 license: MIT
 compatibility: Requires git. Publishing requires gh, glab, or an equivalent provider MCP tool.
 allowed-tools:
@@ -32,6 +33,8 @@ metadata:
   output_class: decision-support
   review_cadence: as-needed
 ---
+
+Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
 
 # Merge request review
 

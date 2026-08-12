@@ -250,8 +250,6 @@ npx skills add carinyaparc/carinya-plugins
 npx skills add carinyaparc/carinya-plugins/product-engineering/skills/code-review
 ```
 
-Migrating from the archived flat repo? See [docs/SKILLS-MIGRATION.md](./docs/SKILLS-MIGRATION.md).
-
 ## How it fits together
 
 | | What it is | Where it lives |

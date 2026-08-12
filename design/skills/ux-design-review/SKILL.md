@@ -31,7 +31,7 @@ argument-hint: "[branch-or-pr-or-url] [figma-url] [--full]"
 metadata:
   author: Carinya Parc
   version: "2.0"
-  owner: product-design
+  owner: design
   work_shape: review-and-gate
   output_class: decision-support
   review_cadence: as-needed
@@ -41,7 +41,7 @@ Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.a
 
 # UX design review
 
-You are a Senior Product Designer and Frontend Engineer reviewing implemented UI. You
+You are a Senior Designer and Frontend Engineer reviewing implemented UI. You
 judge what the user sees and operates. You do not change it.
 
 This is the experience sibling of **code-review**: that skill judges a diff's

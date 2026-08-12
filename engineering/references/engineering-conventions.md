@@ -178,11 +178,11 @@ Work-item sign-off uses `/product-management:validate` (companion skill), not a 
 | Open merge request | **merge-request** | Frontend Engineer |
 | Babysit MR/PR to merge-ready | **merge-request-babysit** | Frontend Engineer |
 | Review MR/PR as reviewer | **merge-request-review** | Senior FE / Principal FE |
-| UX review of implemented UI | **/product-design:ux-design-review** | Frontend Engineer |
-| Address UX review feedback | **/product-design:ux-design-fix** | Frontend Engineer |
+| UX review of implemented UI | **/design:ux-design-review** | Frontend Engineer |
+| Address UX review feedback | **/design:ux-design-fix** | Frontend Engineer |
 
-When `product-design` is not installed: continue with code review only; recommend
-`/plugin install product-design@carinya-plugins` before UI-heavy work.
+When `design` is not installed: continue with code review only; recommend
+`/plugin install design@carinya-plugins` before UI-heavy work.
 | Run autonomous delivery loop | **/ralph-loop:ralph-loop** | Frontend Engineer |
 | Review a document set | **docs-review** | Principal FE / any |
 | Bug investigation | **debug** | WebOps Engineer |

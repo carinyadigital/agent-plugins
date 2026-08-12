@@ -5,23 +5,23 @@ This file ships with the plugin and shows the structure the practice config shou
 It is replaced on every plugin update. Never write user data here.
 
 The `setup` skill copies or updates the user config at:
-  ~/.claude/plugins/config/digital-agency/ux-design/CLAUDE.md
+  ~/.claude/plugins/config/digital-agency/design/CLAUDE.md
 
 Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
-Wireframe artefacts live at the resolved design path — see references/product-design-conventions.md.
+Wireframe artefacts live at the resolved design path — see references/design-conventions.md.
 -->
 
 # UX Design — Practice Profile
 
-*Written by `/product-design:setup` or initialized on first use.*
+*Written by `/design:setup` or initialized on first use.*
 
 ---
 
 ## Status
 
-`template` — run `/product-design:setup` to fill this in.
+`template` — run `/design:setup` to fill this in.
 
 ## Who's using this
 
@@ -54,7 +54,7 @@ _(Figma links, prior wireframes, or competitor references to seed from — patte
 | ----------- | ------ | ----------------------- |
 | Design (Figma) | [✓ / ✗] | Manual upload or paste links |
 
-*Re-check: `/product-design:setup --check-integrations`*
+*Re-check: `/design:setup --check-integrations`*
 
 ---
 
@@ -64,4 +64,4 @@ _(Figma links, prior wireframes, or competitor references to seed from — patte
 
 ---
 
-*Re-run: `/product-design:setup --redo`*
+*Re-run: `/design:setup --redo`*

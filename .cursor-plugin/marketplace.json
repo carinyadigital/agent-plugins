@@ -41,10 +41,10 @@
       "description": "Complete content practice in one install — setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes product-management for tasks and research synthesis."
     },
     {
-      "name": "product-design",
-      "displayName": "Product Design",
-      "source": "./product-design",
-      "description": "Product design practice in one install — setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/. Bundles Figma and Playwright."
+      "name": "design",
+      "displayName": "Design",
+      "source": "./design",
+      "description": "Design practice in one install — setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/. Bundles Figma and Playwright."
     },
     {
       "name": "search-optimisation",

@@ -52,7 +52,7 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | Loop | Order |
 | ---- | ----- |
 | Strategy → delivery | `/product-management:product` → `roadmap` → `tasks --product` → `sprint-planning` → `validate` |
-| Engineering delivery | `/architecture:solution` → `/engineering:tdd` → `implement` → `code-review` → `/product-design:ux-design-review` → `/product-management:validate` |
+| Engineering delivery | `/architecture:solution` → `/engineering:tdd` → `implement` → `code-review` → `/design:ux-design-review` → `/product-management:validate` |
 | Brand → content | `/brand-creative:brand-voice` → `/content-marketing:content-calendar` |
 
 ## Catalogue
@@ -86,9 +86,9 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | engineering | document-defects | Structure defect reports |
 | engineering | platform-health | Platform health audit |
 | engineering | debug | Investigate bugs |
-| product-design | wireframe | Low-fidelity layout spec |
-| product-design | ux-design-review | Live-browser UX review |
-| product-design | ux-design-fix | Address UX findings |
+| design | wireframe | Low-fidelity layout spec |
+| design | ux-design-review | Live-browser UX review |
+| design | ux-design-fix | Address UX findings |
 | ralph-loop | ralph-loop-setup | Seed a Ralph loop |
 | ralph-loop | ralph-loop | Start / status / cancel a loop |
 | brand-creative | brand-voice | Brand voice lifecycle |

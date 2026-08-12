@@ -1,6 +1,6 @@
 # UX design conventions
 
-Canonical rules for paths, artefact boundaries, and skill routing. All `product-design`
+Canonical rules for paths, artefact boundaries, and skill routing. All `design`
 skills read this file when resolving paths or routing near-miss requests.
 
 ## Design directory (wireframe output)

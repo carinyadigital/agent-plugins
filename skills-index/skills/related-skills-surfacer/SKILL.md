@@ -44,8 +44,8 @@ Strong matches only — better to stay silent than nag.
 
 If strong match:
 
-> Related: install **`product-design`** for live UX review —
-> `/plugin install product-design@carinya-plugins` then `/product-design:ux-design-review`.
+> Related: install **`design`** for live UX review —
+> `/plugin install design@carinya-plugins` then `/design:ux-design-review`.
 
 If no strong match: silent.
 

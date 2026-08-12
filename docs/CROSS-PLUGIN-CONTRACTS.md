@@ -26,7 +26,7 @@ fail with a slash-command reference.
 | From | To | Mechanism | Required? |
 | ---- | -- | --------- | --------- |
 | `ralph-loop` | `engineering` | engineering-delivery preset invokes implement, code-review, code-review-fix, merge-request | Yes for that preset |
-| `ralph-loop` | `product-design` | engineering-delivery preset invokes ux-design-review, ux-design-fix | Optional (UI tasks only) |
+| `ralph-loop` | `design` | engineering-delivery preset invokes ux-design-review, ux-design-fix | Optional (UI tasks only) |
 | `ralph-loop` | `product-management` | engineering-delivery preset invokes validate | Yes for that preset |
 | `engineering` | self | implement reads tdd.md from tdd skill | Internal |
 | `product-management` | `architecture` | product/roadmap recommend solution | Companion |
@@ -34,8 +34,8 @@ fail with a slash-command reference.
 | `architecture` | `engineering` | solution/adr hand off to tdd, docs-review, implement | Companion |
 | `engineering` | `architecture` | tdd/implement cite solution; recommend solution/adr writes | Companion |
 | `engineering` | `product-management` | planning cadence, validate sign-off | Companion |
-| `engineering` | `product-design` | ux-design-review, ux-design-fix | Companion |
-| `product-design` | `engineering` | wireframe → implement; tdd.md for specs | Companion |
+| `engineering` | `design` | ux-design-review, ux-design-fix | Companion |
+| `design` | `engineering` | wireframe → implement; tdd.md for specs | Companion |
 | `content-marketing` | `product-management` | tasks, synthesize-research | Companion |
 | `search-optimisation` | `product-management` | competitive-brief | Companion |
 | `engineering` | `ralph-loop` | autonomous delivery loop | Companion |
@@ -44,7 +44,7 @@ fail with a slash-command reference.
 
 ---
 
-## ralph-loop → engineering / product-design / product-management
+## ralph-loop → engineering / design / product-management
 
 **Preset:** `engineering-delivery` (contributed by `engineering` at
 `engineering/assets/ralph-presets/engineering-delivery.md`)
@@ -69,8 +69,8 @@ links.
 | implement | `/engineering:implement` | engineering |
 | review | `/engineering:code-review` | engineering |
 | review_fix | `/engineering:code-review-fix` | engineering |
-| ux_review | `/product-design:ux-design-review` | product-design |
-| ux_review_fix | `/product-design:ux-design-fix` | product-design |
+| ux_review | `/design:ux-design-review` | design |
+| ux_review_fix | `/design:ux-design-fix` | design |
 | final_validate | `/product-management:validate` | product-management |
 | create_mr | `/engineering:merge-request` | engineering |
 
@@ -79,7 +79,7 @@ links.
 | Missing plugin | Behaviour |
 | -------------- | --------- |
 | `engineering` | **Refuse** `engineering-delivery` preset at setup. Offer `ad-hoc` or `custom`, or: `Install: /plugin install engineering@carinya-plugins` |
-| `product-design` | Loop continues; skip `ux_review` / `ux_review_fix` when UI signals absent or plugin not installed. Note in run context. |
+| `design` | Loop continues; skip `ux_review` / `ux_review_fix` when UI signals absent or plugin not installed. Note in run context. |
 | `product-management` | Loop can implement and review but cannot run `final_validate`. Stop before final sign-off with install message for `product-management`. |
 
 **ad-hoc** and **custom** presets ship inside `ralph-loop` and run with no
@@ -162,17 +162,17 @@ not need tracker/backlog integration; recommend co-install for delivery cadence.
 
 ---
 
-## engineering / product-design UX edge
+## engineering / design UX edge
 
 | Need | Invoke |
 | ---- | ------ |
-| Live-browser UX review | `/product-design:ux-design-review` |
-| Fix UX findings | `/product-design:ux-design-fix` |
+| Live-browser UX review | `/design:ux-design-review` |
+| Fix UX findings | `/design:ux-design-fix` |
 
-When `product-design` is not installed: `code-review` still runs; skip UX
+When `design` is not installed: `code-review` still runs; skip UX
 review steps. Recommend install before UI-heavy work.
 
-Wireframes from `product-design` are consumed from `<instance-root>/design/` or
+Wireframes from `design` are consumed from `<instance-root>/design/` or
 user-named paths — no plugin install required to **read** them.
 
 ---
@@ -241,7 +241,7 @@ run in the monorepo, not in the plugin cache.
 | Plugin | Bundled MCP | Notes |
 | ------ | ----------- | ----- |
 | product-management | atlassian, amplitude | Unchanged after delivery-practice merge — tracker + analytics |
-| product-design | figma, playwright | Playwright required for ux-design-review/fix browser work |
+| design | figma, playwright | Playwright required for ux-design-review/fix browser work |
 | engineering | github, playwright, context7 | Engineering tool surface |
 | brand-creative | fireflies | |
 | content-marketing | canva | |

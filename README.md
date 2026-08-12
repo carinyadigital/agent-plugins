@@ -32,7 +32,7 @@ Install the practice plugins that match your work. The first practice `setup` wr
 | [brand-creative](./brand-creative) | Brand voice and visual identity | `/brand-creative:setup` |
 | [product-management](./product-management) | Product strategy, roadmap, specs, research, metrics, backlog, sprint cadence, validation | `/product-management:setup` |
 | [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:setup` |
-| [product-design](./product-design) | Wireframes, live UX review, and UX design fix | `/product-design:setup` |
+| [design](./design) | Wireframes, live UX review, and UX design fix | `/design:setup` |
 | [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
 | [architecture](./architecture) | Solution design and ADRs | `/architecture:setup` |
 | [engineering](./engineering) | Technical design (tdd), implementation, code review, QA, platform ops | `/engineering:setup` |
@@ -45,7 +45,7 @@ Install the practice plugins that match your work. The first practice `setup` wr
 | If you are… | Install next |
 |---|---|
 | Standing up a new client or product | `brand-creative` → `product-management` |
-| Shipping a website or app | `product-management` + `architecture` + `engineering` (+ `product-design` for new UI) |
+| Shipping a website or app | `product-management` + `architecture` + `engineering` (+ `design` for new UI) |
 | Running content and social | `brand-creative` → `content-marketing` (+ `search-optimisation` for SEO) |
 | SEO-only engagement | `search-optimisation` (+ `product-management` for competitive brief) |
 
@@ -95,7 +95,7 @@ Personas are **job titles that map to slash commands** inside practice plugins �
 | **Engineer** | Implement tasks against approved design and AC | `/engineering:implement` |
 | **Reviewer** | Peer code review against design docs and AC | `/engineering:code-review` |
 | **Release gate** | Final technical sign-off on open PRs | `/engineering:final-code-review` |
-| **UX Designer** | Wireframes, live UX review, UX fixes | `/product-design:wireframe` |
+| **UX Designer** | Wireframes, live UX review, UX fixes | `/design:wireframe` |
 | **QA** | QA deploy, automated suite, exploratory pass | `/engineering:exploratory-pass` |
 
 Engineering skills share one library in `engineering`. Architecture (`solution`, `adr`) lives in `architecture`. Seniority labels (peer review vs final gate) reflect review depth, not separate plugins.
@@ -152,7 +152,7 @@ brand-creative/           # brand voice + visual identity
 product-management/       # product, roadmap, specs, research, metrics, backlog, sprint, validate
 architecture/             # solution, adr
 engineering/      # tdd, implement, review, QA, platform
-product-design/           # wireframes, ux-design-review, ux-design-fix
+design/           # wireframes, ux-design-review, ux-design-fix
 content-marketing/        # calendar, curation, media analysis, CMS seeds
 search-optimisation/      # keyword research, technical audit, content SEO review
 ralph-loop/               # ralph-loop + ralph-loop-setup (+ hooks)
@@ -207,7 +207,7 @@ After install, skills fire automatically when relevant; slash commands are avail
 /plugin install brand-creative@carinya-plugins
 /plugin install product-management@carinya-plugins
 /plugin install engineering@carinya-plugins
-/plugin install product-design@carinya-plugins
+/plugin install design@carinya-plugins
 /plugin install content-marketing@carinya-plugins
 /plugin install search-optimisation@carinya-plugins
 /plugin install ralph-loop@carinya-plugins
@@ -299,7 +299,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 |---|---|
 | **[brand-creative](./brand-creative)** | Brand voice lifecycle (discover, write, enforce) and visual identity guide (colors, type, logo, UI tokens). Writes to instance `brand/` when bound. |
 | **[content-marketing](./content-marketing)** | Editorial calendar, social curation, media analysis, captions, and CMS seed drafting (posts and recipes). Two personas (Content Strategist, Content Writer). Reads brand voice from resolved brand path. |
-| **[product-design](./product-design)** | Wireframes, live-browser UX design review, and UX design fix. Writes to instance `design/` when bound; `engineering` reads wireframes via artefact consumption. |
+| **[design](./design)** | Wireframes, live-browser UX design review, and UX design fix. Writes to instance `design/` when bound; `engineering` reads wireframes via artefact consumption. |
 
 ### Growth & search
 
@@ -333,7 +333,7 @@ Each practice plugin bundles a **minimal default** — one or two MCP servers mo
 | **brand-creative** | Fireflies | meeting transcription |
 | **product-management** | Atlassian, Amplitude | project tracker, product analytics |
 | **content-marketing** | Canva | creative / design |
-| **product-design** | Figma, Playwright | design, browser automation |
+| **design** | Figma, Playwright | design, browser automation |
 | **search-optimisation** | Ahrefs | SEO intelligence |
 | **architecture** | GitHub | source control (ADR harvest) |
 | **engineering** | GitHub, Playwright, Context7 | source control, browser automation, framework docs |
@@ -419,14 +419,14 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | `/content-marketing:draft-post` | draft-post | Blog post seed JSON for CMS import |
 | `/content-marketing:draft-recipe` | draft-recipe | Recipe seed JSON for CMS import |
 
-### product-design
+### design
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/product-design:setup` | setup | Learns in-scope pages/flows and reference sources |
-| `/product-design:wireframe` | wireframe | Low-fidelity layout and interaction spec from a brief |
-| `/product-design:ux-design-review` | ux-design-review | Read-only UX review of implemented UI |
-| `/product-design:ux-design-fix` | ux-design-fix | Address UX review findings or direct UI fixes |
+| `/design:setup` | setup | Learns in-scope pages/flows and reference sources |
+| `/design:wireframe` | wireframe | Low-fidelity layout and interaction spec from a brief |
+| `/design:ux-design-review` | ux-design-review | Read-only UX review of implemented UI |
+| `/design:ux-design-fix` | ux-design-fix | Address UX review findings or direct UI fixes |
 
 ### search-optimisation
 

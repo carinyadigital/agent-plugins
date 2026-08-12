@@ -1,4 +1,4 @@
-# product-design
+# design
 
 Root-level **practice plugin** — setup interview, wireframes, live-browser UX
 design review, and UX design fix. Self-contained under the MECE practice model:
@@ -14,7 +14,7 @@ direction.
 After instance bootstrap (or standalone):
 
 ```
-/product-design:setup
+/design:setup
 ```
 
 | Flag | Behaviour |
@@ -37,13 +37,13 @@ After instance bootstrap (or standalone):
 Direct invocation works post-setup:
 
 ```
-/product-design:wireframe home-page
-/product-design:wireframe checkout-flow --brief "guest checkout, 3 steps"
-/product-design:ux-design-review
-/product-design:ux-design-fix
+/design:wireframe home-page
+/design:wireframe checkout-flow --brief "guest checkout, 3 steps"
+/design:ux-design-review
+/design:ux-design-fix
 ```
 
-Path resolution for all skills: `references/product-design-conventions.md`.
+Path resolution for all skills: `references/design-conventions.md`.
 
 ## Where wireframes land
 
@@ -71,16 +71,16 @@ tokens and visual patterns — no bundled skill and no install dependency on
 
 ## After setup
 
-1. Run `/product-design:wireframe` for each page or flow in scope.
+1. Run `/design:wireframe` for each page or flow in scope.
 2. Hand off to `/engineering:implement` when wireframes are approved.
-3. After implementation, run `/product-design:ux-design-review` (and
-   `/product-design:ux-design-fix` if needed).
-4. Re-run `/product-design:setup --redo` to refresh scope or references.
+3. After implementation, run `/design:ux-design-review` (and
+   `/design:ux-design-fix` if needed).
+4. Re-run `/design:setup --redo` to refresh scope or references.
 
 ## References
 
 - `references/practice-setup-framework.md` — invocation, config paths, interview structure
-- `references/product-design-conventions.md` — path resolution and artefact boundaries
+- `references/design-conventions.md` — path resolution and artefact boundaries
 - `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
 
 Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)

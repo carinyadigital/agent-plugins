@@ -32,7 +32,7 @@ connected; skills still work from briefs and brand voice alone.
 | Source control | `~~source control` | GitHub — see **engineering** |
 | Knowledge base | `~~knowledge base` | Notion — see **product-management** |
 | Chat | `~~chat` | Slack |
-| Design reference | `~~design` | Figma — see **product-design** |
+| Design reference | `~~design` | Figma — see **design** |
 | CMS | `~~CMS` | Contentful, Sanity, WordPress |
 | Social scheduling | `~~social scheduling` | Buffer, Later |
 

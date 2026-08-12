@@ -71,7 +71,7 @@ SKIP_AGENT_BUNDLES: dict[str, frozenset[str]] = {
 PRACTICE_PLUGIN_DIRS = (
     "brand-creative",
     "content-marketing",
-    "product-design",
+    "design",
     "engineering",
     "product-management",
     "search-optimisation",

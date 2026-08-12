@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Design rename (v0.5.0)
+
+- **BREAKING:** `product-design` renamed to `design` (directory, marketplace id, slash namespace `/design:…`, conventions file `design-conventions.md`). Reinstall as `design@carinya-plugins`; update any hard-coded `/product-design:` invocations and companion docs.
+
 ### Engineering rename (v0.6.0)
 
 - **BREAKING:** `product-engineering` renamed to `engineering` (directory, marketplace id, slash namespace `/engineering:…`, conventions file `engineering-conventions.md`). Reinstall as `engineering@carinya-plugins`; update any hard-coded `/product-engineering:` invocations and companion docs.

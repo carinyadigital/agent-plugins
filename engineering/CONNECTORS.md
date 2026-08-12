@@ -37,7 +37,7 @@ Add these to `.mcp.json` (or connect via Cursor / Claude MCP settings) when your
 | Project tracker | `~~project tracker` | Linear, Asana — see **product-management** |
 | Observability | `~~observability` | Datadog |
 | Error tracking | `~~error tracking` | Sentry (`https://mcp.sentry.dev/mcp`) |
-| Design | `~~design` | Figma — see **product-design** |
+| Design | `~~design` | Figma — see **design** |
 | Database | `~~database` | Neon Postgres, etc. |
 
 Neon Postgres and other stack-specific MCP servers are not bundled — add entries to

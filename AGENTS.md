@@ -15,12 +15,14 @@ Claude and Cursor plugins for digital agency workflows.
 │   ├── references/                  # content-conventions + synced meta-framework files
 │   └── skills/
 ├── architecture/                    # practice plugin — solution, adr, setup (MECE owned)
-├── product-design/                      # practice plugin — wireframe, ux-design-review, ux-design-fix (MECE owned)
-├── engineering/             # practice plugin — tdd, implement, review, QA, WebOps (MECE owned)
-├── ralph-loop/                          # ralph-loop + ralph-loop-setup + hooks
-├── skills-index/                        # find + related-skills-surfacer
-├── skill-authoring/                     # skills-qa (+ Phase 0 tooling later)
-│   ├── references/                  # product-design-conventions + synced meta-framework files
+├── design/                          # practice plugin — wireframe, ux-design-review, ux-design-fix (MECE owned)
+│   ├── references/                  # design-conventions + synced meta-framework files
+│   └── skills/
+├── engineering/                     # practice plugin — tdd, implement, review, QA, WebOps (MECE owned)
+├── ralph-loop/                      # ralph-loop + ralph-loop-setup + hooks
+├── skills-index/                    # find + related-skills-surfacer
+├── skill-authoring/                 # skills-qa (+ Phase 0 tooling later)
+│   ├── references/                  # agency-skill-design-framework
 │   └── skills/
 ├── search-optimisation/             # practice plugin — keyword-research, technical-seo-audit, content-seo-review (MECE owned)
 │   ├── references/                  # search-optimisation-conventions + synced meta-framework files
@@ -53,7 +55,7 @@ Claude and Cursor plugins for digital agency workflows.
 └── scripts/                         # sync-references.py, validate.py, validate_plugins.py, validate_skills.py
 ```
 
-Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `product-design/skills/`, `search-optimisation/skills/`, `engineering/skills/`, `architecture/skills/`).
+Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `design/skills/`, `search-optimisation/skills/`, `engineering/skills/`, `architecture/skills/`).
 
 Run `python3 scripts/sync-references.py` after editing shared meta-framework files in `references/` (`instance-profile-template.md`, `practice-setup-framework.md`).
 
@@ -67,7 +69,7 @@ Run `python3 scripts/validate.py` before opening a PR — it runs plugin-domain 
 | `content-marketing` | `setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Shipped; MECE practice plugin — Content Strategist and Content Writer personas, no separate agent plugins; reads `brand-voice.md` via artifact consumption; invokes `/product-management:tasks --product` and `/product-management:synthesize-research` as companion skills |
 | `architecture` | `setup`, `solution`, `adr` | Shipped; MECE practice — Principal Architect persona; companion to engineering for tdd/implement |
 | `engineering` | `setup` + tdd, implement, review, MR, docs-review, QA, WebOps skills | Shipped; MECE practice — five engineering personas; architecture and product-management as companions |
-| `product-design` | `setup`, `wireframe`, `ux-design-review`, `ux-design-fix` | Shipped; writes wireframes to `<instance-root>/design/`; live-browser review/fix; downstream practices read via artifact consumption |
+| `design` | `setup`, `wireframe`, `ux-design-review`, `ux-design-fix` | Shipped; writes wireframes to `<instance-root>/design/`; live-browser review/fix; downstream practices read via artifact consumption |
 | `ralph-loop` | `ralph-loop`, `ralph-loop-setup` | Shipped; ships hooks; engineering-delivery preset contributed by engineering |
 | `skills-index` | `find`, `related-skills-surfacer` | Shipped; install-aware router |
 | `skill-authoring` | `skills-qa` | Shipped; Phase 0 tooling to follow |

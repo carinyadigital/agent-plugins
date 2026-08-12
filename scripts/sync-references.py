@@ -22,7 +22,7 @@ PRACTICE_PLUGINS = (
     "brand-creative",
     "product-management",
     "content-marketing",
-    "product-design",
+    "design",
     "search-optimisation",
     "engineering",
     "architecture",

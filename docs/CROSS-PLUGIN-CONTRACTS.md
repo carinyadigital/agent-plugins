@@ -28,12 +28,12 @@ fail with a slash-command reference.
 | `ralph-loop` | `product-engineering` | engineering-delivery preset invokes implement, code-review, code-review-fix, merge-request | Yes for that preset |
 | `ralph-loop` | `product-design` | engineering-delivery preset invokes ux-design-review, ux-design-fix | Optional (UI tasks only) |
 | `ralph-loop` | `product-management` | engineering-delivery preset invokes validate | Yes for that preset |
-| `product-engineering` | self | implement reads design.md from design skill | Internal |
+| `product-engineering` | self | implement reads tdd.md from tdd skill | Internal |
 | `product-management` | `product-engineering` | product/roadmap recommend solution, docs-review | Companion |
 | `product-management` | `product-engineering` | delivery skills route design/implement/review | Companion |
 | `product-engineering` | `product-management` | planning cadence, validate sign-off | Companion |
 | `product-engineering` | `product-design` | ux-design-review, ux-design-fix | Companion |
-| `product-design` | `product-engineering` | wireframe → implement; design.md for specs | Companion |
+| `product-design` | `product-engineering` | wireframe → implement; tdd.md for specs | Companion |
 | `content-marketing` | `product-management` | tasks, synthesize-research | Companion |
 | `search-optimisation` | `product-management` | competitive-brief | Companion |
 | `product-engineering` | `ralph-loop` | autonomous delivery loop | Companion |
@@ -85,19 +85,19 @@ companion plugins.
 
 ---
 
-## product-engineering:implement → design.md
+## product-engineering:implement → tdd.md
 
-**Internal edge** (same plugin). `implement` reads `docs/work/{work-id}/design.md`
-written by the `design` skill.
+**Internal edge** (same plugin). `implement` reads `docs/work/{work-id}/tdd.md`
+written by the `tdd` skill.
 
 | Condition | Behaviour |
 | --------- | --------- |
-| design.md present | Proceed |
-| design.md absent | Stop. Recommend `/product-engineering:design {work-id}` first. |
-| Legacy `.agency/work/…/design.md` | Read fallback only; write new artefacts under `docs/` |
+| tdd.md present | Proceed |
+| tdd.md absent | Stop. Recommend `/product-engineering:tdd {work-id}` first. |
+| Legacy `.agency/work/…/design.md` or `docs/work/…/design.md` | Read fallback only; write new artefacts under `docs/` as `tdd.md` |
 
-Filename is always `design.md` (not `tdd.md`). The design skill owns the
-artefact regardless of design mode (`walking-skeleton` | `tdd`).
+Primary artefact filename is `tdd.md`. Legacy `design.md` is accepted when
+reading only — the `tdd` skill migrates it to `tdd.md` on update.
 
 ---
 
@@ -111,7 +111,7 @@ companion handoff.
 | `product-engineering` installed | Recommend `/product-engineering:solution` or `/product-engineering:docs-review` |
 | Not installed | Continue product work from user input. At architecture boundaries, say: `Install: /plugin install product-engineering@carinya-plugins` then `/product-engineering:solution` |
 
-Delivery skills route implementation to `/product-engineering:design`,
+Delivery skills route implementation to `/product-engineering:tdd`,
 `/product-engineering:implement`, etc. — see
 `product-management/references/delivery-conventions.md`.
 

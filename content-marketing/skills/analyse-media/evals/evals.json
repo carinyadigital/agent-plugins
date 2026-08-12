@@ -1,6 +1,6 @@
 {
-  "skill": "analyse-media",
-  "cases": [
+  "skill_name": "analyse-media",
+  "evals": [
     {
       "id": "analyse-winter-paddock",
       "prompt": "Analyse media photos/winter-paddock-green.jpg — cattle in lush green pasture, cool-season morning light.",

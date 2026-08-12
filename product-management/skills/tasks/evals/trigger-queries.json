@@ -1,22 +1,69 @@
-{
-  "skill_name": "tasks",
-  "should_trigger": [
-    "break this spec into a backlog",
-    "turn this RFC into tickets",
-    "write the epics for this product",
-    "decompose checkout-foundation",
-    "write tasks for CHK01",
-    "what stories do we need for the payments epic",
-    "split this design doc into implementable work",
-    "write sub-tasks for JIRA-123"
-  ],
-  "should_not_trigger": [
-    "groom the backlog",
-    "is this sprint-ready",
-    "plan sprint 3",
-    "write the epic design",
-    "write the architecture",
-    "implement CHK01-01",
-    "validate CHK01"
-  ]
-}
+[
+  {
+    "query": "break this spec into a backlog",
+    "should_trigger": true
+  },
+  {
+    "query": "turn this RFC into tickets",
+    "should_trigger": true
+  },
+  {
+    "query": "write the epics for this product",
+    "should_trigger": true
+  },
+  {
+    "query": "decompose checkout-foundation",
+    "should_trigger": true
+  },
+  {
+    "query": "write tasks for CHK01",
+    "should_trigger": true
+  },
+  {
+    "query": "what stories do we need for the payments epic",
+    "should_trigger": true
+  },
+  {
+    "query": "split this design doc into implementable work",
+    "should_trigger": true
+  },
+  {
+    "query": "write sub-tasks for JIRA-123",
+    "should_trigger": true
+  },
+  {
+    "query": "groom the backlog",
+    "should_trigger": false,
+    "note": "backlog-refine"
+  },
+  {
+    "query": "is this sprint-ready",
+    "should_trigger": false,
+    "note": "backlog-refine"
+  },
+  {
+    "query": "plan sprint 3",
+    "should_trigger": false,
+    "note": "sprint-planning"
+  },
+  {
+    "query": "write the epic design",
+    "should_trigger": false,
+    "note": "tdd"
+  },
+  {
+    "query": "write the architecture",
+    "should_trigger": false,
+    "note": "solution"
+  },
+  {
+    "query": "implement CHK01-01",
+    "should_trigger": false,
+    "note": "implement"
+  },
+  {
+    "query": "validate CHK01",
+    "should_trigger": false,
+    "note": "validate"
+  }
+]

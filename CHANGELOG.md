@@ -8,12 +8,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Migration verification complete
+
+- Phase 0 authoring tooling ported to `skill-authoring` (`validate_skills.py`, `mutation-test.py`, `eval-grader`, `skill-review`, spec, template).
+- Ralph hook test suites (`test-ralph-hooks.sh`, `test-seed-ralph-loop.sh`) ship in `ralph-loop/scripts/`.
+- `scripts/verify-migration.py` encodes post-migration checks; CI runs `validate.py`, `validate_skills.py`, mutation tests, and verification.
+- `docs/MIGRATION.md` removed — migration complete; see `docs/SKILLS-MIGRATION.md` and `docs/CROSS-PLUGIN-CONTRACTS.md`.
+
 ## [2026-08-12] — Phase 3 cutover + skills sync (v0.4.0)
 
 All nine catalogue plugins reset to **v0.4.0** after Phase 2 restructuring
 (`product-engineering`, `product-design`, `product-management` merge,
 `ralph-loop` extract, `skills-index` / `skill-authoring` new). See
-`docs/MIGRATION.md` and `docs/CROSS-PLUGIN-CONTRACTS.md`.
+`docs/CROSS-PLUGIN-CONTRACTS.md` and `docs/SKILLS-MIGRATION.md`.
 
 ### product-engineering — sync with carinyaparc/skills 3.0.0
 

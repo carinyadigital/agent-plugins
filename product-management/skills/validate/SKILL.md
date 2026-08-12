@@ -64,7 +64,8 @@ When the work item has many tasks (roughly >5) or complex Gherkin, spawn
 **ac-evidence-verifier** ([agents/ac-evidence-verifier.md](agents/ac-evidence-verifier.md))
 to build the acceptance matrix before writing the report and updating tasks.md.
 
-For eval runs on skills in this repo, use root **eval-grader** (`agents/eval-grader.md`).
+For eval runs on skills in this repo, use **eval-grader**
+(`skill-authoring/agents/eval-grader.md` in the catalogue repo).
 
 ## Steps
 

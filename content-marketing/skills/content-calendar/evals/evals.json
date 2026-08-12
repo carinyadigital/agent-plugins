@@ -1,6 +1,6 @@
 {
-  "skill": "content-calendar",
-  "cases": [
+  "skill_name": "content-calendar",
+  "evals": [
     {
       "id": "calendar-write-month",
       "prompt": "Write the July 2026 content calendar — monthly theme from seasonal calendar, 2 blog slots and 1 recipe slot with briefs.",

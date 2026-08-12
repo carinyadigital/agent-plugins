@@ -63,3 +63,4 @@ MEMORY.md
 # Cursor local files
 .cursor/*.local.json
 .cursor/*.local.md
+.mutation-backup/

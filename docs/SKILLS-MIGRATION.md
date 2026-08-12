@@ -28,7 +28,7 @@ Every skill from the flat repo, mapped to its new home.
 | `validate` | `/product-management:validate` | product-management | `product-management/skills/validate` |
 | `solution` | `/product-engineering:solution` | product-engineering | `product-engineering/skills/solution` |
 | `adr` | `/product-engineering:adr` | product-engineering | `product-engineering/skills/adr` |
-| `tdd` | `/product-engineering:design` | product-engineering | `product-engineering/skills/design` |
+| `tdd` | `/product-engineering:tdd` | product-engineering | `product-engineering/skills/tdd` |
 | `implement` | `/product-engineering:implement` | product-engineering | `product-engineering/skills/implement` |
 | `code-review` | `/product-engineering:code-review` | product-engineering | `product-engineering/skills/code-review` |
 | `code-review-fix` | `/product-engineering:code-review-fix` | product-engineering | `product-engineering/skills/code-review-fix` |
@@ -46,7 +46,7 @@ Every skill from the flat repo, mapped to its new home.
 
 | Change | Detail |
 |---|---|
-| `tdd` → `design` | Same skill, new name; lives in `product-engineering` |
+| `tdd` skill retained | Technical design skill stays `tdd`; artefact is `docs/work/{id}/tdd.md` (legacy `design.md` read-only fallback) |
 | `skills-index` → `find` | Router skill renamed; install-aware routing |
 | Delivery skills merged | `tasks`, `sprint-*`, `validate`, `backlog-refine` moved from delivery-practice into `product-management` |
 | UX skills split out | `ux-design-review`, `ux-design-fix` moved to `product-design` |
@@ -64,7 +64,7 @@ These ship only in `carinya-plugins`:
 | brand-creative | `setup`, `brand-voice`, `brand-guide` |
 | content-marketing | 8 content skills |
 | search-optimisation | 4 SEO skills |
-| skill-authoring | `skills-qa` |
+| skill-authoring | `skills-qa`, `skill-review` |
 | skills-index | `related-skills-surfacer` (absorbed into `find`) |
 
 ## skills.sh install (skill files only)

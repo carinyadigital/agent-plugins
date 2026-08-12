@@ -4,9 +4,10 @@ description: >
   Use when the user wants outcome-based delivery phases or exit criteria at
   docs/product/roadmap.md. Drafts or re-sequences the document. Triggers on
   "build the roadmap", "what are our delivery phases", "phase exit criteria".
-  Requires product.md. For reviewing or critiquing an existing roadmap.md, use
-  docs-review instead. Do NOT use for epic breakdown or work paths (tasks),
-  PRD (product), per-epic design (design), tasks (tasks), or architecture
+  Requires product.md. Re-authoring is also how an existing roadmap.md gets
+  critiqued or revised — docs-review checks writing quality and cross-document
+  consistency, not sequencing soundness. Do NOT use for epic breakdown or work paths (tasks),
+  PRD (product), per-work-item technical design (tdd), tasks (tasks), or architecture
   detail (solution).
 license: MIT
 allowed-tools:
@@ -24,6 +25,11 @@ metadata:
   review_cadence: as-needed
 ---
 
+During progressive migration, prefer `docs/product/roadmap.md` (and
+`docs/product/product.md` as input), falling back to `.agency/roadmap.md` /
+`.agency/product.md` when absent. Write new or updated roadmap artefacts only
+under `docs/product/`.
+
 # Roadmap
 
 You are a Delivery Lead writing a phased delivery roadmap that sequences
@@ -37,11 +43,6 @@ Default path: `docs/product/roadmap.md` — outcome-based phases with exit crite
 
 If the user names a different file path in their request, read and write that
 path instead of the default.
-
-During progressive migration, prefer `docs/product/roadmap.md` (and
-`docs/product/product.md` as input), falling back to `.agency/roadmap.md` /
-`.agency/product.md` when absent. Write new or updated roadmap artefacts only
-under `docs/product/`.
 
 ## Negative constraints
 
@@ -100,4 +101,4 @@ Markdown with YAML frontmatter. Save to the resolved path. Use [assets/roadmap.t
 - `/product-management:product` — product strategy input
 - `/product-management:tasks` — epics and work paths
 - `/product-engineering:solution` — architecture (companion; if not installed: `/plugin install product-engineering@carinya-plugins`)
-- `/product-engineering:docs-review` — review or critique an existing roadmap.md
+- `/product-engineering:docs-review` — writing quality / cross-doc consistency (not strategic soundness)

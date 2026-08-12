@@ -1,0 +1,26 @@
+{
+  "skill_name": "tdd",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write the skeleton technical design for checkout-foundation — end-to-end slice, files shipped, out of scope for this epic.",
+      "expected_output": "docs/work/checkout-foundation/tdd.md, 2–4 pages, cites solution.md, §4 lists deferred work, no task Gherkin.",
+      "assertions": [
+        "Writes docs/work/checkout-foundation/tdd.md",
+        "Uses skeleton sections (slice, files, gates, out of scope)",
+        "Cites solution.md by section rather than copying full architecture",
+        "No Feature:/Scenario: blocks (those belong in tasks.md)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write the technical design for CHK01. The repo already has docs/work/checkout-foundation/design.md from before the rename.",
+      "expected_output": "Reports the legacy design.md, moves it to tdd.md, and updates it in place rather than writing a second document.",
+      "assertions": [
+        "Tells the user a legacy design.md was found",
+        "Moves design.md to tdd.md instead of leaving both",
+        "Does not create a second design document alongside the legacy one"
+      ]
+    }
+  ]
+}

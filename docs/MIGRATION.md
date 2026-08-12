@@ -138,19 +138,25 @@ of which repo ends up canonical; they don't substitute for the reconciliation.
 
 ## Phase 1 — Rename
 
+### Status: DONE
+
 Two names change; only one redirects.
 
 - [x] Repo `digital-agency-plugins` → `carinya-plugins`. GitHub redirects old URLs and clones —
       low risk, do it first.
-- [ ] Marketplace `carinya-digital` → `carinya-plugins` in both
+- [x] Marketplace `carinya-digital` → `carinya-plugins` in both
       `.claude-plugin/marketplace.json` and `.cursor-plugin/marketplace.json`.
       **No redirect.** Anyone installed must `/plugin marketplace remove carinya-digital` then
       `/plugin marketplace add carinyaparc/carinya-plugins`. Do it now, at ~1 user.
-- [ ] Confirm `carinya-plugins` isn't on Anthropic's reserved marketplace list (it isn't today —
-      the list covers `agent-skills`, `knowledge-work-plugins`, `anthropic-*`, `claude-*`, and
-      names impersonating official sources — but the list is re-checked on every marketplace
-      load, so re-verify at cutover).
-- [ ] Update every install command in every README.
+- [x] Confirm `carinya-plugins` isn't on Anthropic's reserved marketplace list (confirmed 12 Aug
+      2026 — the list is `claude-code-marketplace`, `claude-code-plugins`,
+      `claude-plugins-official`, `claude-plugins-community`, `claude-community`,
+      `anthropic-marketplace`, `anthropic-plugins`, `agent-skills`, `anthropic-agent-skills`,
+      `knowledge-work-plugins`, `life-sciences`, `claude-for-legal`, `claude-for-financial-services`,
+      `financial-services-plugins`, `first-party-plugins`, `healthcare`, plus `official-*`,
+      `anthropic-*`, `claude-marketplace*` impersonation patterns — but the list is re-checked on
+      every marketplace load, so re-verify at cutover).
+- [x] Update every install command in every README.
 
 **Exit:** clean install from the new marketplace name in a fresh profile.
 

@@ -8,7 +8,7 @@ In [Claude Code](https://claude.com/product/claude-code), [Claude Cowork](https:
 
 ```bash
 /plugin marketplace add <path-to-this-repo>
-/plugin install agency-hub@carinya-digital
+/plugin install agency-hub@carinya-plugins
 ```
 
 Restart, then run `/agency-hub:setup`. It bootstraps a git-versioned instance workspace (`config/`, `brand/`, `squads/`) and recommends your first practice plugin. Full walkthrough: [agency-hub/README.md](./agency-hub/README.md).
@@ -142,7 +142,7 @@ web-development/          # solution, adr, design, implement, review, QA, platfo
 managed-agents/           # CMA + Cursor Cloud Agent cookbooks
 scripts/                  # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.py
 .claude-plugin/
-  marketplace.json        # plugin registry (name: carinya-digital)
+  marketplace.json        # plugin registry (name: carinya-plugins)
 .cursor-plugin/
   marketplace.json
 ```
@@ -178,7 +178,7 @@ Each practice plugin has the same shape:
 
 1. Open the **Cowork** tab.
 2. Click **Customize** in the left sidebar.
-3. Click **Browse plugins** and install from `https://github.com/carinyaparc/digital-agency`, **or** upload a custom plugin (zip any practice directory).
+3. Click **Browse plugins** and install from `https://github.com/carinyaparc/carinya-plugins`, **or** upload a custom plugin (zip any practice directory).
 
 After install, skills fire automatically when relevant; slash commands are available via `/`.
 
@@ -187,13 +187,13 @@ After install, skills fire automatically when relevant; slash commands are avail
 ```bash
 /plugin marketplace add <path-to-this-repo-or-github-url>
 
-/plugin install agency-hub@carinya-digital
-/plugin install brand-creative@carinya-digital
-/plugin install product-management@carinya-digital
-/plugin install delivery-practice@carinya-digital
-/plugin install content-marketing@carinya-digital
-/plugin install ux-design@carinya-digital
-/plugin install search-optimisation@carinya-digital
+/plugin install agency-hub@carinya-plugins
+/plugin install brand-creative@carinya-plugins
+/plugin install product-management@carinya-plugins
+/plugin install delivery-practice@carinya-plugins
+/plugin install content-marketing@carinya-plugins
+/plugin install ux-design@carinya-plugins
+/plugin install search-optimisation@carinya-plugins
 # web-development — zip-install the web-development/ directory until marketplace registration lands
 
 /agency-hub:setup
@@ -207,7 +207,7 @@ Updates: `/plugin update`.
 
 In **Settings → Plugins → Add plugin**:
 
-- **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick practice plugins from the marketplace list, or
+- **Paste this repo URL** — `https://github.com/carinyaparc/carinya-plugins` — then pick practice plugins from the marketplace list, or
 - **Upload a zip** — zip any practice directory (e.g. `web-development/`) and drop it in.
 
 ### Managed Agents and Cursor Cloud Agents

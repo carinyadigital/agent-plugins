@@ -42,7 +42,7 @@ brand-guide skill; read the artefact directly.
 
 When a UX design practice has produced wireframes or specs, read from
 `<instance-root>/design/` (or the path named by the user). Falls back to
-`docs/work/{work-id}/design.md` for work-item implementation specs (fall back to `.agency/work/` when reading legacy artefacts).
+`docs/work/{work-id}/tdd.md` for work-item implementation specs (fall back to `.agency/work/` when reading legacy artefacts).
 
 ## Companion practice (delivery)
 
@@ -76,7 +76,7 @@ See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
 docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
-docs/work/{work-id}/          design.md, tasks.md
+docs/work/{work-id}/          tdd.md, tasks.md
 docs/work/{work-id}/reviews/  code-review / ux-design-review verdicts
 docs/work/sprint-{id}/        plan.md, retrospective.md
 docs/reviews/                 shared review state (*.local.json)
@@ -108,7 +108,7 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 | Epic list, deps, points, work paths | `docs/product/backlog.md` | roadmap detail |
 | Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | design (cite only) |
 | ADR decisions | `docs/architecture/decisions/` | solution narrative |
-| Work-item implementation spec | `docs/work/{work-id}/design.md` | solution, backlog |
+| Work-item implementation spec | `docs/work/{work-id}/tdd.md` | solution, backlog |
 | Task Gherkin (and optional EARS) | `docs/work/{work-id}/tasks.md` | backlog, design |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
 
@@ -118,14 +118,14 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 - **EARS:** optional via `/product-management:tasks --ears` or when rules are clearer than scenarios.
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
 
-## Design modes
+## TDD modes
 
 | Mode | When | Size |
 | ---- | ---- | ---- |
-| `walking-skeleton` | Phase 0 | 2–4 pages |
-| `tdd` | Sprint 2+ | 5–10 pages |
+| `skeleton` | Phase 0 (walking skeleton) | 2–4 pages |
+| `full` | Sprint 2+ | 5–10 pages |
 
-Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
+Cite `solution.md §{N.M}` — do not re-narrate architecture in `tdd.md`.
 Design applies at whatever level the user names (`design CHK01`, `design JIRA-123`).
 
 ## Personas
@@ -150,7 +150,7 @@ Work-item sign-off uses `/product-management:validate` (companion skill), not a 
 | ----------- | ----- | ------- |
 | System architecture | **solution** | Principal Architect |
 | ADR write/review | **adr** | Principal Architect |
-| `design.md` for one work item | **design** | Senior FE / Principal FE / Architect |
+| `tdd.md` for one work item | **tdd** | Senior FE / Principal FE / Architect |
 | Implement code | **implement** | Frontend Engineer |
 | PR / branch code review | **code-review** | Senior FE / Principal FE |
 | Address review feedback | **code-review-fix** | Frontend Engineer |

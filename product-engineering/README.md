@@ -1,7 +1,7 @@
 # product-engineering
 
 Root-level **practice plugin** — one install delivers the complete web engineering
-service: setup interview, architecture, epic design, implementation, code review, QA,
+service: setup interview, architecture, technical design (tdd), implementation, code review, QA,
 and platform operations. Self-contained under the MECE practice model: edit skills
 here only; nothing is vendored from elsewhere.
 
@@ -18,9 +18,9 @@ Six personas share one skill library. Choose the default persona during
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
 | **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `ux-design-fix` | Build — UI, client state, styling |
-| **Senior Frontend Engineer** | `code-review`, `design`, `ux-design-review` | Peer review — diffs vs design and AC |
-| **Principal Frontend Engineer** | `final-code-review`, `code-review`, `design` | Final gate — architecture and AC on open PRs |
-| **Principal Architect** | `solution`, `adr`, `design`, `docs-review` | Architecture — solution, ADRs, work-item design |
+| **Senior Frontend Engineer** | `code-review`, `tdd`, `ux-design-review` | Peer review — diffs vs design and AC |
+| **Principal Frontend Engineer** | `final-code-review`, `code-review`, `tdd` | Final gate — architecture and AC on open PRs |
+| **Principal Architect** | `solution`, `adr`, `tdd`, `docs-review` | Architecture — solution, ADRs, work-item design |
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 
@@ -68,8 +68,8 @@ target binding.
 | **setup** | Interview → write practice profile, target binding, stack defaults |
 | **solution** | write — `docs/architecture/solution.md`; review via `docs-review` |
 | **adr** | plan, write, review — `docs/architecture/decisions/` |
-| **design** | write — `docs/work/{work-id}/design.md`; review via `docs-review` |
-| **implement** | Implement a task against approved design and AC |
+| **tdd** | write — `docs/work/{work-id}/tdd.md`; review via `docs-review` |
+| **implement** | Implement a task against approved tdd.md and AC |
 | **code-review** | Read-only peer review; state in `docs/reviews/` |
 | **code-review-fix** | Address code-review findings without behaviour change |
 | **final-code-review** | Final technical gate on open PRs |

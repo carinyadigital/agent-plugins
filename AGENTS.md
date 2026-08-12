@@ -82,11 +82,11 @@ Practice `setup` skills bootstrap a git-versioned instance repo when `config/ins
 | Slug | Practice | Bundled skills | Status |
 | ---- | -------- | -------------- | ------ |
 | `frontend-engineer` | Engineering | `implement`, `code-review`, `merge-request`, `component-scaffold` (agent-local); reads `brand-guide.md` from resolved brand path | Shipped; not yet operationally proven |
-| `senior-frontend-engineer` | Engineering | `code-review`, `design` | Shipped; not yet operationally proven |
-| `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `design`, `validate` (synced from product-management) | Shipped; not yet operationally proven |
+| `senior-frontend-engineer` | Engineering | `code-review`, `tdd` | Shipped; not yet operationally proven |
+| `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `tdd`, `validate` (synced from product-management) | Shipped; not yet operationally proven |
 | `qa-engineer` | Engineering | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Shipped; not yet operationally proven |
 | `webops-engineer` | Engineering | `deploy-qa`, `debug`, `platform-health` | Shipped; not yet operationally proven |
-| `principal-architect` | Engineering (Architecture) | `solution`, `adr`, `design`, `docs-review` | Shipped; not yet operationally proven |
+| `principal-architect` | Engineering (Architecture) | `solution`, `adr`, `tdd`, `docs-review` | Shipped; not yet operationally proven |
 
 Product Manager and Delivery Lead are **personas inside `product-management`**, not standalone agent plugins. Content Strategist and Content Writer are **personas inside `content-marketing`**, not standalone agent plugins. SEO Specialist is a **persona inside `search-optimisation`**, not a standalone agent plugin. Invoke skills directly: `/product-management:product`, `/product-management:tasks`, `/content-marketing:content-calendar write`, `/search-optimisation:keyword-research`, etc.
 

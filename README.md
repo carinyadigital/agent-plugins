@@ -70,7 +70,7 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 ### 3. Implement a UI task against design and AC (Product Engineering)
 
-**You have:** approved `docs/work/{work-id}/design.md`, `tasks.md` with Gherkin AC, and a bound target repo.
+**You have:** approved `docs/work/{work-id}/tdd.md`, `tasks.md` with Gherkin AC, and a bound target repo.
 
 **Run:** `/product-engineering:implement CHK01-01` — the skill reads the target repo's own `AGENTS.md` / `CLAUDE.md` before changing code.
 
@@ -128,7 +128,7 @@ Each persona below is named for the job it does. Start with [entry points by tea
 | **Caption Writer** | Caption variants and channel copy | `content-marketing` | `/content-marketing:write-captions` |
 | **Technical SEO Auditor** | Production audit → tracked issues | `search-optimisation` | `/search-optimisation:technical-seo-audit` |
 | **ADR Author** | Architecture decision register and ADR files | `product-engineering` | `/product-engineering:adr write` |
-| **Epic Designer** | Work-item technical design | `product-engineering` | `/product-engineering:design` |
+| **Epic Designer** | Work-item technical design (TDD) | `product-engineering` | `/product-engineering:tdd` |
 | **MR Author** | Merge request description from the branch | `product-engineering` | `/product-engineering:merge-request` |
 | **Docs Steward** | Document-set quality and consistency review | `product-engineering` | `/product-engineering:docs-review` |
 | **Debugger** | Reproduce, isolate, diagnose, fix | `product-engineering` | `/product-engineering:debug` |
@@ -150,7 +150,7 @@ What's in the repo:
 ```
 brand-creative/           # brand voice + visual identity
 product-management/       # product, roadmap, specs, research, metrics, backlog, sprint, validate
-product-engineering/      # solution, adr, design, implement, review, QA, platform
+product-engineering/      # solution, adr, tdd, implement, review, QA, platform
 product-design/           # wireframes, ux-design-review, ux-design-fix
 content-marketing/        # calendar, curation, media analysis, CMS seeds
 search-optimisation/      # keyword research, technical audit, content SEO review
@@ -295,7 +295,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 
 | Plugin | What it adds |
 |---|---|
-| **[product-engineering](./product-engineering)** | Architecture (`solution`, `adr`), epic design, implementation, peer and final code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Six personas share one library; `product-management` is the recommended companion for backlog, tasks, sprint, and validate. |
+| **[product-engineering](./product-engineering)** | Architecture (`solution`, `adr`), technical design (`tdd`), implementation, peer and final code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Six personas share one library; `product-management` is the recommended companion for backlog, tasks, sprint, and validate. |
 
 ### Platform
 
@@ -427,9 +427,9 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | `/product-engineering:setup` | setup | Learns stack, personas, target binding, connectors |
 | `/product-engineering:solution` | solution | write — `docs/architecture/solution.md`; review via `docs-review` |
 | `/product-engineering:adr` | adr | plan, write, review — `docs/architecture/decisions/` |
-| `/product-engineering:design` | design | write — `docs/work/{work-id}/design.md`; review via `docs-review` |
-| `/product-engineering:implement` | implement | Implement a task against approved design and AC |
-| `/product-engineering:code-review` | code-review | Read-only peer review against design and tasks |
+| `/product-engineering:tdd` | tdd | write — `docs/work/{work-id}/tdd.md`; review via `docs-review` |
+| `/product-engineering:implement` | implement | Implement a task against approved tdd.md and AC |
+| `/product-engineering:code-review` | code-review | Read-only peer review against tdd.md and tasks |
 | `/product-engineering:code-review-fix` | code-review-fix | Address code-review findings without behaviour change |
 | `/product-engineering:final-code-review` | final-code-review | Final technical gate on open PRs |
 | `/product-engineering:merge-request` | merge-request | Open merge request for implemented work |

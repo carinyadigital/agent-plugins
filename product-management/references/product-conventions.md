@@ -30,6 +30,13 @@ artefacts only under `docs/`.** Do not migrate files silently.
 Repo binding (`.agency/target.json`) and agency byproducts (`.agency/reviews/`)
 stay under `.agency/` permanently.
 
+## Artefact hierarchy
+
+**Product → Solution → Roadmap → Backlog.** Upstream artefacts may exist before
+downstream ones. `roadmap` requires `product.md` and reads `solution.md` when
+present; it must not require `backlog.md`. Epic backlog is created after
+roadmap via `/product-management:tasks --product`.
+
 ## Artefact boundaries
 
 | Content | Belongs in | Not in |

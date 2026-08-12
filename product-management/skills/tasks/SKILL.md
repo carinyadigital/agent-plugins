@@ -1,19 +1,15 @@
 ---
 name: tasks
 description: >
-  Use to decompose anything into delivery work — a product strategy and roadmap
-  into epics, an epic into stories and tasks with Gherkin acceptance criteria,
-  a story into sub-tasks, or an external spec, RFC, or PRD into both in one
-  pass. Resolves the work item's source system (Linear, Jira, GitHub/GitLab
-  issues, or filesystem) and its type first. Writes docs/product/backlog.md
-  and docs/work/{work-id}/tasks.md, or the tracker directly when one is
-  resolved. Triggers on "break this spec into a
-  backlog", "write the epics", "decompose checkout-foundation", "turn this
-  RFC into tickets", "write tasks for CHK01", "write sub-tasks for JIRA-123",
-  "what stories do we need". EARS with --ears. Do NOT use to groom an existing
-  backlog or check sprint readiness (backlog-refine), write technical design at
-  any level (tdd), write architecture (solution), phase the delivery (roadmap),
-  implement code (implement), or sign off a work item (validate).
+  Use to decompose delivery work — strategy/roadmap into epics, an epic into
+  stories and tasks with Gherkin AC, a story into sub-tasks, or an external
+  spec/RFC/PRD into both. Resolves Linear, Jira, GitHub/GitLab, or filesystem
+  first; writes backlog/tasks artefacts or the tracker. Triggers on "break
+  this into a backlog", "write the epics", "decompose checkout-foundation",
+  "turn this RFC into tickets", "write tasks for CHK01", "what stories do we
+  need". EARS with --ears. Do NOT use for backlog grooming (backlog-refine),
+  technical design (tdd), architecture (solution), phasing (roadmap), code
+  (implement), or sign-off (validate).
 license: MIT
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:

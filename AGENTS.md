@@ -56,7 +56,7 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 │       ├── subagents/*.yaml         #   depth-1 leaf workers
 │       ├── steering-examples.json
 │       └── README.md                #   security tier + handoff notes
-└── scripts/                         # sync-references.py, validate.py, plugin-check.py, deploy-squad-agents.py
+└── scripts/                         # sync-references.py, validate.py, plugin-check.py
 ```
 
 Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `product-design/skills/`, `search-optimisation/skills/`, `product-engineering/skills/`, `architecture/skills/`).

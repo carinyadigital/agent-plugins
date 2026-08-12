@@ -1,19 +1,14 @@
 ---
 name: tdd
 description: >
-  Use when the user wants a technical design document (TDD) for any work item —
-  epic, story, bug, or spike — at docs/work/{work-id}/tdd.md, in skeleton or
-  full mode. Pass a work item ID (CHK01, or a Linear/Jira/GitHub key like
-  JIRA-123). Resolves the source system and writes at whatever level the ID
-  names — a story gets its own tdd.md beside its parent epic's, not nested
-  inside it. Cite solution.md — do not re-narrate architecture. Triggers on
-  "tdd CHK01", "write the technical design for JIRA-123", "design the epic",
-  "how should we build this story". For reviewing an existing tdd.md, use
-  docs-review instead. Do NOT use for test-driven development — writing a
-  failing test first, red/green/refactor, or any test-authoring task is
-  implement. Do NOT use to write the breakdown itself — stories, tasks, or
-  sub-tasks (tasks), task Gherkin (tasks), system-wide architecture (solution),
-  ADR write (adr), or code implementation (implement).
+  Use when the user wants a technical design document for a work item (epic,
+  story, bug, or spike) in skeleton or full mode. Pass a work-item ID (CHK01,
+  JIRA-123). Writes docs/work/{work-id}/tdd.md; cite solution.md, do not
+  re-narrate architecture. Triggers on "tdd CHK01", "write the technical
+  design", "design the epic", "how should we build this story". Review an
+  existing tdd.md with docs-review. Do NOT use for test-driven development
+  (implement), breakdown/Gherkin (tasks), architecture (solution), ADRs
+  (adr), or code (implement).
 license: MIT
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:

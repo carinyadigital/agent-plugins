@@ -203,7 +203,6 @@ Offer to continue setup after the report.
    - Install **`core`** if that practice needs shared roles (`product-engineering` → yes; `brand-creative` → no)
    - Run that practice's **`setup`**
    - Hand off to `/brand-creative:setup` when brand is in scope
-   - Deploy first scheduled agent (`python3 scripts/deploy-squad-agents.py --dry-run`)
 
 ## Living profile rules
 

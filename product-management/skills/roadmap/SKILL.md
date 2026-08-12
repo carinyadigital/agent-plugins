@@ -4,11 +4,13 @@ description: >
   Use when the user wants outcome-based delivery phases or exit criteria at
   docs/product/roadmap.md. Drafts or re-sequences the document. Triggers on
   "build the roadmap", "what are our delivery phases", "phase exit criteria".
-  Requires product.md. Re-authoring is also how an existing roadmap.md gets
-  critiqued or revised — docs-review checks writing quality and cross-document
-  consistency, not sequencing soundness. Do NOT use for epic breakdown or work paths (tasks),
-  PRD (product), per-work-item technical design (tdd), tasks (tasks), or architecture
-  detail (solution).
+  Requires product.md; reads solution.md when present. Does not require
+  backlog.md — hierarchy is Product → Solution → Roadmap → Backlog (backlog
+  comes later via tasks --product). Re-authoring is also how an existing
+  roadmap.md gets critiqued or revised — docs-review checks writing quality
+  and cross-document consistency, not sequencing soundness. Do NOT use for
+  epic breakdown or work paths (tasks), PRD (product), per-work-item technical
+  design (tdd), tasks (tasks), or architecture detail (solution).
 license: MIT
 allowed-tools:
   - Read
@@ -26,9 +28,10 @@ metadata:
 ---
 
 During progressive migration, prefer `docs/product/roadmap.md` (and
-`docs/product/product.md` as input), falling back to `.agency/roadmap.md` /
-`.agency/product.md` when absent. Write new or updated roadmap artefacts only
-under `docs/product/`.
+`docs/product/product.md` / `docs/architecture/solution.md` as upstream
+inputs), falling back to `.agency/roadmap.md` / `.agency/product.md` when
+absent. Write new or updated roadmap artefacts only under `docs/product/`.
+Do not require `backlog.md`.
 
 # Roadmap
 
@@ -55,18 +58,23 @@ roadmap.md MUST NOT contain:
 ## Context
 
 <artifacts>
-[Provided by the caller: docs/product/product.md, docs/product/backlog.md
-(epic list with dependencies), cross-squad dependency context.]
+[Required: docs/product/product.md.
+Optional upstream: docs/architecture/solution.md (architecture constraints that
+shape phasing). Optional downstream if it already exists: docs/product/backlog.md
+(do not block on it — backlog is written after roadmap via tasks --product).
+Cross-squad dependency context when the caller supplies it.]
 </artifacts>
 
 ## Steps
 
-1. Read product.md and backlog.md before writing anything
+1. Read product.md before writing anything. Read solution.md when present.
+   Do not require backlog.md.
 2. Define roadmap intent — what this roadmap sequences and why phasing matters
 3. Articulate 3–5 sequencing principles that drive phase order
 4. Define each phase:
    - Name and objective (one sentence)
-   - Epics included (reference backlog IDs)
+   - Themes / candidate epics (titles; backlog IDs only if backlog.md already
+     exists — otherwise leave IDs for `tasks --product`)
    - Quality gates (testable statements — not metric-ID lookups)
    - Exit criteria (specific, testable)
    - What is explicitly out of scope for this phase
@@ -79,7 +87,8 @@ roadmap.md MUST NOT contain:
 
 - Every phase has named exit criteria — no subjective gates
 - External dependencies have a named owner squad
-- No exit criteria depend on work not assigned to any epic
+- When backlog.md exists, exit criteria must map to named epics; on first
+  roadmap (no backlog yet), name themes that `tasks --product` will decompose
 - Phases are sequential; parallelism lives within phases
 - Target 5–8 pages
 
@@ -89,8 +98,12 @@ Markdown with YAML frontmatter. Save to the resolved path. Use [assets/roadmap.t
 
 ## Gotchas
 
+- **Do not wait for backlog.md** — hierarchy is Product → Solution → Roadmap →
+  Backlog. After roadmap is drafted, `/product-management:tasks --product`
+  creates the epic backlog.
 - **Epic rows and work paths** belong in backlog, not roadmap.
-- **Story AC** belongs in tasks.md, not phase exit criteria (keep exit criteria verifiable at phase level).
+- **Story AC** belongs in tasks.md, not phase exit criteria (keep exit criteria
+  verifiable at phase level).
 
 ## Supporting files
 
@@ -98,7 +111,7 @@ Markdown with YAML frontmatter. Save to the resolved path. Use [assets/roadmap.t
 
 ## Related skills
 
-- `/product-management:product` — product strategy input
-- `/product-management:tasks` — epics and work paths
-- `/architecture:solution` — architecture (companion; if not installed: `/plugin install architecture@carinya-plugins`)
+- `/product-management:product` — product strategy input (upstream)
+- `/architecture:solution` — architecture (upstream companion; if not installed: `/plugin install architecture@carinya-plugins`)
+- `/product-management:tasks --product` — epic backlog (downstream)
 - `/product-engineering:docs-review` — writing quality / cross-doc consistency (not strategic soundness)

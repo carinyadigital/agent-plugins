@@ -6,13 +6,15 @@ status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
   - docs/product/product.md
-  - docs/product/backlog.md
   - docs/architecture/solution.md
+  - docs/product/backlog.md
 ---
 
 <!--
 DRAFTING AIDE — DELETE BEFORE SAVING.
 Do NOT include: epic/story detail, implementation, calendar dates beyond current phase.
+Hierarchy: Product → Solution → Roadmap → Backlog. backlog.md is downstream —
+do not block drafting on it. Prefer theme titles; add EPIC-IDs only once backlog exists.
 -->
 
 # Roadmap -- {Name}
@@ -33,9 +35,9 @@ Do NOT include: epic/story detail, implementation, calendar dates beyond current
 
 **Objective:**
 
-**Epics:**
+**Themes / candidate epics:**
 
-- **{EPIC-ID}** -- {title}. {scope}.
+- **{title or EPIC-ID}** -- {scope}.
 
 **Quality gates:**
 

@@ -4,7 +4,7 @@ Cookbooks wire **catalogue plugins** to cloud platforms. Each cookbook points at
 agent prompt in `agents/<slug>/` — it does not fork or vendor prompts in `carinyaparc`.
 
 Instance binding (which agent, which repos, which schedule) lives in
-`carinyaparc/config/deployments/` and is applied by `scripts/deploy-squad-agents.py`.
+`carinyaparc/config/deployments/`.
 
 ## Placement matrix
 
@@ -27,24 +27,6 @@ managed-agents/<slug>/
 └── steering-examples.json   # optional CMA steering samples
 ```
 
-## Deploy
-
-```bash
-# Plan changes (no side effects)
-python3 scripts/deploy-squad-agents.py --dry-run --instance ../carinyaparc
-
-# Apply schedules (API or dashboard-import JSON)
-python3 scripts/deploy-squad-agents.py apply --instance ../carinyaparc
-
-# Spike: weekly planning only
-python3 scripts/deploy-squad-agents.py apply --ritual weekly-planning --dry-run-first --instance ../carinyaparc
-
-# Manual trigger (when platform supports run-now)
-python3 scripts/deploy-squad-agents.py apply --run-now --ritual weekly-planning --instance ../carinyaparc
-```
-
-Thin instance wrapper: `carinyaparc/scripts/deploy-agents.sh`.
-
 ## Required secrets (never commit)
 
 Configure in Cursor dashboard or Claude CMA console — reference by name in deployment manifests only.
@@ -56,12 +38,6 @@ Configure in Cursor dashboard or Claude CMA console — reference by name in dep
 | `GITHUB_TOKEN` | Both | Issues, PRs (via MCP or platform integration) |
 
 Optional MCP secrets (per connector docs): `VERCEL_TOKEN`, `SENTRY_AUTH_TOKEN`, etc.
-
-## API gap
-
-Until Cursor/Anthropic schedule APIs are available in your workspace tier, `apply` writes
-idempotent **dashboard-import JSON** to `{instance}/.deploy-artifacts/` for manual import.
-`--dry-run` always works and is enforced in CI on deployment/cookbook changes.
 
 ## Validation
 

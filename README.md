@@ -160,7 +160,7 @@ ralph-loop/               # ralph-loop + ralph-loop-setup (+ hooks)
 skills-index/             # install-aware skill router
 skill-authoring/          # skills-qa (+ Phase 0 tooling later)
 managed-agents/           # CMA + Cursor Cloud Agent cookbooks
-scripts/                  # validate.py · plugin-check.py · sync-references.py · deploy-squad-agents.py
+scripts/                  # validate.py · plugin-check.py · sync-references.py
 references/               # canonical meta-framework (synced into practice plugins)
 .claude-plugin/marketplace.json   # plugin registry (name: carinya-plugins)
 .cursor-plugin/marketplace.json
@@ -233,11 +233,6 @@ In **Settings → Plugins → Add plugin**:
 
 Headless deployment cookbooks live in [`managed-agents/`](./managed-agents/). Engineering personas deploy to **Cursor Cloud Agents**; content personas to **Claude Managed Agents**; architecture resolves at deploy time.
 
-```bash
-python3 scripts/deploy-squad-agents.py --dry-run --instance ../your-instance-repo
-python3 scripts/deploy-squad-agents.py apply --instance ../your-instance-repo
-```
-
 See [`managed-agents/README.md`](./managed-agents/README.md) for platform matrix, security tiers, and required secrets.
 
 ### skills.sh (skill files only)
@@ -266,6 +261,36 @@ npx skills add carinyaparc/carinya-plugins/product-engineering/skills/code-revie
 | **Artefact consumption** | Downstream practices read upstream outputs by path — brand voice, brand guide, wireframes — without hard install dependencies. | Resolved via instance/target pointers |
 
 Everything is markdown and JSON. No build step.
+
+## Delivery artefacts (target repo)
+
+Strategy and delivery skills write into the **bound target repo**, not the plugin. Hierarchy is fixed:
+
+**Product → Solution → Roadmap → Backlog** → work-item design / tasks → review → validate.
+
+| Stage | Skill | Writes |
+| ----- | ----- | ------ |
+| Product | `/product-management:product` | `docs/product/product.md` |
+| Solution | `/architecture:solution` | `docs/architecture/solution.md` |
+| Roadmap | `/product-management:roadmap` | `docs/product/roadmap.md` (does **not** require backlog) |
+| Backlog | `/product-management:tasks --product` | `docs/product/backlog.md` (or tracker epics) |
+
+Default layout the skills expect:
+
+```text
+docs/product/                 product.md, roadmap.md, backlog.md
+docs/architecture/            solution.md, decisions/
+docs/work/{work-id}/          tdd.md, tasks.md
+docs/work/{work-id}/reviews/  code-review-{nn}.local.md, ux-design-review-{nn}.local.md
+docs/work/sprint-{id}/        plan.md, retrospective.md
+docs/reviews/                 code-review.local.json, ux-design-review.local.json,
+                              review-learnings.local.md
+TASKS.local.md                optional tracker-pointer cache (gitignored locally)
+.ux-review/                   UX capture scratch (agent-local)
+.claude/loop/                 Ralph run state on Claude Code (or .cursor/loop/ on Cursor)
+```
+
+Canonical detail: [`product-management/references/delivery-conventions.md`](./product-management/references/delivery-conventions.md).
 
 ## Practice plugins by service line
 
@@ -356,7 +381,6 @@ These are reference templates. They get better when you tune them to how your fi
 - **Swap connectors.** Point `.mcp.json` at your source control, hosting, design, and tracker stack. Skills fall back gracefully when a connector is not configured.
 - **Bring your brand and templates.** Drop terminology, house style, and branded templates into the instance `brand/` directory and practice profiles.
 - **Fork skills for house style.** Every skill is a markdown file under `skills/`. Edit steps, gates, and output formats.
-- **Deploy squads.** Bind targets, configure secrets, and apply schedules with `deploy-squad-agents.py`.
 
 No build step. Everything is markdown and JSON.
 
@@ -378,14 +402,14 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 |---|---|---|
 | `/product-management:setup` | setup | Learns cadence, audiences, discovery, escalation, sprint length; writes practice profile |
 | `/product-management:product` | product | write — `docs/product/product.md` (review via `/product-engineering:docs-review`) |
-| `/product-management:roadmap` | roadmap | write — `docs/product/roadmap.md`; review via `/product-engineering:docs-review` |
+| `/product-management:roadmap` | roadmap | write — `docs/product/roadmap.md` after product (+ solution when present); does not require backlog |
 | `/product-management:write-spec` | write-spec | Feature spec or PRD from a problem statement |
 | `/product-management:product-brainstorming` | product-brainstorming | Sparring partner for ideas (no deliverable) |
 | `/product-management:synthesize-research` | synthesize-research | Themes and insights from user research |
 | `/product-management:competitive-brief` | competitive-brief | Competitive analysis brief |
 | `/product-management:metrics-review` | metrics-review | Product metrics review with actions |
 | `/product-management:stakeholder-update` | stakeholder-update | Status update tailored to audience |
-| `/product-management:tasks` | tasks | `--product` → `docs/product/backlog.md`; `{work-id}` → `docs/work/{work-id}/tasks.md` |
+| `/product-management:tasks` | tasks | `--product` → backlog after roadmap; `{work-id}` → `docs/work/{work-id}/tasks.md` |
 | `/product-management:backlog-refine` | backlog-refine | Groom backlog or judge sprint readiness |
 | `/product-management:sprint-planning` | sprint-planning | Sprint plan — `docs/work/sprint-{id}/plan.md` |
 | `/product-management:sprint-retro` | sprint-retro | Sprint retrospective — `docs/work/sprint-{id}/retrospective.md` |

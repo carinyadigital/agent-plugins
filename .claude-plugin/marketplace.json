@@ -56,7 +56,7 @@
       "name": "skill-authoring",
       "displayName": "Skill Authoring",
       "source": "./skill-authoring",
-      "description": "Skill authoring quality gate \u2014 skills-qa against the Agency Skill Design Framework. Phase 0 tooling (eval-grader, validate_skills, templates) lands here when ported."
+      "description": "Skill authoring quality gate — skills-qa, skill-review, eval-grader, validate_skills, and skill templates."
     }
   ]
 }

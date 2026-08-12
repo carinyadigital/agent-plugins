@@ -19,5 +19,14 @@ jobs:
       - name: Structural validation
         run: python3 scripts/validate.py --format json
 
+      - name: Skill and Ralph validation
+        run: python3 skill-authoring/scripts/validate_skills.py --quiet
+
+      - name: Ralph mutation tests
+        run: python3 skill-authoring/scripts/mutation-test.py
+
+      - name: Migration verification
+        run: python3 scripts/verify-migration.py
+
       - name: Test
         run: python3 -m unittest discover -s tests -p "test_*.py" -v

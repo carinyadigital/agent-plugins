@@ -1,21 +1,64 @@
-{
-  "skill_name": "backlog-refine",
-  "should_trigger": [
-    "groom the backlog",
-    "refine the backlog",
-    "reprioritise the backlog",
-    "is this epic sprint-ready",
-    "is JIRA-123 sprint-ready",
-    "are these stories ready to commit to",
-    "this epic is too big, split it",
-    "clean up the backlog before planning"
-  ],
-  "should_not_trigger": [
-    "break this spec into a backlog",
-    "write the epics",
-    "write tasks for CHK01",
-    "plan sprint 3",
-    "run the retro",
-    "validate CHK01"
-  ]
-}
+[
+  {
+    "query": "groom the backlog",
+    "should_trigger": true
+  },
+  {
+    "query": "refine the backlog",
+    "should_trigger": true
+  },
+  {
+    "query": "reprioritise the backlog",
+    "should_trigger": true
+  },
+  {
+    "query": "is this epic sprint-ready",
+    "should_trigger": true
+  },
+  {
+    "query": "is JIRA-123 sprint-ready",
+    "should_trigger": true
+  },
+  {
+    "query": "are these stories ready to commit to",
+    "should_trigger": true
+  },
+  {
+    "query": "this epic is too big, split it",
+    "should_trigger": true
+  },
+  {
+    "query": "clean up the backlog before planning",
+    "should_trigger": true
+  },
+  {
+    "query": "break this spec into a backlog",
+    "should_trigger": false,
+    "note": "tasks"
+  },
+  {
+    "query": "write the epics",
+    "should_trigger": false,
+    "note": "tasks"
+  },
+  {
+    "query": "write tasks for CHK01",
+    "should_trigger": false,
+    "note": "tasks"
+  },
+  {
+    "query": "plan sprint 3",
+    "should_trigger": false,
+    "note": "sprint-planning"
+  },
+  {
+    "query": "run the retro",
+    "should_trigger": false,
+    "note": "sprint-retro"
+  },
+  {
+    "query": "validate CHK01",
+    "should_trigger": false,
+    "note": "validate"
+  }
+]

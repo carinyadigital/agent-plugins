@@ -933,9 +933,11 @@ class Validator:
         return drift_count
 
     def check_evals_schema(self) -> None:
-        eval_dirs = sorted(ROOT.glob("skills/*/skills/*/evals"))
+        eval_dirs: list[Path] = []
+        for plugin_dir in self.plugin_dirs():
+            eval_dirs.extend(sorted(plugin_dir.glob("skills/*/evals")))
         if not eval_dirs:
-            self.warn("EVALS_NONE", "No evals/ directories found under skills/")
+            self.warn("EVALS_NONE", "No evals/ directories found under practice plugins")
             return
 
         for eval_dir in eval_dirs:

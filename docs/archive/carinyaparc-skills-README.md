@@ -27,7 +27,7 @@ Full migration guide: [docs/SKILLS-MIGRATION.md](https://github.com/carinyaparc/
 | `validate` | `/product-management:validate` |
 | `solution` | `/product-engineering:solution` |
 | `adr` | `/product-engineering:adr` |
-| `tdd` | `/product-engineering:design` |
+| `tdd` | `/product-engineering:tdd` |
 | `implement` | `/product-engineering:implement` |
 | `code-review` | `/product-engineering:code-review` |
 | `code-review-fix` | `/product-engineering:code-review-fix` |

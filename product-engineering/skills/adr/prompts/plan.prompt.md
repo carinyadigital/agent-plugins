@@ -8,9 +8,9 @@ Plan runs in two directions, and the argument decides which:
 
 - **Forward (no work-item argument)** — survey `product.md` and `solution.md`
   for decisions that must be made *before* technical design can proceed.
-- **Harvest (`adr plan <work-id>`)** — read `docs/work/{work-id}/design.md`
+- **Harvest (`adr plan <work-id>`)** — read `docs/work/{work-id}/tdd.md`
   for decisions that were *already made* during delivery and never
-  formalised. A decision made on a work item and left only in `design.md` is
+  formalised. A decision made on a work item and left only in `tdd.md` is
   invisible to every future reader of the architecture.
 
 Run both when a work item is named: harvest first, then survey.
@@ -27,10 +27,11 @@ if the register does not exist yet.
 ## Harvest pass (when a work item is named)
 
 Resolve `{work-id}` per
-[work-item-resolution.md](../../../references/work-item-resolution.md) —
+[work-item-resolution.md](../../tasks/references/work-item-resolution.md) —
 source system, canonical ID, and type — before reading anything else.
 
-1. Read `docs/work/{work-id}/design.md` and collect every decision it records or
+1. Read `docs/work/{work-id}/tdd.md` — falling back to a legacy `design.md`
+   when only that exists — and collect every decision it records or
    implies — explicit ADR candidates, technology choices, integration patterns,
    contract shapes, and data-model commitments.
 2. Cross-check each against the register's **Accepted** table and against
@@ -75,7 +76,7 @@ source system, canonical ID, and type — before reading anything else.
 - Titles are specific ("Cart mutation error-code taxonomy"), not vague
 - Do not write full ADR bodies in the register — only table rows
 - Every harvested candidate carries a triage outcome: promote, inline, or defer
-- Cite the `design.md` section a harvested candidate came from, so the drafter
+- Cite the `tdd.md` section a harvested candidate came from, so the drafter
   does not have to re-find it
 - When a proposal is accepted for drafting, assign the next `ADR-####` from the
   Accepted table and use **adr write**
@@ -87,7 +88,7 @@ Plan mode MUST NOT:
 - Write ADR bodies — that is **adr write**
 - Edit `solution.md` — record the recommendation and hand off to
   **solution**
-- Edit `design.md`, including archiving superseded sections — note what needs
+- Edit `tdd.md`, including archiving superseded sections — note what needs
   archiving and let **solution** do it
 - Delete rejected candidates — rejections stay recorded with their reason
 - Promote a decision that already has an Accepted ADR
@@ -96,7 +97,7 @@ Plan mode MUST NOT:
 
 Report in chat:
 
-- **Harvested from `{work-id}`** — each candidate with its `design.md` section
+- **Harvested from `{work-id}`** — each candidate with its `tdd.md` section
   and triage outcome (omit when no work item was named)
 - **Surveyed** — new proposals from product/solution, Blocking or Deferrable
 - **Register changes** — rows added, revised, or rejected

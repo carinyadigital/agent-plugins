@@ -23,7 +23,7 @@ allowed-tools:
 argument-hint: "[blocking|warning|all] [review-output-or-path]"
 metadata:
   author: Carinya Parc
-  version: "1.0"
+  version: "1.1"
   owner: engineering
   work_shape: implement-and-ship
   output_class: applied-change
@@ -137,9 +137,10 @@ list them under "Findings Not Addressed".
 - Preserve observable behaviour. Refactoring changes how, never what.
 - Preserve test coverage. Do not delete or weaken tests; if a test was wrong, fix
   it and say why.
-- Comments explain non-obvious intent or trade-offs in plain language. Never cite
-  ticket IDs, story numbers, or markdown document sections — the code must stand
-  on its own.
+- Doc comments follow [doc-comments.md](../../references/doc-comments.md): they
+  MUST stand on their own so they can be read inline. They MUST NOT contain any
+  external reference, MUST NOT cite issue systems, and MUST NOT cite working
+  documents. If the only comment you would add is a pointer, write nothing.
 - Do not introduce new public APIs.
 - Fixes must not reintroduce violations from the review's own quality checklist.
 
@@ -153,7 +154,8 @@ list them under "Findings Not Addressed".
 - Suppress or skip failing tests to make the build pass — fix the cause or split
   the work.
 - Commit while any validation check is failing.
-- Add comments citing external documents, ticket IDs, or cross-repo paths.
+- Add comments that cite issue systems, working documents, or any other
+  external source.
 - Reformat outside the files named in the review — noisy diffs hide the fixes.
 - Re-review the change or raise new findings. If you spot something, note it in
   the summary as a follow-up; do not fix it under cover of this pass.

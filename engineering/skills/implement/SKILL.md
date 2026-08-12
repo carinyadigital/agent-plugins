@@ -24,7 +24,7 @@ allowed-tools:
 argument-hint: "<task-id>"
 metadata:
   author: Carinya Parc
-  version: "2.0"
+  version: "2.1"
   owner: engineering
   work_shape: implement-and-ship
   output_class: applied-change
@@ -63,6 +63,8 @@ ask rather than guessing which folder it belongs to.
 3. Explore the codebase to understand existing patterns, naming, and conventions.
 4. Create a branch: `feat/{TASK_ID}-{short-description}`.
 5. Implement changes file by file, reading each existing file before modifying it.
+   Comments MUST stand on their own so they can be read inline — see
+   **Doc comments** below.
 6. Write tests that verify each acceptance criterion.
 7. Discover and run the project's full validation suite before committing:
    check `AGENTS.md` (or `CLAUDE.md`) first; if the commands are not documented
@@ -80,9 +82,28 @@ ask rather than guessing which folder it belongs to.
 - Commits must not contain secrets or credentials
 - Every new public function or interface must have a test
 - Do not create a single monolithic commit — group related changes
-- Code comments explain non-obvious intent or trade-offs in plain language;
-  they never trace back to tickets, task IDs, or markdown document sections —
-  the code must be self-contained
+- Doc comments follow [doc-comments.md](../../references/doc-comments.md)
+
+## Doc comments
+
+Read [doc-comments.md](../../references/doc-comments.md) before writing any
+comment in code or any other file.
+
+A comment MUST stand on its own so it can be read inline. State the intent,
+constraint, or trade-off in full, in plain language. A reader who never opens
+another file MUST still understand it.
+
+Doc comments MUST NOT:
+
+- Contain any external reference (no URLs, file paths, section numbers, or
+  "see …" pointers)
+- Reference any external source — including issue systems (Jira, Linear,
+  GitHub/GitLab issues) and their keys, ticket numbers, story IDs, or task IDs
+- Reference working documents (`tdd.md`, `tasks.md`, `solution.md`, ADRs,
+  specs, designs, briefs, or any other planning artefact)
+
+If the only comment you would add is a pointer to a ticket or a design doc,
+write nothing.
 
 ## Negative constraints
 
@@ -104,8 +125,8 @@ This skill writes code against an approved design. It MUST NOT:
 - Skip tests or mark failing tests as expected — fix them or split the task
 - Commit while any validation check is failing (format, lint, typecheck,
   build, or tests)
-- Add comments that cite external markdown documents, ticket IDs, or cross-repo
-  file paths (e.g. `CART02-07 | docs/architecture/solution.md §5.1`)
+- Add comments that cite issue systems, working documents, or any other
+  external source (e.g. `CART02-07 | docs/architecture/solution.md §5.1`)
 
 ## Output format
 

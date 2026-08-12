@@ -26,7 +26,7 @@ allowed-tools:
 argument-hint: "[branch-or-pr] [--since <sha>] [--full]"
 metadata:
   author: Carinya Parc
-  version: "1.0"
+  version: "1.1"
   owner: engineering
   work_shape: review-and-gate
   output_class: decision-support
@@ -188,6 +188,9 @@ Whether reviewing inline or supplementing agent output, cover:
 7. Consistency with existing codebase patterns.
 8. Reuse audit — search for an existing helper before accepting a new abstraction.
 9. No unnecessary files, no scope creep.
+10. Doc comments stand on their own inline — no issue-system keys, working-document
+    paths, or other external references
+    ([../../references/doc-comments.md](../../references/doc-comments.md)).
 
 Apply [references/quality-checklist.md](references/quality-checklist.md)
 throughout.
@@ -280,6 +283,8 @@ These are the only two paths this skill writes.
 - Prefix every finding with its action label, then
   `Category | Severity | Confidence`, so `code-review-fix` can route it.
 - Group by action: Blocking, Warnings, Suggestions.
+- Flag comments that cite issue systems, working documents, or any other
+  external source. They MUST stand on their own so they can be read inline.
 
 ## Must not
 
@@ -351,5 +356,6 @@ One paragraph. Then: to action these findings, run `code-review-fix`.
 - [references/merge-protocol.md](references/merge-protocol.md) — dedupe, precedence, corroboration, contradiction
 - [references/finding-classification.md](references/finding-classification.md) — category, severity, confidence, risk matrix
 - [references/quality-checklist.md](references/quality-checklist.md) — timeless review checklist
+- [../../references/doc-comments.md](../../references/doc-comments.md) — comments must stand on their own; no issue systems or working documents
 - [references/security-checklist.md](references/security-checklist.md) — security pass, input provenance
 - [../tasks/references/delivery-conventions.md](../../references/delivery-conventions.md) — `docs/work/{work-id}/` path rules

@@ -72,6 +72,11 @@ migration outlives the deploy that shipped it.
 
 - [ ] Names reveal intent; no abbreviations that need a comment to decode.
 - [ ] Comments explain **why**, never **what**.
+- [ ] Doc comments stand on their own so they can be read inline. Flag any
+      comment that cites an issue system, a working document (`tdd.md`,
+      `tasks.md`, `solution.md`, an ADR), a ticket/task ID, a URL, or any
+      other external source. See
+      [../../../references/doc-comments.md](../../../references/doc-comments.md).
 
 ## Type safety and hygiene
 

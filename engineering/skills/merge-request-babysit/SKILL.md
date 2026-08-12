@@ -24,7 +24,7 @@ allowed-tools:
 argument-hint: "[mr-url-or-number]"
 metadata:
   author: Carinya Parc
-  version: "1.0"
+  version: "1.1"
   owner: engineering
   work_shape: monitor-and-report
   output_class: applied-change
@@ -144,6 +144,9 @@ Babysitting MUST NOT:
 - Busy-wait with shell `sleep` loops when an event- or watch-based mechanism
   exists (see Waiting)
 - Rebase the MR branch — merge the base branch in instead
+- Add comments that cite issue systems, working documents, or any other
+  external source. Comments MUST stand on their own so they can be read
+  inline — see [doc-comments.md](../../references/doc-comments.md)
 
 ## Output format
 

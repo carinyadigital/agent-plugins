@@ -85,6 +85,17 @@
         "Runs finding-verifier per candidate before assigning action labels",
         "Runs no sub-agent at the deep tier"
       ]
+    },
+    {
+      "id": 8,
+      "prompt": "Review this diff. A new helper has a comment '// CART02-07 | docs/architecture/solution.md §5.1' and another '// Fixes JIRA-456'.",
+      "expected_output": "Maintainability finding: comments must stand on their own inline and must not cite issue systems or working documents.",
+      "assertions": [
+        "Flags the comment that cites solution.md and CART02-07",
+        "Flags the comment that cites JIRA-456",
+        "States that doc comments must stand on their own so they can be read inline",
+        "Does not treat a ticket or working-document pointer as an acceptable comment"
+      ]
     }
   ]
 }

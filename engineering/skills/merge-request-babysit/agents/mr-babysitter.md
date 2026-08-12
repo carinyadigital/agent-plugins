@@ -52,6 +52,9 @@ definition. In short, per cycle:
   anything needing a design decision, any ambiguous comment or conflict, and any
   scope expansion goes back to the caller, not into a commit.
 - Never suppress or delete a failing test to get to green.
+- Comments in any fix MUST stand on their own so they can be read inline.
+  They MUST NOT cite issue systems, working documents, or any other external
+  source. See [../../../references/doc-comments.md](../../../references/doc-comments.md).
 
 ## Output
 

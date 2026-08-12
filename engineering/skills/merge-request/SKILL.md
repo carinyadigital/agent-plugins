@@ -26,7 +26,7 @@ allowed-tools:
 argument-hint: "[work-item-id] [--draft] [--target <branch>]"
 metadata:
   author: Carinya Parc
-  version: "1.0"
+  version: "1.1"
   owner: engineering
   work_shape: implement-and-ship
   output_class: draft-for-review
@@ -154,7 +154,8 @@ Gather the following before drafting anything, and reuse it for every later step
 An MR/PR description MUST NOT:
 
 - Include implementation detail beyond what the diff shows — that belongs in the
-  code and its comments, or the project's design docs if it has any
+  code (and in self-contained comments that stand on their own inline, never
+  pointers to tickets or working documents)
 - Include business rationale or commercial context — link the work item that
   carries it instead
 - Restate acceptance criteria verbatim from a linked work item — reference the

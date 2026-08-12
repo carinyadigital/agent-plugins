@@ -6,8 +6,11 @@ description: >
   risks, and what's next for the profile's primary audience. Drafts the update for
   review; never sends. Trigger: "draft the stakeholder update", "status digest", or
   on the reporting-cadence schedule.
-model: sonnet
+model: inherit
 tools: ["Read", "Write", "Glob", "Grep"]
+metadata:
+  model_tier: standard
+  budget: 8
 ---
 
 # Stakeholder digest

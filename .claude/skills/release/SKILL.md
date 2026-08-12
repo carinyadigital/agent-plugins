@@ -1,7 +1,7 @@
 ---
 name: release
 description: >
-  Cut a release of one or more digital-agency plugins — run plugin-check,
+  Cut a release of one or more digital-agency plugins — run validate_plugins,
   validate, and test gates, bump per-plugin version(s), update CHANGELOG.md,
   and tag. Use when shipping a new or changed practice plugin, connector, or
   skill to the marketplace, or when the user asks to "cut a release", "ship
@@ -35,8 +35,6 @@ before running this on autopilot.
 - **Does not** decide semver bump type for you. Propose one from the commit
   messages touching the plugin (`fix:` → patch, `feat:` → minor, anything
   with `BREAKING CHANGE` → major) but confirm with the user before writing it.
-- **Does not** touch Managed Agent deployment — that's a separate, later
-  concern from `managed-agents/`.
 - **Does not** invent a single repo-wide version. Each plugin's
   `.claude-plugin/plugin.json` / `.cursor-plugin/plugin.json` is versioned
   independently; this skill bumps only the plugin(s) that changed.
@@ -47,14 +45,11 @@ before running this on autopilot.
 
 - Clean working tree (`git status --short` empty) on `main` or a release
   branch.
-- `python3 scripts/validate.py` currently fails on `main` with 22 errors —
-  stale references to the retired `agents/<slug>` layout in
-  `check_managed_agent_cookbooks` (and possibly `check_agent_prompts`) from
-  before the practice-plugin migration. **Fix that first.** Running this
-  skill's validate gate against a repo that's already red makes the gate
-  meaningless — you can't tell your change from the pre-existing breakage.
-  `scripts/plugin-check.py` (new) is unaffected — it's scoped to individual
-  plugin directories and passes clean today.
+- `python3 scripts/validate.py` exits 0 on `main`. Running this skill's
+  validate gate against a repo that's already red makes the gate meaningless —
+  you can't tell your change from pre-existing breakage. `scripts/validate_plugins.py`
+  (scoped mode) checks only the plugin directories being released and can pass
+  clean even while repo-wide `validate.py` has unrelated failures.
 
 ## Workflow
 
@@ -82,10 +77,10 @@ If shared meta-framework reference files changed (`instance-profile-template.md`
 `setup-framework.md`), run `python3 scripts/sync-references.py` before
 the gates below.
 
-### 2. Fast gate — plugin-check
+### 2. Fast gate — validate_plugins (scoped)
 
 ```bash
-python3 scripts/plugin-check.py <plugin-dir-1> [<plugin-dir-2> ...]
+python3 scripts/validate_plugins.py <plugin-dir-1> [<plugin-dir-2> ...]
 ```
 
 Scoped to just the plugin(s) being released: manifest completeness, MCP
@@ -116,9 +111,7 @@ python3 scripts/validate.py
 ```
 
 Must exit 0. This is the repo-wide check — marketplace parity, marketplace↔
-plugin.json sync, cross-references, bundled-skill drift, evals schema,
-managed-agent cookbooks. See Preconditions if this is currently red for
-reasons unrelated to your change.
+plugin.json sync, cross-references, bundled-skill drift, and evals schema.
 
 ### 6. Test gate
 

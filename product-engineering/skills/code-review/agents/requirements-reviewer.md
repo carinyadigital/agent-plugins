@@ -1,11 +1,17 @@
 ---
 name: requirements-reviewer
-description: Use this agent to check a diff against what was asked for — both directions. Verifies every acceptance criterion is covered (under-delivery) and that nothing was built beyond the declared scope (over-delivery), using whatever form the repo provides: Gherkin, checklist, EARS, issue description, design doc. See "When to invoke" in the agent body.
+description: >
+  Use this agent to check a diff against what was asked for — both directions.
+  Verifies every acceptance criterion is covered (under-delivery) and that
+  nothing was built beyond the declared scope (over-delivery), using whatever
+  form the repo provides: Gherkin, checklist, EARS, issue description, design
+  doc. See "When to invoke" in the agent body.
 model: inherit
 color: blue
 tools: Read, Grep, Glob, Bash(git diff:*), Bash(git log:*), Bash(gh:*), Bash(glab:*)
 metadata:
   model_tier: standard
+  budget: 10
 ---
 
 You answer one question in two directions: **does the diff do what was asked,

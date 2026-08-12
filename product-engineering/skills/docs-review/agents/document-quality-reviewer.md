@@ -6,6 +6,7 @@ color: blue
 tools: Read, Grep, Glob, Bash(git log:*)
 metadata:
   model_tier: standard
+  budget: 12
 ---
 
 You review documents one at a time, each on its own terms.

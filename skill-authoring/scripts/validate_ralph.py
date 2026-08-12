@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
-"""Validate catalogue skills and Ralph loop tooling across carinya-plugins.
+"""Validate Ralph loop tooling across carinya-plugins.
 
 Usage:
-    python3 skill-authoring/scripts/validate_skills.py [--quiet]
+    python3 skill-authoring/scripts/validate_ralph.py [--quiet]
 
-Checks skill frontmatter against the Agent Skills specification, Ralph shell
-syntax and hook suites, preset reachability, and plugin manifest JSON. Exits 0
-when everything passes, 1 otherwise.
+Checks Ralph shell syntax and hook suites, preset reachability, and tasks
+example backlog epic-path conventions. Skill frontmatter, agent contracts,
+and evals schema live in ``scripts/validate_skills.py``.
 
-Invoke with ``python3 skill-authoring/scripts/validate_skills.py`` rather than
+Exits 0 when everything passes, 1 otherwise.
+
+Invoke with ``python3 skill-authoring/scripts/validate_ralph.py`` rather than
 relying on the executable bit — a lost +x should not be able to take CI down.
 """
-
 from __future__ import annotations
 
 import argparse
-import json
 import os
 import re
 import shutil
@@ -26,23 +26,6 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 RALPH_ROOT = REPO_ROOT / "ralph-loop"
-
-PLUGIN_DIRS = (
-    "brand-creative",
-    "content-marketing",
-    "product-design",
-    "product-engineering",
-    "product-management",
-    "search-optimisation",
-    "ralph-loop",
-    "skills-index",
-    "skill-authoring",
-)
-
-# Spec limits: https://agentskills.io/specification
-NAME_MAX = 64
-DESC_MAX = 1024
-NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
 SHELL_GLOBS = ("hooks/lib/*.sh", "hooks/*/*.sh", "scripts/*.sh")
 EXECUTABLE_REQUIRED = (
@@ -59,7 +42,6 @@ STRUCTURAL_PLACEHOLDERS = (
     "TASK_PROMPT",
     "CUSTOM_STEPS",
 )
-MANIFESTS = (".claude-plugin/plugin.json", ".cursor-plugin/plugin.json")
 
 
 class Report:
@@ -90,139 +72,33 @@ class Report:
                 print(f"  ... {remaining} more line(s) truncated")
 
 
-def read_json(path: Path):
-    """Return parsed JSON, or None when the file is missing or malformed."""
-    try:
-        return json.loads(path.read_text())
-    except (OSError, json.JSONDecodeError):
-        return None
-
-
-def parse_frontmatter(text: str) -> dict[str, str] | None:
-    """Extract top-level scalar keys from YAML frontmatter."""
-    match = re.match(r"^---\n(.*?)\n---", text, re.S)
-    if not match:
-        return None
-
-    fields: dict[str, str] = {}
-    key: str | None = None
-    block: list[str] = []
-
-    def flush() -> None:
-        if key is not None:
-            fields[key] = " ".join(block).strip()
-
-    for line in match.group(1).split("\n"):
-        header = re.match(r"^([A-Za-z][A-Za-z0-9_-]*):(.*)$", line)
-        if header:
-            flush()
-            key = header.group(1)
-            rest = header.group(2).strip()
-            block = [] if rest in (">", "|", ">-", "|-", "") else [rest]
-        elif key is not None and line.startswith((" ", "\t")):
-            block.append(line.strip())
-        else:
-            flush()
-            key, block = None, []
-    flush()
-    return fields
-
-
-def skill_dirs() -> list[Path]:
-    found: list[Path] = []
-    for plugin in PLUGIN_DIRS:
-        skills_root = REPO_ROOT / plugin / "skills"
-        if not skills_root.is_dir():
-            continue
-        for entry in skills_root.iterdir():
-            if (entry / "SKILL.md").is_file():
-                found.append(entry)
-    return sorted(found)
-
-
-def skill_label(skill: Path) -> str:
-    plugin = skill.parent.parent.name
-    return f"{plugin}/{skill.name}"
-
-
-def check_skills(report: Report) -> None:
-    """Frontmatter must satisfy the spec, and `name` must match the directory."""
-    for skill in skill_dirs():
-        label = skill_label(skill)
-        name_on_disk = skill.name
-        fields = parse_frontmatter((skill / "SKILL.md").read_text())
-
-        if fields is None:
-            report.fail(f"{label}: no YAML frontmatter")
-            continue
-
-        declared = fields.get("name", "").strip("\"'")
-        if not declared:
-            report.fail(f"{label}: missing name")
-            continue
-        if declared != name_on_disk:
-            report.fail(f"{label}: name '{declared}' must match directory")
-            continue
-        if len(declared) > NAME_MAX:
-            report.fail(f"{label}: name is {len(declared)} chars (max {NAME_MAX})")
-            continue
-        if not NAME_RE.match(declared):
-            report.fail(
-                f"{label}: name must be lowercase alphanumeric and single hyphens"
-            )
-            continue
-
-        description = fields.get("description", "")
-        if not description:
-            report.fail(f"{label}: missing description")
-            continue
-        if len(description) > DESC_MAX:
-            report.fail(
-                f"{label}: description is {len(description)} chars (max {DESC_MAX})"
-            )
-            continue
-
-        report.ok(label)
+_SLUG_RE = re.compile(r"docs/work/([a-z0-9-]+)/")
+_KEBAB_TWO_WORDS_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)?$")
 
 
 def check_epic_paths(report: Report) -> None:
-    script = (
-        REPO_ROOT
-        / "product-management/skills/tasks/scripts/check-epic-paths.sh"
-    )
+    """Filesystem-only backlog rows must use title slugs, not internal IDs."""
     example = REPO_ROOT / "product-management/skills/tasks/examples/backlog.md"
-    if not (script.is_file() and example.is_file()):
+    if not example.is_file():
         return
-    result = subprocess.run(
-        ["bash", str(script), str(example)],
-        cwd=REPO_ROOT,
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
-        report.fail("epic work paths", result.stdout + result.stderr)
-    else:
-        report.ok(f"epic work paths in {example.relative_to(REPO_ROOT)}")
 
-
-def check_evals(report: Report) -> None:
-    """A stale skill_name after a rename is otherwise silent."""
-    for skill in skill_dirs():
-        label = skill_label(skill)
-        evals = skill / "evals/evals.json"
-        if evals.is_file():
-            data = read_json(evals)
-            if data is None:
-                report.fail(f"{label}: evals.json invalid JSON")
-            elif data.get("skill_name") != skill.name:
-                report.fail(
-                    f"{label}: evals.json declares skill_name "
-                    f"'{data.get('skill_name', '')}'"
+    problems: list[str] = []
+    for line_no, line in enumerate(example.read_text().splitlines(), start=1):
+        for slug in _SLUG_RE.findall(line):
+            if len(slug.split("-")) > 2:
+                problems.append(
+                    f"line {line_no}: '{slug}' has more than two words"
+                )
+            elif not _KEBAB_TWO_WORDS_RE.fullmatch(slug):
+                problems.append(
+                    f"line {line_no}: '{slug}' must be kebab-case with at "
+                    "most one hyphen (two words)"
                 )
 
-        queries = skill / "evals/trigger-queries.json"
-        if queries.is_file() and read_json(queries) is None:
-            report.fail(f"{label}: trigger-queries.json invalid JSON")
+    if problems:
+        report.fail("epic work paths", problems)
+    else:
+        report.ok(f"epic work paths in {example.relative_to(REPO_ROOT)}")
 
 
 def shell_scripts() -> list[Path]:
@@ -373,12 +249,18 @@ def run_suite(report: Report, rel: str, label: str) -> None:
     with tempfile.TemporaryDirectory() as tmp:
         log = Path(tmp) / "suite.log"
         with log.open("w") as handle:
-            result = subprocess.run(
-                ["bash", str(script)],
-                cwd=RALPH_ROOT,
-                stdout=handle,
-                stderr=subprocess.STDOUT,
-            )
+            try:
+                result = subprocess.run(
+                    ["bash", str(script)],
+                    cwd=RALPH_ROOT,
+                    stdin=subprocess.DEVNULL,
+                    stdout=handle,
+                    stderr=subprocess.STDOUT,
+                    timeout=120,
+                )
+            except subprocess.TimeoutExpired:
+                report.fail(label, "timed out after 120s")
+                return
         output = log.read_text()
 
     if result.returncode == 0:
@@ -392,14 +274,6 @@ def run_suite(report: Report, rel: str, label: str) -> None:
         report.fail(label, detail or output.splitlines()[-20:])
 
 
-def check_manifests(report: Report) -> None:
-    for plugin in PLUGIN_DIRS:
-        for rel in MANIFESTS:
-            path = REPO_ROOT / plugin / rel
-            if path.is_file() and read_json(path) is None:
-                report.fail(f"{plugin}/{rel} invalid JSON")
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -409,9 +283,7 @@ def main() -> int:
 
     report = Report(quiet=args.quiet)
 
-    check_skills(report)
     check_epic_paths(report)
-    check_evals(report)
     check_shell_syntax(report)
     check_shellcheck(report)
     check_executable_bits(report)
@@ -419,7 +291,6 @@ def main() -> int:
     check_preset_reachability(report)
     run_suite(report, "scripts/test-ralph-hooks.sh", "ralph hook tests")
     run_suite(report, "scripts/test-seed-ralph-loop.sh", "ralph seed tests")
-    check_manifests(report)
 
     return 1 if report.failed else 0
 

@@ -6,6 +6,7 @@ color: yellow
 tools: Read, Grep, Glob, Bash(git diff:*), Bash(git log:*), Bash(git blame:*)
 metadata:
   model_tier: standard
+  budget: 10
 ---
 
 You scan a diff for obvious, high-impact bugs. You read the changed hunks, not the whole codebase.

@@ -6,8 +6,11 @@ description: >
   capacity check, dependencies, risks. Proposes the plan; never commits scope
   without approval. Trigger: "plan the sprint", "run sprint planning", or on the
   sprint-start schedule.
-model: sonnet
+model: inherit
 tools: ["Read", "Write", "Glob", "Grep"]
+metadata:
+  model_tier: standard
+  budget: 10
 ---
 
 # Sprint planning

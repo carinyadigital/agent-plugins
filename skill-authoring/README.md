@@ -26,13 +26,16 @@ Agent prompt: `agents/eval-grader.md`
 
 | Script | Purpose |
 | ------ | ------- |
-| `scripts/validate_skills.py` | Catalogue skill frontmatter, Ralph hooks, preset graphs |
+| `scripts/validate_ralph.py` | Ralph hooks, preset graphs, epic-path script |
 | `scripts/mutation-test.py` | Mutation tests for Ralph hook suites (`ralph-loop/`) |
+
+Skill frontmatter, agent contracts, and evals schema are enforced by
+`python3 scripts/validate_skills.py` (also via `python3 scripts/validate.py`).
 
 Run from repo root:
 
 ```bash
-python3 skill-authoring/scripts/validate_skills.py
+python3 skill-authoring/scripts/validate_ralph.py
 python3 skill-authoring/scripts/mutation-test.py
 ```
 

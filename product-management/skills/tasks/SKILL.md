@@ -188,8 +188,9 @@ writing. Below that, write directly; the file diff is reviewable.
   user on any ambiguity, never guessed
 - [ ] Canonical ID used as-is when a tracker resolved; no parallel internal ID
   invented for tracker-backed work
-- [ ] Filesystem-only: epic slug resolved from the backlog row, not the
-  internal ID (`CHK01` is not a slug)
+- [ ] Filesystem-only: every `docs/work/{slug}/` path in `backlog.md` uses a
+  kebab-case title slug (at most two words — one hyphen), not the internal ID
+  (`CHK01` is not a slug; `checkout-foundation` is)
 - [ ] Every story has a statement, an independent test criterion, and ≥1 Gherkin scenario
 - [ ] Every `Then` clause is observable
 - [ ] Every task names a deliverable and at least one concrete file path
@@ -236,4 +237,3 @@ Write the artefacts, then report:
   [assets/tasks-local.template.md](assets/tasks-local.template.md)
 - [examples/checkout-foundation.md](examples/checkout-foundation.md) ·
   [examples/backlog.md](examples/backlog.md)
-- [scripts/check-epic-paths.sh](scripts/check-epic-paths.sh) — optional path check for the filesystem-only fallback

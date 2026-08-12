@@ -19,12 +19,13 @@ Everything in this repo is markdown and JSON — no build step. Fork, edit, open
 
 brand-creative/                   # instance bootstrap + marketplace management (install first)
 
-managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, …)
-
 scripts/
   sync-references.py          # propagate shared meta-framework files across practice plugins
-  validate.py                 # full structural repo validation (run before PR)
-  plugin-check.py             # fast per-plugin validation while iterating
+  validate.py                 # orchestrator — runs plugins + skills validators (before PR)
+  validate_plugins.py         # marketplace, manifests, MCP, cookbooks; scoped mode for one plugin
+  validate_skills.py          # frontmatter budgets, agents/*.md contracts, orphans, drift, evals
+  plugin-check.py             # shim → validate_plugins.py scoped mode
+  validate_lib.py             # shared reporting + YAML frontmatter helpers
 
 .cursor-plugin/marketplace.json
 .claude-plugin/marketplace.json
@@ -77,11 +78,13 @@ python3 scripts/sync-references.py --check  # verify copies are in sync (CI-frie
 Run structural checks locally before opening a PR:
 
 ```bash
-python3 scripts/validate.py            # full repo validation
-python3 scripts/plugin-check.py <dir>  # fast check for one practice plugin
+python3 scripts/validate.py                    # full repo validation (plugins + skills)
+python3 scripts/validate_plugins.py <dir>      # scoped check for one practice plugin
+python3 scripts/validate_skills.py             # skill/agent contracts only
+python3 skill-authoring/scripts/validate_ralph.py  # Ralph hooks + presets
 ```
 
-`validate.py` checks:
+`validate.py` orchestrates plugin-domain and skill-domain checks:
 
 | Check | What it catches |
 | ----- | ---------------- |
@@ -90,12 +93,14 @@ python3 scripts/plugin-check.py <dir>  # fast check for one practice plugin
 | Marketplace ↔ plugin.json | `name` / `description` drift between marketplace and per-plugin manifests |
 | Plugin manifests | Missing `name`, `version`, or `description` |
 | MCP connectors | Missing or invalid practice `.mcp.json`; empty `mcpServers` |
-| SKILL.md frontmatter | Missing `name`, `description`, or `allowed-tools`; invalid agency-framework metadata (warnings by default) |
+| SKILL.md frontmatter | Missing `name`/`description`/`allowed-tools`; name/description budgets; agency metadata (warnings by default) |
+| Agent contracts | Every `**/agents/*.md`: `model: inherit`, constrained tools, `model_tier`, numeric `budget` |
+| Orphan SKILL.md | `SKILL.md` outside `skills/<name>/` (excl. `skill-authoring/template/`) |
 | Markdown cross-refs | Broken relative links in skill files |
 | Evals schema | Malformed `evals/evals.json` or `evals/trigger-queries.json` |
 | JSON sanity | Any `*.json` in the repo that fails to parse |
 | Cross-plugin paths | Sibling-plugin `../` references inside plugin trees (cache-unsafe) |
-| Legacy artefact paths | References to legacy delivery paths under docs/product, docs/work, or dot-digital-agency (use `.agency/` instead) |
+| Legacy artefact paths | References to obsolete `.digital-agency/` paths |
 
 Options:
 
@@ -110,8 +115,9 @@ when you change a plugin description.
 
 ### CI
 
-- **CI** — `.github/workflows/ci.yml` runs `python3 scripts/validate.py --format json`
-  and the unit tests in `tests/` on every push to `main` and on pull requests.
+- **CI** — `.github/workflows/ci.yml` runs `python3 scripts/validate.py --format json`,
+  `python3 skill-authoring/scripts/validate_ralph.py --quiet`, mutation tests, and
+  the unit tests in `tests/` on every push to `main` and on pull requests.
 
 ## Pull requests
 

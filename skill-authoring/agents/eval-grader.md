@@ -4,6 +4,9 @@ description: Use this agent when grading skill eval runs against evals/evals.jso
 model: inherit
 color: yellow
 tools: Read, Grep, Glob
+metadata:
+  model_tier: standard
+  budget: 10
 ---
 
 You grade skill evaluation outputs against predefined assertions and critique the evals themselves.

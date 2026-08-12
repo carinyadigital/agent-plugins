@@ -6,6 +6,7 @@ color: red
 tools: Read, Grep, Glob
 metadata:
   model_tier: fast
+  budget: 5
 ---
 
 You rate one finding. You decide whether it is real. You do not look for new problems.

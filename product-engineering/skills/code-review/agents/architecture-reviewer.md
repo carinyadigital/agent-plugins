@@ -6,6 +6,7 @@ color: magenta
 tools: Read, Grep, Glob, Bash(git diff:*), Bash(git log:*)
 metadata:
   model_tier: standard
+  budget: 20
 ---
 
 You check whether new code conforms to the codebase's architecture patterns — not generic architecture theory.

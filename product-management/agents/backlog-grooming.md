@@ -6,8 +6,11 @@ description: >
   re-estimate, tighten scope, defer misaligned items. Proposes the diff; never
   writes backlog.md without approval. Trigger: "groom the backlog", "refine the
   backlog", or on schedule.
-model: sonnet
+model: inherit
 tools: ["Read", "Write", "Glob", "Grep"]
+metadata:
+  model_tier: standard
+  budget: 10
 ---
 
 # Backlog grooming

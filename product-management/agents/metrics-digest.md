@@ -5,8 +5,11 @@ description: >
   performance against targets, notable movement, and spikes or drops worth
   investigating. Proposes backlog follow-ups where a metric implies work. Trigger:
   "run the metrics review", "how are the numbers", or on a weekly/monthly schedule.
-model: sonnet
+model: inherit
 tools: ["Read", "Write", "Glob", "Grep"]
+metadata:
+  model_tier: standard
+  budget: 8
 ---
 
 # Metrics digest

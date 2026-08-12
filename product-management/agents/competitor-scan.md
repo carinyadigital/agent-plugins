@@ -5,8 +5,11 @@ description: >
   target. Runs a competitive-brief pass and proposes backlog additions where the
   market surfaces a gap. Trigger: "scan the market", "any competitor moves", or
   on schedule.
-model: sonnet
+model: inherit
 tools: ["Read", "WebSearch", "WebFetch", "Write"]
+metadata:
+  model_tier: standard
+  budget: 10
 ---
 
 # Competitor scan

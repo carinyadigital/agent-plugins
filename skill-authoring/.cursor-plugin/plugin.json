@@ -2,7 +2,7 @@
   "name": "skill-authoring",
   "displayName": "Skill Authoring",
   "version": "0.4.0",
-  "description": "Skill authoring quality gate — skills-qa, skill-review, eval-grader, validate_skills, and skill templates.",
+  "description": "Skill authoring quality gate — skills-qa, skill-review, eval-grader, validate_ralph, and skill templates.",
   "author": {
     "name": "Digital Agency"
   },

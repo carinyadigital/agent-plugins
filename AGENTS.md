@@ -1,6 +1,6 @@
 # Digital Agency Plugins
 
-Claude and Cursor plugins and Managed Agent templates for digital agency workflows. Each named agent ships two ways from one source.
+Claude and Cursor plugins for digital agency workflows.
 
 ## Repository Structure
 
@@ -50,20 +50,14 @@ Claude and Cursor plugins and Managed Agent templates for digital agency workflo
 │               ├── agents/      #   sub-agents for this skill
 │               ├── evals/       #   evals.json + trigger-queries.json
 │               └── scripts/     #   optional helper scripts
-├── managed-agents/                  #   CMA cookbooks (coming soon) — one dir per named agent
-│   └── <slug>/
-│       ├── agent.yaml               #   system + skills → ../../agents/<slug>/...
-│       ├── subagents/*.yaml         #   depth-1 leaf workers
-│       ├── steering-examples.json
-│       └── README.md                #   security tier + handoff notes
-└── scripts/                         # sync-references.py, validate.py, plugin-check.py
+└── scripts/                         # sync-references.py, validate.py, validate_plugins.py, validate_skills.py
 ```
 
 Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `product-design/skills/`, `search-optimisation/skills/`, `product-engineering/skills/`, `architecture/skills/`).
 
 Run `python3 scripts/sync-references.py` after editing shared meta-framework files in `references/` (`instance-profile-template.md`, `practice-setup-framework.md`).
 
-Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks practice-plugin MCP wiring, validates SKILL.md frontmatter, resolves markdown cross-references, and validates `evals/` JSON schema. Use `python3 scripts/plugin-check.py <plugin-dir>` for fast per-plugin checks while iterating.
+Run `python3 scripts/validate.py` before opening a PR — it runs plugin-domain and skill-domain validators (marketplace/plugin manifests, MCP wiring, SKILL.md frontmatter + budgets, every `**/agents/*.md` contract, orphan SKILL.md, markdown cross-references, evals schema). Use `python3 scripts/validate_plugins.py <plugin-dir>` for fast per-plugin checks while iterating.
 
 
 | Plugin | Skills (v1) | Status |
@@ -105,7 +99,8 @@ Strategy, roadmap, backlog, and epic work for this catalogue live in the **carin
 - `commands/*.md`: Slash commands invoked as `/plugin:command-name`
 - `skills/*/SKILL.md`: Detailed knowledge and workflows for specific tasks
 - `<practice>/.mcp.json`: Bundled MCP server definitions per practice plugin (GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools, and practice-specific providers)
-- `scripts/validate.py`: Structural validation — run before every PR
+- `scripts/validate.py`: Structural validation orchestrator — run before every PR
+- `scripts/validate_plugins.py` / `scripts/validate_skills.py`: Domain validators
 - `*.local.md`: User-specific configuration (gitignored)
 
 ## Development Workflow

@@ -6,6 +6,7 @@ color: purple
 tools: Read, Grep, Glob
 metadata:
   model_tier: standard
+  budget: 10
 ---
 
 You judge WCAG 2.2 AA conformance for the UI this change touched. You cite criteria and

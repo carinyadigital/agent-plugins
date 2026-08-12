@@ -6,8 +6,11 @@ description: >
   sprint plan and backlog. Surfaces blockers for escalation; drafts nothing durable.
   Trigger: "run standup", "what's the standup", or on a weekday-morning schedule.
   Skip for solo teams.
-model: sonnet
+model: inherit
 tools: ["Read", "Glob", "Grep"]
+metadata:
+  model_tier: fast
+  budget: 5
 ---
 
 # Daily standup

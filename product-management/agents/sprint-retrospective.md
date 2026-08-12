@@ -6,8 +6,11 @@ description: >
   didn't, and proposes actions and backlog follow-ups. Proposes; never edits the
   backlog silently. Trigger: "run the retro", "sprint retrospective", or on the
   sprint-end schedule.
-model: sonnet
+model: inherit
 tools: ["Read", "Write", "Glob", "Grep"]
+metadata:
+  model_tier: standard
+  budget: 10
 ---
 
 # Sprint retrospective

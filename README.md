@@ -136,7 +136,7 @@ Each persona below is named for the job it does. Start with [entry points by tea
 | **Tech Debt Prioritizer** | Prioritize remediation work | `product-engineering` | `/product-engineering:tech-debt` |
 | **WebOps Engineer** | CI/CD, deployment, platform health | `product-engineering` | `/product-engineering:platform-health` |
 
-Everything here ships as Claude Cowork, Claude Code, or Cursor plugins **and** as [managed-agent cookbooks](./managed-agents/) for headless deployment — same skills and prompts, two surfaces from one source.
+Everything here ships as Claude Cowork, Claude Code, or Cursor plugins.
 
 What's in the repo:
 
@@ -144,7 +144,6 @@ What's in the repo:
 - **Instance bootstrap** — whichever plugin you install first writes `config/instance.json` if absent; no install-order dependency.
 - **MCP connectors** — a minimal default per practice in `.mcp.json`; add more for your stack (source control, hosting, chat, trackers, analytics).
 - **[Entry points by team role](#entry-points-by-team-role)** — primary commands plus the [extended catalog](#extended-persona-catalog) below.
-- **Managed-agent cookbooks** for Cursor Cloud Agents and Claude Managed Agents — see [managed-agents/README.md](./managed-agents/README.md).
 
 ## Repository layout
 
@@ -159,8 +158,7 @@ search-optimisation/      # keyword research, technical audit, content SEO revie
 ralph-loop/               # ralph-loop + ralph-loop-setup (+ hooks)
 skills-index/             # install-aware skill router
 skill-authoring/          # skills-qa (+ Phase 0 tooling later)
-managed-agents/           # CMA + Cursor Cloud Agent cookbooks
-scripts/                  # validate.py · plugin-check.py · sync-references.py
+scripts/                  # validate.py · validate_plugins.py · validate_skills.py · sync-references.py
 references/               # canonical meta-framework (synced into practice plugins)
 .claude-plugin/marketplace.json   # plugin registry (name: carinya-plugins)
 .cursor-plugin/marketplace.json
@@ -229,12 +227,6 @@ In **Settings → Plugins → Add plugin**:
 - **Paste this repo URL** — `https://github.com/carinyaparc/carinya-plugins` — then pick practice plugins from the marketplace list, or
 - **Upload a zip** — zip any practice directory (e.g. `product-engineering/`) and drop it in.
 
-### Managed Agents and Cursor Cloud Agents
-
-Headless deployment cookbooks live in [`managed-agents/`](./managed-agents/). Engineering personas deploy to **Cursor Cloud Agents**; content personas to **Claude Managed Agents**; architecture resolves at deploy time.
-
-See [`managed-agents/README.md`](./managed-agents/README.md) for platform matrix, security tiers, and required secrets.
-
 ### skills.sh (skill files only)
 
 Install individual skills without the full plugin surface (no hooks, MCP, or practice profiles):
@@ -257,7 +249,6 @@ npx skills add carinyaparc/carinya-plugins/product-engineering/skills/code-revie
 | **Instance profile** | Git-versioned org facts, brand path, target bindings, squad charters. | `<instance-repo>/config/instance.json`, `brand/`, `squads/` |
 | **Practice profile** | Per-practice conventions — stack defaults, persona preference, output formats, review gates. | `~/.claude/plugins/config/digital-agency/<practice>/CLAUDE.md` |
 | **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — repos, hosting, design, trackers, chat. | `<practice>/.mcp.json` |
-| **Managed-agent cookbooks** | `agent.yaml` + steering examples for headless deployment. | [`managed-agents/<slug>/`](./managed-agents/) |
 | **Artefact consumption** | Downstream practices read upstream outputs by path — brand voice, brand guide, wireframes — without hard install dependencies. | Resolved via instance/target pointers |
 
 Everything is markdown and JSON. No build step.

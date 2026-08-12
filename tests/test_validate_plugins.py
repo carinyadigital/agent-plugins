@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Unit tests for scripts/plugin-check.py."""
+"""Unit tests for scripts/validate_plugins.py (scoped mode)."""
 from __future__ import annotations
 
 import importlib.util
@@ -11,21 +11,21 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PLUGIN_CHECK_PATH = ROOT / "scripts" / "plugin-check.py"
+VALIDATE_PLUGINS_PATH = ROOT / "scripts" / "validate_plugins.py"
 
 
-def load_plugin_check_module():
-    module_name = "agency_plugin_check"
-    spec = importlib.util.spec_from_file_location(module_name, PLUGIN_CHECK_PATH)
+def load_validate_plugins_module():
+    module_name = "agency_validate_plugins"
+    spec = importlib.util.spec_from_file_location(module_name, VALIDATE_PLUGINS_PATH)
     if spec is None or spec.loader is None:
-        raise RuntimeError(f"cannot load {PLUGIN_CHECK_PATH}")
+        raise RuntimeError(f"cannot load {VALIDATE_PLUGINS_PATH}")
     module = importlib.util.module_from_spec(spec)
     sys.modules[module_name] = module
     spec.loader.exec_module(module)
     return module
 
 
-plugin_check = load_plugin_check_module()
+validate_plugins = load_validate_plugins_module()
 
 
 def write_json(path: Path, data: dict) -> None:
@@ -53,7 +53,7 @@ class WellFormedPluginTests(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            checker = plugin_check.PluginChecker("pretty")
+            checker = validate_plugins.PluginChecker("pretty")
             checker.check_plugin(plugin_dir)
 
             errors = [i for i in checker.v.issues if i.severity == "error"]
@@ -73,7 +73,7 @@ class MissingFieldTests(unittest.TestCase):
                 {"name": "broken-plugin", "description": "Missing version."},
             )
 
-            checker = plugin_check.PluginChecker("pretty")
+            checker = validate_plugins.PluginChecker("pretty")
             checker.check_plugin(plugin_dir)
 
             codes = [i.code for i in checker.v.issues if i.severity == "error"]
@@ -90,7 +90,7 @@ class McpShapeTests(unittest.TestCase):
                 {"mcpServers": {"figma": {"type": "http", "url": "https://mcp.figma.com/mcp"}}},
             )
 
-            checker = plugin_check.PluginChecker("pretty")
+            checker = validate_plugins.PluginChecker("pretty")
             checker.check_plugin(plugin_dir)
 
             errors = [i for i in checker.v.issues if i.severity == "error"]
@@ -105,7 +105,7 @@ class McpShapeTests(unittest.TestCase):
                 {"github": {"type": "http", "url": "https://api.githubcopilot.com/mcp/"}},
             )
 
-            checker = plugin_check.PluginChecker("pretty")
+            checker = validate_plugins.PluginChecker("pretty")
             checker.check_plugin(plugin_dir)
 
             codes = [i.code for i in checker.v.issues if i.severity == "error"]
@@ -115,20 +115,18 @@ class McpShapeTests(unittest.TestCase):
 class CliTests(unittest.TestCase):
     def test_help_exits_zero(self) -> None:
         result = subprocess.run(
-            [sys.executable, str(PLUGIN_CHECK_PATH), "--help"],
+            [sys.executable, str(VALIDATE_PLUGINS_PATH), "--help"],
             cwd=ROOT,
             capture_output=True,
             text=True,
             check=False,
         )
         self.assertEqual(result.returncode, 0)
-        self.assertIn("plugin-check.py", result.stdout)
+        self.assertIn("validate_plugins.py", result.stdout)
 
     def test_repo_plugins_pass(self) -> None:
-        # plugin-check is deliberately narrower than validate.py — it should
-        # pass clean even while repo-wide validate.py has unrelated failures.
         result = subprocess.run(
-            [sys.executable, str(PLUGIN_CHECK_PATH)],
+            [sys.executable, str(VALIDATE_PLUGINS_PATH)],
             cwd=ROOT,
             capture_output=True,
             text=True,

@@ -62,7 +62,7 @@
       "name": "skill-authoring",
       "displayName": "Skill Authoring",
       "source": "./skill-authoring",
-      "description": "Skill authoring quality gate — skills-qa, skill-review, eval-grader, validate_skills, and skill templates."
+      "description": "Skill authoring quality gate — skills-qa, skill-review, eval-grader, validate_ralph, and skill templates."
     }
   ]
 }

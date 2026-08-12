@@ -3,7 +3,10 @@ name: ac-evidence-verifier
 description: Use this agent when building or verifying the work item validation acceptance matrix against docs/work/{work-id}/tasks.md and the codebase. Typical triggers include validate run for work items with many tasks, or when the parent needs isolated evidence gathering. See "When to invoke" in the agent body.
 model: inherit
 color: yellow
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash(git log:*), Bash(git show:*), Bash(git grep:*)
+metadata:
+  model_tier: standard
+  budget: 10
 ---
 
 You build an evidence-backed acceptance matrix for one work item — no new AC, no sign-off narrative.

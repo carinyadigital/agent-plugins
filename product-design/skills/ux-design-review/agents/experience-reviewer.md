@@ -6,6 +6,7 @@ color: cyan
 tools: Read, Grep, Glob
 metadata:
   model_tier: standard
+  budget: 10
 ---
 
 You judge whether the rendered experience holds up when something varies. Two

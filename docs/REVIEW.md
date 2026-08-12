@@ -112,11 +112,11 @@ Cap discipline still applies: prefer modes on existing skills over unbounded new
 ## 5. Outstanding recommendations
 
 ### P1 — Make the guardrails real
-1. Finish validator gaps beyond the landed agent/orphan/description-budget checks: real YAML parse where needed; line budgets; keep agent contract failures red until fixed.
+1. ~~Expand `validate.py` / `validate_skills.py`: real YAML parse; description budgets; every `agents/*.md` (`model: inherit`, constrained tools, `model_tier`, numeric budget); fail on orphan `SKILL.md` outside `skills/` (excl. `template/`).~~ — landed as `scripts/validate_plugins.py` + `scripts/validate_skills.py` (orchestrated by `validate.py`); Ralph suites in `validate_ralph.py`. Optional body line-budget still open if authoring checklist requires it.
 2. ~~Add `tasks/scripts/*.sh` (e.g. `check-epic-paths.sh`) to shellcheck globs~~ — removed; epic-path rules live in the tasks skill pre-save checklist and `validate_ralph.py`.
 3. CODEOWNERS, PR template (CONTRIBUTING checklist), Python version matrix, markdownlint; finish manifest/version consistency checks.
 4. Align duplicated review contracts in place (and/or drift-check identical pairs); rename ralph `environment-resolution.md` → `template-variable-resolution.md`. Do not introduce a shared references package.
-5. Cap uncapped budgets (doc batches, L verifier fan-out, UX capture matrix); fix the three privilege agents above.
+5. Cap uncapped budgets (doc batches, L verifier fan-out, UX capture matrix); revisit whether scoped Bash on babysit/ac-evidence is still too wide.
 
 ### P2 — Close the contract gaps
 7. Adopt work-item state file (e.g. `.carinya/work.json`) keyed on work item, not branch alone.

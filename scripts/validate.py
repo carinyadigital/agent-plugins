@@ -339,6 +339,7 @@ class Validator:
         paths.extend(sorted(ROOT.glob("product-management/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-engineering/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("ralph-loop/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("skills-index/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("content-marketing/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-design/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("search-optimisation/skills/*/SKILL.md")))
@@ -732,6 +733,7 @@ class Validator:
             (ROOT / "product-management", "product-management/skills/*/*.md"),
             (ROOT / "product-engineering", "product-engineering/skills/*/*.md"),
             (ROOT / "ralph-loop", "ralph-loop/skills/*/*.md"),
+            (ROOT / "skills-index", "skills-index/skills/*/*.md"),
             (ROOT / "content-marketing", "content-marketing/skills/*/*.md"),
             (ROOT / "product-design", "product-design/skills/*/*.md"),
             (ROOT / "search-optimisation", "search-optimisation/skills/*/*.md"),
@@ -747,6 +749,7 @@ class Validator:
                 "product-management",
                 "product-engineering",
                 "ralph-loop",
+                "skills-index",
                 "content-marketing",
                 "product-design",
                 "search-optimisation",

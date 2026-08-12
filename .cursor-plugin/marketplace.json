@@ -51,6 +51,12 @@
       "displayName": "Search Optimisation",
       "source": "./search-optimisation",
       "description": "Complete search and technical SEO practice in one install \u2014 setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief."
+    },
+    {
+      "name": "skills-index",
+      "displayName": "Skills Index",
+      "source": "./skills-index",
+      "description": "Install-aware skill router \u2014 find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task."
     }
   ]
 }

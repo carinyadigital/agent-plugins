@@ -1,17 +1,17 @@
 # Agency setup framework — digital-agency
 
-Every `agency-hub` bootstrap follows this framework. The `setup` skill implements it; practice plugins read the output — they do not re-ask org-wide facts captured here.
+Instance bootstrap follows this framework. Any practice `setup` may run it when `config/instance.json` is absent; practice plugins then read the output and do not re-ask org-wide facts.
 
 ## Invocation
 
 | Command | Behaviour |
 |---|---|
-| `/agency-hub:setup` | Detect existing setup; offer quick vs full if mode not specified |
-| `/agency-hub:setup --quick` | Business name, primary practice, one target; sensible defaults elsewhere |
-| `/agency-hub:setup --full` | Full interview; review seed documents when provided |
-| `/agency-hub:setup --redo` | Ignore existing profile; re-interview and overwrite on confirmation |
-| `/agency-hub:setup --resume` | Continue a paused interview from the saved session file |
-| `/agency-hub:setup --check-integrations` | Report target binding status; no interview unless user asks to continue |
+| `/<practice>:setup` | Detect existing setup; offer quick vs full if mode not specified |
+| `/<practice>:setup --quick` | Business name, primary practice, one target; sensible defaults elsewhere |
+| `/<practice>:setup --full` | Full interview; review seed documents when provided |
+| `/<practice>:setup --redo` | Ignore existing profile; re-interview and overwrite on confirmation |
+| `/<practice>:setup --resume` | Continue a paused interview from the saved session file |
+| `/<practice>:setup --check-integrations` | Report target binding status; no interview unless user asks to continue |
 
 Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load the session first; other flags adjust what happens after resume.
 
@@ -19,10 +19,10 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 
 | Tier | File | Purpose |
 |---|---|---|
-| 0 — Personal | `~/.claude/plugins/config/digital-agency/agency-hub/CLAUDE.md` | Hub marketplace profile — watched registries, installed community skills, update prefs |
-| 0 — Personal | `~/.claude/plugins/config/digital-agency/agency-hub/allowlist.yaml` | Install allowlist — copy from `references/allowlist-default.yaml` if missing |
-| 0 — Personal | `~/.claude/plugins/config/digital-agency/agency-hub/install-log.yaml` | SHA-pinned install audit log |
-| 0 — Personal | `~/.claude/plugins/config/digital-agency/agency-hub/setup-resume.json` | Paused interview before instance repo exists |
+| 0 — Personal | `~/.claude/plugins/config/digital-agency/brand-creative/CLAUDE.md` | Hub marketplace profile — watched registries, installed community skills, update prefs |
+| 0 — Personal | `~/.claude/plugins/config/digital-agency/brand-creative/allowlist.yaml` | Install allowlist — copy from `references/allowlist-default.yaml` if missing |
+| 0 — Personal | `~/.claude/plugins/config/digital-agency/brand-creative/install-log.yaml` | SHA-pinned install audit log |
+| 0 — Personal | `~/.claude/plugins/config/digital-agency/brand-creative/setup-resume.json` | Paused interview before instance repo exists |
 | 1 — Instance | `<instance-repo>/config/instance.json` | Shared org/brand/config facts |
 | 1 — Instance | `<instance-repo>/config/plugins.json` | Installed catalogue plugins |
 | 1 — Instance | `<instance-repo>/config/.setup-resume.json` | Paused interview after instance repo is bound |
@@ -40,7 +40,7 @@ Before asking questions:
 1. **Is the working directory an instance repo?** Look for `config/instance.json`.
    - **`status: complete`** — summarize what's on file; offer refresh, `--redo`, or `--check-integrations` only. Do not re-interview unless the user chooses refresh or passed `--redo`.
    - **`status: template` or partial** — offer to resume or start fresh.
-2. **If not an instance repo** — check for `~/.claude/plugins/config/digital-agency/agency-hub/setup-resume.json` (paused session) or proceed to repo creation (link-first, § Repo creation).
+2. **If not an instance repo** — check for `~/.claude/plugins/config/digital-agency/brand-creative/setup-resume.json` (paused session) or proceed to repo creation (link-first, § Repo creation).
 3. **Legacy hand-edited config** — if non-standard paths are found, offer to normalize into `config/instance.json` without deleting legacy files without confirmation.
 
 ## Repo creation (v1 — link-first)
@@ -79,11 +79,11 @@ When no instance repo exists yet:
 
 Show before the interview (adapt to context):
 
-> **`agency-hub` bootstraps your digital-agency instance** — the shared config every practice plugin reads. Looking for a specific workflow? Install a practice plugin directly after setup.
+> **Practice setup bootstraps your instance** when `config/instance.json` is absent — the shared config every practice plugin reads.
 >
 > **Quick (~5 min):** business name, one practice, one target. **Full (~20 min):** services, cadence, risk posture, seed material, all target skeletons.
 >
-> Quick or full? (Upgrade anytime with `/agency-hub:setup --full`.)
+> Quick or full? (Upgrade anytime with `/<practice>:setup --full`.)
 
 ## Interview sections
 
@@ -153,7 +153,7 @@ After interview, before any write:
 2. Wait for explicit **yes**.
 3. Write:
    - `config/instance.json` (set `status: complete`, `setup.completedAt`, `setup.mode`)
-   - `config/plugins.json` with `agency-hub` and recommended practice plugins
+   - `config/plugins.json` with recommended practice plugins
    - `config/targets/<name>.json` per target discussed
    - `config/deployments/` — one scaffold per recommended scheduled agent, all `"enabled": false`
    - `squads/<squad>/charter.md` skeletons for enabled services
@@ -162,7 +162,7 @@ After interview, before any write:
 
 ## Initialize Tier 0 hub state (personal)
 
-After instance config write (or on `--full` setup completion), ensure personal marketplace files exist at `~/.claude/plugins/config/digital-agency/agency-hub/`:
+After instance config write (or on `--full` setup completion), ensure personal marketplace files exist at `~/.claude/plugins/config/digital-agency/brand-creative/`:
 
 1. **`CLAUDE.md`** — copy structure from `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` template if missing; populate Role, deployment context, update preferences from interview answers.
 2. **`allowlist.yaml`** — copy from `${CLAUDE_PLUGIN_ROOT}/references/allowlist-default.yaml` if missing; set `mode` per team size / deployment context (restrictive for firm-internal, confirm permissive explicitly for solo).
@@ -172,7 +172,7 @@ Tell the user where these live. v2 marketplace skills read them before install.
 
 ## Hand off to brand-creative
 
-Do not duplicate brand interview logic — plugins are self-contained; `agency-hub` cannot invoke another plugin's skill directly. After config write, user-mediated hand-off within the same conversation:
+Do not duplicate brand interview logic — plugins are self-contained. After config write, user-mediated hand-off within the same conversation:
 
 > Next: brand setup. Install **`brand-creative`** from the marketplace if needed, then run **`/brand-creative:setup`** in this conversation. It reads seed material from setup and writes to `<instance-root>/brand/`.
 

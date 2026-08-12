@@ -2,9 +2,9 @@
 name: setup
 description: >
   UX design practice setup interview — reads instance business identity from
-  `/agency-hub:setup`, interviews which pages/flows are in scope for wireframing and any
+  instance bootstrap (this setup writes `config/instance.json` if absent), interviews which pages/flows are in scope for wireframing and any
   existing design references to seed from, writes practice profile. Use on first
-  install after `/agency-hub:setup`, when the user says "set up UX" or "configure
+  install on first install, when the user says "set up UX" or "configure
   wireframes", or to redo UX defaults only.
 argument-hint: "[--quick|--full] [--redo] [--resume] [--check-integrations]"
 allowed-tools: Read, Grep, Glob, Write
@@ -29,7 +29,7 @@ or reference material changes. Explicit invocation only.
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile.
-- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
+- **Writes `config/instance.json` if absent** — idempotent instance bootstrap, then this practice interview.
 - **Does not install other plugins** — user installs `product-engineering` from marketplace when implementation companion is needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce wireframe artefacts** — those are separate skill invocations after setup.
@@ -62,6 +62,12 @@ Structured-aggregation; integration table reports ✓ only on successful MCP pro
 3. **Read** `~/.claude/plugins/config/digital-agency/ux-design/CLAUDE.md` unless `--redo`.
 4. If **complete** and not `--redo`: summarize on-file UX defaults; offer refresh, `--redo`, or `--check-integrations`. Stop unless user chooses refresh.
 5. If **paused resume file** exists: greet, summarize progress, continue or start over.
+
+### Step 0a — Instance bootstrap
+
+If `config/instance.json` is **absent**, follow `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md` → **Instance bootstrap**: interview minimal org facts, show the summary, write `config/instance.json` on yes, then continue.
+
+If present and complete, reference it — do not re-ask business identity.
 
 ### Step 0b — Install scope check
 

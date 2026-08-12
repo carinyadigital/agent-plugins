@@ -5,7 +5,7 @@ technical SEO service: setup interview, keyword research, production audits, and
 content SEO review. Self-contained under the MECE practice model: edit skills here
 only; nothing is vendored from elsewhere.
 
-Install standalone or after `agency-hub:setup` recommends it. Declare
+Install standalone or after practice `setup` (writes `config/instance.json` if absent) recommends it. Declare
 `product-management` as a **companion practice** for competitive brief — invoke
 `/product-management:competitive-brief` directly rather than bundling a duplicate copy.
 
@@ -66,7 +66,7 @@ pairing — paste or reference content directly when `content-marketing` is not 
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:setup` writes
+- **Instance profile** (optional) — practice `setup` (writes `config/instance.json` if absent) writes
   `config/instance.json`; setup reads business identity without re-asking.
 - **product-management** (recommended companion) — competitive brief; see CONNECTORS.md.
 - **Connectors** (optional) — source control for issues; Playwright for live site checks; Ahrefs for keyword and backlink data (requires subscription).
@@ -82,7 +82,7 @@ pairing — paste or reference content directly when `content-marketing` is not 
 
 - `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/search-optimisation-conventions.md` — path resolution, labels, artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
+- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
 
 Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

@@ -4,7 +4,7 @@ Root-level **practice plugin** — setup interview, wireframes, live-browser UX
 design review, and UX design fix. Self-contained under the MECE practice model:
 edit skills here only; nothing is vendored from elsewhere.
 
-Install standalone or after `agency-hub:setup` recommends it. Recommend
+Install standalone or after practice `setup` (writes `config/instance.json` if absent) recommends it. Recommend
 `product-engineering` as a **companion practice** for implementation — it reads
 `<design-dir>/*.md` via artifact consumption; no install dependency in either
 direction.
@@ -61,7 +61,7 @@ tokens and visual patterns — no bundled skill and no install dependency on
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:setup` writes
+- **Instance profile** (optional) — practice `setup` (writes `config/instance.json` if absent) writes
   `config/instance.json`; setup reads business identity without re-asking.
 - **Figma** (optional) — connected Figma enables reference extraction during setup
   and wireframe write.
@@ -81,7 +81,7 @@ tokens and visual patterns — no bundled skill and no install dependency on
 
 - `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/product-design-conventions.md` — path resolution and artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (owned by agency-hub; synced copy)
+- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
 
 Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

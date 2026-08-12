@@ -13,17 +13,18 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 # Canonical sources for shared meta-framework files
 CANONICAL = {
-    "instance-profile-template.md": REPO_ROOT / "agency-hub" / "references",
+    "instance-profile-template.md": REPO_ROOT / "brand-creative" / "references",
     "practice-setup-framework.md": REPO_ROOT / "brand-creative" / "references",
 }
 
-# Practice plugins that carry synced copies (agency-hub owns its own setup framework)
+# Practice plugins that carry synced copies
 PRACTICE_PLUGINS = (
     "brand-creative",
     "product-management",
     "content-marketing",
     "product-design",
     "search-optimisation",
+    "product-engineering",
 )
 
 

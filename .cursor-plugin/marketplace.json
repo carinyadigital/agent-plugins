@@ -5,12 +5,6 @@
   },
   "plugins": [
     {
-      "name": "agency-hub",
-      "displayName": "Agency Hub",
-      "source": "./agency-hub",
-      "description": "Install first \u2014 bootstraps a git-versioned instance workspace (config/, brand/, squads/) via setup. Marketplace management is v2 \u2014 designed, deferred."
-    },
-    {
       "name": "brand-creative",
       "displayName": "Brand Creative",
       "source": "./brand-creative",

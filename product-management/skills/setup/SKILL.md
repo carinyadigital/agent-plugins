@@ -30,7 +30,7 @@ changes. Explicit invocation only.
 ## What this skill does not do
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for cadence and risk posture.
-- **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
+- **Writes `config/instance.json` if absent** — idempotent instance bootstrap, then this practice interview.
 - **Does not install other plugins** — user installs from marketplace.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce product/roadmap/spec/backlog artefacts** — those are separate skills after setup.
@@ -62,6 +62,12 @@ Structured-aggregation; integration table reports ✓ only on successful MCP pro
 2. **Read** `~/.claude/plugins/config/digital-agency/product-management/CLAUDE.md` unless `--redo`.
 3. If **complete** and not `--redo`: summarize on-file product/delivery defaults; offer refresh, `--redo`, or `--check-integrations`. Stop unless user chooses refresh.
 4. If **paused resume file** exists: greet, summarize progress, continue or start over.
+
+### Step 0a — Instance bootstrap
+
+If `config/instance.json` is **absent**, follow `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md` → **Instance bootstrap**: interview minimal org facts, show the summary, write `config/instance.json` on yes, then continue.
+
+If present and complete, reference it — do not re-ask business identity.
 
 ### Step 0b — Install scope check
 

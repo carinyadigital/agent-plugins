@@ -7,7 +7,7 @@ stakeholder updates, brainstorming, tasks/backlog decomposition, sprint planning
 and retro, and epic validation. Self-contained under the MECE practice model:
 edit skills here only; nothing is vendored from elsewhere.
 
-Install standalone or after `agency-hub:setup` recommends it.
+Install standalone or after practice `setup` (writes `config/instance.json` if absent) recommends it.
 
 ## Personas
 
@@ -80,7 +80,7 @@ Path and boundary rules: `references/product-conventions.md` and
 
 ## Prerequisites
 
-- **Instance profile** (optional) — `agency-hub:setup` writes
+- **Instance profile** (optional) — practice `setup` (writes `config/instance.json` if absent) writes
   `config/instance.json`; setup reads cadence and risk posture without
   re-asking.
 - **Connectors** (optional) — project tracker, chat, knowledge base, product

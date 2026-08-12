@@ -1,6 +1,6 @@
 # Instance profile template — digital-agency
 
-> Written by `/agency-hub:setup`. Every practice plugin reads `config/instance.json` before producing output. Edit directly for small fixes; re-run `setup --redo` to refresh.
+> Written by `/<practice>:setup`. Every practice plugin reads `config/instance.json` before producing output. Edit directly for small fixes; re-run `setup --redo` to refresh.
 
 Tier 1 config lives in the **instance repo** (git-versioned), not in user dotfiles.
 
@@ -190,7 +190,7 @@ status: skeleton
 
 ## Mission
 
-<!-- Filled during agency-hub setup or practice setup -->
+<!-- Filled during practice setup -->
 
 ## Roster
 
@@ -211,7 +211,7 @@ Catalogue agent slugs from digital-agency (e.g. frontend-engineer, content-write
 
 ## Service → plugin mapping
 
-Practices are MECE — one self-contained plugin per practice. Product strategy, roadmap, specs, research, metrics, competitive briefs, decomposition, and sprint cadence skills live in **`product-management`**. Practices that need them declare the relevant plugin as a companion install and invoke skills directly.
+Practices are MECE — one self-contained plugin per practice. Product strategy, roadmap, specs, research, metrics, competitive briefs, decomposition, and sprint cadence skills live in **`product-management`**. Practices that need them declare it as a companion install and invoke skills directly.
 
 | Service (`services.enabled`) | Practice plugin | Companion practice | Squad charters | Notes |
 |---|---|---|---|---|

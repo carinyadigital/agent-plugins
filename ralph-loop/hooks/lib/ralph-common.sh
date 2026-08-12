@@ -30,6 +30,11 @@ RALPH_HARD_CEILING="${RALPH_HARD_CEILING:-200}"
 # Consecutive iterations with an unchanged state file before the loop stops.
 RALPH_STALL_LIMIT="${RALPH_STALL_LIMIT:-3}"
 
+# Raw transcript lines (all roles) scanned by ralph_last_assistant_text when
+# looking for the current turn's boundary. Must exceed the largest realistic
+# single turn's line count, or the boundary-finding degrades to "whole window".
+RALPH_TRANSCRIPT_WINDOW="${RALPH_TRANSCRIPT_WINDOW:-500}"
+
 # ---------------------------------------------------------------------------
 # Path resolution
 # ---------------------------------------------------------------------------
@@ -152,18 +157,41 @@ ralph_promise_is_set() {
 
 # ralph_extract_promise <text>
 #
-# Return the contents of the FIRST <promise>...</promise> tag, whitespace
-# normalised. Empty when absent. perl is fenced so a failure cannot abort the
-# hook.
+# Return the contents of a <promise>...</promise> tag, whitespace normalised,
+# but ONLY when that tag is the entire last line of <text> (leading
+# whitespace and trailing whitespace/blank lines are tolerated; anything else
+# on that line, before or after the tag, disqualifies it). Empty when absent.
+# perl is fenced so a failure cannot abort the hook.
+#
+# The tag must be the last line, not merely present, because a bare substring
+# search matches the model MENTIONING its own stop condition:
+#   "I will only output <promise>EPIC_DONE</promise> once every task is done."
+#   "Reminder: only output `<promise>EPIC_DONE</promise>` when true."
+# Anchoring to "alone, on the final line" rejects both — there is always more
+# text on that line after the tag in the mention case — while still matching
+# the real completion turn, which ends the message on the tag. A *closed*
+# fenced quote is rejected too, for the same reason: its last line is the
+# closing ``` fence, not the tag.
+#
+# An UNCLOSED fence needs its own check, because the tag genuinely is the
+# last line in that case (there is no closing fence left to disqualify it):
+#   "Reminder about the tag:
+#   ```
+#   <promise>EPIC_DONE</promise>"
+# so count fence-marker lines (```) appearing before the matched tag; an odd
+# count means the tag sits inside a fence that never closed, and is rejected.
 ralph_extract_promise() {
   local text="${1:-}" out
   [[ -n "$text" ]] || { printf ''; return 0; }
   out="$(printf '%s' "$text" | perl -0777 -ne '
-    if (/<promise>(.*?)<\/promise>/s) {
-      my $p = $1;
-      $p =~ s/^\s+|\s+$//g;
-      $p =~ s/\s+/ /g;
-      print $p;
+    if (/\A(.*?)(?:^|\n)[ \t]*<promise>(.*?)<\/promise>[ \t]*\n*\z/s) {
+      my ($prefix, $p) = ($1, $2);
+      my $fences = () = $prefix =~ /^[ \t]*```/mg;
+      if ($fences % 2 == 0) {
+        $p =~ s/^\s+|\s+$//g;
+        $p =~ s/\s+/ /g;
+        print $p;
+      }
     }
   ' 2>/dev/null)" || out=""
   printf '%s' "$out"
@@ -181,25 +209,61 @@ ralph_promise_matches() {
 # ralph_last_assistant_text <transcript>
 #
 # Extract the most recent assistant TEXT block from a Claude Code JSONL
-# transcript.
+# transcript, scoped to the CURRENT turn.
 #
 # Claude Code writes each content block (text, tool_use, thinking) as its own
-# JSONL line, all tagged role=assistant. The previous implementation took
+# JSONL line, all tagged role=assistant. An earlier implementation took
 # `tail -1` of the assistant lines and read text blocks from that single line,
 # so any turn ending on a tool call, which is the normal case for a loop that
 # delegates every step to a sub-agent, produced no text and the completion
-# promise was never seen.
+# promise was never seen. The fix after that widened the scan to the last 100
+# assistant lines with no turn boundary at all — which meant a stale promise
+# left over from an earlier iteration (or an earlier, already-finished loop)
+# could be found again by a *fresh* turn that happens to end on tool calls,
+# stopping the loop at iteration 1 on a promise nobody made this run.
 #
-# Slurp the last 100 assistant lines, flatten to text blocks, take the last.
-# `last // ""` yields empty for an all-tool-call turn, which correctly means
-# "no promise, keep looping".
+# Every Ralph continuation is a Stop-hook "block" whose `reason` Claude Code
+# re-injects as a genuine new user turn: role=user, plain text — never a
+# tool_result (those are also role=user, but their content is an array of
+# tool_result blocks, never a bare string and never a "text"-type block).
+# That is an unambiguous, always-present turn boundary, so scope the scan to
+# assistant text after the LAST such real user turn. If none is found in the
+# window (the very first turn of a session), boundary defaults to -1, i.e.
+# scan the whole window — unchanged behaviour for that case.
+#
+# A plain-text user turn's `message.content` may be a bare JSON string (the
+# simple shape) or an array containing a "text"-type block (used when other
+# block types accompany it) — Claude Code has been observed to use either
+# depending on context, so a boundary check that only recognised the array
+# shape would silently never fire for the (also real) bare-string shape,
+# degrading straight back to the pre-fix "scan the whole window" behaviour
+# with no error or signal that the boundary was missed. Recognise both.
+#
+# RALPH_TRANSCRIPT_WINDOW bounds a raw tail over ALL roles (not assistant-only,
+# since the boundary line itself may be outside an assistant-only tail), so it
+# must comfortably exceed the largest realistic single turn's line count.
 ralph_last_assistant_text() {
-  local transcript="${1:-}" lines out
+  local transcript="${1:-}" raw out
   [[ -n "$transcript" && -f "$transcript" ]] || { printf ''; return 0; }
-  lines="$(grep '"role":"assistant"' "$transcript" 2>/dev/null | tail -n 100)" || lines=""
-  [[ -n "$lines" ]] || { printf ''; return 0; }
-  out="$(printf '%s\n' "$lines" | jq -rs '
-    map(.message.content[]? | select(.type == "text") | .text) | last // ""
+  raw="$(tail -n "$RALPH_TRANSCRIPT_WINDOW" "$transcript" 2>/dev/null)" || raw=""
+  [[ -n "$raw" ]] || { printf ''; return 0; }
+  out="$(printf '%s\n' "$raw" | jq -rs '
+    . as $all
+    | ( [ range(0; ($all | length))
+          | select($all[.].role == "user"
+                   and (
+                     (($all[.].message.content | type) == "string"
+                       and ($all[.].message.content | length) > 0)
+                     or ((([$all[.].message.content[]?.type]) // []) | index("text") != null)
+                   ))
+        ] | last // -1
+      ) as $boundary
+    | [ $all[($boundary + 1):][]
+        | select(.role == "assistant")
+        | .message.content[]?
+        | select(.type == "text")
+        | .text
+      ] | last // ""
   ' 2>/dev/null)" || out=""
   printf '%s' "$out"
   return 0
@@ -318,6 +382,7 @@ ralph_evaluate() {
   RALPH_PROMISE=""
 
   base="$(ralph_base_dir "$agent")"
+  # shellcheck disable=SC2034  # out-parameter, read by callers per the contract above
   RALPH_BASE="$base"
   loop_file="$base/active.md"
 
@@ -340,6 +405,7 @@ ralph_evaluate() {
   promise="$(ralph_field "$fm" completion_promise)"
   state_file="$(ralph_field "$fm" state_file)"
   session_id="$(ralph_field "$fm" session_id)"
+  # shellcheck disable=SC2034  # out-parameter, read by callers per the contract above
   RALPH_PROMISE="$promise"
 
   if ! ralph_is_uint "$iteration"; then
@@ -363,9 +429,12 @@ ralph_evaluate() {
     return 0
   fi
 
-  # Completion sentinel. Checked before any transcript scan: a turn that ends
-  # on a tool call has no text to search, so the `done` step writes this file
-  # as the primary completion signal and text scanning is the fallback.
+  # Completion sentinel. On Claude this file is never written — Claude Code
+  # has no hook that can write it, so this branch only ever fires for Cursor,
+  # whose Stop hook (ralph-stop.sh) always calls ralph_evaluate with an empty
+  # last_text and relies entirely on ralph-capture.sh (afterAgentResponse)
+  # having written this file already. Checked first only so the (always
+  # empty on Claude) $last_text scan below never runs needlessly for Cursor.
   if [[ -f "$base/done" ]]; then
     RALPH_REASON="completion promise fulfilled at iteration $iteration."
     ralph_clear_active "$base"
@@ -415,12 +484,15 @@ ralph_evaluate() {
 
   next=$((iteration + 1))
   if ! ralph_bump_iteration "$loop_file" "$next"; then
+    # shellcheck disable=SC2034  # out-parameter, read by callers per the contract above
     RALPH_REASON="could not update iteration counter in $loop_file. Stopping rather than looping on a stale count."
     ralph_clear_active "$base"
     return 0
   fi
 
+  # shellcheck disable=SC2034  # out-parameter, read by callers per the contract above
   RALPH_NEXT_ITER="$next"
+  # shellcheck disable=SC2034  # out-parameter, read by callers per the contract above
   RALPH_DECISION="continue"
   return 0
 }

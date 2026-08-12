@@ -8,10 +8,12 @@
 # Input:  { "text": "<assistant response text>" }
 # Output: none (fire and forget)
 #
-# Cursor gets a dedicated response hook, so promise detection here is exact.
-# The Claude hook has no equivalent event and falls back to scanning the
-# transcript, which is why the `done` sentinel is the primary signal on both
-# agents: the loop's `done` step writes it directly.
+# This is Cursor's ONLY completion-detection mechanism, not an optimisation
+# over text scanning: Cursor's Stop hook (ralph-stop.sh) receives no response
+# text and cannot scan anything itself, so if this hook doesn't write `done`,
+# nothing else on Cursor ever will. Claude Code has no equivalent event and
+# no sentinel; its Stop hook scans the transcript directly instead, because
+# that is the only point at which it has the assistant's text at all.
 
 set -uo pipefail
 

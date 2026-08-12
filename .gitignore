@@ -52,6 +52,7 @@ tmp/
 *.local.json
 *.local.md
 TASKS.local.md
+/reviews/
 
 # Claude local files
 .claude/*.local.json

@@ -99,8 +99,9 @@ docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
 docs/work/{work-id}/          tdd.md, tasks.md
 docs/work/{work-id}/reviews/  code-review / ux-design-review verdicts
 docs/work/sprint-{id}/        plan.md, retrospective.md
-docs/reviews/                 shared review state (*.local.json) and agent
-                              byproducts (competitor-scan, metrics, digests)
+reviews/                      shared review state (*.local.json); gitignored,
+                              never committed
+docs/reviews/                 agent byproducts (competitor-scan, metrics, digests)
 config/target.json            target binding
 ```
 

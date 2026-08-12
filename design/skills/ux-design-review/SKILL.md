@@ -25,8 +25,9 @@ allowed-tools:
   - Bash(npx:*)
   - Bash(node:*)
   - Write(.ux-review/**)
-  - Write(docs/reviews/**)
+  - Write(reviews/**)
   - Write(docs/work/**/reviews/**)
+  - Edit(.gitignore)
 argument-hint: "[branch-or-pr-or-url] [figma-url] [--full]"
 metadata:
   author: Carinya Parc
@@ -52,11 +53,22 @@ a frontend change, run both.
 
 This skill writes three things: the capture bundle under `.ux-review/` (gitignored,
 never committed), an entry in the shared review-tracking file at
-`docs/reviews/ux-design-review.local.json`, and a human-readable report at
+`reviews/ux-design-review.local.json`, and a human-readable report at
 `docs/work/{work-item}/reviews/ux-design-review-{nn}.local.md` (or
-`docs/reviews/ux-design-review-{branch}.local.md` when no work item resolved). It
-MUST NOT modify source, styles, tests, or configuration, and MUST NOT commit or
-publish.
+`reviews/ux-design-review-{branch}.local.md` when no work item resolved). It
+MUST NOT modify source, styles, tests, or configuration (except `.gitignore` as
+below), and MUST NOT commit or publish.
+
+`reviews/` is local state and MUST never be committed. Before the first write
+into it, ensure the target repo's `.gitignore` contains a root-only `/reviews/`
+entry. If it is missing, append:
+
+```
+# Local review state — never commit
+/reviews/
+```
+
+Do not `git add` anything under `reviews/`.
 
 When the review is done, point the reader at `ux-design-fix`. Naming the next
 step is not the same as taking it — do not invoke it, and do not offer a mode that
@@ -85,7 +97,7 @@ would.
 
 **Reduce scope** rather than skipping:
 
-- `docs/reviews/ux-design-review.local.json` has an entry for this branch and
+- `reviews/ux-design-review.local.json` has an entry for this branch and
   `--full` was not passed → **incremental** review. Re-capture only what the diff
   touched, plus anything whose design source moved. See
   [references/environment-resolution.md](references/environment-resolution.md).
@@ -224,7 +236,7 @@ Produce the verdict below, then persist review state per
 [references/environment-resolution.md](references/environment-resolution.md):
 
 1. Update (or create) this branch's entry in the shared
-   `docs/reviews/ux-design-review.local.json`, including the design source ref,
+   `reviews/ux-design-review.local.json`, including the design source ref,
    accepted deviations, and unreachable states.
 2. Write the human-readable verdict to
    `docs/work/{work-item}/reviews/ux-design-review-{nn}.local.md`, where
@@ -234,7 +246,7 @@ Produce the verdict below, then persist review state per
    `ux-design-review-*.local.md` files in that folder (do not count other
    skills' reports). Numbered history applies only under
    `docs/work/{work-item}/reviews/`. When no work item resolved, write
-   `docs/reviews/ux-design-review-{branch}.local.md` instead (`/` in the
+   `reviews/ux-design-review-{branch}.local.md` instead (`/` in the
    branch name replaced with `-`) — latest-only: overwrite that file; do not
    invent numbering on the branch-level path.
 
@@ -267,9 +279,9 @@ Produce the verdict below, then persist review state per
 
 ## Must not
 
-- Modify any file outside `.ux-review/`, `docs/reviews/`, and
-  `docs/work/*/reviews/`.
-- Commit captures.
+- Modify any file outside `.ux-review/`, `reviews/`, `docs/work/*/reviews/`,
+  and `.gitignore` (the `/reviews/` entry only).
+- Commit captures or anything under `reviews/`.
 - Mark PASS while live checks were skipped without a coverage statement naming exactly
   which lenses ran static and why.
 - Rewrite the implementation — that is `ux-design-fix`.

@@ -135,7 +135,8 @@ config/target.json         ← binding pointer + repo identity (name, instance, 
 docs/product/              ← product.md, roadmap.md, backlog.md (created by product skills)
 docs/architecture/         ← solution.md, decisions/ (created by architecture skills)
 docs/work/                 ← work-item folders created by delivery skills
-docs/reviews/              ← review state and agent byproducts
+reviews/                   ← review tracking JSON (gitignored, never committed)
+docs/reviews/              ← agent byproducts (competitor-scan, metrics, digests)
 ```
 
 `config/target.json` must include a `name` field carrying the target repo identity (typically the git repo slug). Skills resolve the target by reading this file — they do not infer identity from the directory name.

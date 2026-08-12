@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Review state path
+
+- **BREAKING (`engineering` `code-review` / `code-review-fix`, `design` `ux-design-review` / `ux-design-fix`):** Review tracking JSON moves from `docs/reviews/{skill}.local.json` to `reviews/{skill}.local.json`. Fallback branch-level reports and `review-learnings.local.md` move with it. `reviews/` is gitignored (`/reviews/`) and must never be committed; review skills append that entry when missing. Agent byproducts (digests, scans) stay under `docs/reviews/`. Numbered work-item verdicts stay at `docs/work/{id}/reviews/`.
+
 ### Path cleanup
 
 - Removed dual-read / migration instructions for retired `.agency/` artefact trees.

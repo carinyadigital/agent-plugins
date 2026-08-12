@@ -125,10 +125,12 @@ list them under "Findings Not Addressed".
     `refactor(module): what and why`.
 
 11. **Update review state.** If this branch has an entry in
-    `docs/reviews/code-review.local.json`, mark each addressed finding `fixed`,
+    `reviews/code-review.local.json`, mark each addressed finding `fixed`,
     each deferred one `deferred`, and each disputed one `dismissed` with the
     reason. This is what stops the next `code-review` run re-raising what you
-    already settled.
+    already settled. `reviews/` is gitignored local state — never commit it.
+    If `/reviews/` is missing from `.gitignore`, append it (same entry as
+    `code-review`).
 
 ## Quality rules
 
@@ -201,6 +203,6 @@ list them under "Findings Not Addressed".
 
 ### Review state
 
-`docs/reviews/code-review.local.json` entry for
+`reviews/code-review.local.json` entry for
 `feat/PROJ-001-context-assembler` updated: 3 fixed, 1 deferred, 1 dismissed.
 </example>

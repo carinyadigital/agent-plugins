@@ -166,10 +166,13 @@ description plus the app's own consistency, which is legitimate but should be sa
 11. **Commit in logical units:** `fix(ui): what and why`.
 
 12. **Update review state** if this branch has an entry in
-    `docs/reviews/ux-design-review.local.json` — mark each finding `fixed`,
+    `reviews/ux-design-review.local.json` — mark each finding `fixed`,
     `deferred`, or `dismissed` with the reason, and add anything confirmed
     intentional to that entry's `accepted_deviations` so the next review stops
-    raising it. Direct mode with no prior review writes no state.
+    raising it. Direct mode with no prior review writes no state. `reviews/`
+    is gitignored local state — never commit it. If `/reviews/` is missing
+    from `.gitignore`, append it (same entry as `code-review` /
+    `ux-design-review`).
 
 ## Quality rules
 
@@ -238,6 +241,6 @@ description plus the app's own consistency, which is legitimate but should be sa
 
 ### Review state
 
-`docs/reviews/ux-design-review.local.json` entry for `feat/checkout-summary`
+`reviews/ux-design-review.local.json` entry for `feat/checkout-summary`
 updated: 3 fixed, 1 deferred, 1 dismissed. (Direct mode: no state written.)
 </example>

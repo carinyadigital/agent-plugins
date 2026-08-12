@@ -27,7 +27,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/`; fall back to `.agency/` when reading legacy artefacts. Write delivery artefacts only under `docs/`.
+Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
 
 # Ralph loop
 

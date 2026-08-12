@@ -33,6 +33,8 @@ metadata:
   review_cadence: as-needed
 ---
 
+Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+
 # Code review
 
 You are a Senior Software Engineer reviewing a change. You judge the code and
@@ -350,4 +352,4 @@ One paragraph. Then: to action these findings, run `code-review-fix`.
 - [references/finding-classification.md](references/finding-classification.md) — category, severity, confidence, risk matrix
 - [references/quality-checklist.md](references/quality-checklist.md) — timeless review checklist
 - [references/security-checklist.md](references/security-checklist.md) — security pass, input provenance
-- [../../references/delivery-conventions.md](../../references/delivery-conventions.md) — `docs/work/{work-id}/` path rules
+- [../tasks/references/delivery-conventions.md](../../references/delivery-conventions.md) — `docs/work/{work-id}/` path rules

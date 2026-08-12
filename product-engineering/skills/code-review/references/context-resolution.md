@@ -20,7 +20,8 @@ Resolve in priority order, stopping at the first that yields a result:
      issue URL) via the matching CLI or MCP tool to fetch its description and
      acceptance criteria, if one is linked.
 3. **Local spec file** — glob for a task/spec file colocated with the change:
-   `TASK.md`, `**/tasks.md`, `**/design.md`, `SPEC.md`, `ISSUE.md`, a task
+   `TASK.md`, `**/tasks.md`, `**/tdd.md`, `**/design.md`, `SPEC.md`,
+   `ISSUE.md`, a task
    section inside `README.md`, or any project-specific equivalent named in
    `AGENTS.md`/`CLAUDE.md`.
 4. **Fallback** — `git log` on the branch plus the branch name and the diff
@@ -48,8 +49,10 @@ stop at the first match (or use several if more than one is relevant):
 
 - A design/spec doc named in the work item (explicit link or path mentioned
   in the issue/PR description).
-- `**/design.md`, `**/DESIGN.md`, `**/SPEC*.md`, `**/RFC*.md` near the changed
-  files or at the repo/module root.
+- `**/tdd.md`, `**/design.md`, `**/DESIGN.md`, `**/SPEC*.md`, `**/RFC*.md` near
+  the changed files or at the repo/module root. Both `tdd.md` and `design.md`
+  stay in the list — `design.md` is a widespread convention in repos that never
+  used these skills, and is also this artefact's own former name.
 - Architecture references: `**/solution.md`, `ARCHITECTURE.md`,
   `docs/architecture/**`, ADR/decision folders (`**/decisions/**`,
   `**/adr/**`, `ADR-*.md`).

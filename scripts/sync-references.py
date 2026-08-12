@@ -20,7 +20,6 @@ CANONICAL = {
 # Practice plugins that carry synced copies (agency-hub owns its own setup framework)
 PRACTICE_PLUGINS = (
     "brand-creative",
-    "delivery-practice",
     "product-management",
     "content-marketing",
     "ux-design",

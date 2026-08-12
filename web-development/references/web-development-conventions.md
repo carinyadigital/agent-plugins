@@ -51,15 +51,15 @@ implementation, invoke companion skills directly — do not bundle local copies:
 
 | Need | Invoke |
 | ---- | ------ |
-| Epics / backlog from product | `/delivery-practice:tasks --product` |
-| Task Gherkin AC | `/delivery-practice:tasks` |
-| Groom backlog or check sprint readiness | `/delivery-practice:backlog-refine` |
-| Sprint plan | `/delivery-practice:sprint-planning` |
-| Sprint retrospective | `/delivery-practice:sprint-retro` |
-| Work-item completion sign-off | `/delivery-practice:validate` |
-| Which planning skill to use | `/delivery-practice:skills-index` |
+| Epics / backlog from product | `/product-management:tasks --product` |
+| Task Gherkin AC | `/product-management:tasks` |
+| Groom backlog or check sprint readiness | `/product-management:backlog-refine` |
+| Sprint plan | `/product-management:sprint-planning` |
+| Sprint retrospective | `/product-management:sprint-retro` |
+| Work-item completion sign-off | `/product-management:validate` |
+| Which planning skill to use | `/product-management:skills-index` |
 
-Recommend `delivery-practice` as a co-install. Document in CONNECTORS.md.
+Recommend `product-management` as a co-install. Document in CONNECTORS.md.
 
 ## Document layout
 
@@ -105,7 +105,7 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 ## Acceptance criteria
 
 - **Default:** Gherkin in `docs/work/{work-id}/tasks.md`, on the **story** (or the work item itself when it carries AC).
-- **EARS:** optional via `/delivery-practice:tasks --ears` or when rules are clearer than scenarios.
+- **EARS:** optional via `/product-management:tasks --ears` or when rules are clearer than scenarios.
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
 
 ## Design modes
@@ -132,7 +132,7 @@ Six personas share one skill library. Choose the default persona during
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 
-Work-item sign-off uses `/delivery-practice:validate` (companion skill), not a local copy.
+Work-item sign-off uses `/product-management:validate` (companion skill), not a local copy.
 
 ## Skill routing (near-misses)
 
@@ -160,4 +160,4 @@ Work-item sign-off uses `/delivery-practice:validate` (companion skill), not a l
 | Exploratory AC pass | **exploratory-pass** | QA Engineer |
 | Document defects | **document-defects** | QA Engineer |
 | Platform health check | **platform-health** | WebOps Engineer |
-| PRD, phases, tasks, backlog-refine, sprint-*, validate | `/delivery-practice:*` | Companion — any persona |
+| PRD, phases, tasks, backlog-refine, sprint-*, validate | `/product-management:*` | Companion — any persona |

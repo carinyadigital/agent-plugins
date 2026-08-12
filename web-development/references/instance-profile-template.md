@@ -211,14 +211,14 @@ Catalogue agent slugs from digital-agency (e.g. frontend-engineer, content-write
 
 ## Service → plugin mapping
 
-Practices are MECE — one self-contained plugin per practice. Decomposition and sprint cadence skills live in **`delivery-practice`**; product strategy, roadmap, specs, research, metrics, and competitive briefs live in **`product-management`**. Practices that need them declare the relevant plugin as a companion install and invoke skills directly.
+Practices are MECE — one self-contained plugin per practice. Product strategy, roadmap, specs, research, metrics, competitive briefs, decomposition, and sprint cadence skills live in **`product-management`**. Practices that need them declare the relevant plugin as a companion install and invoke skills directly.
 
 | Service (`services.enabled`) | Practice plugin | Companion practice | Squad charters | Notes |
 |---|---|---|---|---|
 | `brand-creative` | `brand-creative` | none | — | Shipped; run `/brand-creative:setup` after bootstrap |
-| `web-development` | `web-development` | `delivery-practice` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/delivery-practice:tasks --product`, `/delivery-practice:sprint-planning` |
-| `content-marketing` | `content-marketing` | `delivery-practice`, `product-management` | `content` | Shipped; run `/content-marketing:setup` after bootstrap; needs `/delivery-practice:tasks --product`, `/product-management:synthesize-research` |
+| `web-development` | `web-development` | `product-management` | `site`, `blog`, `recipes` | Practice pending — interim: `engineering`, `frontend-engineer`, `qa-engineer`, `webops-engineer`, `principal-architect`; needs `/product-management:tasks --product`, `/product-management:sprint-planning` |
+| `content-marketing` | `content-marketing` | `product-management` | `content` | Shipped; run `/content-marketing:setup` after bootstrap; needs `/product-management:tasks --product`, `/product-management:synthesize-research` |
 | `social-media` | `social-media` | TBD | `content` | Practice pending — interim: `content-marketing` skills for captions and curation |
 | `seo` | `search-optimisation` | `product-management` | `seo` | Shipped; run `/search-optimisation:setup` after bootstrap; needs `/product-management:competitive-brief` |
 
-Write `services.recommendedPlugins` with the practice plugin name(s) plus `delivery-practice` and/or `product-management` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.
+Write `services.recommendedPlugins` with the practice plugin name(s) plus `product-management` when applicable. Include interim catalogue entries in setup summary when the practice plugin is not yet published.

@@ -140,4 +140,3 @@ epic's design; `design JIRA-123` writes that story's design, sitting beside
 | Sprint plan | **sprint-planning** |
 | Sprint retrospective | **sprint-retro** |
 | Review a set of documents for quality, boundaries, consistency | **docs-review** |
-| Which skill to use? | **skills-index** |

@@ -64,7 +64,7 @@ files inside a first-party plugin.
 
 First-party plugins from the digital-agency catalogue are off-limits. The
 canonical list lives in the hub's `CLAUDE.md` under **Built-in plugins**.
-Examples include `agency-hub`, `engineering`, `delivery-practice`, `brand-creative`,
+Examples include `agency-hub`, `engineering`, `product-management`, `brand-creative`,
 `content`, `seo`, connector plugins (`github`, `vercel`, …), and agent plugins
 (`frontend-engineer`, `content-writer`, …).
 If the caller names a skill that resolves into any catalogue plugin directory,

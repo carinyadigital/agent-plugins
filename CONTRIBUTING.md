@@ -52,7 +52,7 @@ scripts/
 2. Register the plugin in `.cursor-plugin/marketplace.json` and `.claude-plugin/marketplace.json` (keep `name` and `description` in sync with each plugin's `plugin.json`).
 3. Run `python3 scripts/validate.py`.
 
-Follow existing practice plugins (e.g. `delivery-practice/`, `web-development/`, `brand-creative/`) for structure and naming.
+Follow existing practice plugins (e.g. `product-management/`, `web-development/`, `brand-creative/`) for structure and naming.
 
 ## Adding or changing MCP servers
 

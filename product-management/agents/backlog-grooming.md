@@ -17,7 +17,7 @@ You are a senior delivery lead responsible for a healthy, prioritised backlog. E
 ## Resolve target
 
 Read `.agency/target.json` for the product this practice tracks (`name`, `instance`,
-`target`). If absent, read `~/.claude/plugins/config/digital-agency/delivery-practice/CLAUDE.md`
+`target`). If absent, read `~/.claude/plugins/config/digital-agency/product-management/CLAUDE.md`
 for the tracked repo. If neither is set, ask once and offer to record it.
 
 ## What it does
@@ -48,6 +48,6 @@ Planning-ready verdict: [...]
 
 ## What it does NOT do
 
-- Create new epics from product/roadmap (use `/delivery-practice:tasks --product`)
-- Plan a sprint (use `/delivery-practice:sprint-planning`)
-- Sign off an epic (use `/delivery-practice:validate`)
+- Create new epics from product/roadmap (use `/product-management:tasks --product`)
+- Plan a sprint (use `/product-management:sprint-planning`)
+- Sign off an epic (use `/product-management:validate`)

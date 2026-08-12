@@ -17,7 +17,7 @@ Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for
 | Category | Placeholder | Examples |
 | -------- | ----------- | -------- |
 | Design | `~~design` | Figma — see **ux-design** |
-| Knowledge base | `~~knowledge base` | Notion, Atlassian Confluence — see **delivery-practice** |
+| Knowledge base | `~~knowledge base` | Notion, Atlassian Confluence — see **product-management** |
 | Chat | `~~chat` | Slack |
 | Creative / templates | `~~design` | Canva — see **content-marketing** |
 

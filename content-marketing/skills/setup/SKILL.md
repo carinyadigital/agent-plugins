@@ -30,7 +30,7 @@ cadence or channel mix changes. Explicit invocation only.
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for business name and house tone hints.
 - **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
-- **Does not install other plugins** — user installs `delivery-practice` (backlog) and `product-management` (research) from marketplace when those companion skills are needed.
+- **Does not install other plugins** — user installs `product-management` from marketplace when companion backlog or research skills are needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce calendar or seed artefacts** — those are separate skills after setup.
 - **Does not write brand-voice.md** — owned by `brand-creative`; content reads it via artifact consumption.
@@ -126,7 +126,7 @@ Record which persona greets the user by default.
 
 #### 3e — Companion practice
 
-If backlog alignment or research synthesis is needed, recommend installing `delivery-practice` and/or `product-management` and invoking `/delivery-practice:tasks --product` and `/product-management:synthesize-research` — do not bundle those skills here.
+If backlog alignment or research synthesis is needed, recommend installing `product-management` and invoking `/product-management:tasks --product` and `/product-management:synthesize-research` — do not bundle those skills here.
 
 ### Step 4 — Summarize before write
 
@@ -150,7 +150,7 @@ Close with persona-appropriate handoff:
 
 1. **Calendar** — `/content-marketing:content-calendar write`
 2. **Inventory** — `/content-marketing:curate-content`
-3. **Backlog** — `/delivery-practice:tasks --product` (companion; requires delivery-practice install)
+3. **Backlog** — `/product-management:tasks --product` (companion; requires product-management install)
 
 **Content Writer path:**
 
@@ -194,4 +194,4 @@ Location: `<instance-root>/config/.content-marketing-setup-resume.json` if insta
 | -------- | ---- |
 | Practice profile | `~/.claude/plugins/config/digital-agency/content-marketing/CLAUDE.md` |
 
-Next: invoke Content Strategist or Content Writer skills per persona preference, install `delivery-practice` for companion skills, or `--check-integrations`.
+Next: invoke Content Strategist or Content Writer skills per persona preference, install `product-management` for companion skills, or `--check-integrations`.

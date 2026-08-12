@@ -30,7 +30,7 @@ after stack or deployment platform changes. Explicit invocation only.
 
 - **Does not re-interview business identity** when `config/instance.json` is complete — references instance profile for target hints.
 - **Does not write `config/instance.json`** — owned by `agency-hub:setup`.
-- **Does not install other plugins** — user installs `delivery-practice` from marketplace when planning companion skills are needed.
+- **Does not install other plugins** — user installs `product-management` from marketplace when planning companion skills are needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
 - **Does not produce solution, design, or code artefacts** — those are separate skills after setup.
 - **Does not write brand-guide.md** — owned by `brand-creative`; engineering reads it via artifact consumption.
@@ -128,7 +128,7 @@ Record which persona greets the user by default.
 
 #### 3e — Companion practice
 
-If backlog, task AC, sprint, or epic validation is needed during implementation, recommend installing `delivery-practice` and invoking `/delivery-practice:tasks --product`, `/delivery-practice:tasks`, `/delivery-practice:sprint-planning`, and `/delivery-practice:validate` — do not bundle those skills here.
+If backlog, task AC, sprint, or epic validation is needed during implementation, recommend installing `product-management` and invoking `/product-management:tasks --product`, `/product-management:tasks`, `/product-management:sprint-planning`, and `/product-management:validate` — do not bundle those skills here.
 
 ### Step 4 — Summarize before write
 
@@ -171,7 +171,7 @@ Close with persona-appropriate handoff:
 
 **Either:**
 
-4. **Backlog** — `/delivery-practice:tasks --product` (companion; requires delivery-practice install)
+4. **Backlog** — `/product-management:tasks --product` (companion; requires product-management install)
 5. **Refresh** — `/web-development:setup --redo` to redo engineering defaults only.
 
 ## Pause and resume
@@ -206,4 +206,4 @@ Location: `<instance-root>/config/.web-development-setup-resume.json` if instanc
 | Practice profile | `~/.claude/plugins/config/digital-agency/web-development/CLAUDE.md` |
 | Target binding (when confirmed) | `.agency/target.json` at target repo root |
 
-Next: invoke persona-appropriate skills, install `delivery-practice` for companion skills, or `--check-integrations`.
+Next: invoke persona-appropriate skills, install `product-management` for companion skills, or `--check-integrations`.

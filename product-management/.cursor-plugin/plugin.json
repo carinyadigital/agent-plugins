@@ -1,8 +1,8 @@
 {
   "name": "product-management",
   "displayName": "Product Management",
-  "version": "0.1.0",
-  "description": "Complete product management practice in one install — setup interview, product strategy and PRDs, roadmap, feature specs, user research synthesis, competitive analysis, product metrics, stakeholder updates, and brainstorming. One persona (Product Manager), one owned skill library. Hands off to delivery-practice for decomposition and sprint cadence.",
+  "version": "0.2.0",
+  "description": "Complete product management practice in one install — setup interview, product strategy and PRDs, roadmap, feature specs, research, metrics, stakeholder updates, tasks/backlog decomposition, sprint planning and retro, and epic validation. Personas: Product Manager and Delivery Lead. One owned skill library.",
   "author": {
     "name": "Digital Agency"
   },
@@ -18,8 +18,14 @@
     "metrics-review",
     "stakeholder-update",
     "product-brainstorming",
+    "tasks",
+    "backlog-refine",
+    "sprint-planning",
+    "sprint-retro",
+    "validate",
     "strategy",
     "discovery",
+    "delivery",
     "setup"
   ],
   "skills": "./skills/"

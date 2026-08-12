@@ -11,7 +11,7 @@ Plugin files use `~~category` as a placeholder for whatever tool you connect in 
 | Practice | Default bundled | See |
 | -------- | ----------------- | --- |
 | **web-development** | GitHub, Playwright, Context7 | [web-development/CONNECTORS.md](../web-development/CONNECTORS.md) |
-| **delivery-practice** | Atlassian, Amplitude | [delivery-practice/CONNECTORS.md](../delivery-practice/CONNECTORS.md) |
+| **product-management** | Atlassian, Amplitude | [product-management/CONNECTORS.md](../product-management/CONNECTORS.md) |
 | **brand-creative** | Fireflies | [brand-creative/CONNECTORS.md](../brand-creative/CONNECTORS.md) |
 | **content-marketing** | Canva | [content-marketing/CONNECTORS.md](../content-marketing/CONNECTORS.md) |
 | **ux-design** | Figma | [ux-design/CONNECTORS.md](../ux-design/CONNECTORS.md) |

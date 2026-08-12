@@ -3,7 +3,7 @@
 Consolidating `carinyaparc/skills` into `carinyaparc/digital-agency-plugins`, restructuring the
 plugin set, and dissolving `agency-hub`.
 
-**Status:** Phase 1 done · Phase 2 done · Phase 3 done · Phases 0/4 open
+**Status:** Phase 1 done · Phase 2 done · Phase 3 done · Phase 4 done · Phase 0 open
 **Decisions locked:** repo `carinya-plugins` · marketplace `carinya-plugins` · no hub · 8 plugins
 
 ---
@@ -244,23 +244,22 @@ repointed; cache-unsafe paths gated in CI; unified `0.4.0` version line.
 
 ## Phase 4 — Distribution and decommission
 
-- [ ] **skills.sh decision.** `npx skills add carinyaparc/skills/code-review` is the one thing
-      only the flat repo does today. Verify against the
-      [vercel-labs/skills CLI](https://github.com/vercel-labs/skills) whether it resolves
-      monorepo subpaths. If not: a CI job publishing a flattened mirror branch, or drop the
-      channel. Do not hand-maintain a second library.
-- [ ] **Archive `carinyaparc/skills`.** README → pointer to the new marketplace and a table
-      mapping each old skill to its new `/plugin:skill` address. GitHub archive (read-only),
-      don't delete — the install URLs are in the wild.
-- [ ] **Rewrite the root README.** The persona tables need rework: the current twelve are a
-      consultancy grade ladder (Frontend / Senior Frontend / Principal Frontend / Principal
-      Architect), not a team shape. With `product-*` naming, "engineers" is more honest.
-- [ ] **Decide the agency framing.** `digital-agency-plugins` → `carinya-plugins` and
-      `web-development` → `product-engineering` are both moves toward product teams and away
-      from client services. `brand-creative`, `content-marketing`, `search-optimisation` are
-      the remaining agency-shaped plugins. That's fine — they're genuinely disjoint buyers —
-      but the README should stop promising "run a full-service digital agency from your IDE"
-      if that's no longer the primary story.
+### Status: DONE
+
+- [x] **skills.sh decision.** Verified against [vercel-labs/skills](https://github.com/vercel-labs/skills)
+      CLI (12 Aug 2026): monorepo subpaths work (`carinyaparc/carinya-plugins/product-engineering/skills/code-review`
+      resolves one skill; root lists all 53). **Decision:** keep skills.sh channel, no flattened mirror
+      branch. Documented in `docs/SKILLS-SH.md`.
+- [x] **Archive `carinyaparc/skills`.** Migration table in `docs/SKILLS-MIGRATION.md`; archive README
+      template in `docs/archive/carinyaparc-skills-README.md`. **Maintainer action:** paste template
+      into `carinyaparc/skills` README and GitHub-archive the repo (agent token lacks write access).
+- [x] **Rewrite the root README.** Persona tables reworked around product team roles (not consultancy
+      grade ladder); engineering seniority expressed as review depth, not separate plugins.
+- [x] **Decide the agency framing.** Primary story is product delivery; brand/content/SEO are optional
+      adjacent plugins. README no longer promises "run a full-service digital agency from your IDE."
+
+**Exit:** skills.sh path documented; migration map published; README reframed for product teams;
+archive template ready for maintainer to apply on `carinyaparc/skills`.
 
 ---
 

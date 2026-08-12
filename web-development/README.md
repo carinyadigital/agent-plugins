@@ -76,8 +76,6 @@ target binding.
 | **merge-request** | Open merge request for implemented work |
 | **merge-request-babysit** | Drive an open MR/PR to merge-ready |
 | **merge-request-review** | Review an MR/PR as its reviewer |
-| **ux-design-review** | Read-only UX review; state in `docs/reviews/` |
-| **ux-design-fix** | Address UX review findings or direct UI fixes |
 | **ralph-loop-setup** | Seed and configure an autonomous delivery loop |
 | **ralph-loop** | Run an autonomous work-item delivery loop |
 | **docs-review** | Read-only document-set quality and consistency review |

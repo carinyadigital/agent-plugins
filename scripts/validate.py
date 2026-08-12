@@ -310,9 +310,9 @@ class Validator:
             for skill_dir in content_marketing_skills.iterdir():
                 if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                     sources[skill_dir.name] = skill_dir
-        ux_design_skills = ROOT / "ux-design" / "skills"
-        if ux_design_skills.is_dir():
-            for skill_dir in ux_design_skills.iterdir():
+        product_design_skills = ROOT / "product-design" / "skills"
+        if product_design_skills.is_dir():
+            for skill_dir in product_design_skills.iterdir():
                 if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                     sources[skill_dir.name] = skill_dir
         search_optimisation_skills = ROOT / "search-optimisation" / "skills"
@@ -328,7 +328,7 @@ class Validator:
         paths.extend(sorted(ROOT.glob("brand-creative/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-management/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("content-marketing/skills/*/SKILL.md")))
-        paths.extend(sorted(ROOT.glob("ux-design/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("product-design/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("search-optimisation/skills/*/SKILL.md")))
         return sorted(set(paths))
 
@@ -719,7 +719,7 @@ class Validator:
             (ROOT / "brand-creative", "brand-creative/skills/*/*.md"),
             (ROOT / "product-management", "product-management/skills/*/*.md"),
             (ROOT / "content-marketing", "content-marketing/skills/*/*.md"),
-            (ROOT / "ux-design", "ux-design/skills/*/*.md"),
+            (ROOT / "product-design", "product-design/skills/*/*.md"),
             (ROOT / "search-optimisation", "search-optimisation/skills/*/*.md"),
         ]
 
@@ -732,7 +732,7 @@ class Validator:
                 "brand-creative",
                 "product-management",
                 "content-marketing",
-                "ux-design",
+                "product-design",
                 "search-optimisation",
             }:
                 checked_files.extend(sorted(base.glob("skills/*/*.md")))

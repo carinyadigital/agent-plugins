@@ -26,7 +26,7 @@ Install **`agency-hub` first**, then the practice plugins that match your work.
 | [brand-creative](./brand-creative) | Brand voice and visual identity | `/brand-creative:setup` |
 | [product-management](./product-management) | Product strategy, roadmap, specs, research, metrics, backlog, sprint cadence, validation | `/product-management:setup` |
 | [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:setup` |
-| [ux-design](./ux-design) | Low-fidelity wireframes and interaction specs | `/ux-design:setup` |
+| [product-design](./product-design) | Wireframes, live UX review, and UX design fix | `/product-design:setup` |
 | [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
 | [web-development](./web-development) | Architecture, implementation, code review, QA, platform ops | `/web-development:setup` |
 
@@ -35,7 +35,7 @@ Install **`agency-hub` first**, then the practice plugins that match your work.
 | If you are… | Install next |
 |---|---|
 | Standing up a new client or product | `brand-creative` → `product-management` |
-| Shipping a website or app | `product-management` + `web-development` (+ `ux-design` for new UI) |
+| Shipping a website or app | `product-management` + `web-development` (+ `product-design` for new UI) |
 | Running content and social | `brand-creative` → `content-marketing` (+ `search-optimisation` for SEO) |
 | SEO-only engagement | `search-optimisation` (+ `product-management` for competitive brief) |
 
@@ -83,7 +83,7 @@ Twelve job-titled entry points for digital agency work. Each name maps to **exac
 | **Content Writer** | Blog posts, recipes, captions, and light edits for CMS import | `/content-marketing:draft-post` |
 | **SEO Specialist** | Keyword research, technical audits, on-page content review | `/search-optimisation:keyword-research` |
 | **Brand Lead** | Voice lifecycle and visual identity guide | `/brand-creative:brand-voice write` |
-| **UX Designer** | Low-fidelity wireframes from a brief | `/ux-design:wireframe` |
+| **UX Designer** | Low-fidelity wireframes from a brief | `/product-design:wireframe` |
 | **Frontend Engineer** | React/Next.js UI — components, client state, styling | `/web-development:implement` |
 | **Senior Frontend Engineer** | Peer code review against design docs and AC | `/web-development:code-review` |
 | **Principal Frontend Engineer** | Final technical gate on open PRs — architecture, security, AC | `/web-development:final-code-review` |
@@ -134,7 +134,7 @@ agency-hub/               # instance bootstrap — install first
 brand-creative/           # brand voice + visual identity
 product-management/       # product, roadmap, specs, research, metrics, backlog, sprint, validate
 content-marketing/        # calendar, curation, media analysis, CMS seeds
-ux-design/                # wireframes
+product-design/           # wireframes, ux-design-review, ux-design-fix
 search-optimisation/      # keyword research, technical audit, content SEO review
 web-development/          # solution, adr, design, implement, review, QA, platform
 managed-agents/           # CMA + Cursor Cloud Agent cookbooks
@@ -189,7 +189,7 @@ After install, skills fire automatically when relevant; slash commands are avail
 /plugin install brand-creative@carinya-plugins
 /plugin install product-management@carinya-plugins
 /plugin install content-marketing@carinya-plugins
-/plugin install ux-design@carinya-plugins
+/plugin install product-design@carinya-plugins
 /plugin install search-optimisation@carinya-plugins
 # web-development — zip-install the web-development/ directory until marketplace registration lands
 
@@ -249,7 +249,7 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 |---|---|
 | **[brand-creative](./brand-creative)** | Brand voice lifecycle (discover, write, enforce) and visual identity guide (colors, type, logo, UI tokens). Writes to instance `brand/` when bound. |
 | **[content-marketing](./content-marketing)** | Editorial calendar, social curation, media analysis, captions, and CMS seed drafting (posts and recipes). Two personas (Content Strategist, Content Writer). Reads brand voice from resolved brand path. |
-| **[ux-design](./ux-design)** | Practice setup and wireframe skill for low-fidelity layout and interaction specs. Writes to instance `design/` when bound; `web-development` reads wireframes via artefact consumption. |
+| **[product-design](./product-design)** | Wireframes, live-browser UX design review, and UX design fix. Writes to instance `design/` when bound; `web-development` reads wireframes via artefact consumption. |
 
 ### Growth & search
 
@@ -281,7 +281,7 @@ Each practice plugin bundles a **minimal default** — one or two MCP servers mo
 | **brand-creative** | Fireflies | meeting transcription |
 | **product-management** | Atlassian, Amplitude | project tracker, product analytics |
 | **content-marketing** | Canva | creative / design |
-| **ux-design** | Figma | design |
+| **product-design** | Figma, Playwright | design, browser automation |
 | **search-optimisation** | Ahrefs | SEO intelligence |
 | **web-development** | GitHub, Playwright, Context7 | source control, browser automation, framework docs |
 
@@ -377,12 +377,14 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | `/content-marketing:draft-post` | draft-post | Blog post seed JSON for CMS import |
 | `/content-marketing:draft-recipe` | draft-recipe | Recipe seed JSON for CMS import |
 
-### ux-design
+### product-design
 
 | Command | Skill | What it does |
 |---|---|---|
-| `/ux-design:setup` | setup | Learns in-scope pages/flows and reference sources |
-| `/ux-design:wireframe` | wireframe | Low-fidelity layout and interaction spec from a brief |
+| `/product-design:setup` | setup | Learns in-scope pages/flows and reference sources |
+| `/product-design:wireframe` | wireframe | Low-fidelity layout and interaction spec from a brief |
+| `/product-design:ux-design-review` | ux-design-review | Read-only UX review of implemented UI |
+| `/product-design:ux-design-fix` | ux-design-fix | Address UX review findings or direct UI fixes |
 
 ### search-optimisation
 
@@ -408,8 +410,6 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | `/web-development:merge-request` | merge-request | Open merge request for implemented work |
 | `/web-development:merge-request-babysit` | merge-request-babysit | Drive an open MR/PR to merge-ready |
 | `/web-development:merge-request-review` | merge-request-review | Review an MR/PR as its reviewer |
-| `/web-development:ux-design-review` | ux-design-review | Read-only UX review of implemented UI |
-| `/web-development:ux-design-fix` | ux-design-fix | Address UX review findings or direct UI fixes |
 | `/web-development:ralph-loop-setup` | ralph-loop-setup | Seed and configure an autonomous delivery loop |
 | `/web-development:ralph-loop` | ralph-loop | Run an autonomous work-item delivery loop |
 | `/web-development:docs-review` | docs-review | Read-only document-set quality and consistency review |

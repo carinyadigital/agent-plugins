@@ -19,7 +19,7 @@ Plugins are **tool-agnostic** — they describe workflows in terms of categories
 | -------- | ----------- | ------ |
 | Chat | `~~chat` | Slack (`https://mcp.slack.com/mcp`) |
 | Knowledge base | `~~knowledge base` | Notion (`https://mcp.notion.com/mcp`) |
-| Design | `~~design` | Figma (`https://mcp.figma.com/mcp`) — see **ux-design** |
+| Design | `~~design` | Figma (`https://mcp.figma.com/mcp`) — see **product-design** |
 | User feedback | `~~user feedback` | Intercom (`https://mcp.intercom.com/mcp`), Pendo |
 | Meeting transcription | `~~meeting transcription` | Fireflies (`https://api.fireflies.ai/mcp`) — see **brand-creative** |
 | Competitive intelligence | `~~competitive intelligence` | Similarweb (`https://mcp.similarweb.com/mcp`) |

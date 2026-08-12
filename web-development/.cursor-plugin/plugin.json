@@ -15,8 +15,6 @@
     "implementation",
     "code-review",
     "code-review-fix",
-    "ux-design-review",
-    "ux-design-fix",
     "merge-request",
     "merge-request-babysit",
     "docs-review",

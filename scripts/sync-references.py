@@ -22,7 +22,7 @@ PRACTICE_PLUGINS = (
     "brand-creative",
     "product-management",
     "content-marketing",
-    "ux-design",
+    "product-design",
     "search-optimisation",
 )
 

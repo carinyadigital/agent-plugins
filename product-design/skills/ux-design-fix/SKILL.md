@@ -25,7 +25,7 @@ argument-hint: "[blocking|warning|all] [review-output-path | instruction]"
 metadata:
   author: Carinya Parc
   version: "1.0"
-  owner: web-development
+  owner: product-design
   work_shape: implement-and-ship
   output_class: applied-change
   review_cadence: as-needed

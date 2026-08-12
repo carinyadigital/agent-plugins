@@ -8,7 +8,8 @@ description: >
   the epic". Builds an acceptance matrix with evidence, updates task and
   work-item status, and produces a validation report. Do NOT use for PR or
   branch code review (code-review), writing tasks (tasks), sprint
-  retrospective (sprint-retro), or drafting the breakdown (tasks) or design.
+  retrospective (sprint-retro), or drafting the breakdown (tasks) or the
+  technical design (tdd).
 license: MIT
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:
@@ -30,9 +31,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/` artefact paths; fall back to `.agency/` equivalents when reading
-legacy inputs (`.agency/backlog.md`, `.agency/work/`,
-`.agency/architecture/solution.md`). Write only under `docs/`.
+Prefer `docs/` artefact paths; fall back to `.agency/` when reading legacy inputs. Write only under `docs/`.
 
 # Validate
 
@@ -54,7 +53,7 @@ completion unblocks or completes that epic.
 | --------------------- | ------------------------------- | ----------- |
 | Product backlog / tracker | `docs/product/backlog.md`, or the tracker directly | Yes |
 | Tasks                 | `docs/work/{work-id}/tasks.md`  | Yes         |
-| Design                | `docs/work/{work-id}/design.md` | If exists   |
+| Design                | `docs/work/{work-id}/tdd.md` (or a legacy `design.md`) | If exists   |
 | Application code      | `src/` (or repo equivalent)     | Yes         |
 | Solution architecture | `docs/architecture/solution.md` | If relevant |
 | ADRs                  | `docs/architecture/decisions/`  | If relevant |
@@ -74,7 +73,8 @@ For eval runs on skills in this repo, use root **eval-grader** (`agents/eval-gra
 1. Locate the work item row — `docs/product/backlog.md` (filesystem-only) or
    the tracker directly (Title, type, work path `docs/work/{work-id}/`).
 2. Read `docs/work/{work-id}/tasks.md` and collect all tasks.
-3. Read `docs/work/{work-id}/design.md` if it exists.
+3. Read `docs/work/{work-id}/tdd.md` if it exists, falling back to a legacy
+   `design.md`.
 4. Read the solution architecture if the work item touches architectural boundaries.
 5. Read any ADRs referenced by the design or requirements.
 
@@ -168,7 +168,7 @@ Use the output format below.
 A validation report MUST NOT:
 
 - Write new acceptance criteria — it verifies criteria already in tasks.md
-- Include implementation detail → that belongs in solution.md or design.md
+- Include implementation detail → that belongs in solution.md or tdd.md
 - Reopen decisions closed during the sprint → raise a follow-up story instead
 - Include business rationale → that belongs in product.md
 - Judge the diff — that is **code-review**; validate judges work-item done-ness vs AC

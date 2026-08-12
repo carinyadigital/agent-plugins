@@ -16,10 +16,8 @@ You build an evidence-backed acceptance matrix for one work item — no new AC, 
 ## Process
 
 1. Resolve `{work-id}` via `docs/product/backlog.md` or the tracker (see
-   [work-item-resolution.md](../../tasks/references/work-item-resolution.md)) —
-   prefer `docs/`, fall back to `.agency/` equivalents when absent.
-2. Read every task and Gherkin scenario in `docs/work/{work-id}/tasks.md`
-   (fall back to `.agency/work/{work-id}/tasks.md` when the `docs/` file is absent).
+   [work-item-resolution.md](../../tasks/references/work-item-resolution.md)).
+2. Read every task and Gherkin scenario in `docs/work/{work-id}/tasks.md`.
 3. For each criterion, search codebase and tests for evidence.
 4. Status: pass | fail | partial — never pass without path/test/behaviour cite.
 

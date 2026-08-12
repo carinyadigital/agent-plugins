@@ -26,6 +26,8 @@ metadata:
   review_cadence: as-needed
 ---
 
+Prefer `docs/` artefact paths; fall back to `.agency/` when reading legacy inputs. Write only under `docs/`.
+
 # Sprint retrospective
 
 You are a Senior Delivery Lead facilitating a sprint retrospective. Your job is
@@ -43,8 +45,6 @@ for artefact boundaries and work item path resolution.
 Default path: `docs/work/sprint-{id}/retrospective.md` (e.g.
 `docs/work/sprint-3/retrospective.md`).
 
-Prefer `docs/`; fall back to `.agency/` equivalents when reading legacy artefacts (`.agency/sprints/`, `.agency/work/`). Write only under `docs/`.
-
 Resolve `{id}` from the argument — `3`, `sprint-3`, and `2026-W14` are all
 valid. If the user names a different path under `docs/work/`, use it.
 
@@ -55,7 +55,7 @@ valid. If the user names a different path under `docs/work/`, use it.
 | Sprint plan            | `docs/work/sprint-{id}/plan.md`            | Yes      |
 | Work item tasks        | `docs/work/{work-id}/tasks.md` for work items in scope | Yes  |
 | Prior retrospective    | `docs/work/sprint-{id-1}/retrospective.md` | Recommended |
-| Work item design       | `docs/work/{work-id}/design.md`            | If relevant |
+| Work item design       | `docs/work/{work-id}/tdd.md`               | If relevant |
 | CI, MR, or incident summaries | supplied via `--context`            | Optional |
 
 ## Steps

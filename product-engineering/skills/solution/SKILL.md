@@ -4,9 +4,10 @@ description: >
   Use when the user wants to write system architecture at
   docs/architecture/solution.md (stub or full arc42-lite). Drafts or
   re-authors the document. Triggers on "write the architecture", "solution
-  design", "arc42". For reviewing or critiquing an existing solution.md, use
-  docs-review instead. Do NOT use for business strategy (product), delivery
-  phases (roadmap), epic list (tasks), work-item design.md (design), task
+  design", "arc42". Re-authoring is also how an existing solution.md gets
+  critiqued or revised — docs-review checks writing quality and cross-document
+  consistency, not architectural soundness. Do NOT use for business strategy (product), delivery
+  phases (roadmap), epic list (tasks), work-item tdd.md (tdd), task
   Gherkin (tasks), or ADR files (adr write). Story AC belongs in
   docs/work/{work-id}/tasks.md.
 license: MIT
@@ -25,6 +26,8 @@ metadata:
   review_cadence: as-needed
 ---
 
+Prefer `docs/architecture/`; fall back to `.agency/architecture/` when reading legacy artefacts. Write only under `docs/architecture/`.
+
 # Solution
 
 You are a Solution Architect writing arc42-lite solution design.
@@ -32,9 +35,6 @@ You are a Solution Architect writing arc42-lite solution design.
 ## Artefact
 
 Default path: `docs/architecture/solution.md` — arc42-lite architecture (stub or full).
-
-Prefer `docs/`; fall back to `.agency/architecture/solution.md` when reading
-legacy artefacts. Write only under `docs/architecture/`.
 
 ## Path resolution
 
@@ -58,7 +58,7 @@ solution.md MUST NOT contain:
 
 <artifacts>
 [Stub: docs/product/product.md, architecture principles, system boundary
-Full: product.md, docs/work/{work-id}/design.md (walking-skeleton), ADR register,
+Full: product.md, docs/work/{work-id}/tdd.md (skeleton mode), ADR register,
 accepted ADRs]
 </artifacts>
 
@@ -95,7 +95,7 @@ accepted ADRs]
 
 ## Gotchas
 
-- **Per-work-item files/APIs** → cite from `docs/work/{work-id}/design.md`, don't duplicate full specs.
+- **Per-work-item files/APIs** → cite from `docs/work/{work-id}/tdd.md`, don't duplicate full specs.
 - **Story-level Gherkin** → `tasks.md`, not solution.
 - **Closed ADRs** → `ADR-NNNN-*.md`; proposals stay in register only.
 
@@ -112,6 +112,6 @@ Markdown with YAML frontmatter. Save to the resolved path. Use
 
 - `/product-management:product` — product strategy
 - `/product-management:tasks` — epics and work paths
-- `/product-engineering:design` — work-item design
+- `/product-engineering:tdd` — work-item technical design
 - `/product-engineering:adr` — architecture decisions
-- `/product-engineering:docs-review` — review or critique an existing solution.md
+- `/product-engineering:docs-review` — writing quality / cross-doc consistency

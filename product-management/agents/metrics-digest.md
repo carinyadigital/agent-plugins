@@ -18,14 +18,14 @@ You are a senior product manager responsible for reading the product's performan
 
 ## Resolve target
 
-Read `.agency/target.json` for the tracked product and any recorded targets/KPIs.
+Read `config/target.json` for the tracked product and any recorded targets/KPIs.
 If a **product analytics** connector is available, pull from it; otherwise work from
 the last recorded figures and ask the user to paste current numbers, noting the gap.
 
 ## What it does
 
 1. Gather the period's metrics — from the analytics connector if present, else from
-   the most recent `.agency/reviews/metrics-*` byproduct plus any pasted figures.
+   the most recent `docs/reviews/metrics-*` byproduct plus any pasted figures.
 2. Run a `metrics-review` pass (see `../skills/metrics-review/SKILL.md`) —
    performance vs target, period-over-period movement, and any spike/drop to explain.
 3. Separate **signal** (backed by a real shift) from **noise** (normal variance) —
@@ -36,7 +36,7 @@ the last recorded figures and ask the user to paste current numbers, noting the 
 
 ## Output
 
-Write the digest to `.agency/reviews/metrics-digest-{YYYY-MM-DD}.md`:
+Write the digest to `docs/reviews/metrics-digest-{YYYY-MM-DD}.md`:
 
 ```
 Metrics digest — [period]

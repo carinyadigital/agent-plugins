@@ -56,7 +56,7 @@ Tier 1 config lives in the **instance repo** (git-versioned), not in user dotfil
 | Field | Values / purpose |
 |---|---|
 | `status` | `template` until setup completes; then `complete` |
-| `instance` | Short slug — repo name, used in `.agency/target.json` pointers |
+| `instance` | Short slug — repo name, used in `config/target.json` pointers |
 | `business.context` | `single-business` \| `agency-serving-clients` |
 | `services.enabled` | Practice areas active now: `engineering`, `content-marketing`, `social-media`, `seo`, `brand-creative` |
 | `services.recommendedPlugins` | Catalogue plugin names to install next |
@@ -97,7 +97,7 @@ Set `catalogue` during setup to the GitHub org/repo slug (or equivalent source i
   "status": "skeleton",
   "repository": null,
   "binding": {
-    "pointerFile": ".agency/target.json",
+    "pointerFile": "config/target.json",
     "pointerSchema": {
       "name": "<target-repo-slug>",
       "instance": "<instance-slug>",
@@ -115,7 +115,7 @@ Set `catalogue` during setup to the GitHub org/repo slug (or equivalent source i
 
 **Target repo pointer** — after user confirms, write in the target repository:
 
-Path: `.agency/target.json`
+Path: `config/target.json`
 
 ```json
 {
@@ -127,22 +127,17 @@ Path: `.agency/target.json`
 
 The `name` field carries target repo identity (typically the git repo slug). The `instance` value matches `config/instance.json` → `instance`. Practice agents read this file to locate the instance repo and resolve the target without inferring identity from paths.
 
-**Target repo scaffold** — on bind, also create the `.agency/` directory skeleton:
+**Target repo layout** — on bind, write `config/target.json`. Delivery artefacts live under `docs/`:
 
 ```text
-.agency/
-  .gitignore             ← from ${CLAUDE_PLUGIN_ROOT}/references/dot-agency/.gitignore
-  README.md              ← from ${CLAUDE_PLUGIN_ROOT}/references/dot-agency/README.md
-  target.json
-  product.md
-  roadmap.md
-  backlog.md
-  work/
-  architecture/
-  reviews/               ← gitignored
+config/target.json         ← binding pointer + repo identity (name, instance, target)
+docs/product/              ← product.md, roadmap.md, backlog.md
+docs/architecture/         ← solution.md, decisions/
+docs/work/                 ← work-item folders created by delivery skills
+docs/reviews/              ← review state and agent byproducts
 ```
 
-Stub markdown files may contain placeholder headings only. Epic and architecture subdirectories are populated by practice skills.
+Practice skills create `docs/` artefacts when they run. Do not infer target identity from the directory name.
 
 ## File: `config/targets/<name>.json` — social (proven)
 

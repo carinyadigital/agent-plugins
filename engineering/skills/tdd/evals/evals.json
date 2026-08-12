@@ -14,12 +14,11 @@
     },
     {
       "id": 2,
-      "prompt": "Write the technical design for CHK01. The repo already has docs/work/checkout-foundation/design.md from before the rename.",
-      "expected_output": "Reports the legacy design.md, moves it to tdd.md, and updates it in place rather than writing a second document.",
+      "prompt": "Update the technical design for CHK01. docs/work/checkout-foundation/tdd.md already exists.",
+      "expected_output": "Updates the existing tdd.md in place rather than writing a second document.",
       "assertions": [
-        "Tells the user a legacy design.md was found",
-        "Moves design.md to tdd.md instead of leaving both",
-        "Does not create a second design document alongside the legacy one"
+        "Updates docs/work/checkout-foundation/tdd.md",
+        "Does not create a second design document alongside the existing one"
       ]
     }
   ]

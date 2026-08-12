@@ -12,7 +12,7 @@ Instance-wide org facts live in the instance repo at:
 
 Engineering artefacts (`docs/work/`, reviews) live in the target repo `docs/` tree.
 Architecture (`docs/architecture/`) is owned by the `architecture` companion.
-Repo binding stays in `.agency/target.json`.
+Repo binding stays in `config/target.json`.
 Brand guide is read from the resolved brand path — see references/engineering-conventions.md.
 -->
 
@@ -35,7 +35,7 @@ Brand guide is read from the resolved brand path — see references/engineering-
 
 ## Target binding
 
-- **Target repo:** [PLACEHOLDER — path or slug from .agency/target.json]
+- **Target repo:** [PLACEHOLDER — path or slug from config/target.json]
 - **Instance root:** [PLACEHOLDER — resolved instance path or none]
 - **Binding status:** [PLACEHOLDER — bound | standalone | pending]
 

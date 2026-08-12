@@ -22,7 +22,7 @@ Look for `TASKS.local.md` at the repo root before doing anything else.
 - **Missing** — run [Step 2](#step-2--detect-the-source-system).
 - **Exists but looks stale or contradicts what you find** (e.g. it names Jira
   but no Atlassian MCP tool is available this session) — say so and ask the
-  user whether to keep it, update it, or fall back.
+  user whether to keep it, update it, or use the filesystem.
 
 ## Step 2 — Detect the source system
 
@@ -35,7 +35,7 @@ the ID belongs to it.
 | Linear | Linear MCP tools | `{TEAM}-{n}`, e.g. `ENG-45` |
 | Jira | Atlassian MCP tools | `{PROJECT}-{n}`, e.g. `CHK-123` |
 | GitHub / GitLab issues | GitHub/GitLab MCP, or `gh`/`glab` CLI, remote resolved from `git remote -v` | `#123`, or a bare number in context |
-| Filesystem | Always available | kebab-case slug or internal `{PREFIX}{nn}` (`checkout-foundation`, `CHK01`) — matches a row in `docs/product/backlog.md` (fall back to `.agency/backlog.md` when absent — see [dual-read](#dual-read-docs-then-agency)) |
+| Filesystem | Always available | kebab-case slug or internal `{PREFIX}{nn}` (`checkout-foundation`, `CHK01`) — matches a row in `docs/product/backlog.md` |
 
 **Jira and Linear share the same `PREFIX-NUMBER` shape** — the ID alone cannot
 disambiguate them. Resolve in this order and stop at the first that applies:
@@ -54,7 +54,7 @@ disambiguate them. Resolve in this order and stop at the first that applies:
    top-level ID) or a matching task in some `docs/work/*/tasks.md` (for a
    child ID); if neither exists, ask whether this is new work or a typo.
 
-If the repo has neither `docs/product/backlog.md` nor `.agency/backlog.md` and
+If the repo has no `docs/product/backlog.md` and
 no reachable tracker tool at all, ask the user which system they use before
 writing anything — do not default to creating a filesystem backlog silently.
 
@@ -101,26 +101,6 @@ as "story" in the artefact — cite it as reported).
 **If the mapping is unclear** — a custom type you have not seen before, or a
 type that plausibly decomposes two different ways — ask the user how to treat
 it rather than picking the closest-sounding match.
-
-## Dual-read (`docs/` then `.agency/`)
-
-During progressive migration, inputs may still live under `.agency/`. When
-resolving or reading filesystem artefacts:
-
-1. Prefer the `docs/` path from
-   [delivery-conventions.md](delivery-conventions.md#document-layout).
-2. If that file is absent, fall back to the legacy `.agency/` equivalent,
-   preserving nested layout where it existed (for example
-   `docs/product/product.md` → `.agency/product.md`;
-   `docs/work/{work-id}/tdd.md` → `.agency/work/{work-id}/tdd.md` or a legacy
-   `design.md`;
-   `docs/architecture/solution.md` → `.agency/architecture/solution.md`).
-3. Write new artefacts only under `docs/` — never dual-write, and never write
-   delivery artefacts into `.agency/` as a fallback.
-
-Apply this to `product.md`, `roadmap.md`, `backlog.md`, `tdd.md` (and legacy
-`design.md`), `tasks.md` (as input), and `solution.md`. Do not dual-path
-`.agency/target.json` or `.agency/reviews/`.
 
 ## ID and path resolution
 

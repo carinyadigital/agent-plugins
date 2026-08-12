@@ -25,7 +25,7 @@ Optional focus: `deps`, `errors`, `ci`, `uptime` (default: all).
 ## Steps
 
 1. Read target repo `AGENTS.md` / `CLAUDE.md` for commands and conventions.
-2. Read `.agency/target.json` on the target repo, then instance `config/` if
+2. Read `config/target.json` on the target repo, then instance `config/` if
    present.
 3. Run checks for the requested focus (or all):
 

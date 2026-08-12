@@ -10,7 +10,7 @@ Resolve the working target before writing architecture artefacts. Apply this
 order — first match wins:
 
 1. **Explicit path named by the user** in the request.
-2. **Inside a target repo** — `.agency/target.json` exists at the working
+2. **Inside a target repo** — `config/target.json` exists at the working
    root → read the pointer, resolve instance root and target metadata.
 3. **Inside an instance repo** — `config/instance.json` at working root → use
    `config/targets/{target}.json` when the user names a target slug.
@@ -25,9 +25,7 @@ docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
 docs/work/{work-id}/          tdd.md, tasks.md  (owned by engineering / product-management)
 ```
 
-Prefer `docs/architecture/`; fall back to `.agency/architecture/` when reading
-legacy artefacts. Write new and updated architecture artefacts only under
-`docs/architecture/`.
+Write architecture artefacts under `docs/architecture/`.
 
 Override paths when the user names them explicitly in the request.
 

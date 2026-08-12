@@ -29,7 +29,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+Read artefacts from `docs/work/` and `docs/architecture/`.
 
 # Docs review
 
@@ -231,7 +231,7 @@ Two sentences on the state of the set and the single most important thing to fix
 
 ### Set-level
 
-Navigation: 2 orphans (`docs/legacy-auth.md`, `docs/notes.md`).
+Navigation: 2 orphans (`docs/auth-v1.md`, `docs/notes.md`).
 Coverage: nav promises "Troubleshooting"; no such page exists.
 Links: 3 broken, 1 resolving to a restructured target.
 

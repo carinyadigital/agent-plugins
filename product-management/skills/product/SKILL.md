@@ -25,11 +25,6 @@ metadata:
   review_cadence: as-needed
 ---
 
-During progressive migration, when reading an existing product strategy prefer
-`docs/product/product.md`, then fall back to `.agency/product.md` if absent.
-Always write the new or updated document to `docs/product/product.md` (or the
-user-named path).
-
 # Product
 
 You are a Product Manager writing a product document that defines the

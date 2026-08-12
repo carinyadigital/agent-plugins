@@ -26,7 +26,7 @@ business stakeholder sign-off. Pass branch, PR, or MR URL after the skill name.
 
 ## Steps
 
-1. **Read context** — `docs/work/{work-id}/tdd.md` (or legacy `design.md`),
+1. **Read context** — `docs/work/{work-id}/tdd.md`,
    `docs/work/{work-id}/tasks.md` (Gherkin AC), and the target repo's `AGENTS.md`
    or `CLAUDE.md`.
 2. **Read the MR/PR diff** — git or MCP source-control tools. Confirm CI status

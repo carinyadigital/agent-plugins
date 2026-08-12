@@ -19,7 +19,7 @@ You are a delivery lead responsible for helping the team learn from the sprint j
 
 ## Resolve target and sprint id
 
-Read `.agency/target.json` for the tracked product. Resolve `{id}` from the trigger
+Read `config/target.json` for the tracked product. Resolve `{id}` from the trigger
 argument; if none given, use the latest `docs/work/sprint-*/` with a `plan.md` and
 no `retrospective.md`, and confirm.
 

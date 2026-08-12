@@ -31,7 +31,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+Read artefacts from `docs/work/` and `docs/architecture/`.
 
 # Implement
 
@@ -51,7 +51,7 @@ ask rather than guessing which folder it belongs to.
 | Input             | Location                       | Required  |
 | ----------------- | ------------------------------ | --------- |
 | Task + Gherkin AC | `docs/work/{work-id}/tasks.md` | Yes       |
-| Work item design  | `docs/work/{work-id}/tdd.md` (or a legacy `design.md`) | Yes       |
+| Work item design  | `docs/work/{work-id}/tdd.md` | Yes       |
 | Architecture      | `docs/architecture/solution.md`| If relevant |
 | Coding standards  | `AGENTS.md` or `CLAUDE.md`     | If present |
 

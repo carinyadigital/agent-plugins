@@ -37,7 +37,7 @@ Read [search-optimisation-conventions.md](../../references/search-optimisation-c
 
 ## Steps
 
-1. Resolve target repo via `.agency/target.json` or instance target config.
+1. Resolve target repo via `config/target.json` or instance target config.
 2. Read product/backlog context when present. Check existing SEO work files to
    avoid duplication.
 3. Research via web search: SERP analysis, People Also Ask, related queries.

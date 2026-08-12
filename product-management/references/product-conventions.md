@@ -9,7 +9,7 @@ Skills that write under `docs/product/` should read this file when resolving pat
 docs/product/               product.md, roadmap.md, backlog.md
 docs/research/              synthesis, competitive briefs, metrics reviews (optional)
 docs/updates/               stakeholder updates (optional)
-docs/work/{work-id}/        design.md, tasks.md — see delivery-conventions.md
+docs/work/{work-id}/        tdd.md, tasks.md — see delivery-conventions.md
 docs/work/sprint-{id}/      plan.md, retrospective.md — see delivery-conventions.md
 ```
 
@@ -19,16 +19,6 @@ Decomposition artefacts (`docs/product/backlog.md`, `docs/work/{work-id}/`,
 `docs/work/sprint-{id}/`) are owned by this plugin's delivery skills
 (`tasks`, `backlog-refine`, `sprint-planning`, `sprint-retro`, `validate`).
 Strategy skills read them but do not write them — see `delivery-conventions.md`.
-
-## Progressive migration bridge
-
-Prefer `docs/` artefact paths. When reading an input that is missing under
-`docs/`, fall back to the legacy `.agency/` equivalent if present
-(e.g. `.agency/product.md`, `.agency/roadmap.md`). **Write new and updated
-artefacts only under `docs/`.** Do not migrate files silently.
-
-Repo binding (`.agency/target.json`) and agency byproducts (`.agency/reviews/`)
-stay under `.agency/` permanently.
 
 ## Artefact hierarchy
 
@@ -83,12 +73,12 @@ Install: /plugin install architecture@carinya-plugins
 Then run: /architecture:solution
 ```
 
-## Agency layout notes
+## Target binding
 
-Repo identity lives in `.agency/target.json` (`name`, `instance`, `target`) — not inferred from the directory name.
+Repo identity lives in `config/target.json` (`name`, `instance`, `target`) — not inferred from the directory name.
 
 Agent byproducts (competitor scans, metrics digests, stakeholder digests) write under:
 
 ```text
-.agency/reviews/
+docs/reviews/
 ```

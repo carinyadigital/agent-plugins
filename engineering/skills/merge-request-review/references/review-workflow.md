@@ -22,7 +22,7 @@ and stop rather than reviewing a moving target:
 
 ## Line-level checklist
 
-Judge the changed lines and what they touch — not the whole file's legacy:
+Judge the changed lines and what they touch — not the whole file's unchanged lines:
 
 - **Correctness** — does the code do what the description claims? Trace the
   main path and the failure paths. Null/empty/boundary inputs, off-by-one,

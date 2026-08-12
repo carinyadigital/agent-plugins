@@ -25,7 +25,7 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 | 0 — Personal | `~/.claude/plugins/config/digital-agency/<plugin>/setup-resume.json` | Paused interview before instance exists |
 | 1 — Instance | `<instance-repo>/config/.<plugin>-setup-resume.json` | Paused interview after instance repo is bound |
 
-**Brand path resolution:** When this plugin reads brand artefacts, resolve per `${CLAUDE_PLUGIN_ROOT}/references/brand-conventions.md` (brand-creative) or the equivalent conventions file in this plugin — instance `brand/`, target pointer, or `docs/brand/` fallback.
+**Brand path resolution:** When this plugin reads brand artefacts, resolve per `${CLAUDE_PLUGIN_ROOT}/references/brand-conventions.md` (brand-creative) or the equivalent conventions file in this plugin — instance `brand/`, target pointer, or standalone `docs/brand/`.
 
 **In-repo templates (read-only):** `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md`, `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md`, `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md`. Never modify installed plugin templates.
 
@@ -42,10 +42,6 @@ Before asking questions:
 5. **If artefacts and practice profile are complete** and not `--redo`: summarize what's on file; offer refresh, `--redo`, or `--check-integrations` only. Do not re-interview unless the user chooses refresh or passed `--redo`.
 6. **If instance profile exists but brand is empty:** say the instance layer is done; run plugin-specific interview only.
 7. **If neither instance nor brand artefacts exist:** explain the model (instance profile optional; brand artefacts at resolved path) and proceed.
-
-### Legacy migration
-
-If brand files exist at non-standard paths (e.g. `docs/brand/` inside an instance repo), offer to normalize into `<instance-root>/brand/` without deleting legacy files without confirmation.
 
 ## Instance profile — read-only layer
 

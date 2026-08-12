@@ -49,7 +49,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class PluginValidator(Reporter):
     # Delivery artefacts live under docs/ (see delivery-conventions.md).
-    LEGACY_ARTEFACT_PATH_PATTERNS = (re.compile(r"\.digital-agency/"),)
+    LEGACY_ARTEFACT_PATH_PATTERNS = (
+        re.compile(r"\.digital-agency/"),
+        re.compile(r"\.agency/"),
+    )
     LEGACY_ARTEFACT_PATH_SKIP_PARTS = frozenset({".git", "node_modules", ".cursor"})
     LEGACY_ARTEFACT_PATH_SKIP_FILES = frozenset(
         {
@@ -58,6 +61,7 @@ class PluginValidator(Reporter):
             "scripts/validate_plugins.py",
             "scripts/validate_skills.py",
             "CONTRIBUTING.md",
+            "CHANGELOG.md",
         }
     )
 
@@ -403,8 +407,7 @@ class PluginValidator(Reporter):
                     f"Legacy artefact path reference: {snippet[:120]}",
                     file=file_path,
                     line=line_no,
-                    hint="Use docs/ paths per delivery-conventions.md "
-                    "(.agency/target.json stays for binding)",
+                    hint="Use docs/ artefact paths and config/target.json for binding",
                 )
             if len(offenders) > 20:
                 self.fail(
@@ -412,7 +415,7 @@ class PluginValidator(Reporter):
                     f"... and {len(offenders) - 20} more legacy path reference(s)",
                 )
         else:
-            self.pass_("No obsolete .digital-agency/ path references")
+            self.pass_("No obsolete .digital-agency/ or .agency/ path references")
 
     def check_cross_plugin_paths(self) -> None:
         offenders: list[tuple[str, int, str]] = []

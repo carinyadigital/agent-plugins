@@ -13,7 +13,7 @@
         "Every finding prefixed with [blocking], [warning], or [suggestion]",
         "Every visual finding cites a screenshot path plus state and viewport",
         "Modifies no file outside .ux-review/, docs/reviews/, and docs/work/*/reviews/",
-        "Writes a human-readable report to docs/work/*/reviews/ux-design-review-{nn}.local.md or the docs/reviews/ux-design-review-{branch}.local.md fallback",
+        "Writes a human-readable report to docs/work/*/reviews/ux-design-review-{nn}.local.md or docs/reviews/ux-design-review-{branch}.local.md when no work item is resolved",
         "Closes by pointing at ux-design-fix rather than offering to fix"
       ]
     },

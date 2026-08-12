@@ -63,7 +63,7 @@ After instance bootstrap (or standalone):
 | `--resume` | Continue a paused interview |
 | `--check-integrations` | Report MCP connector status only; no interview |
 
-`setup` detects or creates `.agency/target.json` for Golden Path 2
+`setup` detects or creates `config/target.json` for Golden Path 2
 target binding.
 
 ## Skills

@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Path cleanup
+
+- Removed dual-read / migration instructions for retired `.agency/` artefact trees.
+  Delivery artefacts live under `docs/`; target binding is `config/target.json`;
+  agent byproducts write under `docs/reviews/`. Work-item design is `tdd.md` only.
+
 ### Plugin management (v0.2.0)
 
 - **New `plugin-management` plugin (v0.2.0):** ported from tempster-plugin — `create-plugin`, `customize-plugin`, and component-authoring skills (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release) plus four sub-agents.
@@ -41,8 +47,8 @@ All nine catalogue plugins reset to **v0.4.0** after Phase 2 restructuring
 `ralph-loop` extract, `skills-index` / `skill-authoring` new). See
 `docs/CROSS-PLUGIN-CONTRACTS.md`.
 
-- **BREAKING (engineering):** `design` → `tdd`; artefact `design.md` → `tdd.md` (legacy accepted); modes `walking-skeleton|tdd` → `skeleton|full`. Invoke `/engineering:tdd`.
-- Consumers (`implement`, `tasks`, `validate`, `adr`, `ralph-loop*`, sprint skills) read `tdd.md` with legacy fallback.
+- **BREAKING (engineering):** `design` → `tdd`; artefact `design.md` → `tdd.md`; modes `walking-skeleton|tdd` → `skeleton|full`. Invoke `/engineering:tdd`.
+- Consumers (`implement`, `tasks`, `validate`, `adr`, `ralph-loop*`, sprint skills) read `tdd.md`.
 - Ralph-loop hooks/seed: completion-promise anchoring, turn-boundary detection, `{{TDD_PATH}}` / `{{WORK_ID}}`.
 - `product-management` / `skills-index` synced with [carinyaparc/skills](https://github.com/carinyaparc/skills); `find` routes to `tdd`.
 - `product` / `roadmap`: write-only posture clarified (`docs-review` = writing quality, not strategy).
@@ -53,7 +59,7 @@ All nine catalogue plugins reset to **v0.4.0** after Phase 2 restructuring
 
 ## [2026-07-24] — Product split and skills 2.1.0 alignment
 
-Aligned with [carinyaparc/skills](https://github.com/carinyaparc/skills) 2.1.0. Artefact paths remain under `.agency/`.
+Aligned with [carinyaparc/skills](https://github.com/carinyaparc/skills) 2.1.0. Artefact paths at this release used the agency tree (later moved to `docs/`).
 
 - **product-management v0.1.0:** New MECE practice — PM persona owns strategy/discovery (`product`, `roadmap`, `write-spec`, brainstorming, research, competitive-brief, metrics, stakeholder-update, skills-index, setup).
 - **delivery-practice v0.2.0 (BREAKING):** Product skills moved out; `backlog` → `tasks --product`; `sprint` → `sprint-planning` + `sprint-retro`; added `backlog-refine`. Delivery Lead execution only.

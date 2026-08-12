@@ -37,7 +37,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+Read artefacts from `docs/work/` and `docs/architecture/`.
 
 # UX design review
 
@@ -236,7 +236,7 @@ Produce the verdict below, then persist review state per
    `docs/work/{work-item}/reviews/`. When no work item resolved, write
    `docs/reviews/ux-design-review-{branch}.local.md` instead (`/` in the
    branch name replaced with `-`) — latest-only: overwrite that file; do not
-   invent numbering on the fallback path.
+   invent numbering on the branch-level path.
 
 ---
 

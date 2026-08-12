@@ -12,7 +12,7 @@ Resolve `<design-dir>` in this order — first match wins:
 1. **Explicit path named by the user** in the request.
 2. **Inside an instance repo** — `config/instance.json` at working root →
    `<instance-root>/design/`.
-3. **Inside a target repo** — `.agency/target.json` at working root →
+3. **Inside a target repo** — `config/target.json` at working root →
    resolve instance root, then `<instance-root>/design/`.
 4. **Standalone** — no instance or target pointer → `docs/design/` in the current
    project.
@@ -31,7 +31,7 @@ directory using the same order as `brand-creative` conventions:
 1. **Explicit path named by the user** in the request.
 2. **Inside an instance repo** — `config/instance.json` at working root →
    `<instance-root>/brand/`.
-3. **Inside a target repo** — `.agency/target.json` at working root →
+3. **Inside a target repo** — `config/target.json` at working root →
    resolve instance root, then `<instance-root>/brand/`.
 4. **Standalone** — no instance or target pointer → `docs/brand/` in the current
    project.

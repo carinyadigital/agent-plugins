@@ -10,14 +10,14 @@ Resolve the working target before reading stack-specific config or writing code.
 Apply this order — first match wins:
 
 1. **Explicit path named by the user** in the request.
-2. **Inside a target repo** — `.agency/target.json` exists at the working
+2. **Inside a target repo** — `config/target.json` exists at the working
    root → read the pointer, resolve instance root and target metadata.
 3. **Inside an instance repo** — `config/instance.json` at working root → use
    `config/targets/{target}.json` when the user names a target slug.
 4. **Standalone** — no instance or target pointer → treat the current project as
    the target; read `AGENTS.md` / `CLAUDE.md` for local conventions.
 
-`setup` may create `.agency/target.json` on first-time binding when
+`setup` may create `config/target.json` on first-time binding when
 the user confirms target association.
 
 ## Brand guide (artifact consumption)
@@ -29,7 +29,7 @@ same order as `brand-creative` conventions:
 1. **Explicit path named by the user** in the request.
 2. **Inside an instance repo** — `config/instance.json` at working root →
    `<instance-root>/brand/`.
-3. **Inside a target repo** — `.agency/target.json` at working root →
+3. **Inside a target repo** — `config/target.json` at working root →
    resolve instance root, then `<instance-root>/brand/`.
 4. **Standalone** — no instance or target pointer → `docs/brand/` in the current
    project.
@@ -41,8 +41,8 @@ brand-guide skill; read the artefact directly.
 ## UX design output (artifact consumption)
 
 When a UX design practice has produced wireframes or specs, read from
-`<instance-root>/design/` (or the path named by the user). Falls back to
-`docs/work/{work-id}/tdd.md` for work-item implementation specs (fall back to `.agency/work/` when reading legacy artefacts).
+`<instance-root>/design/` (or the path named by the user). Work-item
+implementation specs live at `docs/work/{work-id}/tdd.md`.
 
 ## Companion practice (architecture)
 
@@ -99,21 +99,14 @@ docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
 docs/work/{work-id}/          tdd.md, tasks.md
 docs/work/{work-id}/reviews/  code-review / ux-design-review verdicts
 docs/work/sprint-{id}/        plan.md, retrospective.md
-docs/reviews/                 shared review state (*.local.json)
-.agency/target.json           target binding (permanent)
-.agency/reviews/              agent byproducts: competitor-scan, metrics, digests
+docs/reviews/                 shared review state (*.local.json) and agent
+                              byproducts (competitor-scan, metrics, digests)
+config/target.json            target binding
 ```
 
-Repo identity lives in `.agency/target.json` (`name`, `instance`, `target`) — not inferred from the directory name.
+Repo identity lives in `config/target.json` (`name`, `instance`, `target`) — not inferred from the directory name.
 
 Override paths when the user names them explicitly in the request.
-
-## Progressive migration bridge
-
-Prefer `docs/` artefact paths. When reading an input missing under `docs/`,
-fall back to the legacy `.agency/` equivalent if present. Write new and
-updated delivery/engineering artefacts only under `docs/`. Keep
-`.agency/target.json` and `.agency/reviews/` byproducts under `.agency/`.
 
 Work-item ID resolution (any work item, not epic-only) is defined in
 [work-item-resolution.md](work-item-resolution.md) and

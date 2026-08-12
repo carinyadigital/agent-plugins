@@ -18,7 +18,6 @@ allowed-tools:
   - Glob
   - Grep
   - Bash(git remote:*)
-  - Bash(git mv:*)
   - Bash(gh:*)
   - Bash(glab:*)
 argument-hint: "<work-id> [--mode skeleton|full] [--context <notes>]"
@@ -31,7 +30,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+Read artefacts from `docs/work/` and `docs/architecture/`.
 
 # Technical design document
 
@@ -64,11 +63,6 @@ epic's folder, not inside it.
 
 Default: `docs/work/{work-id}/tdd.md`. User-named paths under `docs/work/` override.
 
-Repos written before this skill was renamed from `design` hold the same
-artefact at `docs/work/{work-id}/design.md`. When that file exists and
-`tdd.md` does not, say so, `git mv` it to `tdd.md`, and update it in place —
-never leave two copies of the same design side by side.
-
 ## Mode (`--mode`)
 
 - `skeleton` — walking skeleton, Phase 0, 2–4 pages
@@ -86,7 +80,7 @@ Do NOT put in tdd.md:
 ## Context
 
 [Work item row in backlog.md or the tracker, solution.md, parent epic's
-tdd.md if this is a story/bug/spike, existing tdd.md (or legacy design.md)
+tdd.md if this is a story/bug/spike, existing tdd.md
 if updating, codebase]
 
 ## Steps (skeleton)
@@ -107,7 +101,6 @@ if updating, codebase]
   ambiguity in source system or ID
 - [ ] Path is `docs/work/{work-id}/tdd.md` keyed by this item's own
   canonical ID (filesystem-only: correct slug, ≤2 words, not the internal ID)
-- [ ] A legacy `design.md` for this work item was moved, not duplicated
 - [ ] A story/bug/spike TDD cites its parent epic by ID rather than
   duplicating its tdd.md
 - [ ] Solution cited by section; no duplicated architecture narrative

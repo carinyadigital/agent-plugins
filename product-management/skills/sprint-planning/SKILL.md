@@ -26,6 +26,8 @@ metadata:
   review_cadence: as-needed
 ---
 
+Prefer `docs/` artefact paths; fall back to `.agency/` when reading legacy inputs. Write only under `docs/`.
+
 # Sprint planning
 
 You are a Delivery Lead preparing a sprint plan before the sprint starts. Your
@@ -40,8 +42,6 @@ for artefact boundaries and work item path resolution.
 
 Default path: `docs/work/sprint-{id}/plan.md` (e.g. `docs/work/sprint-3/plan.md`).
 
-Prefer `docs/`; fall back to `.agency/` equivalents when reading legacy artefacts (`.agency/backlog.md`, `.agency/roadmap.md`, `.agency/sprints/`, `.agency/work/`). Write only under `docs/`.
-
 Resolve `{id}` from the argument — `3`, `sprint-3`, and `2026-W14` are all
 valid. If the user names a different path under `docs/work/`, use it.
 
@@ -54,7 +54,7 @@ valid. If the user names a different path under `docs/work/`, use it.
 | Roadmap                | `docs/product/roadmap.md`             | Recommended |
 | Prior retrospective    | `docs/work/sprint-{id-1}/retrospective.md` | Recommended |
 | Prior plan             | `docs/work/sprint-{id-1}/plan.md`     | Recommended |
-| Work item design       | `docs/work/{work-id}/design.md`       | If relevant |
+| Work item design       | `docs/work/{work-id}/tdd.md`          | If relevant |
 | Sprint dates, capacity | argument or `--context`               | Yes      |
 
 ## Steps
@@ -115,7 +115,7 @@ A sprint plan MUST NOT:
   or **backlog-refine**
 - Re-sequence delivery phases or change exit criteria → `docs/product/roadmap.md`
   via **roadmap**
-- Add architecture or design detail → `solution.md` or `design.md`
+- Add architecture or design detail → `solution.md` or `tdd.md`
 - Invent velocity, capacity, or team availability not supplied in the context
 - Commit tasks that are not sprint-ready — run **backlog-refine** on the epic
   first and report the gap instead of committing anyway

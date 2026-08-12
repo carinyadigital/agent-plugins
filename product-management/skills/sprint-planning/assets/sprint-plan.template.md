@@ -4,7 +4,7 @@ DO NOT INCLUDE in a sprint plan:
   - Gherkin acceptance criteria → docs/work/{work-id}/tasks.md
   - New or re-prioritised epics → docs/product/backlog.md
   - Phase re-sequencing or exit criteria → docs/product/roadmap.md
-  - Architecture or design detail → solution.md / design.md
+  - Architecture or design detail → solution.md / tdd.md
   - Committed scope beyond capacity minus carry-over → make it Stretch
 -->
 ---

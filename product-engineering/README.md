@@ -76,8 +76,6 @@ target binding.
 | **merge-request** | Open merge request for implemented work |
 | **merge-request-babysit** | Drive an open MR/PR to merge-ready |
 | **merge-request-review** | Review an MR/PR as its reviewer |
-| **ralph-loop-setup** | Seed and configure an autonomous delivery loop |
-| **ralph-loop** | Run an autonomous work-item delivery loop |
 | **docs-review** | Read-only document-set quality and consistency review |
 | **debug** | Bug investigation |
 | **tech-debt** | Technical debt audit |
@@ -121,3 +119,7 @@ not exist, ask the user for design guidance inline.
 
 Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
 are kept in sync across practice plugins via `python3 scripts/sync-references.py`.
+
+## Ralph loop contribution
+
+This plugin contributes the `engineering-delivery` preset at `assets/ralph-presets/engineering-delivery.md`. Install the companion `ralph-loop` plugin to run loops; seed resolves this preset automatically when both plugins are installed side by side.

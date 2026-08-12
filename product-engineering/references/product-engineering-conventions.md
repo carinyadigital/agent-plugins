@@ -150,7 +150,6 @@ Work-item sign-off uses `/product-management:validate` (companion skill), not a 
 | Review MR/PR as reviewer | **merge-request-review** | Senior FE / Principal FE |
 | UX review of implemented UI | **/product-design:ux-design-review** | Frontend Engineer |
 | Address UX review feedback | **/product-design:ux-design-fix** | Frontend Engineer |
-| Seed autonomous delivery loop | **ralph-loop-setup** | Frontend Engineer |
 | Run autonomous delivery loop | **ralph-loop** | Frontend Engineer |
 | Review a document set | **docs-review** | Principal Architect |
 | Bug investigation | **debug** | WebOps Engineer |

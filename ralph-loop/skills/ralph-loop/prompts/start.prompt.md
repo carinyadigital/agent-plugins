@@ -10,7 +10,7 @@ the first step.
    (`.claude/loop` for Claude Code, `.cursor/loop` for Cursor) and read
    `{base}/active.md`. If it is missing:
    - With an inline prompt (`/ralph-loop start "..."`), seed an ad-hoc loop
-     first by calling `scripts/seed-ralph-loop.sh --preset ad-hoc`, then
+     first by calling `${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh --preset ad-hoc`, then
      continue.
    - Otherwise stop and tell the user to run `/ralph-loop-setup` first.
 

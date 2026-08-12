@@ -21,7 +21,7 @@ argument-hint: "[start|status|cancel] [--prompt \"...\"] [--max-iterations N] [-
 metadata:
   author: Carinya Parc
   version: "2.0"
-  owner: product-engineering
+  owner: ralph-loop
   work_shape: orchestrate-delivery
   output_class: applied-change
   review_cadence: as-needed
@@ -77,7 +77,8 @@ findings are recorded under `## Notes` so a human sees them.
 - [assets/loop.core.template.md](assets/loop.core.template.md) — generic loop body, preset-agnostic
 - [assets/loop-state.core.template.md](assets/loop-state.core.template.md) — per-run mutable state
 - [assets/context.core.template.md](assets/context.core.template.md) — per-run static context
-- [assets/presets/](assets/presets/) — `engineering-delivery`, `ad-hoc`, `custom`
+- [assets/presets/](assets/presets/) — `ad-hoc`, `custom`
+- Contributed: `product-engineering/assets/ralph-presets/engineering-delivery.md` (requires product-engineering installed)
 
 ## Router
 

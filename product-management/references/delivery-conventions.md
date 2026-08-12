@@ -26,7 +26,6 @@ Override paths when the user names them explicitly in the request.
 Skills no longer assume the argument is an epic. Any work item — epic,
 story, task, bug, spike, or whatever type the source system defines — can be
 the target of `tasks`, `design`, `validate`, `backlog-refine`,
-`ralph-loop-setup`, and `implement`. What changes is the *behaviour* for that
 type, not whether the ID is accepted.
 
 Read [work-item-resolution.md](../skills/tasks/references/work-item-resolution.md)

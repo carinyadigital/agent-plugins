@@ -310,6 +310,11 @@ class Validator:
             for skill_dir in product_engineering_skills.iterdir():
                 if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
                     sources[skill_dir.name] = skill_dir
+        ralph_loop_skills = ROOT / "ralph-loop" / "skills"
+        if ralph_loop_skills.is_dir():
+            for skill_dir in ralph_loop_skills.iterdir():
+                if skill_dir.is_dir() and skill_dir.name not in SKIP_DRIFT_NAMES:
+                    sources[skill_dir.name] = skill_dir
         content_marketing_skills = ROOT / "content-marketing" / "skills"
         if content_marketing_skills.is_dir():
             for skill_dir in content_marketing_skills.iterdir():
@@ -333,6 +338,7 @@ class Validator:
         paths.extend(sorted(ROOT.glob("brand-creative/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-management/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-engineering/skills/*/SKILL.md")))
+        paths.extend(sorted(ROOT.glob("ralph-loop/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("content-marketing/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("product-design/skills/*/SKILL.md")))
         paths.extend(sorted(ROOT.glob("search-optimisation/skills/*/SKILL.md")))
@@ -725,6 +731,7 @@ class Validator:
             (ROOT / "brand-creative", "brand-creative/skills/*/*.md"),
             (ROOT / "product-management", "product-management/skills/*/*.md"),
             (ROOT / "product-engineering", "product-engineering/skills/*/*.md"),
+            (ROOT / "ralph-loop", "ralph-loop/skills/*/*.md"),
             (ROOT / "content-marketing", "content-marketing/skills/*/*.md"),
             (ROOT / "product-design", "product-design/skills/*/*.md"),
             (ROOT / "search-optimisation", "search-optimisation/skills/*/*.md"),
@@ -739,6 +746,7 @@ class Validator:
                 "brand-creative",
                 "product-management",
                 "product-engineering",
+                "ralph-loop",
                 "content-marketing",
                 "product-design",
                 "search-optimisation",

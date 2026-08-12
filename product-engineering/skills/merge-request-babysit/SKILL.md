@@ -31,6 +31,8 @@ metadata:
   review_cadence: as-needed
 ---
 
+Prefer `docs/work/` and `docs/architecture/`; fall back to `.agency/work/` / `.agency/architecture/` when reading legacy artefacts.
+
 # Merge request babysit
 
 You are a Senior Software Engineer driving an open merge request (MR) or pull

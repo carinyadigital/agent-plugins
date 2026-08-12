@@ -9,7 +9,7 @@ argument or writing under `docs/work/`.
 ```text
 docs/product/               product.md, roadmap.md, backlog.md
 docs/architecture/          solution.md, decisions/register.md, ADR-*.md
-docs/work/{work-id}/        design.md, tasks.md — one folder per resolved work item
+docs/work/{work-id}/        tdd.md, tasks.md — one folder per resolved work item
 docs/work/{work-id}/reviews/  code-review-{nn}.local.md, ux-design-review-{nn}.local.md
                             ({nn} sequential per skill prefix, not across skills)
 docs/work/sprint-{id}/      plan.md, retrospective.md
@@ -21,15 +21,35 @@ docs/reviews/               code-review.local.json, ux-design-review.local.json,
 
 Override paths when the user names them explicitly in the request.
 
+
+## Progressive migration bridge (interim)
+
+While sibling skills still produce or consume artefacts under `.agency/`,
+**prefer `docs/` paths and fall back to the `.agency/` equivalent when the
+`docs/` artefact is absent**. Read whichever exists; **write new artefacts
+only under `docs/`** (do not dual-write).
+
+| Artefact | Prefer | Fall back when absent |
+| -------- | ------ | --------------------- |
+| `product.md` | `docs/product/product.md` | `.agency/product.md` |
+| `roadmap.md` | `docs/product/roadmap.md` | `.agency/roadmap.md` |
+| `backlog.md` | `docs/product/backlog.md` | `.agency/backlog.md` |
+| `tdd.md` / `tasks.md` | `docs/work/{work-id}/…` | `.agency/work/{work-id}/…` (accept legacy `design.md`) |
+| `solution.md` | `docs/architecture/solution.md` | `.agency/architecture/solution.md` |
+
+Repo binding (`.agency/target.json`) and agent byproducts (`.agency/reviews/`)
+are not delivery artefacts and are not dual-pathed.
+
 ## Work item ID (`{work-id}`)
 
 Skills no longer assume the argument is an epic. Any work item — epic,
 story, task, bug, spike, or whatever type the source system defines — can be
-the target of `tasks`, `design`, `validate`, `backlog-refine`,
+the target of `tasks`, `tdd`, `validate`, `backlog-refine`,
+`ralph-loop-setup`, and `implement`. What changes is the *behaviour* for that
 type, not whether the ID is accepted.
 
-Read [work-item-resolution.md](../skills/tasks/references/work-item-resolution.md)
-in full before resolving `{work-id}` — it covers:
+Read [work-item-resolution.md](../skills/tasks/references/work-item-resolution.md) in full before
+resolving `{work-id}` — it covers:
 
 - Detecting the source system (Linear, Jira, GitHub/GitLab issues, or
   filesystem) and the `TASKS.local.md` pointer that caches Linear/Jira
@@ -68,10 +88,10 @@ filesystem-safe handle and slugging it again only adds a translation step.
 | Phase sequencing, exit criteria | `docs/product/roadmap.md` | backlog, product |
 | Epic list, deps, points, work paths | `docs/product/backlog.md` (filesystem-only source) | roadmap detail |
 | Story/task statement, test criterion, AC | `docs/work/{work-id}/tasks.md` | backlog (titles only) |
-| Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | design (cite only) |
+| Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | the TDD (cite only) |
 | ADR decisions | `register.md`, `ADR-NNNN-*.md` | solution narrative |
-| Work item implementation spec | `docs/work/{work-id}/design.md` | solution, backlog |
-| Task Gherkin (and optional EARS) | `docs/work/{work-id}/tasks.md` | backlog, design |
+| Work item implementation spec | `docs/work/{work-id}/tdd.md` | solution, backlog |
+| Task Gherkin (and optional EARS) | `docs/work/{work-id}/tasks.md` | backlog, the TDD |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
 | Human-readable review verdict | `docs/work/{work-id}/reviews/{skill}-{nn}.local.md` | shared JSON state |
 | Review tracking state (per branch, incremental) | `docs/reviews/{skill}.local.json` | human-readable verdicts |
@@ -91,17 +111,32 @@ from it directly rather than maintaining a parallel `backlog.md`.
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
 - **Schema:** field-by-field rules in `skills/tasks/references/work-item-schema.md`.
 
-## Design modes
+## TDD modes
+
+The technical design document (`tdd.md`) has two modes:
 
 | Mode | When | Size |
 | ---- | ---- | ---- |
-| `walking-skeleton` | Phase 0 | 2–4 pages |
-| `tdd` | Sprint 2+ | 5–10 pages |
+| `skeleton` | Phase 0 (walking skeleton) | 2–4 pages |
+| `full` | Sprint 2+ | 5–10 pages |
 
-Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
-Design applies at whatever level the user names: `design CHK01` writes the
-epic's design; `design JIRA-123` writes that story's design, sitting beside
+Cite `solution.md §{N.M}` — do not re-narrate architecture in `tdd.md`.
+The TDD applies at whatever level the user names: `tdd CHK01` writes the
+epic's design; `tdd JIRA-123` writes that story's design, sitting beside
 (not nested inside) its parent epic's folder and citing the parent by ID.
+
+**Not test-driven development.** The `tdd` skill writes a design document.
+Writing a failing test first, red/green/refactor, and test authoring in
+general belong to **implement**.
+
+## Legacy `design.md`
+
+The `tdd` skill was previously called `design` and wrote the same artefact to
+`docs/work/{work-id}/design.md`. Any skill that reads a work item's design
+resolves `docs/work/{work-id}/tdd.md` first and falls back to
+`docs/work/{work-id}/design.md` when only the legacy file exists — treat it as
+the same artefact under its old name. Only **tdd** may rename it, and only by
+moving it (never by writing a second copy alongside).
 
 ## Skill routing (near-misses)
 
@@ -110,7 +145,7 @@ epic's design; `design JIRA-123` writes that story's design, sitting beside
 | PRD, vision, why/who/what | **product** |
 | Phases, exit criteria | **roadmap** |
 | Epics, work paths, Now scope | **tasks --product** |
-| `design.md` for one work item | **/product-engineering:design** |
+| `tdd.md` (technical design) for one work item | **/product-engineering:tdd** |
 | `tasks.md`, stories, Gherkin AC | **tasks** |
 | Decompose any spec or RFC into a backlog | **tasks** |
 | Groom a backlog, check sprint readiness | **backlog-refine** |
@@ -121,6 +156,7 @@ epic's design; `design JIRA-123` writes that story's design, sitting beside
 | Sprint plan | **sprint-planning** |
 | Sprint retrospective | **sprint-retro** |
 | Review a set of documents for quality, boundaries, consistency | **/product-engineering:docs-review** |
+| Which skill to use? | **skills-index** |
 
 ## Agency layout notes
 
@@ -161,7 +197,7 @@ practice prefers `docs/`. During that window:
 | `product.md` | `docs/product/product.md` | `.agency/product.md` |
 | `roadmap.md` | `docs/product/roadmap.md` | `.agency/roadmap.md` |
 | `backlog.md` | `docs/product/backlog.md` | `.agency/backlog.md` |
-| `design.md` / `tasks.md` | `docs/work/{work-id}/…` | `.agency/work/{work-id}/…` |
+| `tdd.md` / `tasks.md` | `docs/work/{work-id}/…` | `.agency/work/{work-id}/…` (accept legacy `design.md`) |
 | `solution.md` | `docs/architecture/solution.md` | `.agency/architecture/solution.md` |
 
 Do **not** apply this bridge to `.agency/target.json` or `.agency/reviews/` —

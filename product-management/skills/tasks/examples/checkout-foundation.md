@@ -6,10 +6,10 @@ version: '0.1'
 owner: commerce-squad
 status: Draft
 last_updated: 2026-07-19
-source: docs/work/checkout-foundation/design.md
+source: docs/work/checkout-foundation/tdd.md
 related:
   - docs/product/backlog.md
-  - docs/work/checkout-foundation/design.md
+  - docs/work/checkout-foundation/tdd.md
   - docs/architecture/solution.md
 ---
 
@@ -19,7 +19,7 @@ related:
 
 **Epic:** CHK01 | **Phase:** Now / Alpha | **Priority:** P0 | **Estimate:** 16 points across 2 stories / 6 tasks
 
-**Source.** `./design.md`, epic CHK01 in `docs/product/backlog.md`.
+**Source.** `./tdd.md`, epic CHK01 in `docs/product/backlog.md`.
 
 **Scope.** Checkout module scaffold, orders API client, view model and mapper,
 the `(checkout)` route group, and a page shell that renders a real cart behind
@@ -50,7 +50,7 @@ end to end.
   - **Depends on:** —
   - **Deliverable:** `modules/checkout/` with `logic/types.ts` defining
     `OrderViewModel` and all slice types; separate server and client barrels.
-  - **Design:** [`./design.md`](design.md#21-module-layout)
+  - **Design:** [`./tdd.md`](tdd.md#21-module-layout)
   - **Acceptance (Gherkin):**
 
     ```gherkin
@@ -77,7 +77,7 @@ items I am about to buy, **so that** I can confirm my order before paying.
 `/checkout`, and see those items rendered. Signed out, the same URL redirects to
 login.
 
-**Priority:** P0 | **Design:** [`./design.md`](design.md#24-route-group)
+**Priority:** P0 | **Design:** [`./tdd.md`](tdd.md#24-route-group)
 
 **Acceptance (Gherkin):**
 
@@ -129,7 +129,7 @@ reaching a real provider.
 **Independent test criterion.** Invoke `placeOrder` from the checkout page and
 observe a `NOT_IMPLEMENTED` result, with no outbound call in the network log.
 
-**Priority:** P1 | **Design:** [`./design.md`](design.md#25-server-actions)
+**Priority:** P1 | **Design:** [`./tdd.md`](tdd.md#25-server-actions)
 
 **Acceptance (Gherkin):**
 
@@ -185,7 +185,7 @@ available, no action needed.
 
 ### Stories to design and architecture
 
-| Story | design.md § | solution.md § |
+| Story | tdd.md § | solution.md § |
 | ----- | ----------- | ------------- |
 | S1 | §2.4 Route group | §6 Data model, §4 Building blocks |
 | S2 | §2.5 Server actions | §7 Error taxonomy |

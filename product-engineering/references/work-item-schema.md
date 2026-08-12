@@ -22,8 +22,8 @@ skill *behaviour*; ask the user when the mapping is unclear.
 
 | Type | Decomposes into | Carries its own AC? | Typical next skill |
 | ---- | ---------------- | -------------------- | ------------------- |
-| `epic` | Stories and tasks | No — AC lives on its stories | **design**, **tasks** |
-| `story` | Tasks (sub-tasks) | Yes — the primary AC holder | **tasks**, **design** (if it needs its own) |
+| `epic` | Stories and tasks | No — AC lives on its stories | **tdd**, **tasks** |
+| `story` | Tasks (sub-tasks) | Yes — the primary AC holder | **tasks**, **tdd** (if it needs its own) |
 | `task` | Nothing further (it's the unit of work) | Inherits its story's AC, or carries its own if foundational | **implement** |
 | `bug` | Nothing further, unless large enough to need sub-tasks | Yes — reproduction as Given/When, fix as Then | **implement** |
 | `spike` | Nothing further — it is time-boxed | No — it produces a decision or document, not code | **implement** (the spike itself), then **adr** or **tasks** for what it unblocks |
@@ -65,8 +65,8 @@ scope the product strategy would not support — say so rather than writing it.
 ## Story
 
 A user-visible outcome inside an epic. **Carries the acceptance criteria.**
-Anything can get a `design.md` at story level if the work warrants it — run
-`design {story-id}` directly; it writes to `docs/work/{story-id}/design.md`,
+Anything can get a `tdd.md` at story level if the work warrants it — run
+`tdd {story-id}` directly; it writes to `docs/work/{story-id}/tdd.md`,
 citing the parent epic by ID rather than nesting under its folder.
 
 | Field | Required | Legal values |
@@ -76,7 +76,7 @@ citing the parent epic by ID rather than nesting under its folder.
 | Independent test criterion | Yes | One sentence: what a reviewer can demonstrate to confirm it is done |
 | Priority | Yes | `P0`–`P3` |
 | Acceptance | Yes | ≥1 Gherkin scenario; EARS where a rule is clearer (see [acceptance-criteria.md](acceptance-criteria.md)) |
-| Design | Recommended | Link to the `design.md` section it implements — either the parent epic's or its own |
+| Design | Recommended | Link to the `tdd.md` section it implements — either the parent epic's or its own |
 
 **Story 1 is the MVP** — the thinnest slice that proves the epic works. Mark it.
 
@@ -103,7 +103,7 @@ parent story. Inherits its story's acceptance criteria when it has one.
 | Owner | No | `TBD` acceptable for an unassigned queue |
 | Depends on | No | Other work item IDs, comma separated. Must be acyclic |
 | Labels | No | `phase:{phase}`, plus free tags. Not `type:` — a task's type is the `## Type` field above, not a label |
-| Design | Recommended | `./design.md#section` |
+| Design | Recommended | `./tdd.md#section` |
 
 ### Foundational tasks
 

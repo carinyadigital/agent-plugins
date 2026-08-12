@@ -109,14 +109,17 @@ resolving or reading filesystem artefacts:
 
 1. Prefer the `docs/` path from
    [delivery-conventions.md](delivery-conventions.md#document-layout).
-2. If that file is absent, fall back to the same basename under `.agency/`
-   (for example `docs/product/product.md` → `.agency/product.md`;
-   `docs/work/{work-id}/design.md` → `.agency/work/{work-id}/design.md`).
+2. If that file is absent, fall back to the legacy `.agency/` equivalent,
+   preserving nested layout where it existed (for example
+   `docs/product/product.md` → `.agency/product.md`;
+   `docs/work/{work-id}/tdd.md` → `.agency/work/{work-id}/tdd.md` or a legacy
+   `design.md`;
+   `docs/architecture/solution.md` → `.agency/architecture/solution.md`).
 3. Write new artefacts only under `docs/` — never dual-write, and never write
    delivery artefacts into `.agency/` as a fallback.
 
-Apply this to `product.md`, `roadmap.md`, `backlog.md`, `design.md`,
-`tasks.md` (as input), and `solution.md`. Do not dual-path
+Apply this to `product.md`, `roadmap.md`, `backlog.md`, `tdd.md` (and legacy
+`design.md`), `tasks.md` (as input), and `solution.md`. Do not dual-path
 `.agency/target.json` or `.agency/reviews/`.
 
 ## ID and path resolution

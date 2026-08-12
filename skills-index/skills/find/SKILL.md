@@ -52,7 +52,7 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | Loop | Order |
 | ---- | ----- |
 | Strategy → delivery | `/product-management:product` → `roadmap` → `tasks --product` → `sprint-planning` → `validate` |
-| Engineering delivery | `/product-engineering:design` → `implement` → `code-review` → `/product-design:ux-design-review` → `/product-management:validate` |
+| Engineering delivery | `/product-engineering:tdd` → `implement` → `code-review` → `/product-design:ux-design-review` → `/product-management:validate` |
 | Brand → content | `/brand-creative:brand-voice` → `/content-marketing:content-calendar` |
 
 ## Catalogue
@@ -74,7 +74,7 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | product-management | validate | Work-item sign-off vs AC |
 | product-engineering | solution | Architecture solution.md |
 | product-engineering | adr | Architecture decision records |
-| product-engineering | design | Work-item design.md |
+| product-engineering | tdd | Work-item tdd.md |
 | product-engineering | implement | Implement a task |
 | product-engineering | code-review | Branch / PR code review |
 | product-engineering | code-review-fix | Address review findings |

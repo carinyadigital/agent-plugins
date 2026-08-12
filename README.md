@@ -402,8 +402,8 @@ v2 marketplace commands (`registry-browser`, `skill-installer`, `skills-qa`, …
 | `/product-engineering:merge-request` | merge-request | Open merge request for implemented work |
 | `/product-engineering:merge-request-babysit` | merge-request-babysit | Drive an open MR/PR to merge-ready |
 | `/product-engineering:merge-request-review` | merge-request-review | Review an MR/PR as its reviewer |
-| `/product-engineering:ralph-loop-setup` | ralph-loop-setup | Seed and configure an autonomous delivery loop |
-| `/product-engineering:ralph-loop` | ralph-loop | Run an autonomous work-item delivery loop |
+| `/ralph-loop:ralph-loop-setup` | ralph-loop-setup | Seed and configure an autonomous delivery loop |
+| `/ralph-loop:ralph-loop` | ralph-loop | Run an autonomous work-item delivery loop |
 | `/product-engineering:docs-review` | docs-review | Read-only document-set quality and consistency review |
 | `/product-engineering:debug` | debug | Bug investigation and fix |
 | `/product-engineering:tech-debt` | tech-debt | Technical debt audit and prioritization |

@@ -32,7 +32,7 @@ Prefer `docs/`; fall back to `.agency/` when reading legacy artefacts. Write del
 Resolve configuration and seed the loop files. **Never start the loop.** Setup
 ends with a summary and an instruction to run `/ralph-loop start`.
 
-Writing is done by `${CLAUDE_PLUGIN_ROOT}/${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh`, not by hand. Your job is to
+Writing is done by `${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh`, not by hand. Your job is to
 resolve values and call it. Hand-authoring the loop file reintroduces the
 unsubstituted-placeholder failure the script exists to prevent: a stray
 `{{MAX_ITERATIONS}}` in the frontmatter fails the hook's numeric validation and
@@ -43,11 +43,13 @@ silently deletes the loop.
 Ask only what you cannot resolve yourself. Use structured questions, not prose.
 
 1. **Preset.** If not given:
-   - `engineering-delivery` — contributed by **product-engineering** (install that
-     plugin). Drives a work item through implement, review, validate, and merge
-     request, one task per iteration.
-   - `ad-hoc` — repeat a single prompt until it is done.
-   - `custom` — define your own steps.
+   - `engineering-delivery` — contributed by **product-engineering** (requires that
+     plugin installed). Drives a work item through implement, review, validate, and
+     merge request, one task per iteration. If the preset file cannot be resolved,
+     refuse and offer:
+     `Install: /plugin install product-engineering@carinya-plugins` then re-run setup.
+   - `ad-hoc` — repeat a single prompt until it is done (no companion plugins).
+   - `custom` — define your own steps (no companion plugins).
 
 2. **Target.** The work item ID for engineering delivery; the task prompt
    for ad-hoc; the step list for custom.
@@ -106,7 +108,7 @@ name, what to do, and which step comes next. See
 Call the script. Every template value goes through `--set`:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh \
+${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh \
   --agent claude \
   --preset engineering-delivery \
   --run-id "{work-id}-$(date -u +%Y%m%d-%H%M%S)" \

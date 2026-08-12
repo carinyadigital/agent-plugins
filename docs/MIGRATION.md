@@ -3,7 +3,7 @@
 Consolidating `carinyaparc/skills` into `carinyaparc/digital-agency-plugins`, restructuring the
 plugin set, and dissolving `agency-hub`.
 
-**Status:** Phase 1 done · Phase 2 done on branch · Phases 0/3/4 open
+**Status:** Phase 1 done · Phase 2 done · Phase 3 done · Phases 0/4 open
 **Decisions locked:** repo `carinya-plugins` · marketplace `carinya-plugins` · no hub · 8 plugins
 
 ---
@@ -212,7 +212,9 @@ One plugin per commit (this branch). Each uses `git mv` so history follows.
 
 ## Phase 3 — Fix the seams
 
-- [ ] **Cross-plugin contracts** — write them down. Live edges after restructure:
+### Status: DONE
+
+- [x] **Cross-plugin contracts** — write them down. Live edges after restructure:
   - `ralph-loop` engineering preset → `product-engineering` (implement, code-review,
     code-review-fix, merge-request), `product-design` (ux-design-review),
     `product-management` (validate)
@@ -220,15 +222,23 @@ One plugin per commit (this branch). Each uses `git mv` so history follows.
   - `product-management` → `product-engineering:solution` for architecture
   - Each edge needs: graceful degradation when the other plugin isn't installed, and a clear
     "install X" message rather than a dangling `/namespace:skill` reference
-- [ ] **Update `sync-references.py`** — `PRACTICE_PLUGINS` and `CANONICAL` both hardcode the old
+  - Documented in `docs/CROSS-PLUGIN-CONTRACTS.md`; degradation patterns in conventions and key skills
+- [x] **Update `sync-references.py`** — `PRACTICE_PLUGINS` and `CANONICAL` both hardcode the old
       set, and `practice-setup-framework.md`'s canonical source is `brand-creative`. Repoint.
-- [ ] **Verify no plugin references `../` outside its own directory.** Claude Code copies each
+  - Canonical source moved to repo-root `references/`; framework generalised for all practices
+- [x] **Verify no plugin references `../` outside its own directory.** Claude Code copies each
       plugin dir to a cache; `../shared/` silently won't exist at runtime. Grep every
       `references/` link and every hook script path.
-- [ ] **Version reset.** Plugins are at 0.1.1–0.3.2 with no shared scheme. Set all to `0.4.0` at
+  - `validate.py` check `crossPluginPaths`; `seed-ralph-loop.sh` sibling preset lookup allowlisted
+- [x] **Version reset.** Plugins are at 0.1.1–0.3.2 with no shared scheme. Set all to `0.4.0` at
       cutover, or start renamed/new plugins at `0.1.0` and note the lineage in each README.
-- [ ] **`.mcp.json` per new plugin** — `product-design` gains playwright; confirm
+  - All nine plugins at `0.4.0`; lineage in `CHANGELOG.md`
+- [x] **`.mcp.json` per new plugin** — `product-design` gains playwright; confirm
       `product-management` still needs both atlassian and amplitude after the merge.
+  - Verified: product-design (figma + playwright), product-management (atlassian + amplitude)
+
+**Exit:** cross-plugin edges documented with install-aware degradation; sync-references
+repointed; cache-unsafe paths gated in CI; unified `0.4.0` version line.
 
 ---
 

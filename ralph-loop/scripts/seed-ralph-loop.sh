@@ -182,7 +182,7 @@ if [[ -f "$ACTIVE" && $FORCE -eq 0 ]]; then
   ' "$ACTIVE" 2>/dev/null)"
   if [[ "$EXISTING_ITER" =~ ^[0-9]+$ ]] && [[ "$EXISTING_ITER" -gt 1 ]]; then
     printf 'seed-ralph-loop: a loop is already running at iteration %s.\n' "$EXISTING_ITER" >&2
-    printf '  Inspect it with /product-engineering:ralph-loop status, stop it with /product-engineering:ralph-loop cancel,\n' >&2
+    printf '  Inspect it with /ralph-loop:ralph-loop status, stop it with /ralph-loop:ralph-loop cancel,\n' >&2
     printf '  or pass --force to overwrite it.\n' >&2
     exit 2
   fi
@@ -455,7 +455,7 @@ Ralph loop seeded.
   iterations: $(if [[ "$MAX_ITERATIONS" == "0" ]]; then echo "unlimited (hard ceiling 200)"; else echo "$MAX_ITERATIONS"; fi)
   promise:    $PROMISE_TEXT
 
-The loop is seeded but NOT running. Start it with: /product-engineering:ralph-loop start
+The loop is seeded but NOT running. Start it with: /ralph-loop:ralph-loop start
 EOF
 
 exit 0

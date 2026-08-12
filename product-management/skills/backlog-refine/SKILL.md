@@ -104,7 +104,7 @@ and record the blocker on anything that slipped.
 - [ ] Every task names a deliverable with a concrete file path, an estimate, and a status
 - [ ] Task IDs unique and unchanged; `Depends on` cites real IDs
 - [ ] No dependency cycles; `[P]` markers only where genuinely parallel
-- [ ] Stories trace to `design.md` sections; nothing outside the epic's scope
+- [ ] Stories trace to `tdd.md` sections; nothing outside the epic's scope
 - [ ] Story 1 identified as the MVP
 - [ ] No new epics, no architecture rewrite
 
@@ -126,7 +126,7 @@ A grooming pass MUST NOT:
 - Create a backlog, or write new stories and tasks from a spec → **tasks**
 - Commit scope to a sprint → **sprint-planning**
 - Verify acceptance criteria against the codebase → **validate**
-- Rewrite architecture or design → **solution**, **design**
+- Rewrite architecture or design → **solution**, **tdd**
 - Re-sequence delivery phases or change exit criteria → **roadmap**
 - Restructure the whole artefact inline — that is **tasks** rewriting it
 - Invent delivery evidence, velocity, or estimates not present in the context

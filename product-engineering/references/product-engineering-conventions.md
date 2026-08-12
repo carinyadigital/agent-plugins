@@ -57,9 +57,19 @@ implementation, invoke companion skills directly — do not bundle local copies:
 | Sprint plan | `/product-management:sprint-planning` |
 | Sprint retrospective | `/product-management:sprint-retro` |
 | Work-item completion sign-off | `/product-management:validate` |
-| Which planning skill to use | `/product-management:skills-index` |
+| Which planning skill to use | `/skills-index:find` |
 
 Recommend `product-management` as a co-install. Document in CONNECTORS.md.
+
+When a companion plugin is **not installed**, do not emit a bare slash command.
+State what you can do without it, then:
+
+```text
+Install: /plugin install product-management@carinya-plugins
+Then run: /product-management:<skill> …
+```
+
+See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 
 ## Document layout
 
@@ -150,7 +160,10 @@ Work-item sign-off uses `/product-management:validate` (companion skill), not a 
 | Review MR/PR as reviewer | **merge-request-review** | Senior FE / Principal FE |
 | UX review of implemented UI | **/product-design:ux-design-review** | Frontend Engineer |
 | Address UX review feedback | **/product-design:ux-design-fix** | Frontend Engineer |
-| Run autonomous delivery loop | **ralph-loop** | Frontend Engineer |
+
+When `product-design` is not installed: continue with code review only; recommend
+`/plugin install product-design@carinya-plugins` before UI-heavy work.
+| Run autonomous delivery loop | **/ralph-loop:ralph-loop** | Frontend Engineer |
 | Review a document set | **docs-review** | Principal Architect |
 | Bug investigation | **debug** | WebOps Engineer |
 | Technical debt audit | **tech-debt** | Principal Architect |

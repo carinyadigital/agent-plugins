@@ -65,7 +65,7 @@ Follow existing practice plugins (e.g. `product-engineering/.mcp.json`) for stru
 
 ## Syncing shared references
 
-After editing shared meta-framework files (`instance-profile-template.md`, `setup-framework.md`):
+After editing shared meta-framework files in `references/` (`instance-profile-template.md`, `practice-setup-framework.md`):
 
 ```bash
 python3 scripts/sync-references.py        # propagate to practice plugin copies
@@ -94,6 +94,7 @@ python3 scripts/plugin-check.py <dir>  # fast check for one practice plugin
 | Markdown cross-refs | Broken relative links in skill files |
 | Evals schema | Malformed `evals/evals.json` or `evals/trigger-queries.json` |
 | JSON sanity | Any `*.json` in the repo that fails to parse |
+| Cross-plugin paths | Sibling-plugin `../` references inside plugin trees (cache-unsafe) |
 | Legacy artefact paths | References to legacy delivery paths under docs/product, docs/work, or dot-digital-agency (use `.agency/` instead) |
 
 Options:

@@ -67,6 +67,14 @@ stay under `.agency/` permanently.
 Architecture and engineering skills live in `product-engineering`
 (`/product-engineering:solution`, `design`, `implement`, `code-review`, `docs-review`, …).
 
+When `product-engineering` is not installed, continue from user input. At
+architecture boundaries:
+
+```text
+Install: /plugin install product-engineering@carinya-plugins
+Then run: /product-engineering:solution
+```
+
 ## Agency layout notes
 
 Repo identity lives in `.agency/target.json` (`name`, `instance`, `target`) — not inferred from the directory name.

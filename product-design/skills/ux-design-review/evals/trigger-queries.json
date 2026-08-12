@@ -35,7 +35,7 @@
     "note": "code-review — correctness, not rendered experience"
   },
   {
-    "query": "Review the design.md document for the checkout epic.",
+    "query": "Review the tdd.md document for the checkout epic.",
     "should_trigger": false,
     "note": "docs-review — reviews a document, not rendered UI"
   },

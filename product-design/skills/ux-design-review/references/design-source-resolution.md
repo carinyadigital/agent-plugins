@@ -14,7 +14,7 @@ they complement (a Figma node for layout + a tokens file for values):
    spec link.
 2. **Linked from the work item** — a Figma/design link in the PR or MR
    description, the linked issue/ticket, or a local spec file
-   (`**/design.md`, `SPEC*.md`) associated with the change.
+   (`**/tdd.md`, `**/design.md`, `SPEC*.md`) associated with the change.
 3. **Figma via MCP** — when a Figma MCP server is connected (official Dev
    Mode server, remote or desktop) and a node URL/ID is known:
    - screenshot of the node (`get_image` / `get_screenshot`) — visual truth;

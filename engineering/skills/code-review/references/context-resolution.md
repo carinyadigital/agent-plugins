@@ -20,7 +20,7 @@ Resolve in priority order, stopping at the first that yields a result:
      issue URL) via the matching CLI or MCP tool to fetch its description and
      acceptance criteria, if one is linked.
 3. **Local spec file** — glob for a task/spec file colocated with the change:
-   `TASK.md`, `**/tasks.md`, `**/tdd.md`, `**/design.md`, `SPEC.md`,
+   `TASK.md`, `**/TASKS.local.md`, `**/tdd.md`, `**/design.md`, `SPEC.md`,
    `ISSUE.md`, a task
    section inside `README.md`, or any project-specific equivalent named in
    `AGENTS.md`/`CLAUDE.md`.
@@ -56,7 +56,7 @@ stop at the first match (or use several if more than one is relevant):
 - Architecture references: `**/solution.md`, `ARCHITECTURE.md`,
   `docs/architecture/**`, ADR/decision folders (`**/decisions/**`,
   `**/adr/**`, `ADR-*.md`).
-- A `docs/work/{work-id}/` (or similar) folder is one possible layout among
+- A `specs/{work-short-name}/` (or similar) folder is one possible layout among
   many — treat it as a candidate, never a requirement.
 
 If nothing is found, scope is judged against the resolved intent only (does
@@ -126,7 +126,7 @@ Schema:
       "work_item": "checkout-foundation",
       "last_reviewed_sha": "a1b2c3d",
       "reviewed_at": "2026-07-19T09:00:00Z",
-      "report": "docs/work/checkout-foundation/reviews/code-review-01.local.md",
+      "report": "specs/checkout-foundation/reviews/code-review-01.local.md",
       "findings": [
         {
           "id": "cr-001",

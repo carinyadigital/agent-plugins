@@ -133,7 +133,8 @@ The `name` field carries target repo identity (typically the git repo slug). The
 config/target.json         ← binding pointer + repo identity (name, instance, target)
 docs/product/              ← product.md, roadmap.md, backlog.md
 docs/architecture/         ← solution.md, decisions/
-docs/work/                 ← work-item folders created by delivery skills
+specs/                     ← work-item folders (tdd.md, TASKS.local.md)
+docs/work/                 ← sprint plan/retro; SEO research (not work-item specs)
 reviews/                   ← review tracking JSON (gitignored, never committed)
 docs/reviews/              ← agent byproducts (competitor-scan, metrics, digests)
 ```

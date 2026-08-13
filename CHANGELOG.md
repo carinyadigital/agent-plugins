@@ -8,9 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Work-item specs path
+
+- **BREAKING (`engineering` `tdd` / `implement` / review / QA, `product-management` `tasks` / `validate` / `backlog-refine` / sprint skills, `architecture` `adr` / `solution`, `design` `ux-design-review` / `ux-design-fix`, `ralph-loop`):** Work-item artefacts move from `docs/work/{work-id}/` to `specs/{work-short-name}/`. `{work-short-name}` is kebab-case, at most two words, from the title (`specs/cart/`); fall back to `{work-id}` when a short name cannot be discovered. Writes `tdd.md` and, when a local task breakdown is required, `TASKS.local.md`. Numbered review verdicts move to `specs/{work-short-name}/reviews/`. Sprint plan/retro stay at `docs/work/sprint-{id}/`; SEO research stays at `docs/work/seo/`. Repo-root `TASKS.local.md` remains the Linear/Jira tracker pointer. No dual-read of the old `docs/work/{id}/tdd.md` or `tasks.md` paths.
+
 ### Review state path
 
-- **BREAKING (`engineering` `code-review` / `code-review-fix`, `design` `ux-design-review` / `ux-design-fix`):** Review tracking JSON moves from `docs/reviews/{skill}.local.json` to `reviews/{skill}.local.json`. Fallback branch-level reports and `review-learnings.local.md` move with it. `reviews/` is gitignored (`/reviews/`) and must never be committed; review skills append that entry when missing. Agent byproducts (digests, scans) stay under `docs/reviews/`. Numbered work-item verdicts stay at `docs/work/{id}/reviews/`.
+- **BREAKING (`engineering` `code-review` / `code-review-fix`, `design` `ux-design-review` / `ux-design-fix`):** Review tracking JSON moves from `docs/reviews/{skill}.local.json` to `reviews/{skill}.local.json`. Fallback branch-level reports and `review-learnings.local.md` move with it. `reviews/` is gitignored (`/reviews/`) and must never be committed; review skills append that entry when missing. Agent byproducts (digests, scans) stay under `docs/reviews/`. Numbered work-item verdicts live at `specs/{work-short-name}/reviews/`.
 
 ### Path cleanup
 

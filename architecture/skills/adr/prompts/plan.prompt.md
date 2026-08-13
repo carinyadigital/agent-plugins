@@ -8,7 +8,7 @@ Plan runs in two directions, and the argument decides which:
 
 - **Forward (no work-item argument)** — survey `product.md` and `solution.md`
   for decisions that must be made *before* technical design can proceed.
-- **Harvest (`adr plan <work-id>`)** — read `docs/work/{work-id}/tdd.md`
+- **Harvest (`adr plan <work-id>`)** — read `specs/{work-short-name}/tdd.md`
   for decisions that were *already made* during delivery and never
   formalised. A decision made on a work item and left only in `tdd.md` is
   invisible to every future reader of the architecture.
@@ -30,7 +30,7 @@ Resolve `{work-id}` per
 [work-item-resolution.md](../../../references/work-item-resolution.md) —
 source system, canonical ID, and type — before reading anything else.
 
-1. Read `docs/work/{work-id}/tdd.md` and collect every decision it records or
+1. Read `specs/{work-short-name}/tdd.md` and collect every decision it records or
    implies — explicit ADR candidates, technology choices, integration patterns,
    contract shapes, and data-model commitments.
 2. Cross-check each against the register's **Accepted** table and against

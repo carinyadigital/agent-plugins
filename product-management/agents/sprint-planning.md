@@ -57,5 +57,5 @@ Risks: [...]
 ## What it does NOT do
 
 - Does not finalise or commit sprint scope — the team (or user) confirms.
-- Does not write task Gherkin — that is **tasks** under `docs/work/{work-id}/tasks.md`.
+- Does not write task Gherkin — that is **tasks** under `specs/{work-short-name}/TASKS.local.md`.
 - Does not run the retro — that is **sprint-retrospective**.

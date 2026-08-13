@@ -46,7 +46,7 @@ skill; read the artefact directly when present.
 artifact-consumption pattern as `brand-guide.md`. No install dependency in either
 direction.
 
-Epic-level technical design (`docs/work/{work-id}/tdd.md`) remains owned by
+Epic-level technical design (`specs/{work-short-name}/tdd.md`) remains owned by
 `/engineering:tdd` — wireframes here are UX layout specs, not implementation
 design docs.
 
@@ -71,9 +71,9 @@ co-install. Document in CONNECTORS.md.
 | ------- | ---------- | ------ |
 | Page/flow layout, interaction notes | `<design-dir>/{page-or-flow}.md` | brand-guide, epic tdd.md |
 | Visual tokens, colour, typography | `brand/brand-guide.md` | wireframe specs |
-| Epic implementation spec, file list | `docs/work/{work-id}/tdd.md` | wireframe specs |
+| Epic implementation spec, file list | `specs/{work-short-name}/tdd.md` | wireframe specs |
 | Business strategy, personas | `docs/product/product.md` | wireframe specs |
-| Task Gherkin AC | `docs/work/{work-id}/tasks.md` | wireframe specs |
+| Task Gherkin AC | `specs/{work-short-name}/TASKS.local.md` | wireframe specs |
 
 Wireframe specs describe **what the user sees and does** at low fidelity. They do
 not prescribe component names, file paths, or API contracts — those belong in

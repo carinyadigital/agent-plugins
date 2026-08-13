@@ -1,6 +1,6 @@
 [
   {
-    "query": "Is epic CHK01 done? Validate against all acceptance criteria in tasks.md.",
+    "query": "Is epic CHK01 done? Validate against all acceptance criteria in TASKS.local.md.",
     "should_trigger": true
   },
   {

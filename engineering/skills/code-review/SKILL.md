@@ -22,7 +22,7 @@ allowed-tools:
   - Bash(gh:*)
   - Bash(glab:*)
   - Write(reviews/**)
-  - Write(docs/work/**/reviews/**)
+  - Write(specs/**/reviews/**)
   - Edit(.gitignore)
 argument-hint: "[branch-or-pr] [--since <sha>] [--full]"
 metadata:
@@ -34,7 +34,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `docs/work/` and `docs/architecture/`.
+Read artefacts from `specs/` and `docs/architecture/`.
 
 # Code review
 
@@ -45,7 +45,7 @@ report. You do not change it.
 
 This skill writes exactly two things: an entry in the shared review-tracking
 file at `reviews/code-review.local.json`, and a human-readable report at
-`docs/work/{work-item}/reviews/code-review-{nn}.local.md` (or
+`specs/{work-short-name}/reviews/code-review-{nn}.local.md` (or
 `reviews/code-review-{branch}.local.md` when no work item resolved). It
 MUST NOT modify source, tests, configuration, or documentation (except
 `.gitignore` as below), and MUST NOT commit, push, or comment on a provider.
@@ -256,13 +256,13 @@ schema in [references/context-resolution.md](references/context-resolution.md)
 1. Update (or create) this branch's entry in the shared
    `reviews/code-review.local.json`, so the next run can go incremental.
 2. Write the human-readable verdict to
-   `docs/work/{work-item}/reviews/code-review-{nn}.local.md`, where
+   `specs/{work-short-name}/reviews/code-review-{nn}.local.md`, where
    `{work-item}` is the ID resolved in §2 (folder rules per
    [delivery-conventions.md](../../references/delivery-conventions.md)) and
    `{nn}` is the next sequential two-digit number among existing
    `code-review-*.local.md` files in that folder (do not count other skills'
    reports). Numbered history applies only under
-   `docs/work/{work-item}/reviews/`. When no work item resolved, write
+   `specs/{work-short-name}/reviews/`. When no work item resolved, write
    `reviews/code-review-{branch}.local.md` instead (`/` in the branch
    name replaced with `-`) — latest-only: overwrite that file; do not invent
    numbering on the branch-level path.
@@ -306,7 +306,7 @@ missing.
 - Include business or strategic rationale that belongs in a product doc.
 - Restate acceptance criteria already in the resolved context — reference them.
 - Return PASS while CI failures are unacknowledged.
-- Modify any file outside `reviews/`, `docs/work/*/reviews/`, and `.gitignore`
+- Modify any file outside `reviews/`, `specs/*/reviews/`, and `.gitignore`
   (the `/reviews/` entry only).
 - Commit anything under `reviews/`.
 
@@ -374,4 +374,4 @@ One paragraph. Then: to action these findings, run `code-review-fix`.
 - [references/quality-checklist.md](references/quality-checklist.md) — timeless review checklist
 - [../../references/doc-comments.md](../../references/doc-comments.md) — comments must stand on their own; no issue systems or working documents
 - [references/security-checklist.md](references/security-checklist.md) — security pass, input provenance
-- [../tasks/references/delivery-conventions.md](../../references/delivery-conventions.md) — `docs/work/{work-id}/` path rules
+- [../tasks/references/delivery-conventions.md](../../references/delivery-conventions.md) — `specs/{work-short-name}/` path rules

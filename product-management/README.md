@@ -57,7 +57,7 @@ After instance bootstrap (or standalone):
 | **competitive-brief** | Competitive analysis — feature comparison, positioning, implications |
 | **metrics-review** | Metrics scorecard, trends, and recommended actions |
 | **stakeholder-update** | Status update tailored by audience, launch notes, risk escalation |
-| **tasks** | `--product` → `docs/product/backlog.md`; `{work-id}` → `docs/work/{work-id}/tasks.md` |
+| **tasks** | `--product` → `docs/product/backlog.md`; `{work-id}` → `specs/{work-short-name}/TASKS.local.md` |
 | **backlog-refine** | Groom backlog or judge sprint readiness |
 | **sprint-planning** | Sprint plan — `docs/work/sprint-{id}/plan.md` |
 | **sprint-retro** | Sprint retrospective — `docs/work/sprint-{id}/retrospective.md` |

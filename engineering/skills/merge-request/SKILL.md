@@ -33,7 +33,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `docs/work/` and `docs/architecture/`.
+Read artefacts from `specs/` and `docs/architecture/`.
 
 # Merge request
 
@@ -77,9 +77,9 @@ Gather the following before drafting anything, and reuse it for every later step
    1. Explicit argument — the user passed a work-item ID or URL.
    2. Linked work item — an issue/ticket referenced by branch name or recent
       commits, fetched via the provider CLI or MCP tool if available.
-   3. Local spec file — glob for `TASK.md`, `**/tasks.md`, `**/tdd.md`,
+   3. Local spec file — glob for `TASK.md`, `**/TASKS.local.md`, `**/tdd.md`,
       `**/design.md`, `SPEC.md`, or a project-specific equivalent named in
-      `AGENTS.md`/`CLAUDE.md`. A `docs/work/{work-id}/` layout is one candidate
+      `AGENTS.md`/`CLAUDE.md`. A `specs/{work-short-name}/` layout is one candidate
       among many — never a requirement.
    4. Fallback — `git log` on the branch, the branch name, and the diff itself.
       Always available.

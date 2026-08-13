@@ -9,13 +9,13 @@ Skills that write under `docs/product/` should read this file when resolving pat
 docs/product/               product.md, roadmap.md, backlog.md
 docs/research/              synthesis, competitive briefs, metrics reviews (optional)
 docs/updates/               stakeholder updates (optional)
-docs/work/{work-id}/        tdd.md, tasks.md — see delivery-conventions.md
+specs/{work-short-name}/        tdd.md; TASKS.local.md when required — see delivery-conventions.md
 docs/work/sprint-{id}/      plan.md, retrospective.md — see delivery-conventions.md
 ```
 
 Override paths when the user names them explicitly in the request.
 
-Decomposition artefacts (`docs/product/backlog.md`, `docs/work/{work-id}/`,
+Decomposition artefacts (`docs/product/backlog.md`, `specs/{work-short-name}/`,
 `docs/work/sprint-{id}/`) are owned by this plugin's delivery skills
 (`tasks`, `backlog-refine`, `sprint-planning`, `sprint-retro`, `validate`).
 Strategy skills read them but do not write them — see `delivery-conventions.md`.
@@ -39,7 +39,7 @@ roadmap via `/product-management:tasks --product`.
 | Metrics scorecard, trends, recommended actions | metrics review | stakeholder update |
 | Audience-tailored status, launch notes, risk escalation | stakeholder update | metrics review |
 | Epic list, deps, points, work paths | `docs/product/backlog.md` (tasks) | product, roadmap |
-| Story statement, test criterion, Gherkin AC | `docs/work/{work-id}/tasks.md` (tasks) | product artefacts |
+| Story statement, test criterion, Gherkin AC | `specs/{work-short-name}/TASKS.local.md` (tasks) | product artefacts |
 
 ## Skill routing (near-misses)
 

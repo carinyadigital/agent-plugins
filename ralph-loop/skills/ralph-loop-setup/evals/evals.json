@@ -8,7 +8,7 @@
       "assertions": [
         "Calls scripts/seed-ralph-loop.sh rather than hand-writing active.md",
         "Passes --agent matching the host (claude or cursor)",
-        "Task sequence respects dependencies declared in tasks.md",
+        "Task sequence respects dependencies declared in TASKS.local.md",
         "Proposes max_iterations sized to the task count, not the bare default of 50",
         "Writes into .claude/loop/ or .cursor/loop/ with no root-level pointer file",
         "Does not start the loop, execute steps, or launch sub-agents",
@@ -19,7 +19,7 @@
     {
       "id": 2,
       "prompt": "Set up a ralph loop for epic checkout-foundation.",
-      "context": "docs/work/checkout-foundation/tasks.md does not exist.",
+      "context": "specs/checkout-foundation/TASKS.local.md does not exist.",
       "expected_output": "Fails loudly, naming the missing file, and stops. Does not invent a task sequence or seed a partial loop.",
       "assertions": [
         "Names the missing file explicitly",

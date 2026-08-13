@@ -26,7 +26,7 @@ allowed-tools:
   - Bash(node:*)
   - Write(.ux-review/**)
   - Write(reviews/**)
-  - Write(docs/work/**/reviews/**)
+  - Write(specs/**/reviews/**)
   - Edit(.gitignore)
 argument-hint: "[branch-or-pr-or-url] [figma-url] [--full]"
 metadata:
@@ -38,7 +38,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `docs/work/` and `docs/architecture/`.
+Read artefacts from `specs/` and `docs/architecture/`.
 
 # UX design review
 
@@ -54,7 +54,7 @@ a frontend change, run both.
 This skill writes three things: the capture bundle under `.ux-review/` (gitignored,
 never committed), an entry in the shared review-tracking file at
 `reviews/ux-design-review.local.json`, and a human-readable report at
-`docs/work/{work-item}/reviews/ux-design-review-{nn}.local.md` (or
+`specs/{work-short-name}/reviews/ux-design-review-{nn}.local.md` (or
 `reviews/ux-design-review-{branch}.local.md` when no work item resolved). It
 MUST NOT modify source, styles, tests, or configuration (except `.gitignore` as
 below), and MUST NOT commit or publish.
@@ -239,13 +239,13 @@ Produce the verdict below, then persist review state per
    `reviews/ux-design-review.local.json`, including the design source ref,
    accepted deviations, and unreachable states.
 2. Write the human-readable verdict to
-   `docs/work/{work-item}/reviews/ux-design-review-{nn}.local.md`, where
+   `specs/{work-short-name}/reviews/ux-design-review-{nn}.local.md`, where
    `{work-item}` is the ID resolved in §2 (folder rules per
    product-management `delivery-conventions.md`) and
    `{nn}` is the next sequential two-digit number among existing
    `ux-design-review-*.local.md` files in that folder (do not count other
    skills' reports). Numbered history applies only under
-   `docs/work/{work-item}/reviews/`. When no work item resolved, write
+   `specs/{work-short-name}/reviews/`. When no work item resolved, write
    `reviews/ux-design-review-{branch}.local.md` instead (`/` in the
    branch name replaced with `-`) — latest-only: overwrite that file; do not
    invent numbering on the branch-level path.
@@ -279,7 +279,7 @@ Produce the verdict below, then persist review state per
 
 ## Must not
 
-- Modify any file outside `.ux-review/`, `reviews/`, `docs/work/*/reviews/`,
+- Modify any file outside `.ux-review/`, `reviews/`, `specs/*/reviews/`,
   and `.gitignore` (the `/reviews/` entry only).
 - Commit captures or anything under `reviews/`.
 - Mark PASS while live checks were skipped without a coverage statement naming exactly
@@ -350,4 +350,4 @@ One paragraph. Then: to action these findings, run `ux-design-fix`.
 - [references/finding-classification.md](references/finding-classification.md) — categories, severity, confidence, risk matrix
 - [references/accessibility-checklist.md](references/accessibility-checklist.md) — WCAG 2.2 AA, what automation never catches
 - [references/ux-heuristics.md](references/ux-heuristics.md) — the bar when no design source exists
-- product-management `delivery-conventions.md` — `docs/work/{work-id}/` path rules (companion plugin)
+- product-management `delivery-conventions.md` — `specs/{work-short-name}/` path rules (companion plugin)

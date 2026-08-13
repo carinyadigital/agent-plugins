@@ -79,7 +79,7 @@ Update this branch's entry in place; do not touch any other entry.
       "last_reviewed_sha": "a1b2c3d",
       "design_source_ref": "figma:123:456@v12",
       "reviewed_at": "2026-07-19T09:00:00Z",
-      "report": "docs/work/checkout-foundation/reviews/ux-design-review-01.local.md",
+      "report": "specs/checkout-foundation/reviews/ux-design-review-01.local.md",
       "findings": [
         {
           "id": "ux-001",

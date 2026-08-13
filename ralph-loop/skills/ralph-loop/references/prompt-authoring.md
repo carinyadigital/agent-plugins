@@ -65,7 +65,7 @@ If any test fails, debug and fix before adding anything new.
 Break large ad-hoc goals into ordered phases inside the one prompt —
 `Phase 1: auth (tests green). Phase 2: catalogue. Phase 3: cart.` — and
 require phases to be completed in order. For anything with real task
-structure, prefer an epic loop: tasks.md + the step machine is exactly
+structure, prefer an epic loop: TASKS.local.md + the step machine is exactly
 this, with budgets and reviews built in.
 
 ## When a Ralph loop is the wrong tool

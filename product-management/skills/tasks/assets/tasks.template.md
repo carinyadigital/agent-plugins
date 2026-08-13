@@ -4,10 +4,10 @@ This template covers the filesystem-only fallback (no Linear/Jira resolved).
 See references/work-item-resolution.md — tracker-backed repos use the
 tracker's own key as the work-id and may create sub-tasks as tracker
 sub-issues instead of markdown lines.
-Used at two levels: an epic's own tasks.md (stories + tasks, §4 present), or
-a story's own tasks.md when it gets further breakdown (sub-tasks only — omit
+Used at two levels: an epic's own TASKS.local.md (stories + tasks, §4 present), or
+a story's own TASKS.local.md when it gets further breakdown (sub-tasks only — omit
 §4 Stories and go straight from §3 to a flat sub-task list shaped like §5).
-DO NOT INCLUDE in tasks.md:
+DO NOT INCLUDE in TASKS.local.md:
   - Architecture narrative → cite solution.md §N.M
   - Design narrative → cite ./tdd.md#section
   - New epics → docs/product/backlog.md via tasks --product
@@ -18,7 +18,7 @@ Every task needs: deliverable with a concrete file path, estimate, status.
 -->
 ---
 type: Tasks
-epic_slug: <!-- kebab-case, max two words — filesystem-only folder name -->
+work_short_name: <!-- kebab-case, max two words; fall back to work_id when unknown -->
 work_id: <!-- e.g. CHK01, or the tracker key if one exists -->
 version: '0.1'
 owner: <!-- squad -->
@@ -27,7 +27,7 @@ last_updated: <!-- YYYY-MM-DD -->
 source: <!-- tdd.md | path to the spec this was decomposed from -->
 related:
   - docs/product/backlog.md
-  - docs/work/{work-id}/tdd.md
+  - specs/{work-short-name}/tdd.md
   - docs/architecture/solution.md
 ---
 
@@ -36,7 +36,7 @@ related:
 ## 1. Summary
 
 **Work item:** {WORK-ID} | **Phase:** | **Priority:** | **Estimate:** {n} points across {n} stories / {n} tasks
-<!-- Writing a story's own tasks.md instead of an epic's: drop stories/tasks
+<!-- Writing a story's own TASKS.local.md instead of an epic's: drop stories/tasks
      counts for a single sub-task count, and inherit Phase from the parent
      epic. -->
 
@@ -46,15 +46,15 @@ related:
 
 **Out of scope (this work item).** <!-- name the adjacent work deliberately excluded -->
 
-**MVP.** Story S1 — <!-- the thinnest slice that proves this work item works. Omit for a story's own tasks.md — there is no further MVP below a story. -->
+**MVP.** Story S1 — <!-- the thinnest slice that proves this work item works. Omit for a story's own TASKS.local.md — there is no further MVP below a story. -->
 
 ## 2. Conventions
 
 | Convention | Value |
 | ---------- | ----- |
-| Story ID (epic's tasks.md only) | `{WORK-ID}-S{n}` |
+| Story ID (epic's TASKS.local.md only) | `{WORK-ID}-S{n}` |
 | Task / sub-task ID | `{WORK-ID}-{nn}` — sequential within this file, never reused |
-| Story label | `[S{n}]` on every task with a parent story (epic's tasks.md only) |
+| Story label | `[S{n}]` on every task with a parent story (epic's TASKS.local.md only) |
 | Parallel marker | `[P]` — different files, no incomplete dependency |
 | Acceptance | Gherkin on the story, or on this work item itself when it has no stories; EARS where a rule is clearer |
 | Estimate | Story points, Fibonacci |
@@ -83,7 +83,7 @@ related:
 ## 4. Stories
 
 <!-- One subsection per story, in priority order. S1 is the MVP. Epic's
-     tasks.md only — a story's own tasks.md has no stories beneath it; go
+     TASKS.local.md only — a story's own TASKS.local.md has no stories beneath it; go
      straight from §3 to a flat sub-task list shaped like §5, prefixed
      [{WORK-ID}-nn]. -->
 

@@ -24,14 +24,14 @@ allowed-tools:
 argument-hint: "<work-id|spec-path|--product> [--ears] [--depth full] [--context <notes>]"
 metadata:
   author: Carinya Parc
-  version: "3.0"
+  version: "4.0"
   owner: product-management
   work_shape: orchestrate-delivery
   output_class: draft-for-review
   review_cadence: as-needed
 ---
 
-Read and write artefacts under `docs/`.
+Read and write artefacts under `docs/` and `specs/`.
 
 # Tasks
 
@@ -56,10 +56,10 @@ determines which artefacts you write.
 | Resolved type | Source | Writes |
 | ---- | ------ | ------ |
 | `--product` or no argument | `product.md`, `roadmap.md`, `solution.md` | `docs/product/backlog.md` (epics) — filesystem-only; tracker-backed repos create epics/initiatives in the tracker instead |
-| `epic` | Backlog row or tracker epic + `docs/work/{work-id}/tdd.md` | `docs/work/{work-id}/tasks.md` (stories + tasks) |
-| `story` | Its parent epic's context + the story itself | Sub-tasks — as tracker sub-issues when a tracker resolved, else `docs/work/{story-id}/tasks.md` in its own folder (alongside, not nested inside, its parent epic's) |
+| `epic` | Backlog row or tracker epic + `specs/{work-short-name}/tdd.md` | `specs/{work-short-name}/TASKS.local.md` (stories + tasks) |
+| `story` | Its parent epic's context + the story itself | Sub-tasks — as tracker sub-issues when a tracker resolved, else `specs/{work-short-name}/TASKS.local.md` in its own folder (alongside, not nested inside, its parent epic's) |
 | `task`, `bug`, `spike` | The item itself | Nothing to decompose by default — see below |
-| Path to a spec, RFC, PRD, or design doc | that file | **both** — epic row (or tracker epic) *and* its `tasks.md` |
+| Path to a spec, RFC, PRD, or design doc | that file | **both** — epic row (or tracker epic) *and* its `TASKS.local.md` when a local breakdown is required |
 | Pasted or described spec | `--context` | **both** |
 
 **`task`, `bug`, `spike` arguments.** These are leaf types (see
@@ -69,20 +69,21 @@ story or epic — did you mean to break it into sub-tasks anyway, or run
 `implement CHK01-04`?" A bug that genuinely spans more than one integration
 boundary is a legitimate exception; ask rather than assume either way.
 
-When a spec has no matching epic: **filesystem-only** — derive the slug
-(kebab-case, at most two words), assign the next internal ID in sequence, add
-the epic row to `backlog.md`, then write its `tasks.md`. Never invent an ID
-that collides with an existing one — read the backlog first. **Tracker
-resolved** — ask whether to create the epic in the tracker (if write access
-exists) or ask the user for the ID once they create it; never assign an
-internal ID to tracker-backed work.
+When a spec has no matching epic: **filesystem-only** — derive the
+work-short-name (kebab-case, at most two words), assign the next internal ID
+in sequence, add the epic row to `backlog.md`, then write its
+`TASKS.local.md`. Never invent an ID that collides with an existing one —
+read the backlog first. **Tracker resolved** — ask whether to create the epic
+in the tracker (if write access exists) or ask the user for the ID once they
+create it; never assign an internal ID to tracker-backed work. Write
+`TASKS.local.md` only when a local breakdown is required.
 
 If the user names a different output path, use it.
 
 ## References
 
 - [references/work-item-resolution.md](references/work-item-resolution.md) —
-  source system detection, the `TASKS.local.md` pointer, canonical ID rules,
+  source system detection, the repo-root `TASKS.local.md` pointer, canonical ID rules,
   and the ask-first checklist. Read this before resolving any argument.
 - [references/work-item-schema.md](references/work-item-schema.md) — epic,
   story, task, bug, and spike definitions with the legal value of every field
@@ -122,7 +123,7 @@ dependency graph, delivery risks. Later phases stay as placeholders unless
 `--depth full`. Use [assets/backlog.template.md](assets/backlog.template.md).
 Tracker-backed repos skip this artefact — the tracker holds the epic list.
 
-**Stories and tasks** (`tasks.md`) — use
+**Stories and tasks** (`TASKS.local.md`, when a local breakdown is required) — use
 [assets/tasks.template.md](assets/tasks.template.md):
 
 ```
@@ -138,7 +139,7 @@ Tracker-backed repos skip this artefact — the tracker holds the epic list.
 8. Handoff
 ```
 
-**Sub-tasks under a story** — written to the story's own `docs/work/{story-id}/tasks.md`,
+**Sub-tasks under a story** — written to the story's own `specs/{work-short-name}/TASKS.local.md`,
 same shape as tasks under an epic, one level down: each sub-task names a
 deliverable and a file path, inherits the story's Gherkin, and is numbered
 `{STORY-ID}-{nn}`, sequential within that file (see
@@ -182,9 +183,10 @@ writing. Below that, write directly; the file diff is reviewable.
   user on any ambiguity, never guessed
 - [ ] Canonical ID used as-is when a tracker resolved; no parallel internal ID
   invented for tracker-backed work
-- [ ] Filesystem-only: every `docs/work/{slug}/` path in `backlog.md` uses a
+- [ ] Filesystem-only: every `specs/{work-short-name}/` path in `backlog.md` uses a
   kebab-case title slug (at most two words — one hyphen), not the internal ID
-  (`CHK01` is not a slug; `checkout-foundation` is)
+  (`CHK01` is not a slug; `checkout-foundation` is). Fall back to `{work-id}`
+  only when a short name cannot be discovered
 - [ ] Every story has a statement, an independent test criterion, and ≥1 Gherkin scenario
 - [ ] Every `Then` clause is observable
 - [ ] Every task names a deliverable and at least one concrete file path
@@ -201,12 +203,12 @@ This skill decomposes. It MUST NOT:
 - Guess the source system, ID, or type when ambiguous — ask, per
   work-item-resolution.md's ask-first checklist
 - Groom an existing backlog or judge sprint readiness → **backlog-refine**
-- Write design narrative at any level → `docs/work/{work-id}/tdd.md` via **tdd**
+- Write design narrative at any level → `specs/{work-short-name}/tdd.md` via **tdd**
 - Write architecture, NFRs, or cross-epic patterns → `solution.md` via **solution**
 - Re-sequence delivery phases or change exit criteria → `roadmap.md` via **roadmap**
 - Change business strategy, personas, or outcomes → `product.md` via **product**
 - Write code → **implement**
-- Paste full Gherkin into `backlog.md` — epic scope only; AC lives in `tasks.md`
+- Paste full Gherkin into `backlog.md` — epic scope only; AC lives in `TASKS.local.md`
 - Re-narrate design or architecture — cite `tdd.md §` and `solution.md §`
 - Invent requirements the source does not support; mark gaps
   `[NEEDS CLARIFICATION]` and list them in the report

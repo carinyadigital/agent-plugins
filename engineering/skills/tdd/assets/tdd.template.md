@@ -2,14 +2,14 @@
 type: Technical Design
 mode: <!-- skeleton | full -->
 work_id: <!-- e.g. CHK01, or the tracker key (JIRA-123, ENG-45) if one resolved -->
-epic_slug: <!-- kebab-case from title, max two words — filesystem-only folder name; omit if work_id is a tracker key -->
+work_short_name: <!-- kebab-case from title, max two words; fall back to work_id when unknown -->
 version: '0.1'
 owner: <!-- team or squad name -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
   - <!-- solution.md -->
-  - docs/work/{work-id}/tasks.md
+  - specs/{work-short-name}/TASKS.local.md
   - docs/architecture/solution.md
 ---
 
@@ -20,7 +20,7 @@ DO NOT INCLUDE in this tdd.md:
     → cite solution.md §{N.M} instead; do not re-narrate
   - Business rationale                  → product.md
   - Phase sequencing                    → roadmap.md
-  - Story-level acceptance criteria     → docs/work/{work-id}/tasks.md (tasks skill)
+  - Story-level acceptance criteria     → specs/{work-short-name}/TASKS.local.md (tasks skill)
 
 Skeleton mode (2–4 pages): §1 The slice, §2 Files shipped,
   §3 Acceptance gates, §4 What was NOT delivered, §5 Open questions, §6 Handoff.
@@ -33,7 +33,7 @@ Full mode (5–10 pages): §1 Scope, §2 Architecture fit, §3 Files and compone
 
 # Technical Design -- {Work Item Title} ({WORK-ID})
 
-Technical design for {WORK-ID} at `docs/work/{work-id}/`. Architecture-wide patterns are authoritative in
+Technical design for {WORK-ID} at `specs/{work-short-name}/`. Architecture-wide patterns are authoritative in
 [`solution.md`](solution.md) and are not repeated here.
 
 ## 1. Scope / The slice
@@ -43,7 +43,7 @@ Skeleton: one paragraph naming the end-to-end path this sprint proves
 and what does NOT yet work.
 
 Full: in-scope capabilities, explicit out-of-scope deferrals, and a map from
-capabilities to task IDs in tasks.md.
+capabilities to task IDs in TASKS.local.md.
 -->
 
 [NEEDS CLARIFICATION]

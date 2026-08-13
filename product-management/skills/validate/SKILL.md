@@ -2,7 +2,7 @@
 name: validate
 description: >
   Use when the user wants final completion sign-off on any work item — epic,
-  story, bug, or spike: every task in docs/work/{work-id}/tasks.md verified
+  story, bug, or spike: every task in specs/{work-short-name}/TASKS.local.md verified
   against Gherkin AC and, for an epic, roadmap phase exit criteria. Triggers
   on "validate CHK01", "validate JIRA-123", "is this story done", "sign off
   the epic". Builds an acceptance matrix with evidence, updates task and
@@ -31,7 +31,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read and write artefacts under `docs/`.
+Read and write artefacts under `docs/` and `specs/`.
 
 # Validate
 
@@ -52,8 +52,8 @@ completion unblocks or completes that epic.
 | Input                 | Location                        | Required    |
 | --------------------- | ------------------------------- | ----------- |
 | Product backlog / tracker | `docs/product/backlog.md`, or the tracker directly | Yes |
-| Tasks                 | `docs/work/{work-id}/tasks.md`  | Yes         |
-| Design                | `docs/work/{work-id}/tdd.md` | If exists   |
+| Tasks                 | `specs/{work-short-name}/TASKS.local.md`  | Yes         |
+| Design                | `specs/{work-short-name}/tdd.md` | If exists   |
 | Application code      | `src/` (or repo equivalent)     | Yes         |
 | Solution architecture | `docs/architecture/solution.md` | If relevant |
 | ADRs                  | `docs/architecture/decisions/`  | If relevant |
@@ -62,7 +62,7 @@ completion unblocks or completes that epic.
 
 When the work item has many tasks (roughly >5) or complex Gherkin, spawn
 **ac-evidence-verifier** ([agents/ac-evidence-verifier.md](agents/ac-evidence-verifier.md))
-to build the acceptance matrix before writing the report and updating tasks.md.
+to build the acceptance matrix before writing the report and updating TASKS.local.md.
 
 For eval runs on skills in this repo, use **eval-grader**
 (`plugin-management/agents/eval-grader.md` in the catalogue repo).
@@ -72,15 +72,15 @@ For eval runs on skills in this repo, use **eval-grader**
 ### Phase 1: Gather context
 
 1. Locate the work item row — `docs/product/backlog.md` (filesystem-only) or
-   the tracker directly (Title, type, work path `docs/work/{work-id}/`).
-2. Read `docs/work/{work-id}/tasks.md` and collect all tasks.
-3. Read `docs/work/{work-id}/tdd.md` if it exists.
+   the tracker directly (Title, type, work path `specs/{work-short-name}/`).
+2. Read `specs/{work-short-name}/TASKS.local.md` and collect all tasks.
+3. Read `specs/{work-short-name}/tdd.md` if it exists.
 4. Read the solution architecture if the work item touches architectural boundaries.
 5. Read any ADRs referenced by the design or requirements.
 
 ### Phase 2: Build the acceptance matrix
 
-For every task in `docs/work/{work-id}/tasks.md`, build a table:
+For every task in `specs/{work-short-name}/TASKS.local.md`, build a table:
 
 | Task     | Criterion                    | Evidence                             | Status                |
 | -------- | ---------------------------- | ------------------------------------ | --------------------- |
@@ -124,7 +124,7 @@ Note any deviations — they are not automatic failures, but must be documented.
 
 ### Phase 6: Update tasks and backlog
 
-Based on the acceptance matrix, update `docs/work/{work-id}/tasks.md`:
+Based on the acceptance matrix, update `specs/{work-short-name}/TASKS.local.md`:
 
 1. **Completed criteria** — check the box `- [x]`.
 2. **Incomplete or partial criteria** — uncheck the box `- [ ]` and append a
@@ -144,9 +144,9 @@ Based on the acceptance matrix, update `docs/work/{work-id}/tasks.md`:
 
 - [ ] Work item resolved per work-item-resolution.md — asked the user on any
   ambiguity in source system or ID
-- [ ] Every task in `docs/work/{work-id}/tasks.md` appears in the acceptance matrix
+- [ ] Every task in `specs/{work-short-name}/TASKS.local.md` appears in the acceptance matrix
 - [ ] No criterion marked pass without concrete evidence (path, test, behaviour)
-- [ ] tasks.md and backlog.md (or tracker) updates preserve existing ID and format conventions
+- [ ] TASKS.local.md and backlog.md (or tracker) updates preserve existing ID and format conventions
 - [ ] Work item status set to complete only if all its tasks are verified done
 
 ### Phase 8: Produce the validation report
@@ -168,7 +168,7 @@ Use the output format below.
 
 A validation report MUST NOT:
 
-- Write new acceptance criteria — it verifies criteria already in tasks.md
+- Write new acceptance criteria — it verifies criteria already in TASKS.local.md
 - Include implementation detail → that belongs in solution.md or tdd.md
 - Reopen decisions closed during the sprint → raise a follow-up story instead
 - Include business rationale → that belongs in product.md

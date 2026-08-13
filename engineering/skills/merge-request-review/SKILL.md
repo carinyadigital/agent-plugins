@@ -34,7 +34,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `docs/work/` and `docs/architecture/`.
+Read artefacts from `specs/` and `docs/architecture/`.
 
 # Merge request review
 

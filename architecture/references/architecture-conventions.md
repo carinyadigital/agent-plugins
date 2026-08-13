@@ -22,7 +22,7 @@ order — first match wins:
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
 docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
-docs/work/{work-id}/          tdd.md, tasks.md  (owned by engineering / product-management)
+specs/{work-short-name}/          tdd.md; TASKS.local.md when required  (owned by engineering / product-management)
 ```
 
 Write architecture artefacts under `docs/architecture/`.
@@ -35,9 +35,9 @@ Override paths when the user names them explicitly in the request.
 | ------- | ---------- | ------ |
 | Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | tdd.md (cite only) |
 | ADR decisions | `docs/architecture/decisions/` | solution narrative |
-| Work-item implementation spec | `docs/work/{work-id}/tdd.md` | solution, backlog |
+| Work-item implementation spec | `specs/{work-short-name}/tdd.md` | solution, backlog |
 | Business strategy, personas, outcomes | `docs/product/product.md` | solution |
-| Task Gherkin AC | `docs/work/{work-id}/tasks.md` | solution |
+| Task Gherkin AC | `specs/{work-short-name}/TASKS.local.md` | solution |
 
 ## Companion practices
 

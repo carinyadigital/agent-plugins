@@ -57,7 +57,7 @@ within the register the user targets.
 2. Resolve paths (default or user override).
    **plan** takes an optional work item: `adr plan <work-id>` resolves it per
    [work-item-resolution.md](../../references/work-item-resolution.md),
-   harvests decisions already made in `docs/work/{work-id}/tdd.md`, and
+   harvests decisions already made in `specs/{work-short-name}/tdd.md`, and
    triages them into the register. Without a work item it surveys product.md
    and solution.md for decisions still to be made.
 3. [prompts/plan.prompt.md](prompts/plan.prompt.md) | [prompts/write.prompt.md](prompts/write.prompt.md) | [prompts/review.prompt.md](prompts/review.prompt.md).

@@ -25,7 +25,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `docs/work/` and `docs/architecture/`.
+Read artefacts from `specs/` and `docs/architecture/`.
 
 # Ralph loop setup
 
@@ -81,7 +81,7 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
   detect the source system (Linear, Jira, GitHub/GitLab, or filesystem) and
   the canonical ID first — ask the user on any ambiguity, per that file's
   ask-first checklist. Never guess.
-- Locate `tasks.md` and `tdd.md` under `docs/work/{work-id}/`. Fail loudly,
+- Locate `TASKS.local.md` and `tdd.md` under `specs/{work-short-name}/`. Fail loudly,
   naming the missing file, if either is absent.
 - Derive a dependency-safe task order: topological by declared dependencies,
   stable by document order on ties. Render as
@@ -117,8 +117,8 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh \
   --session-id "$SESSION_ID" \
   --set WORK_ID=checkout-foundation \
   --set BRANCH=feat/checkout-foundation \
-  --set TASKS_PATH=docs/work/checkout-foundation/tasks.md \
-  --set TDD_PATH=docs/work/checkout-foundation/tdd.md \
+  --set TASKS_PATH=specs/checkout-foundation/TASKS.local.md \
+  --set TDD_PATH=specs/checkout-foundation/tdd.md \
   --set FIRST_ITEM=CHK01-01 \
   --set "WORK_SEQUENCE=$(cat sequence.txt)" \
   --set "GOAL=..." --set "DONE_CRITERIA=..." --set "PRESET_CONTEXT=..."

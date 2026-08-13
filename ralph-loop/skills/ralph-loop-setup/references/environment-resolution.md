@@ -5,7 +5,7 @@ loop templates. Resolve everything ONCE at setup; the loop never re-detects.
 
 ## Branch (`{{BRANCH}}`)
 
-1. A `Branch:` (or equivalent) declaration in the work item's tasks.md.
+1. A `Branch:` (or equivalent) declaration in the work item's TASKS.local.md.
 2. The current branch, if its name references the work item's slug or ID.
 3. Otherwise propose `feat/{work-id}` and confirm with the user.
 

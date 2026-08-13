@@ -2,7 +2,7 @@
 name: implement
 description: >
   Use when the user wants to implement a task in code against an approved
-  tdd.md and docs/work/{work-id}/tasks.md. Triggers on "implement CHK01-01",
+  tdd.md and specs/{work-short-name}/TASKS.local.md. Triggers on "implement CHK01-01",
   "implement JIRA-456", "build this task", "write the code for this story".
   Reads the design and acceptance criteria, writes code and tests, runs the
   project's full validation suite, and commits in logical units. This is also
@@ -31,7 +31,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `docs/work/` and `docs/architecture/`.
+Read artefacts from `specs/` and `docs/architecture/`.
 
 # Implement
 
@@ -42,7 +42,7 @@ Pass the task id after the skill name (e.g. `/implement CHK01-01` or
 `/implement JIRA-456`). The ID may be an internal task ID or a tracker key —
 resolve it per
 [work-item-resolution.md](../../references/work-item-resolution.md) to
-find its parent work item's folder (`docs/work/{parent-id}/`) and confirm the
+find its parent work item's folder (`specs/{work-short-name}/`) and confirm the
 task's own status before starting. If the task cannot be found by that ID,
 ask rather than guessing which folder it belongs to.
 
@@ -50,8 +50,8 @@ ask rather than guessing which folder it belongs to.
 
 | Input             | Location                       | Required  |
 | ----------------- | ------------------------------ | --------- |
-| Task + Gherkin AC | `docs/work/{work-id}/tasks.md` | Yes       |
-| Work item design  | `docs/work/{work-id}/tdd.md` | Yes       |
+| Task + Gherkin AC | `specs/{work-short-name}/TASKS.local.md` | Yes       |
+| Work item design  | `specs/{work-short-name}/tdd.md` | Yes       |
 | Architecture      | `docs/architecture/solution.md`| If relevant |
 | Coding standards  | `AGENTS.md` or `CLAUDE.md`     | If present |
 
@@ -99,7 +99,7 @@ Doc comments MUST NOT:
   "see …" pointers)
 - Reference any external source — including issue systems (Jira, Linear,
   GitHub/GitLab issues) and their keys, ticket numbers, story IDs, or task IDs
-- Reference working documents (`tdd.md`, `tasks.md`, `solution.md`, ADRs,
+- Reference working documents (`tdd.md`, `TASKS.local.md`, `solution.md`, ADRs,
   specs, designs, briefs, or any other planning artefact)
 
 If the only comment you would add is a pointer to a ticket or a design doc,
@@ -113,7 +113,7 @@ This skill writes code against an approved design. It MUST NOT:
   in `solution.md` and should be raised as a new ADR via **adr**, not changed
   unilaterally during implementation
 - Rewrite acceptance criteria or add new tasks — task scope is fixed by
-  `docs/work/{work-id}/tasks.md`; if scope needs to change, update it via the
+  `specs/{work-short-name}/TASKS.local.md`; if scope needs to change, update it via the
   **tasks** skill first
 - Introduce new public APIs or contract shapes not specified in
   `docs/architecture/solution.md` or the design — pause and update solution.md

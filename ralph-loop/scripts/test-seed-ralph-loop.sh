@@ -147,8 +147,8 @@ P="$(new_project eng)"
 OUT="$(seed "$P" --agent claude --preset engineering-delivery --run-id ep-1 \
   --completion-promise EPIC_DONE --max-iterations 60 \
   --set WORK_ID=checkout --set BRANCH=feat/checkout \
-  --set TASKS_PATH=docs/work/checkout/tasks.md \
-  --set TDD_PATH=docs/work/checkout/tdd.md \
+  --set TASKS_PATH=specs/checkout/TASKS.local.md \
+  --set TDD_PATH=specs/checkout/tdd.md \
   --set FIRST_ITEM=CHK01-01 --set 'WORK_SEQUENCE=1. CHK01-01' \
   --set 'GOAL=Ship checkout.' --set 'DONE_CRITERIA=MR raised.' \
   --set 'PRESET_CONTEXT=Node 20.')"

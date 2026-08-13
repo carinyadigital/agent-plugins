@@ -48,14 +48,14 @@ path instead of the default.
 solution.md MUST NOT contain:
 
 - Commercial rationale, personas, positioning → `docs/product/product.md`
-- Story-level acceptance criteria → `docs/work/{work-id}/tasks.md`
+- Story-level acceptance criteria → `specs/{work-short-name}/TASKS.local.md`
 - Phase sequencing → `docs/product/roadmap.md`
 
 ## Context
 
 <artifacts>
 [Stub: docs/product/product.md, architecture principles, system boundary
-Full: product.md, docs/work/{work-id}/tdd.md (skeleton mode), ADR register,
+Full: product.md, specs/{work-short-name}/tdd.md (skeleton mode), ADR register,
 accepted ADRs]
 </artifacts>
 
@@ -92,8 +92,8 @@ accepted ADRs]
 
 ## Gotchas
 
-- **Per-work-item files/APIs** → cite from `docs/work/{work-id}/tdd.md`, don't duplicate full specs.
-- **Story-level Gherkin** → `tasks.md`, not solution.
+- **Per-work-item files/APIs** → cite from `specs/{work-short-name}/tdd.md`, don't duplicate full specs.
+- **Story-level Gherkin** → `TASKS.local.md`, not solution.
 - **Closed ADRs** → `ADR-NNNN-*.md`; proposals stay in register only.
 
 ## Output format

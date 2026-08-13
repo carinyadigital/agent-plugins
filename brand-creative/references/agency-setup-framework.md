@@ -134,7 +134,8 @@ On bind (after separate confirmation per target repo), write:
 config/target.json         ← binding pointer + repo identity (name, instance, target)
 docs/product/              ← product.md, roadmap.md, backlog.md (created by product skills)
 docs/architecture/         ← solution.md, decisions/ (created by architecture skills)
-docs/work/                 ← work-item folders created by delivery skills
+specs/                     ← work-item folders (tdd.md, TASKS.local.md)
+docs/work/                 ← sprint plan/retro; SEO research (not work-item specs)
 reviews/                   ← review tracking JSON (gitignored, never committed)
 docs/reviews/              ← agent byproducts (competitor-scan, metrics, digests)
 ```

@@ -6,7 +6,7 @@ MUST follow this. Skills that review those files MUST flag violations.
 
 This rule is about **comments inside files**. It does not apply to merge-request
 descriptions, commit messages, or working-document bodies (`tdd.md`,
-`tasks.md`, review reports) — those artefacts may name work items and other
+`TASKS.local.md`, review reports) — those artefacts may name work items and other
 docs. It **does** apply to comments embedded in those files (HTML comments,
 code-fence comments, file banners).
 
@@ -35,7 +35,7 @@ Doc comments MUST NOT:
   GitHub Issues, GitLab issues, Azure Boards, Shortcut, Asana) and their
   keys, ticket numbers, story IDs, epic IDs, or task IDs (`JIRA-456`,
   `CHK01-01`, `#42`)
-- Reference working documents — `tdd.md`, `design.md`, `tasks.md`,
+- Reference working documents — `tdd.md`, `design.md`, `TASKS.local.md`,
   `solution.md`, ADRs, PRDs, specs, briefs, roadmaps, backlogs, review
   verdicts, or any other planning or delivery artefact
 - Use JSDoc/docstring tags that exist only to point elsewhere (`@see`,
@@ -49,13 +49,13 @@ that explains it is (`see RFC 6585`, `per solution.md §5.1`).
 
 ```text
 // CART02-07 | docs/architecture/solution.md §5.1
-// Implements CHK01-01 from tasks.md
+// Implements CHK01-01 from TASKS.local.md
 // See tdd.md §3 for the retry policy
 // Fixes JIRA-456
 // Per ADR-0012, keep this mapping stable
 <!-- Linear ENG-89 -->
 /**
- * @see docs/work/checkout-foundation/tdd.md
+ * @see specs/checkout-foundation/tdd.md
  * @ticket PROJ-001
  */
 ```

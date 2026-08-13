@@ -1,13 +1,13 @@
 ---
 type: Technical Design
 work_id: CHK01
-epic_slug: checkout-foundation
+work_short_name: checkout-foundation
 mode: skeleton
 ---
 
 # Technical Design -- Checkout Foundation (CHK01)
 
-Skeleton technical design for `docs/work/checkout-foundation/`, epic CHK01 from `docs/product/backlog.md`.
+Skeleton technical design for `specs/checkout-foundation/`, epic CHK01 from `docs/product/backlog.md`.
 
 Architecture-wide patterns are authoritative in `docs/architecture/solution.md` and are not repeated here.
 

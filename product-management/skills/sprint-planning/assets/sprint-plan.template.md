@@ -1,7 +1,7 @@
 <!--
 DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
 DO NOT INCLUDE in a sprint plan:
-  - Gherkin acceptance criteria → docs/work/{work-id}/tasks.md
+  - Gherkin acceptance criteria → specs/{work-short-name}/TASKS.local.md
   - New or re-prioritised epics → docs/product/backlog.md
   - Phase re-sequencing or exit criteria → docs/product/roadmap.md
   - Architecture or design detail → solution.md / tdd.md
@@ -40,7 +40,7 @@ related:
 
 ## Carry-over
 
-<!-- Tasks from the prior plan not marked done in their tasks.md. These consume
+<!-- Tasks from the prior plan not marked done in their TASKS.local.md. These consume
      capacity before any new work is considered. -->
 
 | Work item | Task ID | Title | Estimate | Owner | Why it carried |
@@ -61,7 +61,7 @@ related:
 
 ## Committed tasks
 
-<!-- Every task must already exist in a work item's tasks.md with ≥1 Gherkin
+<!-- Every task must already exist in a work item's TASKS.local.md with ≥1 Gherkin
      scenario. Total points must fit within remaining capacity. -->
 
 | Work item | Task ID | Title | Estimate | Owner |

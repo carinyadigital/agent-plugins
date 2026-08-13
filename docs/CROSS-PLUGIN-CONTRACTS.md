@@ -89,7 +89,7 @@ companion plugins.
 
 ## engineering:implement → tdd.md
 
-**Internal edge** (same plugin). `implement` reads `docs/work/{work-id}/tdd.md`
+**Internal edge** (same plugin). `implement` reads `specs/{work-short-name}/tdd.md`
 written by the `tdd` skill.
 
 | Condition | Behaviour |
@@ -222,7 +222,7 @@ Each plugin is copied to an isolated cache directory at install time.
 | ------- | ------- |
 | Paths within the same plugin | `../../references/conventions.md` |
 | Sibling plugin lookup in **documented** shell contracts | `seed-ralph-loop.sh` → `../engineering/assets/ralph-presets/` |
-| Artefact paths in the user's repo | `docs/work/{id}/tdd.md` |
+| Artefact paths in the user's repo | `specs/{work-short-name}/tdd.md` |
 
 | Forbidden in skill markdown | Why |
 | --------------------------- | --- |

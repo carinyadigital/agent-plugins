@@ -2,7 +2,7 @@
 name: sprint-planning
 description: >
   Use when the user wants to plan a sprint before it starts — set the sprint
-  goal, pull committed scope from the backlog and epic tasks.md files, account
+  goal, pull committed scope from the backlog and epic TASKS.local.md files, account
   for carry-over and capacity, and record dependencies, risks, and the sprint
   definition of done at docs/work/sprint-{id}/plan.md. Triggers on "plan sprint
   3", "what should we commit to", "set up the next sprint", "sprint planning".
@@ -50,11 +50,11 @@ valid. If the user names a different path under `docs/work/`, use it.
 | Input                  | Location                              | Required |
 | ---------------------- | ------------------------------------- | -------- |
 | Product backlog        | `docs/product/backlog.md`, or the tracker | Yes  |
-| Work item tasks        | `docs/work/{work-id}/tasks.md`        | Yes      |
+| Work item tasks        | `specs/{work-short-name}/TASKS.local.md`        | Yes      |
 | Roadmap                | `docs/product/roadmap.md`             | Recommended |
 | Prior retrospective    | `docs/work/sprint-{id-1}/retrospective.md` | Recommended |
 | Prior plan             | `docs/work/sprint-{id-1}/plan.md`     | Recommended |
-| Work item design       | `docs/work/{work-id}/tdd.md`          | If relevant |
+| Work item design       | `specs/{work-short-name}/tdd.md`          | If relevant |
 | Sprint dates, capacity | argument or `--context`               | Yes      |
 
 ## Steps
@@ -67,7 +67,7 @@ valid. If the user names a different path under `docs/work/`, use it.
    from. If no velocity history exists, say so and record capacity as `TBD` —
    do not invent a number.
 3. **Account for carry-over first.** Any task in the prior plan not marked done
-   in its `tasks.md` is carry-over. It consumes capacity before new work is
+   in its `TASKS.local.md` is carry-over. It consumes capacity before new work is
    considered. List it explicitly; do not silently re-commit it.
 4. **Schedule retrospective actions.** Read the prior retrospective's action
    table. Each action is either committed into this sprint or explicitly
@@ -78,7 +78,7 @@ valid. If the user names a different path under `docs/work/`, use it.
    two sprints.
 6. **Select scope.** Pick work items that serve the roadmap's current phase. For
    each, record its work item ID, title, work path, and phase. Pull candidate
-   tasks from each work item's `tasks.md`.
+   tasks from each work item's `TASKS.local.md`.
 7. **Commit.** Assign estimates and owners. Committed work must fit inside
    capacity minus carry-over. Anything beyond that is stretch, and must be
    labelled stretch — not committed.
@@ -93,7 +93,7 @@ valid. If the user names a different path under `docs/work/`, use it.
 ## Quality rules
 
 - The sprint goal must be a single testable outcome
-- Every committed task must already exist in an epic's `tasks.md`, under a story
+- Every committed task must already exist in an epic's `TASKS.local.md`, under a story
   with at least one Gherkin scenario — if it does not, run **tasks** first and
   say so
 - Committed points must not exceed capacity minus carry-over; if they do, cut
@@ -109,7 +109,7 @@ valid. If the user names a different path under `docs/work/`, use it.
 
 A sprint plan MUST NOT:
 
-- Write or rewrite Gherkin acceptance criteria → `docs/work/{work-id}/tasks.md` via
+- Write or rewrite Gherkin acceptance criteria → `specs/{work-short-name}/TASKS.local.md` via
   **tasks**
 - Add, split, or re-prioritise epics → `docs/product/backlog.md` via **tasks**
   or **backlog-refine**

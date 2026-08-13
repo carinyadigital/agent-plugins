@@ -42,7 +42,7 @@ brand-guide skill; read the artefact directly.
 
 When a UX design practice has produced wireframes or specs, read from
 `<instance-root>/design/` (or the path named by the user). Work-item
-implementation specs live at `docs/work/{work-id}/tdd.md`.
+implementation specs live at `specs/{work-short-name}/tdd.md`.
 
 ## Companion practice (architecture)
 
@@ -96,8 +96,8 @@ See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
 docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
-docs/work/{work-id}/          tdd.md, tasks.md
-docs/work/{work-id}/reviews/  code-review / ux-design-review verdicts
+specs/{work-short-name}/          tdd.md; TASKS.local.md when required
+specs/{work-short-name}/reviews/  code-review / ux-design-review verdicts
 docs/work/sprint-{id}/        plan.md, retrospective.md
 reviews/                      shared review state (*.local.json); gitignored,
                               never committed
@@ -122,8 +122,8 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 | Epic list, deps, points, work paths | `docs/product/backlog.md` | roadmap detail |
 | Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | design (cite only) |
 | ADR decisions | `docs/architecture/decisions/` | solution narrative |
-| Work-item implementation spec | `docs/work/{work-id}/tdd.md` | solution, backlog |
-| Task Gherkin (and optional EARS) | `docs/work/{work-id}/tasks.md` | backlog, the TDD |
+| Work-item implementation spec | `specs/{work-short-name}/tdd.md` | solution, backlog |
+| Task Gherkin (and optional EARS) | `specs/{work-short-name}/TASKS.local.md` | backlog, the TDD |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
 
 ## Doc comments
@@ -135,7 +135,7 @@ instructions: [doc-comments.md](doc-comments.md).
 
 ## Acceptance criteria
 
-- **Default:** Gherkin in `docs/work/{work-id}/tasks.md`, on the **story** (or the work item itself when it carries AC).
+- **Default:** Gherkin in `specs/{work-short-name}/TASKS.local.md`, on the **story** (or the work item itself when it carries AC).
 - **EARS:** optional via `/product-management:tasks --ears` or when rules are clearer than scenarios.
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
 

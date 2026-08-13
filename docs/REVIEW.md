@@ -11,12 +11,12 @@ This file keeps **open** findings only. Fixed and superseded claims were removed
 ## 1. Structural gaps
 
 ### 1.1 Five state models, no shared key
-Tracker pointer (`TASKS.local.md`), work-item status (`backlog.md` / `tasks.md`), review state (`docs/reviews/{skill}.local.json` keyed on **branch**), numbered review verdicts (`docs/work/{id}/reviews/`), and loop state (`.claude/loop/`) do not share a key. Nothing on disk joins task ↔ branch ↔ review ↔ MR.
+Tracker pointer (`TASKS.local.md`), work-item status (`backlog.md` / `tasks.md`), review state (`reviews/{skill}.local.json` keyed on **branch**), numbered review verdicts (`docs/work/{id}/reviews/`), and loop state (`.claude/loop/`) do not share a key. Nothing on disk joins task ↔ branch ↔ review ↔ MR.
 
 Consequences still true:
 - **`validate` produces no file** — Phase 8 is chat output only; no `docs/work/{id}/reviews/validation-*.md` (or equivalent). Sign-off leaves no durable artefact.
 - **Numbered review history is per-working-copy** — `{nn}` from directory listing; a fresh clone restarts at `01`.
-- **`docs/reviews/review-learnings.local.md` is read and never written** — specified in `code-review` context-resolution; no `--learn` (or other) writer. Mechanism is inert.
+- **`reviews/review-learnings.local.md` is read and never written** — specified in `code-review` context-resolution; no `--learn` (or other) writer. Mechanism is inert.
 
 ### 1.2 "Approved" is load-bearing and undefined
 `implement` requires an **approved** `tdd.md`. Templates still ship `status: Draft`; no skill flips that field; no separate checklist gate. `[NEEDS CLARIFICATION]` has no budget and no hard consumer in `implement` / `ralph-loop-setup`.
@@ -32,7 +32,7 @@ Same contracts live in sibling skill trees and have already diverged. Keep copie
 - Filename collision: UX `environment-resolution.md` (browser) vs `ralph-loop-setup/.../environment-resolution.md` (template vars) — latter not renamed
 
 ### 1.4 Review → fix ingest still half-wired
-Review → fix **ingest** still not the declared default Input: `code-review-fix` / `ux-design-fix` offer conversation / path / paste — not `docs/reviews/{skill}.local.json` + `report`. Preset still tells reviews to write `{{RUN_DIR}}/review-{TASK_ID}.md` (ownership / grant mismatch).
+Review → fix **ingest** still not the declared default Input: `code-review-fix` / `ux-design-fix` offer conversation / path / paste — not `reviews/{skill}.local.json` + `report`. Preset still tells reviews to write `{{RUN_DIR}}/review-{TASK_ID}.md` (ownership / grant mismatch).
 
 ---
 
@@ -112,7 +112,7 @@ Cap discipline still applies: prefer modes on existing skills over unbounded new
 ### P2 — Close the contract gaps
 7. Adopt work-item state file (e.g. `.carinya/work.json`) keyed on work item, not branch alone.
 8. Define "approved" as a separate checklist with an owner; give `[NEEDS CLARIFICATION]` a budget + hard block in `implement` / setup.
-9. Persist validate report; make `docs/reviews/*.local.json` + `report` the default fix-skill Input; assign preset review artefact ownership.
+9. Persist validate report; make `reviews/*.local.json` + `report` the default fix-skill Input; assign preset review artefact ownership.
 10. Resolve or delete inert `review-learnings`; fix spike contradiction.
 11. Ralph beyond P0: flock on iteration bump; Cursor `RALPH_SESSION_ID` (or qualify isolation as Claude-only); `command -v` for `perl`/`jq`; fail-closed on declared-but-missing state; wall-clock/cost ceilings; stall keyed on `current_step`; `compatibility:` frontmatter.
 12. Tighten MR grants (`gh pr merge` / unscoped Write); gate publish on babysit; gate `tdd` `git mv`.

@@ -13,10 +13,11 @@ docs/work/{work-id}/        tdd.md, tasks.md — one folder per resolved work it
 docs/work/{work-id}/reviews/  code-review-{nn}.local.md, ux-design-review-{nn}.local.md
                             ({nn} sequential per skill prefix, not across skills)
 docs/work/sprint-{id}/      plan.md, retrospective.md
-docs/reviews/               code-review.local.json, ux-design-review.local.json,
+reviews/                    code-review.local.json, ux-design-review.local.json,
                              review-learnings.local.md, and the latest-only
                              {skill}-{branch}.local.md when no work item
-                             resolved
+                             resolved (gitignored — never committed)
+docs/reviews/               agent byproducts (competitor-scan, metrics, digests)
 ```
 
 Override paths when the user names them explicitly in the request.
@@ -75,7 +76,11 @@ filesystem-safe handle and slugging it again only adds a translation step.
 | Task Gherkin (and optional EARS) | `docs/work/{work-id}/tasks.md` | backlog, the TDD |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
 | Human-readable review verdict | `docs/work/{work-id}/reviews/{skill}-{nn}.local.md` | shared JSON state |
-| Review tracking state (per branch, incremental) | `docs/reviews/{skill}.local.json` | human-readable verdicts |
+| Review tracking state (per branch, incremental) | `reviews/{skill}.local.json` | human-readable verdicts |
+
+`reviews/` is local review state. Skills that write it MUST ensure the target
+repo's `.gitignore` contains a root-only `/reviews/` entry, and MUST NOT
+commit anything under `reviews/`.
 
 `docs/product/backlog.md` is a filesystem-only artefact: it exists only
 in repos with no external tracker resolved. When Linear or Jira is the

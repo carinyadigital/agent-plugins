@@ -127,14 +127,15 @@ Path: `config/target.json`
 
 The `name` field carries target repo identity (typically the git repo slug). The `instance` value matches `config/instance.json` → `instance`. Practice agents read this file to locate the instance repo and resolve the target without inferring identity from paths.
 
-**Target repo layout** — on bind, write `config/target.json`. Delivery artefacts live under `docs/`:
+**Target repo layout** — on bind, write `config/target.json`. Delivery artefacts live under `docs/`; review tracking JSON lives at repo-root `reviews/` (gitignored):
 
 ```text
 config/target.json         ← binding pointer + repo identity (name, instance, target)
 docs/product/              ← product.md, roadmap.md, backlog.md
 docs/architecture/         ← solution.md, decisions/
 docs/work/                 ← work-item folders created by delivery skills
-docs/reviews/              ← review state and agent byproducts
+reviews/                   ← review tracking JSON (gitignored, never committed)
+docs/reviews/              ← agent byproducts (competitor-scan, metrics, digests)
 ```
 
 Practice skills create `docs/` artefacts when they run. Do not infer target identity from the directory name.

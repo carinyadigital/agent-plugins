@@ -274,8 +274,9 @@ docs/architecture/            solution.md, decisions/
 docs/work/{work-id}/          tdd.md, tasks.md
 docs/work/{work-id}/reviews/  code-review-{nn}.local.md, ux-design-review-{nn}.local.md
 docs/work/sprint-{id}/        plan.md, retrospective.md
-docs/reviews/                 code-review.local.json, ux-design-review.local.json,
-                              review-learnings.local.md
+reviews/                      code-review.local.json, ux-design-review.local.json,
+                              review-learnings.local.md (gitignored — never committed)
+docs/reviews/                 agent byproducts (competitor-scan, metrics, digests)
 TASKS.local.md                optional tracker-pointer cache (gitignored locally)
 .ux-review/                   UX capture scratch (agent-local)
 .claude/loop/                 Ralph run state on Claude Code (or .cursor/loop/ on Cursor)

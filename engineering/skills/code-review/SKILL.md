@@ -21,8 +21,9 @@ allowed-tools:
   - Bash(git:*)
   - Bash(gh:*)
   - Bash(glab:*)
-  - Write(docs/reviews/**)
+  - Write(reviews/**)
   - Write(docs/work/**/reviews/**)
+  - Edit(.gitignore)
 argument-hint: "[branch-or-pr] [--since <sha>] [--full]"
 metadata:
   author: Carinya Parc
@@ -43,11 +44,22 @@ report. You do not change it.
 ## Read-only contract
 
 This skill writes exactly two things: an entry in the shared review-tracking
-file at `docs/reviews/code-review.local.json`, and a human-readable report at
+file at `reviews/code-review.local.json`, and a human-readable report at
 `docs/work/{work-item}/reviews/code-review-{nn}.local.md` (or
-`docs/reviews/code-review-{branch}.local.md` when no work item resolved). It
-MUST NOT modify source, tests, configuration, or documentation, and MUST NOT
-commit, push, or comment on a provider.
+`reviews/code-review-{branch}.local.md` when no work item resolved). It
+MUST NOT modify source, tests, configuration, or documentation (except
+`.gitignore` as below), and MUST NOT commit, push, or comment on a provider.
+
+`reviews/` is local state and MUST never be committed. Before the first write
+into it, ensure the target repo's `.gitignore` contains a root-only `/reviews/`
+entry. If it is missing, append:
+
+```
+# Local review state — never commit
+/reviews/
+```
+
+Do not `git add` anything under `reviews/`.
 
 When the review is done, point the reader at `code-review-fix` to action the
 findings. Naming the next step is not the same as taking it — do not invoke it,
@@ -80,7 +92,7 @@ Cheap checks first. Do not spend six agents on a lockfile bump.
 
 **Reduce scope** rather than skipping:
 
-- If `docs/reviews/code-review.local.json` has an entry for this branch and
+- If `reviews/code-review.local.json` has an entry for this branch and
   `--full` was not passed, this is an **incremental** review. Review the delta
   from the recorded SHA. See
   [references/context-resolution.md](references/context-resolution.md) §6.
@@ -242,7 +254,7 @@ schema in [references/context-resolution.md](references/context-resolution.md)
 §6:
 
 1. Update (or create) this branch's entry in the shared
-   `docs/reviews/code-review.local.json`, so the next run can go incremental.
+   `reviews/code-review.local.json`, so the next run can go incremental.
 2. Write the human-readable verdict to
    `docs/work/{work-item}/reviews/code-review-{nn}.local.md`, where
    `{work-item}` is the ID resolved in §2 (folder rules per
@@ -251,11 +263,13 @@ schema in [references/context-resolution.md](references/context-resolution.md)
    `code-review-*.local.md` files in that folder (do not count other skills'
    reports). Numbered history applies only under
    `docs/work/{work-item}/reviews/`. When no work item resolved, write
-   `docs/reviews/code-review-{branch}.local.md` instead (`/` in the branch
+   `reviews/code-review-{branch}.local.md` instead (`/` in the branch
    name replaced with `-`) — latest-only: overwrite that file; do not invent
    numbering on the branch-level path.
 
-These are the only two paths this skill writes.
+These are the only review-artefact paths this skill writes. The only other
+allowed write is appending `/reviews/` to `.gitignore` when that entry is
+missing.
 
 ---
 
@@ -292,7 +306,9 @@ These are the only two paths this skill writes.
 - Include business or strategic rationale that belongs in a product doc.
 - Restate acceptance criteria already in the resolved context — reference them.
 - Return PASS while CI failures are unacknowledged.
-- Modify any file outside `docs/reviews/` and `docs/work/*/reviews/`.
+- Modify any file outside `reviews/`, `docs/work/*/reviews/`, and `.gitignore`
+  (the `/reviews/` entry only).
+- Commit anything under `reviews/`.
 
 ## Output format
 

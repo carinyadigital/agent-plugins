@@ -82,3 +82,7 @@ Agent byproducts (competitor scans, metrics digests, stakeholder digests) write 
 ```text
 docs/reviews/
 ```
+
+Review tracking JSON (`code-review.local.json`, `ux-design-review.local.json`)
+lives at repo-root `reviews/` (gitignored, never committed) — not under
+`docs/reviews/`.

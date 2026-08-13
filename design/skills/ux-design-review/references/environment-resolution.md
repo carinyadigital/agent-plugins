@@ -62,11 +62,11 @@ Safari was checked because the review did not say otherwise has been misled.
 
 ## Review state
 
-Look for this branch's entry in `docs/reviews/ux-design-review.local.json`
+Look for this branch's entry in `reviews/ux-design-review.local.json`
 (`reviews[].branch`). If present, this branch has been reviewed before and the
 run is **incremental**.
 
-`docs/reviews/ux-design-review.local.json` is a single shared file, holding
+`reviews/ux-design-review.local.json` is a single shared file, holding
 one entry per branch reviewed in this repo — it is not per-branch itself.
 Update this branch's entry in place; do not touch any other entry.
 
@@ -107,7 +107,7 @@ Update this branch's entry in place; do not touch any other entry.
 
 `work_item` is the ID resolved in the Resolve step, or `null` when no work
 item resolved — in which case `report` points at
-`docs/reviews/ux-design-review-{branch}.local.md` instead of a work-item
+`reviews/ux-design-review-{branch}.local.md` instead of a work-item
 folder. `report` always names the most recent human-readable report; earlier
 numbered reports remain on disk as history and are not referenced from the
 JSON.

@@ -12,8 +12,9 @@
         "Opens with what works well before the findings",
         "Every finding prefixed with [blocking], [warning], or [suggestion]",
         "Every visual finding cites a screenshot path plus state and viewport",
-        "Modifies no file outside .ux-review/, docs/reviews/, and docs/work/*/reviews/",
-        "Writes a human-readable report to docs/work/*/reviews/ux-design-review-{nn}.local.md or docs/reviews/ux-design-review-{branch}.local.md when no work item is resolved",
+        "Modifies no file outside .ux-review/, reviews/, docs/work/*/reviews/, and .gitignore (the /reviews/ entry only)",
+        "Writes a human-readable report to docs/work/*/reviews/ux-design-review-{nn}.local.md or reviews/ux-design-review-{branch}.local.md when no work item is resolved",
+        "Ensures /reviews/ is in .gitignore and does not commit reviews/",
         "Closes by pointing at ux-design-fix rather than offering to fix"
       ]
     },
@@ -80,7 +81,7 @@
       "prompt": "Re-review the checkout UI. I fixed the focus ring, and the designer updated the Figma since your last pass.",
       "expected_output": "Incremental review; design-side drift detected and reported separately from code changes.",
       "assertions": [
-        "Reads its entry in docs/reviews/ux-design-review.local.json and reviews incrementally",
+        "Reads its entry in reviews/ux-design-review.local.json and reviews incrementally",
         "Compares the design source ref and detects it changed",
         "Re-derives fidelity findings for components whose design moved even where code did not change",
         "Reports 'newly diverged because the design moved' separately from newly introduced",

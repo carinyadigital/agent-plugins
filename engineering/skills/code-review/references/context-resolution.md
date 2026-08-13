@@ -95,7 +95,7 @@ produced.
 
 ## 6. Review state (incremental mode)
 
-Look for this branch's entry in `docs/reviews/code-review.local.json`
+Look for this branch's entry in `reviews/code-review.local.json`
 (`reviews[].branch`). If present, this branch has been reviewed before and the
 run is **incremental**:
 
@@ -112,7 +112,7 @@ run is **incremental**:
 If the file, or an entry for this branch, is absent, the run is a full review
 and will create one.
 
-`docs/reviews/code-review.local.json` is a single shared file, holding one
+`reviews/code-review.local.json` is a single shared file, holding one
 entry per branch reviewed in this repo — it is not per-branch itself. Update
 this branch's entry in place; do not touch any other entry.
 
@@ -146,13 +146,13 @@ Schema:
 
 `work_item` is the ID resolved in §1, or `null` when no work item resolved —
 in which case `report` points at
-`docs/reviews/code-review-{branch}.local.md` instead of a work-item folder.
+`reviews/code-review-{branch}.local.md` instead of a work-item folder.
 `report` always names the most recent human-readable report; earlier numbered
 reports remain on disk as history and are not referenced from the JSON.
 
 ## 7. Learnings
 
-Look for `docs/reviews/review-learnings.local.md`. These are preferences captured when a
+Look for `reviews/review-learnings.local.md`. These are preferences captured when a
 reader rejected or corrected a previous finding — the informal counterpart to
 written guidelines.
 

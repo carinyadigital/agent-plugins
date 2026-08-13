@@ -53,9 +53,9 @@ valid. If the user names a different path under `docs/work/`, use it.
 | Input                  | Location                                   | Required |
 | ---------------------- | ------------------------------------------ | -------- |
 | Sprint plan            | `docs/work/sprint-{id}/plan.md`            | Yes      |
-| Work item tasks        | `docs/work/{work-id}/tasks.md` for work items in scope | Yes  |
+| Work item tasks        | `specs/{work-short-name}/TASKS.local.md` for work items in scope | Yes  |
 | Prior retrospective    | `docs/work/sprint-{id-1}/retrospective.md` | Recommended |
-| Work item design       | `docs/work/{work-id}/tdd.md`               | If relevant |
+| Work item design       | `specs/{work-short-name}/tdd.md`               | If relevant |
 | CI, MR, or incident summaries | supplied via `--context`            | Optional |
 
 ## Steps
@@ -65,7 +65,7 @@ valid. If the user names a different path under `docs/work/`, use it.
    was committed — do not reconstruct a commitment from what shipped, which
    guarantees a flattering result.
 2. **Build the commitment-versus-actual picture.** For every committed task in
-   the plan, find its current status in its work item's `tasks.md`. Classify each as
+   the plan, find its current status in its work item's `TASKS.local.md`. Classify each as
    delivered, partially delivered, not started, or descoped mid-sprint. Record
    points committed versus points delivered.
 3. **Check the sprint goal.** Was it met? The goal is met or not met — "mostly"

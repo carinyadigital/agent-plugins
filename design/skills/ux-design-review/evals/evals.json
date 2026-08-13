@@ -12,8 +12,8 @@
         "Opens with what works well before the findings",
         "Every finding prefixed with [blocking], [warning], or [suggestion]",
         "Every visual finding cites a screenshot path plus state and viewport",
-        "Modifies no file outside .ux-review/, reviews/, docs/work/*/reviews/, and .gitignore (the /reviews/ entry only)",
-        "Writes a human-readable report to docs/work/*/reviews/ux-design-review-{nn}.local.md or reviews/ux-design-review-{branch}.local.md when no work item is resolved",
+        "Modifies no file outside .ux-review/, reviews/, specs/*/reviews/, and .gitignore (the /reviews/ entry only)",
+        "Writes a human-readable report to specs/*/reviews/ux-design-review-{nn}.local.md or reviews/ux-design-review-{branch}.local.md when no work item is resolved",
         "Ensures /reviews/ is in .gitignore and does not commit reviews/",
         "Closes by pointing at ux-design-fix rather than offering to fix"
       ]

@@ -48,7 +48,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PluginValidator(Reporter):
-    # Delivery artefacts live under docs/ (see delivery-conventions.md).
+    # Delivery artefacts live under docs/ and specs/ (see delivery-conventions.md).
     LEGACY_ARTEFACT_PATH_PATTERNS = (
         re.compile(r"\.digital-agency/"),
         re.compile(r"\.agency/"),

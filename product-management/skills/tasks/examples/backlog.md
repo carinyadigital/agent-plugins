@@ -22,8 +22,8 @@ level: epic
 | Convention | Value |
 | ---------- | ----- |
 | Epic ID | `CHK{nn}` (internal — this repo has no tracker resolved; see work-item-resolution.md) |
-| Epic work path | `docs/work/{work-id}/` — kebab-case from title or short title, max two words |
-| Task ID | `CHK{nn}-{nn}` in `docs/work/{work-id}/tasks.md` |
+| Epic work path | `specs/{work-short-name}/` — kebab-case from title or short title, max two words |
+| Task ID | `CHK{nn}-{nn}` in `specs/{work-short-name}/TASKS.local.md` |
 | Priority | P0–P2 |
 | Status | To do, In progress, In review, Blocked, Done |
 | Estimation | Fibonacci points |
@@ -32,9 +32,9 @@ level: epic
 
 | Epic ID | Title | Phase | Priority | Deps | Points | Work path | Status |
 | ------- | ----- | ----- | -------- | ---- | ------ | --------- | ------ |
-| CHK01 | Checkout Foundation | Now | P0 | - | 13 | `docs/work/checkout-foundation/` | Done |
-| CHK02 | Payment Placement | Now | P0 | CHK01 | 18 | `docs/work/payment-placement/` | To do |
-| CHK03 | Order Confirmation | Now | P0 | CHK02 | 8 | `docs/work/order-confirmation/` | To do |
+| CHK01 | Checkout Foundation | Now | P0 | - | 13 | `specs/checkout-foundation/` | Done |
+| CHK02 | Payment Placement | Now | P0 | CHK01 | 18 | `specs/payment-placement/` | To do |
+| CHK03 | Order Confirmation | Now | P0 | CHK02 | 8 | `specs/order-confirmation/` | To do |
 
 ## 4. Critical path
 

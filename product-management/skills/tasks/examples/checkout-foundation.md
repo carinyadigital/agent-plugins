@@ -1,15 +1,15 @@
 ---
 type: Tasks
-epic_slug: checkout-foundation
+work_short_name: checkout-foundation
 work_id: CHK01
 version: '0.1'
 owner: commerce-squad
 status: Draft
 last_updated: 2026-07-19
-source: docs/work/checkout-foundation/tdd.md
+source: specs/checkout-foundation/tdd.md
 related:
   - docs/product/backlog.md
-  - docs/work/checkout-foundation/tdd.md
+  - specs/checkout-foundation/tdd.md
   - docs/architecture/solution.md
 ---
 

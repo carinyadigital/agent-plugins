@@ -41,7 +41,7 @@ wrong and should go back through **backlog-refine**.
 A body of work that delivers one phase objective or crosses one integration
 boundary. In a **filesystem-only** repo it lives as a row in
 `docs/product/backlog.md`; its stories and tasks live in
-`docs/work/{work-id}/tasks.md`. In a **tracker-backed** repo the tracker's
+`specs/{work-short-name}/TASKS.local.md` when a local breakdown is required. In a **tracker-backed** repo the tracker's
 epic/initiative object is the source of truth — skills read it directly and
 do not maintain a shadow `backlog.md`.
 
@@ -49,7 +49,7 @@ do not maintain a shadow `backlog.md`.
 | ----- | -------- | ------------ |
 | Work item ID | Yes | Tracker key (`CHK-1`, `ENG-45`) when a tracker resolved; else internal `{PREFIX}{nn}` — 2–4 uppercase letters + two digits (`CHK01`, `AUTH03`) |
 | Title | Yes | Noun phrase naming the outcome (`Checkout Foundation`) |
-| Work path | Yes | `docs/work/{work-id}/` — filesystem-only repos also derive a title slug for the folder name (see delivery-conventions.md); tracker-backed repos use the key itself |
+| Work path | Yes | `specs/{work-short-name}/` — kebab-case, at most two words, from the title; fall back to `{work-id}` when a short name cannot be discovered (see delivery-conventions.md) |
 | Phase | Yes | Matches a phase name in `roadmap.md` (`Now`, `Next`, `Later`, or named) |
 | Status | Yes | `To do` · `In progress` · `In review` · `Blocked` · `Done` (or the tracker's native workflow states, mapped) |
 | Priority | Yes | `P0`–`P3` (see below) |
@@ -66,7 +66,7 @@ scope the product strategy would not support — say so rather than writing it.
 
 A user-visible outcome inside an epic. **Carries the acceptance criteria.**
 Anything can get a `tdd.md` at story level if the work warrants it — run
-`tdd {story-id}` directly; it writes to `docs/work/{story-id}/tdd.md`,
+`tdd {story-id}` directly; it writes to `specs/{work-short-name}/tdd.md`,
 citing the parent epic by ID rather than nesting under its folder.
 
 | Field | Required | Legal values |
@@ -93,7 +93,7 @@ parent story. Inherits its story's acceptance criteria when it has one.
 
 | Field | Required | Legal values |
 | ----- | -------- | ------------ |
-| Work item ID | Yes | Tracker key (`CHK-15`) when a tracker resolved; else internal, sequential within the `tasks.md` it is written to: `{EPIC-ID}-{nn}` for a task under an epic (`CHK01-04`), `{STORY-ID}-{nn}` for a sub-task under a story with its own `tasks.md` (`CHK01-S2-01`) |
+| Work item ID | Yes | Tracker key (`CHK-15`) when a tracker resolved; else internal, sequential within the `TASKS.local.md` it is written to: `{EPIC-ID}-{nn}` for a task under an epic (`CHK01-04`), `{STORY-ID}-{nn}` for a sub-task under a story with its own `TASKS.local.md` (`CHK01-S2-01`) |
 | Story label | Yes, unless foundational | `[S{n}]` matching its parent story |
 | Parallel marker | No | `[P]` — different files from its siblings, no incomplete dependency |
 | Title | Yes | Imperative, specific (`Build checkout page shell`, not `Frontend work`) |

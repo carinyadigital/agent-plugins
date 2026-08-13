@@ -71,7 +71,7 @@ target binding.
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile, target binding, stack defaults |
-| **tdd** | write — `docs/work/{work-id}/tdd.md`; review via `docs-review` |
+| **tdd** | write — `specs/{work-short-name}/tdd.md`; review via `docs-review` |
 | **implement** | Implement a task against approved tdd.md and AC |
 | **code-review** | Read-only peer review; state in `reviews/` (gitignored) |
 | **code-review-fix** | Address code-review findings without behaviour change |

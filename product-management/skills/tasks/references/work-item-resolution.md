@@ -13,7 +13,10 @@ downstream.
 
 ## Step 1 — Check the pointer file
 
-Look for `TASKS.local.md` at the repo root before doing anything else.
+Look for `TASKS.local.md` at the **repo root** before doing anything else.
+That file is the Linear/Jira source-system pointer. It is not the work-item
+task list — that lives at `specs/{work-short-name}/TASKS.local.md` when a
+local breakdown is required.
 
 - **Exists and names Linear or Jira** — trust it. Use the recorded site,
   workspace/team, and project key. Do not re-run detection or re-ask the user.
@@ -51,7 +54,7 @@ disambiguate them. Resolve in this order and stop at the first that applies:
    not default to either.
 4. **No external tracker is reachable and the ID does not match any external
    shape** — filesystem. Confirm a matching row exists in `backlog.md` (for a
-   top-level ID) or a matching task in some `docs/work/*/tasks.md` (for a
+   top-level ID) or a matching task in some `specs/*/TASKS.local.md` (for a
    child ID); if neither exists, ask whether this is new work or a typo.
 
 If the repo has no `docs/product/backlog.md` and
@@ -84,7 +87,7 @@ Read the work item's type from its source system:
 - **GitHub/GitLab** — labels (`type:*`, `kind/*`, `bug`, `epic`) if present;
   otherwise ask, since bare issues carry no type field.
 - **Filesystem** — inferred from structure, not a labelled field: a row in
-  `backlog.md` is always `epic`; inside a `tasks.md`, a `### S{n}` heading is
+  `backlog.md` is always `epic`; inside a `TASKS.local.md`, a `### S{n}` heading is
   `story` and a line under it is `task`, as is a line under `## Foundational`
   or `## Cross-cutting`. A filesystem-only `bug` or `spike` has no structural
   marker of its own — ask the user to confirm the type rather than inferring
@@ -110,26 +113,27 @@ internal ID for it, never re-slug it, and never invent a local numbering
 scheme alongside it. Internal IDs (`{PREFIX}{nn}`, `{PREFIX}{nn}-{nn}`) exist
 **only** for repos with no external tracker resolved.
 
-**Work path.** `docs/work/{work-id}/` — one folder per resolved work item,
-keyed by *that item's own* canonical ID, at whatever level it sits. An epic's
-design and task breakdown live at `docs/work/{epic-id}/`; a story, bug, or
-spike that gets its own design or further breakdown lives at
-`docs/work/{story-id}/` (etc.), alongside — not nested inside — its parent
-epic's folder. Cross-reference the parent by ID in the artefact, not by
-nesting.
+**Work path.** `specs/{work-short-name}/` — one folder per resolved work item.
+`{work-short-name}` is kebab-case, at most two words, derived from the title
+(`cart`, `checkout-foundation`). When a short name is not known and cannot be
+discovered, use `{work-id}` (`specs/JIRA-123/`, `specs/CHK01/`). See
+[delivery-conventions.md](delivery-conventions.md#work-short-name-work-short-name)
+for the discovery order.
 
-**Filesystem-only exception.** When no tracker resolved, the *folder name*
-uses the title slug, not the internal ID — `CHK01` is the ID,
-`docs/work/checkout-foundation/` is the path. The internal ID still appears
-in every ID field inside the artefact (task IDs, `Depends on`, the backlog
-row); only the directory name is slugged. See
-[delivery-conventions.md](delivery-conventions.md#work-item-id-work-id) for
-the slug derivation rule. Tracker-backed repos have no separate slug — the
-directory *is* the tracker key (`docs/work/JIRA-123/`).
+An epic's design lives at `specs/{work-short-name}/tdd.md`; its local task
+breakdown, when required, at `specs/{work-short-name}/TASKS.local.md`. A
+story, bug, or spike that gets its own design or further breakdown lives in
+its own `specs/{work-short-name}/` folder, alongside — not nested inside —
+its parent epic's folder. Cross-reference the parent by ID in the artefact,
+not by nesting.
 
-When the canonical ID (or, in the filesystem-only case, the derived slug)
-contains characters unsafe for a path segment, ask the user how they want it
-represented on disk rather than silently substituting.
+The canonical ID still appears in every ID field inside the artefact (task
+IDs, `Depends on`, the backlog row); only the directory name uses the short
+name.
+
+When the short name (or the fallback `{work-id}`) contains characters unsafe
+for a path segment, ask the user how they want it represented on disk rather
+than silently substituting.
 
 **New work with no ID yet.**
 

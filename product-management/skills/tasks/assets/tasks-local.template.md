@@ -1,5 +1,7 @@
 <!--
 TASKS.local.md — machine-written pointer, repo root.
+This is not the work-item task list (that lives at
+specs/{work-short-name}/TASKS.local.md when a local breakdown is required).
 Written once per resolution by any delivery skill after it resolves the work
 item source system to Linear or Jira (see references/work-item-resolution.md).
 Add this file to .gitignore — it can name environment-specific sites,

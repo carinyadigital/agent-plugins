@@ -1,6 +1,6 @@
 ---
 name: ac-evidence-verifier
-description: Use this agent when building or verifying the work item validation acceptance matrix against docs/work/{work-id}/tasks.md and the codebase. Typical triggers include validate run for work items with many tasks, or when the parent needs isolated evidence gathering. See "When to invoke" in the agent body.
+description: Use this agent when building or verifying the work item validation acceptance matrix against specs/{work-short-name}/TASKS.local.md and the codebase. Typical triggers include validate run for work items with many tasks, or when the parent needs isolated evidence gathering. See "When to invoke" in the agent body.
 model: inherit
 color: yellow
 tools: Read, Grep, Glob, Bash(git log:*), Bash(git show:*), Bash(git grep:*)
@@ -20,7 +20,7 @@ You build an evidence-backed acceptance matrix for one work item — no new AC, 
 
 1. Resolve `{work-id}` via `docs/product/backlog.md` or the tracker (see
    [work-item-resolution.md](../../tasks/references/work-item-resolution.md)).
-2. Read every task and Gherkin scenario in `docs/work/{work-id}/tasks.md`.
+2. Read every task and Gherkin scenario in `specs/{work-short-name}/TASKS.local.md`.
 3. For each criterion, search codebase and tests for evidence.
 4. Status: pass | fail | partial — never pass without path/test/behaviour cite.
 
@@ -31,4 +31,4 @@ You build an evidence-backed acceptance matrix for one work item — no new AC, 
 
 Plus: list of criteria with no evidence found.
 
-Do not update backlog or tasks.md — return matrix to parent only.
+Do not update backlog or TASKS.local.md — return matrix to parent only.

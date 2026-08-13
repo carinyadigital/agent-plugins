@@ -35,7 +35,7 @@
     "note": "code-review"
   },
   {
-    "query": "Implement the payment capture task from tasks.md.",
+    "query": "Implement the payment capture task from TASKS.local.md.",
     "should_trigger": false,
     "note": "implement — new work, not review feedback"
   },

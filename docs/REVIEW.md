@@ -11,10 +11,10 @@ This file keeps **open** findings only. Fixed and superseded claims were removed
 ## 1. Structural gaps
 
 ### 1.1 Five state models, no shared key
-Tracker pointer (`TASKS.local.md`), work-item status (`backlog.md` / `tasks.md`), review state (`reviews/{skill}.local.json` keyed on **branch**), numbered review verdicts (`docs/work/{id}/reviews/`), and loop state (`.claude/loop/`) do not share a key. Nothing on disk joins task ↔ branch ↔ review ↔ MR.
+Tracker pointer (repo-root `TASKS.local.md`), work-item status (`backlog.md` / `specs/*/TASKS.local.md`), review state (`reviews/{skill}.local.json` keyed on **branch**), numbered review verdicts (`specs/{work-short-name}/reviews/`), and loop state (`.claude/loop/`) do not share a key. Nothing on disk joins task ↔ branch ↔ review ↔ MR.
 
 Consequences still true:
-- **`validate` produces no file** — Phase 8 is chat output only; no `docs/work/{id}/reviews/validation-*.md` (or equivalent). Sign-off leaves no durable artefact.
+- **`validate` produces no file** — Phase 8 is chat output only; no `specs/{work-short-name}/reviews/validation-*.md` (or equivalent). Sign-off leaves no durable artefact.
 - **Numbered review history is per-working-copy** — `{nn}` from directory listing; a fresh clone restarts at `01`.
 - **`reviews/review-learnings.local.md` is read and never written** — specified in `code-review` context-resolution; no `--learn` (or other) writer. Mechanism is inert.
 

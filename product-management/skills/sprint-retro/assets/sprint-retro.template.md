@@ -43,7 +43,7 @@ related:
 | --------- | ------- | ----- | --------- | ------- | -------- |
 
 <!-- Outcome: delivered / partial / not started / descoped mid-sprint.
-     Evidence: task status in tasks.md, MR, CI run, date. -->
+     Evidence: task status in TASKS.local.md, MR, CI run, date. -->
 
 ## Definition of done
 

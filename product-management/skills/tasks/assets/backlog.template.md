@@ -17,7 +17,7 @@ Filesystem-only fallback — see references/work-item-resolution.md. When
 Linear or Jira resolves, this artefact is not used; the tracker holds the
 epic list and skills read it directly.
 §3 epic breakdown table; §4 epic detail for Now-phase epics.
-Epic work path: docs/work/{work-id}/ — slug from title or short title, max two words, kebab-case (the work-id IS the slug in this fallback; a tracker key would be used verbatim instead).
+Epic work path: specs/{work-short-name}/ — kebab-case from title, max two words; fall back to {work-id} when a short name cannot be discovered.
 -->
 
 # Backlog -- {Name}
@@ -43,8 +43,8 @@ Epic work path: docs/work/{work-id}/ — slug from title or short title, max two
 | Convention | Value |
 | ---------- | ----- |
 | Epic ID | `{PREFIX}{nn}` (internal — filesystem-only fallback; a tracker key is used verbatim when one resolves) |
-| Epic work path | `docs/work/{work-id}/` (title or short title slug, max two words, when work-id is internal) |
-| Task ID | `{PREFIX}{nn}-{nn}` in `docs/work/{work-id}/tasks.md` |
+| Epic work path | `specs/{work-short-name}/` (title or short title slug, max two words, when work-id is internal) |
+| Task ID | `{PREFIX}{nn}-{nn}` in `specs/{work-short-name}/TASKS.local.md` |
 | Status | To do, In progress, In review, Blocked, Done |
 | Priority | P0–P3 |
 | Estimation | Fibonacci story points |
@@ -64,7 +64,7 @@ Epic work path: docs/work/{work-id}/ — slug from title or short title, max two
 
 **Dependencies.**
 
-**Status.** **Work path:** `docs/work/{work-id}/`
+**Status.** **Work path:** `specs/{work-short-name}/`
 
 ## 5. Dependency graph
 

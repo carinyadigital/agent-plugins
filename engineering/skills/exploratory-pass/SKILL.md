@@ -2,7 +2,7 @@
 name: exploratory-pass
 description: >
   Acceptance-criteria-driven exploratory validation in a prepared QA workspace —
-  manual-style checks, browser verification, or CLI probes against tasks.md
+  manual-style checks, browser verification, or CLI probes against TASKS.local.md
   Gherkin. Use after deploy-qa when exercising AC. Do NOT use for automated
   tests only (run-automated-suite) or defect formatting (document-defects).
 license: MIT
@@ -24,7 +24,7 @@ exploratory step). Pass epic slug or branch after the skill name.
 
 ## Steps
 
-1. Parse acceptance criteria from `docs/work/{work-id}/tasks.md` into a checklist.
+1. Parse acceptance criteria from `specs/{work-short-name}/TASKS.local.md` into a checklist.
 2. Read the diff or changed files for scope context.
 3. For each criterion, execute the smallest verification that proves or disproves
    it — Shell for CLI checks, Read for static inspection, browser automation

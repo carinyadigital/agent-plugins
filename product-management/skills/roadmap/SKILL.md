@@ -96,7 +96,7 @@ Markdown with YAML frontmatter. Save to the resolved path. Use [assets/roadmap.t
   Backlog. After roadmap is drafted, `/product-management:tasks --product`
   creates the epic backlog.
 - **Epic rows and work paths** belong in backlog, not roadmap.
-- **Story AC** belongs in tasks.md, not phase exit criteria (keep exit criteria
+- **Story AC** belongs in TASKS.local.md, not phase exit criteria (keep exit criteria
   verifiable at phase level).
 
 ## Supporting files

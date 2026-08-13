@@ -4,7 +4,7 @@ description: >
   Use to groom an existing backlog or judge whether a breakdown is ready to
   commit to — reprioritise, split oversized epics or stories, re-estimate,
   defer misaligned items, and check sprint readiness of docs/product/backlog.md
-  or docs/work/{work-id}/tasks.md for any work item. Triggers on "groom the
+  or specs/{work-short-name}/TASKS.local.md for any work item. Triggers on "groom the
   backlog", "refine the backlog", "is this sprint-ready", "are these stories
   ready", "reprioritise", "this epic is too big", "clean up the backlog".
   Amends in place and reports a verdict. Do NOT use to create a backlog or
@@ -55,12 +55,12 @@ for the field rules this pass enforces.
 | -------- | ------ | --------- |
 | none, or a backlog path — filesystem-only | `docs/product/backlog.md` | Planning-ready? |
 | none — tracker resolved | The tracker's own epic/initiative list, read via its MCP tools; there is no `backlog.md` to groom | Planning-ready? |
-| Work item ID (epic, story, bug, or spike) | `docs/work/{work-id}/tasks.md`, or the tracker's sub-issues when one resolved | Sprint-ready? |
+| Work item ID (epic, story, bug, or spike) | `specs/{work-short-name}/TASKS.local.md`, or the tracker's sub-issues when one resolved | Sprint-ready? |
 | Both named | Both, in that order | Both verdicts |
 
 This skill runs on a recurring cadence against the backlog (`backlog.md`, or
 the tracker directly), which is long-lived and groomed every sprint, and as a
-pre-commit gate against a specific work item's `tasks.md`. Same activities,
+pre-commit gate against a specific work item's `TASKS.local.md`. Same activities,
 different artefact.
 
 ## Grooming pass
@@ -94,10 +94,10 @@ and record the blocker on anything that slipped.
   words, not the Epic ID. Tracker-backed: the work path is the tracker key
   itself — do not re-slug it
 - [ ] Dependencies acyclic; estimates present
-- [ ] No full Gherkin in the backlog — acceptance criteria belong in `tasks.md`
+- [ ] No full Gherkin in the backlog — acceptance criteria belong in `TASKS.local.md`
 - [ ] Every epic reachable from a roadmap phase
 
-### tasks.md — sprint-ready
+### TASKS.local.md — sprint-ready
 
 - [ ] Every story has a statement, an independent test criterion, and ≥1 Gherkin scenario
 - [ ] Every `Then` clause is observable

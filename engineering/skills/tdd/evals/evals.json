@@ -4,20 +4,20 @@
     {
       "id": 1,
       "prompt": "Write the skeleton technical design for checkout-foundation — end-to-end slice, files shipped, out of scope for this epic.",
-      "expected_output": "docs/work/checkout-foundation/tdd.md, 2–4 pages, cites solution.md, §4 lists deferred work, no task Gherkin.",
+      "expected_output": "specs/checkout-foundation/tdd.md, 2–4 pages, cites solution.md, §4 lists deferred work, no task Gherkin.",
       "assertions": [
-        "Writes docs/work/checkout-foundation/tdd.md",
+        "Writes specs/checkout-foundation/tdd.md",
         "Uses skeleton sections (slice, files, gates, out of scope)",
         "Cites solution.md by section rather than copying full architecture",
-        "No Feature:/Scenario: blocks (those belong in tasks.md)"
+        "No Feature:/Scenario: blocks (those belong in TASKS.local.md)"
       ]
     },
     {
       "id": 2,
-      "prompt": "Update the technical design for CHK01. docs/work/checkout-foundation/tdd.md already exists.",
+      "prompt": "Update the technical design for CHK01. specs/checkout-foundation/tdd.md already exists.",
       "expected_output": "Updates the existing tdd.md in place rather than writing a second document.",
       "assertions": [
-        "Updates docs/work/checkout-foundation/tdd.md",
+        "Updates specs/checkout-foundation/tdd.md",
         "Does not create a second design document alongside the existing one"
       ]
     }

@@ -72,7 +72,7 @@ class Report:
                 print(f"  ... {remaining} more line(s) truncated")
 
 
-_SLUG_RE = re.compile(r"docs/work/([a-z0-9-]+)/")
+_SLUG_RE = re.compile(r"specs/([a-z0-9-]+)/")
 _KEBAB_TWO_WORDS_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)?$")
 
 

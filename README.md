@@ -71,7 +71,7 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 ### 3. Implement a UI task against design and AC (Engineering)
 
-**You have:** approved `docs/work/{work-id}/tdd.md`, `tasks.md` with Gherkin AC, and a bound target repo.
+**You have:** approved `specs/{work-short-name}/tdd.md`, `TASKS.local.md` with Gherkin AC, and a bound target repo.
 
 **Run:** `/engineering:implement CHK01-01` — the skill reads the target repo's own `AGENTS.md` / `CLAUDE.md` before changing code.
 
@@ -271,13 +271,13 @@ Default layout the skills expect:
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
 docs/architecture/            solution.md, decisions/
-docs/work/{work-id}/          tdd.md, tasks.md
-docs/work/{work-id}/reviews/  code-review-{nn}.local.md, ux-design-review-{nn}.local.md
+specs/{work-short-name}/          tdd.md; TASKS.local.md when required
+specs/{work-short-name}/reviews/  code-review-{nn}.local.md, ux-design-review-{nn}.local.md
 docs/work/sprint-{id}/        plan.md, retrospective.md
 reviews/                      code-review.local.json, ux-design-review.local.json,
                               review-learnings.local.md (gitignored — never committed)
 docs/reviews/                 agent byproducts (competitor-scan, metrics, digests)
-TASKS.local.md                optional tracker-pointer cache (gitignored locally)
+TASKS.local.md                repo-root tracker-pointer cache (gitignored locally)
 .ux-review/                   UX capture scratch (agent-local)
 .claude/loop/                 Ralph run state on Claude Code (or .cursor/loop/ on Cursor)
 ```
@@ -401,7 +401,7 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | `/product-management:competitive-brief` | competitive-brief | Competitive analysis brief |
 | `/product-management:metrics-review` | metrics-review | Product metrics review with actions |
 | `/product-management:stakeholder-update` | stakeholder-update | Status update tailored to audience |
-| `/product-management:tasks` | tasks | `--product` → backlog after roadmap; `{work-id}` → `docs/work/{work-id}/tasks.md` |
+| `/product-management:tasks` | tasks | `--product` → backlog after roadmap; `{work-id}` → `specs/{work-short-name}/TASKS.local.md` |
 | `/product-management:backlog-refine` | backlog-refine | Groom backlog or judge sprint readiness |
 | `/product-management:sprint-planning` | sprint-planning | Sprint plan — `docs/work/sprint-{id}/plan.md` |
 | `/product-management:sprint-retro` | sprint-retro | Sprint retrospective — `docs/work/sprint-{id}/retrospective.md` |
@@ -451,7 +451,7 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | Command | Skill | What it does |
 |---|---|---|
 | `/engineering:setup` | setup | Learns stack, personas, target binding, connectors |
-| `/engineering:tdd` | tdd | write — `docs/work/{work-id}/tdd.md`; review via `docs-review` |
+| `/engineering:tdd` | tdd | write — `specs/{work-short-name}/tdd.md`; review via `docs-review` |
 | `/engineering:implement` | implement | Implement a task against approved tdd.md and AC |
 | `/engineering:code-review` | code-review | Read-only peer review against tdd.md and tasks |
 | `/engineering:code-review-fix` | code-review-fix | Address code-review findings without behaviour change |

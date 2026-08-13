@@ -40,7 +40,7 @@
     "note": "code-review"
   },
   {
-    "query": "Is epic CHK01 done? Validate against tasks.md.",
+    "query": "Is epic CHK01 done? Validate against TASKS.local.md.",
     "should_trigger": false,
     "note": "validate"
   }

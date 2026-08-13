@@ -3,10 +3,10 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Write tasks for checkout-foundation (CHK01) from docs/work/checkout-foundation/tdd.md.",
-      "expected_output": "docs/work/checkout-foundation/tasks.md with stories, each with a statement, independent test criterion and Gherkin AC, and tasks beneath them.",
+      "prompt": "Write tasks for checkout-foundation (CHK01) from specs/checkout-foundation/tdd.md.",
+      "expected_output": "specs/checkout-foundation/TASKS.local.md with stories, each with a statement, independent test criterion and Gherkin AC, and tasks beneath them.",
       "assertions": [
-        "Creates or updates docs/work/checkout-foundation/tasks.md",
+        "Creates or updates specs/checkout-foundation/TASKS.local.md",
         "Every story has an As a/I want/So that statement",
         "Every story has an independent test criterion",
         "Every story has >=1 Gherkin scenario with observable Then clauses",
@@ -18,12 +18,12 @@
     {
       "id": 2,
       "prompt": "Break docs/specs/payments-rfc.md into a backlog.",
-      "expected_output": "An epic row added to backlog.md and a matching tasks.md written, both paths reported.",
+      "expected_output": "An epic row added to backlog.md and a matching TASKS.local.md written, both paths reported.",
       "assertions": [
         "Reads the spec at the given path",
         "Derives a kebab-case slug of at most two words",
         "Reads backlog.md before assigning an Epic ID so it does not collide",
-        "Writes both docs/product/backlog.md and docs/work/{slug}/tasks.md",
+        "Writes both docs/product/backlog.md and specs/{work-short-name}/TASKS.local.md",
         "Reports both paths in the summary"
       ]
     },
@@ -41,7 +41,7 @@
     {
       "id": 4,
       "prompt": "Write tasks for auth-tokens with EARS.",
-      "expected_output": "tasks.md where every story carries Gherkin plus EARS statements using the five patterns.",
+      "expected_output": "TASKS.local.md where every story carries Gherkin plus EARS statements using the five patterns.",
       "assertions": [
         "Every story has both Gherkin and EARS sections",
         "EARS statements use THE SYSTEM SHALL",
@@ -51,13 +51,13 @@
     {
       "id": 5,
       "prompt": "Write sub-tasks for JIRA-123.",
-      "expected_output": "Resolves the source system and type before writing anything; if Jira and Linear are both plausible or neither MCP tool is reachable, asks the user rather than guessing. Once resolved as a Jira story, writes sub-tasks inheriting the story's Gherkin AC to the story's own tasks.md (or as tracker sub-issues), using the Jira key as the canonical ID with no parallel internal ID invented.",
+      "expected_output": "Resolves the source system and type before writing anything; if Jira and Linear are both plausible or neither MCP tool is reachable, asks the user rather than guessing. Once resolved as a Jira story, writes sub-tasks inheriting the story's Gherkin AC to the story's own TASKS.local.md (or as tracker sub-issues), using the Jira key as the canonical ID with no parallel internal ID invented.",
       "assertions": [
         "Reads work-item-resolution.md before acting",
         "Does not guess between Jira and Linear when ambiguous — asks the user",
         "Uses JIRA-123 as the canonical ID; does not invent an internal ID alongside it",
         "Sub-tasks inherit the parent story's Gherkin scenario(s)",
-        "Writes to docs/work/JIRA-123/tasks.md (or creates tracker sub-issues), not the parent epic's tasks.md",
+        "Writes to specs/{work-short-name}/TASKS.local.md (or specs/JIRA-123/ when no short name is known, or creates tracker sub-issues), not the parent epic's TASKS.local.md",
         "If this is a fresh Jira/Linear resolution (not one already trusted from an existing TASKS.local.md), writes a TASKS.local.md pointer at the repo root"
       ]
     },

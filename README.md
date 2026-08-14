@@ -1,10 +1,10 @@
-# Carinya Plugins
+# Agent Plugins by Carinya Parc
 
-**Product delivery plugins for your IDE — strategy, engineering, design, and validation in one marketplace, with optional brand, content, and SEO plugins for teams that need them. Each plugin bootstraps its own instance profile and ships MCP connectors for the tools you already use.**
+**Full-service digital agency plugins for small and medium businesses — brand, content, product, design, search, and engineering, delivered through Claude Cowork, Claude Code, Cursor, or the agent you already use. Each plugin bootstraps its own instance profile and ships MCP connectors for the tools you already use.**
 
 ## Install in one command
 
-In [Claude Code](https://claude.com/product/claude-code), [Claude Cowork](https://claude.com/product/cowork), or **Cursor** (Settings → Plugins):
+In [Claude Code](https://claude.com/product/claude-code), [Claude Cowork](https://claude.com/product/cowork), or **Cursor** (Settings → Plugins). Other agent providers can load individual skill files (see [skills.sh](#skillssh-skill-files-only) below).
 
 ```bash
 /plugin marketplace add <path-to-this-repo>
@@ -17,11 +17,11 @@ Restart, then run `/<practice>:setup`. It bootstraps a git-versioned instance wo
 
 ## Who this is for
 
-**Primary audience:** product teams shipping software — product managers, engineers, designers, and delivery leads working from specs through implementation, review, and validation.
+**Primary audience:** small and medium business owners who need the services of a full-service digital agency — brand, content, product, design, and search — delivered agentically rather than by a retainer team.
 
-**Adjacent plugins:** `brand-creative`, `content-marketing`, and `search-optimisation` serve brand, editorial, and SEO workflows. They are genuinely disjoint buyers from the engineering core — install them when you need them, not because you run an agency.
+Run the work in [Claude Cowork](https://claude.com/product/cowork), [Claude Code](https://claude.com/product/claude-code), **Cursor**, or your preferred agent provider. You do not need an engineering team to start. Install the practices that match the work in front of you; add architecture and engineering when you are shipping a product or website.
 
-This repo is **not** a promise to "run a full-service digital agency from your IDE." It is a plugin catalogue for structured product delivery, with optional go-to-market plugins on the side.
+This catalogue is how agency service lines show up in your session: structured skills, living profiles, and drafts you review before anything goes live.
 
 ## Plugins at a glance
 
@@ -30,10 +30,10 @@ Install the practice plugins that match your work. The first practice `setup` wr
 | Plugin | Best for | First command |
 |---|---|---|
 | [brand-creative](./brand-creative) | Brand voice and visual identity | `/brand-creative:setup` |
-| [product-management](./product-management) | Product strategy, roadmap, specs, research, metrics, backlog, sprint cadence, validation | `/product-management:setup` |
 | [content-marketing](./content-marketing) | Editorial calendar, social curation, CMS seed drafts | `/content-marketing:setup` |
 | [design](./design) | Wireframes, live UX review, and UX design fix | `/design:setup` |
 | [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
+| [product-management](./product-management) | Product strategy, roadmap, specs, research, metrics, backlog, sprint cadence, validation | `/product-management:setup` |
 | [architecture](./architecture) | Solution design and ADRs | `/architecture:setup` |
 | [engineering](./engineering) | Technical design (tdd), implementation, code review, QA, platform ops | `/engineering:setup` |
 | [ralph-loop](./ralph-loop) | Self-referential delivery loops (ad-hoc / custom; engineering preset from engineering) | `/ralph-loop-setup` |
@@ -44,32 +44,41 @@ Install the practice plugins that match your work. The first practice `setup` wr
 
 | If you are… | Install next |
 |---|---|
-| Standing up a new client or product | `brand-creative` → `product-management` |
-| Shipping a website or app | `product-management` + `architecture` + `engineering` (+ `design` for new UI) |
-| Running content and social | `brand-creative` → `content-marketing` (+ `search-optimisation` for SEO) |
-| SEO-only engagement | `search-optimisation` (+ `product-management` for competitive brief) |
+| Standing up a new business or brand | `brand-creative` |
+| Running a website, content, and social | `brand-creative` → `content-marketing` → `design` |
+| Need to rank in search | `search-optimisation` (+ `content-marketing` for on-page work) |
+| Shaping a product or offering | `product-management` (+ `design` for new UI) |
+| Shipping a website or app codebase | `product-management` + `architecture` + `engineering` (+ `design` for new UI) |
 
 ## Worked examples
 
-Each example produces a **draft artefact for your review** — run the command, then verify assumptions, numbers, and brand fit before client delivery.
+Each example produces a **draft artefact for your review** — run the command, then verify assumptions, numbers, and brand fit before anything goes live.
 
-### 1. Bootstrap a client instance
+### 1. Bootstrap a business instance
 
-**You have:** a new engagement — business name, one website target, no instance repo yet.
+**You have:** a new business — name, one website, no instance repo yet.
 
 **Run:** `/brand-creative:setup --quick` (or any practice `setup`) — answers business name and writes `config/instance.json` if absent, then the practice interview.
 
 **You get:** a bound instance profile and a practice profile ready for the next skill.
 
-### 2. Sprint plan from an existing backlog (Product Management)
+### 2. Write a brand voice (Brand)
 
-**You have:** `docs/product/backlog.md` with epics in the Now phase and open risks.
+**You have:** a bound instance and some existing copy — website, social, or a voice interview.
 
-**Run:** `/product-management:sprint-planning 3` — point at the backlog and name sprint goals.
+**Run:** `/brand-creative:brand-voice write` — the skill reads seed material and drafts `brand/brand-voice.md`.
 
-**You get:** a sprint plan with scoped work, dependencies, and stakeholder-facing summary — aligned to your practice profile cadence and escalation model.
+**You get:** a voice guide other content and product skills consume, ready for your review before anything publishes.
 
-### 3. Implement a UI task against design and AC (Engineering)
+### 3. Draft this week's content calendar (Content)
+
+**You have:** a brand voice on file and channels named in the content practice profile.
+
+**Run:** `/content-marketing:content-calendar write` — name the window and any campaigns in flight.
+
+**You get:** an editorial calendar with slot briefs — a draft for your review, not a scheduled publish.
+
+### 4. Implement a UI task against design and AC (Engineering, when you ship code)
 
 **You have:** approved `specs/{work-short-name}/tdd.md`, `TASKS.local.md` with Gherkin AC, and a bound target repo.
 
@@ -77,15 +86,25 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 **You get:** implemented code on a feature branch, ready for `/engineering:code-review` and your normal PR workflow.
 
-More commands and personas: [Entry points by team role](#entry-points-by-team-role) · [Extended persona catalog](#extended-persona-catalog) · [Skill & command reference](#skill--command-reference).
+More commands and personas: [Entry points by service](#entry-points-by-service) · [Extended persona catalog](#extended-persona-catalog) · [Skill & command reference](#skill--command-reference).
 
 ---
 
-## Entry points by team role
+## Entry points by service
 
-Personas are **job titles that map to slash commands** inside practice plugins — not separate agent plugins. Install the plugin, run its `setup`, then invoke the command.
+Personas are **agency hats that map to slash commands** inside practice plugins — not separate agent plugins. An owner can wear any of them. Install the plugin, run its `setup`, then invoke the command.
 
-### Product team core
+### Brand, content & growth
+
+| Role | What it does | Command |
+|---|---|---|
+| **Brand Lead** | Voice lifecycle and visual identity guide | `/brand-creative:brand-voice write` |
+| **Content Strategist** | Editorial calendar and social inventory curation | `/content-marketing:content-calendar write` |
+| **Content Writer** | Blog posts, recipes, captions for CMS import | `/content-marketing:draft-post` |
+| **SEO Specialist** | Keyword research, technical audits, on-page review | `/search-optimisation:keyword-research` |
+| **UX Designer** | Wireframes, live UX review, UX fixes | `/design:wireframe` |
+
+### Product & delivery
 
 | Role | What it does | Command |
 |---|---|---|
@@ -95,39 +114,29 @@ Personas are **job titles that map to slash commands** inside practice plugins �
 | **Engineer** | Implement tasks against approved design and AC | `/engineering:implement` |
 | **Reviewer** | Peer code review against design docs and AC | `/engineering:code-review` |
 | **Release gate** | Final technical sign-off on open PRs | `/engineering:final-code-review` |
-| **UX Designer** | Wireframes, live UX review, UX fixes | `/design:wireframe` |
 | **QA** | QA deploy, automated suite, exploratory pass | `/engineering:exploratory-pass` |
 
 Engineering skills share one library in `engineering`. Architecture (`solution`, `adr`) lives in `architecture`. Seniority labels (peer review vs final gate) reflect review depth, not separate plugins.
-
-### Adjacent practices (optional)
-
-| Role | What it does | Command |
-|---|---|---|
-| **Brand Lead** | Voice lifecycle and visual identity guide | `/brand-creative:brand-voice write` |
-| **Content Strategist** | Editorial calendar and social inventory curation | `/content-marketing:content-calendar write` |
-| **Content Writer** | Blog posts, recipes, captions for CMS import | `/content-marketing:draft-post` |
-| **SEO Specialist** | Keyword research, technical audits, on-page review | `/search-optimisation:keyword-research` |
 
 Run each plugin's `setup` before first use — every skill reads your instance profile and practice profile. Skipping setup is the most common reason output stays generic.
 
 ## Extended persona catalog
 
-Each persona below is named for the job it does. Start with [entry points by team role](#entry-points-by-team-role), then tune the underlying skill, practice profile, and connectors to how your team works.
+Each persona below is named for the job it does. Start with [entry points by service](#entry-points-by-service), then tune the underlying skill, practice profile, and connectors to how your business works.
 
 | Persona | What it does | Plugin | Command |
 |---|---|---|---|
+| **Voice Enforcer** | On-brand copy check against brand voice | `brand-creative` | `/brand-creative:brand-voice enforce` |
+| **Visual Identity Author** | Colors, type, logo, UI tokens | `brand-creative` | `/brand-creative:brand-guide write` |
+| **Media Analyst** | Vision analysis — subjects, season, mood, quality | `content-marketing` | `/content-marketing:analyse-media` |
+| **Caption Writer** | Caption variants and channel copy | `content-marketing` | `/content-marketing:write-captions` |
+| **Technical SEO Auditor** | Production audit → tracked issues | `search-optimisation` | `/search-optimisation:technical-seo-audit` |
 | **Backlog Owner** | Epic breakdown, Now-phase scope, delivery risks | `product-management` | `/product-management:tasks --product` |
 | **Task Decomposer** | Gherkin acceptance criteria per epic | `product-management` | `/product-management:tasks` |
 | **Epic Validator** | Final sign-off against AC and roadmap gates | `product-management` | `/product-management:validate` |
 | **Research Synthesizer** | Themes from interviews, surveys, and tickets | `product-management` | `/product-management:synthesize-research` |
 | **Competitive Analyst** | Competitive analysis brief | `product-management` | `/product-management:competitive-brief` |
 | **Spec Writer** | Feature spec or PRD from a problem statement | `product-management` | `/product-management:write-spec` |
-| **Voice Enforcer** | On-brand copy check against brand voice | `brand-creative` | `/brand-creative:brand-voice enforce` |
-| **Visual Identity Author** | Colors, type, logo, UI tokens | `brand-creative` | `/brand-creative:brand-guide write` |
-| **Media Analyst** | Vision analysis — subjects, season, mood, quality | `content-marketing` | `/content-marketing:analyse-media` |
-| **Caption Writer** | Caption variants and channel copy | `content-marketing` | `/content-marketing:write-captions` |
-| **Technical SEO Auditor** | Production audit → tracked issues | `search-optimisation` | `/search-optimisation:technical-seo-audit` |
 | **ADR Author** | Architecture decision register and ADR files | `architecture` | `/architecture:adr write` |
 | **Epic Designer** | Work-item technical design (TDD) | `engineering` | `/engineering:tdd` |
 | **MR Author** | Merge request description from the branch | `engineering` | `/engineering:merge-request` |
@@ -136,14 +145,14 @@ Each persona below is named for the job it does. Start with [entry points by tea
 | **Tech Debt Prioritizer** | Prioritize remediation work | `engineering` | `/engineering:tech-debt` |
 | **WebOps Engineer** | CI/CD, deployment, platform health | `engineering` | `/engineering:platform-health` |
 
-Everything here ships as Claude Cowork, Claude Code, or Cursor plugins.
+Everything here ships as Claude Cowork, Claude Code, or Cursor plugins, and individual skills can be installed via other agent providers that support skill files.
 
 What's in the repo:
 
-- **Practice plugins** — product management, engineering, design, and optional brand/content/SEO — each with a `setup` interview, a living `CLAUDE.md` practice profile every skill reads, and **propose profile update** so conventions can be recorded mid-engagement without re-running setup.
+- **Practice plugins** — brand, content, product, design, search, architecture, and engineering — each with a `setup` interview, a living `CLAUDE.md` practice profile every skill reads, and **propose profile update** so conventions can be recorded as you work without re-running setup.
 - **Instance bootstrap** — whichever plugin you install first writes `config/instance.json` if absent; no install-order dependency.
 - **MCP connectors** — a minimal default per practice in `.mcp.json`; add more for your stack (source control, hosting, chat, trackers, analytics).
-- **[Entry points by team role](#entry-points-by-team-role)** — primary commands plus the [extended catalog](#extended-persona-catalog) below.
+- **[Entry points by service](#entry-points-by-service)** — primary commands plus the [extended catalog](#extended-persona-catalog) below.
 
 ## Repository layout
 
@@ -183,7 +192,7 @@ Each practice plugin has the same shape:
 
 ### First run (all surfaces)
 
-1. Install a practice plugin from the marketplace (e.g. `brand-creative` or `product-management`).
+1. Install a practice plugin from the marketplace (e.g. `brand-creative` or `content-marketing`).
 2. Run **`/<practice>:setup`** — creates or binds your instance repo.
 3. Install the **practice plugins** recommended during setup.
 4. Run each practice's **`/<practice>:setup`** (e.g. `/brand-creative:setup`).
@@ -244,8 +253,8 @@ npx skills add carinyaparc/carinya-plugins/engineering/skills/code-review
 | | What it is | Where it lives |
 |---|---|---|
 | **Practice plugins** | Self-contained service bundles — skills, hooks, MCP, and a template practice profile. Install the ones you need. | `<practice>/` |
-| **Skills** | Domain expertise Claude draws on automatically — and slash actions you trigger explicitly: `/product-management:tasks --product`, `/engineering:implement`. | `<practice>/skills/<skill>/SKILL.md` |
-| **Personas** | Job titles that map to skills — shared libraries inside each practice, not separate plugins. | Each practice's `README.md` |
+| **Skills** | Domain expertise the agent draws on automatically — and slash actions you trigger explicitly: `/brand-creative:brand-voice write`, `/content-marketing:draft-post`. | `<practice>/skills/<skill>/SKILL.md` |
+| **Personas** | Agency hats that map to skills — shared libraries inside each practice, not separate plugins. | Each practice's `README.md` |
 | **Instance profile** | Git-versioned org facts, brand path, target bindings, squad charters. | `<instance-repo>/config/instance.json`, `brand/`, `squads/` |
 | **Practice profile** | Per-practice conventions — stack defaults, persona preference, output formats, review gates. | `~/.claude/plugins/config/digital-agency/<practice>/CLAUDE.md` |
 | **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — repos, hosting, design, trackers, chat. | `<practice>/.mcp.json` |
@@ -286,13 +295,7 @@ Canonical detail: [`product-management/references/delivery-conventions.md`](./pr
 
 ## Practice plugins by service line
 
-Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to your firm — start there.
-
-### Strategy & delivery
-
-| Plugin | What it adds |
-|---|---|
-| **[product-management](./product-management)** | Product strategy, roadmap, feature specs and PRDs, research, competitive briefs, metrics, stakeholder updates, backlog/tasks decomposition, sprint planning and retro, and work-item validation. Personas: Product Manager and Delivery Lead. |
+Grouped by agency service line. Each plugin's **`setup`** is what tailors it to your business — start there.
 
 ### Brand, creative & content
 
@@ -300,7 +303,13 @@ Grouped by where the work sits. Each plugin's **`setup`** is what tailors it to 
 |---|---|
 | **[brand-creative](./brand-creative)** | Brand voice lifecycle (discover, write, enforce) and visual identity guide (colors, type, logo, UI tokens). Writes to instance `brand/` when bound. |
 | **[content-marketing](./content-marketing)** | Editorial calendar, social curation, media analysis, captions, and CMS seed drafting (posts and recipes). Two personas (Content Strategist, Content Writer). Reads brand voice from resolved brand path. |
-| **[design](./design)** | Wireframes, live-browser UX design review, and UX design fix. Writes to instance `design/` when bound; `engineering` reads wireframes via artefact consumption. |
+| **[design](./design)** | Wireframes, live-browser UX design review, and UX design fix. Writes to instance `design/` when bound; other practices read wireframes via artefact consumption. |
+
+### Product & strategy
+
+| Plugin | What it adds |
+|---|---|
+| **[product-management](./product-management)** | Product strategy, roadmap, feature specs and PRDs, research, competitive briefs, metrics, stakeholder updates, backlog/tasks decomposition, sprint planning and retro, and work-item validation. Personas: Product Manager and Delivery Lead. |
 
 ### Growth & search
 
@@ -345,7 +354,7 @@ No server is duplicated across plugins. Co-install companion practices or edit `
 
 ## Instance bootstrap and practice profile
 
-Two layers of configuration tailor generic skills to your firm:
+Two layers of configuration tailor generic skills to your business:
 
 | Layer | Path | Captures |
 |---|---|---|
@@ -365,11 +374,11 @@ Framework: [`brand-creative/references/agency-setup-framework.md`](./brand-creat
 
 ## Making it yours
 
-These are reference templates. They get better when you tune them to how your firm works — and the customization mechanism is the plugin itself.
+These are reference templates. They get better when you tune them to how your business works — and the customization mechanism is the plugin itself.
 
 - **Run instance and practice setup.** `setup` and `setup` **are** the customization mechanism. They interview you, read seed documents, and write profiles after you confirm the summary.
 - **Edit profiles directly.** Instance facts live in your instance repo; practice conventions at `~/.claude/plugins/config/digital-agency/<practice>/CLAUDE.md`. They survive plugin updates.
-- **Propose profile updates from any skill.** When a stable convention surfaces mid-engagement (tone corrections, sprint length, MR template), skills show the exact change and ask before writing.
+- **Propose profile updates from any skill.** When a stable convention surfaces as you work (tone corrections, channel mix, sprint length), skills show the exact change and ask before writing.
 - **Swap connectors.** Point `.mcp.json` at your source control, hosting, design, and tracker stack. Skills fall back gracefully when a connector is not configured.
 - **Bring your brand and templates.** Drop terminology, house style, and branded templates into the instance `brand/` directory and practice profiles.
 - **Fork skills for house style.** Every skill is a markdown file under `skills/`. Edit steps, gates, and output formats.

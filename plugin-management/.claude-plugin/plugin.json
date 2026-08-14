@@ -1,10 +1,10 @@
 {
   "name": "plugin-management",
   "displayName": "Plugin Management",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Create, customize, and manage plugins for the carinya-plugins marketplace \u2014 guided create-plugin and customize-plugin workflows, component authoring (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release), plus skill quality gates (skills-qa, skill-review) and Phase 0 tooling (eval-grader, validate_ralph, templates).",
   "author": {
-    "name": "Digital Agency"
+    "name": "Carinya Parc"
   },
   "license": "MIT",
   "keywords": [

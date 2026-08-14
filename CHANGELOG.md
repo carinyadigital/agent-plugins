@@ -8,6 +8,56 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2026-08-14] — author + SMB catalogue positioning
+
+Patch release of every catalogue plugin. Author metadata and README positioning
+only — no skill or path changes.
+
+### architecture 0.6.1
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### brand-creative 0.4.2
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### content-marketing 0.4.2
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### design 0.6.1
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### engineering 0.7.1
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### plugin-management 0.2.2
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### product-management 0.5.1
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### ralph-loop 0.5.1
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### search-optimisation 0.4.2
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### skills-index 0.4.1
+
+- Author metadata: Digital Agency → Carinya Parc.
+
+### Repository
+
+- README repositioned for small and medium business owners: full-service digital agency work delivered agentically in Claude Cowork, Claude Code, Cursor, or another agent. Brand, content, design, and search are first-class; engineering is optional when you ship a product or site.
+- Marketplace owner: Carinya Digital Services → Carinya Parc.
+
 ## [2026-08-14] — specs/reviews paths + catalogue catch-up
 
 First tagged release of the renamed catalogue. Breaking path changes and earlier

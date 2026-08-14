@@ -1,10 +1,10 @@
 {
   "name": "skills-index",
   "displayName": "Skills Index",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Install-aware skill router \u2014 find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task.",
   "author": {
-    "name": "Digital Agency"
+    "name": "Carinya Parc"
   },
   "license": "MIT",
   "keywords": [

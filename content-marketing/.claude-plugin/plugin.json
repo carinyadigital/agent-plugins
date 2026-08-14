@@ -1,7 +1,7 @@
 {
   "name": "content-marketing",
   "displayName": "Content Marketing",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Complete content practice in one install \u2014 setup interview, editorial calendar, social curation, media analysis, and CMS seed drafting. Two personas (Content Strategist, Content Writer), one owned skill library. Reads brand voice from resolved brand path; invokes product-management for tasks and research synthesis.",
   "author": {
     "name": "Digital Agency"

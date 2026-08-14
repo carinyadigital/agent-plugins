@@ -8,42 +8,65 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### Work-item specs path
+## [2026-08-14] — specs/reviews paths + catalogue catch-up
 
-- **BREAKING (`engineering` `tdd` / `implement` / review / QA, `product-management` `tasks` / `validate` / `backlog-refine` / sprint skills, `architecture` `adr` / `solution`, `design` `ux-design-review` / `ux-design-fix`, `ralph-loop`):** Work-item artefacts move from `docs/work/{work-id}/` to `specs/{work-short-name}/`. `{work-short-name}` is kebab-case, at most two words, from the title (`specs/cart/`); fall back to `{work-id}` when a short name cannot be discovered. Writes `tdd.md` and, when a local task breakdown is required, `TASKS.local.md`. Numbered review verdicts move to `specs/{work-short-name}/reviews/`. Sprint plan/retro stay at `docs/work/sprint-{id}/`; SEO research stays at `docs/work/seo/`. Repo-root `TASKS.local.md` remains the Linear/Jira tracker pointer. No dual-read of the old `docs/work/{id}/tdd.md` or `tasks.md` paths.
+First tagged release of the renamed catalogue. Breaking path changes and earlier
+untagged catalogue moves ship together. 0.x minors used for breaking changes;
+no 1.0.0 yet.
 
-### Review state path
+### engineering 0.7.0
 
-- **BREAKING (`engineering` `code-review` / `code-review-fix`, `design` `ux-design-review` / `ux-design-fix`):** Review tracking JSON moves from `docs/reviews/{skill}.local.json` to `reviews/{skill}.local.json`. Fallback branch-level reports and `review-learnings.local.md` move with it. `reviews/` is gitignored (`/reviews/`) and must never be committed; review skills append that entry when missing. Agent byproducts (digests, scans) stay under `docs/reviews/`. Numbered work-item verdicts live at `specs/{work-short-name}/reviews/`.
-
-### Path cleanup
-
+- **BREAKING:** Work-item artefacts move from `docs/work/{work-id}/` to `specs/{work-short-name}/`. `{work-short-name}` is kebab-case, at most two words, from the title (`specs/cart/`); fall back to `{work-id}` when a short name cannot be discovered. Writes `tdd.md` and, when a local task breakdown is required, `TASKS.local.md`. Numbered review verdicts move to `specs/{work-short-name}/reviews/`. Sprint plan/retro stay at `docs/work/sprint-{id}/`. Repo-root `TASKS.local.md` remains the Linear/Jira tracker pointer. No dual-read of the old `docs/work/{id}/tdd.md` or `tasks.md` paths.
+- **BREAKING:** Review tracking JSON moves from `docs/reviews/{skill}.local.json` to `reviews/{skill}.local.json` (`code-review` / `code-review-fix`). Fallback branch-level reports and `review-learnings.local.md` move with it. `reviews/` is gitignored (`/reviews/`) and must never be committed. Agent byproducts stay under `docs/reviews/`.
+- **BREAKING:** `product-engineering` renamed to `engineering` (directory, marketplace id, slash namespace `/engineering:…`, conventions file `engineering-conventions.md`). Reinstall as `engineering@carinya-plugins`.
+- **BREAKING:** `solution` and `adr` moved to `architecture`. Invoke `/architecture:solution` and `/architecture:adr`. `tdd`, `docs-review`, and `tech-debt` stay in `engineering`. Principal Architect persona moves to `architecture`; engineering keeps five personas.
 - Removed dual-read / migration instructions for retired `.agency/` artefact trees.
-  Delivery artefacts live under `docs/`; target binding is `config/target.json`;
-  agent byproducts write under `docs/reviews/`. Work-item design is `tdd.md` only.
 
-### Plugin management (v0.2.0)
+### design 0.6.0
 
-- **New `plugin-management` plugin (v0.2.0):** ported from tempster-plugin — `create-plugin`, `customize-plugin`, and component-authoring skills (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release) plus four sub-agents.
+- **BREAKING:** Work-item review verdicts move to `specs/{work-short-name}/reviews/` (`ux-design-review` / `ux-design-fix`).
+- **BREAKING:** Review tracking JSON moves from `docs/reviews/{skill}.local.json` to `reviews/{skill}.local.json`. `reviews/` is gitignored.
+- **BREAKING:** `product-design` renamed to `design` (directory, marketplace id, slash namespace `/design:…`, conventions file `design-conventions.md`). Reinstall as `design@carinya-plugins`.
+- Removed dual-read / migration instructions for retired `.agency/` artefact trees.
+
+### architecture 0.6.0
+
+- **BREAKING:** Work-item artefacts for `adr` / `solution` move to `specs/{work-short-name}/`.
+- **New plugin:** `setup`, `solution`, `adr` — owns `docs/architecture/`. Principal Architect persona lives here.
+
+### product-management 0.5.0
+
+- **BREAKING:** Work-item artefacts for `tasks` / `validate` / `backlog-refine` / sprint skills move from `docs/work/{work-id}/` to `specs/{work-short-name}/`. Sprint plan/retro stay at `docs/work/sprint-{id}/`.
+- Removed dual-read / migration instructions for retired `.agency/` artefact trees.
+
+### ralph-loop 0.5.0
+
+- **BREAKING:** Work-item artefacts move to `specs/{work-short-name}/`.
+
+### plugin-management 0.2.1
+
+- **New plugin:** ported from tempster-plugin — `create-plugin`, `customize-plugin`, and component-authoring skills (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release) plus four sub-agents.
 - **BREAKING:** `skill-authoring` folded into `plugin-management`. Reinstall as `plugin-management@carinya-plugins`; invoke `/plugin-management:skills-qa` and `/plugin-management:skill-review` (was `/skill-authoring:…`). Scripts live under `plugin-management/scripts/`.
 
-### Design rename (v0.5.0)
+### brand-creative 0.4.1
 
-- **BREAKING:** `product-design` renamed to `design` (directory, marketplace id, slash namespace `/design:…`, conventions file `design-conventions.md`). Reinstall as `design@carinya-plugins`; update any hard-coded `/product-design:` invocations and companion docs.
+- Removed dual-read / migration instructions for retired `.agency/` artefact trees. Delivery artefacts live under `docs/`; target binding is `config/target.json`.
 
-### Engineering rename (v0.6.0)
+### content-marketing 0.4.1
 
-- **BREAKING:** `product-engineering` renamed to `engineering` (directory, marketplace id, slash namespace `/engineering:…`, conventions file `engineering-conventions.md`). Reinstall as `engineering@carinya-plugins`; update any hard-coded `/product-engineering:` invocations and companion docs.
+- Removed dual-read / migration instructions for retired `.agency/` artefact trees.
 
-### Architecture practice split
+### search-optimisation 0.4.1
 
-- **New `architecture` plugin (v0.5.0):** `setup`, `solution`, `adr` — owns `docs/architecture/`.
-- **BREAKING (`engineering` v0.5.0, formerly `product-engineering`):** `solution` and `adr` moved to `architecture`. Invoke `/architecture:solution` and `/architecture:adr`. `tdd`, `docs-review`, and `tech-debt` stay in `engineering`. Principal Architect persona moves to `architecture`; engineering keeps five personas.
-- Companions, `skills-index:find`, and `docs/CROSS-PLUGIN-CONTRACTS.md` updated for the new edge.
+- Removed dual-read / migration instructions for retired `.agency/` artefact trees. SEO research stays at `docs/work/seo/`.
 
-### Migration verification complete
+### skills-index 0.4.0
 
-- Phase 0 authoring tooling ported to `skill-authoring`; Ralph hook tests in `ralph-loop/scripts/`.
+- Catch-up tag for the Phase 3 cutover version (never tagged under the current plugin name). Companions and `find` updated for the architecture / engineering edge.
+
+### Repository
+
+- Phase 0 authoring tooling ported (now in `plugin-management`); Ralph hook tests in `ralph-loop/scripts/`.
 - CI gates: `validate.py` (plugins + skills), `validate_ralph.py`, mutation tests.
 - Validator split: `scripts/validate_plugins.py` + `scripts/validate_skills.py` + `validate_lib.py`; agent contracts + orphan SKILL.md enforced.
 - `docs/MIGRATION.md` removed — see `docs/CROSS-PLUGIN-CONTRACTS.md`.

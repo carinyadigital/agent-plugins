@@ -1,7 +1,9 @@
 {
   "name": "carinya-plugins",
+  "displayName": "Carinya Plugins",
   "owner": {
-    "name": "Carinya Parc"
+    "name": "Carinya Parc Pty Ltd",
+    "url": "https://carinyaparc.com.au"
   },
   "plugins": [
     {

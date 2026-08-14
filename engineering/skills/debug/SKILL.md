@@ -5,7 +5,7 @@ description: >
   diagnose, and fix. Use when given an error message, stack trace, "works in
   staging but not prod", or "broke after deploy". Do NOT use for incident
   response workflows, code review (code-review), or implementation (implement).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep Bash
 argument-hint: "<error message or problem description>"
 metadata:

@@ -1,12 +1,12 @@
 {
   "name": "product-management",
   "displayName": "Product Management",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Complete product management practice in one install \u2014 setup interview, product strategy and PRDs, roadmap, feature specs, research, metrics, stakeholder updates, tasks/backlog decomposition, sprint planning and retro, and epic validation. Personas: Product Manager and Delivery Lead. One owned skill library.",
   "author": {
     "name": "Carinya Parc"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "product-management",
     "product",

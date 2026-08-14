@@ -12,7 +12,7 @@ description: >
   address or fix UX findings (ux-design-fix), for code correctness or
   security review (code-review), to review a tdd.md document (docs-review),
   or to implement features (implement).
-license: MIT
+license: Apache-2.0
 compatibility: Requires git. Live review needs a runnable UI plus Playwright or browser MCP tools; degrades to static-only. Figma comparison requires a Figma MCP server.
 allowed-tools:
   - Read

@@ -6,7 +6,7 @@ description: >
   drop, comparing performance against targets, or preparing a metrics readout.
   Do NOT use for stakeholder status updates (stakeholder-update) or product
   strategy (product).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<time period or metric focus>"
 metadata:

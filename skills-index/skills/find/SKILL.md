@@ -7,7 +7,7 @@ description: >
   "which skill should I use", "what can I do here", "how do I start", "what's
   next", "where do I begin", "/skills-index:find". Do NOT produce artefacts or
   implement code — only recommend skill and mode (or an install command).
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Glob

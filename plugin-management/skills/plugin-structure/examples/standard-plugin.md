@@ -10,6 +10,7 @@ plugins/pr-review-helper/
 │   └── plugin.json
 ├── .cursor-plugin/
 │   └── plugin.json
+├── LICENSE
 ├── README.md
 ├── skills/
 │   ├── review-checklist/

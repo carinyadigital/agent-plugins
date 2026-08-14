@@ -6,7 +6,7 @@ description: >
   or email teasers from tagged media. Reads brand from the instance repo. Do NOT
   use for selecting the final caption (edit-content) or vision analysis
   (analyse-media).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<tags json or media context>"
 metadata:

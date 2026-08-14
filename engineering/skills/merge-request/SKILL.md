@@ -12,7 +12,7 @@ description: >
   merge-ready (merge-request-babysit), to review an MR as its reviewer
   (merge-request-review), to review a local diff (code-review), or to implement
   changes (implement).
-license: MIT
+license: Apache-2.0
 compatibility: Requires git. Hosted MR/PR creation requires gh, glab, or an equivalent provider MCP tool; falls back to printing a create-MR URL.
 allowed-tools:
   - Read

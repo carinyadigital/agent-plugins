@@ -5,7 +5,7 @@ description: >
   structure, keyword usage, and internal linking. Use when reviewing seed JSON or
   draft content before merge. Produces PR review comments only. Do NOT use for
   technical site audits (technical-seo-audit) or drafting content (draft-post).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Glob Grep
 argument-hint: "<pr-url or seed path>"
 metadata:

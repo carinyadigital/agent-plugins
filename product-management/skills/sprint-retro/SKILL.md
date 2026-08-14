@@ -9,7 +9,7 @@ description: >
   sprint 3 go". Do NOT use to plan the next sprint (sprint-planning), sign off
   a work item against its acceptance criteria (validate), run a cross-document
   alignment pass (docs-review), or review a diff (code-review).
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

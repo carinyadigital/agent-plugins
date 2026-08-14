@@ -12,7 +12,7 @@ description: >
   addressing review feedback (code-review-fix), changing how existing UI looks
   or behaves (ux-design-fix), writing tasks (tasks), or writing a technical
   design document (tdd).
-license: MIT
+license: Apache-2.0
 compatibility: Requires git and the project's own validation toolchain (formatter, linter, typechecker, test runner).
 allowed-tools:
   - Read

@@ -9,6 +9,7 @@ plugins/changelog-helper/
 │   └── plugin.json
 ├── .cursor-plugin/
 │   └── plugin.json
+├── LICENSE
 ├── README.md
 └── skills/
     └── changelog-entry/

@@ -11,7 +11,7 @@ description: >
   produces a report and changes nothing. Do NOT use to write or amend a
   document, to review code (code-review), or to review rendered UI
   (ux-design-review).
-license: MIT
+license: Apache-2.0
 compatibility: Requires read access to the documents. Staleness checks require git.
 allowed-tools:
   - Read

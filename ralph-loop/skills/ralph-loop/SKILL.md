@@ -10,7 +10,7 @@ description: >
   (ralph-loop-setup), implement a single task once (implement), review a
   diff (code-review), or sign off a work item (validate) — the loop
   orchestrates those skills.
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

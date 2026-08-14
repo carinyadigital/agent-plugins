@@ -9,7 +9,7 @@ description: >
   Do NOT use to review a finished sprint (sprint-retro), write stories or task
   Gherkin (tasks), groom the backlog (backlog-refine), re-sequence delivery
   phases (roadmap), or sign off an epic (validate).
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

@@ -8,6 +8,57 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2026-08-14] — Apache-2.0 license
+
+Patch release of every catalogue plugin. Relicense MIT → Apache-2.0; each
+plugin now ships a `LICENSE` file at plugin root so the text travels with an
+independently installed plugin.
+
+### architecture 0.6.2
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+
+### brand-creative 0.4.3
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+
+### content-marketing 0.4.3
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+
+### design 0.6.2
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+
+### engineering 0.7.2
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+
+### plugin-management 0.2.3
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+- `plugin-structure` and `plugin-scaffolder` now copy `LICENSE` into new plugins.
+
+### product-management 0.5.2
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+
+### ralph-loop 0.5.2
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+
+### search-optimisation 0.4.3
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+
+### skills-index 0.4.2
+
+- License: MIT → Apache-2.0. Ships `LICENSE` at plugin root.
+
+### Repository
+
+- Root `LICENSE` and README updated to Apache License 2.0.
+
 ## [2026-08-14] — author + SMB catalogue positioning
 
 Patch release of every catalogue plugin. Author metadata and README positioning

@@ -5,7 +5,7 @@ description: >
   with user stories, requirements, and success metrics. Use when drafting a PRD,
   feature spec, or requirements doc. Do NOT use for product strategy doc
   (product), epic task breakdown (tasks), or roadmap phasing (roadmap).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<feature or problem statement>"
 metadata:

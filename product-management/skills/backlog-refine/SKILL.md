@@ -11,7 +11,7 @@ description: >
   write new stories and tasks (tasks), plan a sprint (sprint-planning),
   review a finished sprint (sprint-retro), or verify a work item against its
   acceptance criteria (validate).
-license: MIT
+license: Apache-2.0
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:
   - Read

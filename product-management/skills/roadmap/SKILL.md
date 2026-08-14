@@ -11,7 +11,7 @@ description: >
   and cross-document consistency, not sequencing soundness. Do NOT use for
   epic breakdown or work paths (tasks), PRD (product), per-work-item technical
   design (tdd), tasks (tasks), or architecture detail (solution).
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

@@ -6,7 +6,7 @@ description: >
   `<design-dir>/{page-or-flow}.md` (resolve path per design-conventions.md).
   Reads brand-guide.md when present. Do NOT use for epic technical design
   (design), visual brand tokens (brand-guide), or code implementation (implement).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<page-or-flow> [--brief <notes>] [--from figma]"
 metadata:

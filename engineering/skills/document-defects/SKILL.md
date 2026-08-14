@@ -5,7 +5,7 @@ description: >
   failures, exploratory gaps, or combined validation results. Use when turning
   test output into a defect table. Do NOT use to fix code (implement) or re-run
   tests (run-automated-suite).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Glob Grep
 argument-hint: "<path-to-test-output-or-paste>"
 metadata:

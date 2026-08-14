@@ -3,7 +3,7 @@ name: skill-name
 description: >
   Replace with when to use this skill, concrete trigger phrases, and what it
   produces. End with Do NOT use for … disambiguation against sibling skills.
-license: MIT
+license: Apache-2.0
 compatibility: Replace with runtime requirements (git, tracker MCP, browser MCP, toolchain), or omit if none beyond the host agent.
 allowed-tools:
   - Read

@@ -12,6 +12,7 @@ plugins/incident-response/
 │   └── plugin.json
 ├── .cursor-plugin/
 │   └── plugin.json
+├── LICENSE
 ├── README.md
 ├── docs/
 │   └── design.md

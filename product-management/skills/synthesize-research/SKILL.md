@@ -5,7 +5,7 @@ description: >
   personas, opportunity areas, and roadmap recommendations. Use when turning
   raw research into structured findings. Do NOT use for competitive analysis
   (competitive-brief) or product strategy doc (product).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<research topic or question>"
 metadata:

@@ -1,12 +1,12 @@
 {
   "name": "architecture",
   "displayName": "Architecture",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Architecture practice in one install \u2014 setup interview, solution design (arc42-lite), and ADRs. Writes to docs/architecture/. Companion to engineering for work-item tdd and implementation.",
   "author": {
     "name": "Carinya Parc"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "architecture",
     "solution",

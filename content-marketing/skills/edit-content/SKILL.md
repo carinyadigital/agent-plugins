@@ -5,7 +5,7 @@ description: >
   Use when choosing among write-captions output, editorial caption review, or
   polishing a final caption. Reads brand voice from the instance repo. Does not
   append hashtags. Do NOT use for initial caption generation (write-captions).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Glob Grep
 argument-hint: "<caption variants json>"
 metadata:

@@ -5,7 +5,7 @@ description: >
   post/recipe cadence, and briefs per slot. Reads seasonal calendar from resolved brand
   path. Do NOT use for drafting individual posts (draft-post) or social curation
   (curate-content).
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

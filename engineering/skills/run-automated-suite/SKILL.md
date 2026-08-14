@@ -5,7 +5,7 @@ description: >
   deploy-qa when executing CI-equivalent tests. Do NOT use for workspace setup
   (deploy-qa), manual AC checks (exploratory-pass), or fixing failures
   (implement).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Bash Glob Grep
 argument-hint: "[test-command override]"
 metadata:

@@ -490,6 +490,6 @@ Everything here is markdown and JSON. Fork, edit, PR. See [CONTRIBUTING.md](./CO
 
 ## License
 
-Licensed under the [MIT License](./LICENSE).
+Licensed under the [Apache License 2.0](./LICENSE).
 
 Copyright 2026 Carinya Parc Pty Ltd.

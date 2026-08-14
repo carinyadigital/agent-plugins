@@ -5,7 +5,7 @@ description: >
   risk, or tailor the same progress for exec, engineering, partner, customer, or
   board audiences. Use when drafting status updates or launch notes. Do NOT use
   for product strategy (product) or roadmap updates (roadmap).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<update type and audience>"
 metadata:

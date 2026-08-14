@@ -1,12 +1,12 @@
 {
   "name": "engineering",
   "displayName": "Engineering",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Complete engineering practice in one install \u2014 setup interview, technical design (tdd), implementation, code review, QA, and platform operations. Five personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes architecture for solution/ADRs and product-management for planning cadence.",
   "author": {
     "name": "Carinya Parc"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "engineering",
     "frontend",

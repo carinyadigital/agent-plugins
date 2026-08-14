@@ -8,7 +8,7 @@ description: >
   "on-brand", "doesn't sound like us", "enforce voice", or "brand content audit".
   Default artefact under resolved brand dir (see brand-conventions.md). Do NOT use for visual colors/fonts
   (brand-guide) or product strategy (product).
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

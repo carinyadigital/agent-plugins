@@ -11,7 +11,7 @@ description: >
   perform a review (code-review), to implement new work or features
   (implement), to address UX or design-fidelity findings (ux-design-fix), or
   to open a PR/MR (merge-request).
-license: MIT
+license: Apache-2.0
 compatibility: Requires git and the project's own validation toolchain (formatter, linter, typechecker, test runner).
 allowed-tools:
   - Read

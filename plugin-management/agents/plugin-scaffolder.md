@@ -59,7 +59,7 @@ that decision must arrive already confirmed in your instructions.
    manifest folder.
 
 4. **Write the manifest(s)** with `name` (matching the directory exactly),
-   `description`, `version: "0.1.0"`, and `author`. If writing more than one manifest
+   `description`, `version: "0.1.0"`, `license: "Apache-2.0"`, and `author`. If writing more than one manifest
    flavor, make every one of them byte-identical on `name`/`description`/`version`.
 
 5. **Write each confirmed component file** using the shape its own component-type
@@ -71,7 +71,11 @@ that decision must arrive already confirmed in your instructions.
 6. **Write a non-empty `README.md`** at the plugin root: what the plugin does, how to
    install/load it locally, and a list of its components.
 
-7. **Re-read every file you just wrote** to confirm it landed exactly as intended —
+7. **Copy `LICENSE`** from the repo root into the plugin root (Apache-2.0). Claude
+   Code's plugin layout includes a license file at plugin root so the text travels
+   with an independently installed plugin.
+
+8. **Re-read every file you just wrote** to confirm it landed exactly as intended —
    correct frontmatter, no truncation, no leftover placeholder text.
 
 ## What you do not do

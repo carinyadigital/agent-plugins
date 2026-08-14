@@ -78,4 +78,4 @@ python3 scripts/validate.py
 
 ## License
 
-MIT
+[Apache License 2.0](./LICENSE)

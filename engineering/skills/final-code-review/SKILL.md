@@ -6,7 +6,7 @@ description: >
   `specs/{work-short-name}/TASKS.local.md`. Use when the MR is open and CI is expected
   green. Do NOT use for pre-PR peer review (code-review), business stakeholder
   sign-off (validate), or implementation (implement).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Glob Grep Bash
 argument-hint: "[branch-or-pr-or-mr-url]"
 metadata:

@@ -5,7 +5,7 @@ description: >
   imagery, and   UI tokens — at `<brand-dir>/brand-guide.md` (write, review, refine). Resolve
   `<brand-dir>` per brand-conventions.md. Do NOT use for voice, tone, or copy (brand-voice), product strategy (product),
   or component implementation (implement).
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

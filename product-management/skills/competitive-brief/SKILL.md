@@ -5,7 +5,7 @@ description: >
   prioritization, or sales enablement. Use when comparing competitors, mapping
   a feature area across rivals, or drafting battle cards. Do NOT use for user
   research synthesis (synthesize-research) or product strategy doc (product).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<competitor or feature area>"
 metadata:

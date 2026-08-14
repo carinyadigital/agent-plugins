@@ -6,7 +6,7 @@ description: >
   writing a recipe seed from a calendar brief or slug. Match brand-voice.md before
   finishing. Do NOT merge or publish — seed PR only. Do NOT plan the calendar
   (content-calendar) or audit site-wide structured data (technical-seo-audit).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<slug> [--brief from calendar]"
 metadata:

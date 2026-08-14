@@ -5,7 +5,7 @@ description: >
   and verify the environment is ready for test execution. Use before running
   automated or exploratory QA. Do NOT use for running tests (run-automated-suite),
   exploratory validation (exploratory-pass), or fixing code (implement).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Bash Glob Grep
 argument-hint: "<branch-name-or-mr-url>"
 metadata:

@@ -1,12 +1,12 @@
 {
   "name": "ralph-loop",
   "displayName": "Ralph Loop",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Self-referential delivery loop \u2014 seed with ralph-loop-setup, run with ralph-loop. Ships ad-hoc and custom presets; engineering contributes the engineering-delivery preset. Includes Claude Code and Cursor stop hooks.",
   "author": {
     "name": "Carinya Parc"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "ralph-loop",
     "ralph-loop-setup",

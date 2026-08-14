@@ -11,7 +11,7 @@ description: >
   NOT use to open an MR (merge-request), to review an MR as its reviewer
   (merge-request-review), to review a local diff (code-review), or to
   implement new work (implement).
-license: MIT
+license: Apache-2.0
 compatibility: Requires git and the project's validation toolchain. Provider features require gh, glab, or an equivalent provider MCP tool.
 allowed-tools:
   - Read

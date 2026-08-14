@@ -6,7 +6,7 @@ description: >
   brief or slug. Match brand-voice.md before finishing. Do NOT merge or publish —
   seed PR only. Do NOT plan the calendar (content-calendar) or run SEO review
   (content-seo-review).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<slug> [--brief from calendar]"
 metadata:

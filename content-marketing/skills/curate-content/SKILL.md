@@ -5,7 +5,7 @@ description: >
   when selecting what to post next, curating from inventory JSON, or choosing
   seasonal assets. Reads brand from the instance repo. Do NOT use for analysing
   a single image (analyse-media) or writing captions (write-captions).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Glob Grep
 argument-hint: "<inventory json> [--date YYYY-MM-DD]"
 metadata:

@@ -5,7 +5,7 @@ description: >
   stress-testing product thinking. Conversation, not a deliverable. Use when
   ideating, assumption-testing, or strategy exploration before a spec. Do NOT
   use for writing specs (write-spec) or product strategy doc (product).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Glob Grep
 argument-hint: "<topic, problem, or idea to explore>"
 metadata:

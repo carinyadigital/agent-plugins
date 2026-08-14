@@ -7,7 +7,7 @@ description: >
   — docs-review covers writing quality only. Do NOT use for product strategy,
   roadmap phases, epic/story breakdown (tasks), work-item design (tdd), or
   ADRs (adr).
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

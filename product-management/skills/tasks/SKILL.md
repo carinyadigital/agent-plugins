@@ -10,7 +10,7 @@ description: >
   need". EARS with --ears. Do NOT use for backlog grooming (backlog-refine),
   technical design (tdd), architecture (solution), phasing (roadmap), code
   (implement), or sign-off (validate).
-license: MIT
+license: Apache-2.0
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:
   - Read

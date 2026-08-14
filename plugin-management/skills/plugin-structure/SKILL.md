@@ -62,13 +62,14 @@ for drift.
 
 Only `plugin.json` lives inside `.claude-plugin/`/`.cursor-plugin/`. Every other
 component — `skills/`, `commands/`, `agents/`, `hooks/`, `.mcp.json`, `README.md`,
-`docs/` — sits at the **plugin root**, sibling to those two manifest folders, never
+`LICENSE`, `docs/` — sits at the **plugin root**, sibling to those two manifest folders, never
 nested inside them:
 
 ```
 plugins/my-plugin/
 ├── .claude-plugin/plugin.json
 ├── .cursor-plugin/plugin.json
+├── LICENSE               # Apache-2.0 text — required at plugin root
 ├── README.md
 ├── skills/
 │   └── some-skill/SKILL.md
@@ -83,6 +84,11 @@ plugins/my-plugin/
 
 Getting this backwards (e.g. `.claude-plugin/skills/...`) is the single most common
 scaffolding mistake — the component simply won't be discovered by either host.
+
+Copy the repo-root `LICENSE` into every new plugin. Claude Code's plugin layout
+includes a license file at plugin root so the Apache-2.0 text travels with an
+independently installed plugin; Cursor does not require the file, but the SPDX
+`license` field in both manifests should still be `"Apache-2.0"`.
 
 ## Skills are the primary component
 

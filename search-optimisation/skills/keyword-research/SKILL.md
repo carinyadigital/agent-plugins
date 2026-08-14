@@ -7,7 +7,7 @@ description: >
   `docs/work/seo/keyword-research-{topic}.md` on the target repo. Do NOT use
   for technical site audits (technical-seo-audit) or competitive product analysis
   (competitive-brief).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<topic-slug>"
 metadata:

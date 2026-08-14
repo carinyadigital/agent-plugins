@@ -8,7 +8,7 @@ description: >
   loop", "configure a ralph loop", "ralph-loop-setup", or naming a work item
   to loop over. Do NOT use to start, inspect, or stop a loop (ralph-loop) —
   setup never executes loop steps.
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

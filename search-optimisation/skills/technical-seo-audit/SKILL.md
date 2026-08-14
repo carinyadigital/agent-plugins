@@ -5,7 +5,7 @@ description: >
   data, and Core Web Vitals signals. Use when auditing a live site or filing SEO
   recommendations. Creates GitHub issues labelled `type:seo-recommendation` with
   owning squad. Do NOT implement fixes — hand to engineering squads.
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Write Glob Grep Bash
 argument-hint: "[--url base-url] [--focus metadata|sitemap|structured-data|cwv]"
 metadata:

@@ -9,7 +9,7 @@ description: >
   existing tdd.md with docs-review. Do NOT use for test-driven development
   (implement), breakdown/Gherkin (tasks), architecture (solution), ADRs
   (adr), or code (implement).
-license: MIT
+license: Apache-2.0
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:
   - Read

@@ -9,7 +9,7 @@ description: >
   consistency, not strategic soundness. Do NOT use for phased delivery plan (roadmap), epics
   or backlog (tasks), architecture (solution), tasks or Gherkin (tasks), or
   implementation (implement).
-license: MIT
+license: Apache-2.0
 allowed-tools:
   - Read
   - Write

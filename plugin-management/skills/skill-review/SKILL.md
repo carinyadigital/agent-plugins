@@ -9,7 +9,7 @@ description: >
   Works on one skill or a batch. Do NOT use to create a skill from scratch
   (template/SKILL.md or `/plugin-management:skills-qa` to author a new skill), route which skill to use (skills-index),
   or review product documentation (docs-review).
-license: MIT
+license: Apache-2.0
 compatibility: Requires network access for external research. Spec validation optional via skills-ref.
 allowed-tools: Read Write Edit Glob Grep WebFetch WebSearch Bash
 argument-hint: "<skill-name|path> [--batch] [--review-only] [--apply]"

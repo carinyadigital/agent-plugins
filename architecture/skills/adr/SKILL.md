@@ -8,7 +8,7 @@ description: >
   full architecture narrative (solution), work-item technical design (tdd), or
   product strategy (product). Proposals stay in register.md only until
   accepted.
-license: MIT
+license: Apache-2.0
 compatibility: Tracker resolution (plan mode, when a work-id is named) uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:
   - Read

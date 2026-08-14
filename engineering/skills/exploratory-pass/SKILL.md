@@ -5,7 +5,7 @@ description: >
   manual-style checks, browser verification, or CLI probes against TASKS.local.md
   Gherkin. Use after deploy-qa when exercising AC. Do NOT use for automated
   tests only (run-automated-suite) or defect formatting (document-defects).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Bash Glob Grep
 argument-hint: "<epic-slug-or-branch>"
 metadata:

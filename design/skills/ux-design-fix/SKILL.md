@@ -12,7 +12,7 @@ description: >
   screens, or flows (implement), to review UI without changing it
   (ux-design-review), to fix code-review findings (code-review-fix), or to
   redesign a component or flow.
-license: MIT
+license: Apache-2.0
 compatibility: Requires git, the project's validation toolchain, and a runnable UI plus Playwright or browser MCP tools for visual verification.
 allowed-tools:
   - Read

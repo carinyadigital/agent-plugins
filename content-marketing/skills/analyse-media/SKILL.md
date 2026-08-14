@@ -6,7 +6,7 @@ description: >
   for content pipelines, or when the user asks to analyse an image or video for
   social or CMS. Reads brand and taxonomy from the resolved brand path. Do NOT
   use for writing captions (write-captions) or selecting posts (curate-content).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Glob Grep
 argument-hint: "<image path or media reference>"
 metadata:

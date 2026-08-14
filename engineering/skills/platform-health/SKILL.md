@@ -5,7 +5,7 @@ description: >
   and deployment hygiene. Use for "dependency audit", "check Sentry errors",
   "platform health review", or scheduled maintenance. Do NOT use for feature
   implementation (implement) or debugging a single bug (debug).
-license: MIT
+license: Apache-2.0
 allowed-tools: Read Bash Glob Grep
 argument-hint: "[--focus deps|errors|ci|uptime]"
 metadata:

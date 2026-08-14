@@ -13,7 +13,7 @@ description: >
   diff before opening an MR (code-review), to open an MR (merge-request), to
   babysit an open MR to merge-ready (merge-request-babysit), or to implement
   changes (implement).
-license: MIT
+license: Apache-2.0
 compatibility: Requires git. Publishing requires gh, glab, or an equivalent provider MCP tool.
 allowed-tools:
   - Read

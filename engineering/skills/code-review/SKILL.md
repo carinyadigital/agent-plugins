@@ -11,7 +11,7 @@ description: >
   (implement), to publish a review to a provider as its reviewer
   (merge-request-review), to sign off completion of a larger body of work
   (validate), or to review rendered UI (ux-design-review).
-license: MIT
+license: Apache-2.0
 compatibility: Requires git. Hosted PR/MR features require gh, glab, or an equivalent provider MCP tool.
 allowed-tools:
   - Read

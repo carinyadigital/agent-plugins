@@ -39,15 +39,73 @@ RALPH_TRANSCRIPT_WINDOW="${RALPH_TRANSCRIPT_WINDOW:-500}"
 # Path resolution
 # ---------------------------------------------------------------------------
 
+# ralph_import_cursor_workspace_roots <json>
+#
+# Parse Cursor hook stdin into RALPH_WORKSPACE_ROOTS (newline-separated).
+# Empty when the payload has no workspace_roots. Always returns 0.
+ralph_import_cursor_workspace_roots() {
+  local json="${1:-}"
+  RALPH_WORKSPACE_ROOTS=""
+  if [[ -n "$json" ]]; then
+    RALPH_WORKSPACE_ROOTS="$(printf '%s' "$json" | jq -r '(.workspace_roots // []) | .[]' 2>/dev/null || true)"
+  fi
+  export RALPH_WORKSPACE_ROOTS
+}
+
+# ralph_cursor_loop_project
+#
+# Cursor project root that hosts the active loop. Order:
+#   1. CURSOR_PROJECT_DIR, if it contains .cursor/loop/active.md
+#   2. The first path in RALPH_WORKSPACE_ROOTS that contains that file
+#   3. CURSOR_PROJECT_DIR, else PWD
+#
+# (2) is required in a multi-root workspace: CURSOR_PROJECT_DIR is a single
+# folder, and a loop seeded in a sibling root would otherwise be invisible.
+# Logs on stderr only when a sibling root is chosen over CURSOR_PROJECT_DIR.
+# No log when nothing is found — no active loop is the common case.
+ralph_cursor_loop_project() {
+  local fallback="${CURSOR_PROJECT_DIR:-$PWD}"
+  local loop_rel=".cursor/loop/active.md"
+  local root found=""
+
+  if [[ -n "${CURSOR_PROJECT_DIR:-}" && -f "${CURSOR_PROJECT_DIR}/${loop_rel}" ]]; then
+    printf '%s' "$CURSOR_PROJECT_DIR"
+    return 0
+  fi
+
+  if [[ -n "${RALPH_WORKSPACE_ROOTS:-}" ]]; then
+    while IFS= read -r root || [[ -n "$root" ]]; do
+      [[ -n "$root" ]] || continue
+      if [[ -f "${root}/${loop_rel}" ]]; then
+        found="$root"
+        break
+      fi
+    done <<EOF
+${RALPH_WORKSPACE_ROOTS}
+EOF
+  fi
+
+  if [[ -n "$found" ]]; then
+    if [[ "$found" != "$fallback" ]]; then
+      ralph_log "active loop found in $found (CURSOR_PROJECT_DIR is ${CURSOR_PROJECT_DIR:-unset}). Using the sibling root."
+    fi
+    printf '%s' "$found"
+    return 0
+  fi
+
+  printf '%s' "$fallback"
+}
+
 # ralph_project_dir <agent>
 #
 # Resolve the project root. Each agent exports its own variable; fall back to
-# the working directory only as a last resort.
+# the working directory only as a last resort. Cursor also searches
+# RALPH_WORKSPACE_ROOTS so a multi-root window does not miss a sibling loop.
 ralph_project_dir() {
   local agent="${1:-}"
   case "$agent" in
     claude) printf '%s' "${CLAUDE_PROJECT_DIR:-$PWD}" ;;
-    cursor) printf '%s' "${CURSOR_PROJECT_DIR:-$PWD}" ;;
+    cursor) ralph_cursor_loop_project ;;
     *)      printf '%s' "$PWD" ;;
   esac
 }
@@ -55,8 +113,9 @@ ralph_project_dir() {
 # ralph_base_dir <agent>
 #
 # Resolve the loop base directory deterministically. There is no pointer file:
-# each hook already knows which agent it belongs to, so discovery is not
-# needed and the pointer file was pure fragility.
+# each hook already knows which agent it belongs to. Cursor still searches
+# RALPH_WORKSPACE_ROOTS (via ralph_project_dir) so a multi-root workspace
+# does not miss a loop seeded in a sibling folder.
 #
 # Override with RALPH_BASE_DIR (used by the test harness).
 ralph_base_dir() {

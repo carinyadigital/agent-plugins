@@ -25,6 +25,9 @@ domain-agnostic while the preset ships with the skills it calls.
 - Claude Code: `hooks/claude/hooks.json` → Stop → `stop-hook.sh`
 - Cursor: `hooks/cursor/hooks.json` → afterAgentResponse + stop
 
+Cursor hooks search `workspace_roots` for `.cursor/loop/active.md`. Seed the
+loop in the checkout that should own it; a multi-root window is fine.
+
 ## Presets
 
 | Preset | Where |

@@ -29,6 +29,8 @@ fi
 
 HOOK_INPUT="$(cat 2>/dev/null || true)"
 
+ralph_import_cursor_workspace_roots "$HOOK_INPUT"
+
 BASE="$(ralph_base_dir cursor)"
 LOOP_FILE="$BASE/active.md"
 

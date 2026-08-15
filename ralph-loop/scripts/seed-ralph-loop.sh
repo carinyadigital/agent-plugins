@@ -359,7 +359,7 @@ add_default() {
   add_kv "$key" "$value"
 }
 
-add_default FIRST_STEP     "$(if [[ "$PRESET" == "engineering-delivery" ]]; then printf 'task-start'; else printf 'start'; fi)"
+add_default FIRST_STEP     "$(if [[ "$PRESET" == "engineering-delivery" ]]; then printf 'implement'; else printf 'start'; fi)"
 add_default FIRST_ITEM     "(none)"
 add_default WORK_SEQUENCE  "(single item)"
 add_default GOAL           "See the loop prompt in ${ACTIVE#"$PROJECT_DIR"/}."

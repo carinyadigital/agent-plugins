@@ -7,6 +7,7 @@
       "expected_output": "Verified the seeded {base}/active.md, confirmed preset, run id, branch, max iterations and completion promise in a short block, then executed exactly ONE step of the loop body and ended the turn.",
       "assertions": [
         "Resolves the base directory from the agent (.claude/loop or .cursor/loop), not from a pointer file",
+        "On Cursor, searches workspace folders for .cursor/loop/active.md when the current project dir has none",
         "Reports preset, run id, max_iterations and completion promise before starting",
         "Executes exactly one step, then ends the turn",
         "Does not batch multiple steps into the first turn",

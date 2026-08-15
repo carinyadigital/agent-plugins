@@ -29,6 +29,8 @@ fi
 
 HOOK_INPUT="$(cat 2>/dev/null || true)"
 
+ralph_import_cursor_workspace_roots "$HOOK_INPUT"
+
 STATUS="$(printf '%s' "$HOOK_INPUT" | jq -r '.status // "completed"' 2>/dev/null || true)"
 
 # An aborted or errored turn means the user interrupted or the agent failed.

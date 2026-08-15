@@ -25,20 +25,18 @@ before every commit. Message format `{TASK_ID}: <imperative summary>` with a
 ### Per-task steps
 
 Resolve `{TASK_ID}` from `current_item` and run only the step named by
-`current_step`.
+`current_step`. Branch checkout and tracker start are part of `implement`,
+not their own continue — a stop-hook iteration is for a skill step, not
+bookkeeping.
 
-#### task-start
+#### implement
 
 1. Read the entry for `{TASK_ID}` in `{{TASKS_PATH}}`: title, Gherkin
    acceptance criteria, dependencies.
 2. Run the tracker start action from `context.md` (skip if none).
-3. Set `current_step: implement`.
-
-#### implement
-
-1. Launch a sub-agent: `/implement {TASK_ID}`.
-2. Do not commit in this step.
-3. Set `current_step: review`, reset `fix_count: 0`.
+3. Launch a sub-agent: `/implement {TASK_ID}`.
+4. Do not commit in this step.
+5. Set `current_step: review`, reset `fix_count: 0`.
 
 #### review
 
@@ -79,7 +77,7 @@ set `current_step: validate_and_commit` and end the turn.
 2. Verify the branch, then commit.
 3. Run the tracker progress action.
 4. Append `{TASK_ID}` to `completed_items`, set `current_item` to the next
-   task in the sequence, and set `current_step: task-start`.
+   task in the sequence, and set `current_step: implement`.
 5. When no tasks remain, set `current_item: final` and
    `current_step: final_review`.
 

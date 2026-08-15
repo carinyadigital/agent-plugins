@@ -8,6 +8,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2026-08-15] — engineering-delivery + multi-root loop
+
+### engineering 0.7.3
+
+- `engineering-delivery` preset: fold `task-start` into `implement` so branch
+  checkout and tracker start do not consume a stop-hook continue.
+
+### ralph-loop 0.5.3
+
+- Cursor stop and capture hooks search `workspace_roots` for
+  `.cursor/loop/active.md`. A multi-root window no longer misses a loop
+  seeded in a sibling checkout when `CURSOR_PROJECT_DIR` points elsewhere.
+- Seed default `FIRST_STEP` for `engineering-delivery` is `implement`.
+
 ## [2026-08-14] — Apache-2.0 license
 
 Patch release of every catalogue plugin. Relicense MIT → Apache-2.0; each

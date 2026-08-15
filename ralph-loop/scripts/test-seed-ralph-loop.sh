@@ -165,6 +165,8 @@ assert_contains "state_file points at the run dir" \
   "state_file: .claude/loop/ep-1/loop-state.md" "$(cat "$P/.claude/loop/active.md")"
 assert_contains "first item seeded into state" "current_item: CHK01-01" \
   "$(cat "$P/.claude/loop/ep-1/loop-state.md")"
+assert_contains "engineering-delivery first step is implement" "current_step: implement" \
+  "$(cat "$P/.claude/loop/ep-1/loop-state.md")"
 
 # A missing --set must fail loudly rather than write a broken file. This is the
 # exact failure the script exists to prevent.

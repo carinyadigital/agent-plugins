@@ -44,7 +44,8 @@ This skill assumes a seeded loop, except for a quick inline ad-hoc start.
 1. `/ralph-loop-setup` resolves configuration and runs
    `scripts/seed-ralph-loop.sh`, which writes `{base}/active.md` plus a run
    directory. `{base}` is `.claude/loop` or `.cursor/loop`, resolved from the
-   agent, with no pointer file.
+   agent, with no pointer file. On Cursor, also search `workspace_roots` for
+   `.cursor/loop/active.md` so a multi-root window does not miss a sibling.
 2. `/ralph-loop start` verifies the seeded files and executes iteration 1.
 3. The plugin hooks take over. After every turn the stop hook re-feeds the body
    of `active.md`; the agent reads its own state and runs the next step.

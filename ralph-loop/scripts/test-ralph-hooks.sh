@@ -734,6 +734,53 @@ assert_eq "aborted turn does not continue" "" "$OUT"
 assert_file "aborted turn leaves loop intact for resume" "$B/active.md"
 
 # ---------------------------------------------------------------------------
+section 'Multi-root Cursor workspace'
+# ---------------------------------------------------------------------------
+
+# CURSOR_PROJECT_DIR is root A (no loop). The seeded loop lives in sibling
+# root B, listed in workspace_roots. The old resolver looked only at
+# CURSOR_PROJECT_DIR, treated "no loop" as the common case, and died silently.
+A="$(new_project multi-a)"
+B="$(new_project multi-b)"
+write_loop "$B/.cursor/loop" 1 50 "X"
+MULTI_IN="$(jq -n --arg a "$A" --arg b "$B" '{status:"completed", workspace_roots:[$a,$b]}')"
+OUT="$(run_cursor "$A" "$MULTI_IN")"
+assert_contains "multi-root: continues from the sibling that hosts the loop" "followup_message" "$OUT"
+assert_contains "multi-root: stderr names the sibling root" "$B" "$(last_stderr)"
+assert_contains "multi-root: stderr names CURSOR_PROJECT_DIR" "$A" "$(last_stderr)"
+NEWITER="$(awk 'NR==1&&/^---/{f=1;next} f&&/^---/{exit} f&&/^iteration:/{print $2}' "$B/.cursor/loop/active.md")"
+assert_eq "multi-root: iteration bumped in the sibling loop file" "2" "$NEWITER"
+assert_no_file "multi-root: does not invent a loop under CURSOR_PROJECT_DIR" "$A/.cursor/loop/active.md"
+
+# When CURSOR_PROJECT_DIR itself hosts the loop, do not switch to a sibling
+# even if workspace_roots lists another folder (with or without a loop).
+A="$(new_project multi-prefer-a)"
+B="$(new_project multi-prefer-b)"
+write_loop "$A/.cursor/loop" 3 50 "X"
+write_loop "$B/.cursor/loop" 9 50 "Y"
+MULTI_IN="$(jq -n --arg a "$A" --arg b "$B" '{status:"completed", workspace_roots:[$a,$b]}')"
+OUT="$(run_cursor "$A" "$MULTI_IN")"
+assert_contains "multi-root: prefers CURSOR_PROJECT_DIR when it has a loop" "followup_message" "$OUT"
+assert_not_contains "multi-root: no sibling log when CURSOR_PROJECT_DIR hosts the loop" "sibling root" "$(last_stderr)"
+NEWITER="$(awk 'NR==1&&/^---/{f=1;next} f&&/^---/{exit} f&&/^iteration:/{print $2}' "$A/.cursor/loop/active.md")"
+assert_eq "multi-root: bumps the CURSOR_PROJECT_DIR loop" "4" "$NEWITER"
+NEWITER_B="$(awk 'NR==1&&/^---/{f=1;next} f&&/^---/{exit} f&&/^iteration:/{print $2}' "$B/.cursor/loop/active.md")"
+assert_eq "multi-root: leaves the other root's loop untouched" "9" "$NEWITER_B"
+
+# Capture must write the done sentinel in the sibling that hosts the loop,
+# not under CURSOR_PROJECT_DIR.
+A="$(new_project multi-capture-a)"
+B="$(new_project multi-capture-b)"
+write_loop "$B/.cursor/loop" 2 50 "SHIP_IT"
+CAPTURE_IN="$(jq -n --arg a "$A" --arg b "$B" '{text:"<promise>SHIP_IT</promise>", workspace_roots:[$a,$b]}')"
+run_capture "$A" "$CAPTURE_IN"
+assert_file "multi-root capture: sentinel in the sibling" "$B/.cursor/loop/done"
+assert_no_file "multi-root capture: no sentinel under CURSOR_PROJECT_DIR" "$A/.cursor/loop/done"
+OUT="$(run_cursor "$A" "$(jq -n --arg a "$A" --arg b "$B" '{status:"completed", workspace_roots:[$a,$b]}')")"
+assert_eq "multi-root: stop honours the sibling sentinel" "" "$OUT"
+assert_no_file "multi-root: sibling loop cleared on completion" "$B/.cursor/loop/active.md"
+
+# ---------------------------------------------------------------------------
 section 'Agent isolation'
 # ---------------------------------------------------------------------------
 

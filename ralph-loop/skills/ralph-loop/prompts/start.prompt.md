@@ -8,7 +8,10 @@ the first step.
 
 1. **Loop file exists.** Resolve the base directory from the agent
    (`.claude/loop` for Claude Code, `.cursor/loop` for Cursor) and read
-   `{base}/active.md`. If it is missing:
+   `{base}/active.md`. On Cursor, if it is missing in the current project
+   dir, look for `.cursor/loop/active.md` in the other workspace folders
+   (multi-root windows seed the loop in one checkout). If it is still
+   missing:
    - With an inline prompt (`/ralph-loop start "..."`), seed an ad-hoc loop
      first by calling `${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh --preset ad-hoc`, then
      continue.

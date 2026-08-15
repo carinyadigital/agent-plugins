@@ -53,7 +53,7 @@ concrete per-task actions:
   - start: assign / label in-progress
   - progress: comment with the commit summary
 - **Resolved to filesystem only** — write exactly:
-  `No tracker configured — skip tracker actions in task-start and task-progress.`
+  `No tracker configured — skip tracker actions in implement and task-progress.`
 
 Write the resolved actions as concrete instructions (tool names, target
 states) into the context file so loop iterations never re-negotiate them.

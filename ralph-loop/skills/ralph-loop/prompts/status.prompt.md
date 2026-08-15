@@ -6,9 +6,10 @@ modify any file under the loop base directory.
 ## Steps
 
 1. Resolve the base directory from the agent (`.claude/loop` or
-   `.cursor/loop`) and read `{base}/active.md`. If missing, report "No active
-   Ralph loop." then list run directories under `{base}/` and
-   `{base}/archive/` as history.
+   `.cursor/loop`) and read `{base}/active.md`. On Cursor, if it is missing
+   in the current project dir, look in the other workspace folders. If still
+   missing, report "No active Ralph loop." then list run directories under
+   `{base}/` and `{base}/archive/` as history.
 2. From the frontmatter: `iteration`, `max_iterations`, `completion_promise`,
    `state_file`, `preset`, `run_id`, `session_id`, `seeded_at`.
 3. If a `state_file` is declared, read it for `current_step`, `current_item`,

@@ -9,7 +9,9 @@ preset. This file explains the design so changes to either stay coherent.
 
 **One step per iteration.** Each turn resolves `current_step` from the state
 file, runs exactly that step, updates the state file, and ends. State lives in
-files, never in memory, so any iteration can be resumed cold.
+files, never in memory, so any iteration can be resumed cold. Presets may fold
+trivial bookkeeping (tracker start, branch checkout) into the first real skill
+step so it does not consume a continue; they must not batch skill steps.
 
 **Fresh sub-agent per skill step.** Steps that invoke another skill run it in a
 new sub-agent. The orchestrating turn stays small (read state, launch, write
@@ -34,10 +36,13 @@ the git history, and the run artefacts.
 ```
 
 The base directory is resolved from the agent, not from a pointer file. Each
-hook knows which agent it belongs to, so discovery is unnecessary. The previous
-design used a `.ralph-loop` pointer at the project root, read with a relative
-path inside an unguarded pipeline under `set -e`; when it was missing the hook
-died silently and the loop stopped after one iteration.
+hook knows which agent it belongs to. On Cursor, `CURSOR_PROJECT_DIR` is a
+single folder; the hook also searches `workspace_roots` from stdin for
+`.cursor/loop/active.md` so a multi-root workspace does not miss a loop
+seeded in a sibling checkout. The previous design used a `.ralph-loop`
+pointer at the project root, read with a relative path inside an unguarded
+pipeline under `set -e`; when it was missing the hook died silently and the
+loop stopped after one iteration.
 
 ## Frontmatter contract
 

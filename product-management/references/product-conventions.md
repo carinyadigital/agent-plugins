@@ -83,6 +83,7 @@ Agent byproducts (competitor scans, metrics digests, stakeholder digests) write 
 docs/reviews/
 ```
 
-Review tracking JSON (`code-review.local.json`, `ux-design-review.local.json`)
-lives at repo-root `reviews/` (gitignored, never committed) — not under
-`docs/reviews/`.
+Review tracking JSON for `code-review` is co-located with its verdict
+(`specs/{work-short-name}/reviews/code-review-{nn}.local.json`).
+`ux-design-review` tracking JSON lives at repo-root `reviews/` (gitignored,
+never committed). Neither belongs under `docs/reviews/`.

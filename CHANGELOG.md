@@ -8,6 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### product-management
+
+- **BREAKING:** `validate` no longer writes a validation report. It discovers
+  the AC source (tracker description or a local tasks/spec file), checks off
+  passed criteria, records evidence as a tracker comment or description
+  update, and marks the item done when every criterion passes.
+
 ### engineering
 
 - **BREAKING:** `code-review` co-locates tracking JSON with the verdict

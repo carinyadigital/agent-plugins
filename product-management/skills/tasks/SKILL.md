@@ -55,7 +55,7 @@ determines which artefacts you write.
 
 | Resolved type | Source | Writes |
 | ---- | ------ | ------ |
-| `--product` or no argument | `product.md`, `roadmap.md`, `solution.md` | `docs/product/backlog.md` (epics) — filesystem-only; tracker-backed repos create epics/initiatives in the tracker instead |
+| `--product` or no argument | `product.md`, `roadmap.md`, `solution.md` | `backlog.md` (epics) — filesystem-only; tracker-backed repos create epics/initiatives in the tracker instead |
 | `epic` | Backlog row or tracker epic + `specs/{work-short-name}/tdd.md` | `specs/{work-short-name}/TASKS.local.md` (stories + tasks) |
 | `story` | Its parent epic's context + the story itself | Sub-tasks — as tracker sub-issues when a tracker resolved, else `specs/{work-short-name}/TASKS.local.md` in its own folder (alongside, not nested inside, its parent epic's) |
 | `task`, `bug`, `spike` | The item itself | Nothing to decompose by default — see below |

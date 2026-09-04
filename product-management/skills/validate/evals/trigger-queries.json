@@ -12,6 +12,10 @@
     "should_trigger": true
   },
   {
+    "query": "ENG-45 is done — check off the AC in Linear and mark it done.",
+    "should_trigger": true
+  },
+  {
     "query": "Review this PR for security and AC coverage.",
     "should_trigger": false,
     "note": "code-review"

@@ -11,13 +11,15 @@ docs/product/               product.md, roadmap.md, backlog.md
 docs/architecture/          solution.md, decisions/register.md, ADR-*.md
 specs/{work-short-name}/    tdd.md; TASKS.local.md when a local task breakdown
                             is required — one folder per resolved work item
-specs/{work-short-name}/reviews/  code-review-{nn}.local.md, ux-design-review-{nn}.local.md
+specs/{work-short-name}/reviews/  code-review-{nn}.local.md + matching .local.json
+                            (co-located pair); ux-design-review-{nn}.local.md
                             ({nn} sequential per skill prefix, not across skills)
 docs/work/sprint-{id}/      plan.md, retrospective.md
-reviews/                    code-review.local.json, ux-design-review.local.json,
+reviews/                    ux-design-review.local.json,
                              review-learnings.local.md, and the latest-only
-                             {skill}-{branch}.local.md when no work item
-                             resolved (gitignored — never committed)
+                             ux-design-review-{branch}.local.md when no work item
+                             resolved (gitignored — never committed).
+                             code-review does not write here.
 docs/reviews/               agent byproducts (competitor-scan, metrics, digests)
 TASKS.local.md              repo-root tracker-pointer cache (Linear/Jira only;
                             gitignored — not the work-item task list)
@@ -101,12 +103,18 @@ parent epic's folder. Cross-reference the parent by ID in the artefact.
 | Work item implementation spec | `specs/{work-short-name}/tdd.md` | solution, backlog |
 | Task Gherkin (and optional EARS) | `specs/{work-short-name}/TASKS.local.md` | backlog, the TDD |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog, `specs/` |
-| Human-readable review verdict | `specs/{work-short-name}/reviews/{skill}-{nn}.local.md` | shared JSON state |
-| Review tracking state (per branch, incremental) | `reviews/{skill}.local.json` | human-readable verdicts |
+| Human-readable review verdict | `specs/{work-short-name}/reviews/{skill}-{nn}.local.md` | — |
+| code-review tracking state | sibling `code-review-{nn}.local.json` (same stem as the verdict) | repo-root `reviews/` |
+| ux-design-review tracking state | `reviews/ux-design-review.local.json` | human-readable verdicts |
 
-`reviews/` is local review state. Skills that write it MUST ensure the target
-repo's `.gitignore` contains a root-only `/reviews/` entry, and MUST NOT
-commit anything under `reviews/`.
+When no work item resolved, `code-review` writes the latest-only pair
+`code-review-{branch}.local.md` + `.local.json` at the repo root — not under
+`reviews/`.
+
+`reviews/` is local review state for skills that still write it
+(`ux-design-review`). Those skills MUST ensure the target repo's `.gitignore`
+contains a root-only `/reviews/` entry, and MUST NOT commit anything under
+`reviews/`. `code-review` MUST NOT write under repo-root `reviews/`.
 
 Repo-root `TASKS.local.md` is the Linear/Jira source-system pointer (see
 work-item-resolution.md). `specs/{work-short-name}/TASKS.local.md` is the

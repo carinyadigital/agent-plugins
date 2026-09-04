@@ -26,7 +26,7 @@ allowed-tools:
   - Write(code-review-*.local.json)
 argument-hint: "[branch-or-pr] [--since <sha>] [--full]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "1.3"
   owner: engineering
   work_shape: review-and-gate

@@ -9,7 +9,7 @@ license: Apache-2.0
 allowed-tools: Read Glob Grep
 argument-hint: "<caption variants json>"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "0.1.0"
   owner: content-marketing
   review_cadence: quarterly

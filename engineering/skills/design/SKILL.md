@@ -23,7 +23,7 @@ allowed-tools:
   - Bash(glab:*)
 argument-hint: "<work-id> [--mode skeleton|full] [--context <notes>]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "6.0"
   owner: engineering
   work_shape: generate-draft
@@ -144,8 +144,8 @@ hands the promoted ones to `/architecture:adr write`.
 
 - `discover` agent — orchestrates this skill plus `/product-management:tasks` and `discovery-review` until Ready
 - `/product-management:tasks` — stories and AC
-- `/architecture:solution` — system architecture (if not installed: `Install: /plugin install architecture@carinya-plugins`)
-- `/architecture:adr` — ADR harvest / write after delivery (if not installed: `Install: /plugin install architecture@carinya-plugins`)
+- `/architecture:solution` — system architecture (if not installed: `Install: /plugin install architecture@agent-plugins`)
+- `/architecture:adr` — ADR harvest / write after delivery (if not installed: `Install: /plugin install architecture@agent-plugins`)
 - `implement` — test-driven development, i.e. actually writing the tests and code
 - `discovery-review` — Ready for Development gate on design.md + tasks + solution
 - `docs-review` — review or critique an existing design.md

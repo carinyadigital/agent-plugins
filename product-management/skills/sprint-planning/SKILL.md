@@ -18,7 +18,7 @@ allowed-tools:
   - Grep
 argument-hint: "<sprint-id> [--capacity <points>] [--context <notes>]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "1.0"
   owner: product-management
   work_shape: orchestrate-delivery

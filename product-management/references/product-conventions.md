@@ -69,7 +69,7 @@ When companions are not installed, continue from user input. At architecture
 boundaries:
 
 ```text
-Install: /plugin install architecture@carinya-plugins
+Install: /plugin install architecture@agent-plugins
 Then run: /architecture:solution
 ```
 

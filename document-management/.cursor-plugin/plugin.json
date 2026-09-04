@@ -1,7 +1,7 @@
 {
   "name": "document-management",
   "displayName": "Document Management",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Set up, structure, audit, and keep current the docs/ tree — scaffold or reorganise to Diátaxis, then score, detect drift, check voice, and apply approved fixes. Two skills, two agents, docs/-only writes.",
   "author": {
     "name": "Carinya Digital"

@@ -99,7 +99,7 @@ not decomposed by default — confirm first.
 When `product-management` is not installed:
 
 ```text
-Install: /plugin install product-management@carinya-plugins
+Install: /plugin install product-management@agent-plugins
 Then run: /product-management:tasks <work-id>
 ```
 

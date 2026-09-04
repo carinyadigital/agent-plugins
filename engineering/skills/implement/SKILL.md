@@ -24,7 +24,7 @@ allowed-tools:
   - Bash
 argument-hint: "<task-id>"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "2.1"
   owner: engineering
   work_shape: implement-and-ship
@@ -169,5 +169,5 @@ After completing implementation, write a summary:
 - `discovery-review` — Ready for Development gate before this skill
 - `discover` agent — write Solution Design + tasks until that gate passes
 - `deliver` agent — whole work item through review, validate, and MR
-- `/architecture:adr` — raise a new ADR rather than changing `ARCHITECTURE.md` unilaterally (if not installed: `Install: /plugin install architecture@carinya-plugins`)
+- `/architecture:adr` — raise a new ADR rather than changing `ARCHITECTURE.md` unilaterally (if not installed: `Install: /plugin install architecture@agent-plugins`)
 - `code-review` — review the working diff after implementation

@@ -19,7 +19,7 @@ allowed-tools:
   - Bash
 argument-hint: "[start|status|cancel] [--prompt \"...\"] [--max-iterations N] [--completion-promise TEXT]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "2.0"
   owner: ralph-loop
   work_shape: orchestrate-delivery

@@ -9,7 +9,7 @@ license: Apache-2.0
 allowed-tools: Read Write Glob Grep Bash
 argument-hint: "[--url base-url] [--focus metadata|sitemap|structured-data|cwv]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "0.1.0"
   owner: search-optimisation
   review_cadence: quarterly

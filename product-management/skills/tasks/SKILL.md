@@ -23,7 +23,7 @@ allowed-tools:
   - Bash(glab:*)
 argument-hint: "<work-id|spec-path|--product> [--ears] [--depth full] [--context <notes>]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "4.0"
   owner: product-management
   work_shape: orchestrate-delivery

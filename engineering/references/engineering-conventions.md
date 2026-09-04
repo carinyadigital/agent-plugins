@@ -60,7 +60,7 @@ When `architecture` is **not installed**, continue from existing
 `ARCHITECTURE.md` / ADR artefacts when present. At write boundaries:
 
 ```text
-Install: /plugin install architecture@carinya-plugins
+Install: /plugin install architecture@agent-plugins
 Then run: /architecture:solution
 ```
 
@@ -85,7 +85,7 @@ When a companion plugin is **not installed**, do not emit a bare slash command.
 State what you can do without it, then:
 
 ```text
-Install: /plugin install product-management@carinya-plugins
+Install: /plugin install product-management@agent-plugins
 Then run: /product-management:<skill> …
 ```
 
@@ -197,4 +197,4 @@ Work-item sign-off uses `/product-management:validate` (companion skill), not a 
 | Platform health check | **platform-health** | WebOps Engineer |
 | PRD, phases, tasks, backlog-refine, sprint-*, validate | `/product-management:*` | Companion — any persona |
 
-When the `design` companion plugin is not installed: continue with code review only; recommend `/plugin install design@carinya-plugins` before UI-heavy work.
+When the `design` companion plugin is not installed: continue with code review only; recommend `/plugin install design@agent-plugins` before UI-heavy work.

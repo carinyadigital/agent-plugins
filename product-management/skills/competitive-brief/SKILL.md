@@ -9,7 +9,7 @@ license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<competitor or feature area>"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "0.1.0"
   owner: product
   review_cadence: quarterly

@@ -13,7 +13,7 @@ allowed-tools:
   - Grep
 argument-hint: "<required-arg> [--optional-flag]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "1.0"
   owner: practice-or-plugin-name
   work_shape: generate-draft

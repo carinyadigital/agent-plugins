@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Ralph loop tooling across carinya-plugins.
+"""Validate Ralph loop tooling across agent-plugins.
 
 Usage:
     python3 plugin-management/scripts/validate_ralph.py [--quiet]

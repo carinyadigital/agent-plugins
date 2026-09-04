@@ -25,7 +25,7 @@ allowed-tools:
   - Bash(glab:*)
 argument-hint: "<work-id>"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "3.0"
   owner: product-management
   work_shape: review-and-gate

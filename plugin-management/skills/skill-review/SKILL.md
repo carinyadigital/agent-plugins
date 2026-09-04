@@ -14,7 +14,7 @@ compatibility: Requires network access for external research. Spec validation op
 allowed-tools: Read Write Edit Glob Grep WebFetch WebSearch Bash
 argument-hint: "<skill-name|path> [--batch] [--review-only] [--apply]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "1.0"
   owner: plugin-management
   review_cadence: quarterly

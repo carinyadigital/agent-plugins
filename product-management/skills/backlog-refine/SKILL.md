@@ -24,7 +24,7 @@ allowed-tools:
   - Bash(glab:*)
 argument-hint: "[work-id|backlog-path] [--context <notes>]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "2.0"
   owner: product-management
   work_shape: review-and-gate

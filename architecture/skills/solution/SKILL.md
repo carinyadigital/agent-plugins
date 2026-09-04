@@ -17,7 +17,7 @@ allowed-tools:
   - Grep
 argument-hint: "[--state current|target] [--context <notes>]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "3.1"
   owner: architecture
   work_shape: generate-draft

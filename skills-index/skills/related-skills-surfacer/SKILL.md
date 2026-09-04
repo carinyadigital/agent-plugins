@@ -26,7 +26,7 @@ Strong matches only — better to stay silent than nag.
 
 ## What this skill does not do
 
-- **Does not install plugins** — only offers `/plugin install …@carinya-plugins`
+- **Does not install plugins** — only offers `/plugin install …@agent-plugins`
 - **Does not re-route vague "which skill?" questions** — that is `/skills-index:find`
 - **Does not promote deleted hub package-manager skills**
 
@@ -45,7 +45,7 @@ Strong matches only — better to stay silent than nag.
 If strong match:
 
 > Related: install **`design`** for live UX review —
-> `/plugin install design@carinya-plugins` then `/design:ux-design-review`.
+> `/plugin install design@agent-plugins` then `/design:ux-design-review`.
 
 If no strong match: silent.
 

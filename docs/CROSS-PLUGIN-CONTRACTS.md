@@ -5,12 +5,12 @@ degrade** when the companion plugin is not installed: state what the user can do
 without it, then give an explicit install command — never a dangling
 `/namespace:skill` with no context.
 
-**Marketplace:** `carinyaparc/carinya-plugins` (`carinya-plugins`)
+**Marketplace:** `carinyadigital/agent-plugins` (`agent-plugins`)
 
 **Standard install message:**
 
 ```text
-Install: /plugin install <plugin>@carinya-plugins
+Install: /plugin install <plugin>@agent-plugins
 Then run: /<plugin>:<skill> …
 ```
 
@@ -82,7 +82,7 @@ then `/ralph-loop:ralph-loop start`. It does not seed loop files itself.
 
 | Missing plugin | Behaviour |
 | -------------- | --------- |
-| `engineering` | **Refuse** `engineering-delivery` at setup. Offer `ad-hoc` or `custom`, or: `Install: /plugin install engineering@carinya-plugins` |
+| `engineering` | **Refuse** `engineering-delivery` at setup. Offer `ad-hoc` or `custom`, or: `Install: /plugin install engineering@agent-plugins` |
 | `ralph-loop` | `deliver` runs the same step machine inline |
 | `design` | Loop continues without UX stages unless the user added them. Note in run context. |
 | `product-management` | Loop can implement and review but cannot run `final_validate`. Stop before final sign-off with install message for `product-management`. |
@@ -114,7 +114,7 @@ companion handoff.
 | Condition | Behaviour |
 | --------- | --------- |
 | `architecture` installed | Recommend `/architecture:solution` |
-| Not installed | Continue product work from user input. At architecture boundaries, say: `Install: /plugin install architecture@carinya-plugins` then `/architecture:solution` |
+| Not installed | Continue product work from user input. At architecture boundaries, say: `Install: /plugin install architecture@agent-plugins` then `/architecture:solution` |
 
 Document-set quality review stays on `engineering`:
 
@@ -212,7 +212,7 @@ Setup skills explicitly state they **do not install** companion plugins.
 `/skills-index:find` detects installed plugins and:
 
 1. Routes to installed skills with `/plugin:skill`
-2. Offers `/plugin install <plugin>@carinya-plugins` for catalogue matches that
+2. Offers `/plugin install <plugin>@agent-plugins` for catalogue matches that
    are not installed
 
 Does not invoke other plugins directly — recommendation only.

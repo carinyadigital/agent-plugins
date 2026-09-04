@@ -24,7 +24,7 @@ allowed-tools:
   - Bash(glab:*)
 argument-hint: "[work-item-id] [--draft] [--target <branch>]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "1.1"
   owner: engineering
   work_shape: implement-and-ship

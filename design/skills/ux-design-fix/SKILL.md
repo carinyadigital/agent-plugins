@@ -23,7 +23,7 @@ allowed-tools:
   - Bash
 argument-hint: "[blocking|warning|all] [review-output-path | instruction]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "1.0"
   owner: design
   work_shape: implement-and-ship

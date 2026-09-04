@@ -19,7 +19,7 @@ allowed-tools:
   - Grep
 argument-hint: "[--context <notes>]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "2.0"
   owner: product
   work_shape: orchestrate-delivery
@@ -106,6 +106,6 @@ Markdown with YAML frontmatter. Save to the resolved path. Use [assets/roadmap.t
 ## Related skills
 
 - `/product-management:product` — product strategy input (upstream)
-- `/architecture:solution` — architecture (upstream companion; if not installed: `/plugin install architecture@carinya-plugins`)
+- `/architecture:solution` — architecture (upstream companion; if not installed: `/plugin install architecture@agent-plugins`)
 - `/product-management:tasks --product` — epic backlog (downstream)
 - `/engineering:docs-review` — writing quality / cross-doc consistency (not strategic soundness)

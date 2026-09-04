@@ -9,7 +9,7 @@ license: Apache-2.0
 allowed-tools: Read Glob Grep
 argument-hint: "<topic, problem, or idea to explore>"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "0.1.0"
   owner: product
   review_cadence: quarterly

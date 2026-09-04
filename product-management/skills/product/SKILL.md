@@ -17,7 +17,7 @@ allowed-tools:
   - Grep
 argument-hint: "[--stage pitch|product] [--context <notes>]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "1.1"
   owner: product
   work_shape: generate-draft
@@ -93,5 +93,5 @@ Markdown with YAML frontmatter. Use [assets/product.template.md](assets/product.
 
 - `/product-management:roadmap` — sequencing and phases
 - `/product-management:tasks` — epics and backlog decomposition
-- `/architecture:solution` — architecture (companion; if not installed: `/plugin install architecture@carinya-plugins`)
+- `/architecture:solution` — architecture (companion; if not installed: `/plugin install architecture@agent-plugins`)
 - `/engineering:docs-review` — writing quality / cross-doc consistency (not strategic soundness)

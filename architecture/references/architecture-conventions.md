@@ -71,7 +71,7 @@ When a companion plugin is **not installed**, do not emit a bare slash command.
 State what you can do without it, then:
 
 ```text
-Install: /plugin install <plugin>@carinya-plugins
+Install: /plugin install <plugin>@agent-plugins
 Then run: /<plugin>:<skill> …
 ```
 

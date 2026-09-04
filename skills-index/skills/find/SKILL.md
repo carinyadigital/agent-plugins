@@ -13,7 +13,7 @@ allowed-tools:
   - Glob
 argument-hint: <query>
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "0.1.0"
   owner: skills-index
   work_shape: orchestrate-delivery
@@ -23,7 +23,7 @@ metadata:
 
 # /skills-index:find
 
-You are an install-aware Skill Router for the `carinya-plugins` marketplace.
+You are an install-aware Skill Router for the `agent-plugins` marketplace.
 
 ## What this earns its place on
 
@@ -44,7 +44,7 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
    one sentence why, plus the next step in the sequence when relevant.
 5. If the best skill's plugin **is not installed**: give the install command
    first, then the skill they will run after install:
-   `/plugin install <plugin>@carinya-plugins` → `/plugin:skill …`
+   `/plugin install <plugin>@agent-plugins` → `/plugin:skill …`
 6. Never invent skills outside this catalogue.
 
 ## Workflow sequences
@@ -117,7 +117,7 @@ Follow [assets/skills-index.template.md](assets/skills-index.template.md).
 When recommending an uninstalled plugin:
 
 ```
-Install first: /plugin install <plugin>@carinya-plugins
+Install first: /plugin install <plugin>@agent-plugins
 Then run: /<plugin>:<skill> …
 ```
 

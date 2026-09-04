@@ -17,7 +17,7 @@ allowed-tools:
   - Bash
 argument-hint: "[<work-id>|--prompt \"...\"] [--preset NAME] [--max-iterations N] [--completion-promise TEXT]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "2.0"
   owner: ralph-loop
   work_shape: orchestrate-delivery
@@ -48,7 +48,7 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
      iteration, keeping every existing issue source current. UX review is not
      included unless the user asks. The seeded prompt invokes `/engineering:*`
      skills; if that companion is not installed, refuse and offer:
-     `Install: /plugin install engineering@carinya-plugins` then re-run setup.
+     `Install: /plugin install engineering@agent-plugins` then re-run setup.
    - `ad-hoc` — repeat a single prompt until it is done (no companion plugins).
    - `custom` — define your own steps (no companion plugins).
 

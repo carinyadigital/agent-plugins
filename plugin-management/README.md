@@ -1,6 +1,6 @@
 # plugin-management
 
-Create, customize, and manage plugins for the `carinya-plugins` marketplace — end to end, with manifests, skills, agents, hooks, MCP connectors, marketplace registration, release, and skill quality gates. Built for Claude Cowork and Cursor.
+Create, customize, and manage plugins for the `agent-plugins` marketplace — end to end, with manifests, skills, agents, hooks, MCP connectors, marketplace registration, release, and skill quality gates. Built for Claude Cowork and Cursor.
 
 ## Overview
 
@@ -70,11 +70,11 @@ python3 scripts/validate.py
 ## Install
 
 ```bash
-/plugin marketplace add carinyaparc/carinya-plugins
-/plugin install plugin-management@carinya-plugins
+/plugin marketplace add carinyadigital/agent-plugins
+/plugin install plugin-management@agent-plugins
 ```
 
-**Migration from `skill-authoring`:** uninstall `skill-authoring@carinya-plugins` and install `plugin-management@carinya-plugins`. Slash namespace changed from `/skill-authoring:` to `/plugin-management:`.
+**Migration from `skill-authoring`:** uninstall `skill-authoring@agent-plugins` and install `plugin-management@agent-plugins`. Slash namespace changed from `/skill-authoring:` to `/plugin-management:`.
 
 ## License
 

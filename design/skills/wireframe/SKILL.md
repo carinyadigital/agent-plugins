@@ -10,7 +10,7 @@ license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<page-or-flow> [--brief <notes>] [--from figma]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "0.1.0"
   owner: design
   review_cadence: quarterly

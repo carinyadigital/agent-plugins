@@ -8,6 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2026-09-04] — live copy to Carinya Digital / agent-plugins
+
+Install commands, skill authors, and catalogue docs now use
+`carinyadigital/agent-plugins` and `@agent-plugins`. Skill frontmatter author is
+**Carinya Digital**. Legal copyright remains Carinya Parc Pty Ltd.
+
+### architecture 0.8.1 / content-marketing 0.4.4 / design 0.6.4 / document-management 0.1.3 / engineering 0.8.4 / plugin-management 0.2.4 / product-management 0.5.5 / ralph-loop 0.7.1 / search-optimisation 0.4.4 / skills-index 0.4.5
+
+- Companion install strings: `@carinya-plugins` → `@agent-plugins`.
+- Skill `metadata.author`: Carinya Parc → Carinya Digital.
+
 ## [2026-09-04] — engineering-delivery in ralph-loop
 
 Marketplace identity: `carinya-plugins` → `agent-plugins`. Display name and

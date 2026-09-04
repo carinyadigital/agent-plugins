@@ -31,7 +31,7 @@ allowed-tools:
   - Bash(command:*)
 argument-hint: "[report-only|drift|voice] [docs-root]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "0.1.0"
   owner: document-management
   work_shape: implement-and-ship

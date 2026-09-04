@@ -82,7 +82,7 @@ Set `status: complete` and `setup.completedAt` (ISO 8601) when the interview fin
 
 ```json
 {
-  "catalogue": "carinyaparc/carinya-plugins",
+  "catalogue": "carinyadigital/agent-plugins",
   "plugins": []
 }
 ```
@@ -194,7 +194,7 @@ status: skeleton
 
 ## Roster
 
-Catalogue agent slugs from carinya-plugins (e.g. frontend-engineer, content-writer).
+Catalogue agent slugs from agent-plugins (e.g. frontend-engineer, content-writer).
 
 ## Target
 

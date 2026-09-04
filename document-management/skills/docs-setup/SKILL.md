@@ -29,7 +29,7 @@ allowed-tools:
   - Bash(git mv:*)
 argument-hint: "[fresh|reorganise] [docs-root]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "0.1.0"
   owner: document-management
   work_shape: generate-draft

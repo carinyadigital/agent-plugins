@@ -202,9 +202,9 @@ When companions are not installed, continue product/delivery work from user inpu
 and artefacts. At architecture or implementation boundaries, state:
 
 ```text
-Install: /plugin install architecture@carinya-plugins
+Install: /plugin install architecture@agent-plugins
 Then run: /architecture:solution
 
-Install: /plugin install engineering@carinya-plugins
+Install: /plugin install engineering@agent-plugins
 Then run: /engineering:<skill> …
 ```

@@ -21,7 +21,7 @@ allowed-tools:
   - Bash(git diff:*)
 argument-hint: "[path-or-glob] [--focus quality|boundaries|consistency]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "1.0"
   owner: architecture
   work_shape: review-and-gate

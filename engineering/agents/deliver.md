@@ -84,7 +84,7 @@ explicit yes. Then proceed.
 If ralph-loop is missing:
 
 ```text
-Install: /plugin install ralph-loop@carinya-plugins
+Install: /plugin install ralph-loop@agent-plugins
 Then run: /ralph-loop:ralph-loop-setup <work-id>
 ```
 
@@ -132,7 +132,7 @@ When a companion plugin is not installed, continue without that stage and
 give the install message:
 
 ```text
-Install: /plugin install <plugin>@carinya-plugins
+Install: /plugin install <plugin>@agent-plugins
 ```
 
 ### 4. Watch the MR

@@ -30,7 +30,7 @@ allowed-tools:
   - Edit(.gitignore)
 argument-hint: "[branch-or-pr-or-url] [figma-url] [--full]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "2.0"
   owner: design
   work_shape: review-and-gate

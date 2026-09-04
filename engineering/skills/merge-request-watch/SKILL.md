@@ -23,7 +23,7 @@ allowed-tools:
   - Bash
 argument-hint: "[mr-url-or-number]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "1.1"
   owner: engineering
   work_shape: monitor-and-report

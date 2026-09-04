@@ -1,6 +1,6 @@
 # skills-index
 
-Install-aware skill router for the `carinya-plugins` marketplace.
+Install-aware skill router for the `agent-plugins` marketplace.
 
 ## Skills
 

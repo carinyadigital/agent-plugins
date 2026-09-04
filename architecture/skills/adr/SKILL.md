@@ -21,7 +21,7 @@ allowed-tools:
   - Bash(glab:*)
 argument-hint: "<mode: plan|write|review> [work-id|target] [flags]"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "2.1"
   owner: architecture
   work_shape: generate-draft

@@ -89,7 +89,7 @@ After interview, run this plugin's skill chain as defined in `setup/SKILL.md` (o
 When a companion plugin is required for the chain, state the install command:
 
 ```text
-Install: /plugin install <plugin>@carinya-plugins
+Install: /plugin install <plugin>@agent-plugins
 Then run: /<plugin>:<skill> …
 ```
 

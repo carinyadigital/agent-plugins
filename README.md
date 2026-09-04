@@ -1,4 +1,4 @@
-# Agent Plugins by Carinya Parc
+# Agent Plugins by Carinya Digital
 
 **Full-service digital agency plugins for small and medium businesses — brand, content, product, design, search, and engineering, delivered through Claude Cowork, Claude Code, Cursor, or the agent you already use. Each plugin bootstraps its own instance profile and ships MCP connectors for the tools you already use.**
 
@@ -171,7 +171,7 @@ plugin-management/        # create/customize plugins + skills-qa / skill-review
 document-management/      # docs-setup, docs-improve (docs/ tree lifecycle)
 scripts/                  # validate.py · validate_plugins.py · validate_skills.py
 references/               # catalogue-only instance-profile-template + practice-setup-framework
-.claude-plugin/marketplace.json   # plugin registry (name: carinya-plugins)
+.claude-plugin/marketplace.json   # plugin registry (name: agent-plugins)
 .cursor-plugin/marketplace.json
 ```
 
@@ -206,24 +206,24 @@ Each practice plugin has the same shape:
 
 1. Open the **Cowork** tab.
 2. Click **Customize** in the left sidebar.
-3. Click **Browse plugins** and install from `https://github.com/carinyaparc/carinya-plugins`, **or** upload a custom plugin (zip any practice directory).
+3. Click **Browse plugins** and install from `https://github.com/carinyadigital/agent-plugins`, **or** upload a custom plugin (zip any practice directory).
 
 After install, skills fire automatically when relevant; slash commands are available via `/`.
 
 ### Claude Code
 
 ```bash
-/plugin marketplace add carinyaparc/carinya-plugins
+/plugin marketplace add carinyadigital/agent-plugins
 
-/plugin install brand-creative@carinya-plugins
-/plugin install product-management@carinya-plugins
-/plugin install engineering@carinya-plugins
-/plugin install design@carinya-plugins
-/plugin install content-marketing@carinya-plugins
-/plugin install search-optimisation@carinya-plugins
-/plugin install ralph-loop@carinya-plugins
-/plugin install skills-index@carinya-plugins
-/plugin install plugin-management@carinya-plugins
+/plugin install brand-creative@agent-plugins
+/plugin install product-management@agent-plugins
+/plugin install engineering@agent-plugins
+/plugin install design@agent-plugins
+/plugin install content-marketing@agent-plugins
+/plugin install search-optimisation@agent-plugins
+/plugin install ralph-loop@agent-plugins
+/plugin install skills-index@agent-plugins
+/plugin install plugin-management@agent-plugins
 
 /brand-creative:setup
 /product-management:setup
@@ -235,7 +235,7 @@ Updates: `/plugin update`.
 
 In **Settings → Plugins → Add plugin**:
 
-- **Paste this repo URL** — `https://github.com/carinyaparc/carinya-plugins` — then pick practice plugins from the marketplace list, or
+- **Paste this repo URL** — `https://github.com/carinyadigital/agent-plugins` — then pick practice plugins from the marketplace list, or
 - **Upload a zip** — zip any practice directory (e.g. `engineering/`) and drop it in.
 
 ### skills.sh (skill files only)
@@ -244,10 +244,10 @@ Install individual skills without the full plugin surface (no hooks, MCP, or pra
 
 ```bash
 # All skills from the monorepo
-npx skills add carinyaparc/carinya-plugins
+npx skills add carinyadigital/agent-plugins
 
 # One skill
-npx skills add carinyaparc/carinya-plugins/engineering/skills/code-review
+npx skills add carinyadigital/agent-plugins/engineering/skills/code-review
 ```
 
 ## How it fits together

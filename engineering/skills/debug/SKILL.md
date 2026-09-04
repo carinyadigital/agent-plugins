@@ -9,7 +9,7 @@ license: Apache-2.0
 allowed-tools: Read Write Glob Grep Bash
 argument-hint: "<error message or problem description>"
 metadata:
-  author: Carinya Parc
+  author: Carinya Digital
   version: "0.1.1"
   owner: engineering
   review_cadence: as-needed

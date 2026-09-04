@@ -96,7 +96,7 @@ See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
 ARCHITECTURE.md               system architecture (arc42)
-docs/architecture/            decisions/register.md, ADR-NNNN-*.md
+docs/decisions/               register.md, ADR-NNNN-*.md
 specs/{work-short-name}/          design.md; TASKS.local.md when required
 specs/{work-short-name}/reviews/  code-review verdict + co-located .local.json;
                                  ux-design-review verdicts
@@ -123,7 +123,7 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 | Phase sequencing, exit criteria | `docs/product/roadmap.md` | backlog, product |
 | Epic list, deps, points, work paths | `docs/product/backlog.md` | roadmap detail |
 | Architecture, NFRs, cross-epic patterns | `ARCHITECTURE.md` | design (cite only) |
-| ADR decisions | `docs/architecture/decisions/` | ARCHITECTURE.md narrative |
+| ADR decisions | `docs/decisions/` | ARCHITECTURE.md narrative |
 | Work-item implementation spec | `{work-dir}/design.md` | architecture, backlog |
 | Task Gherkin (and optional EARS) | `specs/{work-short-name}/TASKS.local.md` | backlog, the Solution Design |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |

@@ -1,8 +1,8 @@
 {
   "name": "architecture",
   "displayName": "Architecture",
-  "version": "0.7.0",
-  "description": "Architecture practice in one install \u2014 setup interview, arc42 ARCHITECTURE.md (current or target), and ADRs. Writes ARCHITECTURE.md at the repo root; ADRs under docs/architecture/decisions/. Companion to engineering for work-item design and implementation.",
+  "version": "0.8.0",
+  "description": "Architecture practice in one install \u2014 setup interview, arc42 ARCHITECTURE.md (current or target), and ADRs. Writes ARCHITECTURE.md at the repo root; ADRs under docs/decisions/. Companion to engineering for work-item design and implementation.",
   "author": {
     "name": "Carinya Parc"
   },

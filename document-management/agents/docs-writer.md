@@ -23,7 +23,7 @@ description: |
   </example>
 
   <example>
-    Context: An approved finding would edit README.md or docs/architecture/.
+    Context: An approved finding would edit README.md or docs/decisions/.
     user: "Go ahead and apply everything."
     assistant: "I'll apply the in-scope docs/ edits and refuse anything outside docs_root or under protected_paths."
     <commentary>The writer is the boundary enforcer, not a general-purpose editor.</commentary>
@@ -92,7 +92,7 @@ inline plus the style guide.
   source, and config are off-limits to your pen
   ([`docs-boundary.md`](../references/docs-boundary.md)).
 - **Respect `protected_paths`.** Default protected trees are
-  `docs/architecture/`, `docs/product/`, `docs/design/`, and `docs/brand/`.
+  `docs/decisions/`, `docs/product/`, `docs/design/`, and `docs/brand/`.
   Subtrees a repo marks protected are never auto-edited even inside `docs/` —
   leave them to a human.
 - If an approved finding implies a change outside `docs/`, you **stop and report

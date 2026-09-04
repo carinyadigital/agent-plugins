@@ -1,7 +1,7 @@
 {
   "name": "brand-creative",
   "displayName": "Brand Creative",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Complete brand practice in one install \u2014 setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/.",
   "author": {
     "name": "Carinya Parc"

@@ -1,7 +1,7 @@
 {
   "name": "ralph-loop",
   "displayName": "Ralph Loop",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Self-referential delivery loop \u2014 seed with ralph-loop-setup, run with ralph-loop. Ships ad-hoc and custom presets; engineering contributes the engineering-delivery preset. Includes Claude Code and Cursor stop hooks.",
   "author": {
     "name": "Carinya Parc"

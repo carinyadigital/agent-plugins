@@ -1,7 +1,7 @@
 {
   "name": "design",
   "displayName": "Design",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Design practice in one install \u2014 setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/. Bundles Figma and Playwright.",
   "author": {
     "name": "Carinya Parc"

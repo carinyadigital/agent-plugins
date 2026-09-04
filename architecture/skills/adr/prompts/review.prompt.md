@@ -30,7 +30,7 @@ architecture documentation]
 8. Identify any gaps, vague sections, or missing references
 9. Directly amend the ADR to address gaps
 10. Update status to Accepted if the ADR meets quality gates
-11. Add the ADR to `docs/architecture/decisions/register.md` (Accepted ADRs table)
+11. Add the ADR to `docs/decisions/register.md` (Accepted ADRs table)
 
 ## Quality rules
 

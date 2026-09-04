@@ -9,7 +9,7 @@ description: >
   into sections". Also "our docs are a mess" when the complaint is folders or
   mixed types, not prose. Surveys the repo, proposes a Diátaxis skeleton and
   landing pages, then writes only after confirmation. Protected practice trees
-  (docs/architecture, docs/product, docs/design, docs/brand) stay put. Do NOT
+  (docs/decisions, docs/product, docs/design, docs/brand) stay put. Do NOT
   use to score or fix prose, detect code drift, or check voice (docs-improve);
   to "review the docs", "audit the documentation", or judge whether a document
   set is well written and consistent with no tree or restructure intent
@@ -72,7 +72,7 @@ never edits root `README.md`, `AGENTS.md`, `CLAUDE.md`, source, or config.
 - **Author deep tutorials or full reference** — it scaffolds structure and
   landing pages (and splits conflated files on the reorganise path). Deep
   content comes next via `docs-improve` or a human.
-- **Touch `protected_paths`** — default `docs/architecture/`, `docs/product/`,
+- **Touch `protected_paths`** — default `docs/decisions/`, `docs/product/`,
   `docs/design/`, `docs/brand/`. Findings there are reported, never auto-moved.
 
 ## Preconditions

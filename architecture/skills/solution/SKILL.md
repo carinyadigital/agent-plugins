@@ -18,7 +18,7 @@ allowed-tools:
 argument-hint: "[--state current|target] [--context <notes>]"
 metadata:
   author: Carinya Parc
-  version: "3.0"
+  version: "3.1"
   owner: architecture
   work_shape: generate-draft
   output_class: draft-for-review
@@ -39,7 +39,7 @@ both. Do not invent a parallel outline.
 Default path: `ARCHITECTURE.md` at the target repo root.
 
 Decisions are **not** in this file. They live in
-`docs/architecture/decisions/` via `/architecture:adr`.
+`docs/decisions/` via `/architecture:adr`.
 
 ## Path resolution
 
@@ -105,7 +105,7 @@ cross-cutting concepts that actually serve those quality goals.
 `ARCHITECTURE.md` MUST NOT contain:
 
 - Architecture decision records or an "Architecture Decisions" section →
-  `/architecture:adr` (`docs/architecture/decisions/`)
+  `/architecture:adr` (`docs/decisions/`)
 - Commercial rationale, personas, positioning → `docs/product/product.md`
 - Story-level acceptance criteria → `specs/{work-short-name}/TASKS.local.md`
 - Phase sequencing → `docs/product/roadmap.md`
@@ -117,7 +117,7 @@ Read before writing:
 
 - `docs/product/product.md` when present (do not copy business narrative)
 - Existing `ARCHITECTURE.md` or legacy `docs/architecture/solution.md`
-- `docs/architecture/decisions/` — link accepted ADRs from the sections they
+- `docs/decisions/` — link accepted ADRs from the sections they
   affect; do not restate the decision bodies
 - For `current`: the repo (layout, deploy config, tests, CI, public APIs)
 - For `target` at project start: product.md, constraints the user named,
@@ -186,7 +186,7 @@ CI" outline. Map those facts into §3, §5, §6, §7, and §8.
 
 - **Per-work-item files/APIs** → `{work-dir}/design.md`; cite this document
   by section (`ARCHITECTURE.md §5`).
-- **Closed ADRs** → `docs/architecture/decisions/ADR-NNNN-*.md`. A decision
+- **Closed ADRs** → `docs/decisions/ADR-NNNN-*.md`. A decision
   that is only a sentence in this file should be harvested with
   `/architecture:adr plan`, not expanded here.
 - **Legacy `solution.md`** → read it, write `ARCHITECTURE.md`, do not edit

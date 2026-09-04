@@ -2,7 +2,7 @@
 name: adr
 description: >
   Use when the user wants ADR register planning, writing ADR-NNNN files, or ADR
-  review under docs/architecture/decisions/. Triggers on "do we need an ADR",
+  review under docs/decisions/. Triggers on "do we need an ADR",
   "write ADR-0007", "record this decision", "what decisions need making",
   "harvest ADRs from this epic", "harvest ADRs from JIRA-123". Do NOT use for
   full architecture narrative (solution / ARCHITECTURE.md), work-item Solution Design (design), or
@@ -22,14 +22,14 @@ allowed-tools:
 argument-hint: "<mode: plan|write|review> [work-id|target] [flags]"
 metadata:
   author: Carinya Parc
-  version: "2.0"
+  version: "2.1"
   owner: architecture
   work_shape: generate-draft
   output_class: draft-for-review
   review_cadence: as-needed
 ---
 
-Read and write architecture artefacts under `docs/architecture/`.
+Read and write ADRs under `docs/decisions/`.
 
 # ADR
 
@@ -37,14 +37,18 @@ Read and write architecture artefacts under `docs/architecture/`.
 
 | Artefact | Default path |
 | -------- | ------------ |
-| Register | `docs/architecture/decisions/register.md` |
-| ADR document | `docs/architecture/decisions/ADR-{NUMBER}-{short-title}.md` |
+| Register | `docs/decisions/register.md` |
+| ADR document | `docs/decisions/ADR-{NUMBER}-{short-title}.md` |
 
 ## Path resolution
 
 If the user names a different directory or file path in their request, use it
 for read/write instead of the defaults. Keep `ADR-####` numbering sequential
 within the register the user targets.
+
+If `docs/architecture/decisions/` still exists, treat it as leftover: read it,
+then migrate register.md and `ADR-*.md` into `docs/decisions/` in the same
+change set. Do not keep both as live registers.
 
 ## Supporting files
 

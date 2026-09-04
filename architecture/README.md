@@ -56,7 +56,7 @@ After instance bootstrap (or standalone):
 | ----- | ------- |
 | **setup** | Interview → write practice profile and target hints |
 | **solution** | write — `ARCHITECTURE.md` at the repo root (current or target); review via `/engineering:docs-review` |
-| **adr** | plan, write, review — `docs/architecture/decisions/` |
+| **adr** | plan, write, review — `docs/decisions/` |
 
 Path and boundary rules: `references/architecture-conventions.md`.
 

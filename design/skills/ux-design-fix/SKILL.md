@@ -31,7 +31,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `specs/` and `docs/architecture/`.
+Read artefacts from `specs/`, `ARCHITECTURE.md`, and `docs/decisions/`.
 
 # UX design fix
 

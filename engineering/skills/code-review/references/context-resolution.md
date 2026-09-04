@@ -54,7 +54,7 @@ stop at the first match (or use several if more than one is relevant):
   stay in the list — `design.md` is a widespread convention in repos that never
   used these skills.
 - Architecture references: `ARCHITECTURE.md`, `**/solution.md` (legacy),
-  `docs/architecture/**`, ADR/decision folders (`**/decisions/**`,
+  `docs/decisions/**`, leftover `docs/architecture/**`, ADR/decision folders (`**/decisions/**`,
   `**/adr/**`, `ADR-*.md`).
 - A `specs/{work-short-name}/` (or similar) folder is one possible layout among
   many — treat it as a candidate, never a requirement.

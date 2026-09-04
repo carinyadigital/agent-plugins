@@ -41,7 +41,7 @@ reported and deferred to a human. See [`references/docs-boundary.md`](references
 
 Default **`protected_paths`** (reported, never auto-moved or auto-edited):
 
-- `docs/architecture/`
+- `docs/decisions/`
 - `docs/product/`
 - `docs/design/`
 - `docs/brand/`

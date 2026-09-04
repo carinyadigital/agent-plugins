@@ -20,7 +20,7 @@
       "assertions": [
         "Skips scaffold-from-nothing",
         "Produces a classification table and move-map",
-        "Does not move files under docs/architecture/, docs/product/, docs/design/, or docs/brand/",
+        "Does not move files under docs/decisions/, docs/product/, docs/design/, or docs/brand/",
         "Requires explicit approval before git mv",
         "Fixes inbound and outbound links after moves"
       ]
@@ -37,11 +37,11 @@
     },
     {
       "id": 4,
-      "prompt": "Reorganise docs/. There is an ADR under docs/architecture/decisions/ and a messy how-to pile in docs/.",
-      "expected_output": "Move-map covers the messy how-to pile. docs/architecture/decisions/ is reported as protected and not moved.",
+      "prompt": "Reorganise docs/. There is an ADR under docs/decisions/ and a messy how-to pile in docs/.",
+      "expected_output": "Move-map covers the messy how-to pile. docs/decisions/ is reported as protected and not moved.",
       "assertions": [
-        "Reports docs/architecture/ as protected",
-        "Does not git mv or edit files under docs/architecture/",
+        "Reports docs/decisions/ as protected",
+        "Does not git mv or edit files under docs/decisions/",
         "Still proposes moves for unprotected docs/"
       ]
     },

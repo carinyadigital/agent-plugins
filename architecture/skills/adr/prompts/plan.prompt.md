@@ -17,7 +17,7 @@ Run both when a work item is named: harvest first, then survey.
 
 ## Output
 
-Default register: `docs/architecture/decisions/register.md`. If the user names
+Default register: `docs/decisions/register.md`. If the user names
 another path, use it. Update the register only — do **not** create
 `proposed-adrs.md`, `adr-plan.md`, or other plan files.
 

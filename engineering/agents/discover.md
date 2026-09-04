@@ -65,7 +65,7 @@ not support — mark gaps `[NEEDS CLARIFICATION]`.
 | Tracker item | Summary, description, AC, comments, attachments, labels, components, parent, children, issue links |
 | Remote links | Confluence pages, Figma files, GitLab/GitHub MRs or commits linked from the item |
 | Parent epic | Tracker epic plus its `{work-dir}/design.md` if it exists — cite by ID, do not copy |
-| Architecture | `ARCHITECTURE.md`, cited ADRs under `docs/architecture/decisions/` |
+| Architecture | `ARCHITECTURE.md`, cited ADRs under `docs/decisions/` |
 | Product | `docs/product/product.md`, `roadmap.md`, filesystem `backlog.md` when that is the source |
 | Existing artefacts | `{work-dir}/design.md` (or legacy `tdd.md`), `{work-dir}/TASKS.local.md` — update, do not fork a second copy |
 | Codebase | Modules the item names, neighbouring patterns, `AGENTS.md` / `CLAUDE.md` conventions |

@@ -7,17 +7,17 @@ status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
   - docs/product/product.md
-  - docs/architecture/decisions/register.md
+  - docs/decisions/register.md
 ---
 
 <!--
 DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
 
 arc42 drawers (keep these names). Do not add an Architecture Decisions
-section — that is docs/architecture/decisions/ via /architecture:adr.
+section — that is docs/decisions/ via /architecture:adr.
 
 DO NOT INCLUDE in ARCHITECTURE.md:
-  - ADR bodies or a decision log              → docs/architecture/decisions/
+  - ADR bodies or a decision log              → docs/decisions/
   - Commercial rationale or business case     → product.md
   - Target customer segments or personas      → product.md
   - Strategic thesis or product principles    → product.md
@@ -43,7 +43,7 @@ Never leave [NEEDS CLARIFICATION] or empty headings in the saved file.
 > for this system --> change, this document must be updated in the same PR.
 
 > **State**: `current` (as-is). Architecture decisions live in
-> [`docs/architecture/decisions/`](docs/architecture/decisions/).
+> [`docs/decisions/`](docs/decisions/).
 
 <!-- One short paragraph: what this system is, in domain language. -->
 
@@ -275,7 +275,7 @@ Trust boundary 1
 ---
 
 <!-- arc42 §9 Architecture Decisions is not in this file.
-     Write ADRs with /architecture:adr under docs/architecture/decisions/.
+     Write ADRs with /architecture:adr under docs/decisions/.
      Link an accepted ADR from the section it governs. -->
 
 # 10. Quality Requirements

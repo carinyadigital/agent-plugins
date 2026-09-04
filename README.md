@@ -282,7 +282,7 @@ Default layout the skills expect:
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
 ARCHITECTURE.md               system architecture (arc42)
-docs/architecture/            decisions/
+docs/decisions/               register.md, ADR-NNNN-*.md
 specs/{work-short-name}/          design.md; TASKS.local.md when required
 specs/{work-short-name}/reviews/  code-review-{nn}.local.md + matching .local.json;
                                  ux-design-review-{nn}.local.md
@@ -458,7 +458,7 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 |---|---|---|
 | `/architecture:setup` | setup | Learns target binding, architecture scope, companions |
 | `/architecture:solution` | solution | write — `ARCHITECTURE.md` at the repo root (current or target); review via `/engineering:docs-review` |
-| `/architecture:adr` | adr | plan, write, review — `docs/architecture/decisions/` |
+| `/architecture:adr` | adr | plan, write, review — `docs/decisions/` |
 
 ### engineering
 

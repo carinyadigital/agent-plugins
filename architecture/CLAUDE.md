@@ -11,7 +11,7 @@ Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
 Architecture artefacts: `ARCHITECTURE.md` at the target repo root; ADRs under
-`docs/architecture/decisions/`. Repo binding stays in `config/target.json`.
+`docs/decisions/`. Repo binding stays in `config/target.json`.
 -->
 
 # Architecture — Practice Profile

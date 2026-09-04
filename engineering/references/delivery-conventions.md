@@ -9,7 +9,7 @@ item argument or writing under `specs/`.
 ```text
 docs/product/               product.md, roadmap.md, backlog.md
 ARCHITECTURE.md             system architecture (arc42)
-docs/architecture/          decisions/register.md, ADR-*.md
+docs/decisions/             register.md, ADR-*.md
 specs/{work-short-name}/    design.md; TASKS.local.md when a local task breakdown
                             is required — one folder per resolved work item
 specs/{work-short-name}/reviews/  code-review-{nn}.local.md + matching .local.json

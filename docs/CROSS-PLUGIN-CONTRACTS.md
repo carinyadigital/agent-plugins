@@ -221,7 +221,7 @@ Does not invoke other plugins directly — recommendation only.
 `document-management` owns the **`docs/` tree lifecycle** (scaffold/reorganise
 to Diátaxis, then score/fix including drift and voice). It writes only inside
 `docs_root` (default `docs/`) and never auto-edits the default protected
-practice trees (`docs/architecture/`, `docs/product/`, `docs/design/`,
+practice trees (`docs/decisions/`, `docs/product/`, `docs/design/`,
 `docs/brand/`).
 
 `/engineering:docs-review` remains the **set-quality companion**: a read-only

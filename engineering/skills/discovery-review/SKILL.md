@@ -35,7 +35,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/`, `ARCHITECTURE.md`, and `docs/architecture/decisions/`.
+Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/`, `ARCHITECTURE.md`, and `docs/decisions/`.
 
 # Discovery review
 
@@ -83,7 +83,7 @@ and artefact boundaries.
 | Solution Design | `{work-dir}/design.md` | Yes for epic/story; if missing for a bug/spike, say so rather than inventing one |
 | Tasks + Gherkin AC | `{work-dir}/TASKS.local.md` or the tracker | Yes when a local or tracker breakdown is how this repo carries AC — owned by `/product-management:tasks` |
 | Solution architecture | `ARCHITECTURE.md` | If the work item touches architectural boundaries |
-| ADRs | `docs/architecture/decisions/` | If the Solution Design cites them, or a decision is still open |
+| ADRs | `docs/decisions/` | If the Solution Design cites them, or a decision is still open |
 | Product / roadmap | `docs/product/product.md`, `roadmap.md` | If present — check the slice still matches |
 
 ## Steps

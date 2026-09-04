@@ -22,12 +22,13 @@ order — first match wins:
 ```text
 ARCHITECTURE.md               system architecture (arc42)
 docs/product/                 product.md, roadmap.md, backlog.md
-docs/architecture/            decisions/register.md, ADR-NNNN-*.md
+docs/decisions/               register.md, ADR-NNNN-*.md
 specs/{work-short-name}/      design.md; TASKS.local.md when required  (owned by engineering / product-management)
 ```
 
 Write the architecture narrative at repo-root `ARCHITECTURE.md`. Write ADRs
-under `docs/architecture/decisions/`.
+under `docs/decisions/`. Leftover `docs/architecture/decisions/` is a read
+fallback only; the `adr` skill migrates it into `docs/decisions/`.
 
 Override paths when the user names them explicitly in the request.
 
@@ -51,7 +52,7 @@ Override paths when the user names them explicitly in the request.
 | Content | Belongs in | Not in |
 | ------- | ---------- | ------ |
 | Architecture, NFRs, cross-epic patterns | `ARCHITECTURE.md` | design.md (cite only) |
-| ADR decisions | `docs/architecture/decisions/` | `ARCHITECTURE.md` |
+| ADR decisions | `docs/decisions/` | `ARCHITECTURE.md` |
 | Work-item implementation spec | `{work-dir}/design.md` | architecture, backlog |
 | Business strategy, personas, outcomes | `docs/product/product.md` | architecture |
 | Task Gherkin AC | `specs/{work-short-name}/TASKS.local.md` | architecture |

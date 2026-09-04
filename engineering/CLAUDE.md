@@ -13,7 +13,7 @@ Instance-wide org facts live in the instance repo at:
 Engineering artefacts (`specs/`) live in the target repo.
 `code-review` writes the verdict and tracking JSON together under
 `specs/{work-short-name}/reviews/`.
-Architecture (`ARCHITECTURE.md` and `docs/architecture/decisions/`) is owned by the `architecture` companion.
+Architecture (`ARCHITECTURE.md` and `docs/decisions/`) is owned by the `architecture` companion.
 Repo binding stays in `config/target.json`.
 Brand guide is read from the resolved brand path — see references/engineering-conventions.md.
 -->

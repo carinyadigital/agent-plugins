@@ -7,8 +7,8 @@ decision as an ADR.
 
 Defaults (override if the user names other paths):
 
-- Register: `docs/architecture/decisions/register.md`
-- ADR file: `docs/architecture/decisions/ADR-{NUMBER}-{short-title}.md`
+- Register: `docs/decisions/register.md`
+- ADR file: `docs/decisions/ADR-{NUMBER}-{short-title}.md`
 
 ## Steps
 

@@ -8,8 +8,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### ralph-loop
+## [2026-09-04] — ADRs at docs/decisions/
 
+### architecture 0.8.0
+
+- **BREAKING:** `/architecture:adr` writes the register and `ADR-NNNN` files
+  under `docs/decisions/` (was `docs/architecture/decisions/`). Leftover files
+  at the old path are a read fallback; `adr` migrates them into
+  `docs/decisions/`.
+- Merged `work-item-resolution.md` into `references/work-items.md` (resolution
+  plus schema in one file).
+
+### engineering 0.8.2
+
+- Cite ADRs under `docs/decisions/` instead of `docs/architecture/decisions/`.
+- Merged `work-item-resolution.md` and `work-item-schema.md` into
+  `references/work-items.md`.
+- Removed plugin-level `assets/tasks-local.template.md`. The repo-root
+  `TASKS.local.md` pointer template lives in the `tasks` skill.
+
+### product-management 0.5.4
+
+- Delivery conventions place ADRs at `docs/decisions/`.
+- Merged task work-item resolution and schema into
+  `skills/tasks/references/work-items.md`.
+
+### document-management 0.1.2
+
+- Default `protected_paths` protect `docs/decisions/` (ADRs) instead of
+  `docs/architecture/`. Leftover `docs/architecture/` is still reported, never
+  auto-moved.
+
+### design 0.6.3 / brand-creative 0.4.4
+
+- Read ADRs from `docs/decisions/`. Instance/target layout templates list
+  `docs/decisions/` instead of `docs/architecture/`.
+
+### ralph-loop 0.6.1
+
+- Read ADRs from `docs/decisions/`.
 - Setup reuses existing issue sources and never writes a root
   `TASKS.local.md` pointer. Generated engineering-delivery runs keep every
   configured source synchronized through In Progress, In Review, and Done.

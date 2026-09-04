@@ -45,7 +45,7 @@ docs/
 - **One type per document; a place for everything.** If a doc doesn't fit a folder, that's usually a sign it's conflated and should be split.
 - **`index.md` is the landing page** of `docs/` and of each type folder — it orients and points, it doesn't hold the content itself.
 - Small or young repos can start with fewer folders and grow into the full set; the *types* still apply even before the folders do.
-- **Do not scaffold into protected practice trees.** Default `protected_paths` (`docs/architecture/`, `docs/product/`, `docs/design/`, `docs/brand/`) stay where they are — see [`docs-boundary.md`](docs-boundary.md).
+- **Do not scaffold into protected practice trees.** Default `protected_paths` (`docs/decisions/`, `docs/product/`, `docs/design/`, `docs/brand/`) stay where they are — see [`docs-boundary.md`](docs-boundary.md).
 
 ## Naming conventions
 

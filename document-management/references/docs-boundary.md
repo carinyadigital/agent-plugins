@@ -36,10 +36,12 @@ This plugin's **defaults** keep it from stealing practice-owned trees:
 
 | Path | Owner (typical) |
 | :--- | :-------------- |
-| `docs/architecture/` | architecture practice (`adr`) — ADRs only; the narrative is root `ARCHITECTURE.md` |
+| `docs/decisions/` | architecture practice (`adr`) — ADRs only; the narrative is root `ARCHITECTURE.md` |
 | `docs/product/` | product-management practice |
 | `docs/design/` | design practice |
 | `docs/brand/` | brand-creative practice (standalone Try-tier brand artefacts) |
+
+If a leftover `docs/architecture/` tree still exists (old ADRs or `solution.md`), treat it as protected too — report, do not auto-move. The `adr` and `solution` skills migrate those files.
 
 A repo may override the list via local config (`.claude/document-management.local.md` or `.cursor/document-management.local.md`). Extra entries are common for legal text or generated reference (for example `docs/reference/api/` built from OpenAPI). Replacing the defaults is allowed; do not silently drop the practice trees unless the user asked to.
 

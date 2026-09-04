@@ -71,7 +71,7 @@ never outside `docs_root` ([`docs-boundary.md`](../../references/docs-boundary.m
   tree, code-drift, or voice-fix intent — that's `/engineering:docs-review`.
 - **Write outside `docs/`** — cross-boundary findings (README / AGENTS.md) are
   deferred to a human.
-- **Auto-edit `protected_paths`** — default `docs/architecture/`,
+- **Auto-edit `protected_paths`** — default `docs/decisions/`,
   `docs/product/`, `docs/design/`, `docs/brand/`. Reported for a human.
 - **Install linters unprompted** — detect, run what's present, record fallbacks.
 

@@ -128,13 +128,11 @@ not exist, ask the user for design guidance inline.
 
 ## References
 
-- `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/engineering-conventions.md` — path resolution, personas, artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
 
-Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
-are kept in sync across practice plugins via `python3 scripts/sync-references.py`.
+## Companion: ralph-loop
 
-## Ralph loop contribution
-
-This plugin contributes the `engineering-delivery` preset at `assets/ralph-presets/engineering-delivery.md`. Install the companion `ralph-loop` plugin to run loops; seed resolves this preset automatically when both plugins are installed side by side.
+The `deliver` agent prefers `/ralph-loop:ralph-loop-setup` when that plugin is
+installed. Setup writes loop artefacts into the target repo (`.claude/loop/`
+or `.cursor/loop/`). Engineering reads those files; it does not ship a Ralph
+preset.

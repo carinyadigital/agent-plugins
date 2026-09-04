@@ -1,5 +1,7 @@
 # Instance profile template — digital-agency
 
+> Catalogue-only schema. Lives once at repo-root `references/`. Do not copy into practice plugins — each `/<practice>:setup` skill writes this shape when `config/instance.json` is absent.
+
 > Written by `/<practice>:setup`. Every practice plugin reads `config/instance.json` before producing output. Edit directly for small fixes; re-run `setup --redo` to refresh.
 
 Tier 1 config lives in the **instance repo** (git-versioned), not in user dotfiles.

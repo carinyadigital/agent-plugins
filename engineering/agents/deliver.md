@@ -4,8 +4,9 @@ description: >
   Use this agent to deliver an approved Solution Design — implement every
   task, review and fix, optionally UX-review UI diffs, validate against AC,
   then open a merge request and watch it to merge-ready. Prefers the
-  ralph-loop engineering-delivery preset; falls back to the same step
-  machine inline. Triggers on "deliver JIRA-123", "run the deliver agent",
+  companion ralph-loop plugin when installed (then reads seeded loop
+  artefacts); falls back to the same step machine inline. Triggers on
+  "deliver JIRA-123", "run the deliver agent",
   "implement all the tasks for CART-45", "build the approved TDD", "loop
   this story to an MR". Do NOT use for writing the Solution Design or tasks
   (discover, design, /product-management:tasks), a single-task implement
@@ -30,12 +31,13 @@ or already known. The repository must provide git and its own validation
 toolchain. Use connected GitLab or GitHub tools for merge requests when
 available, falling back to the repository's configured CLI.
 
-Prefer the companion **ralph-loop** plugin and its `engineering-delivery`
-preset. Setup resolves the repository's existing issue sources and
-generates the executable plan; the runtime does not invent a second task
-list. If that plugin is not installed, run the default machine inline. After
-`create_mr`, run `merge-request-watch`. You never merge unless the user
-explicitly asked you to.
+Prefer the companion **ralph-loop** plugin when it is installed. Hand the
+work-id to `/ralph-loop:ralph-loop-setup`; setup seeds the loop. After that,
+read the loop artefacts in `.claude/loop/` or `.cursor/loop/` (`active.md`,
+`{run-id}/loop-state.md`, `{run-id}/context.md`). Do not look for a Ralph
+preset in this plugin. If ralph-loop is not installed, run the default
+machine inline. After `create_mr`, run `merge-request-watch`. You never merge
+unless the user explicitly asked you to.
 
 ## How you work
 
@@ -47,10 +49,8 @@ and [../references/engineering-conventions.md](../references/engineering-convent
 Resolve source system, canonical ID, type, and `{work-dir}`. Ask on any
 ambiguity.
 
-When using ralph-loop, do not execute a repo-root `TASKS.local.md`
-pointer-writing step. Pass the live source resolution into ralph-loop
-setup; setup must reuse existing sources and must not create a parallel
-task or pointer file.
+When using ralph-loop, do not write a repo-root `TASKS.local.md` pointer.
+Setup owns source resolution and must reuse existing sources.
 
 Confirm discovery is done:
 
@@ -71,13 +71,15 @@ explicit yes. Then proceed.
 
 #### When ralph-loop is installed
 
-1. Run `/ralph-loop:ralph-loop-setup` with preset `engineering-delivery`
-   and this `{work-id}`. Setup must not start the loop.
-2. Run `/ralph-loop:ralph-loop start` after the user confirms.
-3. The stop hook owns iteration. You do not inline skill steps while the
+1. Run `/ralph-loop:ralph-loop-setup` with this `{work-id}`. Setup must not
+   start the loop.
+2. Read the seeded artefacts (`active.md`, `{run-id}/loop-state.md`,
+   `{run-id}/context.md`) and confirm the plan if you have not already.
+3. Run `/ralph-loop:ralph-loop start` after the user confirms.
+4. The stop hook owns iteration. You do not inline skill steps while the
    loop is active.
-4. When the loop emits its completion promise (or a rail fires), read the
-   run notes for the MR URL.
+5. When the loop emits its completion promise (or a rail fires), read
+   `{run-id}/loop-state.md` under `## Notes` for the MR URL.
 
 If ralph-loop is missing:
 

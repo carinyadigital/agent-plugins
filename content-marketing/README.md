@@ -98,10 +98,5 @@ installed — document the optional pairing in both READMEs rather than a hard d
 
 ## References
 
-- `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/content-conventions.md` — path resolution, personas, artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
 - `references/prompt-refinement.md` — quality checks for analyse-media and write-captions
-
-Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
-are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

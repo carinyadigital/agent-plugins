@@ -36,7 +36,7 @@ Install the practice plugins that match your work. The first practice `setup` wr
 | [product-management](./product-management) | Product strategy, roadmap, specs, research, metrics, backlog, sprint cadence, validation | `/product-management:setup` |
 | [architecture](./architecture) | Solution design and ADRs | `/architecture:setup` |
 | [engineering](./engineering) | Solution Design (design), implementation, code review, QA, platform ops | `/engineering:setup` |
-| [ralph-loop](./ralph-loop) | Self-referential delivery loops (ad-hoc / custom; engineering preset from engineering) | `/ralph-loop-setup` |
+| [ralph-loop](./ralph-loop) | Self-referential delivery loops (ad-hoc, custom, engineering-delivery) | `/ralph-loop-setup` |
 | [skills-index](./skills-index) | Install-aware skill router | `/skills-index:find` |
 | [plugin-management](./plugin-management) | Create/customize plugins + skill quality gates | `/plugin-management:create-plugin` |
 | [document-management](./document-management) | Scaffold, reorganise, score, and keep current the `docs/` tree | `/document-management:docs-setup` |
@@ -169,8 +169,8 @@ ralph-loop/               # ralph-loop + ralph-loop-setup (+ hooks)
 skills-index/             # install-aware skill router
 plugin-management/        # create/customize plugins + skills-qa / skill-review
 document-management/      # docs-setup, docs-improve (docs/ tree lifecycle)
-scripts/                  # validate.py · validate_plugins.py · validate_skills.py · sync-references.py
-references/               # canonical meta-framework (synced into practice plugins)
+scripts/                  # validate.py · validate_plugins.py · validate_skills.py
+references/               # catalogue-only instance-profile-template + practice-setup-framework
 .claude-plugin/marketplace.json   # plugin registry (name: carinya-plugins)
 .cursor-plugin/marketplace.json
 ```
@@ -186,7 +186,7 @@ Each practice plugin has the same shape:
   CONNECTORS.md           # category placeholders + bundled MCP providers
   .mcp.json
   skills/                 # skills — each is a /<practice>:<skill> slash command
-  references/             # practice conventions + synced meta-framework files
+  references/             # practice conventions
   hooks/                  # pre- and post-tool hooks (stubs today)
 ```
 
@@ -333,7 +333,7 @@ Grouped by agency service line. Each plugin's **`setup`** is what tailors it to 
 
 | Plugin | What it adds |
 |---|---|
-| **[ralph-loop](./ralph-loop)** | Self-referential delivery loops — ad-hoc and custom presets; engineering-delivery preset contributed by engineering. Ships hooks. |
+| **[ralph-loop](./ralph-loop)** | Self-referential delivery loops — ad-hoc, custom, and engineering-delivery presets. Ships hooks. |
 | **[skills-index](./skills-index)** | Install-aware skill router — `/skills-index:find` |
 | **[plugin-management](./plugin-management)** | Create/customize plugins, component authoring, marketplace registration, and skill quality gates (`skills-qa`, `skill-review`) |
 
@@ -373,7 +373,7 @@ Two layers of configuration tailor generic skills to your business:
 | `/<practice>:setup` | Instance repo + handoff to first practice |
 | `/<practice>:setup` | Practice profile for that service line |
 
-Framework: [`brand-creative/references/agency-setup-framework.md`](./brand-creative/references/agency-setup-framework.md) and [`practice-setup-framework.md`](./brand-creative/references/practice-setup-framework.md) and synced [`setup-framework.md`](./product-management/references/practice-setup-framework.md) copies in each practice.
+Framework: [`brand-creative/references/agency-setup-framework.md`](./brand-creative/references/agency-setup-framework.md) and catalogue [`references/practice-setup-framework.md`](./references/practice-setup-framework.md) (not copied into plugins).
 
 **Living profile.** Every skill except `setup` uses **propose profile update** — show the exact diff, ask, write on yes. No skill auto-writes a full profile without confirmation.
 
@@ -498,7 +498,6 @@ Everything here is markdown and JSON. Fork, edit, PR. See [CONTRIBUTING.md](./CO
 
 - **New skill** → add `<practice>/skills/<skill-name>/SKILL.md` with `name` and `description` frontmatter. Invokable as `/<practice>:<skill-name>`.
 - **New persona row** → add the skill under the owning practice and a row in that practice's README Agents/Personas table mapping the job title to the slash command.
-- **Shared meta-framework edits** → run `python3 scripts/sync-references.py` after changing `instance-profile-template.md` or `setup-framework.md`.
 - **Validate before opening a PR** — `python3 scripts/validate.py` lints manifests, verifies cross-file references, and validates evals schema. See [AGENTS.md](./AGENTS.md) for repo conventions.
 
 ## License

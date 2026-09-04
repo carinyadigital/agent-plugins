@@ -39,16 +39,14 @@ changes. Explicit invocation only.
 
 Read before proceeding:
 
-- `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md`
 - `${CLAUDE_PLUGIN_ROOT}/references/product-conventions.md`
 - `${CLAUDE_PLUGIN_ROOT}/references/delivery-conventions.md`
-- `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md` (when instance profile may exist)
 
 Honour flags: `--quick`, `--full`, `--redo`, `--resume`, `--check-integrations`.
 
 ## Provisional mode
 
-Partial interview → write resume JSON per framework. Offer `--resume` on next run.
+Partial interview → write resume JSON (see Pause and resume). Offer `--resume` on next run.
 
 ## Trust spine
 
@@ -65,13 +63,18 @@ Structured-aggregation; integration table reports ✓ only on successful MCP pro
 
 ### Step 0a — Instance bootstrap
 
-If `config/instance.json` is **absent**, follow `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md` → **Instance bootstrap**: interview minimal org facts, show the summary, write `config/instance.json` on yes, then continue.
+If `config/instance.json` is **absent**:
+
+1. Interview minimal org facts: business name / prose name, single-business vs agency-serving-clients, primary practice, planning cadence, risk posture.
+2. Show a plain-language summary of `config/instance.json` (and an optional target skeleton). **Wait for yes.**
+3. Write `config/instance.json` with `status: complete`, `setup.completedAt` (ISO 8601), and `setup.mode`. Include `instance` slug, `business`, `services.enabled`, `cadence`, `riskPosture`, `governance` (`agentsNeverPushMain: true`), and `seedMaterial` as captured. Do not create GitHub repos autonomously.
+4. Continue into the plugin-specific interview.
 
 If present and complete, reference it — do not re-ask business identity.
 
 ### Step 0b — Install scope check
 
-If working directory looks project-scoped and product context may span repos, warn once per framework. Wait for confirmation.
+If working directory looks project-scoped and product context may span repos, warn once that a project-scoped install cannot read files outside the project folder. Wait for confirmation.
 
 ### Step 1 — Mode and preamble
 
@@ -170,7 +173,7 @@ On pause, write JSON:
 }
 ```
 
-Location: `<instance-root>/config/.product-setup-resume.json` if instance exists; else personal hub path per framework.
+Location: `<instance-root>/config/.product-setup-resume.json` if instance exists; else `~/.claude/plugins/config/digital-agency/product-management/setup-resume.json`.
 
 ## Worked example
 

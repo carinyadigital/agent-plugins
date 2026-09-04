@@ -1,5 +1,7 @@
 # Practice setup framework — digital-agency
 
+> Catalogue-only. Lives once at repo-root `references/`. Do not copy into practice plugins — each `/<practice>:setup` skill is self-contained and follows this contract.
+
 Every root-level practice plugin's `setup` skill follows this framework. Plugin skills add only **plugin-specific** questions on top; org-wide facts live once in the instance profile (`config/instance.json`). **Whichever practice plugin you install first bootstraps** — if `config/instance.json` is absent, that practice's `setup` writes it, then runs its own interview.
 
 ## Invocation
@@ -27,7 +29,7 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 
 **Brand path resolution:** When this plugin reads brand artefacts, resolve per `${CLAUDE_PLUGIN_ROOT}/references/brand-conventions.md` (brand-creative) or the equivalent conventions file in this plugin — instance `brand/`, target pointer, or standalone `docs/brand/`.
 
-**In-repo templates (read-only):** `${CLAUDE_PLUGIN_ROOT}/references/practice-setup-framework.md`, `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md`, `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md`. Never modify installed plugin templates.
+**In-repo templates (read-only):** `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` (practice profile template). Never modify installed plugin templates. Instance JSON schema lives at catalogue `references/instance-profile-template.md` — not shipped inside plugins.
 
 **Install scope:** User-scoped install (recommended) lets skills read seed material anywhere on disk. Project-scoped install limits reads to the project folder — note this if the user reports "can't read [file]" during seed-document review.
 
@@ -54,11 +56,10 @@ When `config/instance.json` exists and `status: complete`:
 
 ### Instance bootstrap (when `config/instance.json` is absent)
 
-1. Read `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md`.
-2. Interview minimal org facts: business name / prose name, single-business vs agency-serving-clients, primary practice, planning cadence, risk posture.
-3. Show the plain-language summary of `config/instance.json` (and optional target skeleton). **Wait for yes.**
-4. Write `config/instance.json` with `status: complete` (link-first — do not create GitHub repos autonomously).
-5. Continue into the plugin-specific interview.
+1. Interview minimal org facts: business name / prose name, single-business vs agency-serving-clients, primary practice, planning cadence, risk posture.
+2. Show the plain-language summary of `config/instance.json` (and optional target skeleton). **Wait for yes.**
+3. Write `config/instance.json` matching the catalogue schema (`references/instance-profile-template.md`) with `status: complete` (link-first — do not create GitHub repos autonomously).
+4. Continue into the plugin-specific interview.
 
 
 ## Plugin-specific interview

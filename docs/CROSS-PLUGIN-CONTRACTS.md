@@ -25,9 +25,9 @@ fail with a slash-command reference.
 
 | From | To | Mechanism | Required? |
 | ---- | -- | --------- | --------- |
-| `ralph-loop` | `engineering` | engineering-delivery preset invokes implement, code-review, code-review-fix, merge-request | Yes for that preset |
-| `ralph-loop` | `design` | engineering-delivery may invoke ux-design-review, ux-design-fix when the user adds those stages | Optional |
-| `ralph-loop` | `product-management` | engineering-delivery preset invokes validate | Yes for that preset |
+| `ralph-loop` | `engineering` | seeded `engineering-delivery` prompt invokes implement, code-review, code-review-fix, merge-request | Yes for that preset |
+| `ralph-loop` | `design` | seeded prompt may invoke ux-design-review, ux-design-fix when the user adds those stages | Optional |
+| `ralph-loop` | `product-management` | seeded prompt invokes validate | Yes for that preset |
 | `engineering` | self | implement reads design.md from design skill | Internal |
 | `product-management` | `architecture` | product/roadmap recommend solution | Companion |
 | `product-management` | `engineering` | product/roadmap recommend docs-review; delivery skills route design/implement/review | Companion |
@@ -38,7 +38,7 @@ fail with a slash-command reference.
 | `design` | `engineering` | wireframe → implement; design.md for specs | Companion |
 | `content-marketing` | `product-management` | tasks, synthesize-research | Companion |
 | `search-optimisation` | `product-management` | competitive-brief | Companion |
-| `engineering` | `ralph-loop` | autonomous delivery loop | Companion |
+| `engineering` | `ralph-loop` | deliver invokes setup/start when installed; then reads loop artefacts from the target repo | Companion / artefact |
 | `skills-index` | all catalogue plugins | install-aware routing | Optional meta-plugin |
 | any practice | `brand-creative` | read brand-guide.md / brand-voice.md from resolved path | Artefact only |
 | `document-management` | `brand-creative` | artefact consumption of brand-voice.md (optional) | Artefact only |
@@ -46,25 +46,22 @@ fail with a slash-command reference.
 
 ---
 
-## ralph-loop → engineering / design / product-management
+## ralph-loop ↔ engineering / design / product-management
 
-**Preset:** `engineering-delivery` (contributed by `engineering` at
-`engineering/assets/ralph-presets/engineering-delivery.md`)
+The `engineering-delivery` preset ships in `ralph-loop`
+(`skills/ralph-loop/assets/presets/engineering-delivery.md`). Setup writes
+loop artefacts into the **target repo** (`.claude/loop/` or `.cursor/loop/`).
+There is no preset file in `engineering`, and seed does not look up sibling
+plugin paths.
 
-**Resolution at seed time:** `ralph-loop/scripts/seed-ralph-loop.sh` looks for
-contributed presets in:
+### Artefact consumption (`deliver` → loop files)
 
-1. `RALPH_PRESET_DIRS` (colon-separated list — set by the agent when both plugins
-   are installed)
-2. Sibling plugin cache:
-   `${CLAUDE_PLUGIN_ROOT}/../engineering/assets/ralph-presets/` (or
-   `CURSOR_PLUGIN_ROOT` equivalent)
+After setup, `engineering` `deliver` reads `{base}/active.md`,
+`{base}/{run-id}/loop-state.md`, and `{base}/{run-id}/context.md`. Missing
+files → inline fallback, or the standard install message. This does **not**
+require `ralph-loop` to be installed in order to *read* leftover artefacts.
 
-This sibling lookup is intentional — marketplace installs place plugins as
-siblings in the plugin cache. It is **not** a general pattern for skill markdown
-links.
-
-### engineering-delivery preset steps → skills
+### Slash invoke (seeded prompt → companion skills)
 
 | Step | Skill | Plugin |
 | ---- | ----- | ------ |
@@ -76,11 +73,17 @@ links.
 | final_validate | `/product-management:validate` | product-management |
 | create_mr | `/engineering:merge-request` | engineering |
 
+### Slash invoke (`deliver` → ralph-loop)
+
+When `ralph-loop` is installed, `deliver` runs `/ralph-loop:ralph-loop-setup`
+then `/ralph-loop:ralph-loop start`. It does not seed loop files itself.
+
 ### Graceful degradation
 
 | Missing plugin | Behaviour |
 | -------------- | --------- |
-| `engineering` | **Refuse** `engineering-delivery` preset at setup. Offer `ad-hoc` or `custom`, or: `Install: /plugin install engineering@carinya-plugins` |
+| `engineering` | **Refuse** `engineering-delivery` at setup. Offer `ad-hoc` or `custom`, or: `Install: /plugin install engineering@carinya-plugins` |
+| `ralph-loop` | `deliver` runs the same step machine inline |
 | `design` | Loop continues without UX stages unless the user added them. Note in run context. |
 | `product-management` | Loop can implement and review but cannot run `final_validate`. Stop before final sign-off with install message for `product-management`. |
 
@@ -263,15 +266,14 @@ Each plugin is copied to an isolated cache directory at install time.
 | Allowed | Example |
 | ------- | ------- |
 | Paths within the same plugin | `../../references/conventions.md` |
-| Sibling plugin lookup in **documented** shell contracts | `seed-ralph-loop.sh` → `../engineering/assets/ralph-presets/` |
-| Artefact paths in the user's repo | `{work-dir}/design.md` |
+| Artefact paths in the user's repo | `{work-dir}/design.md`, `.claude/loop/active.md` |
 
 | Forbidden in skill markdown | Why |
 | --------------------------- | --- |
 | `../other-plugin/references/…` | Sibling may not exist in cache |
 | Repo-monorepo paths assuming checkout layout | Install is not monorepo |
 
-Repo-root `scripts/` (validate, sync-references) may reference any path — they
+Repo-root `scripts/` (validate) may reference any path — they
 run in the monorepo, not in the plugin cache.
 
 ---

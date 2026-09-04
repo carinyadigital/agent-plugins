@@ -29,7 +29,7 @@ Combine flags when useful (e.g. `--redo --full`). If `--resume` is present, load
 | 2 — Target | `<instance-repo>/config/targets/<name>.json` | Per-target binding skeletons |
 | 2 — Target | `<target-repo>/config/target.json` | Pointer from target repo to instance |
 
-**In-repo templates (read-only):** `${CLAUDE_PLUGIN_ROOT}/references/instance-profile-template.md` and `${CLAUDE_PLUGIN_ROOT}/references/agency-setup-framework.md`. Never modify installed plugin templates.
+**In-repo templates (read-only):** `${CLAUDE_PLUGIN_ROOT}/references/agency-setup-framework.md` and `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md`. Never modify installed plugin templates. Instance JSON schema lives at catalogue `references/instance-profile-template.md` — not shipped inside this plugin.
 
 **Install scope:** User-scoped install (recommended) lets skills read seed material anywhere on disk. Project-scoped install limits reads to the project folder — note this if the user reports "can't read [file]" during seed-document review.
 
@@ -96,7 +96,7 @@ Show before the interview (adapt to context):
 
 ### 2. Services wanted
 
-Map to **practice plugins** (MECE — self-contained install units). See `instance-profile-template.md` § Service → plugin mapping:
+Map to **practice plugins** (MECE — self-contained install units):
 
 - `brand-creative` — shipped; no `core` companion
 - `engineering`, `content-marketing`, `social-media`, `seo` — practice plugins pending; recommend interim catalogue entries and `core` where noted

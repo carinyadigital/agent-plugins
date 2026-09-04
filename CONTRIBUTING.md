@@ -12,7 +12,7 @@ Everything in this repo is markdown and JSON — no build step. Fork, edit, open
     agents/                   # sub-agents scoped to this skill
     evals/                    # evals.json + trigger-queries.json
     scripts/                  # optional helper scripts
-  references/                 # practice conventions + synced meta-framework files
+  references/                 # practice conventions
   .claude-plugin/plugin.json
   .cursor-plugin/plugin.json
   .mcp.json
@@ -20,11 +20,12 @@ Everything in this repo is markdown and JSON — no build step. Fork, edit, open
 brand-creative/                   # instance bootstrap + marketplace management (install first)
 
 scripts/
-  sync-references.py          # propagate shared meta-framework files across practice plugins
   validate.py                 # orchestrator — runs plugins + skills validators (before PR)
   validate_plugins.py         # marketplace, manifests, MCP, cookbooks; scoped mode for one plugin
   validate_skills.py          # frontmatter budgets, agents/*.md contracts, orphans, drift, evals
   validate_lib.py             # shared reporting + YAML frontmatter helpers
+
+references/                   # catalogue-only instance-profile-template + practice-setup-framework
 
 .cursor-plugin/marketplace.json
 .claude-plugin/marketplace.json
@@ -62,15 +63,6 @@ Follow existing practice plugins (e.g. `product-management/`, `engineering/`, `b
 4. Run `python3 scripts/validate.py`.
 
 Follow existing practice plugins (e.g. `engineering/.mcp.json`) for structure and naming.
-
-## Syncing shared references
-
-After editing shared meta-framework files in `references/` (`instance-profile-template.md`, `practice-setup-framework.md`):
-
-```bash
-python3 scripts/sync-references.py        # propagate to practice plugin copies
-python3 scripts/sync-references.py --check  # verify copies are in sync (CI-friendly)
-```
 
 ## Validation
 
@@ -120,7 +112,6 @@ when you change a plugin description.
 
 ## Pull requests
 
-- Run `python3 scripts/sync-references.py` after editing shared meta-framework reference files.
 - Run `python3 scripts/validate.py` and fix all errors before pushing.
 - Register new plugins in both marketplace manifests.
 - Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill; run `python3 scripts/validate.py`.

@@ -79,9 +79,4 @@ tokens and visual patterns — no bundled skill and no install dependency on
 
 ## References
 
-- `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/design-conventions.md` — path resolution and artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
-
-Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
-are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

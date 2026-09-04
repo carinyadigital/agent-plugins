@@ -81,10 +81,5 @@ Path and boundary rules: `references/architecture-conventions.md`.
 
 ## References
 
-- `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/architecture-conventions.md` — path resolution, artefact boundaries
 - `references/work-items.md` — work-id resolution and schema for `adr plan <work-id>`
-- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
-
-Meta-framework files (`instance-profile-template.md`, `practice-setup-framework.md`)
-are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

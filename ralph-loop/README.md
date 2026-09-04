@@ -1,12 +1,13 @@
 # ralph-loop
 
 Self-referential delivery loop plugin. Seed with `ralph-loop-setup`, run with
-`ralph-loop`. Ships Claude Code and Cursor stop hooks plus `ad-hoc` and `custom`
-presets.
+`ralph-loop`. Ships Claude Code and Cursor stop hooks plus `ad-hoc`, `custom`,
+and `engineering-delivery` presets.
 
-The `engineering-delivery` preset lives in the companion **engineering**
-plugin (`assets/ralph-presets/engineering-delivery.md`) so the loop stays
-domain-agnostic while the preset ships with the skills it calls.
+The `engineering-delivery` preset invokes companion skills (`/engineering:*`,
+`/product-management:validate`) from the **seeded loop files** in the target
+repo. Engineering does not ship a preset; after setup it reads
+`.claude/loop/` or `.cursor/loop/`.
 
 ## Skills
 
@@ -34,4 +35,4 @@ loop in the checkout that should own it; a multi-root window is fine.
 | ------ | ----- |
 | `ad-hoc` | `skills/ralph-loop/assets/presets/ad-hoc.md` |
 | `custom` | `skills/ralph-loop/assets/presets/custom.md` |
-| `engineering-delivery` | `engineering/assets/ralph-presets/` (companion) |
+| `engineering-delivery` | `skills/ralph-loop/assets/presets/engineering-delivery.md` |

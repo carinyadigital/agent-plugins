@@ -43,11 +43,11 @@ silently deletes the loop.
 Ask only what you cannot resolve yourself. Use structured questions, not prose.
 
 1. **Preset.** If not given:
-   - `engineering-delivery` — contributed by **engineering** (requires that
-     plugin installed). Drives a work item through implement, review, validate, and
-     merge request, one task per iteration, keeping every existing issue source
-     current. UX review is not included unless the user asks. If the preset file
-     cannot be resolved, refuse and offer:
+   - `engineering-delivery` — ships with this plugin. Drives a work item
+     through implement, review, validate, and merge request, one task per
+     iteration, keeping every existing issue source current. UX review is not
+     included unless the user asks. The seeded prompt invokes `/engineering:*`
+     skills; if that companion is not installed, refuse and offer:
      `Install: /plugin install engineering@carinya-plugins` then re-run setup.
    - `ad-hoc` — repeat a single prompt until it is done (no companion plugins).
    - `custom` — define your own steps (no companion plugins).

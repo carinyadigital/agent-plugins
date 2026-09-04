@@ -228,11 +228,6 @@ def check_preset_reachability(report: Report) -> None:
         problems,
         REPO_ROOT,
     )
-    _check_preset_dir(
-        REPO_ROOT / "engineering/assets/ralph-presets",
-        problems,
-        REPO_ROOT,
-    )
 
     if problems:
         report.fail("preset step graph has a dead end", problems)

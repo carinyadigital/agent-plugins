@@ -6,17 +6,17 @@ Claude and Cursor plugins for digital agency workflows.
 
 ```
 ├── brand-creative/                  # practice plugin — brand-guide, brand-voice, setup (MECE owned)
-│   ├── references/                  # brand-conventions + synced meta-framework files
+│   ├── references/                  # brand-conventions
 │   └── skills/
 ├── product-management/              # practice plugin — product + delivery skills (MECE owned)
-│   ├── references/                  # product-conventions, delivery-conventions + synced meta-framework files
+│   ├── references/                  # product-conventions, delivery-conventions
 │   └── skills/
 ├── content-marketing/               # practice plugin — calendar, drafts, captions, analyse-media (MECE owned)
-│   ├── references/                  # content-conventions + synced meta-framework files
+│   ├── references/                  # content-conventions
 │   └── skills/
 ├── architecture/                    # practice plugin — solution, adr, setup (MECE owned)
 ├── design/                          # practice plugin — wireframe, ux-design-review, ux-design-fix (MECE owned)
-│   ├── references/                  # design-conventions + synced meta-framework files
+│   ├── references/                  # design-conventions
 │   └── skills/
 ├── engineering/                     # practice plugin — design, implement, review, QA, WebOps (MECE owned)
 ├── ralph-loop/                      # ralph-loop + ralph-loop-setup + hooks
@@ -29,13 +29,13 @@ Claude and Cursor plugins for digital agency workflows.
 │   ├── agents/                      # docs-reviewer, docs-writer
 │   └── skills/
 ├── search-optimisation/             # practice plugin — keyword-research, technical-seo-audit, content-seo-review (MECE owned)
-│   ├── references/                  # search-optimisation-conventions + synced meta-framework files
+│   ├── references/                  # search-optimisation-conventions
 │   └── skills/
 ├── brand-creative/                      # instance bootstrap + (v2) marketplace — install first
 │   ├── .claude-plugin/plugin.json
 │   ├── .cursor-plugin/plugin.json
 │   ├── .mcp.json                    # bundled MCP servers (e.g. GitHub for hub bootstrap)
-│   ├── references/                  # instance profile template, setup framework
+│   ├── references/                  # agency-setup-framework, brand-conventions
 │   └── skills/
 │       └── setup/SKILL.md    # instance bootstrap; marketplace skills ported from strategy-builder-hub
 ├── agents/                          # named agents — one self-contained plugin each
@@ -56,12 +56,11 @@ Claude and Cursor plugins for digital agency workflows.
 │               ├── agents/      #   sub-agents for this skill
 │               ├── evals/       #   evals.json + trigger-queries.json
 │               └── scripts/     #   optional helper scripts
-└── scripts/                         # sync-references.py, validate.py, validate_plugins.py, validate_skills.py
+├── references/                      # instance-profile-template + practice-setup-framework (catalogue-only)
+└── scripts/                         # validate.py, validate_plugins.py, validate_skills.py
 ```
 
 Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `design/skills/`, `search-optimisation/skills/`, `engineering/skills/`, `architecture/skills/`). Utility plugins (`ralph-loop`, `skills-index`, `plugin-management`, `document-management`) own theirs the same way.
-
-Run `python3 scripts/sync-references.py` after editing shared meta-framework files in `references/` (`instance-profile-template.md`, `practice-setup-framework.md`).
 
 Run `python3 scripts/validate.py` before opening a PR — it runs plugin-domain and skill-domain validators (marketplace/plugin manifests, MCP wiring, SKILL.md frontmatter + budgets, every `**/agents/*.md` contract, orphan SKILL.md, markdown cross-references, evals schema). Use `python3 scripts/validate_plugins.py <plugin-dir>` for fast per-plugin checks while iterating.
 
@@ -74,7 +73,7 @@ Run `python3 scripts/validate.py` before opening a PR — it runs plugin-domain 
 | `architecture` | `setup`, `solution`, `adr` | Shipped; MECE practice — Principal Architect persona; companion to engineering for design/implement |
 | `engineering` | `setup` + design, discover/deliver agents, implement, review, MR, docs-review, QA, WebOps skills | Shipped; MECE practice — five engineering personas; architecture and product-management as companions |
 | `design` | `setup`, `wireframe`, `ux-design-review`, `ux-design-fix` | Shipped; writes wireframes to `<instance-root>/design/`; live-browser review/fix; downstream practices read via artifact consumption |
-| `ralph-loop` | `ralph-loop`, `ralph-loop-setup` | Shipped; ships hooks; engineering-delivery preset contributed by engineering |
+| `ralph-loop` | `ralph-loop`, `ralph-loop-setup` | Shipped; ships hooks and ad-hoc, custom, and engineering-delivery presets |
 | `skills-index` | `find`, `related-skills-surfacer` | Shipped; install-aware router |
 | `plugin-management` | `create-plugin`, `customize-plugin`, component-authoring skills, `skills-qa`, `skill-review` | Shipped; meta-plugin + former skill-authoring quality gates |
 | `document-management` | `docs-setup`, `docs-improve` | Shipped; utility plugin — Docs Author persona; Diátaxis scaffold/reorg plus score/fix; coexists with `/engineering:docs-review` |
@@ -113,7 +112,6 @@ Strategy, roadmap, backlog, and epic work for this catalogue live in the **carin
 ## Development Workflow
 
 1. Edit markdown files directly — changes take effect immediately
-2. After editing shared meta-framework references, run `python3 scripts/sync-references.py`
-3. Run `python3 scripts/validate.py` — fix errors before pushing
-4. Test commands with `/plugin:command-name` syntax (Cowork) or install via Cursor Settings → Plugins
-5. Skills are invoked automatically when their trigger conditions match
+2. Run `python3 scripts/validate.py` — fix errors before pushing
+3. Test commands with `/plugin:command-name` syntax (Cowork) or install via Cursor Settings → Plugins
+4. Skills are invoked automatically when their trigger conditions match

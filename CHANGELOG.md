@@ -8,6 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### ralph-loop
+
+- `engineering-delivery` ships in `ralph-loop/skills/ralph-loop/assets/presets/`.
+  Seed no longer looks up sibling `engineering/assets/ralph-presets/`.
+
+### engineering
+
+- Removed plugin-level `assets/ralph-presets/`. `deliver` invokes
+  `/ralph-loop:ralph-loop-setup` when that plugin is installed, then reads
+  loop artefacts from `.claude/loop/` or `.cursor/loop/`.
+
 ## [2026-09-04] — ADRs at docs/decisions/
 
 ### architecture 0.8.0

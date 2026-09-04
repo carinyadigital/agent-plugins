@@ -28,7 +28,7 @@
       "name": "ralph-loop",
       "displayName": "Ralph Loop",
       "source": "./ralph-loop",
-      "description": "Self-referential delivery loop — seed with ralph-loop-setup, run with ralph-loop. Ships ad-hoc and custom presets; engineering contributes the engineering-delivery preset. Includes Claude Code and Cursor stop hooks."
+      "description": "Self-referential delivery loop — seed with ralph-loop-setup, run with ralph-loop. Ships ad-hoc, custom, and engineering-delivery presets. Includes Claude Code and Cursor stop hooks."
     },
     {
       "name": "product-management",

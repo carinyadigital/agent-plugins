@@ -80,9 +80,4 @@ pairing — paste or reference content directly when `content-marketing` is not 
 
 ## References
 
-- `references/practice-setup-framework.md` — invocation, config paths, interview structure
 - `references/search-optimisation-conventions.md` — path resolution, labels, artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
-
-Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
-are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

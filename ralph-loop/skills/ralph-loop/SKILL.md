@@ -78,8 +78,7 @@ findings are recorded under `## Notes` so a human sees them.
 - [assets/loop.core.template.md](assets/loop.core.template.md) — generic loop body, preset-agnostic
 - [assets/loop-state.core.template.md](assets/loop-state.core.template.md) — per-run mutable state
 - [assets/context.core.template.md](assets/context.core.template.md) — per-run static context
-- [assets/presets/](assets/presets/) — `ad-hoc`, `custom`
-- Contributed: `engineering/assets/ralph-presets/engineering-delivery.md` (requires engineering installed)
+- [assets/presets/](assets/presets/) — `ad-hoc`, `custom`, `engineering-delivery`
 
 ## Router
 

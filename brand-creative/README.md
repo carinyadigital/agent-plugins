@@ -67,9 +67,5 @@ Path resolution for all skills: `references/brand-conventions.md`.
 
 ## References
 
-- `references/practice-setup-framework.md` — invocation, config paths, interview structure
+- `references/agency-setup-framework.md` — instance bootstrap interview, config paths, hub state
 - `references/brand-conventions.md` — path resolution and artefact boundaries
-- `references/instance-profile-template.md` — Tier 1 schema (canonical in brand-creative; synced copy)
-
-Meta-framework files (`instance-profile-template.md`, `setup-framework.md`)
-are kept in sync across practice plugins via `python3 scripts/sync-references.py`.

@@ -72,11 +72,7 @@ class PluginValidator(Reporter):
         r"delivery-practice|ux-design)/"
         r"(?:skills|references|assets|hooks|scripts|\.claude-plugin|\.cursor-plugin)/"
     )
-    CROSS_PLUGIN_PATH_ALLOWLIST = frozenset(
-        {
-            "ralph-loop/scripts/seed-ralph-loop.sh",
-        }
-    )
+    CROSS_PLUGIN_PATH_ALLOWLIST: frozenset[str] = frozenset()
 
     def check_marketplace_manifests(self) -> None:
         for marketplace_path in MARKETPLACE_PATHS:
@@ -447,8 +443,8 @@ class PluginValidator(Reporter):
                     f"Sibling-plugin path (unsafe in plugin cache): {snippet[:120]}",
                     file=file_path,
                     line=line_no,
-                    hint="Use slash commands + docs/CROSS-PLUGIN-CONTRACTS.md; "
-                    "shell allowlist only in seed-ralph-loop.sh",
+                    hint="Use slash commands or artefact paths in the user repo; "
+                    "see docs/CROSS-PLUGIN-CONTRACTS.md",
                 )
             if len(offenders) > 20:
                 self.fail(

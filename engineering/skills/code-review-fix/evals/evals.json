@@ -13,6 +13,7 @@
         "Discovers validation commands from AGENTS.md or CI config rather than assuming",
         "Emits Verification block with format, lint, typecheck, build, tests",
         "Commits in logical units tied to findings",
+        "Updates the sibling code-review-*.local.json in place; does not write under repo-root reviews/",
         "Does not add comments that cite issue systems, working documents, or other external sources"
       ]
     },
@@ -34,7 +35,7 @@
         "Does not implement the disputed finding",
         "Cites the specific line that refutes it",
         "Records it under 'Findings Disputed'",
-        "Marks it dismissed in review state rather than fixed"
+        "Marks it dismissed in the sibling code-review-*.local.json rather than fixed"
       ]
     },
     {

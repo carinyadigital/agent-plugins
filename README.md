@@ -281,10 +281,12 @@ Default layout the skills expect:
 docs/product/                 product.md, roadmap.md, backlog.md
 docs/architecture/            solution.md, decisions/
 specs/{work-short-name}/          tdd.md; TASKS.local.md when required
-specs/{work-short-name}/reviews/  code-review-{nn}.local.md, ux-design-review-{nn}.local.md
+specs/{work-short-name}/reviews/  code-review-{nn}.local.md + matching .local.json;
+                                 ux-design-review-{nn}.local.md
 docs/work/sprint-{id}/        plan.md, retrospective.md
-reviews/                      code-review.local.json, ux-design-review.local.json,
-                              review-learnings.local.md (gitignored — never committed)
+reviews/                      ux-design-review.local.json,
+                              review-learnings.local.md (gitignored — never committed).
+                              code-review does not write here.
 docs/reviews/                 agent byproducts (competitor-scan, metrics, digests)
 TASKS.local.md                repo-root tracker-pointer cache (gitignored locally)
 .ux-review/                   UX capture scratch (agent-local)

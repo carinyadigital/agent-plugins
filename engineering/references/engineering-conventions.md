@@ -97,10 +97,11 @@ See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 docs/product/                 product.md, roadmap.md, backlog.md
 docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
 specs/{work-short-name}/          tdd.md; TASKS.local.md when required
-specs/{work-short-name}/reviews/  code-review / ux-design-review verdicts
+specs/{work-short-name}/reviews/  code-review verdict + co-located .local.json;
+                                 ux-design-review verdicts
 docs/work/sprint-{id}/        plan.md, retrospective.md
-reviews/                      shared review state (*.local.json); gitignored,
-                              never committed
+reviews/                      ux-design-review shared state (*.local.json); gitignored,
+                              never committed. code-review does not write here.
 docs/reviews/                 agent byproducts (competitor-scan, metrics, digests)
 config/target.json            target binding
 ```

@@ -10,8 +10,9 @@ The `setup` skill copies or updates the user config at:
 Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
-Engineering artefacts (`specs/`, `reviews/`) live in the target repo.
-`reviews/` is gitignored local state.
+Engineering artefacts (`specs/`) live in the target repo.
+`code-review` writes the verdict and tracking JSON together under
+`specs/{work-short-name}/reviews/`.
 Architecture (`docs/architecture/`) is owned by the `architecture` companion.
 Repo binding stays in `config/target.json`.
 Brand guide is read from the resolved brand path — see references/engineering-conventions.md.

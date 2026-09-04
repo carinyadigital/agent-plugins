@@ -11,9 +11,9 @@
         "Every finding is prefixed with [blocking], [warning], or [suggestion]",
         "Every finding carries Category | Severity | Confidence",
         "Every finding cites file path and line",
-        "Modifies no file outside reviews/, specs/*/reviews/, and .gitignore (the /reviews/ entry only)",
-        "Writes a human-readable report to specs/*/reviews/code-review-{nn}.local.md or reviews/code-review-{branch}.local.md when no work item is resolved",
-        "Ensures /reviews/ is in .gitignore and does not commit reviews/",
+        "Modifies no file outside specs/*/reviews/ and the repo-root code-review-*.local.md / .local.json fallback",
+        "Writes a co-located pair: specs/*/reviews/code-review-{nn}.local.md and .local.json, or code-review-{branch}.local.md and .local.json at repo root when no work item is resolved",
+        "Does not write under repo-root reviews/ and does not edit .gitignore",
         "Closes by pointing at code-review-fix rather than offering to fix"
       ]
     },
@@ -66,7 +66,7 @@
       "prompt": "Re-review the branch — I've pushed two commits since your last review, and I disagreed with the retry-loop finding.",
       "expected_output": "Incremental review of the delta only. Dismissed finding not re-raised. Delta reported.",
       "assertions": [
-        "Reads its entry in reviews/code-review.local.json and reviews from the recorded SHA",
+        "Reads the latest code-review-*.local.json for this branch (sibling of the .md) and reviews from the recorded SHA",
         "Does not re-raise the dismissed retry-loop finding for unchanged code",
         "Includes a 'Since last review' section with fixed / still open / newly introduced",
         "Updates the review state file with the new head SHA"

@@ -23,7 +23,7 @@ allowed-tools:
 argument-hint: "[blocking|warning|all] [review-output-or-path]"
 metadata:
   author: Carinya Parc
-  version: "1.1"
+  version: "1.2"
   owner: engineering
   work_shape: implement-and-ship
   output_class: applied-change
@@ -47,7 +47,9 @@ implementing them.
 
 The review output or issue list, from any of:
 
-- A `code-review` verdict in the conversation or at a given path.
+- A `code-review` verdict in the conversation or at a given path. Prefer the
+  sibling `code-review-*.local.json` next to that `.md` when it exists — that
+  is the structured finding list and status file.
 - Reviewer comments on a PR/MR.
 - A plain list of issues the user pasted.
 
@@ -124,13 +126,16 @@ list them under "Findings Not Addressed".
 10. **Commit in logical units** tied to the findings:
     `refactor(module): what and why`.
 
-11. **Update review state.** If this branch has an entry in
-    `reviews/code-review.local.json`, mark each addressed finding `fixed`,
+11. **Update review state.** Find this branch's latest
+    `code-review-*.local.json` — the sibling of the verdict `.md` under
+    `specs/{work-short-name}/reviews/`, or `code-review-{branch}.local.json` at
+    the repo root when no work item resolved. If the user named a verdict path,
+    update that file's sibling `.json`. Mark each addressed finding `fixed`,
     each deferred one `deferred`, and each disputed one `dismissed` with the
     reason. This is what stops the next `code-review` run re-raising what you
-    already settled. `reviews/` is gitignored local state — never commit it.
-    If `/reviews/` is missing from `.gitignore`, append it (same entry as
-    `code-review`).
+    already settled. Update that JSON in place; do not write a new numbered
+    pair, and do not write under repo-root `reviews/`. These files are local
+    (`.local.` suffix) — never commit them.
 
 ## Quality rules
 
@@ -161,6 +166,8 @@ list them under "Findings Not Addressed".
 - Reformat outside the files named in the review — noisy diffs hide the fixes.
 - Re-review the change or raise new findings. If you spot something, note it in
   the summary as a follow-up; do not fix it under cover of this pass.
+- Write under repo-root `reviews/`.
+- Commit `*.local.md` or `*.local.json` review artefacts.
 
 ## Output format
 
@@ -203,6 +210,6 @@ list them under "Findings Not Addressed".
 
 ### Review state
 
-`reviews/code-review.local.json` entry for
-`feat/PROJ-001-context-assembler` updated: 3 fixed, 1 deferred, 1 dismissed.
+`specs/checkout-foundation/reviews/code-review-01.local.json` (sibling of the
+verdict `.md`) updated: 3 fixed, 1 deferred, 1 dismissed.
 </example>

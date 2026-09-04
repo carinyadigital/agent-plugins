@@ -73,7 +73,7 @@ target binding.
 | **setup** | Interview → write practice profile, target binding, stack defaults |
 | **tdd** | write — `specs/{work-short-name}/tdd.md`; review via `docs-review` |
 | **implement** | Implement a task against approved tdd.md and AC |
-| **code-review** | Read-only peer review; state in `reviews/` (gitignored) |
+| **code-review** | Read-only peer review; verdict + JSON co-located under `specs/` |
 | **code-review-fix** | Address code-review findings without behaviour change |
 | **final-code-review** | Final technical gate on open PRs |
 | **merge-request** | Open merge request for implemented work |

@@ -95,8 +95,20 @@ produced.
 
 ## 6. Review state (incremental mode)
 
-Look for this branch's entry in `reviews/code-review.local.json`
-(`reviews[].branch`). If present, this branch has been reviewed before and the
+Look for this branch's latest `code-review-*.local.json` (`branch` field):
+
+1. If a work item resolved in §1, glob
+   `specs/{work-short-name}/reviews/code-review-*.local.json` and take the
+   highest `{nn}`.
+2. Otherwise glob `specs/**/reviews/code-review-*.local.json` and the repo-root
+   fallback `code-review-*.local.json`, keep files whose `branch` matches the
+   current branch, and take the highest `{nn}` (repo-root files have no `{nn}`
+   — they are latest-only).
+3. If nothing matched, a legacy `reviews/code-review.local.json` entry for this
+   branch may be read for SHA and findings. Never write back to that path or
+   to any other file under repo-root `reviews/`.
+
+If a matching file is present, this branch has been reviewed before and the
 run is **incremental**:
 
 - Read the last reviewed SHA and the recorded findings with their statuses
@@ -109,46 +121,42 @@ run is **incremental**:
 - Report the delta explicitly: fixed since last review, still open, newly
   introduced.
 
-If the file, or an entry for this branch, is absent, the run is a full review
-and will create one.
+If no matching file is found, the run is a full review and will create one.
 
-`reviews/code-review.local.json` is a single shared file, holding one
-entry per branch reviewed in this repo — it is not per-branch itself. Update
-this branch's entry in place; do not touch any other entry.
+Each `code-review-{nn}.local.json` is this review only, co-located with
+`code-review-{nn}.local.md`. Write a new numbered pair each run; do not edit
+an older pair's JSON (except `code-review-fix`, which updates statuses on the
+latest file in place). Carry the full findings list — including statuses
+inherited from the previous file — into the new JSON.
 
-Schema:
+Schema (one review per file, no wrapping `reviews` array):
 
 ```json
 {
-  "reviews": [
+  "branch": "feat/PROJ-001-context-assembler",
+  "work_item": "checkout-foundation",
+  "last_reviewed_sha": "a1b2c3d",
+  "reviewed_at": "2026-07-19T09:00:00Z",
+  "report": "specs/checkout-foundation/reviews/code-review-01.local.md",
+  "findings": [
     {
-      "branch": "feat/PROJ-001-context-assembler",
-      "work_item": "checkout-foundation",
-      "last_reviewed_sha": "a1b2c3d",
-      "reviewed_at": "2026-07-19T09:00:00Z",
-      "report": "specs/checkout-foundation/reviews/code-review-01.local.md",
-      "findings": [
-        {
-          "id": "cr-001",
-          "file": "src/context/assembler.ts",
-          "line": 42,
-          "category": "Security",
-          "severity": "Critical",
-          "action": "blocking",
-          "status": "open",
-          "summary": "Artifact path not validated against repository root"
-        }
-      ]
+      "id": "cr-001",
+      "file": "src/context/assembler.ts",
+      "line": 42,
+      "category": "Security",
+      "severity": "Critical",
+      "action": "blocking",
+      "status": "open",
+      "summary": "Artifact path not validated against repository root"
     }
   ]
 }
 ```
 
 `work_item` is the ID resolved in §1, or `null` when no work item resolved —
-in which case `report` points at
-`reviews/code-review-{branch}.local.md` instead of a work-item folder.
-`report` always names the most recent human-readable report; earlier numbered
-reports remain on disk as history and are not referenced from the JSON.
+in which case `report` points at `code-review-{branch}.local.md` at the repo
+root. `report` always names the sibling `.md` (same stem). Earlier numbered
+pairs remain on disk as history.
 
 ## 7. Learnings
 

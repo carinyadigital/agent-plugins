@@ -8,6 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### engineering
+
+- **BREAKING:** `code-review` co-locates tracking JSON with the verdict
+  (`specs/{work-short-name}/reviews/code-review-{nn}.local.json` next to the
+  `.md`). It no longer writes repo-root `reviews/`. `code-review-fix` reads
+  and updates the sibling JSON.
+
 ## [2026-08-15] — engineering-delivery + multi-root loop
 
 ### engineering 0.7.3

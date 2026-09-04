@@ -1,9 +1,9 @@
 # Merge protocol
 
-How to combine findings from parallel sub-agents into one review. Six lenses
-looking at the same diff will raise the same defect more than once, in different
-words, with different categories. Without a protocol the output triples and the
-strongest available signal — independent agreement — is thrown away.
+How to combine findings from parallel sub-agents into one review. Three lenses
+can raise the same defect more than once, in different words and categories.
+Without a protocol the output multiplies and the strongest available signal —
+independent agreement — is thrown away.
 
 Run this after every sub-agent returns and before applying the risk matrix in
 [finding-classification.md](finding-classification.md).
@@ -33,8 +33,8 @@ Best Practices > Performance > Maintainability
 ```
 
 Record the dropped categories in the finding's evidence. "Also flagged as
-Maintainability by architecture-reviewer" tells the author this is not only a
-security problem, which changes how they fix it.
+Maintainability by code-reviewer" tells the author this is not only a security
+problem, which changes how they fix it.
 
 ## 3. Severity: take the maximum
 
@@ -43,8 +43,8 @@ an outlier to be smoothed away — that agent may be the only one holding the
 context that makes it Critical.
 
 If the maximum comes from a single agent and every other agent rated it two or
-more bands lower, note the spread in the finding. The verifier (step 5) resolves
-it.
+more bands lower, note the spread in the finding. The verification handoff in
+step 7 resolves it.
 
 ## 4. Confidence: corroboration raises it
 
@@ -60,26 +60,24 @@ agent.
 | 3 or more | Raise to Confirmed unless the verifier refutes it |
 
 "Independent" means the agents did not share a derivation. `bug-scan-reviewer`
-and `conventions-reviewer` finding the same missing error handler is
+and `code-reviewer` finding the same missing error handler is
 corroboration: one reasoned from the code, the other from a written rule. Two
 findings resting on the same AGENTS.md line are **not** corroboration; that is
 one piece of evidence counted twice. Collapse those to a single vote.
 
-The same trap exists **inside** the two-part lenses. `conventions-reviewer`
-raising a rule from Part A and the same rule from a prior review comment in
-Part B is one source, not two — the agent is instructed to collapse it, and the
-merge step must not re-inflate it. Likewise an uncovered criterion and its
-matching scope drift from `requirements-reviewer` are one problem seen twice,
-not two independent votes.
+The same trap exists **inside** the multi-source lenses. `code-reviewer` finding
+a rule in both a guideline and a prior review comment is one source, not two —
+the agent is instructed to collapse it, and the merge step must not re-inflate
+it. Likewise an uncovered criterion and its matching scope drift from
+`requirements-reviewer` are one problem seen twice, not two independent votes.
 
 ## 5. Contradiction is surfaced, never silently resolved
 
 When agents disagree about whether something is a defect at all:
 
-- **Local rule beats external guidance.** If `best-practices-reviewer` cites
-  library docs saying "use X" and `conventions-reviewer` quotes a repo
-  rule saying "never X", the repo rule wins. The codebase's explicit decision
-  outranks a general recommendation.
+- **Local rule beats external guidance.** If `code-reviewer` finds library docs
+  saying "use X" while a repo rule says "never X", the repo rule wins. The
+  codebase's explicit decision outranks a general recommendation.
 - **Surface the conflict anyway**, as a `[suggestion]`, with both sources named.
   The team may want to revisit the rule, and that is their call to make, not the
   review's to make silently. This is also the honest outcome: the review found a
@@ -97,11 +95,14 @@ Cap at four evidence lines; beyond that, keep the four most specific.
 
 ## 7. Hand off to verification
 
-After merging, the candidate list goes to `finding-verifier`
+After merging, apply the risk matrix provisionally using the merged confidence
+prior. Provisional blocking and warning candidates, plus every Security
+candidate, go to `finding-verifier`
 ([../agents/finding-verifier.md](../agents/finding-verifier.md)), one invocation
-per candidate, before the risk matrix is applied. Merge first so the verifier
-sees corroborated findings once, with their full evidence union, rather than
-scoring three fragments of the same defect independently.
+per finding. Merge first so the verifier sees corroborated findings once, with
+their full evidence union, rather than scoring fragments of the same defect
+independently. Suggestions keep their merged prior and cannot be promoted
+without verification.
 
 ## Output of this step
 

@@ -78,12 +78,13 @@
       "expected_output": "L effort, parallel sub-agents, merged and verified findings.",
       "assertions": [
         "Spawns sub-agents in parallel rather than reviewing serially",
-        "Spawns architecture-reviewer (new modules) and a security-focused pass (auth)",
+        "Spawns code-reviewer (new modules) and a security-focused bug-scan pass (auth)",
         "Resolves Review Context once and shares it — no per-agent re-fetching",
         "Deduplicates findings raised by more than one agent into a single entry",
         "Raises confidence where independent agents corroborate the same defect",
         "Does NOT treat two findings resting on the same source as corroboration",
-        "Runs finding-verifier per candidate before assigning action labels",
+        "Runs finding-verifier for provisional blocking and warning candidates plus every Security candidate",
+        "Does not verify suggestion-only candidates or promote them without verification",
         "Runs no sub-agent at the deep tier"
       ]
     },

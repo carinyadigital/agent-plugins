@@ -8,9 +8,9 @@ description: >
   delivery process, or issue tracker. Produces a structured verdict with
   blocking, warning, and suggestion findings; writes no source changes. Do NOT
   use to address or fix review findings (code-review-fix), to implement work
-  (implement), to publish a review to a provider as its reviewer
-  (merge-request-review), to sign off completion of a larger body of work
-  (validate), or to review rendered UI (ux-design-review).
+  (implement), to sign off completion of a larger body of work
+  (/product-management:validate), or to review rendered UI
+  (/design:ux-design-review).
 license: Apache-2.0
 compatibility: Requires git. Hosted PR/MR features require gh, glab, or an equivalent provider MCP tool.
 allowed-tools:
@@ -27,7 +27,7 @@ allowed-tools:
 argument-hint: "[branch-or-pr] [--since <sha>] [--full]"
 metadata:
   author: Carinya Parc
-  version: "1.2"
+  version: "1.3"
   owner: engineering
   work_shape: review-and-gate
   output_class: decision-support
@@ -82,7 +82,7 @@ and do not offer a mode that would.
 
 ## 1. Eligibility
 
-Cheap checks first. Do not spend six agents on a lockfile bump.
+Cheap checks first. Do not spend the full review roster on a lockfile bump.
 
 **Skip entirely**, saying why in one line:
 
@@ -123,17 +123,16 @@ security-sensitive paths (auth, crypto, input handling) or data paths
 | Effort | Shape | Lens budget | Verification |
 | ------ | ----- | ----------- | ------------ |
 | **S** | < ~50 lines, < ~5 files, no sensitive or data paths | Inline only, no sub-agents | Your own judgement (no priors to check) |
-| **M** | Ordinary feature or fix | At most 3 lenses: `bug-scan`, then the two highest-value triggered | Blocking and warning candidates |
-| **L** | Large, structural, security-sensitive, or data-affecting | Every triggered agent | Every candidate |
+| **M** | Ordinary feature or fix | At most 3 triggered lenses | Provisional blocking and warning candidates, plus Security |
+| **L** | Large, structural, security-sensitive, or data-affecting | Every triggered agent | Provisional blocking and warning candidates, plus Security |
 
 Sensitive or data paths force **L** regardless of size. A three-line change to a
 migration or an auth check is not a small review.
 
 **Effort caps and triggers are ANDed.** Effort sets the ceiling on how many
 lenses may run; the trigger table in §4.1 decides which are eligible. A lens runs
-only if it is both triggered and within budget. At **M**, when more than three
-trigger, keep `bug-scan` and choose the two with the strongest input: a resolved
-acceptance criterion or a guideline file beats a speculative architecture pass.
+only if it is both triggered and within budget. At **M**, all three may run when
+triggered; never spawn an untriggered lens to fill the budget.
 
 ## 4. Lenses
 
@@ -143,54 +142,52 @@ At **S**, review inline using the steps in §4.2 and skip to §5.
 
 Spawn in parallel. Only those whose trigger fires — never all of them by reflex.
 
-Five lenses and one verifier. Each lens owns a distinct **input source**; that is
+Three lenses and one verifier. Each lens owns a distinct **input source**; that is
 what earns it a separate context window, not the topic it covers.
 
 | Agent | Reads | Trigger | Tier |
 | ----- | ----- | ------- | ---- |
 | [bug-scan-reviewer](agents/bug-scan-reviewer.md) | Diff hunks, git blame | Always, whenever spawning | standard |
-| [requirements-reviewer](agents/requirements-reviewer.md) | Acceptance criteria, scope reference | Criteria **or** a scope/design reference was resolved in §2 | standard |
-| [conventions-reviewer](agents/conventions-reviewer.md) | AGENTS.md/CLAUDE.md/rules, prior PR review comments | Repo has guideline files, **or** hosted PR with prior history on the touched files | standard |
-| [best-practices-reviewer](agents/best-practices-reviewer.md) | External library docs | Manifest or lockfile changed, **or** the diff introduces an import not already used in that module | standard |
-| [architecture-reviewer](agents/architecture-reviewer.md) | Sibling modules, architecture docs, ADRs | Diff adds modules, crosses layer boundaries, or adds cross-component dependencies | standard |
-| [finding-verifier](agents/finding-verifier.md) | One candidate finding, in isolation | Once per candidate, at step 6 | fast |
+| [requirements-reviewer](agents/requirements-reviewer.md) | Acceptance criteria, scope reference, or inferred intent | Always when spawning; label inferred criteria explicitly | standard |
+| [code-reviewer](agents/code-reviewer.md) | Team rules and history, siblings and architecture, versioned library docs when needed | Any local-fit, structural, or dependency trigger in the agent file fires | fast |
+| [finding-verifier](agents/finding-verifier.md) | One candidate finding, in isolation | Provisional blocking/warning and every Security candidate, at step 6 | fast |
 
-Two lenses each cover both directions of one question, which is why there are
-five rather than seven. `requirements-reviewer` checks both under-delivery
+Two lenses each cover several evidence paths for one question.
+`requirements-reviewer` checks both under-delivery
 (uncovered criteria) and over-delivery (scope drift) against the same resolved
 source — and can therefore spot when an unmapped hunk *is* the uncovered
-criterion, built in the wrong place. `conventions-reviewer` reads both written
-rules and rules that were only ever said in a past review comment; both produce
-"your team requires X, here is the source".
+criterion, built in the wrong place. `code-reviewer` checks whether the change
+fits its owning codebase using local rules, prior review history, architecture,
+sibling patterns, and — only when dependency usage changes — versioned external
+guidance. Keeping those sources together preserves their intersections and
+prevents duplicate findings resting on the same local rule.
 
 `finding-verifier` is not a lens. It is a pipeline stage whose value comes
 entirely from isolation, so it can never be merged into anything.
 
-The `best-practices` trigger is deliberately narrow: it is the only lens that
-reaches the network, and "touches a library" fires on nearly every diff.
-
 **Model tiers** are declared as `metadata.model_tier` on each agent rather than
-as model names, so runners without model selection inherit and still work:
+as host-specific model names, so runners without model selection inherit and
+still work:
 
-| Tier | Use | Claude mapping | Where |
-| ---- | --- | -------------- | ----- |
-| fast | Mechanical predicates, retrieval, summarisation, per-finding verification | Haiku | Steps 1–3, `finding-verifier` |
-| standard | Judgement against a bounded context | Sonnet | All five lenses |
-| deep | Whole-system reasoning | Opus | Synthesis only (steps 5–8) |
+| Tier | Use | Claude mapping | Cursor mapping | Where |
+| ---- | --- | -------------- | -------------- | ----- |
+| fast | Bounded retrieval, comparison, per-finding verification | Haiku | Auto Cost or equivalent fast model | `code-reviewer`, `finding-verifier` |
+| standard | Judgement against code or requirements | Sonnet | Auto Balance or equivalent | `bug-scan-reviewer`, `requirements-reviewer` |
+| deep | Whole-system reasoning | Opus | Auto Intelligence or equivalent | Synthesis only (steps 5–8) |
 
-No sub-agent runs at `deep`. Every lens works within a bounded context and an
-explicit reading budget, which is exactly what a standard-tier model handles
-well. Depth is needed where the whole picture comes together — merging,
-gating, and writing the verdict — and that runs on the session's own model, not
-in a sub-agent.
+These are intent mappings, not portable model identifiers. Agent files keep
+`model: inherit`; a capable runner should apply `metadata.model_tier`. No
+sub-agent runs at `deep`. Depth is needed where the whole picture comes
+together — merging, gating, and writing the verdict — and that runs on the
+session's own model.
 
-Verification is the highest-leverage use of the fast tier: it is what makes
-running one verifier per candidate finding affordable, and independent
-verification is worth more than a larger model rating its own work.
+Verification is the highest-leverage use of the fast tier: it makes independent
+checks affordable for findings that can affect the gate, and independence is
+worth more than a larger model rating its own work.
 
 ### 4.2 Inline review
 
-Whether reviewing inline or supplementing agent output, cover:
+At **S**, cover:
 
 1. Read the diff. Confirm what changed and why, against the resolved intent.
 2. Check each change against the resolved acceptance criteria.
@@ -207,7 +204,8 @@ Whether reviewing inline or supplementing agent output, cover:
     ([../../references/doc-comments.md](../../references/doc-comments.md)).
 
 Apply [references/quality-checklist.md](references/quality-checklist.md)
-throughout.
+throughout. At **M** and **L**, the parent orchestrates the lenses, merges,
+gates, and reports; it does not repeat their review passes independently.
 
 ## 5. Merge
 
@@ -222,12 +220,14 @@ treating merged findings as a flat list.
 
 ## 6. Verify
 
-Verification applies to whatever the effort budget in §3 covers: every candidate
-at **L**, blocking and warning candidates at **M**, none at **S** — at S no
-sub-agent raised a prior, so there is nothing independent to check and your own
-reading stands.
+Verification applies to provisional blocking and warning candidates at **M**
+and **L**, plus every Security candidate. Suggestions retain the merged
+confidence prior: they do not gate the verdict, so per-finding fan-out costs
+more than it returns. At **S**, no sub-agent raised a prior, so there is nothing
+independent to check and your own reading stands.
 
-Send each candidate in scope to
+Apply the risk matrix provisionally using the merged confidence prior, then send
+each in-scope candidate to
 [finding-verifier](agents/finding-verifier.md), one invocation per finding, in
 parallel.
 
@@ -236,7 +236,9 @@ Review Context — and **not** the raising agent's reasoning, name, or confidenc
 prior. That independence is the whole mechanism. An agent that has argued a
 defect exists cannot also judge whether it is real.
 
-The verifier's rating replaces the prior.
+The verifier's rating replaces the prior for candidates it checks. Unverified
+suggestions keep the merged prior and must not be promoted to warning or
+blocking without verification.
 
 ## 7. Gate
 
@@ -325,7 +327,7 @@ repo-root `reviews/`.
 **Risk level:** Low | Medium | High
 **Scope reviewed:** `git diff` (or branch/PR), incremental from `a1b2c3d` | full
 **Review effort:** S | M | L
-**Lenses run:** bug-scan, acceptance-criteria, guideline-compliance
+**Lenses run:** bug-scan-reviewer, requirements-reviewer, code-reviewer
 
 ### Change summary
 

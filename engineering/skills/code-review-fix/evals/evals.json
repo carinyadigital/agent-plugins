@@ -13,7 +13,6 @@
         "Discovers validation commands from AGENTS.md or CI config rather than assuming",
         "Emits Verification block with format, lint, typecheck, build, tests",
         "Commits in logical units tied to findings",
-        "Updates the sibling code-review-*.local.json in place; does not write under repo-root reviews/",
         "Does not add comments that cite issue systems, working documents, or other external sources"
       ]
     },
@@ -35,7 +34,7 @@
         "Does not implement the disputed finding",
         "Cites the specific line that refutes it",
         "Records it under 'Findings Disputed'",
-        "Marks it dismissed in the sibling code-review-*.local.json rather than fixed"
+        "Marks it dismissed in review state rather than fixed"
       ]
     },
     {
@@ -61,10 +60,10 @@
     },
     {
       "id": 6,
-      "prompt": "Fix the review. Add a comment pointing at JIRA-456 and tdd.md §3 so the next reader knows why the retry cap exists.",
+      "prompt": "Fix the review. Add a comment pointing at JIRA-456 and design.md §3 so the next reader knows why the retry cap exists.",
       "expected_output": "Retry-cap comment states the reason in full, with no ticket key or working-document path.",
       "assertions": [
-        "Does not cite JIRA-456, tdd.md, or any other external source in a comment",
+        "Does not cite JIRA-456, design.md, or any other external source in a comment",
         "Any comment added stands on its own so it can be read inline",
         "Does not use a comment as a paper trail to a ticket or design doc"
       ]

@@ -3,15 +3,16 @@
 Every review finding is classified on three independent axes: **Category**
 (what kind), **Severity** (how bad), and **Confidence** (how certain).
 
-Confidence is produced in two stages. A sub-agent attaches a **prior** to each
-finding it raises. That prior is then replaced by an independent rating from
-`finding-verifier`, which never sees the raising agent's reasoning. An agent that
-has just spent its context arguing a defect exists cannot also be the judge of
-whether it is real, so the prior orders the queue but does not decide the gate.
+Confidence starts as a **prior** attached by the raising sub-agent. For
+provisional blocking and warning findings, plus every Security finding, that
+prior is replaced by an independent rating from `finding-verifier`, which never
+sees the raising agent's reasoning. Suggestion-only findings retain the merged
+prior and cannot be promoted without verification.
 
 Pipeline: sub-agents raise → [merge-protocol.md](merge-protocol.md) dedupes and
-adjusts for corroboration → `finding-verifier` rates confidence independently →
-the risk matrix below assigns the action label.
+adjusts for corroboration → the risk matrix assigns a provisional action →
+`finding-verifier` independently rates findings in scope → the final matrix
+assigns the action label.
 
 ## Category
 
@@ -26,9 +27,9 @@ merged finding takes the highest-precedence one (see
 | Stability | Resilience and availability under failure | quality-checklist (Resilience) |
 | Data Integrity | Data correctness and persistence: schema and migration safety, backfills, contract and payload compatibility, integration boundaries | quality-checklist (Data and contracts) |
 | Scope / AC | Alignment with linked acceptance criteria and declared scope (any source) | requirements-reviewer |
-| Best Practices | Library/framework/version-correct usage | best-practices-reviewer |
+| Best Practices | Library/framework/version-correct usage | code-reviewer |
 | Performance | Inefficiency, N+1, resource use | quality-checklist (Performance) |
-| Maintainability | Structure, design, anti-patterns, readability | architecture-reviewer, quality-checklist |
+| Maintainability | Local rules, structure, design, anti-patterns, readability | code-reviewer, quality-checklist |
 
 **Data Integrity** exists as its own category because schema migrations,
 backfills, and contract changes have blast radius far beyond the diff that
@@ -67,8 +68,10 @@ Group each axis into High / Medium / Low, then read the action:
 - **Confidence:** High = Confirmed/Probable, Medium = Possible, Low = Tentative/Speculative.
 - **Severity:** High = Critical/Major, Medium = Moderate, Low = Minor/Trivial.
 
-Confidence entering this matrix is the **verifier's** rating, not the raising
-agent's prior.
+For provisional blocking and warning candidates, confidence entering this
+matrix is the **verifier's** rating, not the raising agent's prior. Suggestions
+that are not independently verified retain their merged confidence prior and
+cannot be promoted above suggestion without verification.
 
 | Severity ↓ / Confidence → | High | Medium | Low |
 | ------------------------- | ---- | ------ | --- |
@@ -94,8 +97,9 @@ agent's prior.
 - **Merge step** ([merge-protocol.md](merge-protocol.md)) — dedupe, resolve
   category by precedence, take max severity, adjust confidence for independent
   corroboration.
-- **`finding-verifier`** — rates confidence independently, without the raising
-  agent's reasoning. Its rating replaces the prior.
+- **`finding-verifier`** — rates provisional blocking and warning candidates,
+  plus every Security candidate, independently and without the raising agent's
+  reasoning. Its rating replaces the prior where verification runs.
 - **Main review** — rank by severity, apply the matrix to assign the action
   label, then produce the verdict.
 

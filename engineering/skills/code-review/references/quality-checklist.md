@@ -1,8 +1,8 @@
 # Quality checklist
 
 A stable, project-agnostic checklist applied to every review. Use
-**best-practices-reviewer** for library-specific, version-correct guidance and
-**conventions-reviewer** for this team's own written and spoken rules. This file is for
+**code-reviewer** for library-specific, version-correct guidance and this
+team's written, historical, and architectural rules. This file is for
 timeless principles, with the team's stance where one exists. Do not flag
 textbook definitions the code obviously follows.
 
@@ -73,7 +73,7 @@ migration outlives the deploy that shipped it.
 - [ ] Names reveal intent; no abbreviations that need a comment to decode.
 - [ ] Comments explain **why**, never **what**.
 - [ ] Doc comments stand on their own so they can be read inline. Flag any
-      comment that cites an issue system, a working document (`tdd.md`,
+      comment that cites an issue system, a working document (`design.md`,
       `TASKS.local.md`, `solution.md`, an ADR), a ticket/task ID, a URL, or any
       other external source. See
       [../../../references/doc-comments.md](../../../references/doc-comments.md).

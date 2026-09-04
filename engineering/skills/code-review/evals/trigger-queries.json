@@ -35,9 +35,9 @@
     "note": "code-review-fix"
   },
   {
-    "query": "Review MR 88 as the assigned reviewer and post inline comments.",
+    "query": "Fix the CI failures on the open MR until it is merge-ready.",
     "should_trigger": false,
-    "note": "merge-request-review — publishes to the provider"
+    "note": "merge-request-watch"
   },
   {
     "query": "Implement CHK01-03 against the design and tasks.",

@@ -45,8 +45,9 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
 1. **Preset.** If not given:
    - `engineering-delivery` — contributed by **engineering** (requires that
      plugin installed). Drives a work item through implement, review, validate, and
-     merge request, one task per iteration. If the preset file cannot be resolved,
-     refuse and offer:
+     merge request, one task per iteration, keeping every existing issue source
+     current. UX review is not included unless the user asks. If the preset file
+     cannot be resolved, refuse and offer:
      `Install: /plugin install engineering@carinya-plugins` then re-run setup.
    - `ad-hoc` — repeat a single prompt until it is done (no companion plugins).
    - `custom` — define your own steps (no companion plugins).
@@ -76,19 +77,26 @@ Ask only what you cannot resolve yourself. Use structured questions, not prose.
 
 **engineering-delivery**
 
-- Resolve `{work-id}` per
-  engineering `references/work-item-resolution.md` (companion plugin — required for engineering-delivery):
-  detect the source system (Linear, Jira, GitHub/GitLab, or filesystem) and
-  the canonical ID first — ask the user on any ambiguity, per that file's
-  ask-first checklist. Never guess.
-- Locate `TASKS.local.md` and `tdd.md` under `specs/{work-short-name}/`. Fail loudly,
-  naming the missing file, if either is absent.
+- Resolve `{work-id}` against sources that already exist: Jira, Linear,
+  GitHub/GitLab issues, `TASKS.md`, any existing `TASKS.local.md`, or another
+  user-named tracker. Ask on ambiguity. Never guess.
+- **Never create a repo-root `TASKS.local.md` pointer or a second task file.**
+  A root task file may be read only when it already exists and contains tracked work.
+- Record every authoritative source that must stay synchronized. It is valid
+  to have more than one, such as Jira plus `specs/checkout-foundation/TASKS.local.md`.
+  Never choose one and ignore the other.
+- Locate `design.md` (or legacy `tdd.md`) and acceptance-criteria artefacts only
+  when the repository or work item uses them. A tracker-only item does not
+  require a synthetic local task file; a filesystem-only item does not require
+  a tracker. Fail loudly, naming the source, if a required *existing* source
+  is missing or unreachable.
 - Derive a dependency-safe task order: topological by declared dependencies,
-  stable by document order on ties. Render as
+  stable by source order on ties. Render as
   `N. {TASK_ID} — <title> (depends on: <ids or ->)`.
 - Resolve the branch. Report the expected branch; never create or switch one.
-- Resolve validation commands, tracker actions, and UI signals per
+- Resolve validation commands and lifecycle actions per
   [references/environment-resolution.md](references/environment-resolution.md).
+  UX review is not a default stage — add it only when the user asks.
 
 **ad-hoc**
 
@@ -118,7 +126,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/seed-ralph-loop.sh \
   --set WORK_ID=checkout-foundation \
   --set BRANCH=feat/checkout-foundation \
   --set TASKS_PATH=specs/checkout-foundation/TASKS.local.md \
-  --set TDD_PATH=specs/checkout-foundation/tdd.md \
+  --set TDD_PATH=specs/checkout-foundation/design.md \
   --set FIRST_ITEM=CHK01-01 \
   --set "WORK_SEQUENCE=$(cat sequence.txt)" \
   --set "GOAL=..." --set "DONE_CRITERIA=..." --set "PRESET_CONTEXT=..."
@@ -141,12 +149,17 @@ Files written, resolved configuration, expected branch, and "Run
 - MUST NOT execute loop steps or launch sub-agents. Setup only writes files.
 - MUST NOT create or switch git branches.
 - MUST NOT hand-author `active.md`, `loop-state.md`, or `context.md`.
-- MUST fail loudly, naming the file, when a required source is missing.
+- MUST NOT create a root `TASKS.local.md` or any replacement task source.
+- MUST fail loudly, naming the source, when a required existing source is
+  missing or unreachable.
+- MUST configure lifecycle updates for every resolved issue/task source.
 - MUST NOT invent a task order that ignores declared dependencies.
 
 ## Anti-patterns
 
 - Writing the loop file directly instead of calling the seed script.
 - Starting the loop after seeding it.
+- Creating a root tracker-pointer `TASKS.local.md`.
+- Updating Jira while leaving a local task file stale, or vice versa.
 - Guessing at validation commands rather than resolving them from the repo.
 - Setting a completion promise the loop has no way to verify.

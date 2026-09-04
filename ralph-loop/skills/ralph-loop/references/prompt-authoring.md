@@ -71,7 +71,7 @@ this, with budgets and reviews built in.
 ## When a Ralph loop is the wrong tool
 
 - Tasks needing human judgment or design decisions mid-flight — do the
-  design first (tdd, tasks skills), then loop the delivery.
+  design first (design / tdd, /product-management:tasks), then loop the delivery.
 - One-shot operations — just do them.
 - Unclear success criteria — the loop will either spin or lie; sharpen the
   criteria first.

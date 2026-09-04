@@ -33,41 +33,48 @@ Split into:
 
 If nothing is discoverable, ask the user rather than guessing.
 
-## Tracker (`{{TRACKER_SECTION}}`)
+## Issue and task sources (`{{TRACKER_SECTION}}`)
 
-Reuse the source system already resolved for `{work-id}` per
-engineering `references/work-item-resolution.md` (companion) —
-including the `TASKS.local.md` pointer, when present. Do not re-run
-detection here; this section only maps the *already-resolved* system to
-concrete per-task actions:
+Discover existing sources; never create a source during Ralph setup. In
+particular, do not create a repo-root `TASKS.local.md` tracker pointer.
 
-- **Resolved to Linear:**
-  - start: move the issue to In Progress (or the workspace's equivalent state)
-  - progress: move to In Review, and add a 1-3 sentence comment summarising
-    what shipped
-- **Resolved to Jira:**
-  - start: transition the issue to In Progress
-  - progress: transition to In Review (or the project's equivalent), and
-    add a 1-3 sentence comment summarising what shipped
-- **Resolved to GitHub / GitLab issues:**
-  - start: assign / label in-progress
-  - progress: comment with the commit summary
-- **Resolved to filesystem only** — write exactly:
-  `No tracker configured — skip tracker actions in implement and task-progress.`
+Possible sources include Jira, Linear, GitHub/GitLab issues, `TASKS.md`, an
+existing `TASKS.local.md`, or a user-named system. Record every source that is
+authoritative for the current task. If Jira and a local task document both
+carry status, both are configured sources.
 
-Write the resolved actions as concrete instructions (tool names, target
-states) into the context file so loop iterations never re-negotiate them.
+For each source, resolve concrete actions for all lifecycle phases:
+
+- **start:** In Progress, or the source's exact equivalent (during `implement`);
+- **review:** In Review, or the source's exact equivalent (during `review`);
+- **complete:** Done, or the source's exact equivalent, plus a short shipped
+  summary when the source supports comments (during `validate_and_commit`).
+
+Filesystem actions must name the existing path, task identifier, status field,
+and checkbox convention. Tracker actions must name the integration, issue key,
+target status, and how to discover a valid transition. Do not leave generic
+"update tracker" instructions.
+
+Write all sources and actions into the context file. The loop must update
+every source in the same lifecycle step and must not advance when one update
+fails. Completion re-reads every source and confirms Done.
+
+Reuse the source system already resolved for `{work-id}` per engineering
+`references/work-item-resolution.md` (companion) — including an existing
+`TASKS.local.md` pointer, when present. Do not re-run detection here.
 
 ## UI signals (`{{UI_SIGNALS}}`)
 
-Repo-specific indicators that a task's diff touches rendered UI and should
-get a `ux_review` step. Derive from the repo layout, e.g.:
+UX review is **not** a default engineering-delivery stage. Resolve UI signals
+only when the user asked to add UX review. Then derive repo-specific
+indicators that a task's diff touches rendered UI, e.g.:
 
 - component/page directories (`src/components/`, `app/`, `pages/`, `views/`)
 - style files (`*.css`, `*.scss`, tokens files, `tailwind.config.*`)
 - template files (`*.tsx`, `*.vue`, `*.svelte`, `*.html` templates)
 
-For a backend-only repo write: `No UI in this repo — skip ux_review.`
+For a backend-only repo, or when UX review was not requested, write:
+`No UX review in this run — skip ux_review.`
 
 ## Ambiguity rule
 

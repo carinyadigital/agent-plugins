@@ -32,7 +32,7 @@ re-run after scope or binding changes. Explicit invocation only.
 - **Writes `config/instance.json` if absent** — idempotent instance bootstrap, then this practice interview.
 - **Does not install other plugins** — user installs `engineering` / `product-management` from marketplace when companions are needed.
 - **Does not write without explicit yes** after showing the plain-language summary.
-- **Does not produce solution.md or ADRs** — those are separate skill invocations after setup.
+- **Does not produce ARCHITECTURE.md or ADRs** — those are separate skill invocations after setup.
 
 ## Preconditions
 
@@ -57,7 +57,7 @@ Structured-aggregation; integration table reports ✓ only on successful MCP pro
 ### Step 0 — Detect existing state
 
 1. **Read** `config/instance.json` if present — note `status`, business identity, seed material.
-2. **Resolve target** per `architecture-conventions.md` — note whether `docs/architecture/` already exists.
+2. **Resolve target** per `architecture-conventions.md` — note whether `ARCHITECTURE.md` or a legacy `docs/architecture/solution.md` already exists.
 3. **Read** `~/.claude/plugins/config/digital-agency/architecture/CLAUDE.md` unless `--redo`.
 4. If **complete** and not `--redo`: summarize on-file architecture defaults; offer refresh, `--redo`, or `--check-integrations`. Stop unless user chooses refresh.
 5. If **paused resume file** exists: greet, summarize progress, continue or start over.
@@ -76,7 +76,7 @@ If working directory looks project-scoped and architecture may span repos, warn 
 
 If neither `--quick` nor `--full` was passed, offer quick vs full.
 
-**Quick path:** infer target binding when possible; default solution stage `stub` if no solution.md exists else `full`; note companion install for `engineering`.
+**Quick path:** infer target binding when possible; default architecture state `target` if no `ARCHITECTURE.md` (or legacy `solution.md`) exists else `current`; note companion install for `engineering`.
 
 **Full path:** all plugin-specific questions below.
 
@@ -101,7 +101,7 @@ If `--check-integrations` only, stop here unless user asks to continue setup.
 Ask only what is still needed:
 
 1. **Target binding** — confirm target repo / standalone; create `config/target.json` when confirmed.
-2. **Architecture scope** — systems in scope; default solution stage (`stub` vs `full`).
+2. **Architecture scope** — systems in scope; default architecture state (`current` vs `target`).
 3. **ADR habit** — when to harvest (after epic / sprint end / ad hoc).
 4. **Companions** — whether `engineering` and `product-management` are installed or should be recommended (do not install them).
 
@@ -119,10 +119,10 @@ Delete resume file if present.
 
 ### Step 5 — Next steps
 
-1. **Solution** — `/architecture:solution` (use `--stage stub` or `full`)
+1. **Architecture** — `/architecture:solution` (use `--state current` or `target`)
 2. **ADR** — `/architecture:adr plan` then `/architecture:adr write`
 3. **Work-item design** — `/engineering:design <work-id>` (companion)
-4. **Docs review** — `/engineering:docs-review docs/architecture/` (companion)
+4. **Docs review** — `/engineering:docs-review ARCHITECTURE.md` (companion)
 5. **Refresh** — `/architecture:setup --redo`
 
 ## Pause and resume

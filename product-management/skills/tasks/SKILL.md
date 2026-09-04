@@ -55,7 +55,7 @@ determines which artefacts you write.
 
 | Resolved type | Source | Writes |
 | ---- | ------ | ------ |
-| `--product` or no argument | `product.md`, `roadmap.md`, `solution.md` | `backlog.md` (epics) — filesystem-only; tracker-backed repos create epics/initiatives in the tracker instead |
+| `--product` or no argument | `product.md`, `roadmap.md`, `ARCHITECTURE.md` | `backlog.md` (epics) — filesystem-only; tracker-backed repos create epics/initiatives in the tracker instead |
 | `epic` | Backlog row or tracker epic + `{work-dir}/design.md` | `specs/{work-short-name}/TASKS.local.md` (stories + tasks) |
 | `story` | Its parent epic's context + the story itself | Sub-tasks — as tracker sub-issues when a tracker resolved, else `specs/{work-short-name}/TASKS.local.md` in its own folder (alongside, not nested inside, its parent epic's) |
 | `task`, `bug`, `spike` | The item itself | Nothing to decompose by default — see below |
@@ -135,7 +135,7 @@ Tracker-backed repos skip this artefact — the tracker holds the epic list.
                         → Gherkin AC → its tasks
 5. Cross-cutting      polish, docs, observability
 6. Dependencies       graph and parallel opportunities
-7. Traceability + DoD story → design.md §, story → solution.md §
+7. Traceability + DoD story → design.md §, story → ARCHITECTURE.md §
 8. Handoff
 ```
 
@@ -194,7 +194,7 @@ writing. Below that, write directly; the file diff is reviewable.
 - [ ] No dependency cycles
 - [ ] `[P]` markers only on tasks with no incomplete dependency
 - [ ] Story 1 is identified as the MVP
-- [ ] No architecture narrative copied from `solution.md` or `design.md` — cite sections
+- [ ] No architecture narrative copied from `ARCHITECTURE.md` or `design.md` — cite sections
 
 ## Negative constraints
 
@@ -204,12 +204,12 @@ This skill decomposes. It MUST NOT:
   work-item-resolution.md's ask-first checklist
 - Groom an existing backlog or judge sprint readiness → **backlog-refine**
 - Write design narrative at any level → `{work-dir}/design.md` via **design**
-- Write architecture, NFRs, or cross-epic patterns → `solution.md` via **solution**
+- Write architecture, NFRs, or cross-epic patterns → `ARCHITECTURE.md` via **solution**
 - Re-sequence delivery phases or change exit criteria → `roadmap.md` via **roadmap**
 - Change business strategy, personas, or outcomes → `product.md` via **product**
 - Write code → **implement**
 - Paste full Gherkin into `backlog.md` — epic scope only; AC lives in `TASKS.local.md`
-- Re-narrate design or architecture — cite `design.md §` and `solution.md §`
+- Re-narrate design or architecture — cite `design.md §` and `ARCHITECTURE.md §`
 - Invent requirements the source does not support; mark gaps
   `[NEEDS CLARIFICATION]` and list them in the report
 

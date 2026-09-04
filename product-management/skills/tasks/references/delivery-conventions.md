@@ -8,7 +8,8 @@ item argument or writing under `specs/`.
 
 ```text
 docs/product/               product.md, roadmap.md, backlog.md
-docs/architecture/          solution.md, decisions/register.md, ADR-*.md
+ARCHITECTURE.md             system architecture (arc42)
+docs/architecture/          decisions/register.md, ADR-*.md
 specs/{work-short-name}/    design.md; TASKS.local.md when a local task breakdown
                             is required — one folder per resolved work item
 specs/{work-short-name}/reviews/  code-review-{nn}.local.md + matching .local.json
@@ -95,13 +96,13 @@ parent epic's folder. Cross-reference the parent by ID in the artefact.
 
 | Content | Belongs in | Not in |
 | ------- | ---------- | ------ |
-| Business strategy, personas, outcomes | `docs/product/product.md` | backlog, solution |
+| Business strategy, personas, outcomes | `docs/product/product.md` | backlog, architecture |
 | Phase sequencing, exit criteria | `docs/product/roadmap.md` | backlog, product |
 | Epic list, deps, points, work paths | `docs/product/backlog.md` (filesystem-only source) | roadmap detail |
 | Story/task statement, test criterion, AC | `specs/{work-short-name}/TASKS.local.md` | backlog (titles only) |
-| Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | the Solution Design (cite only) |
-| ADR decisions | `register.md`, `ADR-NNNN-*.md` | solution narrative |
-| Work item implementation spec | `{work-dir}/design.md` | solution, backlog |
+| Architecture, NFRs, cross-epic patterns | `ARCHITECTURE.md` | the Solution Design (cite only) |
+| ADR decisions | `register.md`, `ADR-NNNN-*.md` | ARCHITECTURE.md narrative |
+| Work item implementation spec | `{work-dir}/design.md` | architecture, backlog |
 | Task Gherkin (and optional EARS) | `specs/{work-short-name}/TASKS.local.md` | backlog, the Solution Design |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog, `specs/` |
 | Human-readable review verdict | `specs/{work-short-name}/reviews/{skill}-{nn}.local.md` | — |
@@ -149,7 +150,7 @@ The work-item Solution Design (`design.md`) has two modes:
 | `skeleton` | Phase 0 (walking skeleton) | 2–4 pages |
 | `full` | Sprint 2+ | 5–10 pages |
 
-Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
+Cite `ARCHITECTURE.md §{N}` — do not re-narrate architecture in `design.md`.
 The Solution Design applies at whatever level the user names: `design CHK01`
 writes the epic's design; `design JIRA-123` writes that
 story's design, sitting beside (not nested inside) its parent epic's folder
@@ -169,7 +170,7 @@ authoring in general belong to **implement**.
 | Phases, exit criteria | **roadmap** |
 | Epics, work paths, Now scope | **tasks --product** |
 | `design.md` (technical design) for one work item | **/engineering:design** |
-| System architecture (`solution.md`) | **/architecture:solution** |
+| System architecture (`ARCHITECTURE.md`) | **/architecture:solution** |
 | ADR plan / write / review | **/architecture:adr** |
 | `TASKS.local.md`, stories, Gherkin AC | **tasks** |
 | Decompose any spec or RFC into a backlog | **tasks** |

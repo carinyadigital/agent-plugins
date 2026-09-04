@@ -8,15 +8,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### product-management
+### ralph-loop
 
-- **BREAKING:** `validate` no longer writes a validation report. It discovers
-  the AC source (tracker description or a local tasks/spec file), checks off
-  passed criteria, records evidence as a tracker comment or description
-  update, and marks the item done when every criterion passes.
+- Setup reuses existing issue sources and never writes a root
+  `TASKS.local.md` pointer. Generated engineering-delivery runs keep every
+  configured source synchronized through In Progress, In Review, and Done.
+  UX review is no longer a default stage.
 
-### engineering
+## [2026-09-04] — ARCHITECTURE.md at repo root
 
+### architecture 0.7.0
+
+- **BREAKING:** `/architecture:solution` writes arc42 `ARCHITECTURE.md` at the
+  target repo root (current/as-is by default; `--state target` for intended
+  architecture, including greenfield). Architecture decisions stay in
+  `docs/architecture/decisions/` via `/architecture:adr` — they are no longer
+  a section of the architecture narrative. Legacy
+  `docs/architecture/solution.md` is a read fallback only.
+
+### engineering 0.8.1
+
+- Cite `ARCHITECTURE.md` (repo root) instead of
+  `docs/architecture/solution.md`. ADRs remain under
+  `docs/architecture/decisions/`.
 - **BREAKING:** Renamed work-item Solution Design skill `tdd` → `design`
   (artefact `design.md`). The `tdd` alias skill is removed — invoke
   `/engineering:design`. Added `discover` and `deliver` as agent-only
@@ -32,12 +46,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `.md`). It no longer writes repo-root `reviews/`. `code-review-fix` reads
   and updates the sibling JSON.
 
-### ralph-loop
+### product-management 0.5.3
 
-- Setup reuses existing issue sources and never writes a root
-  `TASKS.local.md` pointer. Generated engineering-delivery runs keep every
-  configured source synchronized through In Progress, In Review, and Done.
-  UX review is no longer a default stage.
+- Roadmap, tasks, and product artefacts cite `ARCHITECTURE.md` at the repo
+  root instead of `docs/architecture/solution.md`.
+- **BREAKING:** `validate` no longer writes a validation report. It discovers
+  the AC source (tracker description or a local tasks/spec file), checks off
+  passed criteria, records evidence as a tracker comment or description
+  update, and marks the item done when every criterion passes.
+
+### document-management 0.1.1
+
+- Treat repo-root `ARCHITECTURE.md` as read-only context (like `README.md`).
+  `docs/architecture/` remains protected for ADRs.
+
+### skills-index 0.4.4
+
+- Route `/architecture:solution` to system architecture at `ARCHITECTURE.md`.
 
 ## [2026-09-04] — document-management
 

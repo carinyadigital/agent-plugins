@@ -36,7 +36,7 @@ boundary, not a formality.
 
 The plugin only ever **writes inside `docs_root`** (default `docs/`). It may
 read the rest of the repo to judge accuracy. It never edits root `README.md`,
-`AGENTS.md`, `CLAUDE.md`, source, or config. Findings that belong there are
+`ARCHITECTURE.md`, `AGENTS.md`, `CLAUDE.md`, source, or config. Findings that belong there are
 reported and deferred to a human. See [`references/docs-boundary.md`](references/docs-boundary.md).
 
 Default **`protected_paths`** (reported, never auto-moved or auto-edited):

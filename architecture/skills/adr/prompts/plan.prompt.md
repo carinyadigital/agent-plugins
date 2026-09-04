@@ -6,7 +6,7 @@ made.
 
 Plan runs in two directions, and the argument decides which:
 
-- **Forward (no work-item argument)** — survey `product.md` and `solution.md`
+- **Forward (no work-item argument)** — survey `product.md` and `ARCHITECTURE.md`
   for decisions that must be made *before* technical design can proceed.
 - **Harvest (`adr plan <work-id>`)** — read `{work-dir}/design.md`
   for decisions that were *already made* during delivery and never
@@ -34,25 +34,26 @@ source system, canonical ID, and type — before reading anything else.
    implies — explicit ADR candidates, technology choices, integration patterns,
    contract shapes, and data-model commitments.
 2. Cross-check each against the register's **Accepted** table and against
-   `solution.md` §9. A decision already carrying an ADR needs nothing.
+   `ARCHITECTURE.md`. A decision already carrying an ADR needs nothing.
 3. Triage every remaining candidate into exactly one of:
    - **Promote** — consequential and standalone. Add a **Proposed** row, then
      draft it with **adr write**.
-   - **Inline** — real but not standalone; it belongs as a line in `solution.md`
-     rather than its own ADR. Record where it should go and hand off to
-     **solution**; do not edit `solution.md` from here.
+   - **Inline** — real but not standalone; it belongs as a line in
+     `ARCHITECTURE.md` rather than its own ADR. Record where it should go and
+     hand off to **solution**; do not edit `ARCHITECTURE.md` from here.
    - **Defer** — cannot be settled yet. Add a **Proposed** row marked Deferrable
      with what would unblock it.
 4. Record the triage outcome for every candidate. A candidate that appears in
    none of the three lists has been dropped silently — that is the failure this
    pass exists to prevent.
-5. Where a promoted decision supersedes something already in `solution.md`, note
+5. Where a promoted decision supersedes something already in `ARCHITECTURE.md`, note
    it for **solution** to archive with
    `<!-- ARCHIVED: superseded by ADR-#### -->`. Never delete superseded content.
 
 ## Survey pass
 
-1. Read `docs/product/product.md`, `docs/architecture/solution.md`, and the
+1. Read `docs/product/product.md`, `ARCHITECTURE.md` (or legacy
+   `docs/architecture/solution.md`), and the
    existing register.
 2. Identify areas with ambiguity, new technology, integration patterns, or
    architectural trade-offs.
@@ -85,7 +86,7 @@ source system, canonical ID, and type — before reading anything else.
 Plan mode MUST NOT:
 
 - Write ADR bodies — that is **adr write**
-- Edit `solution.md` — record the recommendation and hand off to
+- Edit `ARCHITECTURE.md` — record the recommendation and hand off to
   **solution**
 - Edit `design.md`, including archiving superseded sections — note what needs
   archiving and let **solution** do it
@@ -98,7 +99,7 @@ Report in chat:
 
 - **Harvested from `{work-id}`** — each candidate with its `design.md` section
   and triage outcome (omit when no work item was named)
-- **Surveyed** — new proposals from product/solution, Blocking or Deferrable
+- **Surveyed** — new proposals from product/architecture, Blocking or Deferrable
 - **Register changes** — rows added, revised, or rejected
 - **Handoffs** — which candidates need `adr write`, which need **solution**,
   and what needs archiving

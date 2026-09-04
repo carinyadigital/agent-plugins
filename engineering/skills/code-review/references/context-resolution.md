@@ -53,7 +53,7 @@ stop at the first match (or use several if more than one is relevant):
   the changed files or at the repo/module root. Both `design.md` and `design.md`
   stay in the list — `design.md` is a widespread convention in repos that never
   used these skills.
-- Architecture references: `**/solution.md`, `ARCHITECTURE.md`,
+- Architecture references: `ARCHITECTURE.md`, `**/solution.md` (legacy),
   `docs/architecture/**`, ADR/decision folders (`**/decisions/**`,
   `**/adr/**`, `ADR-*.md`).
 - A `specs/{work-short-name}/` (or similar) folder is one possible layout among

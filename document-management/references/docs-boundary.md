@@ -15,6 +15,7 @@ Staying inside `docs/` is enforced mechanically: an edit targeting a path outsid
 | `docs/**` (the configured `docs_root`) | **Yes** | Full ownership — subject to `protected_paths`. |
 | Nested `README.md` / `index.md` *inside* `docs/` | **Yes** | These are `docs/` landing pages, not the repo's front door. |
 | Root `README.md` | No | Read-only context. Raise a finding and defer the edit to a human. |
+| Root `ARCHITECTURE.md` | No | Read-only context. Owned by `/architecture:solution`. Raise a finding and defer. |
 | `AGENTS.md` / `CLAUDE.md` | No | Read-only context (stack, conventions) that helps write better docs. Raise a finding and defer the edit to a human. |
 | Source code, config, anything else | No | Read-only context, for drift detection only. |
 
@@ -35,7 +36,7 @@ This plugin's **defaults** keep it from stealing practice-owned trees:
 
 | Path | Owner (typical) |
 | :--- | :-------------- |
-| `docs/architecture/` | architecture practice (`solution`, `adr`) |
+| `docs/architecture/` | architecture practice (`adr`) — ADRs only; the narrative is root `ARCHITECTURE.md` |
 | `docs/product/` | product-management practice |
 | `docs/design/` | design practice |
 | `docs/brand/` | brand-creative practice (standalone Try-tier brand artefacts) |
@@ -44,4 +45,4 @@ A repo may override the list via local config (`.claude/document-management.loca
 
 ## Coexistence with `/engineering:docs-review`
 
-`/engineering:docs-review` is a **read-only quality/consistency review of any document set** (a handbook, `product.md`, `solution.md`, a wiki). This plugin owns the **`docs/` tree lifecycle** — scaffold/reorganise (`docs-setup`) and score/fix including drift and voice (`docs-improve`). The two do not compete: docs-review never restructures the tree; this plugin never reviews an arbitrary document set outside `docs_root`.
+`/engineering:docs-review` is a **read-only quality/consistency review of any document set** (a handbook, `product.md`, `ARCHITECTURE.md`, a wiki). This plugin owns the **`docs/` tree lifecycle** — scaffold/reorganise (`docs-setup`) and score/fix including drift and voice (`docs-improve`). The two do not compete: docs-review never restructures the tree; this plugin never reviews an arbitrary document set outside `docs_root`. Root `ARCHITECTURE.md` is outside `docs_root` — read-only context, like the repo README.

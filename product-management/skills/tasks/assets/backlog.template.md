@@ -8,7 +8,7 @@ last_updated: <!-- YYYY-MM-DD -->
 related:
   - docs/product/product.md
   - docs/product/roadmap.md
-  - docs/architecture/solution.md
+  - ARCHITECTURE.md
 ---
 
 <!--
@@ -23,7 +23,7 @@ Epic work path: specs/{work-short-name}/ — kebab-case from title, max two word
 # Backlog -- {Name}
 
 - **Product:** [`docs/product/product.md`](../product/product.md)
-- **Solution:** [`docs/architecture/solution.md`](../architecture/solution.md)
+- **Solution:** [`ARCHITECTURE.md`](../../ARCHITECTURE.md)
 - **Roadmap:** [`docs/product/roadmap.md`](../product/roadmap.md)
 
 ## 1. Summary
@@ -78,4 +78,4 @@ Epic work path: specs/{work-short-name}/ — kebab-case from title, max two word
 | ID | Risk | Likelihood | Impact | Mitigation |
 | -- | ---- | ---------- | ------ | ---------- |
 
-Technical risks: see `solution.md` §10.1.
+Technical risks: see `ARCHITECTURE.md` §11.

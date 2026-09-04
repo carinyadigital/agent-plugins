@@ -273,7 +273,7 @@ Strategy and delivery skills write into the **bound target repo**, not the plugi
 | Stage | Skill | Writes |
 | ----- | ----- | ------ |
 | Product | `/product-management:product` | `docs/product/product.md` |
-| Solution | `/architecture:solution` | `docs/architecture/solution.md` |
+| Solution | `/architecture:solution` | `ARCHITECTURE.md` |
 | Roadmap | `/product-management:roadmap` | `docs/product/roadmap.md` (does **not** require backlog) |
 | Backlog | `/product-management:tasks --product` | `docs/product/backlog.md` (or tracker epics) |
 
@@ -281,7 +281,8 @@ Default layout the skills expect:
 
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
-docs/architecture/            solution.md, decisions/
+ARCHITECTURE.md               system architecture (arc42)
+docs/architecture/            decisions/
 specs/{work-short-name}/          design.md; TASKS.local.md when required
 specs/{work-short-name}/reviews/  code-review-{nn}.local.md + matching .local.json;
                                  ux-design-review-{nn}.local.md
@@ -456,7 +457,7 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | Command | Skill | What it does |
 |---|---|---|
 | `/architecture:setup` | setup | Learns target binding, architecture scope, companions |
-| `/architecture:solution` | solution | write — `docs/architecture/solution.md`; review via `/engineering:docs-review` |
+| `/architecture:solution` | solution | write — `ARCHITECTURE.md` at the repo root (current or target); review via `/engineering:docs-review` |
 | `/architecture:adr` | adr | plan, write, review — `docs/architecture/decisions/` |
 
 ### engineering

@@ -9,7 +9,7 @@ mode: skeleton
 
 Skeleton Solution Design for `specs/checkout-foundation/`, epic CHK01 from `docs/product/backlog.md`.
 
-Architecture-wide patterns are authoritative in `docs/architecture/solution.md` and are not repeated here.
+Architecture-wide patterns are authoritative in `ARCHITECTURE.md` and are not repeated here.
 
 ## 1. The slice
 

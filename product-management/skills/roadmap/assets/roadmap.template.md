@@ -6,7 +6,7 @@ status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
   - docs/product/product.md
-  - docs/architecture/solution.md
+  - ARCHITECTURE.md
   - docs/product/backlog.md
 ---
 

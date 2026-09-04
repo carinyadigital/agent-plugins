@@ -23,7 +23,7 @@ Strategy skills read them but do not write them — see `delivery-conventions.md
 ## Artefact hierarchy
 
 **Product → Solution → Roadmap → Backlog.** Upstream artefacts may exist before
-downstream ones. `roadmap` requires `product.md` and reads `solution.md` when
+downstream ones. `roadmap` requires `product.md` and reads `ARCHITECTURE.md` when
 present; it must not require `backlog.md`. Epic backlog is created after
 roadmap via `/product-management:tasks --product`.
 

@@ -13,7 +13,7 @@ Each practice bundles a **minimal default** in `.mcp.json` — one or two server
 | **architecture** | Companion practice | `/architecture:solution`, `/architecture:adr` |
 | **product-management** | Companion practice | `/product-management:tasks --product`, `/product-management:tasks`, `/product-management:backlog-refine`, `/product-management:sprint-planning`, `/product-management:sprint-retro`, `/product-management:validate` |
 
-Install `architecture` alongside this plugin when writing `solution.md` or ADRs.
+Install `architecture` alongside this plugin when writing `ARCHITECTURE.md` or ADRs.
 Install `product-management` when implementation needs backlog alignment, task AC,
 sprint cadence, or epic sign-off. Do not bundle duplicate copies of those skills here.
 

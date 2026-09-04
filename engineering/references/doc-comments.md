@@ -36,19 +36,19 @@ Doc comments MUST NOT:
   keys, ticket numbers, story IDs, epic IDs, or task IDs (`JIRA-456`,
   `CHK01-01`, `#42`)
 - Reference working documents — `design.md`, `tdd.md` (legacy), `TASKS.local.md`,
-  `solution.md`, ADRs, PRDs, specs, briefs, roadmaps, backlogs, review
+  `ARCHITECTURE.md`, ADRs, PRDs, specs, briefs, roadmaps, backlogs, review
   verdicts, or any other planning or delivery artefact
 - Use JSDoc/docstring tags that exist only to point elsewhere (`@see`,
   `@link`, `@ticket`, `@jira`, `@issue`)
 
 A protocol, status code, or language feature named as a fact is not a
 reference (`HTTP 429`, `PostgreSQL advisory lock`). Pointing at a document
-that explains it is (`see RFC 6585`, `per solution.md §5.1`).
+that explains it is (`see RFC 6585`, `per ARCHITECTURE.md §5`).
 
 ## Do not write
 
 ```text
-// CART02-07 | docs/architecture/solution.md §5.1
+// CART02-07 | ARCHITECTURE.md §5.1
 // Implements CHK01-01 from TASKS.local.md
 // See design.md §3 for the retry policy
 // Fixes JIRA-456

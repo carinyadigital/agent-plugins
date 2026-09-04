@@ -115,7 +115,7 @@ A sprint plan MUST NOT:
   or **backlog-refine**
 - Re-sequence delivery phases or change exit criteria → `docs/product/roadmap.md`
   via **roadmap**
-- Add architecture or design detail → `solution.md` or `design.md`
+- Add architecture or design detail → `ARCHITECTURE.md` or `design.md`
 - Invent velocity, capacity, or team availability not supplied in the context
 - Commit tasks that are not sprint-ready — run **backlog-refine** on the epic
   first and report the gap instead of committing anyway

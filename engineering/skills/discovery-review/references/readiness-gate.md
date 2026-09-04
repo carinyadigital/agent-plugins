@@ -21,8 +21,8 @@ Warnings ride along with Ready. They do not fail the gate.
 | **bug** | Repro and expected fix that a third party could test. A Solution Design only if the fix needs design beyond the ticket |
 | **spike** | The question to answer and the exit criterion (what artefact or decision comes back). Implementation of product behaviour is out of scope unless the spike says otherwise |
 
-`solution.md` is required when the work item crosses a module, API, or NFR
-boundary already owned by architecture. If `solution.md` is missing in that
+`ARCHITECTURE.md` is required when the work item crosses a module, API, or NFR
+boundary already owned by architecture. If `ARCHITECTURE.md` is missing in that
 case, that is blocking and the owner is `/architecture:solution`. If the work
 item is a local change inside an already-described module, note the citation
 and do not fail the gate for an absent system-wide rewrite.
@@ -51,7 +51,7 @@ Blocking — `implement` would guess:
 - Open question or `[NEEDS CLARIFICATION]` that changes the slice or the files
   shipped.
 - Contradiction between `design.md` and `TASKS.local.md` (or tracker) on what
-  ships, or between `design.md` and `solution.md` on a pattern the Solution Design restates
+  ships, or between `design.md` and `ARCHITECTURE.md` on a pattern the Solution Design restates
   wrongly.
 
 Warning — proceed with an explicit assumption:

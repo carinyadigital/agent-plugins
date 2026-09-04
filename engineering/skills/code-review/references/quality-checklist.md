@@ -74,7 +74,7 @@ migration outlives the deploy that shipped it.
 - [ ] Comments explain **why**, never **what**.
 - [ ] Doc comments stand on their own so they can be read inline. Flag any
       comment that cites an issue system, a working document (`design.md`,
-      `TASKS.local.md`, `solution.md`, an ADR), a ticket/task ID, a URL, or any
+      `TASKS.local.md`, `ARCHITECTURE.md`, an ADR), a ticket/task ID, a URL, or any
       other external source. See
       [../../../references/doc-comments.md](../../../references/doc-comments.md).
 

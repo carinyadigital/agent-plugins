@@ -18,7 +18,7 @@ your stack.
 
 Install companions alongside this plugin when architecture feeds delivery. No
 bundled duplicate skills and no hard install dependency — this practice works
-standalone when `solution.md` / ADRs are the only artefacts needed.
+standalone when `ARCHITECTURE.md` / ADRs are the only artefacts needed.
 
 ## Bundled in `.mcp.json`
 
@@ -34,5 +34,5 @@ during `adr plan <work-id>`.
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
 | **setup** | `--check-integrations` | GitHub |
-| **solution** | write | None required — product.md and user context suffice |
+| **solution** | write | None required — product.md, the repo, and user context suffice |
 | **adr** | plan / write / review | Source control / tracker optional for work-id harvest |

@@ -10,8 +10,8 @@ The `setup` skill copies or updates the user config at:
 Instance-wide org facts live in the instance repo at:
   <instance-repo>/config/instance.json
 
-Architecture artefacts (solution, ADRs) live in the target repo `docs/architecture/`
-tree. Repo binding stays in `config/target.json`.
+Architecture artefacts: `ARCHITECTURE.md` at the target repo root; ADRs under
+`docs/architecture/decisions/`. Repo binding stays in `config/target.json`.
 -->
 
 # Architecture — Practice Profile
@@ -42,7 +42,7 @@ tree. Repo binding stays in `config/target.json`.
 
 ## Architecture scope
 
-- **Solution stage default:** [PLACEHOLDER — stub | full]
+- **Architecture state default:** [PLACEHOLDER — current | target]
 - **ADR harvest habit:** [PLACEHOLDER — after each epic | sprint end | ad hoc]
 - **Systems in scope:** [PLACEHOLDER — list or "whole product"]
 

@@ -8,16 +8,15 @@ owner: <!-- team or squad name -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - <!-- solution.md -->
+  - ARCHITECTURE.md
   - {work-dir}/TASKS.local.md
-  - docs/architecture/solution.md
 ---
 
 <!--
 DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
 DO NOT INCLUDE in this design.md:
-  - Architecture-wide patterns already in solution.md
-    → cite solution.md §{N.M} instead; do not re-narrate
+  - Architecture-wide patterns already in `ARCHITECTURE.md`
+    → cite `ARCHITECTURE.md` §{N} instead; do not re-narrate
   - Business rationale                  → product.md
   - Phase sequencing                    → roadmap.md
   - Story-level acceptance criteria     → {work-dir}/TASKS.local.md (tasks skill)
@@ -34,7 +33,7 @@ Full mode (5–10 pages): §1 Scope, §2 Architecture fit, §3 Files and compone
 # Solution Design -- {Work Item Title} ({WORK-ID})
 
 Solution Design for {WORK-ID} at `{work-dir}/`. Architecture-wide patterns are authoritative in
-[`solution.md`](solution.md) and are not repeated here.
+`ARCHITECTURE.md` and are not repeated here.
 
 ## 1. Scope / The slice
 
@@ -73,7 +72,7 @@ Skeleton: four subsections:
   3.3 Error path exercised (typed error surface renders)
   3.4 Scaffolds complete and quality gates pass (typecheck, unit tests)
 
-Full: the subset of solution.md §2.1 quality goals this epic must satisfy,
+Full: the subset of ARCHITECTURE.md §1 quality goals this epic must satisfy,
 plus layer-specific acceptance criteria.
 -->
 

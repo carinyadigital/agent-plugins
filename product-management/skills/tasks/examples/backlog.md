@@ -6,7 +6,7 @@ level: epic
 # Backlog -- Checkout
 
 - **Product:** `docs/product/product.md`
-- **Solution:** `docs/architecture/solution.md`
+- **Solution:** `ARCHITECTURE.md`
 - **Roadmap:** `docs/product/roadmap.md`
 
 ## 1. Summary

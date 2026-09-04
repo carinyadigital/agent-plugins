@@ -65,7 +65,7 @@ not support — mark gaps `[NEEDS CLARIFICATION]`.
 | Tracker item | Summary, description, AC, comments, attachments, labels, components, parent, children, issue links |
 | Remote links | Confluence pages, Figma files, GitLab/GitHub MRs or commits linked from the item |
 | Parent epic | Tracker epic plus its `{work-dir}/design.md` if it exists — cite by ID, do not copy |
-| Architecture | `docs/architecture/solution.md`, cited ADRs under `docs/architecture/decisions/` |
+| Architecture | `ARCHITECTURE.md`, cited ADRs under `docs/architecture/decisions/` |
 | Product | `docs/product/product.md`, `roadmap.md`, filesystem `backlog.md` when that is the source |
 | Existing artefacts | `{work-dir}/design.md` (or legacy `tdd.md`), `{work-dir}/TASKS.local.md` — update, do not fork a second copy |
 | Codebase | Modules the item names, neighbouring patterns, `AGENTS.md` / `CLAUDE.md` conventions |
@@ -85,7 +85,7 @@ sub-agent when the host can spawn one; otherwise run it inline. Prefer
 `--mode full` unless the item is a walking skeleton (then `skeleton`).
 Pass the resolved work-item ID, `{work-dir}`, mode, user context, and gathered
 source map to the leaf so it does not repeat or lose source resolution.
-Cite `solution.md §{N.M}`; do not re-narrate architecture. A story Solution Design
+Cite `ARCHITECTURE.md §{N}`; do not re-narrate architecture. A story Solution Design
 cites its parent epic by ID.
 
 ### 4. Write the tasks
@@ -152,7 +152,7 @@ follow.
 | Parent epic CART-100 | used — cited, not copied |
 | Confluence <page> | used / unreachable / none linked |
 | Figma | none linked |
-| solution.md | used §N.M |
+| ARCHITECTURE.md | used §N |
 | Codebase | used — <modules> |
 
 ### Wrote
@@ -173,6 +173,6 @@ follow.
 - Implement product code, open a branch for delivery, or invoke the `deliver` agent
 - Treat "the Solution Design file exists" as Ready — run the gate
 - Guess source system, ID, or type
-- Duplicate `solution.md` narrative
+- Duplicate `ARCHITECTURE.md` narrative
 - Put Gherkin in `design.md` (gates/slice only)
 - Promise Ready over unresolved `[NEEDS CLARIFICATION]` that changes the slice

@@ -66,7 +66,7 @@ Product stage: existing pitch product.md, user research, stakeholder map.]
 1. Read context and existing pitch product.md if present
 2. Carry forward §1–§5, updated if needed
 3. §6 Target users
-4. §7 Outcome metrics — reference `docs/architecture/solution.md §2.1` for thresholds; do not restate numbers
+4. §7 Outcome metrics — reference `ARCHITECTURE.md` §1 for thresholds; do not restate numbers
 5. §8 Product principles — commercial only
 6. §9 Stakeholders and RACI
 7. §10 Dependencies and sequencing
@@ -77,7 +77,7 @@ Product stage: existing pitch product.md, user research, stakeholder map.]
 - Readable without a glossary; pitch ≤2 pages, product stage ≤5 pages
 - §7 no raw numeric thresholds; §8 not technical
 - Derive from context — do not invent requirements
-- **No file paths, APIs, or schemas** — those belong in solution.md
+- **No file paths, APIs, or schemas** — those belong in `ARCHITECTURE.md`
 - **No epic tables** — roadmap and backlog own sequencing and epics
 
 ## Output

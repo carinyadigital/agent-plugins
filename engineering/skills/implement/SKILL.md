@@ -32,7 +32,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/` and `docs/architecture/`.
+Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/`, `ARCHITECTURE.md`, and `docs/architecture/decisions/`.
 
 # Implement
 
@@ -53,7 +53,7 @@ ask rather than guessing which folder it belongs to.
 | ----------------- | ------------------------------ | --------- |
 | Task + Gherkin AC | `{work-dir}/TASKS.local.md` | Yes       |
 | Work item design  | `{work-dir}/design.md` | Yes       |
-| Architecture      | `docs/architecture/solution.md`| If relevant |
+| Architecture      | `ARCHITECTURE.md`| If relevant |
 | Coding standards  | `AGENTS.md` or `CLAUDE.md`     | If present |
 
 ## Steps
@@ -100,7 +100,7 @@ Doc comments MUST NOT:
   "see …" pointers)
 - Reference any external source — including issue systems (Jira, Linear,
   GitHub/GitLab issues) and their keys, ticket numbers, story IDs, or task IDs
-- Reference working documents (`design.md`, `TASKS.local.md`, `solution.md`, ADRs,
+- Reference working documents (`design.md`, `TASKS.local.md`, `ARCHITECTURE.md`, ADRs,
   specs, designs, briefs, or any other planning artefact)
 
 If the only comment you would add is a pointer to a ticket or a design doc,
@@ -111,13 +111,13 @@ write nothing.
 This skill writes code against an approved design. It MUST NOT:
 
 - Modify architectural patterns, NFRs, or cross-cutting concerns — those live
-  in `solution.md` and should be raised as a new ADR via `/architecture:adr`, not changed
+  in `ARCHITECTURE.md` and should be raised as a new ADR via `/architecture:adr`, not changed
   unilaterally during implementation
 - Rewrite acceptance criteria or add new tasks — task scope is fixed by
   `{work-dir}/TASKS.local.md`; if scope needs to change, update it via
   `/product-management:tasks` first
 - Introduce new public APIs or contract shapes not specified in
-  `docs/architecture/solution.md` or the design — pause and update solution.md
+  `ARCHITECTURE.md` or the design — pause and update ARCHITECTURE.md
   (or raise an ADR) first
 - Perform unsolicited refactoring outside the task's declared `Files Changed`
   set — scope creep invalidates the review
@@ -127,7 +127,7 @@ This skill writes code against an approved design. It MUST NOT:
 - Commit while any validation check is failing (format, lint, typecheck,
   build, or tests)
 - Add comments that cite issue systems, working documents, or any other
-  external source (e.g. `CART02-07 | docs/architecture/solution.md §5.1`)
+  external source (e.g. `CART02-07 | ARCHITECTURE.md §5.1`)
 
 ## Output format
 
@@ -169,5 +169,5 @@ After completing implementation, write a summary:
 - `discovery-review` — Ready for Development gate before this skill
 - `discover` agent — write Solution Design + tasks until that gate passes
 - `deliver` agent — whole work item through review, validate, and MR
-- `/architecture:adr` — raise a new ADR rather than changing `solution.md` unilaterally (if not installed: `Install: /plugin install architecture@carinya-plugins`)
+- `/architecture:adr` — raise a new ADR rather than changing `ARCHITECTURE.md` unilaterally (if not installed: `Install: /plugin install architecture@carinya-plugins`)
 - `code-review` — review the working diff after implementation

@@ -3,7 +3,7 @@ name: design
 description: >
   Use when the user wants a work-item Solution Design (epic, story, bug, or
   spike) in skeleton or full mode. Pass a work-item ID (CHK01, JIRA-123).
-  Writes {work-dir}/design.md; cite solution.md, do not re-narrate
+  Writes {work-dir}/design.md; cite ARCHITECTURE.md, do not re-narrate
   architecture. Triggers on "design CHK01", "write the solution design",
   "write the technical design", "design the epic", "how should we build this
   story". Do NOT use for test-driven development (implement),
@@ -31,7 +31,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/` and `docs/architecture/`.
+Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/`, `ARCHITECTURE.md`, and `docs/architecture/decisions/`.
 
 # Solution Design
 
@@ -45,7 +45,7 @@ read its parent epic's context (backlog row or tracker epic, and its
 `design.md` if one exists) — cite it by ID rather than re-narrating it.
 
 This skill writes a work-item Solution Design. It is **not** system
-architecture (`docs/architecture/solution.md` belongs to
+architecture (`ARCHITECTURE.md` belongs to
 `/architecture:solution`) and **not** test-driven development — requests to
 write a failing test first, or to drive code through red/green/refactor,
 belong to **implement**.
@@ -81,20 +81,20 @@ this work item's `design.md` or legacy `tdd.md`.
 
 Do NOT put in design.md:
 
-- Architecture-wide patterns already in solution.md — cite `solution.md §{N.M}`
+- Architecture-wide patterns already in `ARCHITECTURE.md` — cite `ARCHITECTURE.md §{N}`
 - Business strategy → `docs/product/product.md`
 - Phase sequencing → `docs/product/roadmap.md`
 - Task-level Gherkin → `{work-dir}/TASKS.local.md` via **/product-management:tasks**
 
 ## Context
 
-[Work item row in backlog.md or the tracker, solution.md, parent epic's
+[Work item row in backlog.md or the tracker, ARCHITECTURE.md, parent epic's
 design.md if this is a story/bug/spike, existing design.md (or legacy tdd.md)
 if updating, codebase]
 
 ## Steps (skeleton)
 
-1. Read solution.md and the work item's row (backlog.md or the tracker); if
+1. Read ARCHITECTURE.md and the work item's row (backlog.md or the tracker); if
   it is a story, bug, or spike, also read its parent epic's design.md
 2. Draft §1–§6 per template
 3. §4 must list what this work item did **not** ship
@@ -123,7 +123,7 @@ Save to `{work-dir}/design.md`. Use [assets/design.template.md](assets/design.te
 
 ## Gotchas
 
-- **Do not copy solution.md** — cite `solution.md §{N.M}` instead.
+- **Do not copy ARCHITECTURE.md** — cite `ARCHITECTURE.md §{N}` instead.
 - **Task Gherkin** belongs in `TASKS.local.md`, not the Solution Design (gates/slice scope only).
 - **`skeleton`** is 2–4 pages; **`full`** is 5–10 — do not mix section sets.
 - **§4 Out of scope** must list what this work item explicitly did not ship.

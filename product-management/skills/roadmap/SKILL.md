@@ -4,7 +4,7 @@ description: >
   Use when the user wants outcome-based delivery phases or exit criteria at
   docs/product/roadmap.md. Drafts or re-sequences the document. Triggers on
   "build the roadmap", "what are our delivery phases", "phase exit criteria".
-  Requires product.md; reads solution.md when present. Does not require
+  Requires product.md; reads ARCHITECTURE.md when present. Does not require
   backlog.md — hierarchy is Product → Solution → Roadmap → Backlog (backlog
   comes later via tasks --product). Re-authoring is also how an existing
   roadmap.md gets critiqued or revised — docs-review checks writing quality
@@ -46,14 +46,14 @@ path instead of the default.
 roadmap.md MUST NOT contain:
 
 - Story-level acceptance criteria or epic detail → `docs/product/backlog.md`
-- Implementation patterns or tech stack → `docs/architecture/solution.md`
+- Implementation patterns or tech stack → `ARCHITECTURE.md`
 - Business strategy → `docs/product/product.md`
 
 ## Context
 
 <artifacts>
 [Required: docs/product/product.md.
-Optional upstream: docs/architecture/solution.md (architecture constraints that
+Optional upstream: ARCHITECTURE.md (architecture constraints that
 shape phasing). Optional downstream if it already exists: docs/product/backlog.md
 (do not block on it — backlog is written after roadmap via tasks --product).
 Cross-squad dependency context when the caller supplies it.]
@@ -61,7 +61,7 @@ Cross-squad dependency context when the caller supplies it.]
 
 ## Steps
 
-1. Read product.md before writing anything. Read solution.md when present.
+1. Read product.md before writing anything. Read ARCHITECTURE.md when present.
    Do not require backlog.md.
 2. Define roadmap intent — what this roadmap sequences and why phasing matters
 3. Articulate 3–5 sequencing principles that drive phase order

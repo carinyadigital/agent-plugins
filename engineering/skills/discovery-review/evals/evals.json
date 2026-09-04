@@ -7,12 +7,12 @@
       "expected_output": "Inventory of discovery artefacts, findings by tier, Ready or Not ready verdict. No Solution Design or task files modified.",
       "assertions": [
         "Resolves the work item and work dir before judging",
-        "Inventories design.md, tasks/AC, and solution.md when relevant",
+        "Inventories design.md, tasks/AC, and ARCHITECTURE.md when relevant",
         "Gives an explicit Ready for Development or Not ready verdict",
         "Groups findings as blocking / warning / suggestion",
         "Every finding cites a path and a heading or line",
         "Names the owning skill for each gap",
-        "Does not amend design.md, TASKS.local.md, or solution.md"
+        "Does not amend design.md, TASKS.local.md, or ARCHITECTURE.md"
       ]
     },
     {
@@ -38,17 +38,17 @@
     },
     {
       "id": 4,
-      "prompt": "Ready for development? design.md restates the module layout from solution.md §3.2 with the same facts, and cites nothing.",
+      "prompt": "Ready for development? design.md restates the module layout from ARCHITECTURE.md §5 with the same facts, and cites nothing.",
       "expected_output": "Boundary finding; warning unless the restatement has already diverged.",
       "assertions": [
         "Flags restated architecture that should be a citation",
         "Does not fail the gate solely for a faithful restatement with no factual clash",
-        "Would rate a factual clash with solution.md as blocking"
+        "Would rate a factual clash with ARCHITECTURE.md as blocking"
       ]
     },
     {
       "id": 5,
-      "prompt": "Are we ready to build? design.md, TASKS.local.md, and solution.md are complete; AC are testable; no open questions that change the slice.",
+      "prompt": "Are we ready to build? design.md, TASKS.local.md, and ARCHITECTURE.md are complete; AC are testable; no open questions that change the slice.",
       "expected_output": "Ready for Development; next is implement on the first task.",
       "assertions": [
         "Verdict is Ready for Development",

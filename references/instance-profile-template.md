@@ -108,7 +108,7 @@ Set `catalogue` during setup to the GitHub org/repo slug (or equivalent source i
     "product": "docs/product/product.md",
     "backlog": "docs/product/backlog.md",
     "roadmap": "docs/product/roadmap.md",
-    "solution": "docs/architecture/solution.md"
+    "architecture": "ARCHITECTURE.md"
   }
 }
 ```
@@ -131,8 +131,9 @@ The `name` field carries target repo identity (typically the git repo slug). The
 
 ```text
 config/target.json         ← binding pointer + repo identity (name, instance, target)
+ARCHITECTURE.md            ← system architecture (arc42)
 docs/product/              ← product.md, roadmap.md, backlog.md
-docs/architecture/         ← solution.md, decisions/
+docs/architecture/         ← decisions/
 specs/                     ← work-item folders (design.md, TASKS.local.md)
 docs/work/                 ← sprint plan/retro; SEO research (not work-item specs)
 reviews/                   ← review tracking JSON (gitignored, never committed)

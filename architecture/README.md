@@ -1,7 +1,7 @@
 # architecture
 
-Root-level **practice plugin** — setup interview, system solution design
-(arc42-lite), and architecture decision records. Self-contained under the MECE
+Root-level **practice plugin** — setup interview, system architecture
+(arc42), and architecture decision records. Self-contained under the MECE
 practice model: edit skills here only; nothing is vendored from elsewhere.
 
 Install standalone or after practice `setup` (writes `config/instance.json` if
@@ -14,13 +14,14 @@ duplicates.
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
-| **Principal Architect** | `solution`, `adr` | Architecture — solution.md and ADRs |
+| **Principal Architect** | `solution`, `adr` | Architecture — `ARCHITECTURE.md` and ADRs |
 
 Work-item technical design stays in `engineering` (`design`). Document-set
 quality review stays in `engineering` (`docs-review`).
 
 ```
 /architecture:solution
+/architecture:solution --state target
 /architecture:adr plan
 /architecture:adr write
 ```
@@ -30,7 +31,7 @@ For work-item design and delivery:
 ```
 /engineering:design checkout-foundation
 /engineering:implement CHK01-01
-/engineering:docs-review docs/architecture/
+/engineering:docs-review ARCHITECTURE.md
 ```
 
 ## First run: setup
@@ -54,7 +55,7 @@ After instance bootstrap (or standalone):
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile and target hints |
-| **solution** | write — `docs/architecture/solution.md`; review via `/engineering:docs-review` |
+| **solution** | write — `ARCHITECTURE.md` at the repo root (current or target); review via `/engineering:docs-review` |
 | **adr** | plan, write, review — `docs/architecture/decisions/` |
 
 Path and boundary rules: `references/architecture-conventions.md`.
@@ -66,13 +67,14 @@ Path and boundary rules: `references/architecture-conventions.md`.
 - **engineering** (recommended companion) — `design`, `docs-review`,
   `implement`, and related delivery skills; see CONNECTORS.md.
 - **product-management** (optional companion) — product.md / roadmap upstream of
-  solution.
+  architecture.
 - **Connectors** (optional) — source-control MCP supercharges ADR harvest when a
   work-id is named.
 
 ## After setup
 
-1. Run `/architecture:solution` (stub or full) for system architecture.
+1. Run `/architecture:solution` for as-is architecture, or
+   `/architecture:solution --state target` at project start.
 2. Run `/architecture:adr plan` then `adr write` for consequential decisions.
 3. Hand off work-item design to `/engineering:design`.
 4. Re-run `/architecture:setup --redo` to refresh architecture defaults.

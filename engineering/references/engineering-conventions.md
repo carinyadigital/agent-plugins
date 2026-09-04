@@ -51,13 +51,13 @@ bundle local copies:
 
 | Need | Invoke |
 | ---- | ------ |
-| System architecture (`solution.md`) | `/architecture:solution` |
+| System architecture (`ARCHITECTURE.md`) | `/architecture:solution` |
 | ADR plan / write / review | `/architecture:adr` |
 
 Recommend `architecture` as a co-install. Document in CONNECTORS.md.
 
 When `architecture` is **not installed**, continue from existing
-`docs/architecture/` artefacts when present. At write boundaries:
+`ARCHITECTURE.md` / ADR artefacts when present. At write boundaries:
 
 ```text
 Install: /plugin install architecture@carinya-plugins
@@ -95,7 +95,8 @@ See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
-docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
+ARCHITECTURE.md               system architecture (arc42)
+docs/architecture/            decisions/register.md, ADR-NNNN-*.md
 specs/{work-short-name}/          design.md; TASKS.local.md when required
 specs/{work-short-name}/reviews/  code-review verdict + co-located .local.json;
                                  ux-design-review verdicts
@@ -118,12 +119,12 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 
 | Content | Belongs in | Not in |
 | ------- | ---------- | ------ |
-| Business strategy, personas, outcomes | `docs/product/product.md` | backlog, solution |
+| Business strategy, personas, outcomes | `docs/product/product.md` | backlog, architecture |
 | Phase sequencing, exit criteria | `docs/product/roadmap.md` | backlog, product |
 | Epic list, deps, points, work paths | `docs/product/backlog.md` | roadmap detail |
-| Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | design (cite only) |
-| ADR decisions | `docs/architecture/decisions/` | solution narrative |
-| Work-item implementation spec | `{work-dir}/design.md` | solution, backlog |
+| Architecture, NFRs, cross-epic patterns | `ARCHITECTURE.md` | design (cite only) |
+| ADR decisions | `docs/architecture/decisions/` | ARCHITECTURE.md narrative |
+| Work-item implementation spec | `{work-dir}/design.md` | architecture, backlog |
 | Task Gherkin (and optional EARS) | `specs/{work-short-name}/TASKS.local.md` | backlog, the Solution Design |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
 
@@ -147,7 +148,7 @@ instructions: [doc-comments.md](doc-comments.md).
 | `skeleton` | Phase 0 (walking skeleton) | 2–4 pages |
 | `full` | Sprint 2+ | 5–10 pages |
 
-Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
+Cite `ARCHITECTURE.md §{N}` — do not re-narrate architecture in `design.md`.
 The Solution Design applies at whatever level the user names (`design CHK01`,
 `design JIRA-123`). If only a legacy `tdd.md` exists, rename it to `design.md`
 before updating.

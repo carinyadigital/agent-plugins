@@ -2,7 +2,7 @@
 name: discovery-review
 description: >
   Use when the user wants to confirm discovery artefacts are complete and a
-  work item is Ready for Development — design.md, TASKS.local.md, solution.md,
+  work item is Ready for Development — design.md, TASKS.local.md, ARCHITECTURE.md,
   and related product or architecture docs for that item. Triggers on
   "ready for development", "is discovery done", "review the TDD and tasks",
   "can we start implementing", "discovery review", "are we ready to build".
@@ -35,7 +35,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/` and `docs/architecture/`.
+Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/`, `ARCHITECTURE.md`, and `docs/architecture/decisions/`.
 
 # Discovery review
 
@@ -82,7 +82,7 @@ and artefact boundaries.
 | Work item | tracker or `docs/product/backlog.md` | Yes |
 | Solution Design | `{work-dir}/design.md` | Yes for epic/story; if missing for a bug/spike, say so rather than inventing one |
 | Tasks + Gherkin AC | `{work-dir}/TASKS.local.md` or the tracker | Yes when a local or tracker breakdown is how this repo carries AC — owned by `/product-management:tasks` |
-| Solution architecture | `docs/architecture/solution.md` | If the work item touches architectural boundaries |
+| Solution architecture | `ARCHITECTURE.md` | If the work item touches architectural boundaries |
 | ADRs | `docs/architecture/decisions/` | If the Solution Design cites them, or a decision is still open |
 | Product / roadmap | `docs/product/product.md`, `roadmap.md` | If present — check the slice still matches |
 
@@ -154,7 +154,7 @@ sub-agents, and do not expand the review into a handbook or `docs/` tree audit.
 | -------- | ------ |
 | `design.md` | present, skeleton |
 | `TASKS.local.md` | present |
-| `docs/architecture/solution.md` | present |
+| `ARCHITECTURE.md` | present |
 | ADRs | none cited |
 
 ### Blocking
@@ -171,10 +171,10 @@ sub-agents, and do not expand the review into a handbook or `docs/` tree audit.
 
 ### Warnings
 
-- **[warning] Solution Design restates module layout already in solution.md §3.2**
+- **[warning] Solution Design restates module layout already in `ARCHITECTURE.md` §5**
   **Where:** `design.md` §2
   **Why it matters:** Two homes; they will drift.
-  **Owner:** `design` — cite `solution.md §3.2` instead
+  **Owner:** `design` — cite `ARCHITECTURE.md` §5 instead
 
 ### Suggestions
 
@@ -210,5 +210,5 @@ Next: run the deliver agent with <work-id>  (or implement <first-task-id> for a 
 - `discover` agent — writes Solution Design + tasks and loops this gate until Ready
 - `design` / `/product-management:tasks` — leaf writers this gate judges
 - `deliver` agent / `implement` skill — only after Ready for Development
-- `/architecture:solution` — when a missing or contradictory solution.md is blocking
+- `/architecture:solution` — when a missing or contradictory ARCHITECTURE.md is blocking
 - `docs-review` — document-set quality, not this Ready-for-Development gate

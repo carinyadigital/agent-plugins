@@ -37,11 +37,11 @@
     },
     {
       "id": 4,
-      "prompt": "Reorganise docs/. There is a solution.md under docs/architecture/ and a messy how-to pile in docs/.",
-      "expected_output": "Move-map covers the messy how-to pile. ARCHITECTURE.md is reported as protected and not moved.",
+      "prompt": "Reorganise docs/. There is an ADR under docs/architecture/decisions/ and a messy how-to pile in docs/.",
+      "expected_output": "Move-map covers the messy how-to pile. docs/architecture/decisions/ is reported as protected and not moved.",
       "assertions": [
         "Reports docs/architecture/ as protected",
-        "Does not git mv or edit ARCHITECTURE.md",
+        "Does not git mv or edit files under docs/architecture/",
         "Still proposes moves for unprotected docs/"
       ]
     },

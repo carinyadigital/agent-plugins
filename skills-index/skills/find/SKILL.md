@@ -72,7 +72,7 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | product-management | sprint-planning | Plan a sprint |
 | product-management | sprint-retro | Sprint retrospective |
 | product-management | validate | Work-item sign-off vs AC |
-| architecture | solution | Architecture solution.md |
+| architecture | solution | System architecture (ARCHITECTURE.md) |
 | architecture | adr | Architecture decision records |
 | engineering | design | Work-item design.md |
 | engineering | discovery-review | Ready for Development gate |

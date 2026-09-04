@@ -136,7 +136,7 @@ Delivery skills route implementation to `/engineering:design`,
 | Docs quality review | `/engineering:docs-review` |
 | Implementation | `/engineering:implement` |
 
-`implement` and `design` **read** `docs/architecture/solution.md` and ADRs via
+`implement` and `design` **read** `ARCHITECTURE.md` and ADRs via
 artefact consumption — no hard install dependency. Writing or updating those
 artefacts requires the `architecture` plugin (or manual edits).
 
@@ -225,7 +225,7 @@ practice trees (`docs/architecture/`, `docs/product/`, `docs/design/`,
 `docs/brand/`).
 
 `/engineering:docs-review` remains the **set-quality companion**: a read-only
-quality/consistency review of *any* document set (`product.md`, `solution.md`,
+quality/consistency review of *any* document set (`product.md`, `ARCHITECTURE.md`,
 a handbook, a wiki). Practice plugins that already point at docs-review keep
 those pointers.
 

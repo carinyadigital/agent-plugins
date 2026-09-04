@@ -7,7 +7,7 @@ last_updated: <!-- YYYY-MM-DD -->
 related:
   - docs/product/roadmap.md
   - docs/product/backlog.md
-  - docs/architecture/solution.md
+  - ARCHITECTURE.md
 ---
 
 <!--
@@ -43,7 +43,7 @@ Do NOT include: tech stack, APIs, epic lists, phase dates, ADR bodies.
 
 ## 7. Outcome metrics
 
-<!-- Reference solution.md §2.1 for thresholds -->
+<!-- Reference ARCHITECTURE.md §1 for thresholds -->
 
 ## 8. Product principles
 

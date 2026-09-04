@@ -20,24 +20,41 @@ order — first match wins:
 ## Document layout
 
 ```text
+ARCHITECTURE.md               system architecture (arc42)
 docs/product/                 product.md, roadmap.md, backlog.md
-docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
-specs/{work-short-name}/          design.md; TASKS.local.md when required  (owned by engineering / product-management)
+docs/architecture/            decisions/register.md, ADR-NNNN-*.md
+specs/{work-short-name}/      design.md; TASKS.local.md when required  (owned by engineering / product-management)
 ```
 
-Write architecture artefacts under `docs/architecture/`.
+Write the architecture narrative at repo-root `ARCHITECTURE.md`. Write ADRs
+under `docs/architecture/decisions/`.
 
 Override paths when the user names them explicitly in the request.
+
+## Architecture file — read / write
+
+**Write** (`/architecture:solution`):
+
+1. Path the user named.
+2. `ARCHITECTURE.md` at the target repo root.
+
+**Read** (any skill consuming architecture):
+
+1. Path the user named.
+2. `artefactPaths.architecture` from bound target config, if present.
+3. `ARCHITECTURE.md` at the target repo root.
+4. Legacy `docs/architecture/solution.md` — treat as superseded; the
+   `solution` skill migrates it into `ARCHITECTURE.md`.
 
 ## Artefact boundaries
 
 | Content | Belongs in | Not in |
 | ------- | ---------- | ------ |
-| Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | design.md (cite only) |
-| ADR decisions | `docs/architecture/decisions/` | solution narrative |
-| Work-item implementation spec | `{work-dir}/design.md` | solution, backlog |
-| Business strategy, personas, outcomes | `docs/product/product.md` | solution |
-| Task Gherkin AC | `specs/{work-short-name}/TASKS.local.md` | solution |
+| Architecture, NFRs, cross-epic patterns | `ARCHITECTURE.md` | design.md (cite only) |
+| ADR decisions | `docs/architecture/decisions/` | `ARCHITECTURE.md` |
+| Work-item implementation spec | `{work-dir}/design.md` | architecture, backlog |
+| Business strategy, personas, outcomes | `docs/product/product.md` | architecture |
+| Task Gherkin AC | `specs/{work-short-name}/TASKS.local.md` | architecture |
 
 ## Companion practices
 
@@ -63,7 +80,7 @@ See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 
 | User intent | Skill | Notes |
 | ----------- | ----- | ----- |
-| System architecture / arc42 | **solution** | Writes `docs/architecture/solution.md` |
+| System architecture / arc42 | **solution** | Writes `ARCHITECTURE.md` |
 | ADR plan / write / review | **adr** | Register + `ADR-NNNN-*.md` |
 | Work-item `design.md` | `/engineering:design` | Companion — not this practice |
 | Docs quality / consistency | `/engineering:docs-review` | Companion |

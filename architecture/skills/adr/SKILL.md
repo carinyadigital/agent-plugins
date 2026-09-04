@@ -5,7 +5,7 @@ description: >
   review under docs/architecture/decisions/. Triggers on "do we need an ADR",
   "write ADR-0007", "record this decision", "what decisions need making",
   "harvest ADRs from this epic", "harvest ADRs from JIRA-123". Do NOT use for
-  full architecture narrative (solution), work-item Solution Design (design), or
+  full architecture narrative (solution / ARCHITECTURE.md), work-item Solution Design (design), or
   product strategy (product). Proposals stay in register.md only until
   accepted.
 license: Apache-2.0
@@ -59,7 +59,7 @@ within the register the user targets.
    [work-item-resolution.md](../../references/work-item-resolution.md),
    harvests decisions already made in `{work-dir}/design.md`, and
    triages them into the register. Without a work item it surveys product.md
-   and solution.md for decisions still to be made.
+   and ARCHITECTURE.md for decisions still to be made.
 3. [prompts/plan.prompt.md](prompts/plan.prompt.md) | [prompts/write.prompt.md](prompts/write.prompt.md) | [prompts/review.prompt.md](prompts/review.prompt.md).
 
 ## Related skills

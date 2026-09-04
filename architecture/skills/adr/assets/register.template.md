@@ -4,7 +4,7 @@ status: Current
 owner: <!-- Squad name -->
 last_updated: <!-- YYYY-MM-DD -->
 related:
-  - docs/architecture/solution.md
+  - ARCHITECTURE.md
   - docs/product/product.md
 ---
 

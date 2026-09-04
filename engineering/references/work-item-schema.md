@@ -133,7 +133,7 @@ for **backlog-refine**, not a default.
 | Expected vs actual | Yes | What should happen vs what does |
 | Acceptance | Yes | The reproduction's `Then` now holds; regression coverage named |
 | Priority | Yes | `P0`–`P3`, weighted by user impact |
-| Design | No | Only if the fix touches architecture — cite `solution.md §{N.M}` |
+| Design | No | Only if the fix touches architecture — cite `ARCHITECTURE.md §{N}` |
 
 ## Spike
 

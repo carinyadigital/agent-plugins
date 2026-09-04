@@ -16,7 +16,7 @@
     "should_trigger": true
   },
   {
-    "query": "Update solution.md with the orders API and module layout.",
+    "query": "Update ARCHITECTURE.md with the orders API and module layout.",
     "should_trigger": false,
     "note": "solution"
   },

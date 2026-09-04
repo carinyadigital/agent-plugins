@@ -10,7 +10,7 @@ source: specs/checkout-foundation/design.md
 related:
   - docs/product/backlog.md
   - specs/checkout-foundation/design.md
-  - docs/architecture/solution.md
+  - ARCHITECTURE.md
 ---
 
 # Tasks — Checkout Foundation (CHK01)
@@ -58,7 +58,7 @@ end to end.
       Given the checkout module is installed
       When a server component imports { OrderViewModel } from '@/modules/checkout'
       Then the import resolves without error
-      And the type matches solution.md §6 exactly
+      And the type matches ARCHITECTURE.md §8 exactly
 
     Scenario: Client barrel leaks no server-only code
       Given the checkout module is installed
@@ -145,7 +145,7 @@ Scenario: placeOrder returns a typed not-implemented result
 
 ```
 THE SYSTEM SHALL expose placeOrder with the signature specified in
-solution.md §7, so that CHK02 can replace the body without changing callers.
+ARCHITECTURE.md §8, so that CHK02 can replace the body without changing callers.
 
 IF placeOrder is invoked in a production build
 THEN THE SYSTEM SHALL log a warning naming CHK02 as the implementing epic.
@@ -156,7 +156,7 @@ THEN THE SYSTEM SHALL log a warning naming CHK02 as the implementing epic.
 - [ ] **[CHK01-05]** [S2] placeOrder server action stub — `modules/checkout/actions/place-order.ts`
   - **Status:** To do | **Estimate:** 2 | **Owner:** TBD
   - **Depends on:** CHK01-03
-  - **Deliverable:** Server Action matching the solution.md §7 signature,
+  - **Deliverable:** Server Action matching the ARCHITECTURE.md §8 signature,
     returning `NOT_IMPLEMENTED` and making no external call.
 
 ## 5. Cross-cutting
@@ -185,7 +185,7 @@ available, no action needed.
 
 ### Stories to design and architecture
 
-| Story | design.md § | solution.md § |
+| Story | design.md § | ARCHITECTURE.md § |
 | ----- | ----------- | ------------- |
 | S1 | §2.4 Route group | §6 Data model, §4 Building blocks |
 | S2 | §2.5 Server actions | §7 Error taxonomy |

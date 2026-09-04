@@ -12,7 +12,7 @@ supersedes: null
 DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
 DO NOT INCLUDE in ADR-NNNN.md:
   - Business rationale or commercial justification    → product.md
-  - Implementation instructions or code               → solution.md or {work-dir}/design.md
+  - Implementation instructions or code               → ARCHITECTURE.md or {work-dir}/design.md
   - Requirements that are not directly relevant to the decision
   - Epic-level scope or delivery sequencing            → roadmap.md or backlog.md
 An ADR records one decision: context, options, the choice, and its consequences.

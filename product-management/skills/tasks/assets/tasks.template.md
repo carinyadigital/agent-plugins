@@ -8,7 +8,7 @@ Used at two levels: an epic's own TASKS.local.md (stories + tasks, §4 present),
 a story's own TASKS.local.md when it gets further breakdown (sub-tasks only — omit
 §4 Stories and go straight from §3 to a flat sub-task list shaped like §5).
 DO NOT INCLUDE in TASKS.local.md:
-  - Architecture narrative → cite solution.md §N.M
+  - Architecture narrative → cite ARCHITECTURE.md §N.M
   - Design narrative → cite ./design.md#section
   - New epics → docs/product/backlog.md via tasks --product
   - Business rationale → product.md
@@ -28,7 +28,7 @@ source: <!-- design.md | path to the spec this was decomposed from -->
 related:
   - docs/product/backlog.md
   - {work-dir}/design.md
-  - docs/architecture/solution.md
+  - ARCHITECTURE.md
 ---
 
 # Tasks — {Work item title} ({WORK-ID})
@@ -160,7 +160,7 @@ IF {condition} THEN THE SYSTEM SHALL {behaviour}
 
 ### Stories to design and architecture
 
-| Story | design.md § | solution.md § |
+| Story | design.md § | ARCHITECTURE.md § |
 | ----- | ----------- | ------------- |
 
 ### Definition of Done (work item-wide)

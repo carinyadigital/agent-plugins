@@ -133,7 +133,8 @@ On bind (after separate confirmation per target repo), write:
 ```text
 config/target.json         ← binding pointer + repo identity (name, instance, target)
 docs/product/              ← product.md, roadmap.md, backlog.md (created by product skills)
-docs/architecture/         ← solution.md, decisions/ (created by architecture skills)
+ARCHITECTURE.md            ← system architecture (arc42)
+docs/architecture/         ← decisions/ (created by architecture skills)
 specs/                     ← work-item folders (design.md, TASKS.local.md)
 docs/work/                 ← sprint plan/retro; SEO research (not work-item specs)
 reviews/                   ← review tracking JSON (gitignored, never committed)

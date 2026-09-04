@@ -92,7 +92,7 @@ Path and boundary rules: `references/product-conventions.md` and
 | Need | Plugin | Invoke |
 | ---- | ------ | ------ |
 | Architecture (`solution`, `adr`) | **architecture** | `/architecture:solution`, `/architecture:adr` |
-| Technical design, implementation | **engineering** | `/engineering:tdd`, `/engineering:implement` |
+| Technical design, implementation | **engineering** | `/engineering:design`, `/engineering:implement` |
 | Brand voice and visual identity | **brand-creative** | `/brand-creative:*` |
 
 ## Coverage

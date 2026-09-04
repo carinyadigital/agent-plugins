@@ -6,8 +6,8 @@ practice model: edit skills here only; nothing is vendored from elsewhere.
 
 Install standalone or after practice `setup` (writes `config/instance.json` if
 absent) recommends it. Declare `engineering` as a **companion practice**
-for work-item `tdd.md`, docs review, and implementation — invoke
-`/engineering:tdd` and related skills directly rather than bundling
+for work-item `design.md`, docs review, and implementation — invoke
+`/engineering:design` and related skills directly rather than bundling
 duplicates.
 
 ## Persona
@@ -16,7 +16,7 @@ duplicates.
 | ------- | -------------- | ----- |
 | **Principal Architect** | `solution`, `adr` | Architecture — solution.md and ADRs |
 
-Work-item technical design stays in `engineering` (`tdd`). Document-set
+Work-item technical design stays in `engineering` (`design`, alias `tdd`). Document-set
 quality review stays in `engineering` (`docs-review`).
 
 ```
@@ -28,7 +28,7 @@ quality review stays in `engineering` (`docs-review`).
 For work-item design and delivery:
 
 ```
-/engineering:tdd checkout-foundation
+/engineering:design checkout-foundation
 /engineering:implement CHK01-01
 /engineering:docs-review docs/architecture/
 ```
@@ -63,7 +63,7 @@ Path and boundary rules: `references/architecture-conventions.md`.
 
 - **Instance profile** (optional) — practice `setup` writes `config/instance.json`
   if absent; setup reads cadence and target hints without re-asking.
-- **engineering** (recommended companion) — `tdd`, `docs-review`,
+- **engineering** (recommended companion) — `design`, `docs-review`,
   `implement`, and related delivery skills; see CONNECTORS.md.
 - **product-management** (optional companion) — product.md / roadmap upstream of
   solution.
@@ -74,7 +74,7 @@ Path and boundary rules: `references/architecture-conventions.md`.
 
 1. Run `/architecture:solution` (stub or full) for system architecture.
 2. Run `/architecture:adr plan` then `adr write` for consequential decisions.
-3. Hand off work-item design to `/engineering:tdd`.
+3. Hand off work-item design to `/engineering:design`.
 4. Re-run `/architecture:setup --redo` to refresh architecture defaults.
 
 ## References

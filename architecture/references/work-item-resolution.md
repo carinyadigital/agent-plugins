@@ -65,8 +65,11 @@ writing anything — do not default to creating a filesystem backlog silently.
 
 **Only when the resolved system is Linear or Jira**, and only after resolving
 it fresh (not when Step 1 already trusted an existing pointer): write
-`TASKS.local.md` at the repo root using
-[assets/tasks-local.template.md](../assets/tasks-local.template.md).
+`TASKS.local.md` at the repo root. The pointer template is owned by the
+`tasks` skill (`product-management` companion —
+`skills/tasks/assets/tasks-local.template.md`). If that companion is not
+installed, write the same fields: **Source**, **Site / workspace**,
+**Project / team key**, **Resolved**, **Resolved by**.
 
 GitHub/GitLab and filesystem do not get a pointer — they are cheap to
 re-derive (`git remote -v`, or the presence of `backlog.md`) every time, and
@@ -120,7 +123,7 @@ discovered, use `{work-id}` (`specs/JIRA-123/`, `specs/CHK01/`). See
 [delivery-conventions.md](delivery-conventions.md#work-short-name-work-short-name)
 for the discovery order.
 
-An epic's design lives at `specs/{work-short-name}/tdd.md`; its local task
+An epic's design lives at `{work-dir}/design.md`; its local task
 breakdown, when required, at `specs/{work-short-name}/TASKS.local.md`. A
 story, bug, or spike that gets its own design or further breakdown lives in
 its own `specs/{work-short-name}/` folder, alongside — not nested inside —

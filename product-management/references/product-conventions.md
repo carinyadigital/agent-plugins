@@ -9,7 +9,7 @@ Skills that write under `docs/product/` should read this file when resolving pat
 docs/product/               product.md, roadmap.md, backlog.md
 docs/research/              synthesis, competitive briefs, metrics reviews (optional)
 docs/updates/               stakeholder updates (optional)
-specs/{work-short-name}/        tdd.md; TASKS.local.md when required — see delivery-conventions.md
+specs/{work-short-name}/        design.md; TASKS.local.md when required — see delivery-conventions.md
 docs/work/sprint-{id}/      plan.md, retrospective.md — see delivery-conventions.md
 ```
 
@@ -63,7 +63,7 @@ roadmap via `/product-management:tasks --product`.
 
 Architecture skills live in `architecture` (`/architecture:solution`,
 `/architecture:adr`). Engineering skills live in `engineering`
-(`/engineering:tdd`, `implement`, `code-review`, `docs-review`, …).
+(`/engineering:design`, `implement`, `code-review`, `docs-review`, …).
 
 When companions are not installed, continue from user input. At architecture
 boundaries:

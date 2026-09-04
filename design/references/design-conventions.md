@@ -46,8 +46,8 @@ skill; read the artefact directly when present.
 artifact-consumption pattern as `brand-guide.md`. No install dependency in either
 direction.
 
-Epic-level technical design (`specs/{work-short-name}/tdd.md`) remains owned by
-`/engineering:tdd` — wireframes here are UX layout specs, not implementation
+Epic-level technical design (`{work-dir}/design.md`) remains owned by
+`/engineering:design` — wireframes here are UX layout specs, not implementation
 design docs.
 
 ## Companion practice (engineering)
@@ -60,7 +60,7 @@ co-install. Document in CONNECTORS.md.
 | User intent | Skill | Notes |
 | ----------- | ----- | ----- |
 | Low-fidelity page or flow layout | **wireframe** | Writes to `<design-dir>/` |
-| Epic implementation spec | `/engineering:tdd` | Technical design — not this practice |
+| Epic implementation spec | `/engineering:design` | Technical design — not this practice |
 | System architecture / ADRs | `/architecture:solution`, `/architecture:adr` | Architecture practice |
 | Visual brand tokens, colour, type | `/brand-creative:brand-guide` | Brand practice |
 | Usability review, research synthesis | — | Deferred in v1 — not shipped |
@@ -69,12 +69,12 @@ co-install. Document in CONNECTORS.md.
 
 | Content | Belongs in | Not in |
 | ------- | ---------- | ------ |
-| Page/flow layout, interaction notes | `<design-dir>/{page-or-flow}.md` | brand-guide, epic tdd.md |
+| Page/flow layout, interaction notes | `<design-dir>/{page-or-flow}.md` | brand-guide, epic design.md |
 | Visual tokens, colour, typography | `brand/brand-guide.md` | wireframe specs |
-| Epic implementation spec, file list | `specs/{work-short-name}/tdd.md` | wireframe specs |
+| Epic implementation spec, file list | `{work-dir}/design.md` | wireframe specs |
 | Business strategy, personas | `docs/product/product.md` | wireframe specs |
 | Task Gherkin AC | `specs/{work-short-name}/TASKS.local.md` | wireframe specs |
 
 Wireframe specs describe **what the user sees and does** at low fidelity. They do
 not prescribe component names, file paths, or API contracts — those belong in
-`/engineering:tdd`.
+`/engineering:design`.

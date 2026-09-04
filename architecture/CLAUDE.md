@@ -53,7 +53,7 @@ tree. Repo binding stays in `config/target.json`.
 | Integration | Status | Fallback if unavailable |
 | ----------- | ------ | ----------------------- |
 | Source control | [✓ / ✗] | Manual work-id / path references |
-| Project tracker | [✓ / ✗] | Filesystem backlog / tdd.md only |
+| Project tracker | [✓ / ✗] | Filesystem backlog / design.md only |
 
 *Re-check: `/architecture:setup --check-integrations`*
 

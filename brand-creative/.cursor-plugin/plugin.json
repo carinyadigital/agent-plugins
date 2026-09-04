@@ -2,9 +2,9 @@
   "name": "brand-creative",
   "displayName": "Brand Creative",
   "version": "0.4.4",
-  "description": "Complete brand practice in one install \u2014 setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/.",
+  "description": "Complete brand practice in one install — setup interview, brand-voice lifecycle, and brand-guide visual identity. Writes to the instance brand/ directory when bound; standalone Try tier uses docs/brand/.",
   "author": {
-    "name": "Carinya Parc"
+    "name": "Carinya Digital"
   },
   "license": "Apache-2.0",
   "keywords": [

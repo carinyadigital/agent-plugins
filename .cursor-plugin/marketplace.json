@@ -1,9 +1,9 @@
 {
-  "name": "carinya-plugins",
-  "displayName": "Carinya Parc",
+  "name": "agent-plugins",
+  "displayName": "Carinya Digital",
   "owner": {
     "name": "Carinya Parc Pty Ltd",
-    "url": "https://github.com/carinyaparc"
+    "url": "https://github.com/carinyadigital"
   },
   "plugins": [
     {
@@ -64,7 +64,7 @@
       "name": "plugin-management",
       "displayName": "Plugin Management",
       "source": "./plugin-management",
-      "description": "Create, customize, and manage plugins for the carinya-plugins marketplace — guided create-plugin and customize-plugin workflows, component authoring (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release), plus skill quality gates (skills-qa, skill-review) and Phase 0 tooling (eval-grader, validate_ralph, templates)."
+      "description": "Create, customize, and manage plugins for the agent-plugins marketplace — guided create-plugin and customize-plugin workflows, component authoring (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release), plus skill quality gates (skills-qa, skill-review) and Phase 0 tooling (eval-grader, validate_ralph, templates)."
     },
     {
       "name": "document-management",

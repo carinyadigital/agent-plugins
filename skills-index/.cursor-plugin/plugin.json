@@ -2,9 +2,9 @@
   "name": "skills-index",
   "displayName": "Skills Index",
   "version": "0.4.4",
-  "description": "Install-aware skill router \u2014 find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task.",
+  "description": "Install-aware skill router — find the right skill among installed plugins, or offer marketplace install commands for the rest. Also surfaces related uninstalled plugins after a task.",
   "author": {
-    "name": "Carinya Parc"
+    "name": "Carinya Digital"
   },
   "license": "Apache-2.0",
   "keywords": [

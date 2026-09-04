@@ -4,7 +4,7 @@
   "version": "0.1.2",
   "description": "Set up, structure, audit, and keep current the docs/ tree — scaffold or reorganise to Diátaxis, then score, detect drift, check voice, and apply approved fixes. Two skills, two agents, docs/-only writes.",
   "author": {
-    "name": "Carinya Parc"
+    "name": "Carinya Digital"
   },
   "license": "Apache-2.0",
   "keywords": [

@@ -8,12 +8,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### ralph-loop
+## [2026-09-04] — engineering-delivery in ralph-loop
+
+Marketplace identity: `carinya-plugins` → `agent-plugins`. Display name and
+plugin author are **Carinya Digital**; owner URL is
+`https://github.com/carinyadigital`. Catalogue repo:
+`https://github.com/carinyadigital/agent-plugins`.
+
+### ralph-loop 0.7.0
 
 - `engineering-delivery` ships in `ralph-loop/skills/ralph-loop/assets/presets/`.
   Seed no longer looks up sibling `engineering/assets/ralph-presets/`.
 
-### engineering
+### engineering 0.8.3
 
 - Removed plugin-level `assets/ralph-presets/`. `deliver` invokes
   `/ralph-loop:ralph-loop-setup` when that plugin is installed, then reads

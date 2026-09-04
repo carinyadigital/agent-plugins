@@ -18,9 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### engineering
 
 - **BREAKING:** Renamed work-item Solution Design skill `tdd` → `design`
-  (artefact `design.md`; `tdd` remains an alias). Added `discover` and
-  `deliver` as agent-only entry points and `discovery-review` as the Ready
-  for Development gate.
+  (artefact `design.md`). The `tdd` alias skill is removed — invoke
+  `/engineering:design`. Added `discover` and `deliver` as agent-only
+  entry points and `discovery-review` as the Ready for Development gate.
 - **BREAKING:** Renamed `merge-request-babysit` → `merge-request-watch`.
 - **BREAKING:** Removed `final-code-review` and `merge-request-review`. Use
   `code-review` for PR/MR review (including as assigned reviewer). Use

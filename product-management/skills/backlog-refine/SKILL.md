@@ -126,7 +126,7 @@ A grooming pass MUST NOT:
 - Create a backlog, or write new stories and tasks from a spec → **tasks**
 - Commit scope to a sprint → **sprint-planning**
 - Verify acceptance criteria against the codebase → **validate**
-- Rewrite architecture or design → **solution**, **tdd**
+- Rewrite architecture or design → **solution**, **design**
 - Re-sequence delivery phases or change exit criteria → **roadmap**
 - Restructure the whole artefact inline — that is **tasks** rewriting it
 - Invent delivery evidence, velocity, or estimates not present in the context

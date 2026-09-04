@@ -5,7 +5,7 @@ description: >
   review under docs/architecture/decisions/. Triggers on "do we need an ADR",
   "write ADR-0007", "record this decision", "what decisions need making",
   "harvest ADRs from this epic", "harvest ADRs from JIRA-123". Do NOT use for
-  full architecture narrative (solution), work-item Solution Design (design, alias tdd), or
+  full architecture narrative (solution), work-item Solution Design (design), or
   product strategy (product). Proposals stay in register.md only until
   accepted.
 license: Apache-2.0

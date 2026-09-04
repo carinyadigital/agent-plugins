@@ -23,11 +23,11 @@
     },
     {
       "id": 3,
-      "prompt": "tdd CHK01 — skeleton, files we ship this sprint.",
-      "expected_output": "Same as design: writes specs/checkout-foundation/design.md via the tdd alias.",
+      "prompt": "Write a Solution Design for JIRA-123. It is a story under checkout-foundation.",
+      "expected_output": "Writes the story's design.md in its own specs/ folder, citing the parent epic by ID rather than nesting under it.",
       "assertions": [
-        "Treats tdd as an alias for design",
-        "Writes specs/checkout-foundation/design.md, not design.md"
+        "Writes a story-level design.md beside (not inside) the epic folder",
+        "Cites the parent epic by ID rather than copying its design.md"
       ]
     }
   ]

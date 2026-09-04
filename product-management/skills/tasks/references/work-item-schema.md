@@ -22,8 +22,8 @@ skill *behaviour*; ask the user when the mapping is unclear.
 
 | Type | Decomposes into | Carries its own AC? | Typical next skill |
 | ---- | ---------------- | -------------------- | ------------------- |
-| `epic` | Stories and tasks | No — AC lives on its stories | **tdd**, **tasks** |
-| `story` | Tasks (sub-tasks) | Yes — the primary AC holder | **tasks**, **tdd** (if it needs its own) |
+| `epic` | Stories and tasks | No — AC lives on its stories | **design**, **tasks** |
+| `story` | Tasks (sub-tasks) | Yes — the primary AC holder | **tasks**, **design** (if it needs its own) |
 | `task` | Nothing further (it's the unit of work) | Inherits its story's AC, or carries its own if foundational | **implement** |
 | `bug` | Nothing further, unless large enough to need sub-tasks | Yes — reproduction as Given/When, fix as Then | **implement** |
 | `spike` | Nothing further — it is time-boxed | No — it produces a decision or document, not code | **implement** (the spike itself), then **adr** or **tasks** for what it unblocks |
@@ -66,7 +66,7 @@ scope the product strategy would not support — say so rather than writing it.
 
 A user-visible outcome inside an epic. **Carries the acceptance criteria.**
 Anything can get a `design.md` at story level if the work warrants it — run
-`tdd {story-id}` directly; it writes to `{work-dir}/design.md`,
+`design {story-id}` directly; it writes to `{work-dir}/design.md`,
 citing the parent epic by ID rather than nesting under its folder.
 
 | Field | Required | Legal values |

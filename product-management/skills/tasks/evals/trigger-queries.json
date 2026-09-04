@@ -49,7 +49,7 @@
   {
     "query": "write the epic design",
     "should_trigger": false,
-    "note": "tdd"
+    "note": "design"
   },
   {
     "query": "write the architecture",

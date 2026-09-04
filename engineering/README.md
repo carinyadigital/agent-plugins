@@ -1,7 +1,7 @@
 # engineering
 
 Root-level **practice plugin** — one install delivers the complete web engineering
-service: setup interview, Solution Design (design, alias tdd), implementation, code review, QA,
+service: setup interview, Solution Design (`design`), implementation, code review, QA,
 and platform operations. Self-contained under the MECE practice model: edit skills
 here only; nothing is vendored from elsewhere.
 
@@ -83,7 +83,7 @@ target binding.
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile, target binding, stack defaults |
-| **design** | write — `{work-dir}/design.md` (`tdd` is an alias); review via `docs-review` |
+| **design** | write — `{work-dir}/design.md`; review via `docs-review` |
 | **discovery-review** | Ready for Development gate on design.md + tasks + solution |
 | **implement** | Implement a task against approved design.md and AC |
 | **code-review** | Read-only peer review; verdict + JSON co-located under `specs/` |

@@ -323,7 +323,7 @@ Grouped by agency service line. Each plugin's **`setup`** is what tailors it to 
 | Plugin | What it adds |
 |---|---|
 | **[architecture](./architecture)** | Solution design (`solution`) and architecture decision records (`adr`). One persona (Principal Architect). Companion to `engineering` for work-item `design` and implementation. |
-| **[engineering](./engineering)** | Solution Design (`design`, alias `tdd`), implementation, code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Five personas share one library; `discover` / `deliver` agents cover the usual path; `architecture` and `product-management` are recommended companions. |
+| **[engineering](./engineering)** | Solution Design (`design`), implementation, code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Five personas share one library; `discover` / `deliver` agents cover the usual path; `architecture` and `product-management` are recommended companions. |
 
 ### Platform
 
@@ -461,7 +461,7 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | Command | Skill | What it does |
 |---|---|---|
 | `/engineering:setup` | setup | Learns stack, personas, target binding, connectors |
-| `/engineering:design` | design | write — `{work-dir}/design.md` (`tdd` alias); review via `docs-review` |
+| `/engineering:design` | design | write — `{work-dir}/design.md`; review via `docs-review` |
 | `/engineering:discovery-review` | discovery-review | Ready for Development gate on design.md + tasks |
 | `/engineering:implement` | implement | Implement a task against approved design.md and AC |
 | `/engineering:code-review` | code-review | Read-only peer review against design.md and tasks |

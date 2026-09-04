@@ -4,12 +4,12 @@ description: >
   Use when the user wants a work-item Solution Design (epic, story, bug, or
   spike) in skeleton or full mode. Pass a work-item ID (CHK01, JIRA-123).
   Writes {work-dir}/design.md; cite solution.md, do not re-narrate
-  architecture. `tdd` is an alias for this skill. Triggers on "design CHK01",
-  "tdd CHK01", "write the solution design", "write the technical design",
-  "design the epic", "how should we build this story". Do NOT use for
-  test-driven development (implement), breakdown/Gherkin (tasks), system
-  architecture (solution), ADRs (adr), UX review (ux-design-review), code
-  (implement), or Ready for Development review (discovery-review).
+  architecture. Triggers on "design CHK01", "write the solution design",
+  "write the technical design", "design the epic", "how should we build this
+  story". Do NOT use for test-driven development (implement),
+  breakdown/Gherkin (tasks), system architecture (solution), ADRs (adr), UX
+  review (ux-design-review), code (implement), or Ready for Development
+  review (discovery-review).
 license: Apache-2.0
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:
@@ -48,7 +48,7 @@ This skill writes a work-item Solution Design. It is **not** system
 architecture (`docs/architecture/solution.md` belongs to
 `/architecture:solution`) and **not** test-driven development — requests to
 write a failing test first, or to drive code through red/green/refactor,
-belong to **implement**. The `tdd` skill is an alias of this one.
+belong to **implement**.
 
 ## Conventions
 
@@ -61,8 +61,8 @@ when resolving `{work-id}` or checking artefact boundaries.
 item (skeleton or full). A story's Solution Design sits in its own `{work-dir}/`
 folder, alongside its parent epic's folder, not inside it.
 
-If `{work-dir}/design.md` is missing and `{work-dir}/design.md` exists, rename
-`design.md` to `design.md` (`git mv` when the repo is git) before updating —
+If `{work-dir}/design.md` is missing and `{work-dir}/tdd.md` exists, rename
+`tdd.md` to `design.md` (`git mv` when the repo is git) before updating —
 do not keep both files.
 
 ## Path resolution
@@ -115,7 +115,7 @@ if updating, codebase]
 - [ ] No Gherkin task scenarios (gates/slice only)
 - [ ] Mode-appropriate sections only (skeleton vs full)
 - [ ] DRAFTING AIDE block removed
-- [ ] Legacy `{work-dir}/design.md` is not left beside `design.md`
+- [ ] Legacy `{work-dir}/tdd.md` is not left beside `design.md`
 
 ## Output format
 
@@ -150,4 +150,3 @@ hands the promoted ones to `/architecture:adr write`.
 - `discovery-review` — Ready for Development gate on design.md + tasks + solution
 - `docs-review` — review or critique an existing design.md
 - `deliver` agent — implement the approved Solution Design end to end
-- `tdd` — alias that loads this skill

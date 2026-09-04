@@ -8,7 +8,7 @@ description: >
   this into a backlog", "write the epics", "decompose checkout-foundation",
   "turn this RFC into tickets", "write tasks for CHK01", "what stories do we
   need". EARS with --ears. Do NOT use for backlog grooming (backlog-refine),
-  Solution Design (design, alias tdd), architecture (solution), phasing (roadmap), code
+  Solution Design (design), architecture (solution), phasing (roadmap), code
   (implement), or sign-off (validate).
 license: Apache-2.0
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
@@ -203,7 +203,7 @@ This skill decomposes. It MUST NOT:
 - Guess the source system, ID, or type when ambiguous — ask, per
   work-item-resolution.md's ask-first checklist
 - Groom an existing backlog or judge sprint readiness → **backlog-refine**
-- Write design narrative at any level → `{work-dir}/design.md` via **tdd**
+- Write design narrative at any level → `{work-dir}/design.md` via **design**
 - Write architecture, NFRs, or cross-epic patterns → `solution.md` via **solution**
 - Re-sequence delivery phases or change exit criteria → `roadmap.md` via **roadmap**
 - Change business strategy, personas, or outcomes → `product.md` via **product**
@@ -222,7 +222,7 @@ Write the artefacts, then report:
 - **Structure** — epic count, or story and task counts with the MVP named
 - **Dependency order** — what blocks what; which tasks are parallel
 - **Gaps** — anything marked `[NEEDS CLARIFICATION]` and what would resolve it
-- **Next** — **tdd** if the work item has no technical design yet, **implement**
+- **Next** — **design** if the work item has no technical design yet, **implement**
   per task once the Solution Design and tasks are approved, **backlog-refine** before
   committing to a sprint
 

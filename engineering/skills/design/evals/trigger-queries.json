@@ -8,7 +8,7 @@
     "should_trigger": true
   },
   {
-    "query": "tdd JIRA-123 — how should we build this story?",
+    "query": "How should we build JIRA-123?",
     "should_trigger": true
   },
   {

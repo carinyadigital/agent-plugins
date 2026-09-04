@@ -12,7 +12,7 @@ description: >
   item through review and an MR (deliver), code review (code-review),
   addressing review feedback (code-review-fix), changing how existing UI looks
   or behaves (ux-design-fix), writing tasks (tasks), or writing a Solution
-  Design (design / tdd).
+  Design (design).
 license: Apache-2.0
 compatibility: Requires git and the project's own validation toolchain (formatter, linter, typechecker, test runner).
 allowed-tools:
@@ -164,7 +164,7 @@ After completing implementation, write a summary:
 
 ## Related workflow
 
-- `design` (alias `tdd`) — work-item Solution Design
+- `design` — work-item Solution Design
 - `/product-management:tasks` — Gherkin AC / local breakdown
 - `discovery-review` — Ready for Development gate before this skill
 - `discover` agent — write Solution Design + tasks until that gate passes

@@ -5,7 +5,7 @@ description: >
   Drafts or re-authors the document. Triggers on "write the architecture",
   "solution design", "arc42". Re-authoring also covers architectural critique
   — docs-review covers writing quality only. Do NOT use for product strategy,
-  roadmap phases, epic/story breakdown (tasks), work-item design (tdd), or
+  roadmap phases, epic/story breakdown (tasks), work-item design (design), or
   ADRs (adr).
 license: Apache-2.0
 allowed-tools:

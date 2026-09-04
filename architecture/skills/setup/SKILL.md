@@ -151,4 +151,4 @@ Location: `<instance-root>/config/.architecture-setup-resume.json` if instance e
 | Practice profile | `~/.claude/plugins/config/digital-agency/architecture/CLAUDE.md` |
 | Target binding (when confirmed) | `config/target.json` at target repo root |
 
-Next: invoke `/architecture:solution` or `/architecture:adr`, or install companions for tdd / delivery.
+Next: invoke `/architecture:solution` or `/architecture:adr`, or install companions for design / delivery.

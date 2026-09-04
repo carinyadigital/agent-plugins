@@ -34,8 +34,8 @@ Sprint plans, retrospectives, and other non-work-item delivery docs stay under
 
 Any work item — epic,
 story, task, bug, spike, or whatever type the source system defines — can be
-the target of the `discover` and `deliver` agents or the `design` (alias
-`tdd`), `tasks`, `discovery-review`, `validate`, `backlog-refine`,
+the target of the `discover` and `deliver` agents or the `design`,
+`tasks`, `discovery-review`, `validate`, `backlog-refine`,
 `ralph-loop-setup`, and `implement` skills. What changes is the *behaviour* for that
 type, not whether the ID is accepted.
 
@@ -151,14 +151,14 @@ The work-item Solution Design (`design.md`) has two modes:
 
 Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
 The Solution Design applies at whatever level the user names: `design CHK01`
-(or alias `tdd CHK01`) writes the epic's design; `design JIRA-123` writes that
+writes the epic's design; `design JIRA-123` writes that
 story's design, sitting beside (not nested inside) its parent epic's folder
 and citing the parent by ID.
 
 If only a legacy `tdd.md` exists in `{work-dir}/`, rename it to `design.md`
 before updating.
 
-**Not test-driven development.** The `design` skill (alias `tdd`) writes a
+**Not test-driven development.** The `design` skill writes a
 Solution Design. Writing a failing test first, red/green/refactor, and test
 authoring in general belong to **implement**.
 
@@ -169,7 +169,7 @@ authoring in general belong to **implement**.
 | PRD, vision, why/who/what | **product** |
 | Phases, exit criteria | **roadmap** |
 | Epics, work paths, Now scope | **tasks --product** |
-| `design.md` (work-item Solution Design) | **design** (alias **tdd**) |
+| `design.md` (work-item Solution Design) | **design** |
 | `TASKS.local.md`, stories, Gherkin AC | **tasks** |
 | Decompose any spec or RFC into a backlog | **tasks** |
 | Groom a backlog, check sprint readiness | **backlog-refine** |

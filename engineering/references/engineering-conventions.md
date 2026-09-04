@@ -149,7 +149,7 @@ instructions: [doc-comments.md](doc-comments.md).
 
 Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
 The Solution Design applies at whatever level the user names (`design CHK01`,
-`tdd JIRA-123`). If only a legacy `tdd.md` exists, rename it to `design.md`
+`design JIRA-123`). If only a legacy `tdd.md` exists, rename it to `design.md`
 before updating.
 
 ## Personas
@@ -175,7 +175,7 @@ Work-item sign-off uses `/product-management:validate` (companion skill), not a 
 | System architecture | `/architecture:solution` | Companion — Principal Architect |
 | ADR write/review | `/architecture:adr` | Companion — Principal Architect |
 | Prepare a work item until Ready for Development | **discover agent** | Senior FE / Principal FE |
-| `design.md` for one work item | **design** (alias **tdd**) | Senior FE / Principal FE |
+| `design.md` for one work item | **design** | Senior FE / Principal FE |
 | Deliver every task through a merge-ready MR | **deliver agent** | Frontend Engineer |
 | Implement code | **implement** | Frontend Engineer |
 | PR / branch / MR code review | **code-review** | Senior FE / Principal FE |

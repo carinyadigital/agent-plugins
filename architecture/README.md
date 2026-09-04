@@ -16,7 +16,7 @@ duplicates.
 | ------- | -------------- | ----- |
 | **Principal Architect** | `solution`, `adr` | Architecture — solution.md and ADRs |
 
-Work-item technical design stays in `engineering` (`design`, alias `tdd`). Document-set
+Work-item technical design stays in `engineering` (`design`). Document-set
 quality review stays in `engineering` (`docs-review`).
 
 ```

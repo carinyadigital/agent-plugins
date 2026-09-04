@@ -11,7 +11,7 @@ description: >
   passes. Does not write a validation report. Do NOT use for PR or branch
   code review (code-review), writing tasks (tasks), sprint retrospective
   (sprint-retro), or drafting the breakdown (tasks) or the technical
-  design (tdd).
+  design (design).
 license: Apache-2.0
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:

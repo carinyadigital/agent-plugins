@@ -31,8 +31,8 @@ fail with a slash-command reference.
 | `engineering` | self | implement reads design.md from design skill | Internal |
 | `product-management` | `architecture` | product/roadmap recommend solution | Companion |
 | `product-management` | `engineering` | product/roadmap recommend docs-review; delivery skills route design/implement/review | Companion |
-| `architecture` | `engineering` | solution/adr hand off to tdd, docs-review, implement | Companion |
-| `engineering` | `architecture` | tdd/implement cite solution; recommend solution/adr writes | Companion |
+| `architecture` | `engineering` | solution/adr hand off to design, docs-review, implement | Companion |
+| `engineering` | `architecture` | design/implement cite solution; recommend solution/adr writes | Companion |
 | `engineering` | `product-management` | planning cadence, validate sign-off | Companion |
 | `engineering` | `design` | ux-design-review, ux-design-fix | Companion |
 | `design` | `engineering` | wireframe → implement; design.md for specs | Companion |
@@ -90,7 +90,7 @@ companion plugins.
 ## engineering:implement → design.md
 
 **Internal edge** (same plugin). `implement` reads `{work-dir}/design.md`
-written by the `design` skill (alias `tdd`).
+written by the `design` skill.
 
 | Condition | Behaviour |
 | --------- | --------- |

@@ -66,7 +66,7 @@ scope the product strategy would not support — say so rather than writing it.
 
 A user-visible outcome inside an epic. **Carries the acceptance criteria.**
 Anything can get a `design.md` at story level if the work warrants it — run
-`design {story-id}` (or alias `tdd {story-id}`) directly; it writes to
+`design {story-id}` directly; it writes to
 `{work-dir}/design.md`,
 citing the parent epic by ID rather than nesting under its folder.
 

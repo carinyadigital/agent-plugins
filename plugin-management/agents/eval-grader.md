@@ -1,6 +1,6 @@
 ---
 name: eval-grader
-description: Use this agent when grading skill eval runs against evals/evals.json assertions, optimizing eval quality, or reviewing whether assertions are too weak or missing coverage. Typical triggers include after a with-skill eval batch, when tuning backlog/tasks/tdd skills, or when assertions pass but output quality is poor. See "When to invoke" in the agent body.
+description: Use this agent when grading skill eval runs against evals/evals.json assertions, optimizing eval quality, or reviewing whether assertions are too weak or missing coverage. Typical triggers include after a with-skill eval batch, when tuning backlog/tasks/design skills, or when assertions pass but output quality is poor. See "When to invoke" in the agent body.
 model: inherit
 color: yellow
 tools: Read, Grep, Glob

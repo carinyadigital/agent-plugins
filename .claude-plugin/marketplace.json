@@ -65,6 +65,12 @@
       "displayName": "Plugin Management",
       "source": "./plugin-management",
       "description": "Create, customize, and manage plugins for the carinya-plugins marketplace — guided create-plugin and customize-plugin workflows, component authoring (structure, skills, agents, commands, hooks, MCP, settings, portability, marketplace/release), plus skill quality gates (skills-qa, skill-review) and Phase 0 tooling (eval-grader, validate_ralph, templates)."
+    },
+    {
+      "name": "document-management",
+      "displayName": "Document Management",
+      "source": "./document-management",
+      "description": "Set up, structure, audit, and keep current the docs/ tree — scaffold or reorganise to Diátaxis, then score, detect drift, check voice, and apply approved fixes. Two skills, two agents, docs/-only writes."
     }
   ]
 }

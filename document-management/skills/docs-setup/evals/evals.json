@@ -1,0 +1,59 @@
+{
+  "skill_name": "docs-setup",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Set up docs in this repo — we have no documentation structure yet, just a README.",
+      "expected_output": "Fresh-scaffold path. Surveys the repo, drafts a Diátaxis tree with only the folders needed now and full index.md contents in chat, then waits for confirmation before writing. Does not edit README.md.",
+      "assertions": [
+        "Chooses fresh scaffold, not reorganise",
+        "Drafts the proposed tree and landing-page contents in chat before writing",
+        "Waits for explicit confirmation before any write",
+        "Does not edit root README.md",
+        "Does not drop a Vale config unprompted"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our docs are a mess — everything's in one folder. Reorganise to Diátaxis.",
+      "expected_output": "Reorganise path. Classifies each doc, proposes a move-map and splits, leaves protected_paths in place, waits for approval, then git mv + link fixes.",
+      "assertions": [
+        "Skips scaffold-from-nothing",
+        "Produces a classification table and move-map",
+        "Does not move files under docs/architecture/, docs/product/, docs/design/, or docs/brand/",
+        "Requires explicit approval before git mv",
+        "Fixes inbound and outbound links after moves"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Reorganise our docs to Diátaxis.",
+      "expected_output": "If docs/ is empty or missing, refuse the reorg and offer a fresh scaffold instead.",
+      "assertions": [
+        "Does not run a reorg against an empty tree",
+        "Offers the fresh-scaffold path",
+        "Writes nothing until the user confirms the new path"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Reorganise docs/. There is a solution.md under docs/architecture/ and a messy how-to pile in docs/.",
+      "expected_output": "Move-map covers the messy how-to pile. ARCHITECTURE.md is reported as protected and not moved.",
+      "assertions": [
+        "Reports docs/architecture/ as protected",
+        "Does not git mv or edit ARCHITECTURE.md",
+        "Still proposes moves for unprotected docs/"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Scaffold a docs folder. Here's the tree I want — go ahead and write it.",
+      "expected_output": "Still shows the draft in chat and asks for confirmation before writing, even if the user sounds ready.",
+      "assertions": [
+        "Does not write on the first turn without an explicit confirmation gate",
+        "Shows full landing-page contents, not just a description",
+        "Write boundary remains docs_root only"
+      ]
+    }
+  ]
+}

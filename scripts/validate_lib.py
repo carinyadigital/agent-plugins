@@ -79,6 +79,7 @@ PRACTICE_PLUGIN_DIRS = (
     "ralph-loop",
     "skills-index",
     "plugin-management",
+    "document-management",
 )
 
 ORPHAN_SKILL_EXCLUDES = frozenset(

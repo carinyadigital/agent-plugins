@@ -24,6 +24,10 @@ Claude and Cursor plugins for digital agency workflows.
 ├── plugin-management/               # create/customize plugins + skills-qa / skill-review
 │   ├── references/                  # agency-skill-design-framework
 │   └── skills/
+├── document-management/             # utility plugin — docs-setup, docs-improve (docs/ tree lifecycle)
+│   ├── references/                  # Diátaxis, quality, drift, boundary, style, linters
+│   ├── agents/                      # docs-reviewer, docs-writer
+│   └── skills/
 ├── search-optimisation/             # practice plugin — keyword-research, technical-seo-audit, content-seo-review (MECE owned)
 │   ├── references/                  # search-optimisation-conventions + synced meta-framework files
 │   └── skills/
@@ -55,7 +59,7 @@ Claude and Cursor plugins for digital agency workflows.
 └── scripts/                         # sync-references.py, validate.py, validate_plugins.py, validate_skills.py
 ```
 
-Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `design/skills/`, `search-optimisation/skills/`, `engineering/skills/`, `architecture/skills/`).
+Practice plugins own their skills outright — edit skills in the owning plugin's `skills/` directory (`brand-creative/skills/`, `product-management/skills/`, `content-marketing/skills/`, `design/skills/`, `search-optimisation/skills/`, `engineering/skills/`, `architecture/skills/`). Utility plugins (`ralph-loop`, `skills-index`, `plugin-management`, `document-management`) own theirs the same way.
 
 Run `python3 scripts/sync-references.py` after editing shared meta-framework files in `references/` (`instance-profile-template.md`, `practice-setup-framework.md`).
 
@@ -73,6 +77,7 @@ Run `python3 scripts/validate.py` before opening a PR — it runs plugin-domain 
 | `ralph-loop` | `ralph-loop`, `ralph-loop-setup` | Shipped; ships hooks; engineering-delivery preset contributed by engineering |
 | `skills-index` | `find`, `related-skills-surfacer` | Shipped; install-aware router |
 | `plugin-management` | `create-plugin`, `customize-plugin`, component-authoring skills, `skills-qa`, `skill-review` | Shipped; meta-plugin + former skill-authoring quality gates |
+| `document-management` | `docs-setup`, `docs-improve` | Shipped; utility plugin — Docs Author persona; Diátaxis scaffold/reorg plus score/fix; coexists with `/engineering:docs-review` |
 | `search-optimisation` | `setup` + 3 SEO skills (`keyword-research`, `technical-seo-audit`, `content-seo-review`) | Shipped; one persona (SEO Specialist), no separate agent plugin; invokes `/product-management:competitive-brief` as companion skill |
 
 Practice `setup` skills bootstrap a git-versioned instance repo when `config/instance.json` is absent (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `brand-creative/README.md` and `brand-creative/references/agency-setup-framework.md`.

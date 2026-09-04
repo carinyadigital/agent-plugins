@@ -41,6 +41,8 @@ fail with a slash-command reference.
 | `engineering` | `ralph-loop` | autonomous delivery loop | Companion |
 | `skills-index` | all catalogue plugins | install-aware routing | Optional meta-plugin |
 | any practice | `brand-creative` | read brand-guide.md / brand-voice.md from resolved path | Artefact only |
+| `document-management` | `brand-creative` | artefact consumption of brand-voice.md (optional) | Artefact only |
+| `document-management` | `engineering` | docs-review remains the set-quality companion; this plugin owns the docs/ tree lifecycle | Optional |
 
 ---
 
@@ -191,7 +193,7 @@ Setup skills explicitly state they **do not install** companion plugins.
 
 ## brand-creative artefact consumption
 
-`engineering`, `content-marketing`, and others read
+`engineering`, `content-marketing`, `document-management`, and others read
 `brand-guide.md` / `brand-voice.md` from the resolved brand path.
 
 | Condition | Behaviour |
@@ -211,6 +213,46 @@ Setup skills explicitly state they **do not install** companion plugins.
    are not installed
 
 Does not invoke other plugins directly — recommendation only.
+
+---
+
+## document-management ↔ brand-creative / engineering
+
+`document-management` owns the **`docs/` tree lifecycle** (scaffold/reorganise
+to Diátaxis, then score/fix including drift and voice). It writes only inside
+`docs_root` (default `docs/`) and never auto-edits the default protected
+practice trees (`docs/architecture/`, `docs/product/`, `docs/design/`,
+`docs/brand/`).
+
+`/engineering:docs-review` remains the **set-quality companion**: a read-only
+quality/consistency review of *any* document set (`product.md`, `solution.md`,
+a handbook, a wiki). Practice plugins that already point at docs-review keep
+those pointers.
+
+| Need | Invoke |
+| ---- | ------ |
+| Scaffold or reorganise the `docs/` tree | `/document-management:docs-setup` |
+| Score/fix `docs/`, drift vs code, voice | `/document-management:docs-improve` |
+| "Are these docs any good / consistent?" with no tree or code-drift intent | `/engineering:docs-review` |
+
+### brand-voice.md (artefact consumption)
+
+| Condition | Behaviour |
+| --------- | --------- |
+| `<resolved-brand-path>/brand-voice.md` exists | Read and apply as the judgement layer |
+| Artefact absent | Ask for tone inline; use the plugin style guide |
+| `brand-creative` not installed | No install required |
+
+### engineering:docs-review (optional companion)
+
+| Condition | Behaviour |
+| --------- | --------- |
+| `engineering` installed | For pure set-quality review, recommend `/engineering:docs-review` |
+| Not installed | Continue tree lifecycle work; set-quality review can wait |
+
+When `document-management` is not installed: practices keep using
+`/engineering:docs-review` for document-set quality. Missing this plugin does
+not block architecture, product, or engineering work.
 
 ---
 
@@ -247,5 +289,6 @@ run in the monorepo, not in the plugin cache.
 | ralph-loop | — | Hooks only |
 | skills-index | — | Router only |
 | plugin-management | — | Meta-plugin + skill QA tooling |
+| document-management | — | Utility; no bundled MCP |
 
 Skills degrade when a connector is absent — see each plugin's `CONNECTORS.md`.

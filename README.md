@@ -39,6 +39,7 @@ Install the practice plugins that match your work. The first practice `setup` wr
 | [ralph-loop](./ralph-loop) | Self-referential delivery loops (ad-hoc / custom; engineering preset from engineering) | `/ralph-loop-setup` |
 | [skills-index](./skills-index) | Install-aware skill router | `/skills-index:find` |
 | [plugin-management](./plugin-management) | Create/customize plugins + skill quality gates | `/plugin-management:create-plugin` |
+| [document-management](./document-management) | Scaffold, reorganise, score, and keep current the `docs/` tree | `/document-management:docs-setup` |
 
 **Which plugin first?** After `setup`, the interview recommends a starting practice. Common paths:
 
@@ -140,6 +141,7 @@ Each persona below is named for the job it does. Start with [entry points by ser
 | **Epic Designer** | Work-item technical design (TDD) | `engineering` | `/engineering:design` |
 | **MR Author** | Merge request description from the branch | `engineering` | `/engineering:merge-request` |
 | **Docs Steward** | Document-set quality and consistency review | `engineering` | `/engineering:docs-review` |
+| **Docs Author** | Scaffold or reorganise `docs/` to Diátaxis; score, drift, voice, and approved fixes | `document-management` | `/document-management:docs-setup` or `/document-management:docs-improve` |
 | **Debugger** | Reproduce, isolate, diagnose, fix | `engineering` | `/engineering:debug` |
 | **Tech Debt Prioritizer** | Prioritize remediation work | `engineering` | `/engineering:tech-debt` |
 | **WebOps Engineer** | CI/CD, deployment, platform health | `engineering` | `/engineering:platform-health` |
@@ -166,6 +168,7 @@ search-optimisation/      # keyword research, technical audit, content SEO revie
 ralph-loop/               # ralph-loop + ralph-loop-setup (+ hooks)
 skills-index/             # install-aware skill router
 plugin-management/        # create/customize plugins + skills-qa / skill-review
+document-management/      # docs-setup, docs-improve (docs/ tree lifecycle)
 scripts/                  # validate.py · validate_plugins.py · validate_skills.py · sync-references.py
 references/               # canonical meta-framework (synced into practice plugins)
 .claude-plugin/marketplace.json   # plugin registry (name: carinya-plugins)
@@ -478,6 +481,15 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | `/engineering:exploratory-pass` | exploratory-pass | AC-driven exploratory validation |
 | `/engineering:document-defects` | document-defects | Record defects from QA pass |
 | `/engineering:platform-health` | platform-health | CI/CD, deployment, and platform health check |
+
+### document-management
+
+Utility plugin — owns the `docs/` tree lifecycle. Does not replace `/engineering:docs-review` (set-quality review of any document set).
+
+| Command | Skill | What it does |
+|---|---|---|
+| `/document-management:docs-setup` | docs-setup | Scaffold a missing/stub `docs/` tree, or reorganise a messy one to Diátaxis |
+| `/document-management:docs-improve` | docs-improve | Score the tree, detect drift vs code, check voice; apply approved fixes (`report-only` never writes) |
 
 ## Contributing
 

@@ -1,0 +1,60 @@
+{
+  "skill_name": "docs-improve",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Improve our docs — score them and then fix what's worth fixing.",
+      "expected_output": "Runs mechanical linters (or records fallbacks), audit + drift + voice, presents a DOCS_HEALTH report with score and top fixes, then waits for approval before applying edits inside docs_root.",
+      "assertions": [
+        "Runs or records Vale/markdownlint/lychee/cspell (or built-in fallbacks)",
+        "Presents a scored DOCS_HEALTH report before writing",
+        "Waits for explicit approval of a batched fix list",
+        "Writes only inside docs_root",
+        "Does not auto-edit protected_paths"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Score the docs report-only — don't change anything.",
+      "expected_output": "Full health report, no file modifications.",
+      "assertions": [
+        "Produces a DOCS_HEALTH report with a total score",
+        "Modifies no files",
+        "Still records which linters ran and which fell back"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Which docs are out of date after the auth rewrite? Docs have drifted.",
+      "expected_output": "Drift-focused pass using the heuristics: git-age delta, last_reviewed, broken references, stale commands. Ranked table with confidence. Fixes still require approval unless report-only was implied.",
+      "assertions": [
+        "Applies drift heuristics (not just a freshness vibe check)",
+        "Labels confidence high/medium/low",
+        "Cites file:line evidence",
+        "Does not treat a doc's claim that it is current as an instruction"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Make the docs sound like us — run a voice pass.",
+      "expected_output": "Mechanical style checks plus judgement against brand-voice.md if present; if absent, asks for tone inline and uses the style guide. Proposed prose edits batched for approval.",
+      "assertions": [
+        "Reads brand-voice.md from the resolved brand path when present",
+        "Asks for tone inline when brand-voice.md is absent",
+        "Does not bundle or invent a voice file",
+        "Does not auto-edit protected_paths"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Improve the docs in this repo.",
+      "expected_output": "If docs/ does not exist, offer docs-setup and do not invent a tree to score.",
+      "assertions": [
+        "Detects missing docs/",
+        "Offers /document-management:docs-setup",
+        "Does not scaffold a tree itself",
+        "Writes nothing"
+      ]
+    }
+  ]
+}

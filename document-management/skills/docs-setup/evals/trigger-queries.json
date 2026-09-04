@@ -1,0 +1,42 @@
+[
+  {
+    "query": "Set up docs in this repo — we have no documentation folder.",
+    "should_trigger": true
+  },
+  {
+    "query": "Scaffold a docs tree to Diátaxis.",
+    "should_trigger": true
+  },
+  {
+    "query": "Our docs are a mess — everything's in one folder.",
+    "should_trigger": true
+  },
+  {
+    "query": "Reorganise the documentation to Diátaxis.",
+    "should_trigger": true
+  },
+  {
+    "query": "Create a docs folder and landing pages.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review the docs — are they any good?",
+    "should_trigger": false,
+    "note": "engineering:docs-review — set-quality review, no tree/restructure intent"
+  },
+  {
+    "query": "Improve the prose and fix the tone in the docs.",
+    "should_trigger": false,
+    "note": "docs-improve — score/fix and voice, not scaffold/reorg"
+  },
+  {
+    "query": "Write the architecture document for the payments service.",
+    "should_trigger": false,
+    "note": "architecture:solution — authoring a practice artefact, not the docs/ tree"
+  },
+  {
+    "query": "Audit the documentation.",
+    "should_trigger": false,
+    "note": "engineering:docs-review — set-quality audit, no tree/restructure intent"
+  }
+]

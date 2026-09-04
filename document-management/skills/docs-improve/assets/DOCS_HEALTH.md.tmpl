@@ -1,0 +1,50 @@
+# Docs health — {{repo}}
+
+**Reviewed:** {{date}} · **Scope:** {{docs_root}} · **Mode:** audit | report-only | drift | voice
+**Linters:** {{which ran, which fell back}}
+
+## Score: {{total}}/100
+
+| Axis | Score | |
+| :--- | :---- | :-- |
+| Structural | {{s}}/50 | readability, style, markdown, links, naming |
+| Functional | {{f}}/50 | accuracy, coverage, content-type, findability, freshness |
+
+## Top 3 fixes
+
+1. **{{fix}}** — {{why it matters}} (`{{file:line}}`)
+2. **{{fix}}** — {{why}} (`{{file:line}}`)
+3. **{{fix}}** — {{why}} (`{{file:line}}`)
+
+## Per-dimension
+
+| # | Dimension | Score | Finding(s) | Evidence |
+| :- | :-------- | :---- | :--------- | :------- |
+| 1 | Readability | /10 | | |
+| 2 | Style conformance | /10 | | |
+| 3 | Markdown health | /10 | | |
+| 4 | Link health | /10 | | |
+| 5 | Naming & IA | /10 | | |
+| 6 | Accuracy vs code | /15 | | |
+| 7 | Completeness | /12 | | |
+| 8 | Content-type | /10 | | |
+| 9 | Findability | /8 | | |
+| 10 | Freshness | /5 | | |
+
+## Drift (when in default or drift mode)
+
+| Doc | Signal(s) | Evidence (`file:line`) | Confidence | Suggested fix |
+| :-- | :-------- | :--------------------- | :--------- | :------------ |
+
+## Voice (when in default or voice mode)
+
+{{paragraph-level notes keyed to brand-voice.md or the inline tone + style guide}}
+
+## Deferred (not auto-fixable here)
+
+- **Protected paths:** {{findings in protected_paths — for a human}}
+- **Cross-boundary:** {{content that belongs in README/AGENTS.md — deferred to a human}}
+
+## Confidence & gaps
+
+{{what couldn't be determined; what an SME would confirm}}

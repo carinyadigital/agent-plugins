@@ -52,5 +52,15 @@
     "query": "Run the sprint retrospective.",
     "should_trigger": false,
     "note": "sprint-retro"
+  },
+  {
+    "query": "Set up a docs folder, we don't have one yet.",
+    "should_trigger": false,
+    "note": "document-management:docs-setup — tree scaffold, not set-quality review"
+  },
+  {
+    "query": "Improve our docs — score them and fix the gaps.",
+    "should_trigger": false,
+    "note": "document-management:docs-improve — tree score/fix including drift"
   }
 ]

@@ -1,0 +1,47 @@
+[
+  {
+    "query": "Improve our docs — score them and fix the gaps.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the docs, the links are broken and the tone is off.",
+    "should_trigger": true
+  },
+  {
+    "query": "Which docs are out of date? I think they have drifted from the code.",
+    "should_trigger": true
+  },
+  {
+    "query": "Make the docs sound like us.",
+    "should_trigger": true
+  },
+  {
+    "query": "Run a style and voice pass on the documentation.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review the docs — are they consistent?",
+    "should_trigger": false,
+    "note": "engineering:docs-review — set-quality review with no tree/code-drift intent"
+  },
+  {
+    "query": "Set up a docs folder, we don't have one yet.",
+    "should_trigger": false,
+    "note": "docs-setup — scaffold, not score/fix"
+  },
+  {
+    "query": "Review my PR before I open it.",
+    "should_trigger": false,
+    "note": "code-review"
+  },
+  {
+    "query": "Audit the documentation.",
+    "should_trigger": false,
+    "note": "engineering:docs-review — set-quality audit, no tree/code-drift intent"
+  },
+  {
+    "query": "Reorganise to Diátaxis, everything's in one folder.",
+    "should_trigger": false,
+    "note": "docs-setup — tree restructure, not score/fix"
+  }
+]

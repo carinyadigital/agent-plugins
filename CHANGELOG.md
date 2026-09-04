@@ -39,6 +39,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   configured source synchronized through In Progress, In Review, and Done.
   UX review is no longer a default stage.
 
+## [2026-09-04] — document-management
+
+### document-management 0.1.0
+
+- First release. Utility plugin for the `docs/` tree lifecycle: `docs-setup`
+  (scaffold or reorganise to Diátaxis) and `docs-improve` (score, drift vs
+  code, voice, then apply approved fixes). Two agents (`docs-reviewer`
+  read-only, `docs-writer` gated). Writes stay inside `docs_root`; default
+  `protected_paths` leave practice-owned trees alone. Coexists with
+  `/engineering:docs-review` for set-quality review.
+
 ## [2026-08-15] — engineering-delivery + multi-root loop
 
 ### engineering 0.7.3

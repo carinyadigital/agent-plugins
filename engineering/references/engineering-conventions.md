@@ -112,7 +112,7 @@ Repo identity lives in `config/target.json` (`name`, `instance`, `target`) — n
 Override paths when the user names them explicitly in the request.
 
 Work-item ID resolution (any work item, not epic-only) is defined in
-[work-item-resolution.md](work-item-resolution.md) and
+[work-items.md](work-items.md) and
 [delivery-conventions.md](delivery-conventions.md).
 
 ## Artefact boundaries

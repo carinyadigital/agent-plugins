@@ -41,7 +41,7 @@ explicitly asked you to.
 
 ### 1. Resolve and prove Ready
 
-Read [../references/work-item-resolution.md](../references/work-item-resolution.md)
+Read [../references/work-items.md](../references/work-items.md)
 **first**, then [../references/delivery-conventions.md](../references/delivery-conventions.md)
 and [../references/engineering-conventions.md](../references/engineering-conventions.md).
 Resolve source system, canonical ID, type, and `{work-dir}`. Ask on any

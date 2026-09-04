@@ -42,7 +42,7 @@ fix, or a spike's answered question. The durable output is the item itself:
 checked-off criteria and a done status. Chat is a short confirmation, not a
 report.
 
-Read [work-item-resolution.md](../tasks/references/work-item-resolution.md)
+Read [work-items.md](../tasks/references/work-items.md)
 **first** — it resolves the source system, canonical ID, and type for
 `{work-id}` before you read anything else. Read
 [delivery-conventions.md](../tasks/references/delivery-conventions.md) for
@@ -107,7 +107,7 @@ For eval runs on skills in this repo, use **eval-grader**
 
 ### Phase 1: Gather context
 
-1. Resolve `{work-id}` per work-item-resolution.md.
+1. Resolve `{work-id}` per work-items.md.
 2. Find the AC source (above) and collect every criterion.
 3. Read a design/spec doc if one was discovered.
 4. Read solution architecture if the work item touches architectural boundaries.
@@ -194,7 +194,7 @@ Do not mark the parent epic done unless the user is validating that epic.
 
 ### Phase 7: Pre-apply check
 
-- [ ] Work item resolved per work-item-resolution.md — asked the user on any
+- [ ] Work item resolved per work-items.md — asked the user on any
   ambiguity in source system or ID
 - [ ] AC source discovered (user path, tracker, or a file that names this ID)
       — not assumed

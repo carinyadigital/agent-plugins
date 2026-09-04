@@ -41,7 +41,7 @@ give each one acceptance criteria a third party could test. What changes between
 levels is only the size of the slice, the resolved type, and the artefact it
 lands in.
 
-Read [references/work-item-resolution.md](references/work-item-resolution.md)
+Read [references/work-items.md](references/work-items.md)
 **first**, on every argument — it resolves the source system (Linear, Jira,
 GitHub/GitLab issues, or filesystem), the canonical ID, and the type before
 you decide what to write. Read
@@ -50,7 +50,7 @@ paths and artefact boundaries.
 
 ## What you are decomposing
 
-Resolve the work item first (per work-item-resolution.md) — its **type**
+Resolve the work item first (per work-items.md) — its **type**
 determines which artefacts you write.
 
 | Resolved type | Source | Writes |
@@ -63,7 +63,7 @@ determines which artefacts you write.
 | Pasted or described spec | `--context` | **both** |
 
 **`task`, `bug`, `spike` arguments.** These are leaf types (see
-[work-item-schema.md §Type](references/work-item-schema.md#type)). Do not
+[work-items.md §Type](references/work-items.md#type)). Do not
 decompose them by default — confirm intent first: "CHK01-04 is a task, not a
 story or epic — did you mean to break it into sub-tasks anyway, or run
 `implement CHK01-04`?" A bug that genuinely spans more than one integration
@@ -82,11 +82,9 @@ If the user names a different output path, use it.
 
 ## References
 
-- [references/work-item-resolution.md](references/work-item-resolution.md) —
-  source system detection, the repo-root `TASKS.local.md` pointer, canonical ID rules,
-  and the ask-first checklist. Read this before resolving any argument.
-- [references/work-item-schema.md](references/work-item-schema.md) — epic,
-  story, task, bug, and spike definitions with the legal value of every field
+- [references/work-items.md](references/work-items.md) —
+  source system, canonical ID, type, ask-first checklist, and field rules for
+  epic, story, task, bug, and spike. Read this before resolving any argument.
 - [references/acceptance-criteria.md](references/acceptance-criteria.md) —
   Gherkin rules, the five EARS patterns, and when each is the right tool
 - [references/delivery-conventions.md](references/delivery-conventions.md) —
@@ -143,7 +141,7 @@ Tracker-backed repos skip this artefact — the tracker holds the epic list.
 same shape as tasks under an epic, one level down: each sub-task names a
 deliverable and a file path, inherits the story's Gherkin, and is numbered
 `{STORY-ID}-{nn}`, sequential within that file (see
-[work-item-schema.md](references/work-item-schema.md#task)). Tracker-backed
+[work-items.md](references/work-items.md#task)). Tracker-backed
 repos create these as sub-issues instead of markdown lines; still report what
 was created.
 
@@ -179,7 +177,7 @@ writing. Below that, write directly; the file diff is reviewable.
 
 ## Pre-save validation
 
-- [ ] Source system and type resolved per work-item-resolution.md — asked the
+- [ ] Source system and type resolved per work-items.md — asked the
   user on any ambiguity, never guessed
 - [ ] Canonical ID used as-is when a tracker resolved; no parallel internal ID
   invented for tracker-backed work
@@ -201,7 +199,7 @@ writing. Below that, write directly; the file diff is reviewable.
 This skill decomposes. It MUST NOT:
 
 - Guess the source system, ID, or type when ambiguous — ask, per
-  work-item-resolution.md's ask-first checklist
+  work-items.md's ask-first checklist
 - Groom an existing backlog or judge sprint readiness → **backlog-refine**
 - Write design narrative at any level → `{work-dir}/design.md` via **design**
 - Write architecture, NFRs, or cross-epic patterns → `ARCHITECTURE.md` via **solution**

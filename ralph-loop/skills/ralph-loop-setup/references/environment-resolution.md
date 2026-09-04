@@ -60,7 +60,7 @@ every source in the same lifecycle step and must not advance when one update
 fails. Completion re-reads every source and confirms Done.
 
 Reuse the source system already resolved for `{work-id}` per engineering
-`references/work-item-resolution.md` (companion) — including an existing
+`references/work-items.md` (companion) — including an existing
 `TASKS.local.md` pointer, when present. Do not re-run detection here.
 
 ## UI signals (`{{UI_SIGNALS}}`)

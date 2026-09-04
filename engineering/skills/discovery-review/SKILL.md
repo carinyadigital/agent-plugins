@@ -71,7 +71,7 @@ Naming the next skill (`design`, `/product-management:tasks`,
 
 ## Inputs
 
-Read [work-item-resolution.md](../../references/work-item-resolution.md)
+Read [work-items.md](../../references/work-items.md)
 **first** — resolve source system, canonical ID, and type before judging
 completeness. Read
 [delivery-conventions.md](../../references/delivery-conventions.md) for paths
@@ -203,7 +203,7 @@ Next: run the deliver agent with <work-id>  (or implement <first-task-id> for a 
 - [references/readiness-gate.md](references/readiness-gate.md) — required artefacts and blocking bar per work-item type
 - [references/artefact-consistency.md](references/artefact-consistency.md) — boundaries, contradictions, citations
 - [delivery-conventions.md](../../references/delivery-conventions.md) — paths and artefact homes
-- [work-item-resolution.md](../../references/work-item-resolution.md) — ID, type, `{work-dir}`
+- [work-items.md](../../references/work-items.md) — ID, type, `{work-dir}`
 
 ## Related workflow
 

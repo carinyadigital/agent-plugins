@@ -41,13 +41,11 @@ commitment safe to make — not to validate the author's effort. Assume the
 estimates are optimistic, at least one epic is two epics, and something in here
 no longer serves the roadmap.
 
-Read [../tasks/references/work-item-resolution.md](../tasks/references/work-item-resolution.md)
+Read [../tasks/references/work-items.md](../tasks/references/work-items.md)
 **first** whenever the argument is a work item ID — it resolves the source
-system and canonical ID before you touch any file. Read
+system, canonical ID, and field rules before you touch any file. Read
 [../tasks/references/delivery-conventions.md](../tasks/references/delivery-conventions.md)
-for paths, and
-[../tasks/references/work-item-schema.md](../tasks/references/work-item-schema.md)
-for the field rules this pass enforces.
+for paths.
 
 ## What you are grooming
 

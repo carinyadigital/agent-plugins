@@ -56,7 +56,7 @@ within the register the user targets.
 1. Mode: `plan`, `write`, or `review`.
 2. Resolve paths (default or user override).
    **plan** takes an optional work item: `adr plan <work-id>` resolves it per
-   [work-item-resolution.md](../../references/work-item-resolution.md),
+   [work-items.md](../../references/work-items.md),
    harvests decisions already made in `{work-dir}/design.md`, and
    triages them into the register. Without a work item it surveys product.md
    and ARCHITECTURE.md for decisions still to be made.

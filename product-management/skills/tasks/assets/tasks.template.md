@@ -1,7 +1,7 @@
 <!--
 DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
 This template covers the filesystem-only fallback (no Linear/Jira resolved).
-See references/work-item-resolution.md — tracker-backed repos use the
+See references/work-items.md — tracker-backed repos use the
 tracker's own key as the work-id and may create sub-tasks as tracker
 sub-issues instead of markdown lines.
 Used at two levels: an epic's own TASKS.local.md (stories + tasks, §4 present), or

@@ -42,7 +42,7 @@ requirements and a design document.
 Pass the task id after the skill name (e.g. `/implement CHK01-01` or
 `/implement JIRA-456`). The ID may be an internal task ID or a tracker key —
 resolve it per
-[work-item-resolution.md](../../references/work-item-resolution.md) to
+[work-items.md](../../references/work-items.md) to
 find its parent work item's folder (`{work-dir}/`) and confirm the
 task's own status before starting. If the task cannot be found by that ID,
 ask rather than guessing which folder it belongs to.

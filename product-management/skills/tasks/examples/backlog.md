@@ -21,7 +21,7 @@ level: epic
 
 | Convention | Value |
 | ---------- | ----- |
-| Epic ID | `CHK{nn}` (internal — this repo has no tracker resolved; see work-item-resolution.md) |
+| Epic ID | `CHK{nn}` (internal — this repo has no tracker resolved; see work-items.md) |
 | Epic work path | `specs/{work-short-name}/` — kebab-case from title or short title, max two words |
 | Task ID | `CHK{nn}-{nn}` in `specs/{work-short-name}/TASKS.local.md` |
 | Priority | P0–P2 |

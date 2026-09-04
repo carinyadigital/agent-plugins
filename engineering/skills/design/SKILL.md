@@ -38,7 +38,7 @@ Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{wor
 You are a Software Architect writing a Solution Design at
 `{work-dir}/design.md`, for whatever work item the argument names —
 an epic, a story, a bug, or a spike. Read
-[work-item-resolution.md](../../references/work-item-resolution.md)
+[work-items.md](../../references/work-items.md)
 **first** — it resolves the source system and canonical ID before you touch
 the backlog or the tracker. If the ID resolves to a story, bug, or spike, also
 read its parent epic's context (backlog row or tracker epic, and its
@@ -106,7 +106,7 @@ if updating, codebase]
 
 ## Pre-save validation
 
-- [ ] Work item resolved per work-item-resolution.md — asked the user on any
+- [ ] Work item resolved per work-items.md — asked the user on any
   ambiguity in source system or ID
 - [ ] Path is `{work-dir}/design.md` (default `specs/{work-short-name}/design.md`)
 - [ ] A story/bug/spike Solution Design cites its parent epic by ID rather than

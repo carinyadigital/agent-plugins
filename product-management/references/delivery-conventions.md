@@ -40,7 +40,7 @@ the target of the `discover` and `deliver` agents or the `design`,
 `ralph-loop-setup`, and `implement` skills. What changes is the *behaviour* for that
 type, not whether the ID is accepted.
 
-Read [work-item-resolution.md](../skills/tasks/references/work-item-resolution.md) in full before
+Read [work-items.md](../skills/tasks/references/work-items.md) in full before
 resolving `{work-id}` — it covers:
 
 - Detecting the source system (Linear, Jira, GitHub/GitLab issues, or
@@ -119,7 +119,7 @@ contains a root-only `/reviews/` entry, and MUST NOT commit anything under
 `reviews/`. `code-review` MUST NOT write under repo-root `reviews/`.
 
 Repo-root `TASKS.local.md` is the Linear/Jira source-system pointer (see
-work-item-resolution.md). `specs/{work-short-name}/TASKS.local.md` is the
+work-items.md). `specs/{work-short-name}/TASKS.local.md` is the
 work-item task list — write it only when a local breakdown is required
 (filesystem-only source, or Gherkin that does not live in the tracker). Do
 not confuse the two files.
@@ -139,7 +139,7 @@ from it directly rather than maintaining a parallel `backlog.md`.
 - **EARS:** via `tasks --ears`, or where a rule is clearer than a scenario.
   Five patterns: see `skills/tasks/references/acceptance-criteria.md`.
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
-- **Schema:** field-by-field rules in `skills/tasks/references/work-item-schema.md`.
+- **Schema:** field-by-field rules in [work-items.md](../skills/tasks/references/work-items.md).
 
 ## Solution Design modes
 

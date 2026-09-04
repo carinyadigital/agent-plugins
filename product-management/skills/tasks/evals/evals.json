@@ -53,7 +53,7 @@
       "prompt": "Write sub-tasks for JIRA-123.",
       "expected_output": "Resolves the source system and type before writing anything; if Jira and Linear are both plausible or neither MCP tool is reachable, asks the user rather than guessing. Once resolved as a Jira story, writes sub-tasks inheriting the story's Gherkin AC to the story's own TASKS.local.md (or as tracker sub-issues), using the Jira key as the canonical ID with no parallel internal ID invented.",
       "assertions": [
-        "Reads work-item-resolution.md before acting",
+        "Reads work-items.md before acting",
         "Does not guess between Jira and Linear when ambiguous — asks the user",
         "Uses JIRA-123 as the canonical ID; does not invent an internal ID alongside it",
         "Sub-tasks inherit the parent story's Gherkin scenario(s)",

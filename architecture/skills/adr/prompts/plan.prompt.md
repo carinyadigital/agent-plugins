@@ -27,7 +27,7 @@ if the register does not exist yet.
 ## Harvest pass (when a work item is named)
 
 Resolve `{work-id}` per
-[work-item-resolution.md](../../../references/work-item-resolution.md) —
+[work-items.md](../../../references/work-items.md) —
 source system, canonical ID, and type — before reading anything else.
 
 1. Read `{work-dir}/design.md` and collect every decision it records or

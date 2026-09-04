@@ -13,7 +13,7 @@ related:
 
 <!--
 DRAFTING AIDE — DELETE BEFORE SAVING.
-Filesystem-only fallback — see references/work-item-resolution.md. When
+Filesystem-only fallback — see references/work-items.md. When
 Linear or Jira resolves, this artefact is not used; the tracker holds the
 epic list and skills read it directly.
 §3 epic breakdown table; §4 epic detail for Now-phase epics.

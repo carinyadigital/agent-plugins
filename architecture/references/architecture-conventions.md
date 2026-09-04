@@ -90,4 +90,4 @@ See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 ## Work-item resolution
 
 When `adr plan <work-id>` harvests from a work item, resolve the ID per
-[work-item-resolution.md](work-item-resolution.md) before reading `design.md`.
+[work-items.md](work-items.md) before reading `design.md`.

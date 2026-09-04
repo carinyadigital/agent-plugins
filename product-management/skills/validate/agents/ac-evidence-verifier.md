@@ -19,7 +19,7 @@ You build an evidence-backed working matrix for one work item — no new AC, no 
 ## Process
 
 1. Resolve `{work-id}` via the tracker or `backlog.md` (see
-   [work-item-resolution.md](../../tasks/references/work-item-resolution.md)).
+   [work-items.md](../../tasks/references/work-items.md)).
 2. Use the AC source the parent already resolved — tracker description or a
    local tasks/spec file. Do not assume `TASKS.local.md` or `specs/`.
 3. For each criterion, search codebase and tests for evidence.

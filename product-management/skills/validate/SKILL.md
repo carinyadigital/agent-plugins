@@ -79,7 +79,7 @@ the run.
    criteria.
 3. **Local file** — glob for a tasks/spec file that names this work item's
    canonical ID. Candidates, not requirements: `TASKS.md`, `TASKS.local.md`,
-   `TASK.md`, `SPEC.md`, `ISSUE.md`, `tdd.md`, `design.md`, and any
+   `TASK.md`, `SPEC.md`, `ISSUE.md`, `design.md`, `design.md`, and any
    project-specific equivalent named in `AGENTS.md`/`CLAUDE.md`. A
    `specs/{work-short-name}/` folder is one possible layout among many.
 4. **Ask** — if two files look equally plausible, or none names this ID,

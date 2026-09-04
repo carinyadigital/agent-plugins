@@ -9,7 +9,7 @@ a story's own TASKS.local.md when it gets further breakdown (sub-tasks only — 
 §4 Stories and go straight from §3 to a flat sub-task list shaped like §5).
 DO NOT INCLUDE in TASKS.local.md:
   - Architecture narrative → cite solution.md §N.M
-  - Design narrative → cite ./tdd.md#section
+  - Design narrative → cite ./design.md#section
   - New epics → docs/product/backlog.md via tasks --product
   - Business rationale → product.md
   - Definition-of-Done items inside story acceptance criteria
@@ -24,10 +24,10 @@ version: '0.1'
 owner: <!-- squad -->
 status: Draft
 last_updated: <!-- YYYY-MM-DD -->
-source: <!-- tdd.md | path to the spec this was decomposed from -->
+source: <!-- design.md | path to the spec this was decomposed from -->
 related:
   - docs/product/backlog.md
-  - specs/{work-short-name}/tdd.md
+  - {work-dir}/design.md
   - docs/architecture/solution.md
 ---
 
@@ -40,7 +40,7 @@ related:
      counts for a single sub-task count, and inherit Phase from the parent
      epic. -->
 
-**Source.** <!-- tdd.md, or the spec this was decomposed from -->
+**Source.** <!-- design.md, or the spec this was decomposed from -->
 
 **Scope.**
 
@@ -70,7 +70,7 @@ related:
   - **Status:** To do | **Estimate:** | **Owner:**
   - **Depends on:** —
   - **Deliverable:**
-  - **Design:** [`./tdd.md`](tdd.md#section)
+  - **Design:** [`./design.md`](design.md#section)
   - **Acceptance (Gherkin):**
 
     ```gherkin
@@ -95,7 +95,7 @@ related:
 demonstrate to confirm this story is done. If you cannot write this, the story
 is not a vertical slice. -->
 
-**Priority:** P0 | **Design:** [`./tdd.md`](tdd.md#section)
+**Priority:** P0 | **Design:** [`./design.md`](design.md#section)
 
 **Acceptance (Gherkin):**
 
@@ -160,7 +160,7 @@ IF {condition} THEN THE SYSTEM SHALL {behaviour}
 
 ### Stories to design and architecture
 
-| Story | tdd.md § | solution.md § |
+| Story | design.md § | solution.md § |
 | ----- | ----------- | ------------- |
 
 ### Definition of Done (work item-wide)

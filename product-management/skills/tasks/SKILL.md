@@ -8,7 +8,7 @@ description: >
   this into a backlog", "write the epics", "decompose checkout-foundation",
   "turn this RFC into tickets", "write tasks for CHK01", "what stories do we
   need". EARS with --ears. Do NOT use for backlog grooming (backlog-refine),
-  technical design (tdd), architecture (solution), phasing (roadmap), code
+  Solution Design (design, alias tdd), architecture (solution), phasing (roadmap), code
   (implement), or sign-off (validate).
 license: Apache-2.0
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
@@ -56,7 +56,7 @@ determines which artefacts you write.
 | Resolved type | Source | Writes |
 | ---- | ------ | ------ |
 | `--product` or no argument | `product.md`, `roadmap.md`, `solution.md` | `backlog.md` (epics) — filesystem-only; tracker-backed repos create epics/initiatives in the tracker instead |
-| `epic` | Backlog row or tracker epic + `specs/{work-short-name}/tdd.md` | `specs/{work-short-name}/TASKS.local.md` (stories + tasks) |
+| `epic` | Backlog row or tracker epic + `{work-dir}/design.md` | `specs/{work-short-name}/TASKS.local.md` (stories + tasks) |
 | `story` | Its parent epic's context + the story itself | Sub-tasks — as tracker sub-issues when a tracker resolved, else `specs/{work-short-name}/TASKS.local.md` in its own folder (alongside, not nested inside, its parent epic's) |
 | `task`, `bug`, `spike` | The item itself | Nothing to decompose by default — see below |
 | Path to a spec, RFC, PRD, or design doc | that file | **both** — epic row (or tracker epic) *and* its `TASKS.local.md` when a local breakdown is required |
@@ -135,7 +135,7 @@ Tracker-backed repos skip this artefact — the tracker holds the epic list.
                         → Gherkin AC → its tasks
 5. Cross-cutting      polish, docs, observability
 6. Dependencies       graph and parallel opportunities
-7. Traceability + DoD story → tdd.md §, story → solution.md §
+7. Traceability + DoD story → design.md §, story → solution.md §
 8. Handoff
 ```
 
@@ -194,7 +194,7 @@ writing. Below that, write directly; the file diff is reviewable.
 - [ ] No dependency cycles
 - [ ] `[P]` markers only on tasks with no incomplete dependency
 - [ ] Story 1 is identified as the MVP
-- [ ] No architecture narrative copied from `solution.md` or `tdd.md` — cite sections
+- [ ] No architecture narrative copied from `solution.md` or `design.md` — cite sections
 
 ## Negative constraints
 
@@ -203,13 +203,13 @@ This skill decomposes. It MUST NOT:
 - Guess the source system, ID, or type when ambiguous — ask, per
   work-item-resolution.md's ask-first checklist
 - Groom an existing backlog or judge sprint readiness → **backlog-refine**
-- Write design narrative at any level → `specs/{work-short-name}/tdd.md` via **tdd**
+- Write design narrative at any level → `{work-dir}/design.md` via **tdd**
 - Write architecture, NFRs, or cross-epic patterns → `solution.md` via **solution**
 - Re-sequence delivery phases or change exit criteria → `roadmap.md` via **roadmap**
 - Change business strategy, personas, or outcomes → `product.md` via **product**
 - Write code → **implement**
 - Paste full Gherkin into `backlog.md` — epic scope only; AC lives in `TASKS.local.md`
-- Re-narrate design or architecture — cite `tdd.md §` and `solution.md §`
+- Re-narrate design or architecture — cite `design.md §` and `solution.md §`
 - Invent requirements the source does not support; mark gaps
   `[NEEDS CLARIFICATION]` and list them in the report
 
@@ -223,7 +223,7 @@ Write the artefacts, then report:
 - **Dependency order** — what blocks what; which tasks are parallel
 - **Gaps** — anything marked `[NEEDS CLARIFICATION]` and what would resolve it
 - **Next** — **tdd** if the work item has no technical design yet, **implement**
-  per task once the TDD and tasks are approved, **backlog-refine** before
+  per task once the Solution Design and tasks are approved, **backlog-refine** before
   committing to a sprint
 
 ## Supporting files

@@ -3,7 +3,7 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Write tasks for checkout-foundation (CHK01) from specs/checkout-foundation/tdd.md.",
+      "prompt": "Write tasks for checkout-foundation (CHK01) from specs/checkout-foundation/design.md.",
       "expected_output": "specs/checkout-foundation/TASKS.local.md with stories, each with a statement, independent test criterion and Gherkin AC, and tasks beneath them.",
       "assertions": [
         "Creates or updates specs/checkout-foundation/TASKS.local.md",

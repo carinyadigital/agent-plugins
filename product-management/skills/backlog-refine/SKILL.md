@@ -104,7 +104,7 @@ and record the blocker on anything that slipped.
 - [ ] Every task names a deliverable with a concrete file path, an estimate, and a status
 - [ ] Task IDs unique and unchanged; `Depends on` cites real IDs
 - [ ] No dependency cycles; `[P]` markers only where genuinely parallel
-- [ ] Stories trace to `tdd.md` sections; nothing outside the epic's scope
+- [ ] Stories trace to `design.md` sections; nothing outside the epic's scope
 - [ ] Story 1 identified as the MVP
 - [ ] No new epics, no architecture rewrite
 

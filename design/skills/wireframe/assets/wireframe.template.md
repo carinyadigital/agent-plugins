@@ -13,7 +13,7 @@ related:
 <!--
 DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
 DO NOT INCLUDE in this wireframe:
-  - Component names, file paths, or API contracts → /engineering:tdd
+  - Component names, file paths, or API contracts → /engineering:design
   - Brand tokens (hex, font stacks) → brand-guide.md (cite when used)
   - Task Gherkin acceptance criteria → specs/{work-short-name}/TASKS.local.md
   - Business strategy narrative → product.md

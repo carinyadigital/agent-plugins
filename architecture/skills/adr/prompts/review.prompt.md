@@ -9,7 +9,7 @@ A reviewed ADR MUST NOT introduce:
 
 - New content that was not in the draft — the review finalises what is there, it does not author new rationale
 - Business justification or commercial framing → product.md
-- Implementation instructions → solution.md or specs/{work-short-name}/tdd.md
+- Implementation instructions → solution.md or {work-dir}/design.md
 
 ## Context
 

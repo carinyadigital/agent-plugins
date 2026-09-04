@@ -120,7 +120,7 @@ discovered, use `{work-id}` (`specs/JIRA-123/`, `specs/CHK01/`). See
 [delivery-conventions.md](delivery-conventions.md#work-short-name-work-short-name)
 for the discovery order.
 
-An epic's design lives at `specs/{work-short-name}/tdd.md`; its local task
+An epic's design lives at `{work-dir}/design.md`; its local task
 breakdown, when required, at `specs/{work-short-name}/TASKS.local.md`. A
 story, bug, or spike that gets its own design or further breakdown lives in
 its own `specs/{work-short-name}/` folder, alongside — not nested inside —

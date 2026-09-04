@@ -55,7 +55,7 @@ valid. If the user names a different path under `docs/work/`, use it.
 | Sprint plan            | `docs/work/sprint-{id}/plan.md`            | Yes      |
 | Work item tasks        | `specs/{work-short-name}/TASKS.local.md` for work items in scope | Yes  |
 | Prior retrospective    | `docs/work/sprint-{id-1}/retrospective.md` | Recommended |
-| Work item design       | `specs/{work-short-name}/tdd.md`               | If relevant |
+| Work item design       | `{work-dir}/design.md`               | If relevant |
 | CI, MR, or incident summaries | supplied via `--context`            | Optional |
 
 ## Steps

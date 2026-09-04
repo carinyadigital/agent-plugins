@@ -9,7 +9,7 @@ item argument or writing under `specs/`.
 ```text
 docs/product/               product.md, roadmap.md, backlog.md
 docs/architecture/          solution.md, decisions/register.md, ADR-*.md
-specs/{work-short-name}/    tdd.md; TASKS.local.md when a local task breakdown
+specs/{work-short-name}/    design.md; TASKS.local.md when a local task breakdown
                             is required — one folder per resolved work item
 specs/{work-short-name}/reviews/  code-review-{nn}.local.md + matching .local.json
                             (co-located pair); ux-design-review-{nn}.local.md
@@ -34,8 +34,9 @@ Sprint plans, retrospectives, and other non-work-item delivery docs stay under
 
 Any work item — epic,
 story, task, bug, spike, or whatever type the source system defines — can be
-the target of `tasks`, `tdd`, `validate`, `backlog-refine`,
-`ralph-loop-setup`, and `implement`. What changes is the *behaviour* for that
+the target of the `discover` and `deliver` agents or the `design` (alias
+`tdd`), `tasks`, `discovery-review`, `validate`, `backlog-refine`,
+`ralph-loop-setup`, and `implement` skills. What changes is the *behaviour* for that
 type, not whether the ID is accepted.
 
 Read [work-item-resolution.md](work-item-resolution.md) in full before
@@ -75,7 +76,7 @@ The folder under `specs/` is a **short name**, not the canonical ID.
 Resolve `{work-short-name}` in this order — first match wins:
 
 1. **User-named path** under `specs/` in the request.
-2. **Existing `specs/` folder** whose `tdd.md` or `TASKS.local.md` names this
+2. **Existing `specs/` folder** whose `design.md` or `TASKS.local.md` names this
    work item's canonical ID.
 3. **Backlog work path** (filesystem-only `backlog.md` row).
 4. **Title slug** — kebab-case, at most two words, from the tracker title or
@@ -98,10 +99,10 @@ parent epic's folder. Cross-reference the parent by ID in the artefact.
 | Phase sequencing, exit criteria | `docs/product/roadmap.md` | backlog, product |
 | Epic list, deps, points, work paths | `docs/product/backlog.md` (filesystem-only source) | roadmap detail |
 | Story/task statement, test criterion, AC | `specs/{work-short-name}/TASKS.local.md` | backlog (titles only) |
-| Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | the TDD (cite only) |
+| Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | the Solution Design (cite only) |
 | ADR decisions | `register.md`, `ADR-NNNN-*.md` | solution narrative |
-| Work item implementation spec | `specs/{work-short-name}/tdd.md` | solution, backlog |
-| Task Gherkin (and optional EARS) | `specs/{work-short-name}/TASKS.local.md` | backlog, the TDD |
+| Work item implementation spec | `{work-dir}/design.md` | solution, backlog |
+| Task Gherkin (and optional EARS) | `specs/{work-short-name}/TASKS.local.md` | backlog, the Solution Design |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog, `specs/` |
 | Human-readable review verdict | `specs/{work-short-name}/reviews/{skill}-{nn}.local.md` | — |
 | code-review tracking state | sibling `code-review-{nn}.local.json` (same stem as the verdict) | repo-root `reviews/` |
@@ -139,23 +140,26 @@ from it directly rather than maintaining a parallel `backlog.md`.
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
 - **Schema:** field-by-field rules in `skills/tasks/references/work-item-schema.md`.
 
-## TDD modes
+## Solution Design modes
 
-The technical design document (`tdd.md`) has two modes:
+The work-item Solution Design (`design.md`) has two modes:
 
 | Mode | When | Size |
 | ---- | ---- | ---- |
 | `skeleton` | Phase 0 (walking skeleton) | 2–4 pages |
 | `full` | Sprint 2+ | 5–10 pages |
 
-Cite `solution.md §{N.M}` — do not re-narrate architecture in `tdd.md`.
-The TDD applies at whatever level the user names: `tdd CHK01` writes the
-epic's design; `tdd JIRA-123` writes that story's design, sitting beside
-(not nested inside) its parent epic's folder and citing the parent by ID.
+Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
+The Solution Design applies at whatever level the user names: `design CHK01`
+(or alias `tdd CHK01`) writes the epic's design; `design JIRA-123` writes that
+story's design, sitting beside (not nested inside) its parent epic's folder
+and citing the parent by ID.
 
-**Not test-driven development.** The `tdd` skill writes a design document.
-Writing a failing test first, red/green/refactor, and test authoring in
-general belong to **implement**.
+If only a legacy `tdd.md` exists, rename it to `design.md` before updating.
+
+**Not test-driven development.** The `design` skill (alias `tdd`) writes a
+Solution Design. Writing a failing test first, red/green/refactor, and test
+authoring in general belong to **implement**.
 
 ## Skill routing (near-misses)
 
@@ -164,7 +168,7 @@ general belong to **implement**.
 | PRD, vision, why/who/what | **product** |
 | Phases, exit criteria | **roadmap** |
 | Epics, work paths, Now scope | **tasks --product** |
-| `tdd.md` (technical design) for one work item | **tdd** |
+| `design.md` (technical design) for one work item | **tdd** |
 | System architecture (`solution.md`) | **/architecture:solution** |
 | ADR plan / write / review | **/architecture:adr** |
 | `TASKS.local.md`, stories, Gherkin AC | **tasks** |

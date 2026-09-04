@@ -35,7 +35,7 @@
     "note": "code-review — correctness, not rendered experience"
   },
   {
-    "query": "Review the tdd.md document for the checkout epic.",
+    "query": "Review the design.md document for the checkout epic.",
     "should_trigger": false,
     "note": "docs-review — reviews a document, not rendered UI"
   },
@@ -47,6 +47,6 @@
   {
     "query": "Review MR 88 as the assigned reviewer and post comments.",
     "should_trigger": false,
-    "note": "merge-request-review"
+    "note": "code-review — reviews code, not rendered UI"
   }
 ]

@@ -55,7 +55,7 @@ solution.md MUST NOT contain:
 
 <artifacts>
 [Stub: docs/product/product.md, architecture principles, system boundary
-Full: product.md, specs/{work-short-name}/tdd.md (skeleton mode), ADR register,
+Full: product.md, {work-dir}/design.md (skeleton mode), ADR register,
 accepted ADRs]
 </artifacts>
 
@@ -92,7 +92,7 @@ accepted ADRs]
 
 ## Gotchas
 
-- **Per-work-item files/APIs** → cite from `specs/{work-short-name}/tdd.md`, don't duplicate full specs.
+- **Per-work-item files/APIs** → cite from `{work-dir}/design.md`, don't duplicate full specs.
 - **Story-level Gherkin** → `TASKS.local.md`, not solution.
 - **Closed ADRs** → `ADR-NNNN-*.md`; proposals stay in register only.
 
@@ -110,5 +110,5 @@ Markdown with YAML frontmatter. Save to the resolved path. Use
 - `/architecture:adr` — architecture decisions
 - `/product-management:product` — product strategy
 - `/product-management:tasks` — epics and work paths
-- `/engineering:tdd` — work-item technical design
+- `/engineering:design` — work-item technical design
 - `/engineering:docs-review` — writing quality / cross-doc consistency

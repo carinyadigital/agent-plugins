@@ -65,8 +65,8 @@ scope the product strategy would not support — say so rather than writing it.
 ## Story
 
 A user-visible outcome inside an epic. **Carries the acceptance criteria.**
-Anything can get a `tdd.md` at story level if the work warrants it — run
-`tdd {story-id}` directly; it writes to `specs/{work-short-name}/tdd.md`,
+Anything can get a `design.md` at story level if the work warrants it — run
+`tdd {story-id}` directly; it writes to `{work-dir}/design.md`,
 citing the parent epic by ID rather than nesting under its folder.
 
 | Field | Required | Legal values |
@@ -76,7 +76,7 @@ citing the parent epic by ID rather than nesting under its folder.
 | Independent test criterion | Yes | One sentence: what a reviewer can demonstrate to confirm it is done |
 | Priority | Yes | `P0`–`P3` |
 | Acceptance | Yes | ≥1 Gherkin scenario; EARS where a rule is clearer (see [acceptance-criteria.md](acceptance-criteria.md)) |
-| Design | Recommended | Link to the `tdd.md` section it implements — either the parent epic's or its own |
+| Design | Recommended | Link to the `design.md` section it implements — either the parent epic's or its own |
 
 **Story 1 is the MVP** — the thinnest slice that proves the epic works. Mark it.
 
@@ -103,7 +103,7 @@ parent story. Inherits its story's acceptance criteria when it has one.
 | Owner | No | `TBD` acceptable for an unassigned queue |
 | Depends on | No | Other work item IDs, comma separated. Must be acyclic |
 | Labels | No | `phase:{phase}`, plus free tags. Not `type:` — a task's type is the `## Type` field above, not a label |
-| Design | Recommended | `./tdd.md#section` |
+| Design | Recommended | `./design.md#section` |
 
 ### Foundational tasks
 
@@ -175,7 +175,7 @@ system's native workflow states, mapped to these five for cross-skill reporting.
 | `Done` | Acceptance criteria verified |
 
 `Blocked` requires a named blocker. Status is updated by **implement**
-(→ `In progress`), **code-review** / **merge-request-review** (→ `In review`
+(→ `In progress`), **code-review** (→ `In review`
 when appropriate), **validate** (against acceptance criteria → `Done` or back
 to `In progress`), and **backlog-refine** (against delivery evidence) — not by
 **tasks** after the initial write.

@@ -121,7 +121,7 @@ Delete resume file if present.
 
 1. **Solution** — `/architecture:solution` (use `--stage stub` or `full`)
 2. **ADR** — `/architecture:adr plan` then `/architecture:adr write`
-3. **Work-item design** — `/engineering:tdd <work-id>` (companion)
+3. **Work-item design** — `/engineering:design <work-id>` (companion)
 4. **Docs review** — `/engineering:docs-review docs/architecture/` (companion)
 5. **Refresh** — `/architecture:setup --redo`
 

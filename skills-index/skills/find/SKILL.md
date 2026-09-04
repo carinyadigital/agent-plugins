@@ -52,7 +52,7 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | Loop | Order |
 | ---- | ----- |
 | Strategy → delivery | `/product-management:product` → `roadmap` → `tasks --product` → `sprint-planning` → `validate` |
-| Engineering delivery | `/architecture:solution` → `/engineering:tdd` → `implement` → `code-review` → `/design:ux-design-review` → `/product-management:validate` |
+| Engineering delivery | `discover` agent → `deliver` agent (leaves: `/architecture:solution` → `/engineering:design` → `/product-management:tasks` → `discovery-review` → `implement` → `code-review` → `/product-management:validate` → `merge-request` → `merge-request-watch`) |
 | Brand → content | `/brand-creative:brand-voice` → `/content-marketing:content-calendar` |
 
 ## Catalogue
@@ -74,11 +74,13 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | product-management | validate | Work-item sign-off vs AC |
 | architecture | solution | Architecture solution.md |
 | architecture | adr | Architecture decision records |
-| engineering | tdd | Work-item tdd.md |
+| engineering | design | Work-item design.md (alias tdd) |
+| engineering | discovery-review | Ready for Development gate |
 | engineering | implement | Implement a task |
-| engineering | code-review | Branch / PR code review |
+| engineering | code-review | Branch / PR / MR code review |
 | engineering | code-review-fix | Address review findings |
 | engineering | merge-request | Open MR/PR |
+| engineering | merge-request-watch | Watch MR to merge-ready |
 | engineering | docs-review | Cross-document quality review |
 | engineering | deploy-qa | Prepare QA workspace |
 | engineering | run-automated-suite | Run automated tests |

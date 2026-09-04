@@ -35,7 +35,7 @@ Install the practice plugins that match your work. The first practice `setup` wr
 | [search-optimisation](./search-optimisation) | Keyword research, technical SEO audits, on-page review | `/search-optimisation:setup` |
 | [product-management](./product-management) | Product strategy, roadmap, specs, research, metrics, backlog, sprint cadence, validation | `/product-management:setup` |
 | [architecture](./architecture) | Solution design and ADRs | `/architecture:setup` |
-| [engineering](./engineering) | Technical design (tdd), implementation, code review, QA, platform ops | `/engineering:setup` |
+| [engineering](./engineering) | Solution Design (design), implementation, code review, QA, platform ops | `/engineering:setup` |
 | [ralph-loop](./ralph-loop) | Self-referential delivery loops (ad-hoc / custom; engineering preset from engineering) | `/ralph-loop-setup` |
 | [skills-index](./skills-index) | Install-aware skill router | `/skills-index:find` |
 | [plugin-management](./plugin-management) | Create/customize plugins + skill quality gates | `/plugin-management:create-plugin` |
@@ -80,7 +80,7 @@ Each example produces a **draft artefact for your review** — run the command, 
 
 ### 4. Implement a UI task against design and AC (Engineering, when you ship code)
 
-**You have:** approved `specs/{work-short-name}/tdd.md`, `TASKS.local.md` with Gherkin AC, and a bound target repo.
+**You have:** approved `{work-dir}/design.md`, `TASKS.local.md` with Gherkin AC, and a bound target repo.
 
 **Run:** `/engineering:implement CHK01-01` — the skill reads the target repo's own `AGENTS.md` / `CLAUDE.md` before changing code.
 
@@ -113,10 +113,9 @@ Personas are **agency hats that map to slash commands** inside practice plugins 
 | **Architect** | System architecture and ADRs | `/architecture:solution` |
 | **Engineer** | Implement tasks against approved design and AC | `/engineering:implement` |
 | **Reviewer** | Peer code review against design docs and AC | `/engineering:code-review` |
-| **Release gate** | Final technical sign-off on open PRs | `/engineering:final-code-review` |
 | **QA** | QA deploy, automated suite, exploratory pass | `/engineering:exploratory-pass` |
 
-Engineering skills share one library in `engineering`. Architecture (`solution`, `adr`) lives in `architecture`. Seniority labels (peer review vs final gate) reflect review depth, not separate plugins.
+Engineering skills share one library in `engineering`. Architecture (`solution`, `adr`) lives in `architecture`. Seniority labels reflect review depth, not separate plugins.
 
 Run each plugin's `setup` before first use — every skill reads your instance profile and practice profile. Skipping setup is the most common reason output stays generic.
 
@@ -138,7 +137,7 @@ Each persona below is named for the job it does. Start with [entry points by ser
 | **Competitive Analyst** | Competitive analysis brief | `product-management` | `/product-management:competitive-brief` |
 | **Spec Writer** | Feature spec or PRD from a problem statement | `product-management` | `/product-management:write-spec` |
 | **ADR Author** | Architecture decision register and ADR files | `architecture` | `/architecture:adr write` |
-| **Epic Designer** | Work-item technical design (TDD) | `engineering` | `/engineering:tdd` |
+| **Epic Designer** | Work-item technical design (TDD) | `engineering` | `/engineering:design` |
 | **MR Author** | Merge request description from the branch | `engineering` | `/engineering:merge-request` |
 | **Docs Steward** | Document-set quality and consistency review | `engineering` | `/engineering:docs-review` |
 | **Debugger** | Reproduce, isolate, diagnose, fix | `engineering` | `/engineering:debug` |
@@ -160,7 +159,7 @@ What's in the repo:
 brand-creative/           # brand voice + visual identity
 product-management/       # product, roadmap, specs, research, metrics, backlog, sprint, validate
 architecture/             # solution, adr
-engineering/      # tdd, implement, review, QA, platform
+engineering/      # design, implement, review, QA, platform
 design/           # wireframes, ux-design-review, ux-design-fix
 content-marketing/        # calendar, curation, media analysis, CMS seeds
 search-optimisation/      # keyword research, technical audit, content SEO review
@@ -280,7 +279,7 @@ Default layout the skills expect:
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
 docs/architecture/            solution.md, decisions/
-specs/{work-short-name}/          tdd.md; TASKS.local.md when required
+specs/{work-short-name}/          design.md; TASKS.local.md when required
 specs/{work-short-name}/reviews/  code-review-{nn}.local.md + matching .local.json;
                                  ux-design-review-{nn}.local.md
 docs/work/sprint-{id}/        plan.md, retrospective.md
@@ -323,8 +322,8 @@ Grouped by agency service line. Each plugin's **`setup`** is what tailors it to 
 
 | Plugin | What it adds |
 |---|---|
-| **[architecture](./architecture)** | Solution design (`solution`) and architecture decision records (`adr`). One persona (Principal Architect). Companion to `engineering` for work-item `tdd` and implementation. |
-| **[engineering](./engineering)** | Technical design (`tdd`), implementation, peer and final code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Five personas share one library; `architecture` and `product-management` are recommended companions. |
+| **[architecture](./architecture)** | Solution design (`solution`) and architecture decision records (`adr`). One persona (Principal Architect). Companion to `engineering` for work-item `design` and implementation. |
+| **[engineering](./engineering)** | Solution Design (`design`, alias `tdd`), implementation, code review, merge requests, documentation passes, debugging, tech debt, QA deploy and exploratory validation, platform health. Five personas share one library; `discover` / `deliver` agents cover the usual path; `architecture` and `product-management` are recommended companions. |
 
 ### Platform
 
@@ -334,7 +333,7 @@ Grouped by agency service line. Each plugin's **`setup`** is what tailors it to 
 | **[skills-index](./skills-index)** | Install-aware skill router — `/skills-index:find` |
 | **[plugin-management](./plugin-management)** | Create/customize plugins, component authoring, marketplace registration, and skill quality gates (`skills-qa`, `skill-review`) |
 
-**Companion practices:** `content-marketing` invokes `/product-management:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `architecture` invokes `/engineering:tdd` and `/engineering:docs-review` for work-item design and doc quality. `engineering` invokes `/architecture:solution` / `/architecture:adr` and `/product-management:tasks` for architecture and planning cadence. No direction requires the companion installed — skills degrade gracefully and document the pairing.
+**Companion practices:** `content-marketing` invokes `/product-management:tasks --product` and `/product-management:synthesize-research`; `search-optimisation` invokes `/product-management:competitive-brief` rather than bundling duplicates. `architecture` invokes `/engineering:design` and `/engineering:docs-review` for work-item design and doc quality. `engineering` invokes `/architecture:solution` / `/architecture:adr` and `/product-management:tasks` for architecture and planning cadence. No direction requires the companion installed — skills degrade gracefully and document the pairing.
 
 ## MCP connectors
 
@@ -462,14 +461,13 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | Command | Skill | What it does |
 |---|---|---|
 | `/engineering:setup` | setup | Learns stack, personas, target binding, connectors |
-| `/engineering:tdd` | tdd | write — `specs/{work-short-name}/tdd.md`; review via `docs-review` |
-| `/engineering:implement` | implement | Implement a task against approved tdd.md and AC |
-| `/engineering:code-review` | code-review | Read-only peer review against tdd.md and tasks |
+| `/engineering:design` | design | write — `{work-dir}/design.md` (`tdd` alias); review via `docs-review` |
+| `/engineering:discovery-review` | discovery-review | Ready for Development gate on design.md + tasks |
+| `/engineering:implement` | implement | Implement a task against approved design.md and AC |
+| `/engineering:code-review` | code-review | Read-only peer review against design.md and tasks |
 | `/engineering:code-review-fix` | code-review-fix | Address code-review findings without behaviour change |
-| `/engineering:final-code-review` | final-code-review | Final technical gate on open PRs |
 | `/engineering:merge-request` | merge-request | Open merge request for implemented work |
-| `/engineering:merge-request-babysit` | merge-request-babysit | Drive an open MR/PR to merge-ready |
-| `/engineering:merge-request-review` | merge-request-review | Review an MR/PR as its reviewer |
+| `/engineering:merge-request-watch` | merge-request-watch | Drive an open MR/PR to merge-ready |
 | `/ralph-loop:ralph-loop-setup` | ralph-loop-setup | Seed and configure an autonomous delivery loop |
 | `/ralph-loop:ralph-loop` | ralph-loop | Run an autonomous work-item delivery loop |
 | `/engineering:docs-review` | docs-review | Read-only document-set quality and consistency review |

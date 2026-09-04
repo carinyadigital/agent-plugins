@@ -16,13 +16,13 @@
       "name": "architecture",
       "displayName": "Architecture",
       "source": "./architecture",
-      "description": "Architecture practice in one install — setup interview, solution design (arc42-lite), and ADRs. Writes to docs/architecture/. Companion to engineering for work-item tdd and implementation."
+      "description": "Architecture practice in one install — setup interview, solution design (arc42-lite), and ADRs. Writes to docs/architecture/. Companion to engineering for work-item design and implementation."
     },
     {
       "name": "engineering",
       "displayName": "Engineering",
       "source": "./engineering",
-      "description": "Complete engineering practice in one install — setup interview, technical design (tdd), implementation, code review, QA, and platform operations. Five personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes architecture for solution/ADRs and product-management for planning cadence."
+      "description": "Complete engineering practice in one install — setup interview, Solution Design (design, alias tdd), implementation, code review, QA, and platform operations. Five personas (Frontend Engineer through WebOps), one owned skill library. Reads brand-guide from resolved brand path; invokes architecture for solution/ADRs and product-management for planning cadence."
     },
     {
       "name": "ralph-loop",

@@ -17,10 +17,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### engineering
 
+- **BREAKING:** Renamed work-item Solution Design skill `tdd` → `design`
+  (artefact `design.md`; `tdd` remains an alias). Added `discover` and
+  `deliver` as agent-only entry points and `discovery-review` as the Ready
+  for Development gate.
+- **BREAKING:** Renamed `merge-request-babysit` → `merge-request-watch`.
+- **BREAKING:** Removed `final-code-review` and `merge-request-review`. Use
+  `code-review` for PR/MR review (including as assigned reviewer). Use
+  `/product-management:validate` for work-item sign-off.
+- `code-review` collapses overlapping lenses into `bug-scan-reviewer`,
+  `requirements-reviewer`, and `code-reviewer`.
 - **BREAKING:** `code-review` co-locates tracking JSON with the verdict
   (`specs/{work-short-name}/reviews/code-review-{nn}.local.json` next to the
   `.md`). It no longer writes repo-root `reviews/`. `code-review-fix` reads
   and updates the sibling JSON.
+
+### ralph-loop
+
+- Setup reuses existing issue sources and never writes a root
+  `TASKS.local.md` pointer. Generated engineering-delivery runs keep every
+  configured source synchronized through In Progress, In Review, and Done.
+  UX review is no longer a default stage.
 
 ## [2026-08-15] — engineering-delivery + multi-root loop
 

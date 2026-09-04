@@ -26,16 +26,16 @@ fail with a slash-command reference.
 | From | To | Mechanism | Required? |
 | ---- | -- | --------- | --------- |
 | `ralph-loop` | `engineering` | engineering-delivery preset invokes implement, code-review, code-review-fix, merge-request | Yes for that preset |
-| `ralph-loop` | `design` | engineering-delivery preset invokes ux-design-review, ux-design-fix | Optional (UI tasks only) |
+| `ralph-loop` | `design` | engineering-delivery may invoke ux-design-review, ux-design-fix when the user adds those stages | Optional |
 | `ralph-loop` | `product-management` | engineering-delivery preset invokes validate | Yes for that preset |
-| `engineering` | self | implement reads tdd.md from tdd skill | Internal |
+| `engineering` | self | implement reads design.md from design skill | Internal |
 | `product-management` | `architecture` | product/roadmap recommend solution | Companion |
 | `product-management` | `engineering` | product/roadmap recommend docs-review; delivery skills route design/implement/review | Companion |
 | `architecture` | `engineering` | solution/adr hand off to tdd, docs-review, implement | Companion |
 | `engineering` | `architecture` | tdd/implement cite solution; recommend solution/adr writes | Companion |
 | `engineering` | `product-management` | planning cadence, validate sign-off | Companion |
 | `engineering` | `design` | ux-design-review, ux-design-fix | Companion |
-| `design` | `engineering` | wireframe → implement; tdd.md for specs | Companion |
+| `design` | `engineering` | wireframe → implement; design.md for specs | Companion |
 | `content-marketing` | `product-management` | tasks, synthesize-research | Companion |
 | `search-optimisation` | `product-management` | competitive-brief | Companion |
 | `engineering` | `ralph-loop` | autonomous delivery loop | Companion |
@@ -69,8 +69,8 @@ links.
 | implement | `/engineering:implement` | engineering |
 | review | `/engineering:code-review` | engineering |
 | review_fix | `/engineering:code-review-fix` | engineering |
-| ux_review | `/design:ux-design-review` | design |
-| ux_review_fix | `/design:ux-design-fix` | design |
+| ux_review | `/design:ux-design-review` | design — optional; add only when the user requests it |
+| ux_review_fix | `/design:ux-design-fix` | design — optional; add only when the user requests it |
 | final_validate | `/product-management:validate` | product-management |
 | create_mr | `/engineering:merge-request` | engineering |
 
@@ -79,7 +79,7 @@ links.
 | Missing plugin | Behaviour |
 | -------------- | --------- |
 | `engineering` | **Refuse** `engineering-delivery` preset at setup. Offer `ad-hoc` or `custom`, or: `Install: /plugin install engineering@carinya-plugins` |
-| `design` | Loop continues; skip `ux_review` / `ux_review_fix` when UI signals absent or plugin not installed. Note in run context. |
+| `design` | Loop continues without UX stages unless the user added them. Note in run context. |
 | `product-management` | Loop can implement and review but cannot run `final_validate`. Stop before final sign-off with install message for `product-management`. |
 
 **ad-hoc** and **custom** presets ship inside `ralph-loop` and run with no
@@ -87,17 +87,17 @@ companion plugins.
 
 ---
 
-## engineering:implement → tdd.md
+## engineering:implement → design.md
 
-**Internal edge** (same plugin). `implement` reads `specs/{work-short-name}/tdd.md`
-written by the `tdd` skill.
+**Internal edge** (same plugin). `implement` reads `{work-dir}/design.md`
+written by the `design` skill (alias `tdd`).
 
 | Condition | Behaviour |
 | --------- | --------- |
-| tdd.md present | Proceed |
-| tdd.md absent | Stop. Recommend `/engineering:tdd {work-id}` first. |
+| design.md present | Proceed |
+| design.md absent | Stop. Recommend `/engineering:design {work-id}` first. |
 
-Primary artefact filename is `tdd.md`.
+Primary artefact filename is `design.md`.
 
 ---
 
@@ -118,7 +118,7 @@ Document-set quality review stays on `engineering`:
 | `engineering` installed | Recommend `/engineering:docs-review` |
 | Not installed | Continue; recommend install when a docs quality pass is needed |
 
-Delivery skills route implementation to `/engineering:tdd`,
+Delivery skills route implementation to `/engineering:design`,
 `/engineering:implement`, etc. — see
 `product-management/references/delivery-conventions.md`.
 
@@ -130,11 +130,11 @@ Delivery skills route implementation to `/engineering:tdd`,
 | ---- | ------ |
 | System architecture | `/architecture:solution` |
 | ADRs | `/architecture:adr` |
-| Work-item `tdd.md` | `/engineering:tdd` |
+| Work-item `design.md` | `/engineering:design` |
 | Docs quality review | `/engineering:docs-review` |
 | Implementation | `/engineering:implement` |
 
-`implement` and `tdd` **read** `docs/architecture/solution.md` and ADRs via
+`implement` and `design` **read** `docs/architecture/solution.md` and ADRs via
 artefact consumption — no hard install dependency. Writing or updating those
 artefacts requires the `architecture` plugin (or manual edits).
 
@@ -222,7 +222,7 @@ Each plugin is copied to an isolated cache directory at install time.
 | ------- | ------- |
 | Paths within the same plugin | `../../references/conventions.md` |
 | Sibling plugin lookup in **documented** shell contracts | `seed-ralph-loop.sh` → `../engineering/assets/ralph-presets/` |
-| Artefact paths in the user's repo | `specs/{work-short-name}/tdd.md` |
+| Artefact paths in the user's repo | `{work-dir}/design.md` |
 
 | Forbidden in skill markdown | Why |
 | --------------------------- | --- |

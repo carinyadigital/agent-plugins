@@ -18,7 +18,7 @@ Claude and Cursor plugins for digital agency workflows.
 ├── design/                          # practice plugin — wireframe, ux-design-review, ux-design-fix (MECE owned)
 │   ├── references/                  # design-conventions + synced meta-framework files
 │   └── skills/
-├── engineering/                     # practice plugin — tdd, implement, review, QA, WebOps (MECE owned)
+├── engineering/                     # practice plugin — design, implement, review, QA, WebOps (MECE owned)
 ├── ralph-loop/                      # ralph-loop + ralph-loop-setup + hooks
 ├── skills-index/                    # find + related-skills-surfacer
 ├── plugin-management/               # create/customize plugins + skills-qa / skill-review
@@ -67,8 +67,8 @@ Run `python3 scripts/validate.py` before opening a PR — it runs plugin-domain 
 | `brand-creative` | `setup`, `brand-guide`, `brand-voice` | Shipped; first MECE practice plugin |
 | `product-management` | `setup` + PM + delivery skills (`product`, `roadmap`, `write-spec`, `product-brainstorming`, `synthesize-research`, `competitive-brief`, `metrics-review`, `stakeholder-update`, `tasks`, `backlog-refine`, `sprint-planning`, `sprint-retro`, `validate`) | Shipped; MECE practice plugin — Product Manager and Delivery Lead personas, no separate agent plugins |
 | `content-marketing` | `setup` + 7 content skills (`content-calendar`, `curate-content`, `analyse-media`, `write-captions`, `edit-content`, `draft-post`, `draft-recipe`) | Shipped; MECE practice plugin — Content Strategist and Content Writer personas, no separate agent plugins; reads `brand-voice.md` via artifact consumption; invokes `/product-management:tasks --product` and `/product-management:synthesize-research` as companion skills |
-| `architecture` | `setup`, `solution`, `adr` | Shipped; MECE practice — Principal Architect persona; companion to engineering for tdd/implement |
-| `engineering` | `setup` + tdd, implement, review, MR, docs-review, QA, WebOps skills | Shipped; MECE practice — five engineering personas; architecture and product-management as companions |
+| `architecture` | `setup`, `solution`, `adr` | Shipped; MECE practice — Principal Architect persona; companion to engineering for design/implement |
+| `engineering` | `setup` + design (alias tdd), discover/deliver agents, implement, review, MR, docs-review, QA, WebOps skills | Shipped; MECE practice — five engineering personas; architecture and product-management as companions |
 | `design` | `setup`, `wireframe`, `ux-design-review`, `ux-design-fix` | Shipped; writes wireframes to `<instance-root>/design/`; live-browser review/fix; downstream practices read via artifact consumption |
 | `ralph-loop` | `ralph-loop`, `ralph-loop-setup` | Shipped; ships hooks; engineering-delivery preset contributed by engineering |
 | `skills-index` | `find`, `related-skills-surfacer` | Shipped; install-aware router |
@@ -82,13 +82,13 @@ Practice `setup` skills bootstrap a git-versioned instance repo when `config/ins
 | Slug | Practice | Bundled skills | Status |
 | ---- | -------- | -------------- | ------ |
 | `frontend-engineer` | Engineering | `implement`, `code-review`, `merge-request`, `component-scaffold` (agent-local); reads `brand-guide.md` from resolved brand path | Shipped; not yet operationally proven |
-| `senior-frontend-engineer` | Engineering | `code-review`, `tdd` | Shipped; not yet operationally proven |
-| `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `tdd`, `validate` (synced from product-management) | Shipped; not yet operationally proven |
+| `senior-frontend-engineer` | Engineering | `code-review`, `design` | Shipped; not yet operationally proven |
+| `principal-frontend-engineer` | Engineering | `code-review`, `design`, `validate` (synced from product-management) | Shipped; not yet operationally proven |
 | `qa-engineer` | Engineering | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Shipped; not yet operationally proven |
 | `webops-engineer` | Engineering | `deploy-qa`, `debug`, `platform-health` | Shipped; not yet operationally proven |
-| `principal-architect` | Architecture | `solution`, `adr` (practice: `architecture`); `tdd` / `docs-review` via engineering companion | Persona in `architecture`; not a standalone agent plugin |
+| `principal-architect` | Architecture | `solution`, `adr` (practice: `architecture`); `design` / `docs-review` via engineering companion | Persona in `architecture`; not a standalone agent plugin |
 
-Product Manager and Delivery Lead are **personas inside `product-management`**, not standalone agent plugins. Content Strategist and Content Writer are **personas inside `content-marketing`**, not standalone agent plugins. SEO Specialist is a **persona inside `search-optimisation`**, not a standalone agent plugin. Principal Architect is a **persona inside `architecture`**, not a standalone agent plugin. Invoke skills directly: `/product-management:product`, `/architecture:solution`, `/engineering:tdd`, `/content-marketing:content-calendar write`, `/search-optimisation:keyword-research`, etc.
+Product Manager and Delivery Lead are **personas inside `product-management`**, not standalone agent plugins. Content Strategist and Content Writer are **personas inside `content-marketing`**, not standalone agent plugins. SEO Specialist is a **persona inside `search-optimisation`**, not a standalone agent plugin. Principal Architect is a **persona inside `architecture`**, not a standalone agent plugin. Invoke skills directly: `/product-management:product`, `/architecture:solution`, `/engineering:design`, `/content-marketing:content-calendar write`, `/search-optimisation:keyword-research`, etc.
 
 Each agent lives under `agents/<slug>/` with a canonical system prompt at `agents/<slug>.md`, bundled skills at `skills/`, and role-specific MCP in `.mcp.json`. Register new agents in both marketplace manifests.
 

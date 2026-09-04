@@ -1,7 +1,7 @@
 # engineering
 
 Root-level **practice plugin** — one install delivers the complete web engineering
-service: setup interview, technical design (tdd), implementation, code review, QA,
+service: setup interview, Solution Design (design, alias tdd), implementation, code review, QA,
 and platform operations. Self-contained under the MECE practice model: edit skills
 here only; nothing is vendored from elsewhere.
 
@@ -18,9 +18,9 @@ Five personas share one skill library. Choose the default persona during
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
-| **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `ux-design-fix` | Build — UI, client state, styling |
-| **Senior Frontend Engineer** | `code-review`, `tdd`, `ux-design-review` | Peer review — diffs vs design and AC |
-| **Principal Frontend Engineer** | `final-code-review`, `code-review`, `tdd` | Final gate — architecture and AC on open PRs |
+| **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `merge-request-watch` | Build — UI, client state, styling |
+| **Senior Frontend Engineer** | `code-review`, `design`, `/design:ux-design-review` | Peer review — diffs vs design and AC |
+| **Principal Frontend Engineer** | `code-review`, `design`, `discovery-review` | Architecture, AC, Ready-for-Development gate |
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 
@@ -32,9 +32,21 @@ Invoke skills directly — there is no separate agent plugin per persona:
 ```
 /engineering:implement CHK01-01
 /engineering:code-review feat/checkout
-/engineering:tdd checkout-foundation
+/engineering:design checkout-foundation
 /engineering:deploy-qa feat/my-branch
 ```
+
+Phase agents cover the usual path from a tracker ID to a merge-ready MR:
+
+```
+Discover: design → /product-management:tasks → discovery-review
+        ↓
+Deliver:  implement → code-review → code-review-fix → /product-management:validate
+        ↓
+Ship:     merge-request → merge-request-watch
+```
+
+Ask to run the `discover` or `deliver` agent, or invoke the leaf skills above.
 
 For architecture and planning cadence:
 
@@ -71,14 +83,13 @@ target binding.
 | Skill | Purpose |
 | ----- | ------- |
 | **setup** | Interview → write practice profile, target binding, stack defaults |
-| **tdd** | write — `specs/{work-short-name}/tdd.md`; review via `docs-review` |
-| **implement** | Implement a task against approved tdd.md and AC |
+| **design** | write — `{work-dir}/design.md` (`tdd` is an alias); review via `docs-review` |
+| **discovery-review** | Ready for Development gate on design.md + tasks + solution |
+| **implement** | Implement a task against approved design.md and AC |
 | **code-review** | Read-only peer review; verdict + JSON co-located under `specs/` |
 | **code-review-fix** | Address code-review findings without behaviour change |
-| **final-code-review** | Final technical gate on open PRs |
 | **merge-request** | Open merge request for implemented work |
-| **merge-request-babysit** | Drive an open MR/PR to merge-ready |
-| **merge-request-review** | Review an MR/PR as its reviewer |
+| **merge-request-watch** | Drive an open MR/PR to merge-ready |
 | **docs-review** | Read-only document-set quality and consistency review |
 | **debug** | Bug investigation |
 | **tech-debt** | Technical debt audit |

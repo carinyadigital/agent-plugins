@@ -42,7 +42,7 @@ brand-guide skill; read the artefact directly.
 
 When a UX design practice has produced wireframes or specs, read from
 `<instance-root>/design/` (or the path named by the user). Work-item
-implementation specs live at `specs/{work-short-name}/tdd.md`.
+implementation specs live at `{work-dir}/design.md` (rename legacy `tdd.md` first).
 
 ## Companion practice (architecture)
 
@@ -96,7 +96,7 @@ See `docs/CROSS-PLUGIN-CONTRACTS.md` (monorepo) for the full edge list.
 ```text
 docs/product/                 product.md, roadmap.md, backlog.md
 docs/architecture/            solution.md, decisions/register.md, ADR-NNNN-*.md
-specs/{work-short-name}/          tdd.md; TASKS.local.md when required
+specs/{work-short-name}/          design.md; TASKS.local.md when required
 specs/{work-short-name}/reviews/  code-review verdict + co-located .local.json;
                                  ux-design-review verdicts
 docs/work/sprint-{id}/        plan.md, retrospective.md
@@ -123,8 +123,8 @@ Work-item ID resolution (any work item, not epic-only) is defined in
 | Epic list, deps, points, work paths | `docs/product/backlog.md` | roadmap detail |
 | Architecture, NFRs, cross-epic patterns | `docs/architecture/solution.md` | design (cite only) |
 | ADR decisions | `docs/architecture/decisions/` | solution narrative |
-| Work-item implementation spec | `specs/{work-short-name}/tdd.md` | solution, backlog |
-| Task Gherkin (and optional EARS) | `specs/{work-short-name}/TASKS.local.md` | backlog, the TDD |
+| Work-item implementation spec | `{work-dir}/design.md` | solution, backlog |
+| Task Gherkin (and optional EARS) | `specs/{work-short-name}/TASKS.local.md` | backlog, the Solution Design |
 | Sprint plan / retro | `docs/work/sprint-{id}/` | product backlog |
 
 ## Doc comments
@@ -140,15 +140,17 @@ instructions: [doc-comments.md](doc-comments.md).
 - **EARS:** optional via `/product-management:tasks --ears` or when rules are clearer than scenarios.
 - **Backlog:** epic scope only; no full Gherkin in `backlog.md` (use **tasks**).
 
-## TDD modes
+## Solution Design modes
 
 | Mode | When | Size |
 | ---- | ---- | ---- |
 | `skeleton` | Phase 0 (walking skeleton) | 2–4 pages |
 | `full` | Sprint 2+ | 5–10 pages |
 
-Cite `solution.md §{N.M}` — do not re-narrate architecture in `tdd.md`.
-The TDD applies at whatever level the user names (`tdd CHK01`, `tdd JIRA-123`).
+Cite `solution.md §{N.M}` — do not re-narrate architecture in `design.md`.
+The Solution Design applies at whatever level the user names (`design CHK01`,
+`tdd JIRA-123`). If only a legacy `tdd.md` exists, rename it to `design.md`
+before updating.
 
 ## Personas
 
@@ -157,9 +159,9 @@ Five personas share one skill library. Choose the default persona during
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
-| **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `ux-design-fix` | Build — UI, client state, styling |
-| **Senior Frontend Engineer** | `code-review`, `tdd`, `ux-design-review` | Peer review — diffs vs design and AC |
-| **Principal Frontend Engineer** | `final-code-review`, `code-review`, `tdd` | Final gate — architecture and AC on open PRs |
+| **Frontend Engineer** | `implement`, `code-review-fix`, `merge-request`, `merge-request-watch` | Build — UI, client state, styling |
+| **Senior Frontend Engineer** | `code-review`, `design`, `/design:ux-design-review` | Peer review — diffs vs design and AC |
+| **Principal Frontend Engineer** | `code-review`, `design`, `discovery-review` | Architecture, AC, Ready-for-Development gate |
 | **QA Engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` | Validation — automated and exploratory QA |
 | **WebOps Engineer** | `deploy-qa`, `debug`, `platform-health` | Platform — CI/CD, deploy, health |
 
@@ -172,19 +174,17 @@ Work-item sign-off uses `/product-management:validate` (companion skill), not a 
 | ----------- | ----- | ------- |
 | System architecture | `/architecture:solution` | Companion — Principal Architect |
 | ADR write/review | `/architecture:adr` | Companion — Principal Architect |
-| `tdd.md` for one work item | **tdd** | Senior FE / Principal FE |
+| Prepare a work item until Ready for Development | **discover agent** | Senior FE / Principal FE |
+| `design.md` for one work item | **design** (alias **tdd**) | Senior FE / Principal FE |
+| Deliver every task through a merge-ready MR | **deliver agent** | Frontend Engineer |
 | Implement code | **implement** | Frontend Engineer |
-| PR / branch code review | **code-review** | Senior FE / Principal FE |
+| PR / branch / MR code review | **code-review** | Senior FE / Principal FE |
 | Address review feedback | **code-review-fix** | Frontend Engineer |
-| Final PR gate | **final-code-review** | Principal Frontend Engineer |
 | Open merge request | **merge-request** | Frontend Engineer |
-| Babysit MR/PR to merge-ready | **merge-request-babysit** | Frontend Engineer |
-| Review MR/PR as reviewer | **merge-request-review** | Senior FE / Principal FE |
+| Watch MR to merge-ready | **merge-request-watch** | Frontend Engineer |
+| Discovery complete / Ready for Development | **discovery-review** | Senior FE / Principal FE |
 | UX review of implemented UI | **/design:ux-design-review** | Frontend Engineer |
 | Address UX review feedback | **/design:ux-design-fix** | Frontend Engineer |
-
-When `design` is not installed: continue with code review only; recommend
-`/plugin install design@carinya-plugins` before UI-heavy work.
 | Run autonomous delivery loop | **/ralph-loop:ralph-loop** | Frontend Engineer |
 | Review a document set | **docs-review** | Principal FE / any |
 | Bug investigation | **debug** | WebOps Engineer |
@@ -195,3 +195,5 @@ When `design` is not installed: continue with code review only; recommend
 | Document defects | **document-defects** | QA Engineer |
 | Platform health check | **platform-health** | WebOps Engineer |
 | PRD, phases, tasks, backlog-refine, sprint-*, validate | `/product-management:*` | Companion — any persona |
+
+When the `design` companion plugin is not installed: continue with code review only; recommend `/plugin install design@carinya-plugins` before UI-heavy work.

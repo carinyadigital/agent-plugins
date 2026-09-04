@@ -15,7 +15,7 @@ downstream.
 
 Look for `TASKS.local.md` at the **repo root** before doing anything else.
 That file is the Linear/Jira source-system pointer. It is not the work-item
-task list — that lives at `specs/{work-short-name}/TASKS.local.md` when a
+task list — that lives at `{work-dir}/TASKS.local.md` when a
 local breakdown is required.
 
 - **Exists and names Linear or Jira** — trust it. Use the recorded site,
@@ -54,7 +54,7 @@ disambiguate them. Resolve in this order and stop at the first that applies:
    not default to either.
 4. **No external tracker is reachable and the ID does not match any external
    shape** — filesystem. Confirm a matching row exists in `backlog.md` (for a
-   top-level ID) or a matching task in some `specs/*/TASKS.local.md` (for a
+   top-level ID) or a matching task in some `{work-dir}/TASKS.local.md` (for a
    child ID); if neither exists, ask whether this is new work or a typo.
 
 If the repo has no `docs/product/backlog.md` and
@@ -113,17 +113,18 @@ internal ID for it, never re-slug it, and never invent a local numbering
 scheme alongside it. Internal IDs (`{PREFIX}{nn}`, `{PREFIX}{nn}-{nn}`) exist
 **only** for repos with no external tracker resolved.
 
-**Work path.** `specs/{work-short-name}/` — one folder per resolved work item.
+**Work path.** `{work-dir}/` — one folder per resolved work item.
+Default (if not specified or unknown): `specs/{work-short-name}/`.
 `{work-short-name}` is kebab-case, at most two words, derived from the title
 (`cart`, `checkout-foundation`). When a short name is not known and cannot be
 discovered, use `{work-id}` (`specs/JIRA-123/`, `specs/CHK01/`). See
-[delivery-conventions.md](delivery-conventions.md#work-short-name-work-short-name)
+[delivery-conventions.md](delivery-conventions.md#work-directory-work-dir)
 for the discovery order.
 
-An epic's design lives at `specs/{work-short-name}/tdd.md`; its local task
-breakdown, when required, at `specs/{work-short-name}/TASKS.local.md`. A
+An epic's design lives at `{work-dir}/design.md`; its local task
+breakdown, when required, at `{work-dir}/TASKS.local.md`. A
 story, bug, or spike that gets its own design or further breakdown lives in
-its own `specs/{work-short-name}/` folder, alongside — not nested inside —
+its own `{work-dir}/` folder, alongside — not nested inside —
 its parent epic's folder. Cross-reference the parent by ID in the artefact,
 not by nesting.
 

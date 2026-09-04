@@ -49,8 +49,7 @@ reports what is connected.
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
 | **setup** | `--check-integrations` | GitHub, Playwright, Context7 (+ any additions) |
-| **merge-request** | create, babysit | Source control |
-| **merge-request-review** | run | Source control |
+| **merge-request** | create, watch | Source control |
 | **ux-design-review** | review, fix | Figma (optional), Playwright |
 | **deploy-qa** | — | Source control, hosting |
 | **run-automated-suite** | — | Source control (CI status) |

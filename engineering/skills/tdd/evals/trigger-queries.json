@@ -1,10 +1,6 @@
 [
   {
-    "query": "Design the checkout foundation epic — skeleton, what files we ship this sprint.",
-    "should_trigger": true
-  },
-  {
-    "query": "Write the technical design document for the payment-placement epic.",
+    "query": "tdd CHK01",
     "should_trigger": true
   },
   {
@@ -12,28 +8,8 @@
     "should_trigger": true
   },
   {
-    "query": "Update solution.md with the orders API and module layout.",
-    "should_trigger": false,
-    "note": "solution"
-  },
-  {
-    "query": "Break CHK01 into tasks with Given When Then.",
-    "should_trigger": false,
-    "note": "tasks"
-  },
-  {
     "query": "Use TDD for this task — write a failing test first, then make it pass.",
     "should_trigger": false,
-    "note": "implement — test-driven development, not a design document"
-  },
-  {
-    "query": "Do red/green/refactor on the cart total calculation.",
-    "should_trigger": false,
-    "note": "implement — test-driven development, not a design document"
-  },
-  {
-    "query": "Add unit tests for the checkout reducer.",
-    "should_trigger": false,
-    "note": "implement — test authoring, not a design document"
+    "note": "implement — test-driven development, not the design alias"
   }
 ]

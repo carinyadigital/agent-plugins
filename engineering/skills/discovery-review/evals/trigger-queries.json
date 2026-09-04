@@ -1,0 +1,67 @@
+[
+  {
+    "query": "Discovery review CHK01 — are we Ready for Development?",
+    "should_trigger": true
+  },
+  {
+    "query": "Can we start implementing checkout-foundation? Is discovery done?",
+    "should_trigger": true
+  },
+  {
+    "query": "Review the TDD and tasks before we write any code.",
+    "should_trigger": true
+  },
+  {
+    "query": "Are we ready to build JIRA-123?",
+    "should_trigger": true
+  },
+  {
+    "query": "Is the technical design complete enough to implement?",
+    "should_trigger": true
+  },
+  {
+    "query": "Review the docs/ folder — are they any good?",
+    "should_trigger": false,
+    "note": "docs-review — handbook/docs quality, not the discovery gate"
+  },
+  {
+    "query": "Is our documentation consistent? I think a few pages contradict each other.",
+    "should_trigger": false,
+    "note": "docs-review"
+  },
+  {
+    "query": "Discover CART-123 — write the TDD and tasks until Ready for Development.",
+    "should_trigger": false,
+    "note": "discover — writes artefacts then gates; this skill only judges"
+  },
+  {
+    "query": "Write the technical design for CHK01.",
+    "should_trigger": false,
+    "note": "design — authoring, not the gate"
+  },
+  {
+    "query": "Break CHK01 into tasks with Given When Then.",
+    "should_trigger": false,
+    "note": "/product-management:tasks"
+  },
+  {
+    "query": "Implement CHK01-01.",
+    "should_trigger": false,
+    "note": "implement"
+  },
+  {
+    "query": "Review my branch before I raise the PR.",
+    "should_trigger": false,
+    "note": "code-review"
+  },
+  {
+    "query": "Is epic CHK01 done? Validate against all acceptance criteria.",
+    "should_trigger": false,
+    "note": "validate — completion sign-off, not discovery"
+  },
+  {
+    "query": "Review the checkout page for accessibility.",
+    "should_trigger": false,
+    "note": "ux-design-review"
+  }
+]

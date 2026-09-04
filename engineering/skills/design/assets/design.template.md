@@ -1,5 +1,5 @@
 ---
-type: Technical Design
+type: Solution Design
 mode: <!-- skeleton | full -->
 work_id: <!-- e.g. CHK01, or the tracker key (JIRA-123, ENG-45) if one resolved -->
 work_short_name: <!-- kebab-case from title, max two words; fall back to work_id when unknown -->
@@ -9,18 +9,18 @@ status: Draft
 last_updated: <!-- YYYY-MM-DD -->
 related:
   - <!-- solution.md -->
-  - specs/{work-short-name}/TASKS.local.md
+  - {work-dir}/TASKS.local.md
   - docs/architecture/solution.md
 ---
 
 <!--
 DRAFTING AIDE — DELETE THIS BLOCK BEFORE SAVING THE OUTPUT FILE.
-DO NOT INCLUDE in this tdd.md:
+DO NOT INCLUDE in this design.md:
   - Architecture-wide patterns already in solution.md
     → cite solution.md §{N.M} instead; do not re-narrate
   - Business rationale                  → product.md
   - Phase sequencing                    → roadmap.md
-  - Story-level acceptance criteria     → specs/{work-short-name}/TASKS.local.md (tasks skill)
+  - Story-level acceptance criteria     → {work-dir}/TASKS.local.md (tasks skill)
 
 Skeleton mode (2–4 pages): §1 The slice, §2 Files shipped,
   §3 Acceptance gates, §4 What was NOT delivered, §5 Open questions, §6 Handoff.
@@ -31,9 +31,9 @@ Full mode (5–10 pages): §1 Scope, §2 Architecture fit, §3 Files and compone
   §11 Handoff, §12 Open questions.
 -->
 
-# Technical Design -- {Work Item Title} ({WORK-ID})
+# Solution Design -- {Work Item Title} ({WORK-ID})
 
-Technical design for {WORK-ID} at `specs/{work-short-name}/`. Architecture-wide patterns are authoritative in
+Solution Design for {WORK-ID} at `{work-dir}/`. Architecture-wide patterns are authoritative in
 [`solution.md`](solution.md) and are not repeated here.
 
 ## 1. Scope / The slice

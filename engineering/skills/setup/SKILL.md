@@ -170,7 +170,7 @@ Close with persona-appropriate handoff:
 
 1. **Solution** — `/architecture:solution`
 2. **ADR** — `/architecture:adr write`
-3. **Technical design (tdd)** — `/engineering:tdd <work-id>`
+3. **Technical design (tdd)** — `/engineering:design <work-id>`
 
 **QA Engineer path:**
 

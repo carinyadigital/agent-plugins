@@ -1,0 +1,34 @@
+{
+  "skill_name": "design",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write the skeleton Solution Design for checkout-foundation — end-to-end slice, files shipped, out of scope for this epic.",
+      "expected_output": "specs/checkout-foundation/design.md, 2–4 pages, cites solution.md, §4 lists deferred work, no task Gherkin.",
+      "assertions": [
+        "Writes specs/checkout-foundation/design.md",
+        "Uses skeleton sections (slice, files, gates, out of scope)",
+        "Cites solution.md by section rather than copying full architecture",
+        "No Feature:/Scenario: blocks (those belong in TASKS.local.md)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Update the Solution Design for CHK01. specs/checkout-foundation/design.md already exists.",
+      "expected_output": "Updates the existing design.md in place rather than writing a second document.",
+      "assertions": [
+        "Updates specs/checkout-foundation/design.md",
+        "Does not create a second design document alongside the existing one"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "tdd CHK01 — skeleton, files we ship this sprint.",
+      "expected_output": "Same as design: writes specs/checkout-foundation/design.md via the tdd alias.",
+      "assertions": [
+        "Treats tdd as an alias for design",
+        "Writes specs/checkout-foundation/design.md, not design.md"
+      ]
+    }
+  ]
+}

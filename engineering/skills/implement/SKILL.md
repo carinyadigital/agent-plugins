@@ -2,16 +2,17 @@
 name: implement
 description: >
   Use when the user wants to implement a task in code against an approved
-  tdd.md and specs/{work-short-name}/TASKS.local.md. Triggers on "implement CHK01-01",
-  "implement JIRA-456", "build this task", "write the code for this story".
+  design.md and {work-dir}/TASKS.local.md. Triggers on "implement CHK01-01",
+  "implement JIRA-456", "build this task",   "write the code for this story".
   Reads the design and acceptance criteria, writes code and tests, runs the
   project's full validation suite, and commits in logical units. This is also
   the skill for test-driven development — "use TDD for this", "write a failing
   test first", "red/green/refactor", "add tests for X" — because that is code
-  authoring, not document authoring. Do NOT use for code review (code-review),
+  authoring, not document authoring. Do NOT use for delivering a whole work
+  item through review and an MR (deliver), code review (code-review),
   addressing review feedback (code-review-fix), changing how existing UI looks
-  or behaves (ux-design-fix), writing tasks (tasks), or writing a technical
-  design document (tdd).
+  or behaves (ux-design-fix), writing tasks (tasks), or writing a Solution
+  Design (design / tdd).
 license: Apache-2.0
 compatibility: Requires git and the project's own validation toolchain (formatter, linter, typechecker, test runner).
 allowed-tools:
@@ -31,7 +32,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `specs/` and `docs/architecture/`.
+Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/` and `docs/architecture/`.
 
 # Implement
 
@@ -42,7 +43,7 @@ Pass the task id after the skill name (e.g. `/implement CHK01-01` or
 `/implement JIRA-456`). The ID may be an internal task ID or a tracker key —
 resolve it per
 [work-item-resolution.md](../../references/work-item-resolution.md) to
-find its parent work item's folder (`specs/{work-short-name}/`) and confirm the
+find its parent work item's folder (`{work-dir}/`) and confirm the
 task's own status before starting. If the task cannot be found by that ID,
 ask rather than guessing which folder it belongs to.
 
@@ -50,8 +51,8 @@ ask rather than guessing which folder it belongs to.
 
 | Input             | Location                       | Required  |
 | ----------------- | ------------------------------ | --------- |
-| Task + Gherkin AC | `specs/{work-short-name}/TASKS.local.md` | Yes       |
-| Work item design  | `specs/{work-short-name}/tdd.md` | Yes       |
+| Task + Gherkin AC | `{work-dir}/TASKS.local.md` | Yes       |
+| Work item design  | `{work-dir}/design.md` | Yes       |
 | Architecture      | `docs/architecture/solution.md`| If relevant |
 | Coding standards  | `AGENTS.md` or `CLAUDE.md`     | If present |
 
@@ -99,7 +100,7 @@ Doc comments MUST NOT:
   "see …" pointers)
 - Reference any external source — including issue systems (Jira, Linear,
   GitHub/GitLab issues) and their keys, ticket numbers, story IDs, or task IDs
-- Reference working documents (`tdd.md`, `TASKS.local.md`, `solution.md`, ADRs,
+- Reference working documents (`design.md`, `TASKS.local.md`, `solution.md`, ADRs,
   specs, designs, briefs, or any other planning artefact)
 
 If the only comment you would add is a pointer to a ticket or a design doc,
@@ -110,11 +111,11 @@ write nothing.
 This skill writes code against an approved design. It MUST NOT:
 
 - Modify architectural patterns, NFRs, or cross-cutting concerns — those live
-  in `solution.md` and should be raised as a new ADR via **adr**, not changed
+  in `solution.md` and should be raised as a new ADR via `/architecture:adr`, not changed
   unilaterally during implementation
 - Rewrite acceptance criteria or add new tasks — task scope is fixed by
-  `specs/{work-short-name}/TASKS.local.md`; if scope needs to change, update it via the
-  **tasks** skill first
+  `{work-dir}/TASKS.local.md`; if scope needs to change, update it via
+  `/product-management:tasks` first
 - Introduce new public APIs or contract shapes not specified in
   `docs/architecture/solution.md` or the design — pause and update solution.md
   (or raise an ADR) first
@@ -160,3 +161,13 @@ After completing implementation, write a summary:
 - Tests: 12/12 pass
 
 </example>
+
+## Related workflow
+
+- `design` (alias `tdd`) — work-item Solution Design
+- `/product-management:tasks` — Gherkin AC / local breakdown
+- `discovery-review` — Ready for Development gate before this skill
+- `discover` agent — write Solution Design + tasks until that gate passes
+- `deliver` agent — whole work item through review, validate, and MR
+- `/architecture:adr` — raise a new ADR rather than changing `solution.md` unilaterally (if not installed: `Install: /plugin install architecture@carinya-plugins`)
+- `code-review` — review the working diff after implementation

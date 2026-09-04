@@ -1,0 +1,70 @@
+{
+  "skill_name": "discovery-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Discovery review CHK01 — are we Ready for Development?",
+      "expected_output": "Inventory of discovery artefacts, findings by tier, Ready or Not ready verdict. No Solution Design or task files modified.",
+      "assertions": [
+        "Resolves the work item and work dir before judging",
+        "Inventories design.md, tasks/AC, and solution.md when relevant",
+        "Gives an explicit Ready for Development or Not ready verdict",
+        "Groups findings as blocking / warning / suggestion",
+        "Every finding cites a path and a heading or line",
+        "Names the owning skill for each gap",
+        "Does not amend design.md, TASKS.local.md, or solution.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Can we start implementing checkout-foundation? The TDD §5 still has [NEEDS CLARIFICATION] on which payment provider, and that choice changes the files shipped.",
+      "expected_output": "Not ready. The open clarification is blocking.",
+      "assertions": [
+        "Verdict is Not ready",
+        "Rates the payment-provider clarification blocking",
+        "Explains that implement would have to guess the slice or files",
+        "Does not start implement"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Review the TDD and tasks. CHK01-03 has Given/When but no Then.",
+      "expected_output": "Untestable AC raised as blocking; owner is /product-management:tasks.",
+      "assertions": [
+        "Rates missing Then as blocking",
+        "Owner is /product-management:tasks",
+        "Does not treat 'the tasks file exists' as sufficient"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Ready for development? design.md restates the module layout from solution.md §3.2 with the same facts, and cites nothing.",
+      "expected_output": "Boundary finding; warning unless the restatement has already diverged.",
+      "assertions": [
+        "Flags restated architecture that should be a citation",
+        "Does not fail the gate solely for a faithful restatement with no factual clash",
+        "Would rate a factual clash with solution.md as blocking"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Are we ready to build? design.md, TASKS.local.md, and solution.md are complete; AC are testable; no open questions that change the slice.",
+      "expected_output": "Ready for Development; next is implement on the first task.",
+      "assertions": [
+        "Verdict is Ready for Development",
+        "Does not invent blocking findings from prose style",
+        "Names implement as next, not validate"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Review the docs/ folder — is our documentation consistent?",
+      "expected_output": "Refuse this skill's job; route to docs-review.",
+      "assertions": [
+        "Does not run a handbook or docs/ tree quality review",
+        "Routes to docs-review",
+        "Does not produce a Ready for Development verdict for a docs tree"
+      ]
+    }
+  ]
+}

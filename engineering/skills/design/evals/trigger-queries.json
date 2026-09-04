@@ -1,0 +1,48 @@
+[
+  {
+    "query": "Design the checkout foundation epic — skeleton, what files we ship this sprint.",
+    "should_trigger": true
+  },
+  {
+    "query": "Write the Solution Design for the payment-placement epic.",
+    "should_trigger": true
+  },
+  {
+    "query": "tdd JIRA-123 — how should we build this story?",
+    "should_trigger": true
+  },
+  {
+    "query": "design CHK01",
+    "should_trigger": true
+  },
+  {
+    "query": "Update solution.md with the orders API and module layout.",
+    "should_trigger": false,
+    "note": "solution"
+  },
+  {
+    "query": "Discover CART-123 — write the Solution Design and tasks until Ready for Development.",
+    "should_trigger": false,
+    "note": "discover — full prepare-for-development loop, not design alone"
+  },
+  {
+    "query": "Break CHK01 into tasks with Given When Then.",
+    "should_trigger": false,
+    "note": "tasks"
+  },
+  {
+    "query": "Use TDD for this task — write a failing test first, then make it pass.",
+    "should_trigger": false,
+    "note": "implement — test-driven development, not a Solution Design"
+  },
+  {
+    "query": "Do red/green/refactor on the cart total calculation.",
+    "should_trigger": false,
+    "note": "implement — test-driven development, not a Solution Design"
+  },
+  {
+    "query": "Add unit tests for the checkout reducer.",
+    "should_trigger": false,
+    "note": "implement — test authoring, not a Solution Design"
+  }
+]

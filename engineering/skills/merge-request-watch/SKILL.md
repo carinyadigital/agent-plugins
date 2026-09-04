@@ -1,16 +1,16 @@
 ---
-name: merge-request-babysit
+name: merge-request-watch
 description: >
   Use when the user wants an already-open merge request or pull request driven
   to a merge-ready state — watching CI, fixing objective check failures,
   triaging review threads, and syncing merge conflicts until all checks are
-  green and nothing is unresolved. Triggers on "babysit this MR", "watch the
-  PR until it's green", "get this MR merge-ready", "keep an eye on CI". Works
-  with any codebase and any git provider — GitHub, GitLab, or Bitbucket —
-  using MCP tools where available, provider CLIs otherwise. Never merges. Do
-  NOT use to open an MR (merge-request), to review an MR as its reviewer
-  (merge-request-review), to review a local diff (code-review), or to
-  implement new work (implement).
+  green and nothing is unresolved. Triggers on "watch this MR", "watch the
+  PR until it's green", "get this MR merge-ready", "keep an eye on this
+  MR's CI", "babysit this MR". Works with any codebase and any git provider
+  — GitHub, GitLab, or Bitbucket — using MCP tools where available,
+  provider CLIs otherwise. Does not merge unless the user explicitly asks.
+  Do NOT use to open an MR (merge-request), to review a branch, PR, or MR
+  (code-review), or to implement new work (implement).
 license: Apache-2.0
 compatibility: Requires git and the project's validation toolchain. Provider features require gh, glab, or an equivalent provider MCP tool.
 allowed-tools:
@@ -31,15 +31,17 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `specs/` and `docs/architecture/`.
+Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/` and `docs/architecture/`.
 
-# Merge request babysit
+# Merge request watch
 
 You are a Senior Software Engineer driving an open merge request (MR) or pull
 request (PR) to a merge-ready state so its author can move on to other work.
 Merge-ready means: all CI checks green, no unresolved review threads, no merge
-conflicts. You do not merge — merging stays a human decision unless the user has
-explicitly asked for it.
+conflicts. You do not merge. Merging stays a human decision. If the user explicitly
+asks you to merge, confirm the target branch and wait for a clear yes
+before calling the provider merge API. Never merge to production without
+that confirmation.
 
 Read
 [../merge-request/references/provider-resolution.md](../merge-request/references/provider-resolution.md)
@@ -123,13 +125,13 @@ Prefer event-driven or watch-based waiting; poll only as a last resort:
 ## Backgrounding
 
 When the host supports background agents (Claude Code `Agent` tool, Cursor
-cloud agents), spawn [agents/mr-babysitter.md](agents/mr-babysitter.md) with the
+cloud agents), spawn [agents/mr-watcher.md](agents/mr-watcher.md) with the
 MR URL and the resolved provider/tool so the loop runs without tying up the main
 session; relay its final report. Otherwise run the loop inline.
 
 ## Negative constraints
 
-Babysitting MUST NOT:
+Watching MUST NOT:
 
 - Merge the MR/PR unless the user explicitly asked for auto-merge
 - Force-push, rewrite history, or close the MR
@@ -154,7 +156,7 @@ Report at every stop, and once per completed cycle when running inline:
 
 <example>
 
-## Babysit Report — cycle 2
+## Watch Report — cycle 2
 
 **MR:** https://gitlab.com/org/repo/-/merge_requests/42
 **Status:** blocked — awaiting user decision

@@ -8,10 +8,9 @@ description: >
   discovers the repo's MR/PR template, composes a size-adaptive description,
   pushes, and creates the MR. Works with any codebase and any git provider —
   GitHub, GitLab, or Bitbucket — using MCP tools where available, provider CLIs
-  otherwise, and plain git as a last resort. Do NOT use to drive an open MR to
-  merge-ready (merge-request-babysit), to review an MR as its reviewer
-  (merge-request-review), to review a local diff (code-review), or to implement
-  changes (implement).
+  otherwise, and plain git as a last resort.   Do NOT use to drive an open MR to
+  merge-ready (merge-request-watch), to review a branch, PR, or MR
+  (code-review), or to implement changes (implement).
 license: Apache-2.0
 compatibility: Requires git. Hosted MR/PR creation requires gh, glab, or an equivalent provider MCP tool; falls back to printing a create-MR URL.
 allowed-tools:
@@ -33,7 +32,7 @@ metadata:
   review_cadence: as-needed
 ---
 
-Read artefacts from `specs/` and `docs/architecture/`.
+Work directory `{work-dir}/`; default (if not specified or unknown): `specs/{work-short-name}/`. Read artefacts from `{work-dir}/` and `docs/architecture/`.
 
 # Merge request
 
@@ -43,8 +42,8 @@ orient themselves in within 30 seconds: what changed, why, and where to start
 reading.
 
 This skill creates the MR and stops. To drive an open MR to merge-ready — CI
-green, threads resolved, conflicts synced — use **merge-request-babysit**. To
-review someone else's MR as its reviewer, use **merge-request-review**.
+green, threads resolved, conflicts synced — use **merge-request-watch**. To
+review a branch, PR, or MR, use **code-review**.
 
 ## References
 
@@ -77,10 +76,10 @@ Gather the following before drafting anything, and reuse it for every later step
    1. Explicit argument — the user passed a work-item ID or URL.
    2. Linked work item — an issue/ticket referenced by branch name or recent
       commits, fetched via the provider CLI or MCP tool if available.
-   3. Local spec file — glob for `TASK.md`, `**/TASKS.local.md`, `**/tdd.md`,
-      `**/design.md`, `SPEC.md`, or a project-specific equivalent named in
-      `AGENTS.md`/`CLAUDE.md`. A `specs/{work-short-name}/` layout is one candidate
-      among many — never a requirement.
+   3. Local spec file — glob for `TASK.md`, `**/TASKS.local.md`, `**/design.md`,
+      legacy `**/design.md`, `SPEC.md`, or a project-specific equivalent named in
+      `AGENTS.md`/`CLAUDE.md`. Default `{work-dir}` is `specs/{work-short-name}/`;
+      other layouts are valid — never a requirement.
    4. Fallback — `git log` on the branch, the branch name, and the diff itself.
       Always available.
 2. **Provider and tool** — per
@@ -132,7 +131,7 @@ Gather the following before drafting anything, and reuse it for every later step
 8. **Reviewers.** Suggest reviewers from `CODEOWNERS` (GitHub/GitLab) or the
    provider's default-reviewer config, matched against the changed paths.
    Confirm with the user before assigning people — assignment notifies them.
-9. **Report.** Print the output format below, and offer **merge-request-babysit**
+9. **Report.** Print the output format below, and offer **merge-request-watch**
    as the next step.
 
 ## Quality rules
@@ -165,7 +164,7 @@ An MR/PR description MUST NOT:
   a layout to fill in, not a prompt (see template-discovery.md)
 
 This skill MUST NOT modify source files. It composes a description and opens the
-MR; fixing CI or acting on review feedback is **merge-request-babysit**.
+MR; fixing CI or acting on review feedback is **merge-request-watch**.
 
 ## Output format
 
@@ -190,7 +189,7 @@ enforces the budget before prompt construction.
 Closes PROJ-42
 
 ---
-Next: run **merge-request-babysit** to watch CI and review comments until this
+Next: run **merge-request-watch** to watch CI and review comments until this
 MR is merge-ready.
 
 </example>

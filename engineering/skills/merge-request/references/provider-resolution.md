@@ -63,9 +63,9 @@ with a follow-up update call or note.
   user the composed title and description ready to paste. Creating the MR by
   hand from prepared content is a successful outcome, not a failure.
 
-## 3. Operation matrix (babysit mode)
+## 3. Operation matrix (watch mode)
 
-What babysit needs per provider, by tier:
+What merge-request-watch needs per provider, by tier:
 
 | Operation | GitHub | GitLab | Bitbucket |
 | --------- | ------ | ------ | --------- |

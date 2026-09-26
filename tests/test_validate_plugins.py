@@ -96,6 +96,18 @@ class McpShapeTests(unittest.TestCase):
             errors = [i for i in checker.v.issues if i.severity == "error"]
             self.assertEqual(errors, [], msg=[e.message for e in errors])
 
+    def test_empty_mcp_servers_is_allowed(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            plugin_dir = Path(tmp) / "some-practice"
+            make_plugin_manifests(plugin_dir, author={"name": "Test"})
+            write_json(plugin_dir / ".mcp.json", {"mcpServers": {}})
+
+            checker = validate_plugins.PluginChecker("pretty")
+            checker.check_plugin(plugin_dir)
+
+            errors = [i for i in checker.v.issues if i.severity == "error"]
+            self.assertEqual(errors, [], msg=[e.message for e in errors])
+
     def test_invalid_mcp_shape_fails(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             plugin_dir = Path(tmp) / "some-practice"

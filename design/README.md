@@ -65,7 +65,7 @@ tokens and visual patterns — no bundled skill and no install dependency on
   `config/instance.json`; setup reads business identity without re-asking.
 - **Figma** (optional) — connected Figma enables reference extraction during setup
   and wireframe write.
-- **Playwright** (bundled) — used by `ux-design-review` for live-browser passes.
+- **Playwright** (optional) — add to `.mcp.json` for `ux-design-review` live-browser passes.
 - **engineering** (recommended companion) — reads wireframes before UI
   implementation; see CONNECTORS.md.
 

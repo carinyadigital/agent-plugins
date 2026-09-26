@@ -6,8 +6,8 @@ Plugin files use `~~category` as a placeholder for whatever tool the user
 connects in that category. Skills are **tool-agnostic** — they describe
 workflows in terms of categories rather than specific products.
 
-Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for
-your stack.
+`.mcp.json` ships empty. Add servers for your stack; skills fall back when a
+connector is not configured.
 
 ## Companion practices (recommended co-install)
 
@@ -20,19 +20,21 @@ Install companions alongside this plugin when architecture feeds delivery. No
 bundled duplicate skills and no hard install dependency — this practice works
 standalone when `ARCHITECTURE.md` / ADRs are the only artefacts needed.
 
-## Bundled in `.mcp.json`
+## In `.mcp.json`
 
-| Category | Placeholder | Server |
-| -------- | ----------- | ------ |
-| Source control | `~~source control` | GitHub |
+None shipped.
 
-Other options: GitLab, Bitbucket, Linear, Atlassian (Jira) for tracker resolution
-during `adr plan <work-id>`.
+## Suggested additions
+
+| Category | Placeholder | Examples |
+| -------- | ----------- | -------- |
+| Source control | `~~source control` | GitHub, GitLab, Bitbucket |
+| Project tracker | `~~project tracker` | Linear, Atlassian (Jira) for work-id resolution during `adr plan <work-id>` |
 
 ## Used by skill
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **setup** | `--check-integrations` | GitHub |
+| **setup** | `--check-integrations` | Whatever is declared in `.mcp.json` |
 | **solution** | write | None required — product.md, the repo, and user context suffice |
 | **adr** | plan / write / review | Source control / tracker optional for work-id harvest |

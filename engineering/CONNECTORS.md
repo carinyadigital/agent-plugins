@@ -4,7 +4,7 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-Each practice bundles a **minimal default** in `.mcp.json` — one or two servers most relevant to that practice. Add more entries for your stack; skills fall back gracefully when a category is not connected.
+`.mcp.json` ships empty. Add servers for your stack; skills fall back when a category is not connected.
 
 ## Companion practices (recommended co-install)
 
@@ -17,21 +17,19 @@ Install `architecture` alongside this plugin when writing `ARCHITECTURE.md` or A
 Install `product-management` when implementation needs backlog alignment, task AC,
 sprint cadence, or epic sign-off. Do not bundle duplicate copies of those skills here.
 
-## Bundled in `.mcp.json`
+## In `.mcp.json`
 
-| Category | Placeholder | Server |
-| -------- | ----------- | ------ |
-| Source control | `~~source control` | GitHub |
-| Browser automation | `~~browser automation` | Playwright |
-| Framework docs | `~~framework docs` | Context7 |
+None shipped.
 
-## Common additions
+## Suggested additions
 
 Add these to `.mcp.json` (or connect via Cursor / Claude MCP settings) when your stack uses them:
 
 | Category | Placeholder | Examples |
 | -------- | ----------- | -------- |
-| Source control | `~~source control` | GitLab |
+| Source control | `~~source control` | GitHub (`https://api.githubcopilot.com/mcp/`), GitLab |
+| Browser automation | `~~browser automation` | Playwright (`npx @playwright/mcp@latest`) |
+| Framework docs | `~~framework docs` | Context7 |
 | Hosting / deploy | `~~hosting` | Vercel (`https://mcp.vercel.com`) |
 | Chat | `~~chat` | Slack (`https://mcp.slack.com/mcp`) |
 | Project tracker | `~~project tracker` | Linear, Asana — see **product-management** |
@@ -40,15 +38,13 @@ Add these to `.mcp.json` (or connect via Cursor / Claude MCP settings) when your
 | Design | `~~design` | Figma — see **design** |
 | Database | `~~database` | Neon Postgres, etc. |
 
-Neon Postgres and other stack-specific MCP servers are not bundled — add entries to
-`.mcp.json` when the target repo uses them. `setup --check-integrations`
-reports what is connected.
+`setup --check-integrations` reports what is connected.
 
 ## Used by skill
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **setup** | `--check-integrations` | GitHub, Playwright, Context7 (+ any additions) |
+| **setup** | `--check-integrations` | Whatever is declared in `.mcp.json` |
 | **merge-request** | create, watch | Source control |
 | **ux-design-review** | review, fix | Figma (optional), Playwright |
 | **deploy-qa** | — | Source control, hosting |

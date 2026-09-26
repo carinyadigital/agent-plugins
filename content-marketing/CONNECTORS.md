@@ -4,7 +4,7 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-Each practice bundles a **minimal default** in `.mcp.json`. Add more entries for your stack.
+`.mcp.json` ships empty. Add servers for your stack; skills fall back when a connector is not configured.
 
 ## Companion practice (recommended co-install)
 
@@ -16,19 +16,15 @@ Install `product-management` alongside this plugin when content planning needs
 backlog alignment or research synthesis. Do not bundle duplicate copies of those
 skills here.
 
-## Bundled in `.mcp.json`
+## In `.mcp.json`
 
-| Category | Placeholder | Server |
-| -------- | ----------- | ------ |
-| Creative / design | `~~design` | Canva |
+None shipped.
 
-Canva requires per-user OAuth. Use for social graphics and template autofill when
-connected; skills still work from briefs and brand voice alone.
-
-## Common additions
+## Suggested additions
 
 | Category | Placeholder | Examples |
 | -------- | ----------- | -------- |
+| Creative / design | `~~design` | Canva (`https://mcp.canva.com/mcp`) — per-user OAuth; social graphics and template autofill |
 | Source control | `~~source control` | GitHub — see **engineering** |
 | Knowledge base | `~~knowledge base` | Notion — see **product-management** |
 | Chat | `~~chat` | Slack |
@@ -36,11 +32,13 @@ connected; skills still work from briefs and brand voice alone.
 | CMS | `~~CMS` | Contentful, Sanity, WordPress |
 | Social scheduling | `~~social scheduling` | Buffer, Later |
 
+Skills still work from briefs and brand voice alone.
+
 ## Used by skill
 
 | Skill | Mode | Connectors |
 | ----- | ---- | ---------- |
-| **setup** | `--check-integrations` | Canva (+ any additions) |
+| **setup** | `--check-integrations` | Whatever is declared in `.mcp.json` |
 | **content-calendar** | write, review | Knowledge base (optional seed material) |
 | **draft-post**, **draft-recipe** | — | Source control (optional seed PRs) |
 | **curate-content** | — | None required — inventory JSON input |

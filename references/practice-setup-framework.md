@@ -74,7 +74,7 @@ After the instance layer is satisfied (or skipped):
 
 ## Integrations — `--check-integrations`
 
-Read the installed plugin's `.mcp.json` (in-repo: `${CLAUDE_PLUGIN_ROOT}/.mcp.json`) and `${CLAUDE_PLUGIN_ROOT}/CONNECTORS.md`. For each bundled server, report:
+Read the installed plugin's `.mcp.json` (in-repo: `${CLAUDE_PLUGIN_ROOT}/.mcp.json`) and `${CLAUDE_PLUGIN_ROOT}/CONNECTORS.md`. For each server declared in `.mcp.json`, report:
 
 - **connected** (probe succeeded)
 - **configured but not verified**

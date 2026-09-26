@@ -280,17 +280,20 @@ run in the monorepo, not in the plugin cache.
 
 ## MCP bundles (Phase 3 verification)
 
-| Plugin | Bundled MCP | Notes |
+Practice plugins ship an empty `.mcp.json`. Add servers per practice `CONNECTORS.md`.
+
+| Plugin | Shipped MCP | Notes |
 | ------ | ----------- | ----- |
-| product-management | atlassian, amplitude | Unchanged after delivery-practice merge — tracker + analytics |
-| design | figma, playwright | Playwright required for ux-design-review/fix browser work |
-| engineering | github, playwright, context7 | Engineering tool surface |
-| brand-creative | fireflies | |
-| content-marketing | canva | |
-| search-optimisation | ahrefs | |
+| product-management | — | Suggested: tracker + analytics |
+| design | — | Playwright needed for live ux-design-review |
+| engineering | — | Suggested: source control, browser, framework docs |
+| brand-creative | — | Suggested: meeting transcription |
+| content-marketing | — | Suggested: creative / design |
+| search-optimisation | — | Suggested: SEO intelligence |
+| architecture | — | Suggested: source control |
 | ralph-loop | — | Hooks only |
 | skills-index | — | Router only |
 | plugin-management | — | Meta-plugin + skill QA tooling |
-| document-management | — | Utility; no bundled MCP |
+| document-management | — | Utility; no MCP |
 
 Skills degrade when a connector is absent — see each plugin's `CONNECTORS.md`.

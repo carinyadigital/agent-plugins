@@ -152,7 +152,7 @@ What's in the repo:
 
 - **Practice plugins** — brand, content, product, design, search, architecture, and engineering — each with a `setup` interview, a living `CLAUDE.md` practice profile every skill reads, and **propose profile update** so conventions can be recorded as you work without re-running setup.
 - **Instance bootstrap** — whichever plugin you install first writes `config/instance.json` if absent; no install-order dependency.
-- **MCP connectors** — a minimal default per practice in `.mcp.json`; add more for your stack (source control, hosting, chat, trackers, analytics).
+- **MCP connectors** — each practice ships an empty `.mcp.json`; add servers for your stack (source control, hosting, chat, trackers, analytics).
 - **[Entry points by service](#entry-points-by-service)** — primary commands plus the [extended catalog](#extended-persona-catalog) below.
 
 ## Repository layout
@@ -183,7 +183,7 @@ Each practice plugin has the same shape:
   .cursor-plugin/plugin.json
   CLAUDE.md               # template practice profile — filled in by /<practice>:setup
   README.md
-  CONNECTORS.md           # category placeholders + bundled MCP providers
+  CONNECTORS.md           # category placeholders + suggested MCP providers
   .mcp.json
   skills/                 # skills — each is a /<practice>:<skill> slash command
   references/             # practice conventions
@@ -341,19 +341,19 @@ Grouped by agency service line. Each plugin's **`setup`** is what tailors it to 
 
 ## MCP connectors
 
-Each practice plugin bundles a **minimal default** — one or two MCP servers most relevant to that practice — in its `.mcp.json`. Add more entries for your stack; skills produce usable output when no connector is configured.
+Each practice plugin ships an empty `.mcp.json`. Add servers for your stack; skills produce usable output when no connector is configured.
 
-| Practice | Default bundled | Primary categories |
-|---|---|---|
-| **brand-creative** | Fireflies | meeting transcription |
-| **product-management** | Atlassian, Amplitude | project tracker, product analytics |
-| **content-marketing** | Canva | creative / design |
-| **design** | Figma, Playwright | design, browser automation |
-| **search-optimisation** | Ahrefs | SEO intelligence |
-| **architecture** | GitHub | source control (ADR harvest) |
-| **engineering** | GitHub, Playwright, Context7 | source control, browser automation, framework docs |
+| Practice | Suggested categories |
+|---|---|
+| **brand-creative** | meeting transcription, knowledge base, design |
+| **product-management** | project tracker, product analytics |
+| **content-marketing** | creative / design, CMS, social scheduling |
+| **design** | design, browser automation |
+| **search-optimisation** | SEO intelligence, browser automation |
+| **architecture** | source control (ADR harvest), project tracker |
+| **engineering** | source control, browser automation, framework docs |
 
-No server is duplicated across plugins. Co-install companion practices or edit `.mcp.json` to add Slack, Notion, Vercel, Sentry, and other common servers — see each practice's CONNECTORS.md for the full placeholder map and suggested additions.
+Co-install companion practices or edit `.mcp.json` to add Slack, Notion, Vercel, Sentry, and other common servers — see each practice's CONNECTORS.md for the full placeholder map and suggested additions.
 
 > Connectors marked "customer subscription" need your own account and API key. Configure them in each plugin's `.mcp.json` or via `claude mcp` in Claude Code.
 

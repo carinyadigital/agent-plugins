@@ -34,7 +34,7 @@ Claude and Cursor plugins for digital agency workflows.
 ├── brand-creative/                      # instance bootstrap + (v2) marketplace — install first
 │   ├── .claude-plugin/plugin.json
 │   ├── .cursor-plugin/plugin.json
-│   ├── .mcp.json                    # bundled MCP servers (e.g. GitHub for hub bootstrap)
+│   ├── .mcp.json                    # optional MCP servers (empty until you add your stack)
 │   ├── references/                  # agency-setup-framework, brand-conventions
 │   └── skills/
 │       └── setup/SKILL.md    # instance bootstrap; marketplace skills ported from strategy-builder-hub
@@ -104,7 +104,7 @@ Strategy, roadmap, backlog, and epic work for this catalogue live in the **carin
 - `plugin.json`: Plugin metadata — name, description, version, and component discovery settings
 - `commands/*.md`: Slash commands invoked as `/plugin:command-name`
 - `skills/*/SKILL.md`: Detailed knowledge and workflows for specific tasks
-- `<practice>/.mcp.json`: Bundled MCP server definitions per practice plugin (GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools, and practice-specific providers)
+- `<practice>/.mcp.json`: Optional MCP server definitions per practice plugin (empty by default; add source control, hosting, design, trackers, and practice-specific providers as needed)
 - `scripts/validate.py`: Structural validation orchestrator — run before every PR
 - `scripts/validate_plugins.py` / `scripts/validate_skills.py`: Domain validators
 - `*.local.md`: User-specific configuration (gitignored)

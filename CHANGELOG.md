@@ -8,6 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2026-09-27] — empty packaged MCP defaults
+
+Practice plugins no longer ship concrete MCP servers. `.mcp.json` stays in
+place with an empty `mcpServers` object; add providers for your stack.
+
+### architecture 0.8.2 / brand-creative 0.4.5 / content-marketing 0.4.5 / design 0.6.5 / engineering 0.8.5 / product-management 0.5.6 / search-optimisation 0.4.5
+
+- Removed packaged MCP servers from each practice `.mcp.json`.
+- CONNECTORS.md and catalogue docs list suggested providers instead of bundled defaults.
+- Validator allows an empty `mcpServers` object.
+
 ## [2026-09-04] — live copy to Carinya Digital / agent-plugins
 
 Install commands, skill authors, and catalogue docs now use

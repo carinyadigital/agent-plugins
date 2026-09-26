@@ -1,8 +1,8 @@
 {
   "name": "design",
   "displayName": "Design",
-  "version": "0.6.4",
-  "description": "Design practice in one install — setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/. Bundles Figma and Playwright.",
+  "version": "0.6.5",
+  "description": "Design practice in one install — setup interview, wireframes, live-browser UX design review, and UX design fix. Writes to the instance design/ directory when bound; standalone Try tier uses docs/design/.",
   "author": {
     "name": "Carinya Digital"
   },

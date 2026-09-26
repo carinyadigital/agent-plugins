@@ -336,12 +336,14 @@ class PluginValidator(Reporter):
             if not isinstance(mcp, dict):
                 continue
             servers = mcp.get("mcpServers")
-            if not isinstance(servers, dict) or not servers:
+            if not isinstance(servers, dict):
                 self.fail(
-                    "MCP_EMPTY",
-                    f"{self.rel(mcp_path)} mcpServers must define at least one server",
+                    "MCP_SHAPE_INVALID",
+                    f"{self.rel(mcp_path)} mcpServers must be an object",
                     file=self.rel(mcp_path),
                 )
+            elif not servers:
+                self.pass_(f"{self.rel(mcp_path)} mcpServers is empty")
             else:
                 self.pass_(f"{self.rel(mcp_path)} defines {len(servers)} server(s)")
 
@@ -526,12 +528,14 @@ class PluginValidator(Reporter):
             return
         if isinstance(mcp, dict) and "mcpServers" in mcp:
             servers = mcp.get("mcpServers")
-            if not isinstance(servers, dict) or not servers:
+            if not isinstance(servers, dict):
                 self.fail(
-                    "MCP_EMPTY",
-                    f"{self.rel(mcp_path)} mcpServers must define at least one server",
+                    "MCP_SHAPE_INVALID",
+                    f"{self.rel(mcp_path)} mcpServers must be an object",
                     file=self.rel(mcp_path),
                 )
+            elif not servers:
+                self.pass_(f"{self.rel(mcp_path)} mcpServers is empty")
             else:
                 self.pass_(f"{self.rel(mcp_path)} defines {len(servers)} server(s)")
         elif isinstance(mcp, dict) and mcp:
@@ -542,8 +546,8 @@ class PluginValidator(Reporter):
             )
         else:
             self.fail(
-                "MCP_EMPTY",
-                f"{self.rel(mcp_path)} must define at least one MCP server",
+                "MCP_SHAPE_INVALID",
+                f"{self.rel(mcp_path)} must use the mcpServers wrapper shape",
                 file=self.rel(mcp_path),
             )
 

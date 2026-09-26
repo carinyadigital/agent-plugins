@@ -58,7 +58,7 @@ Follow existing practice plugins (e.g. `product-management/`, `engineering/`, `b
 ## Adding or changing MCP servers
 
 1. Edit `<practice>/.mcp.json` — add or update entries under `mcpServers`.
-2. Update `<practice>/CONNECTORS.md` so category placeholders and bundled providers stay in sync.
+2. Update `<practice>/CONNECTORS.md` so category placeholders and suggested providers stay in sync.
 3. Do not commit secrets or API keys — use env var placeholders where providers require auth.
 4. Run `python3 scripts/validate.py`.
 
@@ -83,7 +83,7 @@ python3 plugin-management/scripts/validate_ralph.py  # Ralph hooks + presets
 | Marketplace parity | Claude ↔ Cursor marketplace lists out of sync |
 | Marketplace ↔ plugin.json | `name` / `description` drift between marketplace and per-plugin manifests |
 | Plugin manifests | Missing `name`, `version`, or `description` |
-| MCP connectors | Missing or invalid practice `.mcp.json`; empty `mcpServers` |
+| MCP connectors | Invalid practice `.mcp.json` shape (empty `mcpServers` is allowed) |
 | SKILL.md frontmatter | Missing `name`/`description`/`allowed-tools`; name/description budgets; agency metadata (warnings by default) |
 | Agent contracts | Every `**/agents/*.md`: `model: inherit`, constrained tools, `model_tier`, numeric `budget` |
 | Orphan SKILL.md | `SKILL.md` outside `skills/<name>/` (excl. `plugin-management/template/`) |

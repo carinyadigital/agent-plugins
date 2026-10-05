@@ -1,0 +1,39 @@
+{
+  "skill_name": "write-story",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a story under CHK01: as a signed-in customer I want to reach checkout with my cart so that I can buy.",
+      "expected_output": "A draft story with As a/I want/So that, independent test criterion, priority, and >=1 Gherkin scenario with observable Then. Offers append to TASKS.local.md or tracker create after confirmation.",
+      "assertions": [
+        "Includes As a / I want / so that statement",
+        "Includes an independent test criterion",
+        "Includes at least one Gherkin scenario with observable Then",
+        "Names the parent epic",
+        "Does not produce a full multi-story epic breakdown"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add this story to specs/checkout-foundation/TASKS.local.md as the MVP.",
+      "expected_output": "Reads existing TASKS.local.md for numbering, appends ### S{n} as MVP when appropriate, reports path and story ID.",
+      "assertions": [
+        "Reads the parent TASKS.local.md before choosing S{n}",
+        "Marks or states Story 1 / MVP when no prior stories exist or when asked",
+        "Appends to the epic TASKS.local.md rather than inventing a parallel file scheme",
+        "Does not silently create tracker issues"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Create a Jira story under epic CHK-10 with EARS as well as Gherkin.",
+      "expected_output": "Resolves Jira, drafts story with Gherkin plus EARS, creates under parent epic after confirmation (or immediately if create was explicit), uses CHK-10 linkage, no parallel internal ID.",
+      "assertions": [
+        "Resolves tracker destination without hardcoding only one vendor forever",
+        "Includes both Gherkin and EARS when EARS requested",
+        "Uses tracker key as canonical ID",
+        "Parents the story to the epic"
+      ]
+    }
+  ]
+}

@@ -8,7 +8,8 @@ description: >
   backlog", "refine the backlog", "is this sprint-ready", "are these stories
   ready", "reprioritise", "this epic is too big", "clean up the backlog".
   Amends in place and reports a verdict. Do NOT use to create a backlog or
-  write new stories and tasks (tasks), plan a sprint (sprint-planning),
+  write new stories and tasks (tasks), author one initiative/epic/story
+  (write-initiative, write-epic, write-story), plan a sprint (sprint-planning),
   review a finished sprint (sprint-retro), or verify a work item against its
   acceptance criteria (validate).
 license: Apache-2.0

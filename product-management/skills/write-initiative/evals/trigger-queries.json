@@ -1,0 +1,43 @@
+[
+  {
+    "query": "Write an initiative for activation of invited org admins",
+    "should_trigger": true
+  },
+  {
+    "query": "Draft this theme as an initiative with candidate epics",
+    "should_trigger": true
+  },
+  {
+    "query": "Create an initiative in Linear for checkout platform",
+    "should_trigger": true
+  },
+  {
+    "query": "Turn this research opportunity into an initiative",
+    "should_trigger": true
+  },
+  {
+    "query": "Write the product strategy / PRD",
+    "should_trigger": false,
+    "note": "product"
+  },
+  {
+    "query": "Write the Now/Next/Later roadmap",
+    "should_trigger": false,
+    "note": "roadmap"
+  },
+  {
+    "query": "Write the epics for this product from product.md",
+    "should_trigger": false,
+    "note": "tasks --product"
+  },
+  {
+    "query": "Write a single epic for checkout foundation",
+    "should_trigger": false,
+    "note": "write-epic"
+  },
+  {
+    "query": "Write a user story with Gherkin AC",
+    "should_trigger": false,
+    "note": "write-story"
+  }
+]

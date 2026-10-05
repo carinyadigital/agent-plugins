@@ -59,13 +59,15 @@ modelled else ask (do not default to `task`); GitHub/GitLab labels (`type:*`,
 under `## Foundational` / `## Cross-cutting`) is `task`. A filesystem `bug` or
 `spike` has no structural marker — ask.
 
-**Known set:** `epic` · `story` · `task` · `bug` · `spike` — starting
-vocabulary, not a whitelist. Map the source's native type to the closest row
-for *behaviour* only; keep the system's own label in artefacts. If unclear, ask.
+**Known set:** `initiative` · `epic` · `story` · `task` · `bug` · `spike` —
+starting vocabulary, not a whitelist. Map the source's native type to the
+closest row for *behaviour* only; keep the system's own label in artefacts. If
+unclear, ask.
 
 | Type | Decomposes into | Own AC? | Typical next skill |
 | ---- | ---------------- | ------- | ------------------ |
-| `epic` | Stories and tasks | No — AC on its stories | **design**, **tasks** |
+| `initiative` | Epics | No — outcomes and candidate epics only | **write-epic**, **tasks --product** |
+| `epic` | Stories and tasks | No — AC on its stories | **design**, **tasks**, **write-story** |
 | `story` | Tasks | Yes — primary AC holder | **tasks**, **design** if needed |
 | `task` | Nothing (unit of work) | Inherits story AC, or own if foundational | **implement** |
 | `bug` | Nothing, unless large enough for sub-tasks | Yes — repro as Given/When, fix as Then | **implement** |
@@ -122,6 +124,24 @@ source's native states mapped to these five. `Blocked` requires a named
 blocker. Updated by **implement** (→ `In progress`), **code-review** (→ `In
 review`), **validate** (→ `Done` or back), and **backlog-refine** — not by
 **tasks** after the initial write.
+
+### Initiative
+
+Strategic bet spanning multiple epics. Author with **write-initiative**. Not a
+`backlog.md` row — filesystem body lives at
+`docs/product/initiatives/{slug}.md` (see
+[issue-writing.md](../../../references/issue-writing.md)).
+
+| Field | Req | Legal values |
+| ----- | --- | ------------ |
+| Work item ID | Yes | Tracker key when tracker-backed; else kebab `slug` in the initiatives path |
+| Title | Yes | Noun phrase naming the bet |
+| Outcome | Yes | `product.md §7` outcome or roadmap theme this serves |
+| Scope / non-goals | Yes | Themes in / out — not a full epic backlog |
+| Success metrics | Yes | Leading + lagging with targets |
+| Candidate epics | Rec | 2–6 epic outcome titles for later `write-epic` / `tasks` |
+| Priority | Yes | `P0`–`P3` |
+| Status | Yes | `To do` · `In progress` · `In review` · `Blocked` · `Done` (or tracker states, mapped) |
 
 ### Epic
 

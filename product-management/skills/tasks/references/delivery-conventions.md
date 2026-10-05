@@ -8,10 +8,12 @@ item argument or writing under `specs/`.
 
 ```text
 docs/product/               product.md, roadmap.md, backlog.md
+docs/product/initiatives/   optional initiative markdown ({slug}.md)
 ARCHITECTURE.md             system architecture (arc42)
 docs/decisions/             register.md, ADR-*.md
-specs/{work-short-name}/    design.md; TASKS.local.md when a local task breakdown
-                            is required — one folder per resolved work item
+specs/{work-short-name}/    design.md; optional epic.md; TASKS.local.md when a
+                            local task breakdown is required — one folder per
+                            resolved work item
 specs/{work-short-name}/reviews/  code-review-{nn}.local.md + matching .local.json
                             (co-located pair); ux-design-review-{nn}.local.md
                             ({nn} sequential per skill prefix, not across skills)
@@ -98,7 +100,9 @@ parent epic's folder. Cross-reference the parent by ID in the artefact.
 | ------- | ---------- | ------ |
 | Business strategy, personas, outcomes | `docs/product/product.md` | backlog, architecture |
 | Phase sequencing, exit criteria | `docs/product/roadmap.md` | backlog, product |
+| Initiative outcome, scope, candidate epics | `docs/product/initiatives/{slug}.md` or tracker | backlog detail, story AC |
 | Epic list, deps, points, work paths | `docs/product/backlog.md` (filesystem-only source) | roadmap detail |
+| Single epic narrative (optional) | `specs/{work-short-name}/epic.md` | story AC |
 | Story/task statement, test criterion, AC | `specs/{work-short-name}/TASKS.local.md` | backlog (titles only) |
 | Architecture, NFRs, cross-epic patterns | `ARCHITECTURE.md` | the Solution Design (cite only) |
 | ADR decisions | `register.md`, `ADR-NNNN-*.md` | ARCHITECTURE.md narrative |
@@ -168,11 +172,14 @@ authoring in general belong to **implement**.
 | ----------- | ----- |
 | PRD, vision, why/who/what | **product** |
 | Phases, exit criteria | **roadmap** |
+| One initiative / multi-epic bet | **write-initiative** |
+| One epic (not a full cut) | **write-epic** |
+| One story with AC | **write-story** |
 | Epics, work paths, Now scope | **tasks --product** |
 | `design.md` (technical design) for one work item | **/engineering:design** |
 | System architecture (`ARCHITECTURE.md`) | **/architecture:solution** |
 | ADR plan / write / review | **/architecture:adr** |
-| `TASKS.local.md`, stories, Gherkin AC | **tasks** |
+| `TASKS.local.md` multi-story breakdown, Gherkin AC | **tasks** |
 | Decompose any spec or RFC into a backlog | **tasks** |
 | Groom a backlog, check sprint readiness | **backlog-refine** |
 | Implement code | **implement** |

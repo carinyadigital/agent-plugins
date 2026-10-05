@@ -62,6 +62,9 @@ re-list the whole catalogue as trivia. Prefer a single best next step.
 | product-management | product | PRD / vision / product.md |
 | product-management | roadmap | Phases / Now-Next-Later |
 | product-management | write-spec | Feature spec from a problem |
+| product-management | write-initiative | One strategic initiative |
+| product-management | write-epic | One epic (not full backlog cut) |
+| product-management | write-story | One user story with AC |
 | product-management | product-brainstorming | Explore a problem space |
 | product-management | synthesize-research | Themes from research inputs |
 | product-management | competitive-brief | Competitor analysis |

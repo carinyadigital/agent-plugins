@@ -1,0 +1,39 @@
+{
+  "skill_name": "write-epic",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write an epic for Checkout Foundation that serves the Activate buyers outcome in the Alpha phase.",
+      "expected_output": "A draft epic with title, outcome, phase, priority, estimate, scope, non-goals, and success signal — no story Gherkin. Offers backlog.md upsert and/or tracker create after confirmation.",
+      "assertions": [
+        "Draft includes outcome, phase, priority, estimate, scope, and non-goals",
+        "Does not put story-level Gherkin on the epic",
+        "Traces the epic to a product outcome",
+        "Does not write a full multi-epic backlog decomposition",
+        "Waits for confirmation before applying unless create/write was explicit"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add this epic to our markdown backlog as CHK02.",
+      "expected_output": "Reads backlog.md to avoid ID collisions, upserts the epic row, optionally writes specs/{work-short-name}/epic.md, reports path and ID.",
+      "assertions": [
+        "Reads backlog.md before assigning or confirming an internal ID",
+        "Upserts docs/product/backlog.md when applying to filesystem",
+        "Uses a work path slug of at most two words",
+        "Does not invent a tracker key for filesystem-only work"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Create an epic in Linear under the Activation initiative.",
+      "expected_output": "Resolves Linear, drafts portable epic fields, creates/updates the epic with parent linkage when modelled, reports the Linear key — no parallel internal ID.",
+      "assertions": [
+        "Resolves Linear as destination (or asks if ambiguous with Jira)",
+        "Uses the tracker key as canonical ID",
+        "Does not write a shadow backlog.md for a tracker-backed repo",
+        "Links or names the parent initiative when available"
+      ]
+    }
+  ]
+}

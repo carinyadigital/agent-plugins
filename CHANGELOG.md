@@ -8,6 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### product-management 0.6.0
+
+- Added tracker-agnostic issue-authoring skills: `write-initiative`,
+  `write-epic`, `write-story` (markdown, Linear-shaped, or Jira-shaped;
+  draft-for-review before apply).
+- Shared reference: `references/issue-writing.md`; initiative type + schema in
+  `tasks/references/work-items.md`; path/routing updates in product and
+  delivery conventions.
+- Near-miss disambiguation on `tasks`, `write-spec`, and `backlog-refine`;
+  catalogue updates in README, CONNECTORS, AGENTS, and `skills-index:find`.
+
 ## [2026-09-27] — empty packaged MCP defaults
 
 Practice plugins no longer ship concrete MCP servers. `.mcp.json` stays in

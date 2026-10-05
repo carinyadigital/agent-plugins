@@ -1,0 +1,28 @@
+{
+  "skill_name": "write-initiative",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write an initiative for reducing time-to-first-value for invited org admins. We have product.md and a Now-phase theme called Activation.",
+      "expected_output": "A draft initiative with outcome, problem, scope, non-goals, success metrics, and candidate epics. Offers markdown under docs/product/initiatives/ or tracker create after confirmation — does not silently create issues.",
+      "assertions": [
+        "Produces an initiative draft with outcome, problem, scope, non-goals, and success metrics",
+        "Includes candidate epics as titles/outcomes only, not full story breakdowns",
+        "Does not write files or create tracker issues before user confirmation unless explicitly asked",
+        "Does not write a full product.md or roadmap.md",
+        "Does not decompose into TASKS.local.md stories"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Create this initiative in Jira for the checkout platform bet.",
+      "expected_output": "Resolves destination as Jira (or asks if Linear is also plausible), drafts portable fields, then creates/updates a Jira Initiative (or equivalent parent) only after draft review unless create was explicit — reports the key.",
+      "assertions": [
+        "Resolves source system rather than hardcoding one vendor",
+        "Uses portable initiative fields mapped to Jira-shaped issue type",
+        "Does not invent a filesystem backlog ID alongside a tracker key",
+        "Reports the created or updated tracker key"
+      ]
+    }
+  ]
+}

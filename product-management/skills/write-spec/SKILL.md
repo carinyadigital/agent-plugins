@@ -4,7 +4,8 @@ description: >
   Turn a feature idea or problem statement into a structured feature spec or PRD
   with user stories, requirements, and success metrics. Use when drafting a PRD,
   feature spec, or requirements doc. Do NOT use for product strategy doc
-  (product), epic task breakdown (tasks), or roadmap phasing (roadmap).
+  (product), a single tracker/markdown story (write-story), a single epic
+  (write-epic), epic task breakdown (tasks), or roadmap phasing (roadmap).
 license: Apache-2.0
 allowed-tools: Read Write Glob Grep
 argument-hint: "<feature or problem statement>"

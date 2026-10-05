@@ -2,10 +2,11 @@
 
 Root-level **practice plugin** — one install delivers the complete product and
 delivery service: setup interview, product strategy and PRDs, roadmap, feature
-specs, user research synthesis, competitive analysis, product metrics,
-stakeholder updates, brainstorming, tasks/backlog decomposition, sprint planning
-and retro, and epic validation. Self-contained under the MECE practice model:
-edit skills here only; nothing is vendored from elsewhere.
+specs, initiative/epic/story authoring, user research synthesis, competitive
+analysis, product metrics, stakeholder updates, brainstorming, tasks/backlog
+decomposition, sprint planning and retro, and epic validation. Self-contained
+under the MECE practice model: edit skills here only; nothing is vendored from
+elsewhere.
 
 Install standalone or after practice `setup` (writes `config/instance.json` if absent) recommends it.
 
@@ -15,8 +16,8 @@ Two personas share this skill library:
 
 | Persona | Focus | Skills |
 | ------- | ----- | ------ |
-| **Product Manager** | Strategy, discovery, communication | `product`, `roadmap`, `write-spec`, `product-brainstorming`, `synthesize-research`, `competitive-brief`, `metrics-review`, `stakeholder-update` |
-| **Delivery Lead** | Decomposition, cadence, sign-off | `tasks`, `backlog-refine`, `sprint-planning`, `sprint-retro`, `validate` |
+| **Product Manager** | Strategy, discovery, communication | `product`, `roadmap`, `write-spec`, `write-initiative`, `product-brainstorming`, `synthesize-research`, `competitive-brief`, `metrics-review`, `stakeholder-update` |
+| **Delivery Lead** | Decomposition, cadence, sign-off | `write-epic`, `write-story`, `tasks`, `backlog-refine`, `sprint-planning`, `sprint-retro`, `validate` |
 
 Invoke skills directly — there is no separate agent plugin:
 
@@ -52,6 +53,9 @@ After instance bootstrap (or standalone):
 | **product** | write — `docs/product/product.md` (strategy, PRD, pitch, vision, personas); review via `/engineering:docs-review` |
 | **roadmap** | write — `docs/product/roadmap.md` (Now/Next/Later, themes, OKR-aligned); review via `/engineering:docs-review` |
 | **write-spec** | Feature spec or PRD from a problem statement — user stories, requirements, success metrics |
+| **write-initiative** | One strategic initiative (markdown, Linear, or Jira) — outcome, scope, candidate epics |
+| **write-epic** | One epic (markdown backlog or tracker) — outcome, phase, scope, estimate |
+| **write-story** | One user story with independent test criterion and Gherkin/EARS AC |
 | **product-brainstorming** | Sparring partner for exploring a problem space (no deliverable) |
 | **synthesize-research** | Themes, personas, opportunity areas from interviews, surveys, tickets |
 | **competitive-brief** | Competitive analysis — feature comparison, positioning, implications |

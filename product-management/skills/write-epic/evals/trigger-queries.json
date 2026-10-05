@@ -1,0 +1,43 @@
+[
+  {
+    "query": "Write an epic for checkout foundation",
+    "should_trigger": true
+  },
+  {
+    "query": "Draft this as a single epic with scope and non-goals",
+    "should_trigger": true
+  },
+  {
+    "query": "Create an epic in Jira for payments reconciliation",
+    "should_trigger": true
+  },
+  {
+    "query": "Flesh out the Activation candidate as an epic",
+    "should_trigger": true
+  },
+  {
+    "query": "Write the epics for this product from product.md and roadmap.md",
+    "should_trigger": false,
+    "note": "tasks --product"
+  },
+  {
+    "query": "Break checkout-foundation into stories and tasks",
+    "should_trigger": false,
+    "note": "tasks"
+  },
+  {
+    "query": "Write a user story with acceptance criteria",
+    "should_trigger": false,
+    "note": "write-story"
+  },
+  {
+    "query": "Write an initiative for activation",
+    "should_trigger": false,
+    "note": "write-initiative"
+  },
+  {
+    "query": "Groom the backlog",
+    "should_trigger": false,
+    "note": "backlog-refine"
+  }
+]

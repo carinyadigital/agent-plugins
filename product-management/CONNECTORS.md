@@ -34,6 +34,9 @@ None shipped.
 | **product** | — | Knowledge base, project tracker (optional) |
 | **roadmap** | — | Project tracker (optional) |
 | **write-spec** | — | Knowledge base, project tracker (optional) |
+| **write-initiative** | — | Project tracker (optional) |
+| **write-epic** | — | Project tracker (optional) |
+| **write-story** | — | Project tracker (optional) |
 | **synthesize-research** | — | Meeting transcription, user feedback, knowledge base (optional) |
 | **competitive-brief** | — | Competitive intelligence (optional) |
 | **metrics-review** | — | Product analytics |

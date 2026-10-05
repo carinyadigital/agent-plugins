@@ -314,7 +314,7 @@ Grouped by agency service line. Each plugin's **`setup`** is what tailors it to 
 
 | Plugin | What it adds |
 |---|---|
-| **[product-management](./product-management)** | Product strategy, roadmap, feature specs and PRDs, research, competitive briefs, metrics, stakeholder updates, backlog/tasks decomposition, sprint planning and retro, and work-item validation. Personas: Product Manager and Delivery Lead. |
+| **[product-management](./product-management)** | Product strategy, roadmap, feature specs and PRDs, initiative/epic/story authoring, research, competitive briefs, metrics, stakeholder updates, backlog/tasks decomposition, sprint planning and retro, and work-item validation. Personas: Product Manager and Delivery Lead. |
 
 ### Growth & search
 
@@ -410,6 +410,9 @@ The full map across all practice plugins. Run `setup` in each plugin before othe
 | `/product-management:product` | product | write — `docs/product/product.md` (review via `/engineering:docs-review`) |
 | `/product-management:roadmap` | roadmap | write — `docs/product/roadmap.md` after product (+ solution when present); does not require backlog |
 | `/product-management:write-spec` | write-spec | Feature spec or PRD from a problem statement |
+| `/product-management:write-initiative` | write-initiative | One strategic initiative (markdown / Linear / Jira) |
+| `/product-management:write-epic` | write-epic | One epic for backlog or tracker |
+| `/product-management:write-story` | write-story | One user story with Gherkin/EARS AC |
 | `/product-management:product-brainstorming` | product-brainstorming | Sparring partner for ideas (no deliverable) |
 | `/product-management:synthesize-research` | synthesize-research | Themes and insights from user research |
 | `/product-management:competitive-brief` | competitive-brief | Competitive analysis brief |

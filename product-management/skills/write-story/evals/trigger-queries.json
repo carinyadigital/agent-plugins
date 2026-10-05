@@ -1,0 +1,43 @@
+[
+  {
+    "query": "Write a user story with Gherkin for checkout",
+    "should_trigger": true
+  },
+  {
+    "query": "Draft this as a story under CHK01",
+    "should_trigger": true
+  },
+  {
+    "query": "Create a story in Linear for invite acceptance",
+    "should_trigger": true
+  },
+  {
+    "query": "Add a story with acceptance criteria for password reset",
+    "should_trigger": true
+  },
+  {
+    "query": "Write a feature PRD / spec for SSO",
+    "should_trigger": false,
+    "note": "write-spec"
+  },
+  {
+    "query": "Write tasks for CHK01 with all the stories",
+    "should_trigger": false,
+    "note": "tasks"
+  },
+  {
+    "query": "Write an epic for checkout foundation",
+    "should_trigger": false,
+    "note": "write-epic"
+  },
+  {
+    "query": "Write an initiative for activation",
+    "should_trigger": false,
+    "note": "write-initiative"
+  },
+  {
+    "query": "Implement CHK01-S1",
+    "should_trigger": false,
+    "note": "implement"
+  }
+]

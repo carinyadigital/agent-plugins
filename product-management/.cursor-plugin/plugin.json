@@ -1,8 +1,8 @@
 {
   "name": "product-management",
   "displayName": "Product Management",
-  "version": "0.5.6",
-  "description": "Complete product management practice in one install — setup interview, product strategy and PRDs, roadmap, feature specs, research, metrics, stakeholder updates, tasks/backlog decomposition, sprint planning and retro, and epic validation. Personas: Product Manager and Delivery Lead. One owned skill library.",
+  "version": "0.6.0",
+  "description": "Complete product management practice in one install — setup interview, product strategy and PRDs, roadmap, feature specs, initiative/epic/story authoring, research, metrics, stakeholder updates, tasks/backlog decomposition, sprint planning and retro, and epic validation. Personas: Product Manager and Delivery Lead. One owned skill library.",
   "author": {
     "name": "Carinya Digital"
   },
@@ -12,6 +12,9 @@
     "product",
     "roadmap",
     "write-spec",
+    "write-initiative",
+    "write-epic",
+    "write-story",
     "prd",
     "synthesize-research",
     "competitive-brief",

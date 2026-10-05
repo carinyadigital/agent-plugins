@@ -7,9 +7,10 @@ Skills that write under `docs/product/` should read this file when resolving pat
 
 ```text
 docs/product/               product.md, roadmap.md, backlog.md
+docs/product/initiatives/   optional initiative markdown ({slug}.md)
 docs/research/              synthesis, competitive briefs, metrics reviews (optional)
 docs/updates/               stakeholder updates (optional)
-specs/{work-short-name}/        design.md; TASKS.local.md when required — see delivery-conventions.md
+specs/{work-short-name}/    design.md; optional epic.md; TASKS.local.md when required — see delivery-conventions.md
 docs/work/sprint-{id}/      plan.md, retrospective.md — see delivery-conventions.md
 ```
 
@@ -22,10 +23,12 @@ Strategy skills read them but do not write them — see `delivery-conventions.md
 
 ## Artefact hierarchy
 
-**Product → Solution → Roadmap → Backlog.** Upstream artefacts may exist before
-downstream ones. `roadmap` requires `product.md` and reads `ARCHITECTURE.md` when
-present; it must not require `backlog.md`. Epic backlog is created after
-roadmap via `/product-management:tasks --product`.
+**Product → Solution → Roadmap → Initiatives (optional) → Backlog.** Upstream
+artefacts may exist before downstream ones. `roadmap` requires `product.md` and
+reads `ARCHITECTURE.md` when present; it must not require `backlog.md`.
+Optional initiatives (`write-initiative`) sit between roadmap themes and epics.
+Epic backlog is created after roadmap via `/product-management:tasks --product`
+or one-at-a-time via `/product-management:write-epic`.
 
 ## Artefact boundaries
 
@@ -38,8 +41,10 @@ roadmap via `/product-management:tasks --product`.
 | Competitor comparison, positioning, implications | competitive brief | product, roadmap |
 | Metrics scorecard, trends, recommended actions | metrics review | stakeholder update |
 | Audience-tailored status, launch notes, risk escalation | stakeholder update | metrics review |
-| Epic list, deps, points, work paths | `docs/product/backlog.md` (tasks) | product, roadmap |
-| Story statement, test criterion, Gherkin AC | `specs/{work-short-name}/TASKS.local.md` (tasks) | product artefacts |
+| Initiative outcome, scope, candidate epics | `docs/product/initiatives/{slug}.md` or tracker initiative | product, roadmap, backlog |
+| Epic list, deps, points, work paths | `docs/product/backlog.md` (tasks / write-epic) | product, roadmap |
+| Single epic narrative body (optional) | `specs/{work-short-name}/epic.md` (write-epic) | story AC |
+| Story statement, test criterion, Gherkin AC | `specs/{work-short-name}/TASKS.local.md` (tasks / write-story) | product artefacts |
 
 ## Skill routing (near-misses)
 
@@ -48,6 +53,9 @@ roadmap via `/product-management:tasks --product`.
 | PRD, vision, why/who/what | **product** |
 | Feature spec from a problem statement | **write-spec** |
 | Phases, exit criteria | **roadmap** |
+| One strategic initiative / multi-epic bet | **write-initiative** |
+| One epic (not a full backlog cut) | **write-epic** |
+| One user story with AC | **write-story** |
 | Explore a problem space, stress-test thinking | **product-brainstorming** |
 | Themes from interviews, surveys, tickets | **synthesize-research** |
 | Compare competitors, battle cards | **competitive-brief** |

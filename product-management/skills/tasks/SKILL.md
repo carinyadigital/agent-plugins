@@ -7,9 +7,10 @@ description: >
   first; writes backlog/tasks artefacts or the tracker. Triggers on "break
   this into a backlog", "write the epics", "decompose checkout-foundation",
   "turn this RFC into tickets", "write tasks for CHK01", "what stories do we
-  need". EARS with --ears. Do NOT use for backlog grooming (backlog-refine),
-  Solution Design (design), architecture (solution), phasing (roadmap), code
-  (implement), or sign-off (validate).
+  need". EARS with --ears. Do NOT use for a single initiative (write-initiative),
+  a single epic (write-epic), a single story (write-story), backlog grooming
+  (backlog-refine), Solution Design (design), architecture (solution), phasing
+  (roadmap), code (implement), or sign-off (validate).
 license: Apache-2.0
 compatibility: Tracker resolution uses Linear, Atlassian (Jira), or GitHub/GitLab MCP tools when available, or `git remote`/`gh`/`glab`; falls back to the filesystem when none are reachable.
 allowed-tools:

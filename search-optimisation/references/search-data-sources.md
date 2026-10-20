@@ -22,12 +22,27 @@ A connector that errors with a plan or permission message (for example
 | ------ | -------- | ------------ | --------------------------- |
 | Google Search Console | `~~search performance` | Performance (clicks, impressions, CTR, position) by query and page; Pages (indexing) report; Sitemaps; Core Web Vitals; Enhancements (rich results) | `search.google.com/search-console` with the property from the practice profile |
 | Google Analytics 4 | `~~web analytics` | Users, sessions, engaged sessions by channel; landing pages from organic search; key events (conversions) | `analytics.google.com` with the property from the practice profile |
+| Ubersuggest | `~~SEO intelligence` | Project rank tracking, domain overview, keywords, competitors, backlinks, site audit | Connector |
 | Ahrefs | `~~SEO intelligence` | Site Audit issues and health score; Site Explorer overview (Domain Rating, referring domains, organic keywords); new and lost backlinks | `app.ahrefs.com` — Webmaster Tools tier covers Site Audit and Site Explorer for verified sites |
 | Hosting analytics | `~~hosting` | Page views and top pages when GA4 is unavailable | Connector only |
 | Email platform | `~~email marketing` | Subscriber sign-ups by source page or form | Connector, else browser |
 
 Property IDs, account names, and URLs belong in the practice profile, not in
 skills.
+
+## Plan limits
+
+SEO-tool plans ration calls (for example a free tier with a few reports per day).
+
+- Check the tool's limits endpoint (e.g. Ubersuggest `user_limits`) at the start of a
+  run when it exists, and record what is left.
+- Spend scarce calls on what changes decisions: tracked-project positions and site audit
+  first, then one domain overview, then keyword lookups for the topic being researched.
+- Prefer reading the tool's saved project (tracked keywords, competitors) over new
+  searches.
+- Never add to or edit a project's tracked keywords, competitors, or business summary
+  without the person's approval — propose the change in the run report.
+- When the allowance is spent, stop using that tool for the run and say so.
 
 ## Browser rules
 

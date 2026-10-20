@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   and citation prospects, outreach drafts) and `search-metrics` skill (KPI definition,
   snapshots, monthly report).
 - Added `references/search-data-sources.md`: connector → signed-in browser (read-only)
-  → pasted export, with figure-sourcing rules.
+  → pasted export, with figure-sourcing and SEO-tool plan-limit rules.
 - Conventions: recommendation tracker can be GitHub issues (default) or Linear triage;
   workstream cadences and `docs/work/seo/agency-state.json` run state.
 - `technical-seo-audit` 0.2.0 reads Search Console indexing and SEO-tool site audit,

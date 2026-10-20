@@ -1,0 +1,26 @@
+{
+  "skill_name": "search-metrics",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "search-metrics snapshot for carinyaparc.com.au. Search Console shows 6 clicks and 500 impressions in 3 months; GA4 shows 0 key events.",
+      "expected_output": "Snapshot JSON with sourced figures, small-base caveat, and a tracker item proposed for missing conversion tracking.",
+      "assertions": [
+        "Every figure records source, route, and window",
+        "Does not report percentage change on a small base or call it a trend",
+        "Flags 0 key events as missing conversion tracking and proposes a tracker item",
+        "Writes docs/work/seo/metrics/{date}.json"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "search-metrics report — analytics isn't connected this month.",
+      "expected_output": "Monthly report with analytics figures marked not available and the reason; no estimated numbers.",
+      "assertions": [
+        "Opens with an answer-first paragraph",
+        "Marks unavailable figures 'not available' with reason rather than estimating",
+        "Includes a Data gaps section"
+      ]
+    }
+  ]
+}

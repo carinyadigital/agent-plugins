@@ -28,18 +28,67 @@ Keyword research writes `keyword-research-{topic}.md` under that directory.
 Technical audits may write `technical-seo-audit-{YYYY-MM-DD}.md` as an audit trail
 when no GitHub issues are created.
 
-## GitHub issue conventions
+## Recommendation tracker
 
-Technical findings are filed as GitHub issues — not implementation PRs.
+Findings are filed as tracker items, never as implementation PRs. The practice
+profile's **Recommendation tracker** section picks the tracker; GitHub issues are
+the default when it is unset.
 
-| Field | Default |
-| ----- | ------- |
-| Title prefix | `[SEO]` |
-| Recommendation label | `type:seo-recommendation` |
-| Owning squad label | From target or instance squad charter (e.g. `squad:site`, `squad:blog`) |
+| Field | GitHub issues (default) | Linear |
+| ----- | ----------------------- | ------ |
+| Title prefix | `[SEO]` | `[SEO]` |
+| Recommendation label | `type:seo-recommendation` | Label named in profile (e.g. `SEO`) |
+| Owner label | Squad label from charter (e.g. `squad:site`) | Workstream label from profile (e.g. `Content`, `Bug`) |
+| Landing state | Open, unassigned | `Triage` when the team has triage enabled; otherwise the fallback status in the profile (e.g. `Backlog`) |
+
+Rules for every filed item:
+
+- **Search before filing.** Match on title prefix plus the root cause. Comment on
+  the existing open item with new evidence rather than filing a duplicate.
+- **One root cause per item.** Group pages that share one generator or template
+  bug into a single item with example URLs.
+- **Never** assign, set priority, change another item's status, or close items.
+  Humans promote out of triage.
+- Body: evidence (URL, observed value, source and date), impact, recommended fix,
+  and which surface owns it (content vs code).
 
 Read squad charter and label conventions from the instance repo when present. Ask
 the user when labels are undefined.
+
+## Workstreams and run state
+
+The `seo-agency` agent runs four workstreams. Each one maps to a skill:
+
+| Workstream | Skill | Default cadence |
+| ---------- | ----- | --------------- |
+| Technical audit | `technical-seo-audit` | Weekly |
+| Keyword and content strategy | `keyword-research` + `content-seo-review` | Monthly |
+| Local and authority building | `local-authority` | Monthly |
+| Metrics and measurement | `search-metrics` | Weekly snapshot, monthly report |
+
+The profile can override cadences. Run state lives at
+`docs/work/seo/agency-state.json` on the target repo:
+
+```json
+{
+  "lastRun": "2026-10-20",
+  "workstreams": {
+    "technical-audit": { "lastRun": "2026-10-20", "openItems": ["WEB-41"] },
+    "keyword-content": { "lastRun": "2026-10-06", "lastTopic": "syntropic-agroforestry" },
+    "local-authority": { "lastRun": "2026-10-06" },
+    "metrics": { "lastSnapshot": "2026-10-20", "lastReport": "2026-10-01" }
+  }
+}
+```
+
+Run reports go to `docs/work/seo/runs/{YYYY-MM-DD}.md`; metric snapshots to
+`docs/work/seo/metrics/{YYYY-MM-DD}.json`.
+
+## Data sources
+
+Read [search-data-sources.md](./search-data-sources.md) before pulling figures from
+Search Console, analytics, or SEO tools — connector first, signed-in browser
+second (read-only), pasted export third.
 
 ## Companion practice (delivery)
 
@@ -79,6 +128,9 @@ Seed paths are target-specific. Resolve in this order:
 | Keyword research for a topic | **keyword-research** |
 | Production site technical audit | **technical-seo-audit** |
 | On-page SEO review of content seeds | **content-seo-review** |
+| Local listings, citations, link prospects, outreach drafts | **local-authority** |
+| Search KPIs, snapshots, monthly SEO report | **search-metrics** |
+| Run all workstreams on a schedule | **seo-agency** agent |
 | Competitive landscape | `/product-management:competitive-brief` (companion) |
 | Draft blog or recipe content | `/content-marketing:draft-post` or `draft-recipe` (optional companion) |
 | Implement SEO fixes in code | Engineering practice — issues only from this practice |

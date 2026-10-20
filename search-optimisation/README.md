@@ -15,7 +15,7 @@ One persona owns the full skill library:
 
 | Persona | Primary skills | Focus |
 | ------- | -------------- | ----- |
-| **SEO Specialist** | `keyword-research`, `technical-seo-audit`, `content-seo-review` | Research, audits, on-page review |
+| **SEO Specialist** | `keyword-research`, `technical-seo-audit`, `content-seo-review`, `local-authority`, `search-metrics`; `seo-agency` agent | Research, audits, on-page review, local authority, measurement |
 
 Invoke skills directly — there is no separate agent plugin:
 
@@ -55,6 +55,18 @@ After instance bootstrap (or standalone):
 | **keyword-research** | Topic keyword docs with intent and content opportunities |
 | **technical-seo-audit** | Production audit → GitHub issues |
 | **content-seo-review** | On-page SEO review of content seeds |
+| **local-authority** | Business listing, NAP consistency, link and citation prospects, outreach drafts |
+| **search-metrics** | KPI definition, weekly snapshots, monthly search report |
+
+## Agent
+
+| Agent | Purpose |
+| ----- | ------- |
+| **seo-agency** | Scheduled orchestrator — gathers every reachable source, runs the due workstreams (technical audit, keyword and content, local and authority, metrics), files recommendations to tracker triage, writes `docs/work/seo/runs/{date}.md`. Recommends only. |
+
+Run it as a weekly scheduled task on a device with the signed-in browser, with a
+prompt such as: *"Run the search-optimisation seo-agency agent for {site}: read
+`search-optimisation/agents/seo-agency.md` and follow it."*
 
 Path, target, and boundary rules: `references/search-optimisation-conventions.md`.
 
@@ -80,4 +92,5 @@ pairing — paste or reference content directly when `content-marketing` is not 
 
 ## References
 
-- `references/search-optimisation-conventions.md` — path resolution, labels, artefact boundaries
+- `references/search-optimisation-conventions.md` — path resolution, tracker rules, workstreams, run state
+- `references/search-data-sources.md` — connector → signed-in browser → pasted export; read-only browser rules

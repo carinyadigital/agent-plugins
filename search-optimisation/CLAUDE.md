@@ -70,12 +70,58 @@ _(One-off | monthly | quarterly | ad hoc — and focus areas if recurring.)_
 
 ---
 
+## Business identity for local search
+
+_(Canonical name, postal address, phone, service area, and location wording rules —
+e.g. which line is the brand line and which is the postal address. Used verbatim.)_
+
+-
+
+---
+
+## Data sources
+
+| Source | Property / account | Route (connector / browser / none) |
+| ------ | ------------------ | ---------------------------------- |
+| Search Console | | |
+| Analytics | | |
+| SEO tool | | |
+
+---
+
+## Recommendation tracker
+
+_(GitHub issues (default) or Linear. Team, recommendation label, landing state
+(Triage, or fallback status), per-run item cap, notification channel.)_
+
+-
+
+---
+
+## Measurement
+
+_(KPIs, baseline, and targets — set with `/search-optimisation:search-metrics define`.)_
+
+-
+
+---
+
+## Agency cadence
+
+_(Overrides for the `seo-agency` agent's workstream cadences.)_
+
+-
+
+---
+
 ## Available integrations
 
 | Integration | Status | Fallback if unavailable |
 | ----------- | ------ | ----------------------- |
 | Source control (GitHub) | [✓ / ✗] | Manual issue paste |
 | Browser automation (Playwright) | [✓ / ✗] | Static repo analysis only |
+| Signed-in browser (Search Console, analytics, SEO tool) | [✓ / ✗] | Pasted exports |
+| Project tracker (Linear / GitHub) | [✓ / ✗] | Findings in run report only |
 
 *Re-check: `/search-optimisation:setup --check-integrations`*
 

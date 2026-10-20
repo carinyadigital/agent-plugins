@@ -1,0 +1,7 @@
+[
+  {"query": "How is our SEO going this month?", "should_trigger": true},
+  {"query": "Write the monthly search report.", "should_trigger": true},
+  {"query": "Set targets for organic traffic and enquiries.", "should_trigger": true},
+  {"query": "Review overall product metrics against OKRs.", "should_trigger": false, "note": "product-management:metrics-review"},
+  {"query": "Find broken links on the site.", "should_trigger": false, "note": "technical-seo-audit"}
+]

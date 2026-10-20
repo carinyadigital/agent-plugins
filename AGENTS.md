@@ -28,8 +28,9 @@ Claude and Cursor plugins for digital agency workflows.
 │   ├── references/                  # Diátaxis, quality, drift, boundary, style, linters
 │   ├── agents/                      # docs-reviewer, docs-writer
 │   └── skills/
-├── search-optimisation/             # practice plugin — keyword-research, technical-seo-audit, content-seo-review (MECE owned)
-│   ├── references/                  # search-optimisation-conventions
+├── search-optimisation/             # practice plugin — keyword-research, technical-seo-audit, content-seo-review, local-authority, search-metrics (MECE owned)
+│   ├── references/                  # search-optimisation-conventions, search-data-sources
+│   ├── agents/                      # seo-agency (scheduled orchestrator)
 │   └── skills/
 ├── brand-creative/                      # instance bootstrap + (v2) marketplace — install first
 │   ├── .claude-plugin/plugin.json
@@ -77,7 +78,7 @@ Run `python3 scripts/validate.py` before opening a PR — it runs plugin-domain 
 | `skills-index` | `find`, `related-skills-surfacer` | Shipped; install-aware router |
 | `plugin-management` | `create-plugin`, `customize-plugin`, component-authoring skills, `skills-qa`, `skill-review` | Shipped; meta-plugin + former skill-authoring quality gates |
 | `document-management` | `docs-setup`, `docs-improve` | Shipped; utility plugin — Docs Author persona; Diátaxis scaffold/reorg plus score/fix; coexists with `/engineering:docs-review` |
-| `search-optimisation` | `setup` + 3 SEO skills (`keyword-research`, `technical-seo-audit`, `content-seo-review`) | Shipped; one persona (SEO Specialist), no separate agent plugin; invokes `/product-management:competitive-brief` as companion skill |
+| `search-optimisation` | `setup` + 5 SEO skills (`keyword-research`, `technical-seo-audit`, `content-seo-review`, `local-authority`, `search-metrics`) + `seo-agency` scheduled agent | Shipped; one persona (SEO Specialist), no separate agent plugin; invokes `/product-management:competitive-brief` as companion skill |
 
 Practice `setup` skills bootstrap a git-versioned instance repo when `config/instance.json` is absent (`config/instance.json`, `config/targets/`, `squads/`, `brand/`). See `brand-creative/README.md` and `brand-creative/references/agency-setup-framework.md`.
 

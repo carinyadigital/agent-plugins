@@ -52,7 +52,7 @@
       "name": "search-optimisation",
       "displayName": "Search Optimisation",
       "source": "./search-optimisation",
-      "description": "Complete search and technical SEO practice in one install — setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief."
+      "description": "Complete search and technical SEO practice in one install — setup interview, keyword research, technical audits, content SEO review, local and authority building, and search metrics, plus a scheduled seo-agency agent that runs all four workstreams and files recommendations to triage. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief."
     },
     {
       "name": "skills-index",

@@ -8,6 +8,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### search-optimisation 0.5.0
+
+- Added `seo-agency` agent: scheduled orchestrator that gathers sources, runs the due
+  workstreams, files recommendations to tracker triage, and writes a run report.
+  Recommends only.
+- Added `local-authority` skill (listing, NAP consistency, local structured data, link
+  and citation prospects, outreach drafts) and `search-metrics` skill (KPI definition,
+  snapshots, monthly report).
+- Added `references/search-data-sources.md`: connector → signed-in browser (read-only)
+  → pasted export, with figure-sourcing rules.
+- Conventions: recommendation tracker can be GitHub issues (default) or Linear triage;
+  workstream cadences and `docs/work/seo/agency-state.json` run state.
+- `technical-seo-audit` 0.2.0 reads Search Console indexing and SEO-tool site audit,
+  groups by root cause, de-duplicates against open items. `keyword-research` 0.2.0
+  starts from Search Console queries when reachable.
+- Practice profile template: business identity, data sources, tracker, measurement,
+  and agency cadence sections.
+
 ## [2026-09-27] — empty packaged MCP defaults
 
 Practice plugins no longer ship concrete MCP servers. `.mcp.json` stays in

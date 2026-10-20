@@ -1,8 +1,8 @@
 {
   "name": "search-optimisation",
   "displayName": "Search Optimisation",
-  "version": "0.4.5",
-  "description": "Complete search and technical SEO practice in one install — setup interview, keyword research, technical audits, and content SEO review. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief.",
+  "version": "0.5.0",
+  "description": "Complete search and technical SEO practice in one install — setup interview, keyword research, technical audits, content SEO review, local and authority building, and search metrics, plus a scheduled seo-agency agent that runs all four workstreams and files recommendations to triage. One persona (SEO Specialist), one owned skill library. Invokes product-management for competitive brief.",
   "author": {
     "name": "Carinya Digital"
   },
@@ -14,7 +14,11 @@
     "technical-seo",
     "audit",
     "content-seo",
-    "setup"
+    "setup",
+    "local-seo",
+    "link-building",
+    "search-metrics",
+    "agency"
   ],
   "skills": "./skills/"
 }

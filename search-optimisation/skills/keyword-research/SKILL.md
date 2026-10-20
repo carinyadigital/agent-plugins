@@ -12,7 +12,7 @@ allowed-tools: Read Write Glob Grep
 argument-hint: "<topic-slug>"
 metadata:
   author: Carinya Digital
-  version: "0.1.0"
+  version: "0.2.0"
   owner: search-optimisation
   review_cadence: quarterly
   work_shape: generate-draft
@@ -24,7 +24,8 @@ metadata:
 You research keywords for a topic and document findings for content planning.
 Pass a kebab-case topic slug after the skill name — it becomes the filename segment.
 
-Read [search-optimisation-conventions.md](../../references/search-optimisation-conventions.md).
+Read [search-optimisation-conventions.md](../../references/search-optimisation-conventions.md)
+and [search-data-sources.md](../../references/search-data-sources.md).
 
 ## Inputs
 
@@ -40,11 +41,14 @@ Read [search-optimisation-conventions.md](../../references/search-optimisation-c
 1. Resolve target repo via `config/target.json` or instance target config.
 2. Read product/backlog context when present. Check existing SEO work files to
    avoid duplication.
-3. Research via web search: SERP analysis, People Also Ask, related queries.
+3. When Search Console is reachable, pull queries for the topic with impressions in
+   the last 90 days — terms the site already shows for but rarely wins clicks on are
+   the first opportunities. Add SEO-tool volume and difficulty when reachable.
+4. Research via web search: SERP analysis, People Also Ask, related queries.
    Match locale/geography from instance profile or user input. Prioritise intent
    aligned with the customer's product and content strategy.
-4. Write `docs/work/seo/keyword-research-{topic}.md` using the output format.
-5. Confirm recommendations are actionable for content calendar planning.
+5. Write `docs/work/seo/keyword-research-{topic}.md` using the output format.
+6. Confirm recommendations are actionable for content calendar planning.
 
 ## Quality rules
 
@@ -69,6 +73,9 @@ Why this topic matters for the customer's site and audience.
 ## Primary keyword
 | Keyword | Intent | Priority | Notes |
 | ------- | ------ | -------- | ----- |
+
+## Current search presence
+Queries the site already appears for (source, window), or "not available — reason".
 
 ## Secondary keywords
 | Keyword | Intent | Priority | Notes |

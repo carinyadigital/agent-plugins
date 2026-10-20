@@ -1,0 +1,7 @@
+[
+  {"query": "Check our Google Business Profile and directory listings.", "should_trigger": true},
+  {"query": "Who should be linking to us? Find backlink opportunities.", "should_trigger": true},
+  {"query": "Is our address consistent everywhere online?", "should_trigger": true},
+  {"query": "Audit the sitemap and canonical tags.", "should_trigger": false, "note": "technical-seo-audit"},
+  {"query": "Research keywords for farm tours.", "should_trigger": false, "note": "keyword-research"}
+]
